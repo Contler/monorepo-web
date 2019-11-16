@@ -1,7 +1,155 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "hotel": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/hotel",
+      "sourceRoot": "apps/hotel/src",
+      "prefix": "contler",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/hotel",
+            "index": "apps/hotel/src/index.html",
+            "main": "apps/hotel/src/main.ts",
+            "polyfills": "apps/hotel/src/polyfills.ts",
+            "tsConfig": "apps/hotel/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/hotel/src/favicon.ico",
+              "apps/hotel/src/assets"
+            ],
+            "styles": [
+              "apps/hotel/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/hotel/src/environments/environment.ts",
+                  "with": "apps/hotel/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "hotel:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "hotel:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "hotel:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/hotel/tsconfig.app.json",
+              "apps/hotel/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/hotel/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/hotel/jest.config.js",
+            "tsConfig": "apps/hotel/tsconfig.spec.json",
+            "setupFile": "apps/hotel/src/test-setup.ts"
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
+        }
+      }
+    },
+    "hotel-e2e": {
+      "root": "apps/hotel-e2e",
+      "sourceRoot": "apps/hotel-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/hotel-e2e/cypress.json",
+            "tsConfig": "apps/hotel-e2e/tsconfig.e2e.json",
+            "devServerTarget": "hotel:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "hotel:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/hotel-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/hotel-e2e/**"
+            ]
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/nest"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "hotel"
 }
