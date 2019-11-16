@@ -1,0 +1,62 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$md-primary: (
+  50: #e1fbf8,
+  100: #b3f4ed,
+  200: #81ede2,
+  300: #4fe5d6,
+  400: #29e0cd,
+  500: #03dac4,
+  600: #03d6be,
+  700: #02d0b6,
+  800: #02cbaf,
+  900: #01c2a2,
+  A100: #ebfffb,
+  A200: #b8fff1,
+  A400: #85ffe7,
+  A700: #6bffe2,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$hotel-primary: mat-palette($md-primary);
+$hotel-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$hotel-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$hotel-theme: mat-light-theme($hotel-primary, $hotel-accent, $hotel-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($hotel-theme);
+
+
+.mat-hint {
+  font-family: $family;
+}

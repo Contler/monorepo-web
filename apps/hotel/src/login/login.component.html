@@ -1,1 +1,21 @@
-<p>login works!</p>
+<div class="contler-login">
+  <img src="assets/img/logo.svg" alt="">
+  <form class="contler-login__form" [formGroup]="loginForm">
+    <mat-form-field appearance="fill">
+      <input matInput placeholder="user@company.com" formControlName="email">
+      <mat-icon matSuffix>account_circle</mat-icon>
+      <mat-hint>Usuario</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <input matInput placeholder="123456" type="password" formControlName="pass">
+      <mat-icon matSuffix>check_circle</mat-icon>
+      <mat-hint>Contrseña</mat-hint>
+    </mat-form-field>
+
+    <a class="contler-login__form__link">Olvidaste tu contraseña?</a>
+    <button mat-raised-button color="primary" class="button" [disabled]="loginForm.invalid">Ingresar</button>
+
+  </form>
+
+</div>

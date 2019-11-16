@@ -5,6 +5,7 @@ import { AngularFireModule } from '@angular/fire';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { environment } from '../environments/environment';
       ],
       { initialNavigation: 'enabled' },
     ),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

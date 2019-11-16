@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'contler-login',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginForm: FormGroup;
+
+  constructor(formBuild: FormBuilder) {
+    this.loginForm = formBuild.group({
+      email: ['', [Validators.required, Validators.email]],
+      pass: ['', [Validators.required, Validators.minLength(6)]]
+    })
+  }
 
   ngOnInit() {
+  }
+
+  get emailForm() {
+    return this.loginForm.get('email')
+  }
+
+  get passForm() {
+    return this.loginForm.get('pass')
   }
 
 }
