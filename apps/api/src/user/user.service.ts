@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { auth, firestore, database } from 'firebase-admin';
-import { Admin, ADMIN, AdminRequest, Hotel } from '@contler/core';
+import { Admin, AdminRequest, Hotel } from '@contler/core/models';
+import { ADMIN } from '@contler/core/const';
+
 
 
 @Injectable()

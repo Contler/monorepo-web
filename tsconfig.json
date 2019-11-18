@@ -16,8 +16,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@contler/core": ["libs/core/src/index.ts"],
-      "api/*": ["apps/api/src/*"]
+      "api/*": ["apps/api/src/*"],
+      "hotel/*": ["apps/hotel/src/*"],
+      "@contler/core": ["libs/core/src"],
+      "@contler/core/const": ["libs/core/src/const"],
+      "@contler/core/models": ["libs/core/src/models"]
     },
     "strict": true
   },

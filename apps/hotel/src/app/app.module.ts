@@ -1,11 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AngularFireModule } from '@angular/fire';
-
-import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { AngularFireModule } from '@angular/fire';
+import { hasCustomClaim } from '@angular/fire/auth-guard';
+
+
+import { AppComponent } from 'hotel/app/app.component';
+import { environment } from 'hotel/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       [
         {
           path: 'login',
-          loadChildren: () => import('../login/login.module').then(m => m.LoginModule),
+          loadChildren: () => import('hotel/login/login.module').then(m => m.LoginModule),
         },
       ],
       { initialNavigation: 'enabled' },

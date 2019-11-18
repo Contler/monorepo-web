@@ -175,10 +175,10 @@
       }
     },
     "core": {
+      "projectType": "library",
       "root": "libs/core",
       "sourceRoot": "libs/core/src",
-      "projectType": "library",
-      "schematics": {},
+      "prefix": "contler",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -191,8 +191,14 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/core/jest.config.js",
-            "tsConfig": "libs/core/tsconfig.spec.json"
+            "tsConfig": "libs/core/tsconfig.spec.json",
+            "setupFile": "libs/core/src/test-setup.ts"
           }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }
