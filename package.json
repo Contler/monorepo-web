@@ -44,6 +44,8 @@
     "@nestjs/core": "^6.8.3",
     "@nestjs/platform-express": "^6.8.3",
     "@nrwl/angular": "^8.7.1",
+    "class-transformer": "^0.2.3",
+    "class-validator": "latest",
     "core-js": "^2.5.4",
     "firebase": ">= 5.5.7 <8",
     "firebase-admin": "^8.7.0",

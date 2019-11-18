@@ -2,12 +2,12 @@
  * This is not a production server yet!
  * This is only a minimal backend to get started.
  **/
-
+import "reflect-metadata";
 import { NestFactory } from '@nestjs/core';
 import * as admin from 'firebase-admin';
 
 import { AppModule } from './app/app.module';
-import { environment } from 'src/environments/environment';
+import { environment } from 'api/environments/environment';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
