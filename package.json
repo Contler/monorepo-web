@@ -46,6 +46,7 @@
     "@nrwl/angular": "^8.7.1",
     "core-js": "^2.5.4",
     "firebase": ">= 5.5.7 <8",
+    "firebase-admin": "^8.7.0",
     "hammerjs": "^2.0.8",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.4.0",
