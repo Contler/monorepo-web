@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 import { hasCustomClaim } from '@angular/fire/auth-guard';
 
-
 import { AppComponent } from 'hotel/app/app.component';
 import { environment } from 'hotel/environments/environment';
 
@@ -20,6 +19,10 @@ import { environment } from 'hotel/environments/environment';
         {
           path: 'login',
           loadChildren: () => import('hotel/login/login.module').then(m => m.LoginModule),
+        },
+        {
+          path: 'home',
+          loadChildren: () => import('hotel/home/home.module').then(m => m.HomeModule),
         },
       ],
       { initialNavigation: 'enabled' },
