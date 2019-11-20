@@ -9,41 +9,77 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
+/* For use in src/lib/core/theming/_palette.scss */
 $md-primary: (
-  50: #e1fbf8,
-  100: #b3f4ed,
-  200: #81ede2,
-  300: #4fe5d6,
-  400: #29e0cd,
-  500: #03dac4,
-  600: #03d6be,
-  700: #02d0b6,
-  800: #02cbaf,
-  900: #01c2a2,
-  A100: #ebfffb,
-  A200: #b8fff1,
-  A400: #85ffe7,
-  A700: #6bffe2,
+  50 : #eae9e9,
+  100 : #c9c9c9,
+  200 : #a6a5a5,
+  300 : #828181,
+  400 : #676666,
+  500 : #4c4b4b,
+  600 : #454444,
+  700 : #3c3b3b,
+  800 : #333333,
+  900 : #242323,
+  A100 : #f18080,
+  A200 : #ec5252,
+  A400 : #ff0c0c,
+  A700 : #f10000,
   contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #000000,
-    500: #000000,
-    600: #000000,
-    700: #000000,
-    800: #000000,
-    900: #000000,
-    A100: #000000,
-    A200: #000000,
-    A400: #000000,
-    A700: #000000,
-  ),
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
 );
 
+$md-accent: (
+  50 : #e1fbf8,
+  100 : #b3f4ed,
+  200 : #81ede2,
+  300 : #4fe5d6,
+  400 : #29e0cd,
+  500 : #03dac4,
+  600 : #03d6be,
+  700 : #02d0b6,
+  800 : #02cbaf,
+  900 : #01c2a2,
+  A100 : #ebfffb,
+  A200 : #b8fff1,
+  A400 : #85ffe7,
+  A700 : #6bffe2,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
+
 $hotel-primary: mat-palette($md-primary);
-$hotel-accent: mat-palette($mat-pink, A200, A100, A400);
+$hotel-accent: mat-palette($md-accent, 500, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $hotel-warn: mat-palette($mat-red);

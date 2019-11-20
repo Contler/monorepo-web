@@ -25,7 +25,9 @@
     "update:check": "ng update",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "serve:hotel": "ng serve hotel",
+    "serve:api": "ng serve api"
   },
   "private": true,
   "dependencies": {

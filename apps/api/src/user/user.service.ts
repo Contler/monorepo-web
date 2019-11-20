@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { auth, firestore, database } from 'firebase-admin';
-import { Admin, AdminRequest, Hotel } from '@contler/core/models';
+import { Admin, AdminRequest, Claim, Hotel } from '@contler/core/models';
 import { ADMIN } from '@contler/core/const';
 
 
@@ -13,9 +13,9 @@ export class UserService {
       password: data.password,
       displayName: data.name,
     });
-    auth().setCustomUserClaims(user.uid, { rol: ADMIN });
+    auth().setCustomUserClaims(user.uid, { rol: ADMIN } as Claim);
     const hotel = new Hotel();
-    hotel.name = data.name;
+    hotel.name = data.hotelName;
     hotel.logo = data.hotelLogo;
     hotel.uid = database()
       .ref()

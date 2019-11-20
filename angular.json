@@ -26,6 +26,11 @@
             "aot": false,
             "assets": ["apps/hotel/src/favicon.ico", "apps/hotel/src/assets"],
             "styles": ["apps/hotel/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "apps/hotel/src"
+              ]
+            },
             "scripts": []
           },
           "configurations": {

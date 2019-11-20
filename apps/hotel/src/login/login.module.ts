@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'hotel/material/material.module';
 import { LoginComponent } from 'hotel/login/login.component';
 import { LoginRoutingModule } from 'hotel/login/login-routing.module';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
 
@@ -15,7 +16,8 @@ import { LoginRoutingModule } from 'hotel/login/login-routing.module';
     LoginRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireAuthModule
   ]
 })
 export class LoginModule { }

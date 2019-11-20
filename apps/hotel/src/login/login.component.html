@@ -1,6 +1,6 @@
 <div class="contler-login">
   <img src="assets/img/logo.svg" alt="">
-  <form class="contler-login__form" [formGroup]="loginForm">
+  <form class="contler-login__form" [formGroup]="loginForm" (ngSubmit)="login()">
     <mat-form-field appearance="fill">
       <input matInput placeholder="user@company.com" formControlName="email">
       <mat-icon matSuffix>account_circle</mat-icon>
@@ -14,8 +14,7 @@
     </mat-form-field>
 
     <a class="contler-login__form__link">Olvidaste tu contraseña?</a>
-    <button mat-raised-button color="primary" class="button" [disabled]="loginForm.invalid">Ingresar</button>
-
+    <button mat-raised-button color="accent" class="button" [disabled]="loginForm.invalid">Ingresar</button>
   </form>
 
 </div>

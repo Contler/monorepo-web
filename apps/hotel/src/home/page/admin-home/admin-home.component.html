@@ -1,1 +1,26 @@
-<p>admin-home works!</p>
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img src="assets/img/logo-white.svg" alt="">
+</mat-toolbar>
+<mat-sidenav-container class="contler-admin">
+  <mat-sidenav mode="over" #sidenav>Sidenav content</mat-sidenav>
+  <mat-sidenav-content>
+    <h1 class="contler-admin__title">Escritorio</h1>
+    <div class="contler-admin__options">
+      <mat-card class="contler-admin__options-card" *ngFor="let section of sections">
+        <mat-icon *ngIf="section.outlined" [class.contler-admin__primary]="section.primary"
+                  fontSet="material-icons-outlined" class="contler-admin__options-icon">
+          {{section.icon}}
+        </mat-icon>
+        <mat-icon *ngIf="!section.outlined" class="contler-admin__options-icon"
+                  [class.contler-admin__primary]="section.primary">
+          {{section.icon}}
+        </mat-icon>
+        <p class="contler-admin__options-text">{{section.name}}</p>
+      </mat-card>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
