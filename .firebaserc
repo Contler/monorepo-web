@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "contler-dev": {
+      "hosting": {
+        "hotel": [
+          "contler-dev"
+        ]
+      }
+    }
+  }
+}

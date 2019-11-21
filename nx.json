@@ -7,5 +7,18 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "hotel-e2e": {
+      "tags": []
+    },
+    "hotel": {
+      "tags": []
+    },
+    "api": {
+      "tags": []
+    },
+    "core": {
+      "tags": []
+    }
+  }
 }

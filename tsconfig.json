@@ -15,7 +15,15 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@contler/core": ["libs/core/src/index.ts"],
+      "@contler/core/const": ["libs/core/src/const"],
+      "@contler/core/models": ["libs/core/src/models"],
+      "api/*": ["apps/api/src/*"],
+      "hotel/*": ["apps/hotel/src/*"],
+      "lib/*": ["libs/core/src/*"]
+    },
+    "strict": true
   },
   "exclude": ["node_modules", "tmp"]
 }
