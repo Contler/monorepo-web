@@ -18,6 +18,7 @@
     "paths": {
       "api/*": ["apps/api/src/*"],
       "hotel/*": ["apps/hotel/src/*"],
+      "lib/*": ["libs/core/src/*"],
       "@contler/core": ["libs/core/src"],
       "@contler/core/const": ["libs/core/src/const"],
       "@contler/core/models": ["libs/core/src/models"]

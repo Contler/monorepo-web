@@ -1,6 +1,6 @@
-import { ADMIN, EMPLOYER } from '../const/index';
+import { Roles } from 'lib/const';
 
 
 export interface Claim {
-  rol: typeof ADMIN | typeof EMPLOYER
+  rol: Roles
 }
