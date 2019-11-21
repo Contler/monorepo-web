@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '@contler/core';
 
 @Component({
   selector: 'contler-admin-home',
@@ -56,9 +57,10 @@ export class AdminHomeComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+
   }
 
 }

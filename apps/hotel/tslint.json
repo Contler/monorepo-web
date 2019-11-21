@@ -2,7 +2,6 @@
   "extends": "../../tslint.json",
   "rules": {
     "directive-selector": [true, "attribute", "contler", "camelCase"],
-    "component-selector": [true, "element", "contler", "kebab-case"],
-    "no-non-null-assertion": false
+    "component-selector": [true, "element", "contler", "kebab-case"]
   }
 }
