@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img src="assets/img/logo-white.svg" alt="">
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav>
+    <contler-menu></contler-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="cnt-employer">
+    <div class="cnt-employer__header">
+      <h1 class="cnt-title">Empleados</h1>
+      <mat-form-field appearance="fill" class="select">
+        <mat-select [(ngModel)]="filter">
+          <mat-option *ngFor="let option of filters" [value]="option.value">
+            {{option.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="accent">Crear empleados</button>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

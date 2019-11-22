@@ -16,6 +16,9 @@ export class User {
   @Transform(value => value || null, { toClassOnly: true })
   name: string | null = null;
 
+  @Transform(value => value || null, { toClassOnly: true })
+  lastName: string | null = null;
+
   constructor(rol: Roles) {
     this.role = rol
   }

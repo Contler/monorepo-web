@@ -1,0 +1,51 @@
+@import "styles/variables";
+@import "styles/mixin";
+
+:host {
+  text-align: center;
+  display: block;
+}
+
+.title {
+  color: $text-1;
+  letter-spacing: 0.25px;
+  font-size: 20.2px;
+  font-weight: 500;
+  margin: auto;
+}
+
+.content {
+  display: grid;
+  margin: 53px 50px;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 19px;
+  row-gap: 12px;
+
+  &__2-columns {
+    grid-column: span 2;
+  }
+
+  &__3-row {
+    grid-row: span 3;
+  }
+
+  &__zone {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    &-text {
+      @include text($text-4, 14.2px, 500);
+      line-height: 1.69;
+      letter-spacing: 0.1px;
+      padding-left: 10px;
+    }
+
+    &-select {
+      box-sizing: border-box;
+      border: solid 1px #e2e2e2;
+      padding: 20px;
+      width: 100%;
+      flex-grow: 1;
+    }
+  }
+}

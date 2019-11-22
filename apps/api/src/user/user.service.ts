@@ -23,6 +23,7 @@ export class UserService {
     const employer = new Employer(data.rol);
     employer.uid = user.uid;
     employer.name = data.name;
+    employer.lastName = data.lastName;
     employer.hotel = data.idHotel;
     return this.saveUser(employer);
   }

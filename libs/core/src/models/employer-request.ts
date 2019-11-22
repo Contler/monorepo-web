@@ -13,6 +13,9 @@ export class EmployerRequest {
   name!: string;
 
   @IsNotEmpty()
+  lastName!: string;
+
+  @IsNotEmpty()
   idHotel!: string;
 
   @IsNotEmpty()
