@@ -96,3 +96,7 @@ $hotel-theme: mat-light-theme($hotel-primary, $hotel-accent, $hotel-warn);
 .mat-hint {
   font-family: $family;
 }
+
+.mat-drawer-container {
+  height: calc(100vh - 56px);
+}
