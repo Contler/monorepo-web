@@ -24,6 +24,7 @@ export class AdminHomeComponent {
       name: 'Zonas',
       icon: 'room',
       outlined: false,
+      link: ['home', 'zone'],
     },
     {
       name: 'Solicitudes inmediatas',
