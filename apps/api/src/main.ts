@@ -14,6 +14,7 @@ import { environment } from 'api/environments/environment';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
+  app.enableCors();
   const credential = environment.fire;
   admin.initializeApp({
     databaseURL: environment.fireDatabase,

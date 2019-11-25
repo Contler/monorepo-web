@@ -10,6 +10,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { MenuComponent } from 'hotel/material/components/menu/menu.component';
 
@@ -23,6 +25,8 @@ const materialModules = [
   MatCardModule,
   MatSelectModule,
   MatDialogModule,
+  MatTableModule,
+  MatPaginatorModule,
 ];
 
 @NgModule({

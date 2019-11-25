@@ -5,7 +5,7 @@ export class User {
   static readonly REF = 'user';
 
   @Transform(value => value || EMPLOYER, { toClassOnly: true })
-  readonly role: Roles;
+  role: Roles;
 
   @Transform(value => value || null, { toClassOnly: true })
   hotel: string | null = null;

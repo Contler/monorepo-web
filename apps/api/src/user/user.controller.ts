@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Param, Post } from '@nestjs/common';
 import { UserService } from 'api/user/user.service';
 import { AdminRequest, EmployerRequest } from '@contler/core/models';
 
@@ -13,6 +13,11 @@ export class UserController {
 
   @Post('employer')
   createEmployer(@Body() data: EmployerRequest) {
-    return this.userService.createEmployer(data)
+    return this.userService.createEmployer(data);
+  }
+
+  @Delete('employer/:id')
+  deleteEmployer(@Param() params: {id: string}) {
+    return this.userService.deleteUser(params.id);
   }
 }
