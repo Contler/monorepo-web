@@ -18,6 +18,7 @@ export class AdminHomeComponent {
       name: 'Habitaciones',
       icon: 'meeting_room',
       outlined: false,
+      link: ['home', 'room'],
     },
     {
       name: 'Zonas',

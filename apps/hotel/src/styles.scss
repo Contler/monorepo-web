@@ -25,3 +25,42 @@ a {
   letter-spacing: 0.4px;
   cursor: pointer;
 }
+
+.crud_table{
+  padding: 17px 0px 57px 0px !important;
+  .row{
+    display: grid;
+    grid-template-columns: calc(35% - 5px) calc(50% - 10px)  calc(15% - 5px);
+    column-gap: 10px;
+    padding: 19px 41px 12px 41px;
+    border-bottom: 1px solid #e5e5e5;
+    P{
+      font-family: Nunito;
+      font-size: 15.2px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.58;
+      letter-spacing: 0.1px;
+      color: rgba(0, 0, 0, 0.6);
+      margin: 0;
+    }
+    .actions button mat-icon{
+      color: #757575;
+    }
+  }
+  .header{
+    border-bottom: none;
+    p{
+      font-family: Nunito;
+      font-size: 15.2px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.58;
+      letter-spacing: 0.1px;
+      color: rgba(0, 0, 0, 0.87);
+      margin: 0;
+    }
+  }
+}

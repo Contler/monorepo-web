@@ -1,0 +1,59 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img src="assets/img/logo-white.svg" alt="" />
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav>
+    <contler-menu></contler-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="cnt-employer">
+    <div class="wrapper">
+      <div class="container">
+        <div class="form_section">
+          <p class="title">Habitaciones</p>
+          <form #roomForm="ngForm">
+            <mat-form-field appearance="fill">
+              <input matInput />
+              <mat-hint>Habitación</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-select>
+                <mat-option [value]="1">
+                  Zona 1
+                </mat-option>
+              </mat-select>
+              <mat-hint>Zona</mat-hint>
+            </mat-form-field>
+            <button mat-raised-button color="accent" contlerButton>
+              CREAR HABITACIÓN
+            </button>
+          </form>
+        </div>
+        <div class="rooms_section">
+          <mat-card class="crud_table">
+            <div class="row header">
+              <p>Zona</p>
+              <p>Habitación</p>
+            </div>
+            <div class="row" *ngFor="let room of [1, 2, 3, 4, 5, 6, 7]; let i = index">
+              <p>Zona {{ i + 1 }}</p>
+              <p>{{ i + 1 }}</p>
+              <div class="actions">
+                <button mat-icon-button>
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button>
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
