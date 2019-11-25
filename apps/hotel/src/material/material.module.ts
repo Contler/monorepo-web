@@ -8,6 +8,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+import { MenuComponent } from 'hotel/material/components/menu/menu.component';
 
 const materialModules = [
   MatFormFieldModule,
@@ -17,11 +23,15 @@ const materialModules = [
   MatSidenavModule,
   MatToolbarModule,
   MatCardModule,
+  MatSelectModule,
+  MatDialogModule,
+  MatTableModule,
+  MatPaginatorModule,
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [MenuComponent],
   imports: [CommonModule, ...materialModules],
-  exports: materialModules,
+  exports: [...materialModules, MenuComponent],
 })
 export class MaterialModule {}

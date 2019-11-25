@@ -3,6 +3,7 @@ import { auth, firestore } from 'firebase-admin';
 import { Admin, AdminRequest, Claim, Employer, EmployerRequest, User } from '@contler/core/models';
 import { ADMIN, Roles } from '@contler/core/const';
 import { HotelService } from 'api/hotel/hotel.service';
+import { HttpRequest } from '@angular/common/http';
 
 @Injectable()
 export class UserService {
@@ -23,8 +24,24 @@ export class UserService {
     const employer = new Employer(data.rol);
     employer.uid = user.uid;
     employer.name = data.name;
+    employer.lastName = data.lastName;
     employer.hotel = data.idHotel;
-    return this.saveUser(employer);
+    await this.saveUser(employer);
+    return employer;
+  }
+
+  async deleteUser(uid: string) {
+    try {
+      firestore()
+        .collection(User.REF)
+        .doc(uid)
+        .delete()
+      await auth().deleteUser(uid);
+    } catch (e) {
+      throw new HttpException(e.message, HttpStatus.BAD_REQUEST);
+    }
+
+
   }
 
   private saveUser(user: User) {
@@ -43,9 +60,8 @@ export class UserService {
       auth().setCustomUserClaims(user.uid, { rol } as Claim);
       return user;
     } catch (e) {
-      const {errorInfo} = e;
-      throw new HttpException(errorInfo.message, HttpStatus.BAD_REQUEST)
+      const { errorInfo } = e;
+      throw new HttpException(errorInfo.message, HttpStatus.BAD_REQUEST);
     }
-
   }
 }

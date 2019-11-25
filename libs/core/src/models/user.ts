@@ -5,7 +5,7 @@ export class User {
   static readonly REF = 'user';
 
   @Transform(value => value || EMPLOYER, { toClassOnly: true })
-  readonly role: Roles;
+  role: Roles;
 
   @Transform(value => value || null, { toClassOnly: true })
   hotel: string | null = null;
@@ -15,6 +15,9 @@ export class User {
 
   @Transform(value => value || null, { toClassOnly: true })
   name: string | null = null;
+
+  @Transform(value => value || null, { toClassOnly: true })
+  lastName: string | null = null;
 
   constructor(rol: Roles) {
     this.role = rol

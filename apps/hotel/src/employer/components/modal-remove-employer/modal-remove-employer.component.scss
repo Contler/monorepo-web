@@ -1,0 +1,30 @@
+@import 'styles/variables';
+@import 'styles/mixin';
+:host {
+  text-align: center;
+  display: block;
+  position: relative;
+}
+
+.modal-remove {
+  &__close {
+    color: $text-4;
+    position: absolute;
+    top: -25px;
+    right: -20px;
+  }
+  &__text {
+    @include text($text-1, 16px);
+    padding: 46px 24px 22px;
+  }
+
+  &__btn {
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+  &__cancel {
+    color: $text-4;
+  }
+}

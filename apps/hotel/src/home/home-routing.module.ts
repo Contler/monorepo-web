@@ -29,6 +29,10 @@ const routes: Routes = [
     path: 'admin',
     component: AdminHomeComponent,
   },
+  {
+    path: 'employer',
+    loadChildren: () => import('hotel/employer/employer.module').then(m => m.EmployerModule)
+  }
 ];
 
 @NgModule({

@@ -1,66 +1,65 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '@contler/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'contler-admin-home',
   templateUrl: './admin-home.component.html',
-  styleUrls: ['./admin-home.component.scss']
+  styleUrls: ['./admin-home.component.scss'],
 })
-export class AdminHomeComponent implements OnInit {
-
+export class AdminHomeComponent {
   sections = [
     {
       name: 'Empleados',
       icon: 'account_circle',
-      outlined: true
+      outlined: true,
+      link: ['home', 'employer'],
     },
     {
       name: 'Habitaciones',
       icon: 'meeting_room',
-      outlined: false
+      outlined: false,
     },
     {
       name: 'Zonas',
       icon: 'room',
-      outlined: false
+      outlined: false,
     },
     {
       name: 'Solicitudes inmediatas',
       icon: 'error',
       outlined: false,
-      primary: true
+      primary: true,
     },
     {
       name: 'Reservas de espacios',
       icon: 'event',
-      outlined: false
+      outlined: false,
     },
     {
       name: 'Pedidos Remotos',
       icon: 'room_service',
-      outlined: false
+      outlined: false,
     },
     {
       name: 'Wake up Calls',
       icon: 'access_alarm',
-      outlined: false
+      outlined: false,
     },
     {
       name: 'Late Checkouts',
       icon: 'directions_walk',
-      outlined: false
+      outlined: false,
     },
     {
       name: 'Solicitudes Especiales',
       icon: 'sms_failed',
-      outlined: false
-    }
+      outlined: false,
+    },
   ];
 
-  constructor(private userService: UserService) { }
+  constructor(private router: Router) {}
 
-  ngOnInit() {
-
+  goToPage(router: any[]) {
+    this.router.navigate(router);
   }
-
 }

@@ -5,33 +5,19 @@ import { Admin, Employer, User } from 'lib/models';
 import { ADMIN } from 'lib/const';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { plainToClass } from 'class-transformer';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Injectable()
 export class UserService {
-
   private activeUser: Admin | Employer | undefined;
-  private subscribe: Subscription | undefined;
 
-  constructor(private afAuth: AngularFireAuth, private afStore: AngularFirestore) {
-    this.loadUser()
-  }
+  constructor(private afAuth: AngularFireAuth, private afStore: AngularFirestore) {}
 
-  loadUser() {
-    this.afAuth.user.subscribe(afUser => {
-      if (afUser) {
-        this.subscribe = this.afStore
-          .doc<User>(`${User.REF}/${afUser.uid}`)
-          .valueChanges()
-          .pipe(map(user => plainToClass(user!.role === ADMIN ? Admin : Employer, user)))
-          .subscribe(user => this.activeUser = user);
-      } else if (!!this.subscribe) {
-        this.subscribe.unsubscribe();
-      }
-    });
-  }
-
-  get user () {
-    return this.activeUser
+  getUser() {
+    return this.afAuth.user.pipe(
+      filter(user => !!user),
+      switchMap(user => this.afStore.doc<User>(`${User.REF}/${user!.uid}`).valueChanges()),
+      map(user => plainToClass(user!.role === ADMIN ? Admin : Employer, user)),
+    );
   }
 }

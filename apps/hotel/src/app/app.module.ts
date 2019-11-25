@@ -7,11 +7,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 
-import { UserService } from '@contler/core';
+import { HotelService, UserService } from '@contler/core';
 
 import { AppComponent } from 'hotel/app/app.component';
 import { environment } from 'hotel/environments/environment';
 import { AppRoutingModule } from 'hotel/app/app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,9 +24,10 @@ import { AppRoutingModule } from 'hotel/app/app-routing.module';
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
     AngularFirestoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, HotelService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

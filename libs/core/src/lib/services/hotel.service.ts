@@ -1,26 +1,19 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Hotel } from 'lib/models';
-import { map } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
-import { Observable } from 'rxjs';
+import { UserService } from 'lib/lib/services/user.service';
 
 @Injectable()
 export class HotelService {
-  private $hotelObs: Observable<Hotel> | null = null;
+  constructor(private afStore: AngularFirestore, private userService: UserService) {}
 
-  constructor(private afStore: AngularFirestore) {}
-
-  loadHotel(hotelId: string) {
-    this.$hotelObs = this.afStore
-      .collection(Hotel.REF)
-      .doc<Hotel>(hotelId)
-      .valueChanges()
-      .pipe(map(data => plainToClass(Hotel, data)));
-    return this.$hotel
-  }
-
-  get $hotel() {
-    return this.$hotelObs
+  getHotel() {
+    return this.userService.getUser().pipe(
+      take(1),
+      switchMap(user => this.afStore.doc<Hotel>(`${Hotel.REF}/${user.hotel!}`).valueChanges()),
+      map(data => plainToClass(Hotel, data)),
+    );
   }
 }

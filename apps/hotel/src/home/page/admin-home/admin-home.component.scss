@@ -13,7 +13,6 @@
 }
 
 .contler-admin {
-  height: calc(100vh - 56px);
 
   &__primary {
     color: $primary;
@@ -22,8 +21,8 @@
   &__title {
     color: $primary;
     font-size: 24.3px;
-    margin: 55px 0 0 57px;
     font-weight: normal;
+    margin: 55px 0 0 57px;
   }
 
   &__options {
@@ -49,7 +48,7 @@
       font-weight: 500;
       letter-spacing: 0.25px;
       font-family: $family;
-      margin-top: 0px;
+      margin-top: 0;
     }
   }
 

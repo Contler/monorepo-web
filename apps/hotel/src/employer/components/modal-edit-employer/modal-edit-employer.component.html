@@ -1,0 +1,54 @@
+<button mat-icon-button class="content__close" (click)="dialogRef.close()">
+  <mat-icon>close</mat-icon>
+</button>
+
+<p class="title">Empleado</p>
+
+<form [formGroup]="formEmployer" (ngSubmit)="saveUser()">
+  <div class="content">
+
+    <mat-form-field appearance="fill" class="content__2-columns">
+      <input matInput formControlName="name">
+      <mat-icon matSuffix>account_circle</mat-icon>
+      <mat-hint>Nombre</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="content__2-columns">
+      <mat-select formControlName="leader">
+        <mat-option [value]="true">Sí</mat-option>
+        <mat-option [value]="false">No</mat-option>
+      </mat-select>
+      <mat-hint>Líder de área</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="content__2-columns">
+      <input matInput formControlName="lastName">
+      <mat-icon matSuffix>account_circle</mat-icon>
+      <mat-hint>Apellidos</mat-hint>
+    </mat-form-field>
+
+    <div class="content__2-columns content__zone content__3-row">
+      <p class="content__zone-text">Zona donde es líder:</p>
+      <div class="content__zone-select"></div>
+    </div>
+
+    <mat-form-field appearance="fill" class="custom-filed">
+      <input matInput formControlName="score" readonly>
+      <mat-hint>Calificación</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-filed">
+      <input matInput formControlName="averageTime" readonly>
+      <mat-hint>Tiempo promedio</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-filed">
+      <input matInput formControlName="numRequest" readonly>
+      <mat-hint>Número de servicios</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="accent" contlerButton [loading]="loading" [disabled]="loading || formEmployer.invalid">
+    Actualizar
+  </button>
+</form>
