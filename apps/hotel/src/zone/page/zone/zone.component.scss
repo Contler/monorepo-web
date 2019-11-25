@@ -1,15 +1,28 @@
-@import 'styles/variables';
+@import "styles/variables";
 
-.wrapper {
-  padding: 55px 47px 55px 52px;
+:host {
+  display: block;
+  padding-top: 56px;
+
+  .mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
 }
+
+.cnt-zone {
+  padding: 55px 51px 0;
+}
+
 .container {
   display: grid;
-  grid-template-columns: calc(50% - 10px) calc(50% - 10px);
+  grid-template-columns: 1fr 1fr;
   column-gap: 20px;
   .form_section {
     p.title {
-      font-family: Raleway;
+      font-family: $family;
       font-size: 24.3px;
       font-weight: normal;
       font-stretch: normal;

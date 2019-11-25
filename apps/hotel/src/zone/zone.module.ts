@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ZoneComponent } from './page/zone/zone.component';
 import { ZoneRoutingModule } from './zone-routing.module';
 import { MaterialModule } from 'hotel/material/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ZoneService } from 'hotel/zone/services/zone.service';
+import { CoreModule } from '@contler/core';
 
 
 
@@ -13,7 +15,10 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ZoneRoutingModule,
     MaterialModule,
-    FormsModule
-  ]
+    FormsModule,
+    CoreModule,
+    ReactiveFormsModule,
+  ],
+  providers: [ZoneService]
 })
 export class ZoneModule { }
