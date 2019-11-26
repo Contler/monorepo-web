@@ -4,6 +4,7 @@ import { Zone, ZoneCategory, MapZone } from '@contler/core/models';
 import { UserService } from '@contler/core';
 import { map, switchMap, take } from 'rxjs/operators';
 import { from, Observable } from 'rxjs';
+import { plainToClass } from 'class-transformer';
 
 @Injectable()
 export class ZoneService {
@@ -23,7 +24,12 @@ export class ZoneService {
       switchMap(user =>
         this.afDb.list<Zone>(Zone.REF, ref => ref.orderByChild('hotel').equalTo(user.hotel)).valueChanges(),
       ),
+      map(zones => zones.map(zone => plainToClass(Zone, zone)))
     );
+  }
+
+  updateZone(zone: Zone) {
+    return this.afDb.object(`${Zone.REF}/${zone.uid}`).update(zone.serialize())
   }
 
   getMapZone($zone: Observable<Zone[]>) {

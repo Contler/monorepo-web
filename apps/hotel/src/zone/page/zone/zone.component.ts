@@ -5,6 +5,8 @@ import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Zone, MapZone, ZoneCategory } from '@contler/core/models';
 import { ICONS } from '@contler/core/const';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalEditZoneComponent } from 'hotel/zone/components/modal-edit-zone/modal-edit-zone.component';
 
 @Component({
   selector: 'contler-zone',
@@ -18,7 +20,7 @@ export class ZoneComponent implements OnInit {
   $mapZone: Observable<MapZone> | undefined;
   icons = ICONS;
 
-  constructor(private zoneService: ZoneService, private formBuild: FormBuilder) {
+  constructor(private zoneService: ZoneService, private formBuild: FormBuilder, public dialog: MatDialog) {
     this.zoneGroup = formBuild.group({
       name: ['', Validators.required],
       category: [''],
@@ -40,6 +42,10 @@ export class ZoneComponent implements OnInit {
       this.load = false;
       this.zoneGroup.reset({ name: '', category: '', icon: '', principal: false });
     });
+  }
+
+  editZone(zone: Zone) {
+    this.dialog.open(ModalEditZoneComponent, {width: '600px', data: zone})
   }
 
   deleteZone(zone: ZoneCategory | Zone) {

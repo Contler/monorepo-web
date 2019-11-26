@@ -60,7 +60,7 @@
               <p>{{zone.value.zone.name}}</p>
               <div class="actions">
                 <button mat-icon-button>
-                  <mat-icon class="custom_icon">edit</mat-icon>
+                  <mat-icon class="custom_icon" (click)="editZone(zone.value.zone)">edit</mat-icon>
                 </button>
                 <button mat-icon-button>
                   <mat-icon class="custom_icon" (click)="deleteZone(zone.value)">delete</mat-icon>
@@ -72,7 +72,7 @@
                 <p>{{subZone.name}}</p>
                 <div class="actions">
                   <button mat-icon-button>
-                    <mat-icon class="custom_icon">edit</mat-icon>
+                    <mat-icon class="custom_icon" (click)="editZone(subZone)">edit</mat-icon>
                   </button>
                   <button mat-icon-button>
                     <mat-icon class="custom_icon" (click)="deleteZone(subZone)">delete</mat-icon>

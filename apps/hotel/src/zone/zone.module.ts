@@ -6,11 +6,12 @@ import { MaterialModule } from 'hotel/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { CoreModule } from '@contler/core';
+import { ModalEditZoneComponent } from './components/modal-edit-zone/modal-edit-zone.component';
 
 
 
 @NgModule({
-  declarations: [ZoneComponent],
+  declarations: [ZoneComponent, ModalEditZoneComponent],
   imports: [
     CommonModule,
     ZoneRoutingModule,
@@ -19,6 +20,7 @@ import { CoreModule } from '@contler/core';
     CoreModule,
     ReactiveFormsModule,
   ],
-  providers: [ZoneService]
+  providers: [ZoneService],
+  entryComponents: [ModalEditZoneComponent]
 })
 export class ZoneModule { }
