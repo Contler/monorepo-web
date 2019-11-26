@@ -5,11 +5,15 @@ import { LoginComponent } from '../login/login.component';
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+  },
+  {
+    path: 'home',
+    loadChildren: '../home/home.module#HomeModule',
   },
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
 ];

@@ -1,0 +1,24 @@
+<div class="container">
+  <img src="assets/img/logo-hotel-temp.png" class="container__hotel-logo" />
+  <p class="container__username">¡Hola Carlos!</p>
+  <p class="container__label">
+    ¿En qué zona necesitas que <br />
+    atendamos tu solicitud?
+  </p>
+  <div class="zones-container">
+    <div class="zone-container-item" *ngFor="let zone of [1, 2, 3, 4]" (click)="goToZone(zone)">
+      <mat-icon class="zone-container-item__icon lighter-icon">hotel</mat-icon>
+      <p class="zone-container-item__name">Mi habitación</p>
+      <button mat-icon-button class="zone-container-item__see-icon">
+        <mat-icon class="lighter-icon">chevron_right</mat-icon>
+      </button>
+    </div>
+    <div class="zone-container-item">
+      <mat-icon class="lighter-icon">add</mat-icon>
+      <p class="zone-container-item__name zone-container-item__name--see-more">Ver todas las zonas</p>
+      <button mat-icon-button class="zone-container-item__see-icon">
+        <mat-icon class="lighter-icon">chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
