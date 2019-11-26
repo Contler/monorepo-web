@@ -21,4 +21,7 @@ export class EmployerRequest {
   @IsNotEmpty()
   @IsIn([EMPLOYER, CHIEF])
   rol!: typeof EMPLOYER | typeof CHIEF;
+
+  @IsNotEmpty()
+  leaderZone!: { [key: string]: boolean }
 }

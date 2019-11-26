@@ -29,7 +29,7 @@
 
     <div class="content__2-columns content__zone content__3-row">
       <p class="content__zone-text">Zona donde es líder:</p>
-      <div class="content__zone-select"></div>
+      <contler-zone-list [$zones]="$zone" (selected)="leaderZone = $event"></contler-zone-list>
     </div>
 
     <mat-form-field appearance="fill" class="content__2-columns">

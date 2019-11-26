@@ -19,11 +19,14 @@ export class User {
   @Transform(value => value || null, { toClassOnly: true })
   lastName: string | null = null;
 
+  @Transform(value => value || {}, { toClassOnly: true })
+  leaderZone: { [key: string]: boolean } = {};
+
   constructor(rol: Roles) {
-    this.role = rol
+    this.role = rol;
   }
 
   serialize() {
-    return classToPlain(this)
+    return classToPlain(this);
   }
 }

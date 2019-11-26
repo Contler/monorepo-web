@@ -11,11 +11,12 @@ import { EmployerService } from 'hotel/employer/services/employer.service';
 import { MaterialModule } from 'hotel/material/material.module';
 import { ModalRemoveEmployerComponent } from './components/modal-remove-employer/modal-remove-employer.component';
 import { ModalEditEmployerComponent } from './components/modal-edit-employer/modal-edit-employer.component';
+import { ZoneService } from 'hotel/zone/services/zone.service';
 
 @NgModule({
   declarations: [EmployerComponent, ModalEmployerComponent, ModalRemoveEmployerComponent, ModalEditEmployerComponent],
   entryComponents: [ModalEmployerComponent, ModalRemoveEmployerComponent, ModalEditEmployerComponent],
   imports: [CommonModule, EmployerRoutingModule, MaterialModule, FormsModule, CoreModule, ReactiveFormsModule],
-  providers: [EmployerService],
+  providers: [EmployerService, ZoneService],
 })
 export class EmployerModule {}

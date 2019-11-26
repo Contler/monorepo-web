@@ -1,0 +1,12 @@
+<div class="contler-zone">
+  <ng-container *ngFor="let zone of $zones | async | keyvalue">
+    <mat-checkbox (change)="select($event, zone.value.zone)" [checked]="zonesSelected[zone.value.zone.uid]"
+                  color="primary" class="contler-zone__check">
+      {{zone.value.zone.name}}
+    </mat-checkbox>
+    <ng-container *ngFor="let subZone of zone.value.subZones">
+      <mat-checkbox (change)="select($event, subZone)" [checked]="zonesSelected[subZone.uid]" color="primary"
+                    class="contler-zone__check contler-zone__sub">{{subZone.name}}</mat-checkbox>
+    </ng-container>
+  </ng-container>
+</div>

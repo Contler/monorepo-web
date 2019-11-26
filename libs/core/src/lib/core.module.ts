@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonDirective } from './directives/button.directive';
+import { ZoneListComponent } from './components/zone-list/zone-list.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [ButtonDirective],
-  exports: [ButtonDirective]
+  imports: [CommonModule, MatCheckboxModule],
+  declarations: [ButtonDirective, ZoneListComponent],
+  exports: [ButtonDirective, ZoneListComponent]
 })
 export class CoreModule {}

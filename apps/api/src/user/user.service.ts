@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { auth, firestore } from 'firebase-admin';
-import { Admin, AdminRequest, Claim, Employer, EmployerRequest, User } from '@contler/core/models';
+import { auth, firestore, database } from 'firebase-admin';
+import { Admin, AdminRequest, Claim, Employer, EmployerRequest, User, Zone } from '@contler/core/models';
 import { ADMIN, Roles } from '@contler/core/const';
 import { HotelService } from 'api/hotel/hotel.service';
 import { HttpRequest } from '@angular/common/http';
@@ -26,6 +26,7 @@ export class UserService {
     employer.name = data.name;
     employer.lastName = data.lastName;
     employer.hotel = data.idHotel;
+    employer.leaderZone = data.leaderZone;
     await this.saveUser(employer);
     return employer;
   }
@@ -35,16 +36,21 @@ export class UserService {
       firestore()
         .collection(User.REF)
         .doc(uid)
-        .delete()
+        .delete();
       await auth().deleteUser(uid);
     } catch (e) {
       throw new HttpException(e.message, HttpStatus.BAD_REQUEST);
     }
-
-
   }
 
   private saveUser(user: User) {
+    Object.keys(user.leaderZone).forEach(key =>
+      database()
+        .ref(`${Zone.REF}/${key}`)
+        .child('userLeader')
+        .child(user.uid!)
+        .set(true),
+    );
     return firestore()
       .doc(`${User.REF}/${user.uid}`)
       .set(user.serialize());
