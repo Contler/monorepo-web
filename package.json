@@ -27,7 +27,8 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "serve:hotel": "ng serve hotel",
-    "serve:api": "ng serve api"
+    "serve:api": "ng serve api",
+    "serve:guest": "ng serve guest -o --port=4201"
   },
   "private": true,
   "dependencies": {
