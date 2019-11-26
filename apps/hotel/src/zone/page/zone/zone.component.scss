@@ -1,0 +1,57 @@
+@import "styles/variables";
+
+:host {
+  display: block;
+  padding-top: 56px;
+
+  .mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+.cnt-zone {
+  padding: 55px 51px 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  .form_section {
+    p.title {
+      font-family: $family;
+      font-size: 24.3px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: $primary;
+      margin: 0;
+      margin-bottom: 29px;
+    }
+    mat-form-field {
+      width: 80%;
+      margin-bottom: 19px;
+      &:last-of-type {
+        margin-bottom: 33px;
+      }
+    }
+    mat-checkbox {
+      display: block;
+      margin-bottom: 35px;
+      ::ng-deep {
+        .mat-checkbox-frame,
+        .mat-checkbox-background {
+          border-radius: 50% !important;
+        }
+      }
+    }
+    button {
+      width: 40%;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@import "styles/variables";
+
+.wrapper{
+    padding: 55px 47px  55px 52px;
+}
+.container{
+    display: grid;
+    grid-template-columns: calc(50% - 10px) calc(50% - 10px);
+    column-gap: 20px;
+    .form_section{
+        p.title{
+            font-family: Raleway;
+            font-size: 24.3px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: $primary;
+            margin: 0;
+            margin-bottom: 29px;
+        }
+        mat-form-field{
+            width: 80%;
+            margin-bottom: 19px;
+            &:last-of-type{
+                margin-bottom: 41px;
+            }
+        }
+        button{
+            width: 40%;
+        }
+    }
+    .rooms_section{
+
+    }
+}

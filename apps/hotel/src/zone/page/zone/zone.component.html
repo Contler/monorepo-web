@@ -1,0 +1,88 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img src="assets/img/logo-white.svg" alt=""/>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav>
+    <contler-menu></contler-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="cnt-zone">
+
+    <div class="container">
+      <div class="form_section">
+        <p class="title">Zonas</p>
+        <form [formGroup]="zoneGroup" (ngSubmit)="saveZone()">
+
+          <mat-form-field appearance="fill">
+            <input matInput formControlName="name"/>
+            <mat-hint>Nombre de la zona</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="category">
+              <mat-option *ngFor="let zone of $categoryZone | async" [value]="zone.uid">
+                {{zone.name}}
+              </mat-option>
+            </mat-select>
+            <mat-hint>Categoría de esta zona</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="icon">
+              <mat-option *ngFor="let icon of icons" [value]="icon">
+                <mat-icon>{{icon}}</mat-icon>
+              </mat-option>
+            </mat-select>
+            <mat-hint>Selecciona un icono</mat-hint>
+          </mat-form-field>
+
+          <mat-checkbox formControlName="principal">Zona destacada (podrás elegir máximo 4 zonas)</mat-checkbox>
+
+          <button mat-raised-button color="accent" contlerButton [loading]="load" [disabled]="load || zoneGroup.invalid">
+            CREAR ZONA
+          </button>
+        </form>
+      </div>
+
+      <div class="rooms_section">
+        <mat-card class="crud_table">
+          <div class="row">
+            <div class="row_container header two_column">
+              <p>Nombre zona</p>
+            </div>
+          </div>
+          <div class="row" *ngFor="let zone of $mapZone | async | keyvalue;">
+            <div class="row_container two_column">
+              <p>{{zone.value.zone.name}}</p>
+              <div class="actions">
+                <button mat-icon-button>
+                  <mat-icon class="custom_icon" (click)="editZone(zone.value.zone)">edit</mat-icon>
+                </button>
+                <button mat-icon-button>
+                  <mat-icon class="custom_icon" (click)="deleteZone(zone.value)">delete</mat-icon>
+                </button>
+              </div>
+            </div>
+            <div class="subrows_container">
+              <div class="row_container sub_row two_column" *ngFor="let subZone of zone.value.subZones;">
+                <p>{{subZone.name}}</p>
+                <div class="actions">
+                  <button mat-icon-button>
+                    <mat-icon class="custom_icon" (click)="editZone(subZone)">edit</mat-icon>
+                  </button>
+                  <button mat-icon-button>
+                    <mat-icon class="custom_icon" (click)="deleteZone(subZone)">delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

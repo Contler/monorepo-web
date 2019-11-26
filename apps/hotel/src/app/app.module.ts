@@ -6,6 +6,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+
 
 import { HotelService, UserService } from '@contler/core';
 
@@ -24,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
     AngularFirestoreModule,
+    AngularFireDatabaseModule,
     AppRoutingModule,
     HttpClientModule
   ],
