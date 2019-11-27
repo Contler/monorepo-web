@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RoomComponent } from './page/room/room.component';
 import { RoomRoutingModule } from './room-routing.module';
 import { MaterialModule } from 'hotel/material/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ZoneService } from 'hotel/zone/services/zone.service';
+import { CoreModule } from '@contler/core';
+import { RoomService } from 'hotel/room/services/room.service';
 
 
 
@@ -13,7 +16,10 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     RoomRoutingModule,
     MaterialModule,
-    FormsModule
-  ]
+    FormsModule,
+    ReactiveFormsModule,
+    CoreModule
+  ],
+  providers: [ZoneService, RoomService]
 })
 export class RoomModule { }
