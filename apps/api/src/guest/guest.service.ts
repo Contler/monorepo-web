@@ -1,6 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Guest, GuestRequest, Room } from '@contler/core/models';
+import { Claim, Guest, GuestRequest, Room } from '@contler/core/models';
 import { auth, database, firestore } from 'firebase-admin';
+import { GUEST } from '@contler/core/const';
 
 @Injectable()
 export class GuestService {
@@ -12,6 +13,7 @@ export class GuestService {
       password: guestRequest.document,
       displayName: guestRequest.name + ' ' + guestRequest.lastName,
     });
+    auth().setCustomUserClaims(user.uid, { rol: GUEST } as Claim);
     const guest = new Guest();
     guest.uid = user.uid;
     guest.name = guestRequest.name;
@@ -21,6 +23,8 @@ export class GuestService {
     guest.room = guestRequest.room;
     guest.checkIn = guestRequest.checkIn;
     guest.checkOut = guestRequest.checkOut;
+    guest.hotel = guestRequest.hotel;
+    guest.active = true;
     return firestore().doc(`${Guest.REF}/${guest.uid}`).set(guest.serialize());
   }
 

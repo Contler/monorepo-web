@@ -27,4 +27,7 @@ export class GuestRequest {
 
   @IsNotEmpty()
   checkOut!: Date;
+
+  @IsNotEmpty()
+  hotel!: string;
 }

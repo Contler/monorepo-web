@@ -1,11 +1,12 @@
 import { Component, Inject } from '@angular/core';
 import { DOCUMENT_TYPE } from '@contler/core/const';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Room } from '@contler/core/models';
+import { GuestRequest, Room } from '@contler/core/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoomService } from 'hotel/room/services/room.service';
-import { map } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { GuestService } from 'hotel/guest/services/guest.service';
+import { UserService } from '@contler/core';
 
 @Component({
   selector: 'contler-model-new-guest',
@@ -25,6 +26,7 @@ export class ModelNewGuestComponent {
     public dialogRef: MatDialogRef<ModelNewGuestComponent>,
     private roomService: RoomService,
     private guestService: GuestService,
+    private userService: UserService,
     formBuild: FormBuilder,
   ) {
     this.guestGroup = formBuild.group({
@@ -49,17 +51,27 @@ export class ModelNewGuestComponent {
   saveUser() {
     this.error = undefined;
     this.load = true;
-    this.guestService.saveGuest(this.guestGroup.value).subscribe(() => {
-      this.load = false;
-      this.dialogRef.close();
-    }, error => {
-      this.load = false;
-      if (error.status === 400) {
-        this.error = 'La Habitación ya fue ocupada'
-      } else {
-        this.error = 'No pudimos crear el usuario'
-      }
-    });
+    this.userService
+      .getUser()
+      .pipe(
+        take(1),
+        map(user => ({ ...this.guestGroup.value, hotel: user.hotel } as GuestRequest)),
+        switchMap(guestRequest => this.guestService.saveGuest(guestRequest)),
+      )
+      .subscribe(
+        () => {
+          this.load = false;
+          this.dialogRef.close();
+        },
+        error => {
+          this.load = false;
+          if (error.status === 400) {
+            this.error = 'La Habitación ya fue ocupada';
+          } else {
+            this.error = 'No pudimos crear el usuario';
+          }
+        },
+      );
   }
 
   get room() {
