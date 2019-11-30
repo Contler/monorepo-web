@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,500,700&display=swap');
+@import 'styles/variables';
+@import 'styles/material';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.full_width{
+    width: 100%;
+}
+
+.custom_icon{
+    color: $iconColor;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
+.custom_button{
+    border-radius: 25px !important;
+    font-family: Raleway;
+    font-size: 14.2px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: 1.25px;
+    text-align: center;
+    color: $text-1;
+    height: 45px;
+}

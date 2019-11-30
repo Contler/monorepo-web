@@ -1,0 +1,12 @@
+<mat-toolbar class="container">
+  <div class="container__left-section">
+    <button mat-icon-button *ngIf="sidebarService.backUrl" (click)="goToRoute(sidebarService.backUrl)">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+  </div>
+  <div class="container__right-section">
+    <button mat-icon-button (click)="toogleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

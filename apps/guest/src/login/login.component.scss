@@ -1,0 +1,44 @@
+@import "../styles/variables";
+
+.wrapper{
+    padding: 128px 51px;
+    .main_container{
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    img.logo{
+        display: block;
+        margin: 0 auto;
+    }
+    .label{
+        font-family: Raleway;
+        font-size: 16.2px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.48;
+        letter-spacing: 0.15px;
+        text-align: center;
+        color: $text-1;
+        margin-top: 80px;
+        margin-bottom: 40px;
+    }
+    mat-form-field{
+        margin-bottom: 25px;
+        &:last-of-type{
+            margin-bottom: 32px;
+        }
+    }
+    .forgot_password{
+        font-family: Raleway;
+        font-size: 12.2px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.31;
+        letter-spacing: 0.4px;
+        text-align: center;
+        color: $text-1;
+        margin-bottom: 36px;
+    }
+}

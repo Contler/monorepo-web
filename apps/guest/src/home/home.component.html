@@ -1,0 +1,11 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over" position="end" [(opened)]="sidebarService.opened">
+    <contler-sidebar></contler-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <contler-toolbar></contler-toolbar>
+    <div class="section-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
