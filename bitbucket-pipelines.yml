@@ -11,6 +11,8 @@ pipelines:
         caches:
           - node
         script: # Modify the commands below to build your repository.
+          - npm i
+          - npm run build:qa:api
           - docker build -f Dockerfile --iidfile imageid.txt -t registry.heroku.com/contler/my-app .
           - docker login -u _ -p $HEROKU_TOKEN registry.heroku.com
           - docker push registry.heroku.com/contler/my-app
