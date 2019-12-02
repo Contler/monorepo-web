@@ -14,7 +14,7 @@ pipelines:
 #          - npm i
           - curl https://cli-assets.heroku.com/install.sh | sh
           - heroku --version
-          - echo bWFjaGluZSBhcGkuaGVyb2t1LmNvbQogIGxvZ2luIHJ1ZWRhZ2F0b0BnbWFpbC5jb20KICBwYXNzd29yZCA4Yjc3Y2FjMC03MGFkLTQyNGQtOWViZS02NGYwZGZmMmY5OWYKbWFjaGluZSBnaXQuaGVyb2t1LmNvbQogIGxvZ2luIHJ1ZWRhZ2F0b0BnbWFpbC5jb20KICBwYXNzd29yZCA4Yjc3Y2FjMC03MGFkLTQyNGQtOWViZS02NGYwZGZmMmY5OWY= | json -d > .netrc
+          - echo bWFjaGluZSBhcGkuaGVyb2t1LmNvbQogIGxvZ2luIHJ1ZWRhZ2F0b0BnbWFpbC5jb20KICBwYXNzd29yZCA4Yjc3Y2FjMC03MGFkLTQyNGQtOWViZS02NGYwZGZmMmY5OWYKbWFjaGluZSBnaXQuaGVyb2t1LmNvbQogIGxvZ2luIHJ1ZWRhZ2F0b0BnbWFpbC5jb20KICBwYXNzd29yZCA4Yjc3Y2FjMC03MGFkLTQyNGQtOWViZS02NGYwZGZmMmY5OWY= | base64 -d > .netrc
           - cat .netrc
           - heroku  auth:whoami
 #          - heroku container:push web -a contler
