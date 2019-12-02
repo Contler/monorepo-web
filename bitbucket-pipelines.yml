@@ -21,3 +21,4 @@ pipelines:
               login $HEROKU_EMAIL
               password $HEROKU_TOKEN
             EOF`
+          - cat ~/.netrc
