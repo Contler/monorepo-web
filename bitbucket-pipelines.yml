@@ -20,4 +20,4 @@ pipelines:
             machine git.heroku.com
               login $HEROKU_EMAIL
               password $HEROKU_TOKEN" > ~/.netrc
-          - cat ~/.netrc
+          - heroku container:push web -a contler
