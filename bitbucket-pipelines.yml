@@ -20,4 +20,4 @@ pipelines:
             machine git.heroku.com
               login $HEROKU_EMAIL
               password $HEROKU_TOKEN" > prueba2.txt
-          - cat ~/.netrc
+          - cat prueba2.txt
