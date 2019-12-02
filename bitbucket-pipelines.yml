@@ -11,10 +11,13 @@ pipelines:
         caches:
           - node
         script: # Modify the commands below to build your repository.
-          - npm i
-          - curl https://cli-assets.heroku.com/install.sh | sh
-          - echo bWFjaGluZSBhcGkuaGVyb2t1LmNvbQogIGxvZ2luIHJ1ZWRhZ2F0b0BnbWFpbC5jb20KICBwYXNzd29yZCA4Yjc3Y2FjMC03MGFkLTQyNGQtOWViZS02NGYwZGZmMmY5OWYKbWFjaGluZSBnaXQuaGVyb2t1LmNvbQogIGxvZ2luIHJ1ZWRhZ2F0b0BnbWFpbC5jb20KICBwYXNzd29yZCA4Yjc3Y2FjMC03MGFkLTQyNGQtOWViZS02NGYwZGZmMmY5OWY= | base64 -d > ~/.netrc
-          - npm run build:qa:api
-          - heroku container:push web -a contler
+          - docker build -f Dockerfile --iidfile imageid.txt -t registry.heroku.com/contler/my-app .
+          - docker login -u _ -p $HEROKU_TOKEN registry.heroku.com
+          - docker push registry.heroku.com/contler/my-app
+          - apk add --no-cache curl
+          - echo "Docker Image ID is $(cat imageid.txt)"
+          - |-
+            curl -X PATCH https://api.heroku.com/apps/contler/formation --header "Content-Type: application/json" --header "Accept: application/vnd.heroku+json; version=3.docker-releases" --header "Authorization: Bearer ${HEROKU_TOKEN}" --data '{ "updates": [ { "type": "web", "docker_image": "'$(cat imageid.txt)'" } ] }'
+
         services:
           - docker
