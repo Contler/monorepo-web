@@ -62,6 +62,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/hotel/src/environments/environment.ts",
+                  "with": "apps/hotel/src/environments/environment.qa.ts"
+                }
+              ]
             }
           }
         },
@@ -155,6 +163,14 @@
                 {
                   "replace": "apps/api/src/environments/environment.ts",
                   "with": "apps/api/src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/src/environments/environment.ts",
+                  "with": "apps/api/src/environments/environment.qa.ts"
                 }
               ]
             }
