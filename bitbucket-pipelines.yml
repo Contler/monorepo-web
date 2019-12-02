@@ -12,3 +12,4 @@ pipelines:
           - node
         script: # Modify the commands below to build your repository.
           - curl https://cli-assets.heroku.com/install.sh | sh
+          - heroku --version
