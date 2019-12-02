@@ -11,7 +11,7 @@ pipelines:
         caches:
           - node
         script: # Modify the commands below to build your repository.
-          - npm i
+#          - npm i
           - curl https://cli-assets.heroku.com/install.sh | sh
           - heroku --version
           - echo "machine api.heroku.com\n  login $HEROKU_EMAIL\n  password $HEROKU_TOKEN\nmachine git.heroku.com\n  login $HEROKU_EMAIL\n   password $HEROKU_TOKEN " > .netrc
