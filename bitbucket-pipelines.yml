@@ -13,11 +13,11 @@ pipelines:
         script: # Modify the commands below to build your repository.
           - curl https://cli-assets.heroku.com/install.sh | sh
           - heroku --version
-          - echo "\n
-            machine api.heroku.com\n
-              login $HEROKU_EMAIL\n
-              password $HEROKU_TOKEN\n
-            machine git.heroku.com\n
-              login $HEROKU_EMAIL\n
-              password $HEROKU_TOKEN" > prueba2.txt
-          - cat prueba2.txt
+          - echo "
+            machine api.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU" > ~/.netrc
+          - cat ~/.netrc
