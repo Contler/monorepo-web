@@ -19,6 +19,12 @@
     },
     "core": {
       "tags": []
+    },
+    "guest-e2e": {
+      "tags": []
+    },
+    "guest": {
+      "tags": []
     }
   }
 }

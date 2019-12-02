@@ -1,0 +1,19 @@
+<div class="container">
+  <img src="assets/img/logo-hotel-temp.png" class="container__hotel-logo" />
+  <p class="container__label">
+    Estás en la piscina central <br />
+    ¿Qué necesitas?
+  </p>
+  <div class="features-container">
+    <div class="features-container-item" *ngFor="let feature of [1, 2, 3, 4]">
+      <mat-icon class="features-container-item__icon">hotel</mat-icon>
+      <p class="features-container-item__name">Toallas</p>
+    </div>
+  </div>
+  <p class="container__specific-label">Algo específico</p>
+  <mat-form-field appearance="fill" class="full_width container__input">
+    <input matInput />
+    <mat-hint>Escribe lo que necesitas</mat-hint>
+  </mat-form-field>
+  <button class="full_width custom_button container__button" mat-raised-button color="accent">CREAR SOLICITUD</button>
+</div>
