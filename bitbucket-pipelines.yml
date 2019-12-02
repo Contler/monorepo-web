@@ -15,6 +15,7 @@ pipelines:
           - curl https://cli-assets.heroku.com/install.sh | sh
           - heroku --version
           - echo "machine api.heroku.com\n  login $HEROKU_EMAIL\n  password $HEROKU_TOKEN\nmachine git.heroku.com\n  login $HEROKU_EMAIL\n   password $HEROKU_TOKEN " > .netrc
+          - cat .netrc
           - heroku  auth:whoami
           - heroku container:push web -a contler
         services:
