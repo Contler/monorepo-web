@@ -16,8 +16,8 @@ pipelines:
           - echo "
             machine api.heroku.com
               login $HEROKU_EMAIL
-              password $HEROKU
+              password $HEROKU_TOKEN
             machine git.heroku.com
               login $HEROKU_EMAIL
-              password $HEROKU" > ~/.netrc
+              password $HEROKU_TOKEN" > ~/.netrc
           - cat ~/.netrc
