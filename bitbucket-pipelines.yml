@@ -21,3 +21,5 @@ pipelines:
               login $HEROKU_EMAIL
               password $HEROKU_TOKEN" > ~/.netrc
           - heroku container:push web -a contler
+        services:
+          - docker
