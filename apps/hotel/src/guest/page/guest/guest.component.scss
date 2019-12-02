@@ -1,0 +1,37 @@
+@import "styles/variables";
+
+:host {
+  display: block;
+  padding-top: 56px;
+
+  .mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+.cnt-guest {
+  padding: 0 51px;
+
+  &__header {
+    display: grid;
+    grid-template-columns: auto repeat(4, max-content);
+    column-gap: 20px;
+    align-items: baseline;
+    margin: 43px 0 30px;
+  }
+
+  &__table {
+    width: 100%;
+  }
+
+  &__options {
+    color: $text-4;
+    text-align: right;
+    button {
+      margin-left: 30px;
+    }
+  }
+}

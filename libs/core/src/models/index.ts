@@ -8,3 +8,5 @@ export * from './employer';
 export * from  './zone';
 export * from './map-zone';
 export * from './room';
+export * from './guest-request';
+export * from './guest'

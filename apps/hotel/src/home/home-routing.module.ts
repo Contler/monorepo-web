@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard, customClaims } from '@angular/fire/auth-guard';
 
-import { Claim } from '@contler/core/models';
-
 import { AdminHomeComponent } from 'hotel/home/page/admin-home/admin-home.component';
 import { map } from 'rxjs/operators';
 import { ADMIN } from '@contler/core/const';
@@ -40,6 +38,10 @@ const routes: Routes = [
   {
     path: 'zone',
     loadChildren: () => import('hotel/zone/zone.module').then(m => m.ZoneModule)
+  },
+  {
+    path: 'guest',
+    loadChildren: () => import('hotel/guest/guest.module').then(m => m.GuestModule)
   }
 ];
 
