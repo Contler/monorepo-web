@@ -9,6 +9,7 @@
     }
   },
   "projects": {
-    "dev": "contler-dev"
+    "dev": "contler-dev",
+    "default": "contler-dev"
   }
 }
