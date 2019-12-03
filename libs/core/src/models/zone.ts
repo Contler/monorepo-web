@@ -6,17 +6,24 @@ export class Zone {
   principal: boolean;
   name: string;
   icon: string;
-  parentZone: string | undefined;
+  category: { name: string; value: number };
   hotel: string;
   @Transform(value => value || {}, { toClassOnly: true })
   userLeader: { [key: string]: boolean } = {};
 
-  constructor(principal: boolean, name: string, icon: string, hotel: string, uid: string, parentZone?: string) {
+  constructor(
+    principal: boolean,
+    name: string,
+    icon: string,
+    hotel: string,
+    uid: string,
+    category: { name: string; value: number },
+  ) {
     this.principal = principal;
     this.name = name;
     this.icon = icon;
     this.hotel = hotel;
-    this.parentZone = parentZone;
+    this.category = category;
     this.uid = uid;
   }
 

@@ -9,11 +9,12 @@ import { ModelNewGuestComponent } from './components/model-new-guest/model-new-g
 import { RoomService } from 'hotel/room/services/room.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GuestService } from 'hotel/guest/services/guest.service';
+import { ModalEditGuestComponent } from './components/modal-edit-guest/modal-edit-guest.component';
 
 
 @NgModule({
-  declarations: [GuestComponent, ModelNewGuestComponent],
-  entryComponents: [ModelNewGuestComponent],
+  declarations: [GuestComponent, ModelNewGuestComponent, ModalEditGuestComponent],
+  entryComponents: [ModelNewGuestComponent, ModalEditGuestComponent],
   imports: [
     CommonModule,
     GuestRoutingModule,

@@ -27,4 +27,8 @@ export class GuestService {
       map(guests => guests.map(guest => plainToClass(Guest, guest))),
     );
   }
+
+  deleteUser(uid: string) {
+    return this.http.delete(environment.apiUrl + `guest/${uid}`)
+  }
 }

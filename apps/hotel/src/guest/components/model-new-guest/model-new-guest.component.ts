@@ -22,7 +22,6 @@ export class ModelNewGuestComponent {
   error: string | undefined;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Room[],
     public dialogRef: MatDialogRef<ModelNewGuestComponent>,
     private roomService: RoomService,
     private guestService: GuestService,

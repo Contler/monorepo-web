@@ -69,10 +69,10 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element" class="cnt-guest__options">
-          <button mat-icon-button>
+          <button mat-icon-button (click)="editGuest(element)">
             <mat-icon>remove_red_eye</mat-icon>
           </button>
-          <button mat-icon-button>
+          <button mat-icon-button (click)="deleteGuest(element)">
             <mat-icon>cancel</mat-icon>
           </button>
         </td>

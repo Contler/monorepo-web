@@ -31,6 +31,10 @@ a {
   color: $iconColor;
 }
 
+div:focus {
+  outline: none;
+}
+
 .crud_table{
   padding: 17px 0px 57px 0px !important;
   .row {
