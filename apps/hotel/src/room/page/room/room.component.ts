@@ -4,6 +4,7 @@ import { ZoneService } from 'hotel/zone/services/zone.service';
 import { Observable } from 'rxjs';
 import { Room, Zone } from '@contler/core/models';
 import { RoomService } from 'hotel/room/services/room.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'contler-room',
@@ -16,7 +17,12 @@ export class RoomComponent {
   zones: Zone[] = [];
   $rooms: Observable<Room[]>;
 
-  constructor(formBuild: FormBuilder, private zoneService: ZoneService, private roomService: RoomService) {
+  constructor(
+    formBuild: FormBuilder,
+    private zoneService: ZoneService,
+    private roomService: RoomService,
+    private snackBar: MatSnackBar,
+  ) {
     this.roomGroup = formBuild.group({
       name: ['', Validators.required],
       zone: ['', Validators.required],
@@ -39,6 +45,10 @@ export class RoomComponent {
   }
 
   deleteRoom(room: Room) {
-    this.roomService.deleteRoom(room.uid);
+    if (room.busy) {
+      this.snackBar.open('Este cuarto esta en usu, no se puede eliminar', 'cerrar', { duration: 5000 });
+    } else {
+      this.roomService.deleteRoom(room.uid);
+    }
   }
 }

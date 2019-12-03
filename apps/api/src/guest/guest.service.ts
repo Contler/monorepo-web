@@ -2,15 +2,19 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Claim, Guest, GuestRequest, Room } from '@contler/core/models';
 import { auth, database, firestore } from 'firebase-admin';
 import { GUEST } from '@contler/core/const';
-import * as firebase from 'firebase';
 
 @Injectable()
 export class GuestService {
   async createGuest(guestRequest: GuestRequest) {
     await this.validateBusyRoom(guestRequest.room.uid);
     guestRequest.room.busy = true;
-    let user: auth.UserRecord;
-    user = await auth().getUserByEmail(guestRequest.email);
+    let user: auth.UserRecord | null;
+    try {
+      user = await auth().getUserByEmail(guestRequest.email);
+    } catch (e) {
+      user = null
+    }
+
     if (user) {
       auth().updateUser(user.uid, { disabled: false, password: guestRequest.document });
     } else {

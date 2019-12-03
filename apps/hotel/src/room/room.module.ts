@@ -9,7 +9,6 @@ import { CoreModule } from '@contler/core';
 import { RoomService } from 'hotel/room/services/room.service';
 
 
-
 @NgModule({
   declarations: [RoomComponent],
   imports: [
@@ -20,6 +19,7 @@ import { RoomService } from 'hotel/room/services/room.service';
     ReactiveFormsModule,
     CoreModule
   ],
-  providers: [ZoneService, RoomService]
+  providers: [ZoneService, RoomService],
+  entryComponents: []
 })
 export class RoomModule { }

@@ -7,6 +7,7 @@ import { map, switchMap, take } from 'rxjs/operators';
 import { UserService } from '@contler/core';
 import { plainToClass } from 'class-transformer';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { ADMIN } from '@contler/core/const';
 
 @Injectable()
 export class EmployerService {
@@ -29,6 +30,7 @@ export class EmployerService {
       switchMap(user =>
         this.afStore.collection<Employer>(Employer.REF, ref => ref.where('hotel', '==', user.hotel)).valueChanges(),
       ),
+      map(employers => employers.filter(employer => employer.role !== ADMIN)),
       map(employers => employers.map(actualEmployer => plainToClass(Employer, actualEmployer))),
     );
   }

@@ -10,10 +10,10 @@ import { plainToClass } from 'class-transformer';
 export class ZoneService {
   constructor(private afDb: AngularFireDatabase, private userService: UserService) {}
 
-  saveZone(name: string, principal: boolean, icon: string, parent?: string) {
+  saveZone(name: string, principal: boolean, icon: string, category: {name: string, value: number}) {
     return this.userService.getUser().pipe(
       take(1),
-      map(user => new Zone(principal, name, icon, user.hotel!, this.afDb.createPushId()!, parent)),
+      map(user => new Zone(principal, name, icon, user.hotel!, this.afDb.createPushId()!, category)),
       switchMap(zone => from(this.afDb.object(`${Zone.REF}/${zone.uid}`).set(zone.serialize()))),
     );
   }
@@ -32,29 +32,7 @@ export class ZoneService {
     return this.afDb.object(`${Zone.REF}/${zone.uid}`).update(zone.serialize())
   }
 
-  getMapZone($zone: Observable<Zone[]>) {
-    return $zone.pipe(
-      map(zones => {
-        const principalZones: MapZone = {};
-        zones.forEach(zone => {
-          if (!zone.parentZone) {
-            principalZones[zone.uid] = { zone, subZones: [] };
-          } else if (zone.parentZone && principalZones[zone.parentZone]) {
-            principalZones[zone.parentZone].subZones = [...principalZones[zone.parentZone].subZones, zone];
-          }
-        });
-        return principalZones;
-      }),
-    );
-  }
-
-  deleteZone(zoneMap: ZoneCategory | Zone) {
-    if ('zone' in zoneMap) {
-      zoneMap.subZones.forEach(zone => this.afDb.object(`${Zone.REF}/${zone.uid}`).remove());
-      this.afDb.object(`${Zone.REF}/${zoneMap.zone.uid}`).remove();
-    } else {
-      this.afDb.object(`${Zone.REF}/${zoneMap.uid}`).remove();
-    }
-
+  deleteZone(zoneMap: Zone) {
+    return this.afDb.object(`${Zone.REF}/${zoneMap.uid}`).remove();
   }
 }

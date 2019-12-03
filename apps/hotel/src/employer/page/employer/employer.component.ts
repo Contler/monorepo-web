@@ -1,5 +1,5 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { ModalEmployerComponent } from 'hotel/employer/components/modal-employer/modal-employer.component';
 import { Employer, User } from '@contler/core/models';
@@ -9,8 +9,9 @@ import { CHIEF } from '@contler/core/const';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ModalRemoveEmployerComponent } from 'hotel/employer/components/modal-remove-employer/modal-remove-employer.component';
-import { filter, switchMap } from 'rxjs/operators';
+import { filter, switchMap, tap } from 'rxjs/operators';
 import { ModalEditEmployerComponent } from 'hotel/employer/components/modal-edit-employer/modal-edit-employer.component';
+import { LoaderComponent } from 'hotel/material/components/loader/loader.component';
 
 @Component({
   selector: 'contler-employer',
@@ -46,19 +47,21 @@ export class EmployerComponent implements OnDestroy {
   openEmployerEditModal(employer: Employer) {
     this.dialog.open(ModalEditEmployerComponent, {
       width: '940px',
-      data: employer
+      data: employer,
     });
   }
 
   openCloseModal(user: User) {
+    let ref: MatDialogRef<LoaderComponent>;
     this.dialog
       .open(ModalRemoveEmployerComponent, { width: '452px' })
       .afterClosed()
       .pipe(
         filter(data => !!data),
+        tap(() => (ref = this.dialog.open(LoaderComponent))),
         switchMap(() => this.employerService.deleteEmployer(user.uid!)),
       )
-      .subscribe(() => {});
+      .subscribe(() => ref && ref.close());
   }
 
   ngOnDestroy(): void {

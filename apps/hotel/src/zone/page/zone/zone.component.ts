@@ -13,12 +13,12 @@ import { ModalEditZoneComponent } from 'hotel/zone/components/modal-edit-zone/mo
   templateUrl: './zone.component.html',
   styleUrls: ['./zone.component.scss'],
 })
-export class ZoneComponent implements OnInit {
+export class ZoneComponent {
   zoneGroup: FormGroup;
   load = false;
   categoryZone = CATEGORY_ZONE;
-  $mapZone: Observable<MapZone> | undefined;
   icons = ICONS;
+  $zones: Observable<Zone[]>;
 
   constructor(private zoneService: ZoneService, private formBuild: FormBuilder, public dialog: MatDialog) {
     this.zoneGroup = formBuild.group({
@@ -27,12 +27,10 @@ export class ZoneComponent implements OnInit {
       icon: [''],
       principal: [false],
     });
+    this.$zones = this.zoneService.getZones();
   }
 
-  ngOnInit(): void {
-    const $zone = this.zoneService.getZones();
-    this. $mapZone = this.zoneService.getMapZone($zone)
-  }
+
 
   saveZone() {
     this.load = true;
@@ -47,7 +45,7 @@ export class ZoneComponent implements OnInit {
     this.dialog.open(ModalEditZoneComponent, {width: '600px', data: zone})
   }
 
-  deleteZone(zone: ZoneCategory | Zone) {
+  deleteZone(zone: Zone) {
     this.zoneService.deleteZone(zone);
   }
 }

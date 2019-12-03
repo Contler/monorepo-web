@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CreateEmployer } from 'hotel/employer/models/create-employer';
 import { UserService } from '@contler/core';
-import { Admin, Employer, EmployerRequest, MapZone } from '@contler/core/models';
+import { Admin, Employer, EmployerRequest, Zone } from '@contler/core/models';
 import { CHIEF, EMPLOYER } from '@contler/core/const';
 import { map, switchMap, take } from 'rxjs/operators';
 import { EmployerService } from 'hotel/employer/services/employer.service';
@@ -19,8 +19,8 @@ export class ModalEmployerComponent {
   loading = false;
 
   formEmployer: FormGroup;
-  $zone: Observable<MapZone>;
   leaderZone: { [key: string]: boolean } = {};
+  $zone: Observable<Zone[]>;
 
   constructor(
     private dialogRef: MatDialogRef<ModalEmployerComponent>,
@@ -36,7 +36,7 @@ export class ModalEmployerComponent {
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required, Validators.minLength(6)]],
     });
-    this.$zone = this.zoneService.getMapZone(this.zoneService.getZones());
+    this.$zone = this.zoneService.getZones()
   }
 
   createEmployer() {

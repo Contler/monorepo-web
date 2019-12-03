@@ -9,7 +9,7 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
   styleUrls: ['./zone-list.component.scss'],
 })
 export class ZoneListComponent {
-  @Input() $zones: Observable<MapZone> | undefined;
+  @Input() $zones: Observable<Zone[]> | undefined;
   @Input() zonesSelected: { [key: string]: boolean } = {};
   @Output() selected = new EventEmitter<{ [key: string]: boolean }>();
 

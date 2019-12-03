@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Employer, MapZone } from '@contler/core/models';
+import { Employer, Zone } from '@contler/core/models';
 import { CHIEF, EMPLOYER } from '@contler/core/const';
 import { EmployerService } from 'hotel/employer/services/employer.service';
 import { ZoneService } from 'hotel/zone/services/zone.service';
@@ -16,8 +16,8 @@ export class ModalEditEmployerComponent implements OnInit {
   loading = false;
 
   formEmployer: FormGroup;
-  $zone: Observable<MapZone>;
   leaderZone: { [key: string]: boolean } = {};
+  $zone: Observable<Zone[]>;
 
   constructor(
     public dialogRef: MatDialogRef<ModalEditEmployerComponent>,
@@ -34,7 +34,7 @@ export class ModalEditEmployerComponent implements OnInit {
       averageTime: [employer.timeAverage, Validators.required],
       numRequest: [employer.servicesNum, Validators.required],
     });
-    this.$zone = this.zoneService.getMapZone(this.zoneService.getZones());
+    this.$zone = this.zoneService.getZones()
     this.leaderZone = { ...employer.leaderZone };
   }
 
