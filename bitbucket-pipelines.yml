@@ -14,7 +14,7 @@ pipelines:
             - node
           script:
             - npm i
-      parallel:
+      - parallel:
         - step:
             name: deploy api
             caches:
