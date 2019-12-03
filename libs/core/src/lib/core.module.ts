@@ -8,6 +8,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   imports: [CommonModule, MatCheckboxModule],
   declarations: [ButtonDirective, ZoneListComponent],
-  exports: [ButtonDirective, ZoneListComponent]
+  exports: [ButtonDirective, ZoneListComponent],
+  entryComponents: []
 })
 export class CoreModule {}

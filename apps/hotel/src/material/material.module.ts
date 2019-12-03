@@ -12,12 +12,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
-
 import { MenuComponent } from 'hotel/material/components/menu/menu.component';
+import { RouterModule } from '@angular/router';
+import { LoaderComponent } from './components/loader/loader.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const materialModules = [
   MatFormFieldModule,
@@ -33,12 +35,14 @@ const materialModules = [
   MatPaginatorModule,
   MatCheckboxModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatProgressSpinnerModule,
 ];
 
 @NgModule({
-  declarations: [MenuComponent],
-  imports: [CommonModule, ...materialModules],
-  exports: [...materialModules, MenuComponent],
+  declarations: [MenuComponent, LoaderComponent],
+  imports: [CommonModule, ...materialModules, RouterModule],
+  exports: [...materialModules, MenuComponent, LoaderComponent],
+  entryComponents: [LoaderComponent],
 })
 export class MaterialModule {}

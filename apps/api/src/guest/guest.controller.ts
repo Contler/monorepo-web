@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Param, Post } from '@nestjs/common';
 import { GuestRequest } from '@contler/core/models';
 import { GuestService } from 'api/guest/guest.service';
 
@@ -9,5 +9,10 @@ export class GuestController {
   @Post('')
   saveGuest(@Body() guestRequest: GuestRequest) {
     return this.guestService.createGuest(guestRequest);
+  }
+
+  @Delete('/:id')
+  deleteGuest(@Param() params: { id: string }) {
+    return this.guestService.deleteGuest(params.id);
   }
 }
