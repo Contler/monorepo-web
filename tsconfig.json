@@ -21,6 +21,7 @@
       "@contler/core/models": ["libs/core/src/models"],
       "api/*": ["apps/api/src/*"],
       "hotel/*": ["apps/hotel/src/*"],
+      "guest/*": ["apps/guest/src/*"],
       "lib/*": ["libs/core/src/*"]
     },
     "strict": true

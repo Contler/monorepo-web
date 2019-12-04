@@ -6,6 +6,8 @@ import { CommonComponentsModule } from '../common-components/common-components.m
 import { HomeComponent } from './home.component';
 import { MaterialModule } from '../material/material.module';
 import { ZoneRequestComponent } from './pages/zone-request/zone-request.component';
+import { CoreModule } from '@contler/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +21,9 @@ import { ZoneRequestComponent } from './pages/zone-request/zone-request.componen
     CommonModule,
     HomeRoutingModule,
     CommonComponentsModule,
-    MaterialModule
-  ]
+    MaterialModule,
+    CoreModule,
+    ReactiveFormsModule,
+  ],
 })
 export class HomeModule { }
