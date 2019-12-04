@@ -49,7 +49,7 @@ pipelines:
           caches:
             - node
           script:
-            - ls
+            - ls dist/apps
 #            - pipe: atlassian/firebase-deploy:0.2.1
 #                variables:
 #                  FIREBASE_TOKEN: $FIREBASE_TOKEN
