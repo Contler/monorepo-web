@@ -4,6 +4,16 @@
 
 export const environment = {
   production: false,
+  fire: {
+    apiKey: 'AIzaSyC7-kFPHWTHaKaP2WFjIXWoAaf9QfSyr8Q',
+    authDomain: 'contler-dev.firebaseapp.com',
+    databaseURL: 'https://contler-dev.firebaseio.com',
+    projectId: 'contler-dev',
+    storageBucket: 'contler-dev.appspot.com',
+    messagingSenderId: '424830318314',
+    appId: '1:424830318314:web:aa057126d096f3d747c993',
+  },
+  apiUrl: 'http://localhost:3333/'
 };
 
 /*

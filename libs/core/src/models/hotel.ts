@@ -13,6 +13,8 @@ export class Hotel {
   @Transform(value => value || null, { toClassOnly: true })
   uid: string | null = null;
 
+  @Transform(value => value || null, { toClassOnly: true })
+  color: string | null = null;
 
   serialize() {
     return classToPlain(this)

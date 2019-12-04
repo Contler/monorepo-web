@@ -1,60 +1,39 @@
-@import "../../../styles/variables";
+@import 'styles/variables';
+@import 'styles/mixin';
 
 $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
 
-.container{
-    &__hotel-logo{
-        display: block;
-        margin: 0 auto;
+.request {
+  &__hotel-logo {
+    display: block;
+    margin: 0 auto 29px;
+    width: 100px;
+  }
+  &__label {
+    @include text($text-3, 20px, 500);
+    text-align: center;
+  }
+  &__space {
+    margin-bottom: 80px
+  }
+  &__user {
+    margin-bottom: 10px;
+  }
+
+  &__zone {
+    display: grid;
+    grid-template-columns: max-content auto max-content;
+    column-gap: 16px;
+    padding: 20px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    align-items: center;
+    text-decoration: none;
+    &-icon {
+      color: $lighterIcon;
     }
-    &__username{
-        margin-top: 29px;
-        margin-bottom: 19px;
+    &-text {
+      @include text(rgba(0, 0, 0, 0.87), 20px, 500);
+      letter-spacing: 0.25px;
     }
-    &__label, &__username{
-        font-family: Raleway;
-        font-size: 20.2px;
-        font-weight: 500;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: normal;
-        letter-spacing: 0.25px;
-        text-align: center;
-        color: $temporalColor;
-    }
-    .zones-container{
-        margin-top: 82px;
-        .zone-container-item{
-            padding: 22px 19px 15px 19px;
-            display: grid;
-            grid-template-columns: 80px auto 62px;
-            align-items: center;
-            border-bottom: 1px solid $borderColor;
-            &__icon{
-                widows: 40px;
-                height: 40px;
-                font-size: 40px;
-            }
-            &__name{
-                font-family: Raleway;
-                font-size: 20.2px;
-                font-weight: 500;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: normal;
-                letter-spacing: 0.25px;
-                color: rgba(0, 0, 0, 0.87);
-                margin: 0;
-            }
-            &__name--see-more{
-                color: rgba(0, 0, 0, 0.6);
-            }
-            &__see-icon{
-                justify-self: flex-end;
-            }
-            .lighter-icon{
-                color: $lighterIcon;
-            }
-        }
-    }
+  }
 }

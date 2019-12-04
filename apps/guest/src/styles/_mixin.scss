@@ -19,3 +19,29 @@ $desktop: 1024px;
             @content;
     }
 }
+
+@mixin loading($width: 64px, $height: 64px, $size: 6px, $color: #fff) {
+  &:after {
+    content: '';
+    display: block;
+    width: $width;
+    height: $height;
+    margin: 8px auto;
+    border-radius: 50%;
+    border: $size solid $color;
+    border-color: $color transparent $color transparent;
+    animation: loading-spinner 1.2s linear infinite;
+  }
+}
+
+@mixin text($color: $text-1, $size: 14px, $weight: normal) {
+  margin: 0;
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+  font-family: $family;
+}
+
+.cnt-loading {
+  @include loading(15px, 15px, 2px, #000)
+}

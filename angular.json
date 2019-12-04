@@ -284,6 +284,11 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "apps/guest/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "apps/guest/src"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -401,6 +406,9 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
     }
   },
   "defaultProject": "hotel"

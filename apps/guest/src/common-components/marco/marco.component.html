@@ -1,0 +1,16 @@
+<mat-toolbar [style]="getColorHotel()">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <ng-content select="[marcoMenu]"></ng-content>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav position="end">
+    <contler-sidebar></contler-sidebar>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="menu">
+    <ng-content select="[marcoBody]"></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

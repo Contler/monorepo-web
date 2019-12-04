@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { filter, map, switchMap } from 'rxjs/operators';
-import { Admin, Employer, User } from 'lib/models';
+import { filter, map, switchMap, take } from 'rxjs/operators';
+import { Admin, Employer, Guest, User } from 'lib/models';
 import { ADMIN } from 'lib/const';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { plainToClass } from 'class-transformer';
@@ -19,5 +19,14 @@ export class UserService {
       switchMap(user => this.afStore.doc<User>(`${User.REF}/${user!.uid}`).valueChanges()),
       map(user => plainToClass(user!.role === ADMIN ? Admin : Employer, user)),
     );
+  }
+
+  getGuest() {
+    return this.afAuth.user.pipe(
+      filter(user => !!user),
+      take(1),
+      switchMap(user => this.afStore.doc<Guest>(`${Guest.REF}/${user!.uid}`).valueChanges()),
+      map(user => plainToClass(Guest, user))
+    )
   }
 }

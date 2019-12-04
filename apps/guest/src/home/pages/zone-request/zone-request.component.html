@@ -1,19 +1,33 @@
-<div class="container">
-  <img src="assets/img/logo-hotel-temp.png" class="container__hotel-logo" />
-  <p class="container__label">
-    Estás en la piscina central <br />
-    ¿Qué necesitas?
-  </p>
-  <div class="features-container">
-    <div class="features-container-item" *ngFor="let feature of [1, 2, 3, 4]">
-      <mat-icon class="features-container-item__icon">hotel</mat-icon>
-      <p class="features-container-item__name">Toallas</p>
+<contler-marco>
+  <div marcoMenu style="flex-grow: 1"></div>
+  <button mat-icon-button marcoMenu routerLink="/home">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+  </button>
+
+
+  <div class="container" marcoBody>
+    <img *ngIf="hotel" [src]="hotel.logo" class="container__hotel-logo"/>
+    <p class="container__label" [style]="getColorHotel()">
+      Estás en la piscina central <br/>
+      ¿Qué necesitas?
+    </p>
+    <div class="features-container">
+      <div class="features-container-item" *ngFor="let feature of [1, 2, 3, 4]">
+        <mat-icon class="features-container-item__icon">hotel</mat-icon>
+        <p class="features-container-item__name">Toallas</p>
+      </div>
     </div>
+    <p class="container__specific-label">Algo específico</p>
+    <mat-form-field appearance="fill" class="full_width container__input">
+      <input matInput [formControl]="requestController"/>
+      <mat-hint>Escribe lo que necesitas</mat-hint>
+    </mat-form-field>
+    <button class="full_width custom_button container__button" mat-raised-button contlerButton [loading]="loader"
+            [disabled]="loader || requestController.invalid" color="accent" (click)="saveRequest()">CREAR SOLICITUD
+    </button>
   </div>
-  <p class="container__specific-label">Algo específico</p>
-  <mat-form-field appearance="fill" class="full_width container__input">
-    <input matInput />
-    <mat-hint>Escribe lo que necesitas</mat-hint>
-  </mat-form-field>
-  <button class="full_width custom_button container__button" mat-raised-button color="accent">CREAR SOLICITUD</button>
-</div>
+</contler-marco>
+
+
+
+

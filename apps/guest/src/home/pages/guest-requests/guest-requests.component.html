@@ -1,24 +1,20 @@
-<div class="container">
-  <img src="assets/img/logo-hotel-temp.png" class="container__hotel-logo" />
-  <p class="container__username">¡Hola Carlos!</p>
-  <p class="container__label">
-    ¿En qué zona necesitas que <br />
-    atendamos tu solicitud?
-  </p>
-  <div class="zones-container">
-    <div class="zone-container-item" *ngFor="let zone of [1, 2, 3, 4]" (click)="goToZone(zone)">
-      <mat-icon class="zone-container-item__icon lighter-icon">hotel</mat-icon>
-      <p class="zone-container-item__name">Mi habitación</p>
-      <button mat-icon-button class="zone-container-item__see-icon">
-        <mat-icon class="lighter-icon">chevron_right</mat-icon>
-      </button>
-    </div>
-    <div class="zone-container-item">
-      <mat-icon class="lighter-icon">add</mat-icon>
-      <p class="zone-container-item__name zone-container-item__name--see-more">Ver todas las zonas</p>
-      <button mat-icon-button class="zone-container-item__see-icon">
-        <mat-icon class="lighter-icon">chevron_right</mat-icon>
-      </button>
-    </div>
+<contler-marco>
+  <div marcoBody>
+    <img *ngIf="hotel" [src]="hotel.logo" alt="" class="request__hotel-logo">
+    <p class="request__label request__user" [style]="getColorHotel()">¡Hola {{ ($guest | async)?.name }}!</p>
+    <p class="request__label request__space" [style]="getColorHotel()">¿En qué zona necesitas que <br> atendamos tu solicitud? </p>
+
+    <a class="request__zone" *ngFor="let zone of $zones | async" routerLink="/home/zone-request/{{zone.uid}}">
+      <mat-icon class="request__zone-icon">{{zone.icon || 'home'}}</mat-icon>
+      <p class="request__zone-text">{{zone.name}}</p>
+      <mat-icon class="request__zone-icon">navigate_next</mat-icon>
+    </a>
+    <a class="request__zone">
+      <mat-icon class="request__zone-icon">add</mat-icon>
+      <p class="request__zone-text">Ver todas las zonas</p>
+      <mat-icon class="request__zone-icon">navigate_next</mat-icon>
+    </a>
+
   </div>
-</div>
+</contler-marco>
+

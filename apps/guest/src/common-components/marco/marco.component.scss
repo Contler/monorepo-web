@@ -1,0 +1,18 @@
+:host{
+  padding-top: 56px;
+  position: relative;
+  display: block;
+}
+
+.mat-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  flex-direction: row-reverse;
+}
+
+.menu {
+  padding: 16px 16px;
+  box-sizing: border-box;
+}
