@@ -320,6 +320,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/guest/src/environments/environment.ts",
+                  "with": "apps/guest/src/environments/environment.qa.ts"
+                }
+              ]
             }
           }
         },

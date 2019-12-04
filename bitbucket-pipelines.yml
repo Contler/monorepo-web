@@ -34,10 +34,21 @@ pipelines:
               - node
             script:
               - npm run build:qa:hotel
-              - pipe: atlassian/firebase-deploy:0.2.1
-                variables:
-                  FIREBASE_TOKEN: $FIREBASE_TOKEN
-                  PROJECT_ID: $FIREBASE_PROJECT_QA
-
+        - step:
+            name: deploy guest
+            caches:
+              - node
+            script:
+              - npm run build:qa:guest
+      - step:
+          name: deploy
+          caches:
+            - node
+          script:
+            - ls dist
+#            - pipe: atlassian/firebase-deploy:0.2.1
+#                variables:
+#                  FIREBASE_TOKEN: $FIREBASE_TOKEN
+#                  PROJECT_ID: $FIREBASE_PROJECT_QA
 
 
