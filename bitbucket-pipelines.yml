@@ -34,12 +34,16 @@ pipelines:
               - node
             script:
               - npm run build:qa:hotel
+            artifacts:
+              - dist/apps/hotel/**
         - step:
             name: deploy guest
             caches:
               - node
             script:
               - npm run build:qa:guest
+            artifacts:
+              - dist/apps/guest/**
       - step:
           name: deploy
           caches:
