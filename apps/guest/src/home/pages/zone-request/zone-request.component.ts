@@ -1,14 +1,15 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { GuestService } from 'guest/services/guest.service';
-import { Hotel, Request } from 'lib/models';
+import { Hotel, Request, Zone } from 'lib/models';
 import { Observable, Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ZoneService } from 'guest/services/zone.service';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { SUB_CATEGORY } from 'lib/const';
 
 @Component({
   selector: 'contler-zone-request',
@@ -16,20 +17,29 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./zone-request.component.scss'],
 })
 export class ZoneRequestComponent implements OnDestroy {
+  @ViewChild('content', {static: false}) content!: ElementRef<HTMLDivElement>;
+
   hotel: Hotel | null | undefined;
   requestController = new FormControl('', Validators.required);
   loader = false;
-  private subscribe: Subscription;
+  zone: Zone | undefined;
+  categories = SUB_CATEGORY;
   private zoneUid: string | null;
+  private guestSubscribe: Subscription;
+  private zoneSubscribe: Subscription;
 
   constructor(
     private guestService: GuestService,
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private afDb: AngularFireDatabase,
+    private zoneService: ZoneService,
   ) {
-    this.subscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
+    this.guestSubscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
     this.zoneUid = this.route.snapshot.paramMap.get('id');
+    this.zoneSubscribe = this.zoneService.$zones
+      .pipe(map(zones => zones.find(zone => zone.uid === this.zoneUid)))
+      .subscribe(zone => (this.zone = zone));
   }
 
   getColorHotel() {
@@ -58,9 +68,18 @@ export class ZoneRequestComponent implements OnDestroy {
       });
   }
 
+  setQuickRequest(value: string) {
+    this.requestController.setValue(value);
+    const temp = this.content.nativeElement.parentNode as any;
+    temp.scrollTop = temp.scrollHeight
+  }
+
   ngOnDestroy(): void {
-    if (this.subscribe) {
-      this.subscribe.unsubscribe();
+    if (this.guestSubscribe) {
+      this.guestSubscribe.unsubscribe();
+    }
+    if (this.zoneSubscribe) {
+      this.zoneSubscribe.unsubscribe();
     }
   }
 }

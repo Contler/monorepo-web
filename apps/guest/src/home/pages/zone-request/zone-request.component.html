@@ -5,18 +5,20 @@
   </button>
 
 
-  <div class="container" marcoBody>
+  <div class="container" marcoBody #content>
     <img *ngIf="hotel" [src]="hotel.logo" class="container__hotel-logo"/>
     <p class="container__label" [style]="getColorHotel()">
-      Estás en la piscina central <br/>
+      Estás en {{zone?.category.name}} <br/>
       ¿Qué necesitas?
     </p>
-    <div class="features-container">
-      <div class="features-container-item" *ngFor="let feature of [1, 2, 3, 4]">
+
+    <div class="features-container" *ngIf="zone">
+      <div class="features-container-item" *ngFor="let subcategory of categories[zone.category.value]" (click)="setQuickRequest(subcategory.name)">
         <mat-icon class="features-container-item__icon">hotel</mat-icon>
-        <p class="features-container-item__name">Toallas</p>
+        <p class="features-container-item__name">{{subcategory.name}}</p>
       </div>
     </div>
+
     <p class="container__specific-label">Algo específico</p>
     <mat-form-field appearance="fill" class="full_width container__input">
       <input matInput [formControl]="requestController"/>
