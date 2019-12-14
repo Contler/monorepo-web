@@ -3,7 +3,6 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Request } from 'lib/models';
 import { UserService } from '@contler/core';
 import { take, switchMap, map, tap } from 'rxjs/operators';
-import { pipe } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +25,10 @@ export class InmediateRequestsService {
           );
       }),
     );
+  }
+
+  updateRequest(requestKey: string, data: any) {
+    return this.afDb.object(`${Request.REF}/${requestKey}`).update(data);
   }
 
   private sortRequests(a: Request, b: Request) {

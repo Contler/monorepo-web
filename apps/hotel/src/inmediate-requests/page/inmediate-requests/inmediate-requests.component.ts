@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { Subscription } from 'rxjs';
 import { Request } from 'lib/models';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalInmediateRequestComponent } from 'hotel/inmediate-requests/components/modal-inmediate-request/modal-inmediate-request.component';
 
 @Component({
   selector: 'contler-inmediate-requests',
@@ -17,7 +19,7 @@ export class InmediateRequestsComponent implements OnInit, OnDestroy {
 
   private inmediateRequestsSubscription: Subscription | null = null;
 
-  constructor(private inmediateRequestsService: InmediateRequestsService) {}
+  constructor(private inmediateRequestsService: InmediateRequestsService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.inmediateRequestsSubscription = this.inmediateRequestsService
@@ -40,5 +42,13 @@ export class InmediateRequestsComponent implements OnInit, OnDestroy {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  update(request: Request) {
+    this.dialog.open(ModalInmediateRequestComponent, {
+      data: {
+        request: Object.assign({}, request),
+      },
+    });
   }
 }

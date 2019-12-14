@@ -28,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [UserService, HotelService],
   bootstrap: [AppComponent],
