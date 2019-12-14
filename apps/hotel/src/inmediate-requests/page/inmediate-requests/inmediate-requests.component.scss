@@ -1,0 +1,53 @@
+@import 'styles/variables';
+
+:host {
+  display: block;
+  padding-top: 56px;
+
+  .mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+.cnt-zone {
+  padding: 55px 51px 0;
+}
+
+.container {
+  .header {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    margin-bottom: 10px;
+    p.header__title {
+      font-family: Raleway;
+      font-size: 24.3px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: $primary;
+      margin: 0;
+    }
+    .buttons-container {
+      display: flex;
+      justify-content: flex-end;
+      mat-form-field {
+        margin-left: 20px;
+        &:first-of-type {
+          margin-left: 0px;
+        }
+        &:last-of-type {
+          width: 50%;
+        }
+      }
+    }
+  }
+  table {
+    width: 100%;
+  }
+}
