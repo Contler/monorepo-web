@@ -18,10 +18,30 @@ export class InmediateRequestsComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
 
   private inmediateRequestsSubscription: Subscription | null = null;
+  public requestStatus = {
+    ACTIVE: 'actives',
+    ALL: 'all',
+  };
+  public filterByStatusSelected: string = this.requestStatus.ACTIVE;
 
   constructor(private inmediateRequestsService: InmediateRequestsService, private dialog: MatDialog) {}
 
   ngOnInit() {
+    this.dataSource.filter = this.filterByStatusSelected;
+    this.dataSource.filterPredicate = (data, filter) => {
+      if (filter == this.requestStatus.ACTIVE) {
+        return data.finished_at ? false : true;
+      }
+      if (filter == this.requestStatus.ALL) {
+        return true;
+      }
+      const response =
+        data.userName.toLowerCase().includes(filter) ||
+        data.zoneName.toLowerCase().includes(filter) ||
+        data.message.toLowerCase().includes(filter) ||
+        (data.employerName && data.employerName.toLowerCase().includes(filter));
+      return response ? true : false;
+    };
     this.inmediateRequestsSubscription = this.inmediateRequestsService
       .listenInmediateRequestByHotel()
       .subscribe(requests => {
@@ -50,5 +70,9 @@ export class InmediateRequestsComponent implements OnInit, OnDestroy {
         request: Object.assign({}, request),
       },
     });
+  }
+
+  filterByStatus() {
+    this.dataSource.filter = this.filterByStatusSelected;
   }
 }

@@ -16,9 +16,12 @@
         <p class="header__title">Solicitudes inmediatas</p>
         <div class="buttons-container">
           <mat-form-field appearance="fill">
-            <mat-select>
-              <mat-option [value]="1">
-                Activos
+            <mat-select [(ngModel)]="filterByStatusSelected" (ngModelChange)="filterByStatus()">
+              <mat-option [value]="requestStatus.ACTIVE">
+                Activas
+              </mat-option>
+              <mat-option [value]="requestStatus.ALL">
+                Todas
               </mat-option>
             </mat-select>
           </mat-form-field>
