@@ -1,0 +1,11 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "mobile",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "../../dist/apps/mobile",
+  "cordova": {},
+  "server": {
+    "url": "http://192.168.0.94:8100"
+  }
+}
