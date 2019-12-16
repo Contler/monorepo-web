@@ -25,6 +25,12 @@
     },
     "guest": {
       "tags": []
+    },
+    "mobile-e2e": {
+      "tags": []
+    },
+    "mobile": {
+      "tags": []
     }
   }
 }
