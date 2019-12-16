@@ -1,0 +1,14 @@
+{
+  "name": "mobile",
+  "version": "1.0.0",
+  "description": "contler app mobile",
+  "main": "index.js",
+  "author": "Jose Giovanni Vargas Rueda",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/core": "1.4.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "1.4.0"
+  }
+}
