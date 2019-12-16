@@ -3,6 +3,7 @@
 .firebase/
 android/
 .gradle/
+**/**/node_modules/
 
 # compiled output
 /dist
