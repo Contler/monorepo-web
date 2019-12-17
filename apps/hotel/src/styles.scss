@@ -35,10 +35,10 @@ div:focus {
   outline: none;
 }
 
-.crud_table{
+.crud_table {
   padding: 17px 0px 57px 0px !important;
   .row {
-    .row_container{
+    .row_container {
       display: grid;
       border-bottom: 1px solid #e5e5e5;
       padding: 19px 41px 12px 41px;
@@ -79,10 +79,31 @@ div:focus {
         margin: 0;
       }
     }
-    .subrows_container{
-      .sub_row{
+    .subrows_container {
+      .sub_row {
         padding-left: 81px;
       }
     }
+  }
+}
+
+table {
+  th {
+    font-family: Raleway;
+    font-weight: 600 !important;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.41;
+    letter-spacing: 0.25px;
+    color: $text-3 !important;
+  }
+  td {
+    font-family: Raleway;
+    font-weight: normal !important;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.41;
+    letter-spacing: 0.25px;
+    color: $text-4 !important;
   }
 }

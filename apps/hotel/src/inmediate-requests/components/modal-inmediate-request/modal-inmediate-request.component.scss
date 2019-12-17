@@ -1,0 +1,62 @@
+@import 'styles/variables';
+
+.main-container {
+  padding: 48px 95px 28px 96px;
+  &__title {
+    font-family: Raleway;
+    font-size: 20.2px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: $text-3;
+    margin: 0;
+    margin-bottom: 53px;
+  }
+  &__first-row {
+    margin-bottom: 32px;
+  }
+  &__second-row {
+    margin-bottom: 42px;
+  }
+  &__third-row {
+    margin-bottom: 31px;
+  }
+  &__fourth-row {
+    margin-bottom: 49px;
+  }
+  .ranking-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    &__label {
+      font-size: 20.2px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 0.25px;
+      text-align: center;
+      color: $text-3;
+      margin: 0;
+    }
+  }
+}
+
+.two-inputs {
+  display: grid;
+  grid-template-columns: calc(50% - 10px) calc(50% - 10px);
+  column-gap: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  width: 217px;
+  display: block;
+  margin: 0 auto;
+}

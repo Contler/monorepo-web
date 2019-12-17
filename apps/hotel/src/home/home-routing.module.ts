@@ -40,6 +40,10 @@ const routes: Routes = [
     loadChildren: () => import('hotel/zone/zone.module').then(m => m.ZoneModule)
   },
   {
+    path: 'inmediate-requests',
+    loadChildren: () => import('hotel/inmediate-requests/inmediate-requests.module').then(m => m.InmediateRequestsModule)
+  },
+  {
     path: 'guest',
     loadChildren: () => import('hotel/guest/guest.module').then(m => m.GuestModule)
   }

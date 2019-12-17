@@ -31,6 +31,7 @@ export class AdminHomeComponent {
       icon: 'error',
       outlined: false,
       primary: true,
+      link: ['home', 'inmediate-requests'],
     },
     {
       name: 'Reservas de espacios',

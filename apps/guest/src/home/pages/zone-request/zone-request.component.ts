@@ -17,7 +17,7 @@ import { SUB_CATEGORY } from 'lib/const';
   styleUrls: ['./zone-request.component.scss'],
 })
 export class ZoneRequestComponent implements OnDestroy {
-  @ViewChild('content', {static: false}) content!: ElementRef<HTMLDivElement>;
+  @ViewChild('content', { static: false }) content!: ElementRef<HTMLDivElement>;
 
   hotel: Hotel | null | undefined;
   requestController = new FormControl('', Validators.required);
@@ -56,7 +56,9 @@ export class ZoneRequestComponent implements OnDestroy {
               this.afDb.createPushId()!,
               this.hotel!.uid!,
               guest!.uid,
+              `${guest!.name} ${guest!.lastName}`,
               this.zoneUid!,
+              this.zone ? this.zone.name : '-',
               this.requestController.value,
             ),
         ),
@@ -71,7 +73,7 @@ export class ZoneRequestComponent implements OnDestroy {
   setQuickRequest(value: string) {
     this.requestController.setValue(value);
     const temp = this.content.nativeElement.parentNode as any;
-    temp.scrollTop = temp.scrollHeight
+    temp.scrollTop = temp.scrollHeight;
   }
 
   ngOnDestroy(): void {
