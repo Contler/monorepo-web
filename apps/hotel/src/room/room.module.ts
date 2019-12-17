@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { CoreModule } from '@contler/core';
 import { RoomService } from 'hotel/room/services/room.service';
+import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { RoomService } from 'hotel/room/services/room.service';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    CoreModule
+    CoreModule,
+    CommonComponentsModule
   ],
   providers: [ZoneService, RoomService],
   entryComponents: []

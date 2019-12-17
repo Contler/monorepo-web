@@ -1,9 +1,4 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button (click)="sidenav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <img src="assets/img/logo-white.svg" alt="">
-</mat-toolbar>
+<contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
 
 <mat-sidenav-container>
   <mat-sidenav mode="over" #sidenav>

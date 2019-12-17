@@ -10,6 +10,7 @@ import { RoomService } from 'hotel/room/services/room.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GuestService } from 'hotel/guest/services/guest.service';
 import { ModalEditGuestComponent } from './components/modal-edit-guest/modal-edit-guest.component';
+import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ModalEditGuestComponent } from './components/modal-edit-guest/modal-edi
     CoreModule,
     MaterialModule,
     ReactiveFormsModule,
+    CommonComponentsModule
   ],
   providers: [RoomService, GuestService, UserService]
 })

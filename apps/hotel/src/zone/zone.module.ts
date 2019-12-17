@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { CoreModule } from '@contler/core';
 import { ModalEditZoneComponent } from './components/modal-edit-zone/modal-edit-zone.component';
+import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 
 
 
@@ -19,6 +20,7 @@ import { ModalEditZoneComponent } from './components/modal-edit-zone/modal-edit-
     FormsModule,
     CoreModule,
     ReactiveFormsModule,
+    CommonComponentsModule
   ],
   providers: [ZoneService],
   entryComponents: [ModalEditZoneComponent]

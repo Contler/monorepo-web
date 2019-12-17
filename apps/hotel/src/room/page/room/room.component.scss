@@ -1,17 +1,5 @@
 @import "styles/variables";
 
-:host {
-  display: block;
-  padding-top: 56px;
-
-  .mat-toolbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-}
-
 .cnt-room {
   padding: 55px 51px 0;
 }
