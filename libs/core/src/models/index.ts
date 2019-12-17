@@ -11,3 +11,4 @@ export * from './room';
 export * from './guest-request';
 export * from './guest'
 export * from './request'
+export * from './special-request';

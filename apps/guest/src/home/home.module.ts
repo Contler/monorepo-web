@@ -7,7 +7,8 @@ import { HomeComponent } from './home.component';
 import { MaterialModule } from '../material/material.module';
 import { ZoneRequestComponent } from './pages/zone-request/zone-request.component';
 import { CoreModule } from '@contler/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SpecialRequestComponent } from './pages/special-request/special-request.component';
 
 
 
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     HomeComponent,
     GuestRequestsComponent,
-    ZoneRequestComponent
+    ZoneRequestComponent,
+    SpecialRequestComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonComponentsModule,
     MaterialModule,
     CoreModule,
+    FormsModule,
     ReactiveFormsModule,
   ],
 })

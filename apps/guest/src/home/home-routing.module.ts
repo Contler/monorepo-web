@@ -9,6 +9,7 @@ import { map, tap } from 'rxjs/operators';
 import { GUEST } from 'lib/const';
 import * as firebase from 'firebase/app';
 import 'firebase/auth'
+import { SpecialRequestComponent } from './pages/special-request/special-request.component';
 const redirectUnauthorizedToLogin = () =>
   pipe(
     customClaims,
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: 'zone-request/:id',
         component: ZoneRequestComponent,
+      },
+      {
+        path: 'special-requests',
+        component: SpecialRequestComponent,
       },
       {
         path: '',

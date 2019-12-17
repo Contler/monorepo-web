@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     {
       icon: 'error',
       name: 'Solicitud inmediata',
-      route: null,
+      route: '/home/guest-requests',
     },
     {
       icon: 'calendar_today',
@@ -31,7 +31,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     {
       icon: 'sms_failed',
       name: 'Solicitudes especiales',
-      route: null,
+      route: '/home/special-requests',
     },
     {
       icon: 'alarm',
@@ -55,7 +55,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   private userSubscription: Subscription | null = null;
 
-  constructor(private router: Router, private usersService: UsersService, private auth: AngularFireAuth) {}
+  constructor(
+    private router: Router, 
+    private usersService: UsersService, 
+    private auth: AngularFireAuth) {}
 
   async ngOnInit() {
     this.listenCurrentRoute();
@@ -78,8 +81,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
   private listenUser() {
     this.userSubscription = this.usersService
       .getUserByKey(this.auth.auth.currentUser ? this.auth.auth.currentUser.uid : '')
-      .pipe(tap(console.log))
       .subscribe(user => (this.user = user as User), () => {});
+  }
+
+  goToRoute(url: string) {
+    this.router.navigateByUrl(url);
   }
 }
 
