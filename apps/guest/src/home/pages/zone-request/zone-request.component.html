@@ -4,32 +4,41 @@
     <mat-icon>keyboard_arrow_left</mat-icon>
   </button>
 
-
   <div class="container" marcoBody #content>
-    <img *ngIf="hotel" [src]="hotel.logo" class="container__hotel-logo"/>
+    <!-- <img *ngIf="hotel" [src]="hotel.logo" class="container__hotel-logo"/> -->
+    <img src="assets/img/logo-hotel-temp.png" class="container__hotel-logo" />
+    <!-- TEMPORAL IMAGE -->
     <p class="container__label" [style]="getColorHotel()">
-      Estás en {{zone?.category.name}} <br/>
+      Estás en {{ zone?.category.name }} <br />
       ¿Qué necesitas?
     </p>
 
     <div class="features-container" *ngIf="zone">
-      <div class="features-container-item" *ngFor="let subcategory of categories[zone.category.value]" (click)="setQuickRequest(subcategory.name)">
+      <div
+        class="features-container-item"
+        *ngFor="let subcategory of categories[zone.category.value]"
+        (click)="setQuickRequest(subcategory.name)"
+      >
         <mat-icon class="features-container-item__icon">hotel</mat-icon>
-        <p class="features-container-item__name">{{subcategory.name}}</p>
+        <p class="features-container-item__name">{{ subcategory.name }}</p>
       </div>
     </div>
 
     <p class="container__specific-label">Algo específico</p>
     <mat-form-field appearance="fill" class="full_width container__input">
-      <input matInput [formControl]="requestController"/>
+      <input matInput [formControl]="requestController" />
       <mat-hint>Escribe lo que necesitas</mat-hint>
     </mat-form-field>
-    <button class="full_width custom_button container__button" mat-raised-button contlerButton [loading]="loader"
-            [disabled]="loader || requestController.invalid" color="accent" (click)="saveRequest()">CREAR SOLICITUD
+    <button
+      class="full_width custom_button container__button"
+      mat-raised-button
+      contlerButton
+      [loading]="loader"
+      [disabled]="loader || requestController.invalid"
+      color="accent"
+      (click)="saveRequest()"
+    >
+      CREAR SOLICITUD
     </button>
   </div>
 </contler-marco>
-
-
-
-

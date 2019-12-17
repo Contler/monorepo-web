@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./admin-home.component.scss'],
 })
 export class AdminHomeComponent implements OnInit, OnDestroy {
-  sections = [
+  sections: ItemMenu[] = [
     {
       name: 'Empleados',
       icon: 'account_circle',
@@ -42,26 +42,31 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       name: 'Reservas de espacios',
       icon: 'event',
       outlined: false,
+      link: null,
     },
     {
       name: 'Pedidos Remotos',
       icon: 'room_service',
       outlined: false,
+      link: null
     },
     {
       name: 'Wake up Calls',
       icon: 'access_alarm',
       outlined: false,
+      link: null
     },
     {
       name: 'Late Checkouts',
       icon: 'directions_walk',
       outlined: false,
+      link: null
     },
     {
       name: 'Solicitudes Especiales',
       icon: 'sms_failed',
       outlined: false,
+      link: null
     },
   ];
 
@@ -88,4 +93,13 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       this.inmediateRequestsSubscription.unsubscribe();
     }
   }
+}
+
+interface ItemMenu {
+  name: string;
+  icon: string;
+  outlined: boolean;
+  primary?: boolean;
+  link: string[] | null;
+  badge?: number | null;
 }
