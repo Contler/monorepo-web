@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CoreModule, HotelService, UserService } from '@contler/core';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -22,6 +23,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.fire),
     AngularFireAuthGuardModule,
     AngularFireAuthModule,

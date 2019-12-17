@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { GuestService } from 'guest/services/guest.service';
-import { Hotel, Request, Zone } from 'lib/models';
+import { Hotel, Request, Zone, User } from 'lib/models';
 import { Observable, Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, Validators } from '@angular/forms';
@@ -10,6 +10,8 @@ import { map, switchMap, take } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { SUB_CATEGORY } from 'lib/const';
+import { NotificationsService } from 'guest/services/notifications.service';
+import { UsersService } from 'guest/services/users.service';
 
 @Component({
   selector: 'contler-zone-request',
@@ -34,6 +36,8 @@ export class ZoneRequestComponent implements OnDestroy {
     private route: ActivatedRoute,
     private afDb: AngularFireDatabase,
     private zoneService: ZoneService,
+    private notificationsService: NotificationsService,
+    private usersService: UsersService,
   ) {
     this.guestSubscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
     this.zoneUid = this.route.snapshot.paramMap.get('id');
@@ -46,7 +50,8 @@ export class ZoneRequestComponent implements OnDestroy {
     return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
   }
 
-  saveRequest() {
+  async saveRequest() {
+    const chiefTokens: string[] = await this.getChiefTokens();
     this.loader = true;
     this.guestService.$guest
       .pipe(
@@ -64,10 +69,41 @@ export class ZoneRequestComponent implements OnDestroy {
         ),
         switchMap(request => this.afDb.object(`${Request.REF}/${request.uid}`).set(request.serialize())),
       )
-      .subscribe(() => {
+      .subscribe(async () => {
+        await this.notificationsService.sendMassiveNotification('Tienes una nueva solicitud inmediata', chiefTokens);
         this.loader = false;
         this.requestController.reset();
       });
+  }
+
+  private getChiefTokens(): Promise<string[]> {
+    return new Promise(async resolve => {
+      let chiefTokens: string[] = [];
+      const users: User[] = (await this.usersService
+        .getChiefsByHotel(this.hotel && this.hotel.uid ? this.hotel.uid : '')
+        .pipe(
+          map(users => users.filter((user: any) => user.leaderZone[this.zone ? this.zone.uid : ''])),
+          take(1),
+        )
+        .toPromise()) as User[];
+      for (let i = 0; i < users.length; i++) {
+        const userTokens = await this.usersService
+          .getTokensByUser(<string>users[i].uid)
+          .pipe(
+            take(1),
+            map((data: any) => {
+              let tokens: string[] = [];
+              for (let token in data) {
+                tokens.push(token);
+              }
+              return tokens;
+            }),
+          )
+          .toPromise();
+        chiefTokens = chiefTokens.concat(userTokens);
+      }
+      resolve(chiefTokens);
+    });
   }
 
   setQuickRequest(value: string) {
