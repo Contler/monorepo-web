@@ -10,6 +10,8 @@ export class SpecialRequest {
   checkOut: Date | null;
   description: string | null;
   isActive: boolean;
+  employer: string | null;
+  employerName: string | null;
 
   constructor() {
     this.uid = null;
@@ -22,5 +24,7 @@ export class SpecialRequest {
     this.checkOut = null;
     this.description = null;
     this.isActive = true;
+    this.employer = null;
+    this.employerName = null;
   }
 }
