@@ -12,6 +12,7 @@ export class SpecialRequest {
   isActive: boolean;
   employer: string | null;
   employerName: string | null;
+  created_at: number;
 
   constructor() {
     this.uid = null;
@@ -26,5 +27,6 @@ export class SpecialRequest {
     this.isActive = true;
     this.employer = null;
     this.employerName = null;
+    this.created_at = new Date().getTime();
   }
 }
