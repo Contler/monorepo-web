@@ -9,6 +9,7 @@ export class SpecialRequest {
   checkIn: Date | null;
   checkOut: Date | null;
   description: string | null;
+  isActive: boolean;
 
   constructor() {
     this.uid = null;
@@ -20,5 +21,6 @@ export class SpecialRequest {
     this.checkIn = null;
     this.checkOut = null;
     this.description = null;
+    this.isActive = true;
   }
 }

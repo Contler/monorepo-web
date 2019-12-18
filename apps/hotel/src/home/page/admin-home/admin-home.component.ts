@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { map } from 'rxjs/operators';
-import { Request } from 'lib/models';
+import { Request, SpecialRequest } from 'lib/models';
 import { Subscription } from 'rxjs';
+import { SpecialRequestsService } from 'hotel/special-requests/services/special-requests.service';
 
 @Component({
   selector: 'contler-admin-home',
@@ -48,31 +49,36 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       name: 'Pedidos Remotos',
       icon: 'room_service',
       outlined: false,
-      link: null
+      link: null,
     },
     {
       name: 'Wake up Calls',
       icon: 'access_alarm',
       outlined: false,
-      link: null
+      link: null,
     },
     {
       name: 'Late Checkouts',
       icon: 'directions_walk',
       outlined: false,
-      link: null
+      link: null,
     },
     {
       name: 'Solicitudes Especiales',
       icon: 'sms_failed',
       outlined: false,
-      link: null
+      link: ['home', 'special-requests'],
     },
   ];
 
   private inmediateRequestsSubscription: Subscription | null = null;
+  private specialRequestsSubscription: Subscription | null = null;
 
-  constructor(private router: Router, private inmediateRequestsService: InmediateRequestsService) {}
+  constructor(
+    private router: Router,
+    private inmediateRequestsService: InmediateRequestsService,
+    private specialRequestsService: SpecialRequestsService,
+  ) {}
 
   goToPage(router: any[]) {
     this.router.navigate(router);
@@ -86,11 +92,21 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
         map(requests => requests.length),
       )
       .subscribe(quantity => (this.sections[3].badge = quantity));
+    this.specialRequestsSubscription = this.specialRequestsService
+      .listenSpecialRequestByHotel()
+      .pipe(
+        map((requests: SpecialRequest[]) => requests.filter(request => request.isActive)),
+        map(requests => requests.length),
+      )
+      .subscribe(quantity => (this.sections[8].badge = quantity));
   }
 
   ngOnDestroy() {
     if (this.inmediateRequestsSubscription) {
       this.inmediateRequestsSubscription.unsubscribe();
+    }
+    if (this.specialRequestsSubscription) {
+      this.specialRequestsSubscription.unsubscribe();
     }
   }
 }

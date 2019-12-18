@@ -44,6 +44,10 @@ const routes: Routes = [
     loadChildren: () => import('hotel/inmediate-requests/inmediate-requests.module').then(m => m.InmediateRequestsModule)
   },
   {
+    path: 'special-requests',
+    loadChildren: () => import('hotel/special-requests/special-requests.module').then(m => m.SpecialRequestsModule)
+  },
+  {
     path: 'guest',
     loadChildren: () => import('hotel/guest/guest.module').then(m => m.GuestModule)
   }

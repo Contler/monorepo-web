@@ -19,7 +19,7 @@ export class InmediateRequestsService {
           .valueChanges()
           .pipe(
             map((data: any) => {
-              return Object.values(data) as Request[];
+              return data ? (Object.values(data) as Request[]) : [];
             }),
             map((data: Request[]) => data.filter(request => request.hotel === user.hotel).sort(this.sortRequests)),
           );
