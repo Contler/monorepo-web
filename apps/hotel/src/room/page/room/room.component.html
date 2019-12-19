@@ -11,18 +11,24 @@
         <p class="title">Habitaciones</p>
         <form [formGroup]="roomGroup" (ngSubmit)="createRoom()">
           <mat-form-field appearance="fill">
-            <input matInput formControlName="name"/>
+            <input matInput formControlName="name" />
             <mat-hint>Habitación</mat-hint>
           </mat-form-field>
-          <mat-form-field appearance="fill">
+          <!-- <mat-form-field appearance="fill">
             <mat-select formControlName="zone">
               <mat-option *ngFor="let zone of zones " [value]="zone.uid">
                 {{ zone.name }}
               </mat-option>
             </mat-select>
             <mat-hint>Zona</mat-hint>
-          </mat-form-field>
-          <button mat-raised-button color="accent" contlerButton [loading]="load" [disabled]="load || roomGroup.invalid">
+          </mat-form-field> -->
+          <button
+            mat-raised-button
+            color="accent"
+            contlerButton
+            [loading]="load"
+            [disabled]="load || roomGroup.invalid"
+          >
             CREAR HABITACIÓN
           </button>
         </form>
@@ -30,15 +36,13 @@
       <div class="rooms_section">
         <mat-card class="crud_table">
           <div class="row">
-            <div class="row_container header three_column">
-              <p>Nombre zona</p>
+            <div class="row_container header two_column">
               <p>Habitación</p>
             </div>
           </div>
           <div class="row" *ngFor="let room of $rooms | async">
-            <div class="row_container three_column">
-              <p>{{getZone(room.zone)?.name}}</p>
-              <p>{{room.name}}</p>
+            <div class="row_container two_column">
+              <p>{{ room.name }}</p>
               <div class="actions">
                 <button mat-icon-button>
                   <mat-icon class="custom_icon">edit</mat-icon>

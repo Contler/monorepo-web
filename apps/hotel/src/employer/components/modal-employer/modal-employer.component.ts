@@ -9,6 +9,7 @@ import { map, switchMap, take } from 'rxjs/operators';
 import { EmployerService } from 'hotel/employer/services/employer.service';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { Observable } from 'rxjs';
+import { MessagesService } from 'hotel/services/messages/messages.service';
 
 @Component({
   selector: 'contler-modal-employer',
@@ -27,6 +28,7 @@ export class ModalEmployerComponent {
     private userService: UserService,
     private employerService: EmployerService,
     private zoneService: ZoneService,
+    private messagesService: MessagesService,
     formBuild: FormBuilder,
   ) {
     this.formEmployer = formBuild.group({
@@ -36,7 +38,7 @@ export class ModalEmployerComponent {
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required, Validators.minLength(6)]],
     });
-    this.$zone = this.zoneService.getZones()
+    this.$zone = this.zoneService.getZones();
   }
 
   createEmployer() {
@@ -53,14 +55,21 @@ export class ModalEmployerComponent {
           rol: employerData.leader ? CHIEF : EMPLOYER,
           password: employerData.pass,
           email: employerData.email,
-          leaderZone: this.leaderZone
+          leaderZone: this.leaderZone,
         })),
         switchMap(employerRequest => this.employerService.saveEmployer(employerRequest)),
       )
-      .subscribe(employer => {
-        this.loading = false;
-        this.dialogRef.close(employer);
-      });
+      .subscribe(
+        employer => {
+          this.loading = false;
+          this.dialogRef.close(employer);
+          this.messagesService.showToastMessage('Empleado creado exitosamente');
+        },
+        () => {
+          this.loading = false;
+          this.messagesService.showServerError();
+        },
+      );
   }
 
   close() {

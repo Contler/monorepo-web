@@ -24,7 +24,7 @@ export class RoomService {
   saveRoom(name: string, zone: string) {
     return this.userService.getUser().pipe(
       take(1),
-      map(user => new Room(zone, name, user.hotel!, this.afDb.createPushId()!)),
+      map(user => new Room(name, user.hotel!, this.afDb.createPushId()!)),
       switchMap(room => this.afDb.object(`${Room.REF}/${room.uid}`).set(room.serialize())),
     );
   }

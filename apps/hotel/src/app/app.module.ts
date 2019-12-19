@@ -15,6 +15,7 @@ import { AppComponent } from 'hotel/app/app.component';
 import { environment } from 'hotel/environments/environment';
 import { AppRoutingModule } from 'hotel/app/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from 'hotel/material/material.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireDatabaseModule,
     AppRoutingModule,
     HttpClientModule,
+    MaterialModule
   ],
   providers: [UserService, HotelService],
   bootstrap: [AppComponent],

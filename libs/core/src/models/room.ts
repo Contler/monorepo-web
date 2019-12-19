@@ -2,7 +2,6 @@ import { classToPlain, Transform } from 'class-transformer';
 
 export class Room {
   static readonly REF = 'room';
-  zone: string;
   name: string;
   hotel: string;
   uid: string;
@@ -11,8 +10,7 @@ export class Room {
   guest: string | null = null;
 
 
-  constructor(zone: string, name: string, hotel: string, uid: string) {
-    this.zone = zone;
+  constructor(name: string, hotel: string, uid: string) {
     this.name = name;
     this.hotel = hotel;
     this.uid = uid;

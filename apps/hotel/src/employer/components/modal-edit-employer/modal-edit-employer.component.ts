@@ -6,6 +6,7 @@ import { CHIEF, EMPLOYER } from '@contler/core/const';
 import { EmployerService } from 'hotel/employer/services/employer.service';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { Observable } from 'rxjs';
+import { MessagesService } from 'hotel/services/messages/messages.service';
 
 @Component({
   selector: 'contler-modal-edit-employer',
@@ -25,6 +26,7 @@ export class ModalEditEmployerComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private employer: Employer,
     private employerService: EmployerService,
     private zoneService: ZoneService,
+    private messagesService: MessagesService
   ) {
     this.formEmployer = formBuild.group({
       name: [employer.name, Validators.required],
@@ -51,11 +53,11 @@ export class ModalEditEmployerComponent implements OnInit {
       .then(() => {
         this.loading = false;
         this.dialogRef.close();
-        //this.messagesService.showToastMessage('Empleado actualizado exitosamente');
+        this.messagesService.showToastMessage('Empleado actualizado exitosamente');
       })
       .catch(() => {
         this.loading = false;
-        //this.messagesService.showServerError();
+        this.messagesService.showServerError();
       });
   }
 

@@ -5,6 +5,7 @@ import { Employer } from '@contler/core/models';
 import { Subscription } from 'rxjs';
 import { Request } from 'lib/models';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
+import { MessagesService } from 'hotel/services/messages/messages.service';
 
 @Component({
   selector: 'contler-modal-inmediate-request',
@@ -24,6 +25,7 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
     public dialogRef: MatDialogRef<ModalInmediateRequestComponent>,
     private employerService: EmployerService,
     private inmediateRequestsService: InmediateRequestsService,
+    private messagesService: MessagesService,
     @Inject(MAT_DIALOG_DATA)
     public data: {
       request: Request;
@@ -62,11 +64,13 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
         .updateRequest(this.request.uid, this.request)
         .then(() => {
           this.loading = false;
+          this.messagesService.showToastMessage('Solicitud actualizada exitosamente');
           this.dialogRef.close();
         })
         .catch(() => {
           this.loading = false;
           //this.dialogRef.close();
+          this.messagesService.showServerError();
           console.error('Hubo un error');
         });
     }
