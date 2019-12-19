@@ -10,7 +10,7 @@
     <contler-sidebar></contler-sidebar>
   </mat-sidenav>
 
-  <mat-sidenav-content class="menu">
+  <mat-sidenav-content class="menu" [style.padding]="padding">
     <ng-content select="[marcoBody]"></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

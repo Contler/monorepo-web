@@ -9,10 +9,11 @@ import { ZoneRequestComponent } from './pages/zone-request/zone-request.componen
 import { CoreModule } from '@contler/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SpecialRequestComponent } from './pages/special-request/special-request.component';
+import { MyInmediateRequestsComponent } from './pages/my-inmediate-requests/my-inmediate-requests.component';
+import { PipesModule } from 'guest/pipes/pipes.module';
+import { InmediateRequestComponent } from './pages/inmediate-request/inmediate-request.component';
 import { ModalQualifyComponent } from './components/modal-qualify/modal-qualify.component';
 import { RatingModule } from 'ng-starrating';
-
-
 
 @NgModule({
   declarations: [
@@ -20,6 +21,8 @@ import { RatingModule } from 'ng-starrating';
     GuestRequestsComponent,
     ZoneRequestComponent,
     SpecialRequestComponent,
+    MyInmediateRequestsComponent,
+    InmediateRequestComponent,
     ModalQualifyComponent
   ],
   imports: [
@@ -30,6 +33,7 @@ import { RatingModule } from 'ng-starrating';
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
+    PipesModule,
     RatingModule
   ],
   entryComponents: [ModalQualifyComponent]

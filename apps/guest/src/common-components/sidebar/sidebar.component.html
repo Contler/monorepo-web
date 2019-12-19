@@ -9,7 +9,7 @@
       class="menu__item"
       *ngFor="let item of menuItems"
       (click)="goToRoute(item.route)"
-      [ngClass]="{ 'menu__item--selected': item.route === currentRoute }"
+      [ngClass]="{ 'menu__item--selected': isSelectedRoute(item.route) }"
     >
       <mat-icon class="custom_icon">{{ item.icon }}</mat-icon>
       <p class="label">{{ item.name }}</p>

@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, Input } from '@angular/core';
 import { GuestService } from 'guest/services/guest.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class MarcoComponent implements OnDestroy {
   private color: string | null | undefined;
   private subscribe: Subscription;
+  @Input() padding: string = '16px 16px';
 
   constructor(private guestService: GuestService, private sanitizer: DomSanitizer) {
     this.subscribe = this.guestService.$hotel.subscribe(hotel => (this.color = hotel!.color));

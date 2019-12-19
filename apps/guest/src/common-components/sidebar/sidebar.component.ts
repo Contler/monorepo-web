@@ -19,6 +19,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
       route: '/home/guest-requests',
     },
     {
+      icon: 'error_outline',
+      name: 'Mis solicitudes inmediatas',
+      route: '/home/my-inmediate-requests',
+    },
+    {
       icon: 'calendar_today',
       name: 'Reservas',
       route: null,
@@ -55,10 +60,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   private userSubscription: Subscription | null = null;
 
-  constructor(
-    private router: Router, 
-    private usersService: UsersService, 
-    private auth: AngularFireAuth) {}
+  constructor(private router: Router, private usersService: UsersService, private auth: AngularFireAuth) {}
 
   async ngOnInit() {
     this.listenCurrentRoute();
@@ -86,6 +88,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   goToRoute(url: string) {
     this.router.navigateByUrl(url);
+  }
+
+  isSelectedRoute(route: string): boolean {
+    return this.currentRoute !== null && this.currentRoute.includes(route);
   }
 }
 

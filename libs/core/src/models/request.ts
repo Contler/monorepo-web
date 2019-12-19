@@ -19,7 +19,15 @@ export class Request {
   complete = false;
   scoreComments: string | undefined;
 
-  constructor(uid: string, hotel: string, user: string, userName: string, zone: string, zoneName: string, message: string) {
+  constructor(
+    uid: string,
+    hotel: string,
+    user: string,
+    userName: string,
+    zone: string,
+    zoneName: string,
+    message: string,
+  ) {
     this.uid = uid;
     this.hotel = hotel;
     this.user = user;
