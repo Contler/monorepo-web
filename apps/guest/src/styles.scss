@@ -38,3 +38,13 @@ div:focus {
 .full-width{
   width: 100% !important;
 }
+
+.cot-dialog {
+  .mat-dialog-container  {
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.5);
+    background-color: #ffffff;
+  }
+}
+

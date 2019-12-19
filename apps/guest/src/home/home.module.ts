@@ -9,6 +9,8 @@ import { ZoneRequestComponent } from './pages/zone-request/zone-request.componen
 import { CoreModule } from '@contler/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SpecialRequestComponent } from './pages/special-request/special-request.component';
+import { ModalQualifyComponent } from './components/modal-qualify/modal-qualify.component';
+import { RatingModule } from 'ng-starrating';
 
 
 
@@ -17,7 +19,8 @@ import { SpecialRequestComponent } from './pages/special-request/special-request
     HomeComponent,
     GuestRequestsComponent,
     ZoneRequestComponent,
-    SpecialRequestComponent
+    SpecialRequestComponent,
+    ModalQualifyComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +30,8 @@ import { SpecialRequestComponent } from './pages/special-request/special-request
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
+    RatingModule
   ],
+  entryComponents: [ModalQualifyComponent]
 })
 export class HomeModule { }
