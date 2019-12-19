@@ -1,0 +1,61 @@
+<contler-marco [padding]="'16px 0px 0px 0px'">
+  <div class="main-container" marcoBody>
+    <img src="assets/img/logo-hotel-temp.png" class="request__hotel-logo" />
+    <p class="title">Mis solicitudes inmediatas</p>
+    <div class="page-container" [ngSwitch]="currentPage">
+      <div class="page" *ngSwitchCase="PAGES.PENDING">
+        <ng-container *ngIf="pendingRequests.length; else empty">
+          <div class="item" *ngFor="let request of pendingRequests">
+            <div class="item__info-container">
+              <p class="username">{{ request.message }}</p>
+              <p class="zone">{{ request.zoneName }}</p>
+            </div>
+            <div class="item__data-container">
+              <p class="time">{{ request.created_at | date: 'dd/MM/yyyy' }}</p>
+              <button mat-icon-button (click)="goToRequest(request)">
+                <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="page" *ngSwitchCase="PAGES.READY">
+        <ng-container *ngIf="readyRequests.length; else empty">
+          <div class="item" *ngFor="let request of readyRequests">
+            <div class="item__info-container">
+              <p class="username">{{ request.message }}</p>
+              <p class="zone">{{ request.zoneName }}</p>
+            </div>
+            <div class="item__data-container">
+              <p class="time">{{ request|requestTime }}</p>
+              <button mat-icon-button (click)="goToRequest(request)">
+                <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="tabs-container">
+      <div
+        class="tab"
+        (click)="currentPage = PAGES.PENDING"
+        [ngClass]="{ 'selected-tab': currentPage == PAGES.PENDING }"
+      >
+        <p class="tab__label">PENDIENTES</p>
+      </div>
+      <div class="tab" (click)="currentPage = PAGES.READY" [ngClass]="{ 'selected-tab': currentPage == PAGES.READY }">
+        <p class="tab__label">RESUELTAS</p>
+      </div>
+    </div>
+  </div>
+</contler-marco>
+
+<ng-template #empty>
+  <div class="empty-container">
+    <mat-icon class="custom_icon empty-container__icon">check_circle</mat-icon>
+    <p class="empty-container__label" [style.color]="generalService.hotelColor">
+      No tienes ninguna solicitud inmediata
+    </p>
+  </div>
+</ng-template>

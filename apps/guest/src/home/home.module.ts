@@ -9,15 +9,18 @@ import { ZoneRequestComponent } from './pages/zone-request/zone-request.componen
 import { CoreModule } from '@contler/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SpecialRequestComponent } from './pages/special-request/special-request.component';
-
-
+import { MyInmediateRequestsComponent } from './pages/my-inmediate-requests/my-inmediate-requests.component';
+import { PipesModule } from 'guest/pipes/pipes.module';
+import { InmediateRequestComponent } from './pages/inmediate-request/inmediate-request.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     GuestRequestsComponent,
     ZoneRequestComponent,
-    SpecialRequestComponent
+    SpecialRequestComponent,
+    MyInmediateRequestsComponent,
+    InmediateRequestComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +30,7 @@ import { SpecialRequestComponent } from './pages/special-request/special-request
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
+    PipesModule,
   ],
 })
 export class HomeModule { }

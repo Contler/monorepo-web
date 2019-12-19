@@ -30,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
-    CoreModule
+    CoreModule,
   ],
   providers: [HotelService, UserService],
   bootstrap: [AppComponent],

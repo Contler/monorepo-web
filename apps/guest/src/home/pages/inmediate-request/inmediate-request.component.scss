@@ -1,0 +1,29 @@
+.request__hotel-logo {
+  display: block;
+  margin: 0 auto;
+}
+
+p.title {
+  font-family: Raleway;
+  font-size: 20.2px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.25px;
+  text-align: center;
+  color: #006633;
+  margin-top: 38px;
+  margin-bottom: 36px;
+}
+
+.two-inputs {
+  display: grid;
+  grid-template-columns: calc(50% - 8px) calc(50% - 8px);
+  column-gap: 16px;
+}
+
+mat-form-field{
+  width: 100%;
+  margin-bottom: 26px;
+}

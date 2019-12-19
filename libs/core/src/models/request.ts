@@ -14,8 +14,17 @@ export class Request {
   employer: string | null;
   employerName: string | null;
   score: number | null;
+  scoreComments: string | null;
 
-  constructor(uid: string, hotel: string, user: string, userName: string, zone: string, zoneName: string, message: string) {
+  constructor(
+    uid: string,
+    hotel: string,
+    user: string,
+    userName: string,
+    zone: string,
+    zoneName: string,
+    message: string,
+  ) {
     this.uid = uid;
     this.hotel = hotel;
     this.user = user;
@@ -28,6 +37,7 @@ export class Request {
     this.employer = null;
     this.employerName = null;
     this.score = null;
+    this.scoreComments = null;
   }
 
   serialize() {
