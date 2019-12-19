@@ -50,6 +50,12 @@ export class ZoneRequestComponent implements OnDestroy {
     return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
   }
 
+  getButtonColorHotel() {
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `background-color: ${this.hotel.color}; color: #ffffff !important` : '',
+    );
+  }
+
   async saveRequest() {
     const chiefTokens: string[] = await this.getChiefTokens();
     this.loader = true;

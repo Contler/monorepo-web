@@ -8,6 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 import { ModalQualifyComponent } from 'guest/home/components/modal-qualify/modal-qualify.component';
 import { RequestService } from 'guest/services/request.service';
+import { GeneralService } from 'guest/services/general.service';
 
 @Component({
   selector: 'contler-guest-requests',
@@ -26,6 +27,7 @@ export class GuestRequestsComponent implements OnDestroy {
     private sanitizer: DomSanitizer,
     private dialog: MatDialog,
     private requestService: RequestService,
+    public generalService: GeneralService
   ) {
     this.$guest = this.guestService.$guest;
     this.subscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));

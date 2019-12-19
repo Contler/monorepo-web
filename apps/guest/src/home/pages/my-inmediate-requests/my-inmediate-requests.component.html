@@ -27,7 +27,7 @@
               <p class="zone">{{ request.zoneName }}</p>
             </div>
             <div class="item__data-container">
-              <p class="time">{{ request|requestTime }}</p>
+              <p class="time">{{ request | requestTime }}</p>
               <button mat-icon-button (click)="goToRequest(request)">
                 <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
               </button>
@@ -40,11 +40,15 @@
       <div
         class="tab"
         (click)="currentPage = PAGES.PENDING"
-        [ngClass]="{ 'selected-tab': currentPage == PAGES.PENDING }"
+        [style]="currentPage == PAGES.PENDING ? getSelectedTabStyle() : ''"
       >
         <p class="tab__label">PENDIENTES</p>
       </div>
-      <div class="tab" (click)="currentPage = PAGES.READY" [ngClass]="{ 'selected-tab': currentPage == PAGES.READY }">
+      <div
+        class="tab"
+        (click)="currentPage = PAGES.READY"
+        [style]="currentPage == PAGES.READY ? getSelectedTabStyle() : ''"
+      >
         <p class="tab__label">RESUELTAS</p>
       </div>
     </div>
@@ -54,7 +58,7 @@
 <ng-template #empty>
   <div class="empty-container">
     <mat-icon class="custom_icon empty-container__icon">check_circle</mat-icon>
-    <p class="empty-container__label" [style.color]="generalService.hotelColor">
+    <p class="empty-container__label" [style]="getColorHotel()">
       No tienes ninguna solicitud inmediata
     </p>
   </div>

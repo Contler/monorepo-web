@@ -5,6 +5,8 @@ import { User } from 'lib/models/user';
 import { UsersService } from 'guest/services/users.service';
 import { Subscription } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Hotel } from 'lib/models/hotel';
+import { GuestService } from 'guest/services/guest.service';
 
 @Component({
   selector: 'contler-sidebar',
@@ -48,19 +50,23 @@ export class SidebarComponent implements OnInit, OnDestroy {
       name: 'Late Checkout',
       route: null,
     },
-    {
-      icon: 'exit_to_app',
-      name: 'Cerrar Sesión',
-      route: null,
-    },
   ];
 
   public currentRoute: string | null = null;
   public user: User | null = null;
+  public hotel: Hotel | null | undefined;
 
   private userSubscription: Subscription | null = null;
+  private guestSubscribe: Subscription;
 
-  constructor(private router: Router, private usersService: UsersService, private auth: AngularFireAuth) {}
+  constructor(
+    private router: Router,
+    private usersService: UsersService,
+    private auth: AngularFireAuth,
+    private guestService: GuestService,
+  ) {
+    this.guestSubscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
+  }
 
   async ngOnInit() {
     this.listenCurrentRoute();
@@ -70,6 +76,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();
+    }
+    if (this.guestSubscribe) {
+      this.guestSubscribe.unsubscribe();
     }
   }
 
@@ -92,6 +101,13 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   isSelectedRoute(route: string): boolean {
     return this.currentRoute !== null && this.currentRoute.includes(route);
+  }
+
+  async logout() {
+    this.auth.auth
+      .signOut()
+      .then(() => this.router.navigate(['/login']))
+      .catch(() => {});
   }
 }
 

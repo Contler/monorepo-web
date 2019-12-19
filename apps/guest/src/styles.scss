@@ -48,3 +48,15 @@ div:focus {
   }
 }
 
+.custom-button{
+  height: 55px;
+  font-family: Raleway;
+  font-size: 14.2px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: 1.25px;
+  border-radius: 11px !important;
+  color: $text-5 !important;
+}

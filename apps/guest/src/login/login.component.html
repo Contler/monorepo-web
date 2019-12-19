@@ -4,7 +4,7 @@
     <p class="label">Ingrese con el usuario y contraseña que le brindarán al momento del checkin en el hotel</p>
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <mat-form-field appearance="fill" class="input">
-        <input matInput formControlName="email"/>
+        <input matInput formControlName="email" />
         <mat-icon class="custom_icon" matSuffix>account_circle</mat-icon>
         <mat-hint>Usuario</mat-hint>
       </mat-form-field>
@@ -15,7 +15,7 @@
       </mat-form-field>
       <p class="cursor forgot_password">Olvidaste tu contraseña?</p>
       <button
-        class="input"
+        class="input custom-button"
         mat-raised-button
         contlerButton
         [loading]="loader"
@@ -24,7 +24,7 @@
       >
         INGRESAR
       </button>
-      <p class="error">{{error}}</p>
+      <p class="error">{{ error }}</p>
     </form>
   </div>
 </div>

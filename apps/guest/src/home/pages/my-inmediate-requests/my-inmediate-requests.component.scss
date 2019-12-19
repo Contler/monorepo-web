@@ -94,6 +94,7 @@ p.title {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    color: $text-4;
     &__label {
       margin: 0;
       font-family: Raleway;
@@ -104,16 +105,15 @@ p.title {
       line-height: 1.13;
       letter-spacing: 1.25px;
       text-align: center;
-      color: $text-4;
     }
   }
-  .selected-tab {
+  /* .selected-tab {
     background-color: #e4f3eb;
     .tab__label {
       color: #1c9753;
     }
     border-bottom: 2px solid #1c9753;
-  }
+  } */
 }
 
 .empty-container {

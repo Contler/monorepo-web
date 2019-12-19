@@ -1,7 +1,7 @@
-<contler-marco>
+<contler-marco [backUrl]="'/home/my-inmediate-requests'">
   <div class="main-container" marcoBody>
     <img src="assets/img/logo-hotel-temp.png" class="request__hotel-logo" />
-    <p class="title">Solicitud inmediata</p>
+    <p class="title" [style]="getColorHotel()">Solicitud inmediata</p>
     <ng-container *ngIf="request">
       <form>
         <div class="two-inputs">
@@ -30,7 +30,9 @@
           <input matInput [value]="request.finished_at ? 'Cumplida' : 'Pendiente'" name="finished_at" readonly />
           <mat-hint>Estado de la solicitud</mat-hint>
         </mat-form-field>
-        <contler-score [score]="request.score" (value)="request.score = $event"></contler-score>
+        <div class="score-container">
+          <contler-score [score]="request.score" (value)="request.score = $event"></contler-score>
+        </div>
         <mat-form-field appearance="fill" class="full-width">
           <textarea
             matInput
@@ -44,11 +46,12 @@
         <button
           [loading]="loader"
           [disabled]="loader"
-          class="full-width custom_button"
+          class="full-width custom-button"
           mat-raised-button
           contlerButton
           color="accent"
           (click)="saveRequest()"
+          [style]="getButtonColorHotel()"
         >
           ACTUALIZAR
         </button>

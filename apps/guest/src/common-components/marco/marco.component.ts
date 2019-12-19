@@ -2,6 +2,7 @@ import { Component, OnDestroy, Input } from '@angular/core';
 import { GuestService } from 'guest/services/guest.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'contler-marco',
@@ -12,8 +13,9 @@ export class MarcoComponent implements OnDestroy {
   private color: string | null | undefined;
   private subscribe: Subscription;
   @Input() padding: string = '16px 16px';
+  @Input() backUrl: string | null = null;
 
-  constructor(private guestService: GuestService, private sanitizer: DomSanitizer) {
+  constructor(private guestService: GuestService, private sanitizer: DomSanitizer, private router: Router) {
     this.subscribe = this.guestService.$hotel.subscribe(hotel => (this.color = hotel!.color));
   }
 
@@ -25,5 +27,9 @@ export class MarcoComponent implements OnDestroy {
     if (this.subscribe) {
       this.subscribe.unsubscribe();
     }
+  }
+
+  goToRoute(url: string) {
+    this.router.navigateByUrl(url);
   }
 }

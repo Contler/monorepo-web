@@ -3,7 +3,9 @@ import { InmediateRequestsService } from 'guest/services/inmediate-requests.serv
 import { ActivatedRoute } from '@angular/router';
 import { switchMap, pluck, take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import { Request } from '@contler/core/models';
+import { Request, Hotel } from '@contler/core/models';
+import { GuestService } from 'guest/services/guest.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'contler-inmediate-request',
@@ -14,9 +16,19 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
   private requestSubscription: Subscription | null = null;
   public request: Request | null = null;
 
+  hotel: Hotel | null | undefined;
+  private guestSubscribe: Subscription;
+
   loader = false;
 
-  constructor(private inmediateRequestsService: InmediateRequestsService, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private inmediateRequestsService: InmediateRequestsService,
+    private activatedRoute: ActivatedRoute,
+    private guestService: GuestService,
+    private sanitizer: DomSanitizer,
+  ) {
+    this.guestSubscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
+  }
 
   ngOnInit() {
     this.requestSubscription = this.activatedRoute.params
@@ -33,6 +45,9 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
     if (this.requestSubscription) {
       this.requestSubscription.unsubscribe();
     }
+    if (this.guestSubscribe) {
+      this.guestSubscribe.unsubscribe();
+    }
   }
 
   saveRequest() {
@@ -47,5 +62,15 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
       .catch(() => {
         this.loader = false;
       });
+  }
+
+  getColorHotel() {
+    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
+  }
+
+  getButtonColorHotel() {
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `background-color: ${this.hotel.color}; color: #ffffff !important` : '',
+    );
   }
 }

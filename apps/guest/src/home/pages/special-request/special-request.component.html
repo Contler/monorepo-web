@@ -1,7 +1,9 @@
 <contler-marco>
   <div marcoBody>
     <img src="assets/img/logo-hotel-temp.png" class="request__hotel-logo" />
-    <p class="label">Cuéntanos tus solicitudes especiales durante tu estadía, estaremos felices de complacerte</p>
+    <p [style]="getColorHotel()" class="label">
+      Cuéntanos tus solicitudes especiales durante tu estadía, estaremos felices de complacerte
+    </p>
     <form #specialRequestForm (ngSubmit)="saveRequest()">
       <mat-form-field appearance="fill" class="full-width">
         <textarea
@@ -15,12 +17,12 @@
         ></textarea>
       </mat-form-field>
       <button
-        class="full-width custom_button"
+        class="full-width custom-button"
         mat-raised-button
         contlerButton
         [loading]="loader"
         [disabled]="loader || specialRequestForm.invalid"
-        color="accent"
+        [style]="specialRequestForm.invalid ? '' : getButtonColorHotel()"
       >
         ENVIAR
       </button>
