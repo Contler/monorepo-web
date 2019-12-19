@@ -40,6 +40,48 @@ export class MenuComponent implements OnInit {
       link: ['/home', 'guest'],
       primary: false,
     },
+    {
+      name: 'Solicitudes inmediatas',
+      icon: 'error',
+      link: ['/home', 'inmediate-requests'],
+      primary: true,
+    },
+    {
+      name: 'Reservas de espacios',
+      icon: 'calendar_today',
+      primary: false,
+      link: ['/home', 'reservations'],
+    },
+    {
+      name: 'Pedidos remotos',
+      icon: 'room_service',
+      link: ['/home', 'remotes'],
+      primary: false,
+    },
+    {
+      name: 'Wake up calls',
+      icon: 'access_alarm',
+      link: ['/home', 'wakeup-calls'],
+      primary: false,
+    },
+    {
+      name: 'Late Checkouts',
+      icon: 'directions_walk',
+      link: ['/home', 'late-checkouts'],
+      primary: false,
+    },
+    {
+      name: 'Solicitudes especiales',
+      icon: 'sms_failed',
+      link: ['/home', 'special-requests'],
+      primary: false,
+    },
+    {
+      name: 'Calificaciones',
+      icon: 'favorite',
+      link: ['/home', 'califactions'],
+      primary: false,
+    },
   ];
 
   constructor(private hotelService: HotelService, private afAuth: AngularFireAuth, private router: Router) {

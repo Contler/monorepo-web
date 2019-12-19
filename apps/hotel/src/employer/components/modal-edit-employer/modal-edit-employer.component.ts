@@ -34,7 +34,7 @@ export class ModalEditEmployerComponent implements OnInit {
       averageTime: [employer.timeAverage, Validators.required],
       numRequest: [employer.servicesNum, Validators.required],
     });
-    this.$zone = this.zoneService.getZones()
+    this.$zone = this.zoneService.getZones();
     this.leaderZone = { ...employer.leaderZone };
   }
 
@@ -46,10 +46,17 @@ export class ModalEditEmployerComponent implements OnInit {
     this.employer.role = value.leader ? CHIEF : EMPLOYER;
     this.employer.lastName = value.lastName;
     this.employer.leaderZone = { ...this.leaderZone };
-    this.employerService.updateEmployer(this.employer).then(() => {
-      this.loading = false;
-      this.dialogRef.close();
-    });
+    this.employerService
+      .updateEmployer(this.employer)
+      .then(() => {
+        this.loading = false;
+        this.dialogRef.close();
+        //this.messagesService.showToastMessage('Empleado actualizado exitosamente');
+      })
+      .catch(() => {
+        this.loading = false;
+        //this.messagesService.showServerError();
+      });
   }
 
   ngOnInit() {}

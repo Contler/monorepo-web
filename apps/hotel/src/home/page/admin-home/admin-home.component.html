@@ -1,9 +1,4 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button (click)="sidenav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <img src="assets/img/logo-white.svg" alt="">
-</mat-toolbar>
+<contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
 <mat-sidenav-container>
   <mat-sidenav mode="over" #sidenav>
     <contler-menu></contler-menu>
@@ -12,18 +7,24 @@
     <h1 class="contler-admin__title">Escritorio</h1>
     <div class="contler-admin__options">
       <mat-card class="contler-admin__options-card" *ngFor="let section of sections" (click)="goToPage(section.link)">
-        <mat-icon *ngIf="section.outlined" [class.contler-admin__primary]="section.primary"
-                  fontSet="material-icons-outlined" class="contler-admin__options-icon">
-          {{section.icon}}
+        <mat-icon
+          *ngIf="section.outlined"
+          [class.contler-admin__primary]="section.primary"
+          fontSet="material-icons-outlined"
+          class="contler-admin__options-icon"
+        >
+          {{ section.icon }}
         </mat-icon>
-        <mat-icon *ngIf="!section.outlined" class="contler-admin__options-icon"
-                  [class.contler-admin__primary]="section.primary">
-          {{section.icon}}
+        <mat-icon
+          *ngIf="!section.outlined"
+          class="contler-admin__options-icon"
+          [class.contler-admin__primary]="section.primary"
+        >
+          {{ section.icon }}
         </mat-icon>
-        <p class="contler-admin__options-text">{{section.name}}</p>
-        <p class="badge" *ngIf="section.badge">{{section.badge}}</p>
+        <p class="contler-admin__options-text">{{ section.name }}</p>
+        <p class="badge" *ngIf="section.badge">{{ section.badge }}</p>
       </mat-card>
     </div>
-
   </mat-sidenav-content>
 </mat-sidenav-container>

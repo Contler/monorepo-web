@@ -20,7 +20,7 @@ const routes: Routes = [
     component: AdminHomeComponent,
     canActivate: [AngularFireAuthGuard],
     data: {
-      authGuardPipe: redirectToAdmin
+      authGuardPipe: redirectToAdmin,
     },
   },
   {
@@ -29,28 +29,33 @@ const routes: Routes = [
   },
   {
     path: 'employer',
-    loadChildren: () => import('hotel/employer/employer.module').then(m => m.EmployerModule)
+    loadChildren: () => import('hotel/employer/employer.module').then(m => m.EmployerModule),
   },
   {
     path: 'room',
-    loadChildren: () => import('hotel/room/room.module').then(m => m.RoomModule)
+    loadChildren: () => import('hotel/room/room.module').then(m => m.RoomModule),
   },
   {
     path: 'zone',
-    loadChildren: () => import('hotel/zone/zone.module').then(m => m.ZoneModule)
+    loadChildren: () => import('hotel/zone/zone.module').then(m => m.ZoneModule),
   },
   {
     path: 'inmediate-requests',
-    loadChildren: () => import('hotel/inmediate-requests/inmediate-requests.module').then(m => m.InmediateRequestsModule)
+    loadChildren: () =>
+      import('hotel/inmediate-requests/inmediate-requests.module').then(m => m.InmediateRequestsModule),
   },
   {
     path: 'special-requests',
-    loadChildren: () => import('hotel/special-requests/special-requests.module').then(m => m.SpecialRequestsModule)
+    loadChildren: () => import('hotel/special-requests/special-requests.module').then(m => m.SpecialRequestsModule),
   },
   {
     path: 'guest',
-    loadChildren: () => import('hotel/guest/guest.module').then(m => m.GuestModule)
-  }
+    loadChildren: () => import('hotel/guest/guest.module').then(m => m.GuestModule),
+  },
+  {
+    path: '**',
+    component: AdminHomeComponent,
+  },
 ];
 
 @NgModule({
