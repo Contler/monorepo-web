@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { GuestService } from 'guest/services/guest.service';
 import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MessagesService } from 'guest/services/messages/messages.service';
 
 @Component({
   selector: 'contler-special-request',
@@ -31,6 +32,7 @@ export class SpecialRequestComponent implements OnInit, OnDestroy {
     private router: Router,
     private guestService: GuestService,
     private sanitizer: DomSanitizer,
+    private messagesService: MessagesService,
   ) {
     this.guestSubscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
   }
@@ -58,9 +60,11 @@ export class SpecialRequestComponent implements OnInit, OnDestroy {
       .then(() => {
         this.loader = false;
         this.router.navigate(['/home']);
+        this.messagesService.showToastMessage('Solicitud especial creada exitosamente');
       })
       .catch(() => {
         this.loader = false;
+        this.messagesService.showServerError();
       });
   }
 

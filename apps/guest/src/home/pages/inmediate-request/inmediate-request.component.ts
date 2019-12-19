@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { InmediateRequestsService } from 'guest/services/inmediate-requests.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, pluck, take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { Request, Hotel } from '@contler/core/models';
 import { GuestService } from 'guest/services/guest.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MessagesService } from 'guest/services/messages/messages.service';
 
 @Component({
   selector: 'contler-inmediate-request',
@@ -26,6 +27,8 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private guestService: GuestService,
     private sanitizer: DomSanitizer,
+    private messagesService: MessagesService,
+    private router: Router
   ) {
     this.guestSubscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
   }
@@ -58,9 +61,12 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
       .updateRequest(this.request ? this.request.uid : '', { score, scoreComments })
       .then(() => {
         this.loader = false;
+        this.router.navigate(['/home']);
+        this.messagesService.showToastMessage('Solicitud modificada exitosamente');
       })
       .catch(() => {
         this.loader = false;
+        this.messagesService.showServerError();
       });
   }
 

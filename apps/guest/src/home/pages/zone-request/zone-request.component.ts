@@ -4,7 +4,7 @@ import { Hotel, Request, Zone, User } from 'lib/models';
 import { Observable, Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'guest/services/zone.service';
 import { map, switchMap, take } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
@@ -12,6 +12,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { SUB_CATEGORY } from 'lib/const';
 import { NotificationsService } from 'guest/services/notifications.service';
 import { UsersService } from 'guest/services/users.service';
+import { MessagesService } from 'guest/services/messages/messages.service';
 
 @Component({
   selector: 'contler-zone-request',
@@ -38,6 +39,8 @@ export class ZoneRequestComponent implements OnDestroy {
     private zoneService: ZoneService,
     private notificationsService: NotificationsService,
     private usersService: UsersService,
+    private messagesService: MessagesService,
+    private router: Router,
   ) {
     this.guestSubscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
     this.zoneUid = this.route.snapshot.paramMap.get('id');
@@ -75,11 +78,19 @@ export class ZoneRequestComponent implements OnDestroy {
         ),
         switchMap(request => this.afDb.object(`${Request.REF}/${request.uid}`).set(request.serialize())),
       )
-      .subscribe(async () => {
-        await this.notificationsService.sendMassiveNotification('Tienes una nueva solicitud inmediata', chiefTokens);
-        this.loader = false;
-        this.requestController.reset();
-      });
+      .subscribe(
+        async () => {
+          await this.notificationsService.sendMassiveNotification('Tienes una nueva solicitud inmediata', chiefTokens);
+          this.loader = false;
+          this.requestController.reset();
+          this.router.navigate(['/home']);
+          this.messagesService.showToastMessage('Solicitud inmediata creada exitosamente');
+        },
+        () => {
+          this.loader = false;
+          this.messagesService.showServerError();
+        },
+      );
   }
 
   private getChiefTokens(): Promise<string[]> {

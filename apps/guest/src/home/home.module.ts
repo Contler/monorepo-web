@@ -14,6 +14,7 @@ import { PipesModule } from 'guest/pipes/pipes.module';
 import { InmediateRequestComponent } from './pages/inmediate-request/inmediate-request.component';
 import { ModalQualifyComponent } from './components/modal-qualify/modal-qualify.component';
 import { RatingModule } from 'ng-starrating';
+import { MessagesModule } from 'guest/services/messages/messages.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { RatingModule } from 'ng-starrating';
     FormsModule,
     ReactiveFormsModule,
     PipesModule,
-    RatingModule
+    RatingModule,
+    MessagesModule
   ],
   entryComponents: [ModalQualifyComponent]
 })
