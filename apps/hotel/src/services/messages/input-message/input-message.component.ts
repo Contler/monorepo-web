@@ -7,7 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./input-message.component.scss']
 })
 export class InputMessageComponent implements OnInit {
-  public value;
+  public value: any;
 
   constructor(public dialogRef: MatDialogRef<InputMessageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { placeholder: string, type: string, required: boolean }) { }

@@ -3,7 +3,6 @@ import { Observable, Subscription } from 'rxjs';
 import { Guest, Hotel, Zone } from '@contler/core/models';
 import { GuestService } from 'guest/services/guest.service';
 import { ZoneService } from 'guest/services/zone.service';
-import { map, take } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 import { ModalQualifyComponent } from 'guest/home/components/modal-qualify/modal-qualify.component';
@@ -17,9 +16,13 @@ import { GeneralService } from 'guest/services/general.service';
 })
 export class GuestRequestsComponent implements OnDestroy {
   $guest: Observable<Guest | null>;
-  $zones: Observable<Zone[]>;
   hotel: Hotel | null | undefined;
   private subscribe: Subscription;
+  private zones: Zone[] = [];
+  public showedZones: Zone[] = [];
+  public allZonesShowed: boolean = false;
+
+  private zonesSubscription: Subscription | null = null;
 
   constructor(
     private guestService: GuestService,
@@ -27,26 +30,31 @@ export class GuestRequestsComponent implements OnDestroy {
     private sanitizer: DomSanitizer,
     private dialog: MatDialog,
     private requestService: RequestService,
-    public generalService: GeneralService
+    public generalService: GeneralService,
   ) {
     this.$guest = this.guestService.$guest;
     this.subscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
-    this.$zones = this.zoneService.$zones.pipe(map(zones => zones.filter(zone => zone.principal)));
-    this.requestService
-      .getRequestFinish()
-      .pipe(take(1))
-      .subscribe(requests => {
-        if (requests && requests.length > 0) {
-          requests.forEach(request =>
-            this.dialog.open(ModalQualifyComponent, {
-              width: '342px',
-              panelClass: 'cot-dialog',
-              data: request,
-              disableClose: true,
-            }),
-          );
-        }
-      });
+    this.zonesSubscription = this.zoneService.$zones.subscribe(zones => {
+      this.zones = zones;
+      this.showedZones = this.allZonesShowed ? this.zones.slice() : this.zones.filter(zone => zone.principal);
+    });
+    this.requestService.getRequestFinish().subscribe(requests => {
+      if (requests && requests.length > 0) {
+        requests.forEach(request =>
+          this.dialog.open(ModalQualifyComponent, {
+            width: '342px',
+            panelClass: 'cot-dialog',
+            data: request,
+            disableClose: true,
+          }),
+        );
+      }
+    });
+  }
+
+  showAllZones() {
+    this.showedZones = this.zones.slice();
+    this.allZonesShowed = true;
   }
 
   getColorHotel() {
@@ -56,6 +64,9 @@ export class GuestRequestsComponent implements OnDestroy {
   ngOnDestroy(): void {
     if (this.subscribe) {
       this.subscribe.unsubscribe();
+    }
+    if (this.zonesSubscription) {
+      this.zonesSubscription.unsubscribe();
     }
   }
 }
