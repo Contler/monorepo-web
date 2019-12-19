@@ -40,7 +40,7 @@
     </mat-form-field>
     <div class="two-inputs main-container__fourth-row">
       <mat-form-field appearance="fill">
-        <mat-select [(ngModel)]="isFinished" [disabled]="!!request.finished_at">
+        <mat-select [(ngModel)]="isFinished" [disabled]="request.complete">
           <mat-option [value]="false">
             Activa
           </mat-option>

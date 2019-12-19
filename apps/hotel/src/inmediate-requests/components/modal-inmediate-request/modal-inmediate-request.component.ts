@@ -38,7 +38,7 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.request = this.data.request;
-    this.isFinished = !!this.request.finished_at;
+    this.isFinished = this.request.complete;
     this.subscription = this.employerService.getEmployers().subscribe(employers => (this.employers = employers));
   }
 
@@ -57,8 +57,9 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
         this.request.employer = employerFound.uid;
         this.request.employerName = `${employerFound.name} ${employerFound.lastName}`;
       }
-      if(this.isFinished && !this.request.finished_at){
+      if(this.isFinished && !this.request.complete){
         this.request.finished_at = new Date().getTime();
+        this.request.complete = true;
       }
       this.inmediateRequestsService
         .updateRequest(this.request.uid, this.request)
