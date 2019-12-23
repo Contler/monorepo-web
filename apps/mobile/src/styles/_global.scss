@@ -1,0 +1,16 @@
+.cnt-title {
+  color: $primary;
+  font-size: 24.3px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.cnt-modal {
+  .mat-dialog-container {
+    border-radius: 10px;
+    box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.27);
+    padding: 0;
+    position: relative;
+  }
+
+}

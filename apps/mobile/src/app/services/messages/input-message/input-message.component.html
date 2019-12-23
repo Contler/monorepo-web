@@ -1,0 +1,10 @@
+<div class="main_container" mat-dialog-content>
+  <mat-form-field appearance="fill" class="full_width">
+    <input matInput [type]="data.type" [(ngModel)]="value" name="value">
+    <mat-icon class="custom_icon" matSuffix>email</mat-icon>
+    <mat-hint class="text_primary">{{data.placeholder}}</mat-hint>
+  </mat-form-field>
+  <button class="custom_button" mat-raised-button color="accent" (click)="save()"
+    [disabled]="data.required && !value">Guardar</button>
+  <button class="custom_button top_20" mat-raised-button color="primary" (click)="close()">Cancelar</button>
+</div>

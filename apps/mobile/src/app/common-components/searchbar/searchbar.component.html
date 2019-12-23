@@ -1,0 +1,11 @@
+<form autocomplete="off">
+  <mat-form-field appearance="fill" class="full-width">
+    <input
+      id="input_search"
+      matInput
+      (keyup)="emitValue($event.target.value)"
+    />
+    <mat-hint>{{ placeholder }}</mat-hint>
+    <mat-icon class="custom_icon" matSuffix>search</mat-icon>
+  </mat-form-field>
+</form>

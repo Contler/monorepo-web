@@ -1,0 +1,91 @@
+<contler-toolbar [isModal]="true"></contler-toolbar>
+<ion-content>
+  <div class="section">
+    <contler-logo></contler-logo>
+    <div class="main-container">
+      <div
+        class="main-container__title"
+        [style.color]="generalService.hotelColor"
+      >
+        Solicitud inmediata
+      </div>
+      <form (ngSubmit)="save()">
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            [ngModel]="request.userName"
+            name="userName"
+            readonly
+          />
+          <mat-hint>Huésped</mat-hint>
+        </mat-form-field>
+        <div class="two-inputs">
+          <mat-form-field appearance="fill">
+            <input
+              matInput
+              [ngModel]="request.zoneName"
+              name="zoneName"
+              readonly
+            />
+            <mat-hint>Habitación</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <input
+              matInput
+              [value]="request.created_at|date:'HH:mm'"
+              name="created_at"
+              readonly
+            />
+            <mat-hint>Hora solicitud</mat-hint>
+          </mat-form-field>
+        </div>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            [ngModel]="request.zoneName"
+            name="zoneName"
+            readonly
+          />
+          <mat-hint>Zona</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <input matInput [ngModel]="request.message" name="message" readonly />
+          <mat-hint>Necesita</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-select [(ngModel)]="request.employer" name="employer">
+            <mat-option
+              *ngFor="let employer of employers"
+              [value]="employer.uid"
+            >
+              {{ employer.name }} {{ employer.lastName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-select
+            [(ngModel)]="isFinished"
+            name="isFinished"
+            [disabled]="request.complete"
+          >
+            <mat-option [value]="false">
+              Activa
+            </mat-option>
+            <mat-option [value]="true">
+              Cumplida
+            </mat-option>
+          </mat-select>
+          <mat-hint>Estado</mat-hint>
+        </mat-form-field>
+        <button
+          type="submit"
+          class="custom-button"
+          mat-raised-button
+          [style.background-color]="generalService.hotelColor"
+        >
+          ACTUALIZAR
+        </button>
+      </form>
+    </div>
+  </div>
+</ion-content>

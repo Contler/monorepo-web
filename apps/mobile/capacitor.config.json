@@ -4,5 +4,8 @@
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "../../dist/apps/mobile",
-  "cordova": {}
+  "cordova": {},
+  "server": {
+    "url": "http://192.168.1.58:8100"
+  }
 }

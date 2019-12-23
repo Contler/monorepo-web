@@ -1,0 +1,31 @@
+<contler-toolbar></contler-toolbar>
+<ion-content>
+  <div class="main-container">
+    <contler-logo></contler-logo>
+    <p class="main-container__title">Solicitudes inmediatas resueltas</p>
+    <div class="list-container">
+      <ng-container *ngIf="requests.length else empty">
+        <div class="item" *ngFor="let request of requests">
+          <div class="item__info-container">
+            <p class="username">{{request.userName}}</p>
+            <p class="zone">{{request.zoneName}}</p>
+          </div>
+          <div class="item__data-container">
+            <p class="time">{{request|requestTime}}</p>
+            <button mat-icon-button (click)="goToRequest(request)">
+              <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
+            </button>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #empty>
+        <div class="empty-container">
+          <mat-icon class="custom_icon empty-container__icon">check_circle</mat-icon>
+          <p class="empty-container__label" [style.color]="generalService.hotelColor">
+            No tienes ninguna solicitud inmediata de los huéspedes
+          </p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</ion-content>

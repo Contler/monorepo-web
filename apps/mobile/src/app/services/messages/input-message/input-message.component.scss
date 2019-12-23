@@ -1,0 +1,26 @@
+@import "../../../../styles/variables";
+
+.main_container{
+    padding: 40px 52.5px 38px 61px;
+    display: flex;
+    flex-direction: column;
+    .question{
+        font-family: Nunito;
+        font-size: 17.4px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.38;
+        letter-spacing: 0.15px;
+        text-align: center;
+        color: $primary;
+        width: 304px;
+        margin-bottom: 40px;
+    }
+    mat-form-field{
+        margin-bottom: 40px;
+    }
+    button{
+        width: 100%;
+    }
+}

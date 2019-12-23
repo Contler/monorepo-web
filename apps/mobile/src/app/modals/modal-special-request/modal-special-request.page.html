@@ -1,0 +1,120 @@
+<contler-toolbar [isModal]="true"></contler-toolbar>
+<ion-content>
+  <div class="section">
+    <contler-logo></contler-logo>
+    <div class="main-container">
+      <div
+        class="main-container__title"
+        [style.color]="generalService.hotelColor"
+      >
+        Solicitud especial
+      </div>
+      <form (ngSubmit)="save()">
+        <!-- USER -->
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            [ngModel]="request.userName"
+            name="userName"
+            readonly
+          />
+          <mat-hint>Huésped</mat-hint>
+        </mat-form-field>
+
+        <!-- ROOM - CREATED_AT -->
+        <div class="two-inputs">
+          <mat-form-field appearance="fill">
+            <input
+              matInput
+              [ngModel]="request.roomName"
+              name="roomName"
+              readonly
+            />
+            <mat-hint>Habitación</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <input
+              matInput
+              [value]="request.created_at|date:'HH:mm'"
+              name="created_at"
+              readonly
+            />
+            <mat-hint>Hora solicitud</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <!-- MESSAGE -->
+        <mat-form-field appearance="fill">
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            [ngModel]="request.description"
+            name="description"
+            readonly
+          ></textarea>
+          <mat-hint>Necesita</mat-hint>
+        </mat-form-field>
+
+        <!-- CHECK IN - CHECKOUT -->
+        <div class="two-inputs">
+          <mat-form-field appearance="fill">
+            <input
+              matInput
+              [value]="request.checkIn|date:'dd/MM/yyyy'"
+              name="checkIn"
+              readonly
+            />
+            <mat-hint>Fecha ingreso</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <input
+              matInput
+              [value]="request.checkOut|date:'dd/MM/yyyy'"
+              name="checkOut"
+              readonly
+            />
+            <mat-hint>Fecha salida</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <!-- EMPLOYERS -->
+        <mat-form-field appearance="fill">
+          <mat-select [(ngModel)]="request.employer" name="employer">
+            <mat-option
+              *ngFor="let employer of employers"
+              [value]="employer.uid"
+            >
+              {{ employer.name }} {{ employer.lastName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- STATUS -->
+        <mat-form-field appearance="fill">
+          <mat-select
+            [(ngModel)]="isFinished"
+            name="isFinished"
+            [disabled]="!request.isActive"
+          >
+            <mat-option [value]="false">
+              Pendiente
+            </mat-option>
+            <mat-option [value]="true">
+              Cumplida
+            </mat-option>
+          </mat-select>
+          <mat-hint>Estado</mat-hint>
+        </mat-form-field>
+
+        <button
+          type="submit"
+          class="custom-button"
+          mat-raised-button
+          [style.background-color]="generalService.hotelColor"
+        >
+          ACTUALIZAR
+        </button>
+      </form>
+    </div>
+  </div>
+</ion-content>
