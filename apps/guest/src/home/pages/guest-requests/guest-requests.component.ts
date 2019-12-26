@@ -23,6 +23,7 @@ export class GuestRequestsComponent implements OnDestroy {
   public allZonesShowed: boolean = false;
 
   private zonesSubscription: Subscription | null = null;
+  private requestSubscription: Subscription | null = null;
 
   constructor(
     private guestService: GuestService,
@@ -38,16 +39,17 @@ export class GuestRequestsComponent implements OnDestroy {
       this.zones = zones;
       this.showedZones = this.allZonesShowed ? this.zones.slice() : this.zones.filter(zone => zone.principal);
     });
-    this.requestService.getRequestFinish().subscribe(requests => {
+    this.requestSubscription = this.requestService.getRequestFinish().subscribe(requests => {
       if (requests && requests.length > 0) {
-        requests.forEach(request =>
+        requests.forEach(request => {
+          console.log('request', request);
           this.dialog.open(ModalQualifyComponent, {
             width: '342px',
             panelClass: 'cot-dialog',
             data: request,
             disableClose: true,
-          }),
-        );
+          });
+        });
       }
     });
   }
@@ -67,6 +69,9 @@ export class GuestRequestsComponent implements OnDestroy {
     }
     if (this.zonesSubscription) {
       this.zonesSubscription.unsubscribe();
+    }
+    if (this.requestSubscription) {
+      this.requestSubscription.unsubscribe();
     }
   }
 }
