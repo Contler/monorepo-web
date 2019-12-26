@@ -37,3 +37,10 @@ $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
     }
   }
 }
+.main-container{
+  height: 100%;
+  .zones-container{
+    max-height: 45%;
+    overflow: auto;
+  }
+}
