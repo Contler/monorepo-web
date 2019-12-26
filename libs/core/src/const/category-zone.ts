@@ -23,22 +23,26 @@ export const CATEGORY_ZONE = [
 
 export const SUB_CATEGORY = {
   0: [
-    { name: 'Llaves de mi habitación' },
-    { name: 'Reservas de espacios' },
-    { name: 'Bebidas' },
-    { name: 'Llamar al personal del hotel' },
+    { name: 'Llaves de mi habitación', icon: 'vpn_key' },
+    { name: 'Reservas de espacios', icon: 'calendar_today' },
+    { name: 'Bebidas', icon: 'local_bar' },
+    { name: 'Llamar al personal del hotel', icon: 'people' },
   ],
-  1: [{ name: 'Toallas' }, { name: 'Bebidas' }, { name: 'Reservas de espacios' }],
+  1: [
+    { name: 'Toallas', icon: 'bookmark' },
+    { name: 'Bebidas', icon: 'local_bar' },
+    { name: 'Reservas de espacios', icon: 'calendar_today' },
+  ],
   2: [
-    { name: 'Room Service' },
-    { name: 'Solicitar Limpieza' },
-    { name: 'Programar wake up call' },
-    { name: 'Solicitar late check-out' },
+    { name: 'Room Service', icon: 'notifications_active' },
+    { name: 'Solicitar Limpieza', icon: 'bathtub' },
+    { name: 'Programar wake up call', icon: 'watch_later' },
+    { name: 'Solicitar late check-out', icon: 'today' },
   ],
   3: [
-    { name: 'Pre-ordenar comida' },
-    { name: 'Solicitar limpieza de la habitación' },
-    { name: 'Solicitudes especiales' },
+    { name: 'Pre-ordenar comida', icon: 'fastfood' },
+    { name: 'Solicitar limpieza de la habitación', icon: 'watch_later' },
+    { name: 'Solicitudes especiales', icon: 'deck' },
   ],
-  4: [{ name: 'Mesero' }, { name: 'Llaves de mi habitación' }],
+  4: [{ name: 'Mesero', icon: 'person' }, { name: 'Llaves de mi habitación', icon: 'vpn_key' }],
 };

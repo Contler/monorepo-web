@@ -13,7 +13,7 @@
         *ngFor="let subcategory of categories[zone.category.value]"
         (click)="setQuickRequest(subcategory.name)"
       >
-        <mat-icon class="features-container-item__icon">hotel</mat-icon>
+        <mat-icon class="features-container-item__icon">{{subcategory.icon}}</mat-icon>
         <p class="features-container-item__name">{{ subcategory.name }}</p>
       </div>
     </div>
