@@ -3,19 +3,16 @@
   <div class="main-container">
     <contler-logo></contler-logo>
     <div class="search-container" *ngIf="searchRequestsEnabled">
-      <contler-searchbar
-        [placeholder]="'Qué buscas'"
-        (value)="searchRequests($event)"
-      ></contler-searchbar>
+      <contler-searchbar [placeholder]="'Qué buscas'" (value)="searchRequests($event)"></contler-searchbar>
       <ng-container *ngIf="requestsResults.length">
-        <div class="item" *ngFor="let request of requestsResults">
+        <div class="item" *ngFor="let request of requestsResults" (click)="goToRequest(request)">
           <div class="item__info-container">
             <p class="username">{{request.userName}}</p>
             <p class="zone">{{request.description}}</p>
           </div>
           <div class="item__data-container">
             <p class="time">{{request.roomName}}</p>
-            <button mat-icon-button (click)="goToRequest(request)">
+            <button mat-icon-button>
               <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
             </button>
           </div>
@@ -46,13 +43,8 @@
         </ng-container>
         <ng-template #empty>
           <div class="empty-container">
-            <mat-icon class="custom_icon empty-container__icon"
-              >check_circle</mat-icon
-            >
-            <p
-              class="empty-container__label"
-              [style.color]="generalService.hotelColor"
-            >
+            <mat-icon class="custom_icon empty-container__icon">check_circle</mat-icon>
+            <p class="empty-container__label" [style.color]="generalService.hotelColor">
               No tienes ninguna solicitud especial de los huéspedes
             </p>
           </div>

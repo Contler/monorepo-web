@@ -5,14 +5,14 @@
     <p class="main-container__title">Solicitudes inmediatas resueltas</p>
     <div class="list-container">
       <ng-container *ngIf="requests.length else empty">
-        <div class="item" *ngFor="let request of requests">
+        <div class="item" *ngFor="let request of requests" (click)="goToRequest(request)">
           <div class="item__info-container">
             <p class="username">{{request.userName}}</p>
             <p class="zone">{{request.zoneName}}</p>
           </div>
           <div class="item__data-container">
             <p class="time">{{request|requestTime}}</p>
-            <button mat-icon-button (click)="goToRequest(request)">
+            <button mat-icon-button>
               <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
             </button>
           </div>
