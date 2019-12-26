@@ -13,12 +13,15 @@ export class ModalQualifyComponent implements OnInit {
   comment: string | undefined;
   load = false;
   readonly textRate = ['Muy malo', 'Malo', 'Regular', 'Bueno', 'Exelente'];
+  public request: Request;
 
   constructor(
     private dialogRef: MatDialogRef<ModalQualifyComponent>,
     @Inject(MAT_DIALOG_DATA) private data: Request,
     private requestService: RequestService,
-  ) {}
+  ) {
+    this.request = Object.assign({}, data);
+  }
 
   ngOnInit() {}
 
@@ -30,8 +33,8 @@ export class ModalQualifyComponent implements OnInit {
     this.load = true;
     this.data.scoreComments = this.comment;
     this.data.score = this.value;
-    this.requestService.updateRequest(this.data).then(_=> {
-      this.dialogRef.close()
-    })
+    this.requestService.updateRequest(this.data).then(_ => {
+      this.dialogRef.close();
+    });
   }
 }
