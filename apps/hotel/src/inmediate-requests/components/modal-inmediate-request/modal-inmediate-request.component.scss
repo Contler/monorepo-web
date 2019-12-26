@@ -28,19 +28,28 @@
     margin-bottom: 49px;
   }
   .ranking-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    &__label {
-      font-size: 20.2px;
-      font-weight: 500;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: normal;
-      letter-spacing: 0.25px;
-      text-align: center;
-      color: $text-3;
+    padding-left: 20px;
+    p{
       margin: 0;
+    }
+    .score-info{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &__label {
+        font-size: 20.2px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: 0.25px;
+        text-align: center;
+        color: $text-3;
+      }
+    }
+    p.user-comment{
+      margin-top: 10px;
+      font-style: italic;
     }
   }
 }

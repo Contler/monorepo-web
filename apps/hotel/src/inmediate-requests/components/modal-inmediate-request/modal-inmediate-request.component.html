@@ -51,15 +51,18 @@
         <mat-hint>Estado</mat-hint>
       </mat-form-field>
       <div class="ranking-container">
-        <p class="ranking-container__label">Calificación</p>
-        <star-rating
-          [value]="request.score"
-          totalstars="5"
-          checkedcolor="#dfae00"
-          uncheckedcolor="#e0e0e0"
-          size="24px"
-          readonly="true"
-        ></star-rating>
+        <div class="score-info">
+          <p class="ranking-container__label">Calificación</p>
+          <star-rating
+            [value]="request.score"
+            totalstars="5"
+            checkedcolor="#dfae00"
+            uncheckedcolor="#e0e0e0"
+            size="24px"
+            readonly="true"
+          ></star-rating>
+        </div>
+        <p class="user-comment">{{ request.scoreComments }}</p>
       </div>
     </div>
     <button mat-raised-button color="accent" contlerButton [loading]="loading" [disabled]="loading" (click)="save()">
