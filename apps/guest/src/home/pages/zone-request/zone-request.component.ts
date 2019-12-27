@@ -8,8 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'guest/services/zone.service';
 import { map, switchMap, take } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { SUB_CATEGORY } from 'lib/const';
+import { SUB_CATEGORY, SUB_CATEGORY_DRINKS } from 'lib/const';
 import { NotificationsService } from 'guest/services/notifications.service';
 import { UsersService } from 'guest/services/users.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
@@ -30,6 +29,13 @@ export class ZoneRequestComponent implements OnDestroy {
   private zoneUid: string | null;
   private guestSubscribe: Subscription;
   private zoneSubscribe: Subscription;
+
+  public isSubCategory: boolean = false; // DRINKS PAGE, etc
+
+  //CODIGO TEMPORAL HASTA DEFINIR LOGICA DE PRODUCTOS
+  public typeName: string | null = null;
+  public drinkName: string | null = null;
+  public drinksQuantity: number | null = null;
 
   constructor(
     private guestService: GuestService,
@@ -64,18 +70,28 @@ export class ZoneRequestComponent implements OnDestroy {
     this.loader = true;
     this.guestService.$guest
       .pipe(
-        map(
-          guest =>
-            new Request(
-              this.afDb.createPushId()!,
-              this.hotel!.uid!,
-              guest!.uid,
-              `${guest!.name} ${guest!.lastName}`,
-              this.zoneUid!,
-              this.zone ? this.zone.name : '-',
-              this.requestController.value,
-            ),
-        ),
+        map(guest => {
+          let request = new Request(
+            this.afDb.createPushId()!,
+            this.hotel!.uid!,
+            guest!.uid,
+            `${guest!.name} ${guest!.lastName}`,
+            this.zoneUid!,
+            this.zone ? this.zone.name : '-',
+            this.requestController.value,
+          );
+          if (this.isSubCategory) {
+            // MÁS ADELANTE PUEDEN HABER DIFERENTES TIPOS DE 'SUB CATEGORÍAS PARA TENER EN CUENTA
+            request.drinkData = {
+              typeKey: null,
+              typeName: this.typeName,
+              drinkKey: null,
+              drinkName: this.drinkName,
+              units: this.drinksQuantity,
+            };
+          }
+          return request;
+        }),
         switchMap(request => this.afDb.object(`${Request.REF}/${request.uid}`).set(request.serialize())),
       )
       .subscribe(
@@ -127,6 +143,9 @@ export class ZoneRequestComponent implements OnDestroy {
     this.requestController.setValue(value);
     const temp = this.content.nativeElement.parentNode as any;
     temp.scrollTop = temp.scrollHeight;
+    if (value === SUB_CATEGORY_DRINKS) {
+      this.isSubCategory = true;
+    }
   }
 
   ngOnDestroy(): void {

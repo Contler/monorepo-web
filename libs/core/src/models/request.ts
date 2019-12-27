@@ -18,6 +18,13 @@ export class Request {
   @Transform(value => value || false, { toClassOnly: true })
   complete = false;
   scoreComments: string | undefined;
+  drinkData: {
+    typeKey: string | null;
+    typeName: string | null;
+    drinkKey: string | null;
+    drinkName: string | null;
+    units: number | null;
+  } | null;
 
   constructor(
     uid: string,
@@ -39,6 +46,13 @@ export class Request {
     this.finished_at = null;
     this.employer = null;
     this.employerName = null;
+    this.drinkData = {
+      typeKey: null,
+      typeName: null,
+      drinkKey: null,
+      drinkName: null,
+      units: null,
+    };
   }
 
   serialize() {

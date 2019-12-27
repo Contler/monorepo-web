@@ -24,7 +24,7 @@ import { MessagesModule } from 'guest/services/messages/messages.module';
     SpecialRequestComponent,
     MyInmediateRequestsComponent,
     InmediateRequestComponent,
-    ModalQualifyComponent
+    ModalQualifyComponent,
   ],
   imports: [
     CommonModule,
@@ -36,8 +36,8 @@ import { MessagesModule } from 'guest/services/messages/messages.module';
     ReactiveFormsModule,
     PipesModule,
     RatingModule,
-    MessagesModule
+    MessagesModule,
   ],
-  entryComponents: [ModalQualifyComponent]
+  entryComponents: [ModalQualifyComponent],
 })
-export class HomeModule { }
+export class HomeModule {}

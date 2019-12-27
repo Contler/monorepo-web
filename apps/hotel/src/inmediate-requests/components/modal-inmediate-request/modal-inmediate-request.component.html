@@ -38,6 +38,24 @@
       <input matInput [ngModel]="request.message" readonly />
       <mat-hint>Solicitud</mat-hint>
     </mat-form-field>
+
+    <ng-container *ngIf="request.message === DRINKS_SUBCATEGORY">
+      <div class="drinks-container">
+        <mat-form-field class="full-width" appearance="fill">
+          <input matInput [ngModel]="request.drinkData.typeName" readonly />
+          <mat-hint>Tipo de bebida</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+          <input matInput [ngModel]="request.drinkData.drinkName" readonly />
+          <mat-hint>Bebida</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+          <input matInput [ngModel]="request.drinkData.units" readonly />
+          <mat-hint>Cantidad</mat-hint>
+        </mat-form-field>
+      </div>
+    </ng-container>
+
     <div class="two-inputs main-container__fourth-row">
       <mat-form-field appearance="fill">
         <mat-select [(ngModel)]="isFinished" [disabled]="request.complete">

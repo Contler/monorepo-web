@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Request } from 'lib/models';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { MessagesService } from 'hotel/services/messages/messages.service';
+import { SUB_CATEGORY_DRINKS } from '@contler/core/const';
 
 @Component({
   selector: 'contler-modal-inmediate-request',
@@ -20,6 +21,8 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
   public employers: Employer[] = [];
   private subscription: Subscription | null = null;
   public isFinished: boolean = false;
+
+  public readonly DRINKS_SUBCATEGORY = SUB_CATEGORY_DRINKS;
 
   constructor(
     public dialogRef: MatDialogRef<ModalInmediateRequestComponent>,
@@ -57,7 +60,7 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
         this.request.employer = employerFound.uid;
         this.request.employerName = `${employerFound.name} ${employerFound.lastName}`;
       }
-      if(this.isFinished && !this.request.complete){
+      if (this.isFinished && !this.request.complete) {
         this.request.finished_at = new Date().getTime();
         this.request.complete = true;
       }

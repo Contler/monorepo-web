@@ -1,5 +1,4 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
-  
   <div class="container" marcoBody #content>
     <img *ngIf="hotel" [src]="hotel.logo" class="container__hotel-logo" />
     <p class="container__label" [style]="getColorHotel()">
@@ -7,22 +6,69 @@
       ¿Qué necesitas?
     </p>
 
-    <div class="features-container" *ngIf="zone">
-      <div
-        class="features-container-item"
-        *ngFor="let subcategory of categories[zone.category.value]"
-        (click)="setQuickRequest(subcategory.name)"
-      >
-        <mat-icon class="features-container-item__icon">{{subcategory.icon}}</mat-icon>
-        <p class="features-container-item__name">{{ subcategory.name }}</p>
+    <ng-container *ngIf="!isSubCategory">
+      <div class="features-container" *ngIf="zone">
+        <div
+          class="features-container-item"
+          *ngFor="let subcategory of categories[zone.category.value]"
+          (click)="setQuickRequest(subcategory.name)"
+        >
+          <mat-icon class="features-container-item__icon">{{ subcategory.icon }}</mat-icon>
+          <p class="features-container-item__name">{{ subcategory.name }}</p>
+        </div>
       </div>
-    </div>
 
-    <p class="container__specific-label">Algo específico</p>
-    <mat-form-field appearance="fill" class="full_width container__input">
-      <input matInput [formControl]="requestController" />
-      <mat-hint>Escribe lo que necesitas</mat-hint>
-    </mat-form-field>
+      <p class="container__specific-label">Algo específico</p>
+      <mat-form-field appearance="fill" class="full_width container__input">
+        <input matInput [formControl]="requestController" />
+        <mat-hint>Escribe lo que necesitas</mat-hint>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container *ngIf="isSubCategory">
+      <div class="drin-container">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-select [(ngModel)]="typeName" name="typeName">
+            <mat-option [value]="'Cervezas Nacionales'">
+              Cervezas Nacionales
+            </mat-option>
+            <mat-option [value]="'Cervezas Internacionales'">
+              Cervezas Internacionales
+            </mat-option>
+          </mat-select>
+          <mat-hint>Tipo de bebida</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-select [(ngModel)]="drinkName" name="drinkName">
+            <mat-option [value]="'Club Colombia - $9.900'">
+              Club Colombia - $9.900
+            </mat-option>
+            <mat-option [value]="'Corona'">
+              Corona
+            </mat-option>
+          </mat-select>
+          <mat-hint>Bebida</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-select [(ngModel)]="drinksQuantity" name="drinksQuantity">
+            <mat-option [value]="1">
+              1 unidad
+            </mat-option>
+            <mat-option [value]="2">
+              2 unidades
+            </mat-option>
+            <mat-option [value]="3">
+              3 unidades
+            </mat-option>
+            <mat-option [value]="4">
+              4 unidades
+            </mat-option>
+          </mat-select>
+          <mat-hint>Cantidad</mat-hint>
+        </mat-form-field>
+      </div>
+    </ng-container>
+
     <button
       class="full_width custom-button container__button"
       mat-raised-button

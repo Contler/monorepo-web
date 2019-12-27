@@ -21,6 +21,8 @@ export const CATEGORY_ZONE = [
   },
 ];
 
+export const SUB_CATEGORY_DRINKS = 'Bebidas';
+
 export const SUB_CATEGORY = {
   0: [
     { name: 'Llaves de mi habitación', icon: 'vpn_key' },
