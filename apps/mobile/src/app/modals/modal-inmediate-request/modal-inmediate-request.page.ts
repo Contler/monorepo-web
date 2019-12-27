@@ -6,6 +6,7 @@ import { MessagesService } from '../../services/messages/messages.service';
 import { GeneralService } from '../../services/general.service';
 import { EmployerService } from '../../services/employer.service';
 import { InmediateRequestsService } from '../../services/inmediate-requests.service';
+import { SUB_CATEGORY_DRINKS } from '@contler/core/const';
 
 
 @Component({
@@ -19,6 +20,8 @@ export class ModalInmediateRequestPage implements OnInit, OnDestroy {
   public employers: Employer[] = [];
   private subscription: Subscription | null = null;
   public isFinished = false;
+
+  public readonly DRINKS_SUBCATEGORY = SUB_CATEGORY_DRINKS;
 
   constructor(
     public generalService: GeneralService,
