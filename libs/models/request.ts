@@ -18,6 +18,7 @@ export class Request {
   @Transform(value => value || false, { toClassOnly: true })
   complete = false;
   scoreComments: string | undefined;
+  room: string | undefined;
   drinkData: {
     typeKey: string | null;
     typeName: string | null;

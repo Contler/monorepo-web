@@ -31,7 +31,7 @@ export class ModalQualifyComponent implements OnInit {
 
   close() {
     this.load = true;
-    this.data.scoreComments = this.comment;
+    this.data.scoreComments = this.comment || '';
     this.data.score = this.value;
     this.requestService.updateRequest(this.data).then(_ => {
       this.dialogRef.close();

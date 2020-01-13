@@ -13,7 +13,7 @@ import { ModalInmediateRequestComponent } from 'hotel/inmediate-requests/compone
   styleUrls: ['./inmediate-requests.component.scss'],
 })
 export class InmediateRequestsComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['userName', 'zone', 'message', 'created_at', 'employerName', 'status', 'actions'];
+  displayedColumns: string[] = ['userName', 'zone', 'room', 'message', 'created_at', 'employerName', 'status', 'actions'];
   dataSource = new MatTableDataSource<Request>([]);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
 

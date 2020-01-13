@@ -24,7 +24,7 @@
     class="cnt-qualify__btn"
     contlerButton
     [loading]="load"
-    [disabled]="!(!!comment && !!value) || load"
+    [disabled]="!( !!value) || load"
     (click)="close()"
   >
     Calificar

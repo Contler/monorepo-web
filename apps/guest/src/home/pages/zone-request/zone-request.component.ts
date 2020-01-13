@@ -80,6 +80,7 @@ export class ZoneRequestComponent implements OnDestroy {
             this.zone ? this.zone.name : '-',
             this.requestController.value,
           );
+          request.room = guest!.room!.name;
           if (this.isSubCategory) {
             // MÁS ADELANTE PUEDEN HABER DIFERENTES TIPOS DE 'SUB CATEGORÍAS PARA TENER EN CUENTA
             request.drinkData = {
