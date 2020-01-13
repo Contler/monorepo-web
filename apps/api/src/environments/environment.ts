@@ -14,5 +14,6 @@ export const environment = {
     client_x509_cert_url:
       'https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-gstjs%40contler-dev.iam.gserviceaccount.com',
   },
-  fireDatabase: 'https://contler-dev.firebaseio.com'
+  fireDatabase: 'https://contler-dev.firebaseio.com',
+  db: 'postgres://ddqtmhenpjlcdl:76fcecbaefbb7fb91eefdeebedeb1ea978c49bd94b418f5edbd8ce5bc47acb2a@ec2-107-21-101-177.compute-1.amazonaws.com:5432/d7m568c6bl163n'
 };
