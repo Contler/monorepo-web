@@ -1,4 +1,5 @@
-import { Column, Entity, Generated, PrimaryColumn } from 'typeorm';
+import { Column, Entity, Generated, OneToMany, PrimaryColumn } from 'typeorm';
+import { EmployerEntity } from './employer.entity';
 
 @Entity({ name: 'hotel' })
 export class HotelEntity {
@@ -15,9 +16,9 @@ export class HotelEntity {
   @Column()
   logo!: string;
 
-  // @OneToMany(type => EmployerEntity, employer => employer.hotel)
-  // employees!: EmployerEntity[];
-  //
+  @OneToMany(type => EmployerEntity, employer => employer.hotel)
+  employees!: EmployerEntity[];
+
   // @OneToMany(type => ZoneEntity, zone => zone.hotel)
   // zones!: ZoneEntity[];
 }
