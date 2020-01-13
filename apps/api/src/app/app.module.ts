@@ -6,12 +6,13 @@ import { UserModule } from 'api/user/user.module';
 import { GuestModule } from 'api/guest/guest.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { environment } from 'api/environments/environment';
+import { HotelEntity } from '@contler/entity';
 
 @Module({
   imports: [UserModule, GuestModule, TypeOrmModule.forRoot({
     type: 'postgres',
     url: environment.db,
-    entities: [],
+    entities: [HotelEntity],
     extra: {
       ssl: true
     }
