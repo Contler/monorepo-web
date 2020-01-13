@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Request } from '@contler/core/models';
+import { Request } from '@contler/models';
 
 @Pipe({
   name: "requestTime"

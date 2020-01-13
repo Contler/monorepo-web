@@ -1,5 +1,5 @@
 import { IsEmail, IsIn, IsNotEmpty } from 'class-validator';
-import { CHIEF, EMPLOYER } from '@contler/core/const';
+import { CHIEF, EMPLOYER } from '@contler/const';
 
 export class EmployerRequest {
   @IsEmail()

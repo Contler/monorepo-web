@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { UserService } from '@contler/core';
-import { take, switchMap, map } from 'rxjs/operators';
-import { SpecialRequest } from '@contler/core/models';
+import { map, switchMap, take } from 'rxjs/operators';
+import { SpecialRequest } from '@contler/models';
 
 @Injectable({
   providedIn: 'root',

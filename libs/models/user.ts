@@ -1,5 +1,5 @@
 import { classToPlain, Transform } from 'class-transformer';
-import { EMPLOYER, Roles } from '@contler/core/const';
+import { EMPLOYER, Roles } from '@contler/const';
 
 export class User {
   static readonly REF = 'user';

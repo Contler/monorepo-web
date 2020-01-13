@@ -16,9 +16,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@contler/const": ["libs/const/index.ts"],
+      "@contler/const/*": ["libs/const/*"],
+      "@contler/models": ["libs/models/index.ts"],
+      "@contler/models/*": ["libs/models/*"],
       "@contler/core": ["libs/core/src/index.ts"],
-      "@contler/core/const": ["libs/core/src/const"],
-      "@contler/core/models": ["libs/core/src/models"],
       "api/*": ["apps/api/src/*"],
       "hotel/*": ["apps/hotel/src/*"],
       "guest/*": ["apps/guest/src/*"],

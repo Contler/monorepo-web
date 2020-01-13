@@ -1,9 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UsersService } from 'guest/services/users.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { take } from 'rxjs/operators';
-import { SpecialRequest, Guest, Hotel } from '@contler/core/models';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Guest, Hotel, SpecialRequest } from '@contler/models';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { SpecialRequestsService } from 'guest/services/special-requests.service';
 import { Router } from '@angular/router';
@@ -45,7 +44,7 @@ export class SpecialRequestComponent implements OnInit, OnDestroy {
       .getUserByKey(this.auth.auth.currentUser ? this.auth.auth.currentUser.uid : '')
       .pipe(take(1))
       .toPromise()) as Guest;
-    let specialRequest = new SpecialRequest();
+    const specialRequest = new SpecialRequest();
     specialRequest.uid = this.realtime.createPushId();
     specialRequest.hotel = user.hotel;
     specialRequest.room = user.room ? user.room.uid : null;

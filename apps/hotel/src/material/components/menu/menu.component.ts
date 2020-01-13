@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelService } from '@contler/core';
 import { Observable } from 'rxjs';
-import { Hotel } from '@contler/core/models';
+import { Hotel } from '@contler/models';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 

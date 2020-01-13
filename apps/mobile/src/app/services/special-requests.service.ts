@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AuthService } from './auth.service';
-import { SpecialRequest } from '@contler/core/models';
+import { SpecialRequest } from '@contler/models';
 import { map } from 'rxjs/operators';
 
 @Injectable({

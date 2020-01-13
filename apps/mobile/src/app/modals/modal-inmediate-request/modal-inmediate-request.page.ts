@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
-import { Employer, Request } from '@contler/core/models';
+import { Employer, Request } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { MessagesService } from '../../services/messages/messages.service';
 import { GeneralService } from '../../services/general.service';
 import { EmployerService } from '../../services/employer.service';
 import { InmediateRequestsService } from '../../services/inmediate-requests.service';
-import { SUB_CATEGORY_DRINKS } from '@contler/core/const';
+import { SUB_CATEGORY_DRINKS } from '@contler/const';
 
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ModalController } from '@ionic/angular';
 import { map } from 'rxjs/operators';
-import { SpecialRequest } from '@contler/core/models';
+import { SpecialRequest } from '@contler/models';
 import { SpecialRequestsService } from '../../../services/special-requests.service';
 import { GeneralService } from '../../../services/general.service';
 import { ModalSpecialRequestPage } from '../../../modals/modal-special-request/modal-special-request.page';

@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Param, Post } from '@nestjs/common';
-import { GuestRequest } from '@contler/core/models';
+import { GuestRequest } from '@contler/models';
 import { GuestService } from 'api/guest/guest.service';
 
 @Controller('guest')

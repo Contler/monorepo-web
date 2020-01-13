@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter, tap } from 'rxjs/operators';
-import { User } from 'lib/models/user';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { User } from '@contler/models/user';
 import { UsersService } from 'guest/services/users.service';
 import { Subscription } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Hotel } from 'lib/models/hotel';
+import { Hotel } from '@contler/models/hotel';
 import { GuestService } from 'guest/services/guest.service';
 
 @Component({

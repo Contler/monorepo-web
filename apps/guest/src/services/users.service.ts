@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { CHIEF } from '@contler/core/const';
+import { CHIEF } from '@contler/const';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { User } from 'lib/models/user';
-import { Guest } from 'lib/models/guest';
+import { User } from '@contler/models/user';
+import { Guest } from '@contler/models/guest';
 
 @Injectable({
   providedIn: 'root',

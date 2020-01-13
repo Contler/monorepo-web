@@ -6,12 +6,13 @@ import { ZoneRequestComponent } from './pages/zone-request/zone-request.componen
 import { pipe } from 'rxjs';
 import { AngularFireAuthGuard, customClaims } from '@angular/fire/auth-guard';
 import { map, tap } from 'rxjs/operators';
-import { GUEST } from 'lib/const';
+import { GUEST } from '@contler/const';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import { SpecialRequestComponent } from './pages/special-request/special-request.component';
 import { MyInmediateRequestsComponent } from './pages/my-inmediate-requests/my-inmediate-requests.component';
 import { InmediateRequestComponent } from './pages/inmediate-request/inmediate-request.component';
+
 const redirectUnauthorizedToLogin = () =>
   pipe(
     customClaims,

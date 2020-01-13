@@ -1,7 +1,7 @@
 import { Transform } from 'class-transformer';
+import { CHIEF, EMPLOYER } from '@contler/const';
+import { User } from '@contler/models/user';
 
-import { User } from 'lib/models/user';
-import { CHIEF, EMPLOYER } from 'lib/const';
 
 export class Employer extends User {
 

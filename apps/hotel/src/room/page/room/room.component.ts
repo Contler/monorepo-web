@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { Observable } from 'rxjs';
-import { Room, Zone } from '@contler/core/models';
+import { Room, Zone } from '@contler/models';
 import { RoomService } from 'hotel/room/services/room.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesService } from 'hotel/services/messages/messages.service';

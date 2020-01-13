@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Employer, EmployerRequest, Zone } from '@contler/core/models';
+import { Employer, EmployerRequest, Zone } from '@contler/models';
 import { environment } from 'hotel/environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map, switchMap, take } from 'rxjs/operators';
 import { UserService } from '@contler/core';
 import { plainToClass } from 'class-transformer';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { ADMIN } from '@contler/core/const';
+import { ADMIN } from '@contler/const';
 
 @Injectable()
 export class EmployerService {

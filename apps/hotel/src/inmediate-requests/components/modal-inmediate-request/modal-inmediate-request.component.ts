@@ -1,12 +1,11 @@
-import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EmployerService } from 'hotel/employer/services/employer.service';
-import { Employer } from '@contler/core/models';
+import { Employer, Request } from '@contler/models';
 import { Subscription } from 'rxjs';
-import { Request } from 'lib/models';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { MessagesService } from 'hotel/services/messages/messages.service';
-import { SUB_CATEGORY_DRINKS } from '@contler/core/const';
+import { SUB_CATEGORY_DRINKS } from '@contler/const';
 
 @Component({
   selector: 'contler-modal-inmediate-request',
@@ -20,7 +19,7 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
 
   public employers: Employer[] = [];
   private subscription: Subscription | null = null;
-  public isFinished: boolean = false;
+  public isFinished = false;
 
   public readonly DRINKS_SUBCATEGORY = SUB_CATEGORY_DRINKS;
 
@@ -55,7 +54,7 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
     if (this.request) {
       this.loading = true;
       const employerToFind: string = this.request.employer || '';
-      const employerFound = this.employers.find(employer => employer.uid == employerToFind);
+      const employerFound = this.employers.find(employer => employer.uid === employerToFind);
       if (employerFound) {
         this.request.employer = employerFound.uid;
         this.request.employerName = `${employerFound.name} ${employerFound.lastName}`;

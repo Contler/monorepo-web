@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { InmediateRequestsService } from 'guest/services/inmediate-requests.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap, pluck, take } from 'rxjs/operators';
+import { pluck, switchMap, take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import { Request, Hotel } from '@contler/core/models';
+import { Hotel, Request } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MessagesService } from 'guest/services/messages/messages.service';

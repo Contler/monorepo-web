@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Storage } from '@ionic/storage';
 import { Platform } from '@ionic/angular';
-import { User } from '@contler/core/models';
+import { User } from '@contler/models';
 
 @Injectable({
   providedIn: 'root',

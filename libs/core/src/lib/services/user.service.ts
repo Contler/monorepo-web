@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { filter, map, switchMap, take } from 'rxjs/operators';
-import { Admin, Employer, Guest, User } from 'lib/models';
-import { ADMIN } from 'lib/const';
+import { Admin, Employer, Guest, User } from '@contler/models';
+import { ADMIN } from '@contler/const';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { plainToClass } from 'class-transformer';
-import { Subscription } from 'rxjs';
 
 @Injectable()
 export class UserService {

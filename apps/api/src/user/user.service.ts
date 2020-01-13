@@ -1,9 +1,8 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { auth, firestore, database } from 'firebase-admin';
-import { Admin, AdminRequest, Claim, Employer, EmployerRequest, User, Zone } from '@contler/core/models';
-import { ADMIN, Roles } from '@contler/core/const';
+import { auth, database, firestore } from 'firebase-admin';
+import { Admin, AdminRequest, Claim, Employer, EmployerRequest, User, Zone } from '@contler/models';
+import { ADMIN, Roles } from '@contler/const';
 import { HotelService } from 'api/hotel/hotel.service';
-import { HttpRequest } from '@angular/common/http';
 
 @Injectable()
 export class UserService {

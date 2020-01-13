@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { Guest, Hotel, Zone } from '@contler/core/models';
+import { Guest, Hotel, Zone } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
 import { ZoneService } from 'guest/services/zone.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -20,7 +20,7 @@ export class GuestRequestsComponent implements OnDestroy {
   private subscribe: Subscription;
   private zones: Zone[] = [];
   public showedZones: Zone[] = [];
-  public allZonesShowed: boolean = false;
+  public allZonesShowed = false;
 
   private zonesSubscription: Subscription | null = null;
   private requestSubscription: Subscription | null = null;

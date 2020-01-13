@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { GUEST } from 'lib/const';
+import { GUEST } from '@contler/const';
 
 @Component({
   selector: 'contler-login',

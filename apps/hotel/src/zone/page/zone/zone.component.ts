@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Zone, MapZone, ZoneCategory } from '@contler/core/models';
-import { CATEGORY_ZONE, ICONS } from '@contler/core/const';
+import { Zone } from '@contler/models';
+import { CATEGORY_ZONE, ICONS } from '@contler/const';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEditZoneComponent } from 'hotel/zone/components/modal-edit-zone/modal-edit-zone.component';
 import { MessagesService } from 'hotel/services/messages/messages.service';

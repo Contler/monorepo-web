@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Claim, Guest, GuestRequest, Room } from '@contler/core/models';
+import { Claim, Guest, GuestRequest, Room } from '@contler/models';
 import { auth, database, firestore } from 'firebase-admin';
-import { GUEST } from '@contler/core/const';
+import { GUEST } from '@contler/const';
 
 @Injectable()
 export class GuestService {

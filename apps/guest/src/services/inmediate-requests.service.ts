@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Request } from '@contler/core/models';
+import { Request } from '@contler/models';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { GuestService } from './guest.service';
-import { switchMap, map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +20,7 @@ export class InmediateRequestsService {
             map((data: any) => {
               return Object.values(data) as Request[];
             }),
-            map((data: Request[]) => data.filter(request => request.user == guest!.uid).sort(this.sortRequests)),
+            map((data: Request[]) => data.filter(request => request.user === guest!.uid).sort(this.sortRequests)),
           );
       }),
     );

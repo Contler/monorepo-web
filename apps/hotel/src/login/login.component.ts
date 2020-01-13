@@ -4,8 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 
-import { Claim } from '@contler/core/models';
-import { ADMIN } from '@contler/core/const';
+import { Claim } from '@contler/models';
+import { ADMIN } from '@contler/const';
 
 @Component({
   selector: 'contler-login',

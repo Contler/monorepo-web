@@ -4,7 +4,7 @@ import { AngularFireAuthGuard, customClaims } from '@angular/fire/auth-guard';
 
 import { AdminHomeComponent } from 'hotel/home/page/admin-home/admin-home.component';
 import { map } from 'rxjs/operators';
-import { ADMIN } from '@contler/core/const';
+import { ADMIN } from '@contler/const';
 import { pipe } from 'rxjs';
 
 const redirectToAdmin = () =>

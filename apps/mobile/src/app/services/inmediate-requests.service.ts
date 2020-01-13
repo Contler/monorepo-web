@@ -3,7 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 
 import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
-import { Request } from '@contler/core/models';
+import { Request } from '@contler/models';
 
 @Injectable({
   providedIn: "root"

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { GuestService } from 'guest/services/guest.service';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Zone } from 'lib/models';
+import { Zone } from '@contler/models';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { plainToClass } from 'class-transformer';
 import { AngularFireAuth } from '@angular/fire/auth';

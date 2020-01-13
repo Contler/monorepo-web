@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MapZone, Zone } from 'lib/models';
+import { Zone } from '@contler/models';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({

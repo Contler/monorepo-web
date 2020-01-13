@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { ICONS } from '@contler/core/const';
+import { ICONS } from '@contler/const';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Zone } from '@contler/core/models';
+import { Zone } from '@contler/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { MessagesService } from 'hotel/services/messages/messages.service';

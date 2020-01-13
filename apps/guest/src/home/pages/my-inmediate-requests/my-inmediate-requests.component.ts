@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { InmediateRequestsService } from 'guest/services/inmediate-requests.service';
 import { GeneralService } from 'guest/services/general.service';
 import { Subscription } from 'rxjs';
-import { Request } from 'lib/models/request';
+import { Request } from '@contler/models/request';
 import { Router } from '@angular/router';
-import { Hotel } from '@contler/core/models';
+import { Hotel } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
 import { DomSanitizer } from '@angular/platform-browser';
 

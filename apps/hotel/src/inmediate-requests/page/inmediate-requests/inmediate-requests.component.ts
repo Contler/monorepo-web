@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { Subscription } from 'rxjs';
-import { Request } from 'lib/models';
+import { Request } from '@contler/models';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalInmediateRequestComponent } from 'hotel/inmediate-requests/components/modal-inmediate-request/modal-inmediate-request.component';
 
@@ -29,10 +29,10 @@ export class InmediateRequestsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.dataSource.filter = this.filterByStatusSelected;
     this.dataSource.filterPredicate = (data, filter) => {
-      if (filter == this.requestStatus.ACTIVE) {
+      if (filter === this.requestStatus.ACTIVE) {
         return data.finished_at ? false : true;
       }
-      if (filter == this.requestStatus.ALL) {
+      if (filter === this.requestStatus.ALL) {
         return true;
       }
       const response =

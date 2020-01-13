@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Request } from '@contler/core/models';
+import { Request } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
 import { map, switchMap } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';

@@ -1,5 +1,4 @@
-import { Roles } from 'lib/const';
-
+import { Roles } from '@contler/const';
 
 export interface Claim {
   rol: Roles

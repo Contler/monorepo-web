@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
-import { DOCUMENT_TYPE } from '@contler/core/const';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { GuestRequest, Room } from '@contler/core/models';
+import { Component } from '@angular/core';
+import { DOCUMENT_TYPE } from '@contler/const';
+import { MatDialogRef } from '@angular/material/dialog';
+import { GuestRequest, Room } from '@contler/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoomService } from 'hotel/room/services/room.service';
 import { map, switchMap, take } from 'rxjs/operators';

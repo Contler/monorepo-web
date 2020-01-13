@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Param, Post } from '@nestjs/common';
 import { UserService } from 'api/user/user.service';
-import { AdminRequest, EmployerRequest } from '@contler/core/models';
+import { AdminRequest, EmployerRequest } from '@contler/models';
 
 @Controller('user')
 export class UserController {

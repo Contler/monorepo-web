@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserService } from '@contler/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Room } from '@contler/core/models';
+import { Room } from '@contler/models';
 import { map, switchMap, take } from 'rxjs/operators';
 
 @Injectable()

@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { map } from 'rxjs/operators';
-import { Request, SpecialRequest } from 'lib/models';
+import { Request, SpecialRequest } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { SpecialRequestsService } from 'hotel/special-requests/services/special-requests.service';
 

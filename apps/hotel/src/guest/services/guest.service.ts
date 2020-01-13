@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Guest, GuestRequest } from '@contler/core/models';
+import { Guest, GuestRequest } from '@contler/models';
 import { environment } from 'hotel/environments/environment';
 import { UserService } from '@contler/core';
 import { map, switchMap, take } from 'rxjs/operators';

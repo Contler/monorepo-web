@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Hotel } from '@contler/core/models';
+import { Hotel } from '@contler/models';
 
 import { database, firestore } from 'firebase-admin';
 

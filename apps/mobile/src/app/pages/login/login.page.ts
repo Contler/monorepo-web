@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
-import { CHIEF } from '@contler/core/const';
-import { User } from '@contler/core/models';
+import { CHIEF } from '@contler/const';
+import { User } from '@contler/models';
 import { AuthService } from '../../services/auth.service';
 import { MessagesService } from '../../services/messages/messages.service';
 import { UsersService } from '../../services/users.service';

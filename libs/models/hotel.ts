@@ -1,4 +1,4 @@
-import { Transform, classToPlain } from 'class-transformer';
+import { classToPlain, Transform } from 'class-transformer';
 
 
 export class Hotel {

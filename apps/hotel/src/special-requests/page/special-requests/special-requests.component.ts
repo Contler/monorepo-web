@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { SpecialRequest } from '@contler/core/models';
+import { SpecialRequest } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { SpecialRequestsService } from 'hotel/special-requests/services/special-requests.service';
@@ -11,7 +11,7 @@ import { SpecialRequestsService } from 'hotel/special-requests/services/special-
   templateUrl: './special-requests.component.html',
   styleUrls: ['./special-requests.component.scss'],
 })
-export class SpecialRequestsComponent implements OnInit {
+export class SpecialRequestsComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['userName', 'roomName', 'description', 'checkIn', 'checkOut', 'actions'];
   dataSource = new MatTableDataSource<SpecialRequest>([]);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
@@ -28,10 +28,10 @@ export class SpecialRequestsComponent implements OnInit {
   ngOnInit() {
     this.dataSource.filter = this.filterByStatusSelected;
     this.dataSource.filterPredicate = (data, filter) => {
-      if (filter == this.requestStatus.ACTIVE) {
+      if (filter === this.requestStatus.ACTIVE) {
         return data.isActive;
       }
-      if (filter == this.requestStatus.ALL) {
+      if (filter === this.requestStatus.ALL) {
         return true;
       }
       const response =

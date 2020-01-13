@@ -2,10 +2,10 @@ import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { ModalEmployerComponent } from 'hotel/employer/components/modal-employer/modal-employer.component';
-import { Employer, User } from '@contler/core/models';
+import { Employer, User } from '@contler/models';
 import { EmployerService } from 'hotel/employer/services/employer.service';
-import { Observable, Subscription } from 'rxjs';
-import { CHIEF } from '@contler/core/const';
+import { Subscription } from 'rxjs';
+import { CHIEF } from '@contler/const';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ModalRemoveEmployerComponent } from 'hotel/employer/components/modal-remove-employer/modal-remove-employer.component';

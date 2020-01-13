@@ -1,5 +1,5 @@
 import { IsEmail, IsNotEmpty, IsNumber } from 'class-validator';
-import { Room } from 'lib/models/room';
+import { Room } from '@contler/models/room';
 
 export class GuestRequest {
   @IsNotEmpty()

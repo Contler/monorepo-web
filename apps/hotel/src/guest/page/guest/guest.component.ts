@@ -1,11 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Guest } from '@contler/core/models';
+import { Guest } from '@contler/models';
 import { GuestService } from 'hotel/guest/services/guest.service';
 import { ModelNewGuestComponent } from 'hotel/guest/components/model-new-guest/model-new-guest.component';
 import { Subscription } from 'rxjs';
-import { DOCUMENT_TYPE } from 'lib/const';
+import { DOCUMENT_TYPE } from '@contler/const';
 import { LoaderComponent } from 'hotel/material/components/loader/loader.component';
 import { ModalEditGuestComponent } from 'hotel/guest/components/modal-edit-guest/modal-edit-guest.component';
 

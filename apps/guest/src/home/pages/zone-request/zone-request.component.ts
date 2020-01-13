@@ -1,14 +1,14 @@
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { GuestService } from 'guest/services/guest.service';
-import { Hotel, Request, Zone, User } from 'lib/models';
-import { Observable, Subscription } from 'rxjs';
+import { Hotel, Request, User, Zone } from '@contler/models';
+import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'guest/services/zone.service';
 import { map, switchMap, take } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { SUB_CATEGORY, SUB_CATEGORY_DRINKS } from 'lib/const';
+import { SUB_CATEGORY, SUB_CATEGORY_DRINKS } from '@contler/const';
 import { NotificationsService } from 'guest/services/notifications.service';
 import { UsersService } from 'guest/services/users.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
@@ -30,7 +30,7 @@ export class ZoneRequestComponent implements OnDestroy {
   private guestSubscribe: Subscription;
   private zoneSubscribe: Subscription;
 
-  public isSubCategory: boolean = false; // DRINKS PAGE, etc
+  public isSubCategory = false; // DRINKS PAGE, etc
 
   //CODIGO TEMPORAL HASTA DEFINIR LOGICA DE PRODUCTOS
   public typeName: string | null = null;
@@ -71,7 +71,7 @@ export class ZoneRequestComponent implements OnDestroy {
     this.guestService.$guest
       .pipe(
         map(guest => {
-          let request = new Request(
+          const request = new Request(
             this.afDb.createPushId()!,
             this.hotel!.uid!,
             guest!.uid,
@@ -115,7 +115,7 @@ export class ZoneRequestComponent implements OnDestroy {
       const users: User[] = (await this.usersService
         .getChiefsByHotel(this.hotel && this.hotel.uid ? this.hotel.uid : '')
         .pipe(
-          map(users => users.filter((user: any) => user.leaderZone[this.zone ? this.zone.uid : ''])),
+          map(userss => userss.filter((user: any) => user.leaderZone[this.zone ? this.zone.uid : ''])),
           take(1),
         )
         .toPromise()) as User[];
@@ -125,9 +125,11 @@ export class ZoneRequestComponent implements OnDestroy {
           .pipe(
             take(1),
             map((data: any) => {
-              let tokens: string[] = [];
-              for (let token in data) {
-                tokens.push(token);
+              const tokens: string[] = [];
+              for (const token in data) {
+                if (token in data) {
+                  tokens.push(token);
+                }
               }
               return tokens;
             }),

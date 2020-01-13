@@ -1,6 +1,6 @@
-import { Room } from 'lib/models/room';
-import { classToPlain, Transform, TransformClassToPlain, Type } from 'class-transformer';
-import { GUEST } from 'lib/const';
+import { classToPlain, Transform } from 'class-transformer';
+import { GUEST } from '@contler/const';
+import { Room } from '@contler/models/room';
 
 export class Guest {
   static readonly REF = 'guest';

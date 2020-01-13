@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HotelService, UserService } from '@contler/core';
+import { UserService } from '@contler/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { Guest, Hotel } from 'lib/models';
+import { Guest, Hotel } from '@contler/models';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { plainToClass } from 'class-transformer';

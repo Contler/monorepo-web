@@ -1,4 +1,4 @@
-import { Zone } from 'lib/models/zone';
+import { Zone } from '.';
 
 export interface MapZone {
   [key: string]: ZoneCategory

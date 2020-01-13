@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Employer, SpecialRequest } from '@contler/core/models';
+import { Employer, SpecialRequest } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { ModalController, NavParams } from '@ionic/angular';
 import { MessagesService } from '../../services/messages/messages.service';

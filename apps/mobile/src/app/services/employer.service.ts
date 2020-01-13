@@ -4,8 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { plainToClass } from 'class-transformer';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AuthService } from './auth.service';
-import { Employer, EmployerRequest, Zone } from '@contler/core/models';
-import { ADMIN } from '@contler/core/const';
+import { Employer, EmployerRequest, Zone } from '@contler/models';
+import { ADMIN } from '@contler/const';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 

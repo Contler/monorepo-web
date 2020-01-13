@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Request } from '@contler/core/models';
+import { Request } from '@contler/models';
 import { ModalController, NavController } from '@ionic/angular';
 import { map } from 'rxjs/operators';
 import { InmediateRequestsService } from '../../../services/inmediate-requests.service';

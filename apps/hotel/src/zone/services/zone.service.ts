@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Zone, ZoneCategory, MapZone } from '@contler/core/models';
+import { Zone } from '@contler/models';
 import { UserService } from '@contler/core';
 import { map, switchMap, take } from 'rxjs/operators';
-import { from, Observable } from 'rxjs';
+import { from } from 'rxjs';
 import { plainToClass } from 'class-transformer';
 
 @Injectable()

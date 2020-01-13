@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Zone } from '@contler/core/models';
+import { Zone } from '@contler/models';
 import { AuthService } from './auth.service';
 
 @Injectable({

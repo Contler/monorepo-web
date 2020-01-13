@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SpecialRequest } from '@contler/core/models';
+import { SpecialRequest } from '@contler/models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireDatabase } from '@angular/fire/database';
 

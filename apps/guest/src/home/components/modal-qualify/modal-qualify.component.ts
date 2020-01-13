@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { Request } from '@contler/core/models';
+import { Request } from '@contler/models';
 import { RequestService } from 'guest/services/request.service';
 
 @Component({
