@@ -7,7 +7,7 @@ import { HomeComponent } from './home.component';
 import { MaterialModule } from '../material/material.module';
 import { ZoneRequestComponent } from './pages/zone-request/zone-request.component';
 import { CoreModule } from '@contler/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SpecialRequestComponent } from './pages/special-request/special-request.component';
 import { MyInmediateRequestsComponent } from './pages/my-inmediate-requests/my-inmediate-requests.component';
 import { PipesModule } from 'guest/pipes/pipes.module';
@@ -15,6 +15,8 @@ import { InmediateRequestComponent } from './pages/inmediate-request/inmediate-r
 import { ModalQualifyComponent } from './components/modal-qualify/modal-qualify.component';
 import { RatingModule } from 'ng-starrating';
 import { MessagesModule } from 'guest/services/messages/messages.module';
+import { WakeUpComponent } from './pages/wake-up/wake-up.component';
+import { CreateWakeComponent } from './pages/create-wake/create-wake.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { MessagesModule } from 'guest/services/messages/messages.module';
     MyInmediateRequestsComponent,
     InmediateRequestComponent,
     ModalQualifyComponent,
+    WakeUpComponent,
+    CreateWakeComponent,
   ],
   imports: [
     CommonModule,

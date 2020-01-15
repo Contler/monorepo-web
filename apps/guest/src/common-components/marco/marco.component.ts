@@ -1,4 +1,4 @@
-import { Component, OnDestroy, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { GuestService } from 'guest/services/guest.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class MarcoComponent implements OnDestroy {
   private color: string | null | undefined;
   private subscribe: Subscription;
-  @Input() padding: string = '16px 16px';
+  @Input() padding = '16px 16px';
   @Input() backUrl: string | null = null;
 
   constructor(private guestService: GuestService, private sanitizer: DomSanitizer, private router: Router) {

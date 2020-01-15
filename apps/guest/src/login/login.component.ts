@@ -30,7 +30,7 @@ export class LoginComponent {
 
       this.router.navigate(['/home']);
       const token = await userCredential.user!.getIdTokenResult();
-      if (token.claims.rol !== GUEST) {
+      if (token.claims.role !== GUEST) {
         this.error = 'No tiene permisos para acceder'
       }
       this.loader = false;

@@ -1,0 +1,27 @@
+<contler-marco [backUrl]="'/home/guest-requests'">
+  <div marcoBody class="wake-up">
+    <img *ngIf="hotel" [src]="hotel.logo" class="wake-up__logo" />
+    <p class="wake-up__title" [style]="getColorHotel()">Mis Wakeup Calls</p>
+
+    <mat-spinner color="accent" style="margin: auto" *ngIf="!wakes"></mat-spinner>
+    <div *ngIf="wakes && wakes.length == 0" class="wake-up__null">
+      <mat-icon class="wake-up__null-icon">check_circle</mat-icon>
+      <p class="wake-up__null-text" [style]="getColorHotel()">No tienes ninguna Wakeup Calls</p>
+    </div>
+
+    <div *ngIf="wakes">
+      <div *ngFor="let wake of wakes; let i = index" class="wake-up__content">
+        <p>{{wake.competeDate | date: 'dd/MM/yyyy' }}</p>
+        <p>{{wake.competeDate | date: 'shortTime' }}</p>
+        <button mat-icon-button aria-label="delete" contlerButton [loading]="indexLoad == i" (click)="delete(wake, i)" [disabled]="indexLoad == i">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="wake-up__btn">
+      <button mat-raised-button routerLink="/home/wake-up-create" color="accent">Agendar nueva llamada</button>
+    </div>
+
+  </div>
+</contler-marco>

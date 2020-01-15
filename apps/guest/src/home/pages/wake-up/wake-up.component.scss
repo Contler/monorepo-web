@@ -1,0 +1,65 @@
+@import 'styles/variables';
+
+.wake-up {
+  padding: 0 24px 80px;
+  &__logo {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+  }
+
+  &__title{
+    font-family: $family;
+    font-size: 20.2px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: $text-3;
+    margin: 38px auto 76px;
+  }
+
+  &__null {
+    text-align: center;
+    &-icon {
+      height: 50px;
+      width: 50px;
+      font-size: 50px;
+    }
+    &-text {
+      font-family: $family;
+      font-size: 20.2px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 0.25px;
+      color: $text-3;
+      margin: 33px 0 0;
+    }
+  }
+
+  &__content {
+    color: #666666;
+    display: grid;
+    grid-template-columns: auto max-content max-content;
+    column-gap: 20px;
+    border-bottom: 1px solid #c8c8c8;
+    align-items: center;
+  }
+
+  &__btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 50px 45px;
+    box-sizing: border-box;
+    background: white;
+    button {
+      width: 100%;
+    }
+  }
+}

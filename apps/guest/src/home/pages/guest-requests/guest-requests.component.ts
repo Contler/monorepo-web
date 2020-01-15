@@ -1,6 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { Guest, Hotel, Zone } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
 import { ZoneService } from 'guest/services/zone.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -8,6 +7,8 @@ import { MatDialog } from '@angular/material';
 import { ModalQualifyComponent } from 'guest/home/components/modal-qualify/modal-qualify.component';
 import { RequestService } from 'guest/services/request.service';
 import { GeneralService } from 'guest/services/general.service';
+import { GuestEntity } from '@contler/entity/guest.entity';
+import { HotelEntity, ZoneEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-guest-requests',
@@ -15,11 +16,11 @@ import { GeneralService } from 'guest/services/general.service';
   styleUrls: ['./guest-requests.component.scss'],
 })
 export class GuestRequestsComponent implements OnDestroy {
-  $guest: Observable<Guest | null>;
-  hotel: Hotel | null | undefined;
+  $guest: Observable<GuestEntity | null>;
+  hotel: HotelEntity | null | undefined;
   private subscribe: Subscription;
-  private zones: Zone[] = [];
-  public showedZones: Zone[] = [];
+  private zones: ZoneEntity[] = [];
+  public showedZones: ZoneEntity[] = [];
   public allZonesShowed = false;
 
   private zonesSubscription: Subscription | null = null;
@@ -34,11 +35,12 @@ export class GuestRequestsComponent implements OnDestroy {
     public generalService: GeneralService,
   ) {
     this.$guest = this.guestService.$guest;
-    this.subscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
-    this.zonesSubscription = this.zoneService.$zones.subscribe(zones => {
-      this.zones = zones;
+    this.subscribe = this.guestService.$hotel.subscribe(hotel => {
+      this.hotel = hotel;
+      this.zones = hotel!.zones;
       this.showedZones = this.allZonesShowed ? this.zones.slice() : this.zones.filter(zone => zone.principal);
     });
+
     this.requestSubscription = this.requestService.getRequestFinish().subscribe(requests => {
       if (requests && requests.length > 0) {
         requests.forEach(request => {

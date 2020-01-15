@@ -4,9 +4,9 @@ import { GeneralService } from 'guest/services/general.service';
 import { Subscription } from 'rxjs';
 import { Request } from '@contler/models/request';
 import { Router } from '@angular/router';
-import { Hotel } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { HotelEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-my-inmediate-requests',
@@ -24,7 +24,7 @@ export class MyInmediateRequestsComponent implements OnInit, OnDestroy {
   public pendingRequests: Request[] = [];
   public readyRequests: Request[] = [];
 
-  hotel: Hotel | null | undefined;
+  hotel: HotelEntity | null | undefined;
   private guestSubscribe: Subscription;
 
   constructor(

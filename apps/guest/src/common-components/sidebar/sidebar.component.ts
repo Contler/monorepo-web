@@ -5,8 +5,8 @@ import { User } from '@contler/models/user';
 import { UsersService } from 'guest/services/users.service';
 import { Subscription } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Hotel } from '@contler/models/hotel';
 import { GuestService } from 'guest/services/guest.service';
+import { HotelEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-sidebar',
@@ -43,7 +43,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     {
       icon: 'alarm',
       name: 'Wake up call',
-      route: null,
+      route: '/home/wake-up',
     },
     {
       icon: 'directions_walk',
@@ -54,7 +54,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   public currentRoute: string | null = null;
   public user: User | null = null;
-  public hotel: Hotel | null | undefined;
+  public hotel: HotelEntity | null | undefined;
 
   private userSubscription: Subscription | null = null;
   private guestSubscribe: Subscription;

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UsersService } from 'guest/services/users.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { take } from 'rxjs/operators';
-import { Guest, Hotel, SpecialRequest } from '@contler/models';
+import { Guest, SpecialRequest } from '@contler/models';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { SpecialRequestsService } from 'guest/services/special-requests.service';
 import { Router } from '@angular/router';
@@ -10,6 +10,7 @@ import { GuestService } from 'guest/services/guest.service';
 import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MessagesService } from 'guest/services/messages/messages.service';
+import { HotelEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-special-request',
@@ -20,7 +21,7 @@ export class SpecialRequestComponent implements OnInit, OnDestroy {
   loader = false;
   description: string | null = null;
 
-  hotel: Hotel | null | undefined;
+  hotel: HotelEntity | null | undefined;
   private guestSubscribe: Subscription;
 
   constructor(

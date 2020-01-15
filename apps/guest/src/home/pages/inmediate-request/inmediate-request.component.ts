@@ -3,10 +3,11 @@ import { InmediateRequestsService } from 'guest/services/inmediate-requests.serv
 import { ActivatedRoute, Router } from '@angular/router';
 import { pluck, switchMap, take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import { Hotel, Request } from '@contler/models';
+import { Request } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MessagesService } from 'guest/services/messages/messages.service';
+import { HotelEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-inmediate-request',
@@ -17,7 +18,7 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
   private requestSubscription: Subscription | null = null;
   public request: Request | null = null;
 
-  hotel: Hotel | null | undefined;
+  hotel: HotelEntity | null | undefined;
   private guestSubscribe: Subscription;
 
   loader = false;

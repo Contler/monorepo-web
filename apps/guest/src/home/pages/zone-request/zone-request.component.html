@@ -10,7 +10,7 @@
       <div class="features-container" *ngIf="zone">
         <div
           class="features-container-item"
-          *ngFor="let subcategory of categories[zone.category.value]"
+          *ngFor="let subcategory of categories[zone.category.id]"
           (click)="setQuickRequest(subcategory.name)"
         >
           <mat-icon class="features-container-item__icon">{{ subcategory.icon }}</mat-icon>
@@ -20,9 +20,9 @@
 
       <p class="container__specific-label">Algo específico</p>
       <mat-form-field appearance="fill" class="full_width container__input">
-        <input matInput [formControl]="requestController" />
-        <mat-hint>Escribe lo que necesitas</mat-hint>
-      </mat-form-field>
+      <input matInput [formControl]="requestController" />
+      <mat-hint>Escribe lo que necesitas</mat-hint>
+    </mat-form-field>
     </ng-container>
 
     <ng-container *ngIf="isSubCategory">

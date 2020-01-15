@@ -1,40 +1,40 @@
 import { Injectable } from '@angular/core';
 import { UserService } from '@contler/core';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { Guest, Hotel } from '@contler/models';
-import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { plainToClass } from 'class-transformer';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'guest/environments/environment';
+import { GuestEntity } from '@contler/entity/guest.entity';
+import { HotelEntity } from '@contler/entity';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GuestService {
-  private guestSubject = new BehaviorSubject<Guest | null>(null);
-  private hotelSubject = new BehaviorSubject<Hotel | null>(null);
-  private guestSubscribe: Subscription;
-  private hotelSubscribe: Subscription;
+  private guestSubject = new BehaviorSubject<GuestEntity | null>(null);
+  private hotelSubject = new BehaviorSubject<HotelEntity | null>(null);
 
-  constructor(private userService: UserService, private afStore: AngularFirestore) {
-    this.guestSubscribe = this.userService
-      .getGuest()
-      .pipe(tap(guest => this.guestSubject.next(guest)))
-      .subscribe();
-    this.hotelSubscribe = this.$guest
-      .pipe(
-        filter(guest => !!guest),
-        switchMap(guest => this.afStore.doc<Hotel>(`${Hotel.REF}/${guest!.hotel}`).valueChanges()),
-        map(hotel => plainToClass(Hotel, hotel)),
-        tap(hotel => this.hotelSubject.next(hotel)),
-      )
-      .subscribe();
+  constructor(
+    private userService: UserService,
+    private afStore: AngularFirestore,
+    private afAuth: AngularFireAuth,
+    private http: HttpClient,
+  ) {
+    this.afAuth.user.pipe(
+      filter(user => !!user),
+      switchMap(user => this.http.get<GuestEntity>(environment.apiUrl + `guest/${user!.uid}`)),
+      tap(guest => this.guestSubject.next(guest)),
+      tap(guest => this.hotelSubject.next(guest.hotel))
+    ).subscribe()
   }
 
-  get $guest(): Observable<Guest | null> {
+  get $guest(): Observable<GuestEntity | null> {
     return this.guestSubject.asObservable().pipe(filter(guest => !!guest));
   }
 
-  get $hotel(): Observable<Hotel | null> {
+  get $hotel(): Observable<HotelEntity | null> {
     return this.hotelSubject.asObservable().pipe(filter(hotel => !!hotel));
   }
 }

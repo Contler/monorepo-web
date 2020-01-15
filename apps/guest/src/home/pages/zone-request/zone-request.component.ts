@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { GuestService } from 'guest/services/guest.service';
-import { Hotel, Request, User, Zone } from '@contler/models';
+import { Request, User } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, Validators } from '@angular/forms';
@@ -12,6 +12,7 @@ import { SUB_CATEGORY, SUB_CATEGORY_DRINKS } from '@contler/const';
 import { NotificationsService } from 'guest/services/notifications.service';
 import { UsersService } from 'guest/services/users.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
+import { HotelEntity, ZoneEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-zone-request',
@@ -21,10 +22,10 @@ import { MessagesService } from 'guest/services/messages/messages.service';
 export class ZoneRequestComponent implements OnDestroy {
   @ViewChild('content', { static: false }) content!: ElementRef<HTMLDivElement>;
 
-  hotel: Hotel | null | undefined;
+  hotel: HotelEntity | null | undefined;
   requestController = new FormControl('', Validators.required);
   loader = false;
-  zone: Zone | undefined;
+  zone: ZoneEntity | undefined;
   categories = SUB_CATEGORY;
   private zoneUid: string | null;
   private guestSubscribe: Subscription;
@@ -52,7 +53,10 @@ export class ZoneRequestComponent implements OnDestroy {
     this.zoneUid = this.route.snapshot.paramMap.get('id');
     this.zoneSubscribe = this.zoneService.$zones
       .pipe(map(zones => zones.find(zone => zone.uid === this.zoneUid)))
-      .subscribe(zone => (this.zone = zone));
+      .subscribe(zone => {
+        this.zone = zone
+        console.log(zone);
+      });
   }
 
   getColorHotel() {

@@ -12,11 +12,13 @@ import 'firebase/auth';
 import { SpecialRequestComponent } from './pages/special-request/special-request.component';
 import { MyInmediateRequestsComponent } from './pages/my-inmediate-requests/my-inmediate-requests.component';
 import { InmediateRequestComponent } from './pages/inmediate-request/inmediate-request.component';
+import { WakeUpComponent } from 'guest/home/pages/wake-up/wake-up.component';
+import { CreateWakeComponent } from 'guest/home/pages/create-wake/create-wake.component';
 
 const redirectUnauthorizedToLogin = () =>
   pipe(
     customClaims,
-    map(claims => claims.rol === GUEST),
+    map(claims => claims.role === GUEST),
     tap(guest => !guest && firebase.auth().signOut()),
     map(guest => guest || ['/login']),
   );
@@ -47,6 +49,14 @@ const routes: Routes = [
       {
         path: 'special-requests',
         component: SpecialRequestComponent,
+      },
+      {
+        path: 'wake-up',
+        component: WakeUpComponent,
+      },
+      {
+        path: 'wake-up-create',
+        component: CreateWakeComponent,
       },
       {
         path: '',

@@ -24,27 +24,27 @@ export const CATEGORY_ZONE = [
 export const SUB_CATEGORY_DRINKS = 'Bebidas';
 
 export const SUB_CATEGORY = {
-  0: [
+  1: [
     { name: 'Llaves de mi habitación', icon: 'vpn_key' },
     { name: 'Reservas de espacios', icon: 'calendar_today' },
     { name: 'Bebidas', icon: 'local_bar' },
     { name: 'Llamar al personal del hotel', icon: 'people' },
   ],
-  1: [
+  2: [
     { name: 'Toallas', icon: 'bookmark' },
     { name: 'Bebidas', icon: 'local_bar' },
     { name: 'Reservas de espacios', icon: 'calendar_today' },
   ],
-  2: [
+  3: [
     { name: 'Room Service', icon: 'notifications_active' },
     { name: 'Solicitar Limpieza', icon: 'bathtub' },
     { name: 'Programar wake up call', icon: 'watch_later' },
     { name: 'Solicitar late check-out', icon: 'today' },
   ],
-  3: [
+  4: [
     { name: 'Pre-ordenar comida', icon: 'fastfood' },
     { name: 'Solicitar limpieza de la habitación', icon: 'watch_later' },
     { name: 'Solicitudes especiales', icon: 'deck' },
   ],
-  4: [{ name: 'Mesero', icon: 'person' }, { name: 'Llaves de mi habitación', icon: 'vpn_key' }],
+  5: [{ name: 'Mesero', icon: 'person' }, { name: 'Llaves de mi habitación', icon: 'vpn_key' }],
 };
