@@ -40,7 +40,7 @@
               <p>Habitación</p>
             </div>
           </div>
-          <div class="row" *ngFor="let room of $rooms | async">
+          <div class="row" *ngFor="let room of rooms">
             <div class="row_container two_column">
               <p>{{ room.name }}</p>
               <div class="actions">

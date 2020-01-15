@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Zone } from '@contler/models';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { ZoneEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-zone-list',
@@ -9,11 +9,11 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
   styleUrls: ['./zone-list.component.scss'],
 })
 export class ZoneListComponent {
-  @Input() $zones: Observable<Zone[]> | undefined;
+  @Input() $zones: Observable<ZoneEntity[]> | undefined;
   @Input() zonesSelected: { [key: string]: boolean } = {};
   @Output() selected = new EventEmitter<{ [key: string]: boolean }>();
 
-  select(event: MatCheckboxChange, zone: Zone) {
+  select(event: MatCheckboxChange, zone: ZoneEntity) {
     if (event.checked) {
       this.zonesSelected[zone.uid] = true;
     } else {

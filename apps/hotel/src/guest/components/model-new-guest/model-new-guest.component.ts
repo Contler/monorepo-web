@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { DOCUMENT_TYPE } from '@contler/const';
 import { MatDialogRef } from '@angular/material/dialog';
-import { GuestRequest, Room } from '@contler/models';
+import { GuestRequest } from '@contler/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoomService } from 'hotel/room/services/room.service';
-import { map, switchMap, take } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { GuestService } from 'hotel/guest/services/guest.service';
 import { UserService } from '@contler/core';
+import { RoomEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-model-new-guest',
@@ -17,7 +18,7 @@ export class ModelNewGuestComponent {
   readonly documentTypes = DOCUMENT_TYPE;
 
   guestGroup: FormGroup;
-  rooms: Room[] = [];
+  rooms: RoomEntity[] = [];
   load = false;
   error: string | undefined;
 
@@ -40,7 +41,7 @@ export class ModelNewGuestComponent {
     });
     this.roomService
       .getRoom()
-      .pipe(map(rooms => rooms.filter(room => !room.busy)))
+      .pipe(map(rooms => rooms.filter(room => !room.guest)))
       .subscribe(rooms => {
         this.rooms = rooms;
         this.room!.reset();
@@ -53,7 +54,6 @@ export class ModelNewGuestComponent {
     this.userService
       .getUser()
       .pipe(
-        take(1),
         map(user => ({ ...this.guestGroup.value, hotel: user.hotel } as GuestRequest)),
         switchMap(guestRequest => this.guestService.saveGuest(guestRequest)),
       )

@@ -21,7 +21,7 @@ export class InmediateRequestsService {
             map((data: any) => {
               return data ? (Object.values(data) as Request[]) : [];
             }),
-            map((data: Request[]) => data.filter(request => request.hotel === user.hotel).sort(this.sortRequests)),
+            map((data: Request[]) => data.filter(request => request.hotel === user.hotel.uid).sort(this.sortRequests)),
           );
       }),
     );

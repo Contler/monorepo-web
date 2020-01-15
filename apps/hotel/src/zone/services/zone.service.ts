@@ -1,38 +1,45 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Zone } from '@contler/models';
 import { UserService } from '@contler/core';
-import { map, switchMap, take } from 'rxjs/operators';
-import { from } from 'rxjs';
-import { plainToClass } from 'class-transformer';
+import { switchMap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { CategoryEntity, ZoneEntity } from '@contler/entity';
+import { environment } from 'hotel/environments/environment';
 
 @Injectable()
 export class ZoneService {
-  constructor(private afDb: AngularFireDatabase, private userService: UserService) {}
+  constructor(private afDb: AngularFireDatabase, private userService: UserService, private http: HttpClient) {}
 
-  saveZone(name: string, principal: boolean, icon: string, category: {name: string, value: number}) {
-    return this.userService.getUser().pipe(
-      take(1),
-      map(user => new Zone(principal, name, icon, user.hotel!, this.afDb.createPushId()!, category)),
-      switchMap(zone => from(this.afDb.object(`${Zone.REF}/${zone.uid}`).set(zone.serialize()))),
-    );
+  saveZone(name: string, principal: boolean, icon: string, category: CategoryEntity) {
+    return this.userService
+      .getUser()
+      .pipe(
+        switchMap(user =>
+          this.http.post<ZoneEntity>(environment.apiUrl + `hotel/${user.hotel.uid}/zone`, {
+            name,
+            icon,
+            principal,
+            category,
+          }),
+        ),
+      );
+  }
+
+  getCategories() {
+    return this.http.get<CategoryEntity[]>(environment.apiUrl + 'hotel/category');
   }
 
   getZones() {
-    return this.userService.getUser().pipe(
-      take(1),
-      switchMap(user =>
-        this.afDb.list<Zone>(Zone.REF, ref => ref.orderByChild('hotel').equalTo(user.hotel)).valueChanges(),
-      ),
-      map(zones => zones.map(zone => plainToClass(Zone, zone)))
-    );
+    return this.userService
+      .getUser()
+      .pipe(switchMap(user => this.http.get<ZoneEntity[]>(environment.apiUrl + `hotel/${user.hotel.uid}/zone`)));
   }
 
-  updateZone(zone: Zone) {
-    return this.afDb.object(`${Zone.REF}/${zone.uid}`).update(zone.serialize())
+  updateZone(zone: ZoneEntity) {
+    return this.http.put(environment.apiUrl + `hotel/zone/`, { ...zone });
   }
 
-  deleteZone(zoneMap: Zone) {
-    return this.afDb.object(`${Zone.REF}/${zoneMap.uid}`).remove();
+  deleteZone(zone: ZoneEntity) {
+    return this.http.delete(environment.apiUrl + `hotel/zone/${zone.uid}`)
   }
 }

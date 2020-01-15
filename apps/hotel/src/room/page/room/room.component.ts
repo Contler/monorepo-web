@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ZoneService } from 'hotel/zone/services/zone.service';
-import { Observable } from 'rxjs';
-import { Room, Zone } from '@contler/models';
 import { RoomService } from 'hotel/room/services/room.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesService } from 'hotel/services/messages/messages.service';
+import { RoomEntity, ZoneEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-room',
@@ -15,8 +14,8 @@ import { MessagesService } from 'hotel/services/messages/messages.service';
 export class RoomComponent {
   load = false;
   roomGroup: FormGroup;
-  zones: Zone[] = [];
-  $rooms: Observable<Room[]>;
+  zones: ZoneEntity[] = [];
+  rooms: RoomEntity[] = [];
 
   constructor(
     formBuild: FormBuilder,
@@ -29,17 +28,18 @@ export class RoomComponent {
       name: ['', Validators.required],
     });
     this.zoneService.getZones().subscribe(zones => (this.zones = zones));
-    this.$rooms = this.roomService.getRoom();
+    this.roomService.getRoom().subscribe(rooms => (this.rooms = rooms));
   }
 
   createRoom() {
     this.load = true;
     const { name, zone } = this.roomGroup.value;
-    this.roomService.saveRoom(name, zone).subscribe(
-      () => {
+    this.roomService.saveRoom(name).subscribe(
+      room => {
         this.load = false;
         this.messagesService.showToastMessage('Habitación creada exitosamente');
         this.roomGroup.reset({ name: '', zone: '' });
+        this.rooms = [...this.rooms, room];
       },
       () => {
         this.load = false;
@@ -48,15 +48,13 @@ export class RoomComponent {
     );
   }
 
-  getZone(zoneUid: string) {
-    return this.zones.find(zone => zone.uid === zoneUid);
-  }
-
-  deleteRoom(room: Room) {
-    if (room.busy) {
+  deleteRoom(room: RoomEntity) {
+    if (room.guest) {
       this.snackBar.open('Este cuarto esta en usu, no se puede eliminar', 'cerrar', { duration: 5000 });
     } else {
-      this.roomService.deleteRoom(room.uid);
+      this.roomService.deleteRoom(room.uid).subscribe(() => {
+        this.rooms = this.rooms.filter(r => r.uid !== room.uid);
+      });
     }
   }
 }

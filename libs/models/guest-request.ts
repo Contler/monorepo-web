@@ -1,5 +1,5 @@
 import { IsEmail, IsNotEmpty, IsNumber } from 'class-validator';
-import { Room } from '@contler/models/room';
+import { HotelEntity, RoomEntity } from '@contler/entity';
 
 export class GuestRequest {
   @IsNotEmpty()
@@ -20,7 +20,7 @@ export class GuestRequest {
   document!: string;
 
   @IsNotEmpty()
-  room!: Room;
+  room!: RoomEntity;
 
   @IsNotEmpty()
   checkIn!: Date;
@@ -29,5 +29,5 @@ export class GuestRequest {
   checkOut!: Date;
 
   @IsNotEmpty()
-  hotel!: string;
+  hotel!: HotelEntity;
 }

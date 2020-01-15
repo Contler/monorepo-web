@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { DOCUMENT_TYPE } from '@contler/const';
 import { LoaderComponent } from 'hotel/material/components/loader/loader.component';
 import { ModalEditGuestComponent } from 'hotel/guest/components/modal-edit-guest/modal-edit-guest.component';
+import { GuestEntity } from '@contler/entity/guest.entity';
 
 @Component({
   selector: 'contler-guest',
@@ -17,7 +18,7 @@ import { ModalEditGuestComponent } from 'hotel/guest/components/modal-edit-guest
 export class GuestComponent implements OnDestroy {
   loadCreateGuest = false;
   displayedColumns: string[] = ['name', 'document', 'type', 'room', 'checkIn', 'checkOut', 'actions'];
-  dataSource = new MatTableDataSource<Guest>();
+  dataSource = new MatTableDataSource<GuestEntity>();
 
   private subscription: Subscription;
 
@@ -39,9 +40,12 @@ export class GuestComponent implements OnDestroy {
     return DOCUMENT_TYPE.find(document => document.value === type);
   }
 
-  deleteGuest(guest: Guest) {
+  deleteGuest(guest: GuestEntity) {
     const ref = this.dialog.open(LoaderComponent, { disableClose: true });
-    this.guestService.deleteUser(guest.uid).subscribe(() => ref.close());
+    this.guestService.deleteUser(guest.uid).subscribe(() => {
+      this.dataSource.data = this.dataSource.data.filter(g => g.uid !== guest.uid);
+      ref.close();
+    });
   }
 
   editGuest(guest: Guest) {

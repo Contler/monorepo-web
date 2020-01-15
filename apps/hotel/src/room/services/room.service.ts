@@ -1,31 +1,28 @@
 import { Injectable } from '@angular/core';
 import { UserService } from '@contler/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Room } from '@contler/models';
-import { map, switchMap, take } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'hotel/environments/environment';
+import { RoomEntity } from '@contler/entity';
 
 @Injectable()
 export class RoomService {
-  constructor(private userService: UserService, private afDb: AngularFireDatabase) {}
+  constructor(private userService: UserService, private afDb: AngularFireDatabase, private http: HttpClient) {}
 
   getRoom() {
-    return this.userService.getUser().pipe(
-      take(1),
-      switchMap(user =>
-        this.afDb.list<Room>(Room.REF, ref => ref.orderByChild('hotel').equalTo(user.hotel!)).valueChanges(),
-      ),
-    );
+    return this.userService
+      .getUser()
+      .pipe(switchMap(user => this.http.get<RoomEntity[]>(environment.apiUrl + `hotel/${user.hotel.uid}/room`)));
   }
 
   deleteRoom(roomUid: string) {
-    return this.afDb.object(`${Room.REF}/${roomUid}`).remove()
+    return this.http.delete(environment.apiUrl + `room/${roomUid}`)
   }
 
-  saveRoom(name: string, zone: string) {
-    return this.userService.getUser().pipe(
-      take(1),
-      map(user => new Room(name, user.hotel!, this.afDb.createPushId()!)),
-      switchMap(room => this.afDb.object(`${Room.REF}/${room.uid}`).set(room.serialize())),
-    );
+  saveRoom(name: string) {
+    return this.userService
+      .getUser()
+      .pipe(switchMap(user => this.http.post<RoomEntity>(environment.apiUrl + `hotel/${user.hotel.uid}/room`, { name })));
   }
 }

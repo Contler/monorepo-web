@@ -1,11 +1,12 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EmployerService } from 'hotel/employer/services/employer.service';
-import { Employer, Request } from '@contler/models';
+import { Request } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { SUB_CATEGORY_DRINKS } from '@contler/const';
+import { EmployerEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-modal-inmediate-request',
@@ -17,7 +18,7 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
 
   public request: Request | null = null;
 
-  public employers: Employer[] = [];
+  public employers: EmployerEntity[] = [];
   private subscription: Subscription | null = null;
   public isFinished = false;
 

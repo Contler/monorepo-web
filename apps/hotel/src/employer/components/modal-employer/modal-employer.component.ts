@@ -3,13 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CreateEmployer } from 'hotel/employer/models/create-employer';
 import { UserService } from '@contler/core';
-import { Admin, Employer, EmployerRequest, Zone } from '@contler/models';
+import { EmployerRequest } from '@contler/models';
 import { CHIEF, EMPLOYER } from '@contler/const';
 import { map, switchMap, take } from 'rxjs/operators';
 import { EmployerService } from 'hotel/employer/services/employer.service';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { Observable } from 'rxjs';
 import { MessagesService } from 'hotel/services/messages/messages.service';
+import { EmployerEntity, ZoneEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-modal-employer',
@@ -21,7 +22,7 @@ export class ModalEmployerComponent {
 
   formEmployer: FormGroup;
   leaderZone: { [key: string]: boolean } = {};
-  $zone: Observable<Zone[]>;
+  $zone: Observable<ZoneEntity[]>;
 
   constructor(
     private dialogRef: MatDialogRef<ModalEmployerComponent>,
@@ -48,10 +49,10 @@ export class ModalEmployerComponent {
       .getUser()
       .pipe(
         take(1),
-        map<Admin | Employer, EmployerRequest>(user => ({
+        map<EmployerEntity, EmployerRequest>(user => ({
           name: employerData.name,
           lastName: employerData.lastName,
-          idHotel: user.hotel!,
+          idHotel: user.hotel.uid,
           rol: employerData.leader ? CHIEF : EMPLOYER,
           password: employerData.pass,
           email: employerData.email,

@@ -21,7 +21,7 @@ export class SpecialRequestsService {
             map((data: any) => {
               return data ? Object.values(data) as SpecialRequest[] : [];
             }),
-            map((data: SpecialRequest[]) => data.filter(request => request.hotel === user.hotel)),
+            map((data: SpecialRequest[]) => data.filter(request => request.hotel === user.hotel.uid)),
           );
       }),
     );

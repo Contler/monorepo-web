@@ -2,7 +2,7 @@ import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { ModalEmployerComponent } from 'hotel/employer/components/modal-employer/modal-employer.component';
-import { Employer, User } from '@contler/models';
+import { Employer } from '@contler/models';
 import { EmployerService } from 'hotel/employer/services/employer.service';
 import { Subscription } from 'rxjs';
 import { CHIEF } from '@contler/const';
@@ -12,6 +12,7 @@ import { ModalRemoveEmployerComponent } from 'hotel/employer/components/modal-re
 import { filter, switchMap, tap } from 'rxjs/operators';
 import { ModalEditEmployerComponent } from 'hotel/employer/components/modal-edit-employer/modal-edit-employer.component';
 import { LoaderComponent } from 'hotel/material/components/loader/loader.component';
+import { EmployerEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-employer',
@@ -30,7 +31,7 @@ export class EmployerComponent implements OnDestroy {
 
   filter = 0;
   displayedColumns: string[] = ['name', 'leader', 'score', 'request', 'options'];
-  dataSource = new MatTableDataSource<Employer>();
+  dataSource = new MatTableDataSource<EmployerEntity>();
   private subscription: Subscription;
 
   constructor(private dialog: MatDialog, private employerService: EmployerService) {
@@ -44,14 +45,14 @@ export class EmployerComponent implements OnDestroy {
     });
   }
 
-  openEmployerEditModal(employer: Employer) {
+  openEmployerEditModal(employer: EmployerEntity) {
     this.dialog.open(ModalEditEmployerComponent, {
       width: '940px',
       data: employer,
     });
   }
 
-  openCloseModal(user: User) {
+  openCloseModal(employer: EmployerEntity) {
     let ref: MatDialogRef<LoaderComponent>;
     this.dialog
       .open(ModalRemoveEmployerComponent, { width: '452px' })
@@ -59,9 +60,14 @@ export class EmployerComponent implements OnDestroy {
       .pipe(
         filter(data => !!data),
         tap(() => (ref = this.dialog.open(LoaderComponent))),
-        switchMap(() => this.employerService.deleteEmployer(user.uid!)),
+        switchMap(() => this.employerService.deleteEmployer(employer.uid)),
       )
-      .subscribe(() => ref && ref.close());
+      .subscribe(() => {
+        if (ref) {
+          this.dataSource.data = this.dataSource.data.filter(e => e.uid !== employer.uid);
+          ref.close();
+        }
+      });
   }
 
   ngOnDestroy(): void {

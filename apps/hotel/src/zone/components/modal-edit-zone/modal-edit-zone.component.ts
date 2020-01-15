@@ -1,10 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ICONS } from '@contler/const';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Zone } from '@contler/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { MessagesService } from 'hotel/services/messages/messages.service';
+import { ZoneEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-modal-edit-zone',
@@ -18,7 +18,7 @@ export class ModalEditZoneComponent implements OnInit {
   zoneGroup: FormGroup;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Zone,
+    @Inject(MAT_DIALOG_DATA) public data: ZoneEntity,
     public dialogRef: MatDialogRef<ModalEditZoneComponent>,
     private zoneService: ZoneService,
     private messagesService: MessagesService,
@@ -35,7 +35,7 @@ export class ModalEditZoneComponent implements OnInit {
     const { name, icon } = this.zoneGroup.value;
     this.data.name = name;
     this.data.icon = icon;
-    this.zoneService.updateZone(this.data).then(
+    this.zoneService.updateZone(this.data).subscribe(
       () => {
         this.load = false;
         this.dialogRef.close();

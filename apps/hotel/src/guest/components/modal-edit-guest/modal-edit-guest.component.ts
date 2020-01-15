@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Guest } from '@contler/models';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { GuestEntity } from '@contler/entity/guest.entity';
+import { GuestService } from 'hotel/guest/services/guest.service';
+import { MessagesService } from 'hotel/services/messages/messages.service';
 
 @Component({
   selector: 'contler-modal-edit-guest',
@@ -14,10 +15,11 @@ export class ModalEditGuestComponent {
   guestGroup: FormGroup;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) private data: Guest,
+    @Inject(MAT_DIALOG_DATA) private data: GuestEntity,
     formBuild: FormBuilder,
     public dialogRef: MatDialogRef<ModalEditGuestComponent>,
-    private afStore: AngularFirestore,
+    private guestService: GuestService,
+    private messagesService: MessagesService,
   ) {
     this.guestGroup = formBuild.group({
       name: [data.name, Validators.required],
@@ -30,12 +32,18 @@ export class ModalEditGuestComponent {
   saveUser() {
     this.load = true;
     const { name, lastName, checkIn, checkOut } = this.guestGroup.value;
-    this.afStore
-      .doc<Guest>(`${Guest.REF}/${this.data.uid}`)
-      .update({ name, lastName, checkIn: checkIn.toString(), checkOut: checkOut.toString() })
-      .then(() => {
-        this.load = false;
+    this.data.name = name;
+    this.data.lastName = lastName;
+    this.data.checkIn = checkIn;
+    this.data.checkOut = checkOut;
+    this.guestService.updateGuest(this.data).subscribe(
+      () => {
         this.dialogRef.close();
-      });
+      },
+      () => {
+        this.load = false;
+        this.messagesService.showServerError();
+      },
+    );
   }
 }
