@@ -1,0 +1,33 @@
+import { Component, OnInit } from '@angular/core';
+import { EmployerEntity, WakeUpEntity } from '@contler/entity';
+import { AuthService } from '../../../services/auth.service';
+import { WakeService } from '../../../services/wake.service';
+import { MenuController } from '@ionic/angular';
+import { MatDialog } from '@angular/material';
+import { tap } from 'rxjs/operators';
+
+@Component({
+  selector: 'contler-wake-complete',
+  templateUrl: './wake-complete.component.html',
+  styleUrls: ['./wake-complete.component.scss'],
+})
+export class WakeCompleteComponent implements OnInit {
+  user: EmployerEntity | null = null;
+  wakes: WakeUpEntity[] = [];
+  search = '';
+
+  constructor(
+    private auth: AuthService,
+    wakeService: WakeService,
+    public menu: MenuController,
+    public dialog: MatDialog,
+  ) {
+    this.auth.$user
+      .pipe(tap(user => wakeService.getWakeComplete(user!.hotel.uid).subscribe(wake => (this.wakes = wake))))
+      .subscribe(user => (this.user = user));
+  }
+
+  ngOnInit() {}
+
+  goToComplete(wake: WakeUpEntity) {}
+}

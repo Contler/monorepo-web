@@ -1,35 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter, take } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 import { NotificationsService } from '../services/notifications.service';
 import { AuthService } from '../services/auth.service';
 import { MenuController, Platform } from '@ionic/angular';
-import { ZoneService } from '../services/zone.service';
+import { EmployerEntity } from '@contler/entity';
 
 @Component({
-  selector: "contler-home",
-  templateUrl: "home.page.html",
-  styleUrls: ["home.page.scss"]
+  selector: 'contler-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  user: EmployerEntity | null = null;
+
   public readonly menuItems: MenuItem[] = [
     {
-      icon: "error",
-      name: "Solicitudes inmediatas",
-      route: "/home/inmediate-requests"
+      icon: 'error',
+      name: 'Solicitudes inmediatas',
+      route: '/home/inmediate-requests',
     },
     {
-      icon: "access_alarm",
-      name: "Wake up calls",
-      route: null
+      icon: 'access_alarm',
+      name: 'Wake up calls',
+      route: '/home/wake-up',
     },
     {
-      icon: "sms_failed",
-      name: "Solicitudes especiales",
-      route: "/home/special-requests"
-    }
+      icon: 'sms_failed',
+      name: 'Solicitudes especiales',
+      route: '/home/special-requests',
+    },
   ];
-
   public currentRoute: string | undefined;
   public chiefZonesLabel: string | undefined;
 
@@ -39,35 +40,28 @@ export class HomePage implements OnInit {
     public auth: AuthService,
     private platform: Platform,
     private menuController: MenuController,
-    private zoneService: ZoneService
-  ) {}
+  ) {
+    this.auth.$user.subscribe(user => {
+      this.user = user;
+      const chiefZones: string[] = [];
+      this.user!.leaderZones.forEach(zone => chiefZones.push(zone.name));
+      console.log(chiefZones);
+      this.chiefZonesLabel = chiefZones.join('-');
+    });
+  }
 
   async ngOnInit() {
     this.listenCurrentRoute();
-    if (this.platform.is("cordova")) {
+    if (this.platform.is('cordova')) {
       await this.setUserToken();
     }
-    this.zoneService
-      .getZones()
-      .pipe(take(1))
-      .subscribe(zones => {
-        const chiefZones: string[] = [];
-        zones.forEach(zone => {
-          if (this.auth.user!.leaderZone[zone.uid]) {
-            chiefZones.push(zone.name);
-          }
-        });
-        this.chiefZonesLabel = chiefZones.join("-");
-      }, console.error);
   }
 
   private listenCurrentRoute() {
     this.currentRoute = this.router.url;
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(data => {
-        this.currentRoute = (data as NavigationEnd).url
-      });
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(data => {
+      this.currentRoute = (data as NavigationEnd).url;
+    });
   }
 
   async setUserToken() {
@@ -89,10 +83,10 @@ export class HomePage implements OnInit {
       .logout()
       .then(() => {
         this.menuController.toggle();
-        this.router.navigate(["/login"]);
+        this.router.navigate(['/login']);
       })
       .catch(() => {
-        console.error("Hubo un error");
+        console.error('Hubo un error');
       });
   }
 }

@@ -1,0 +1,8 @@
+<div *ngIf="wake" class="wake">
+  <div>
+    <p class="wake--no-margin wake__guest">{{wake.guest.name}} {{wake.guest.lastName}}</p>
+    <p class="wake--no-margin">{{wake.room.name}}</p>
+  </div>
+  <p class="wake--no-margin wake__time">{{wake.competeDate | date : 'shortTime' }}</p>
+  <mat-slide-toggle [checked]="wake.complete" [disabled]="true" (click)="clickSlide.emit($event)"></mat-slide-toggle>
+</div>

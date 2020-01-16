@@ -22,11 +22,11 @@ export class InmediateRequestsService {
         map((data: any) => {
           return Object.values(data) as Request[];
         }),
-        map((data: Request[]) =>
-          data
-            .filter(request => request.hotel === this.authService.user!.hotel && this.authService.user!.leaderZone[request.zone])
-            .sort(this.sortRequests)
-        )
+        // map((data: Request[]) =>
+        //   data
+        //     .filter(request => request.hotel === this.authService.user!.hotel && this.authService.user!.leaderZone[request.zone])
+        //     .sort(this.sortRequests)
+        // )
       );
   }
 

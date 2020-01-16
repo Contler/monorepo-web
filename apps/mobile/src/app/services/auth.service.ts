@@ -3,54 +3,39 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Storage } from '@ionic/storage';
 import { Platform } from '@ionic/angular';
 import { User } from '@contler/models';
+import { filter, switchMap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { EmployerEntity } from '@contler/entity';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   user: User | undefined;
+  private employerSubject = new BehaviorSubject<EmployerEntity | null>(null);
 
-  constructor(private auth: AngularFireAuth, private storage: Storage, private platform: Platform) {}
+  constructor(
+    private auth: AngularFireAuth,
+    private storage: Storage,
+    private platform: Platform,
+    private http: HttpClient,
+  ) {
+    this.auth.user
+      .pipe(
+        filter(user => !!user),
+        switchMap(user => this.http.get<EmployerEntity>(environment.apiUrl + `employer/${user!.uid}`)),
+      )
+      .subscribe(employer => this.employerSubject.next(employer));
+  }
 
   loginWithEmail(email: string, password: string) {
     return this.auth.auth.signInWithEmailAndPassword(email, password);
   }
 
   logout() {
-    return new Promise(async (resolve, reject) => {
-      this.auth.auth
-        .signOut()
-        .then(async () => {
-          this.user = undefined;
-          if (this.platform.is('cordova')) {
-            await this.storage.clear();
-            resolve();
-          } else {
-            localStorage.clear();
-            resolve();
-          }
-        })
-        .catch(() => reject());
-    });
-  }
-
-  signUp(email: string, password: string) {
-    return this.auth.auth.createUserWithEmailAndPassword(email, password);
-  }
-
-  getUserDataStorage() {
-    return new Promise(async resolve => {
-      if (this.platform.is('cordova')) {
-        await this.storage.ready();
-        const userData = await this.storage.get('user');
-        this.user = userData ? userData : null;
-        resolve();
-      } else {
-        const userData = JSON.parse(localStorage.getItem('user')!);
-        this.user = userData ? userData : null;
-        resolve();
-      }
-    });
+    return this.auth.auth.signOut();
   }
 
   saveUserDataStorage(user: User) {
@@ -66,15 +51,7 @@ export class AuthService {
     });
   }
 
-  changeEmail(email: string) {
-    return this.auth.auth.currentUser!.updateEmail(email);
-  }
-
-  changePassword(password: string) {
-    return this.auth.auth.currentUser!.updatePassword(password);
-  }
-
-  userLoginChanges() {
-    return this.auth.authState;
+  get $user(): Observable<EmployerEntity | null> {
+    return this.employerSubject.asObservable().pipe(filter(user => !!user))
   }
 }

@@ -39,7 +39,8 @@ export class LoginPage implements OnInit {
       .loginWithEmail(email, pass)
       .then(async userCredential => {
         const token = await userCredential.user!.getIdTokenResult();
-        if (token.claims.rol !== CHIEF) {
+        console.log(token.claims.role);
+        if (token.claims.role !== CHIEF) {
           await this.authService.logout();
           this.messagesService.closeLoader(
             loader,

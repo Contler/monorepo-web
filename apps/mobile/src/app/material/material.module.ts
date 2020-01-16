@@ -18,6 +18,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const materialModules = [
   MatFormFieldModule,
@@ -35,13 +36,14 @@ const materialModules = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatProgressSpinnerModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatSlideToggleModule,
 ];
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, ...materialModules, RouterModule],
   exports: [...materialModules],
-  entryComponents: []
+  entryComponents: [],
 })
 export class MaterialModule {}

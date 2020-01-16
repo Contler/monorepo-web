@@ -456,6 +456,11 @@
               "apps/mobile/src/favicon.ico",
               "apps/mobile/src/assets"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "apps/mobile/src"
+              ]
+            },
             "styles": [
               "apps/mobile/src/styles.scss",
               {

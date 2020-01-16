@@ -1,0 +1,16 @@
+<div class="modal-confirm">
+  <mat-icon class="modal-confirm__check">check_circle</mat-icon>
+  <p class="modal-confirm__text">Confirmas haber hecho el llamado al huésped</p>
+  <button mat-stroked-button class="modal-confirm__btn" (click)="dialogRef.close()" [disabled]="load">No se ha hecho</button>
+  <button
+    mat-flat-button
+    color="accent"
+    class="modal-confirm__btn"
+    contlerButton
+    [disabled]="load"
+    [loading]="load"
+    (click)="complete()"
+  >
+    Sí ya se hizo
+  </button>
+</div>

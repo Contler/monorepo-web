@@ -1,17 +1,29 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Zone } from '@contler/models';
 import { AuthService } from './auth.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { ZoneEntity } from '@contler/entity';
+import { switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ZoneService {
-  constructor(private authService: AuthService, private afDt: AngularFireDatabase) {}
+  private zoneSubject = new BehaviorSubject<ZoneEntity[]>([]);
 
-  getZones() {
-    return this.afDt
-      .list<Zone>(`${Zone.REF}`, ref => ref.orderByChild('hotel').equalTo(this.authService.user!.hotel))
-      .valueChanges();
+  constructor(private http: HttpClient, authService: AuthService, private afDt: AngularFireDatabase) {
+    authService.$user.pipe(switchMap(user => this.getZones(user!.hotel.uid)));
+  }
+
+  getZones(idHotel: string) {
+    return this.http
+      .get<ZoneEntity[]>(environment + `hotel/${idHotel}/zone`)
+      .pipe(tap(zones => this.zoneSubject.next(zones)));
+  }
+
+  get $zones() {
+    return this.zoneSubject.asObservable();
   }
 }

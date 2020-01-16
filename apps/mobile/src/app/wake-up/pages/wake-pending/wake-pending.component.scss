@@ -1,0 +1,64 @@
+@import "styles/variables";
+
+.header {
+  display: grid;
+  padding: 40px 30px 0;
+  grid-template-columns: max-content auto max-content;
+  align-items: start;
+  color: rgba(0, 0, 0, 0.54);
+  &__img {
+    width: 75px;
+  }
+
+  &__menu {
+    color: #8dc53e;
+  }
+
+}
+
+.content {
+  &__title {
+    font-family: $family;
+    font-size: 20.2px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: #006633;
+    margin: 38px 0 40px;
+  }
+  &__wake {
+    padding: 0 44px 0 40px;
+  }
+
+  &__search {
+    display: block;
+    padding: 0 40px;
+    margin-bottom: 20px;
+  }
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  &__btn {
+    height: 75px;
+    font-family: $family;
+    font-size: 14.2px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: 1.25px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    text-transform: uppercase;
+    background: none;
+    &--select {
+      background-color: rgba(28, 151, 83, 0.12);
+      color: #006633;
+      border-bottom: 3px solid #006633;
+    }
+  }
+}

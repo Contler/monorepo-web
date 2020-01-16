@@ -12,5 +12,10 @@
     padding: 0;
     position: relative;
   }
+}
 
+button {
+  &:focus {
+    outline: none;
+  }
 }

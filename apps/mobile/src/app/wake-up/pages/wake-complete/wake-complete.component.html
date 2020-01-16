@@ -1,0 +1,24 @@
+<ion-header no-border>
+  <div class="header">
+    <button mat-icon-button>
+      <mat-icon>search</mat-icon>
+    </button>
+    <div class="ion-text-center">
+      <img *ngIf="user" [src]="user.hotel.logo" class="header__img">
+    </div>
+    <button mat-icon-button class="header__menu" (click)="menu.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</ion-header>
+
+<ion-content>
+  <h1 class="content__title">Wake up calls</h1>
+  <mat-form-field appearance="fill" class="content__search">
+    <input matInput [(ngModel)]="search" />
+    <mat-hint>Buscar</mat-hint>
+  </mat-form-field>
+  <div class="content__wake">
+    <contler-wake *ngFor="let wake of wakes | wakeSearch: search" [wake]="wake" (clickSlide)="goToComplete(wake)"></contler-wake>
+  </div>
+</ion-content>

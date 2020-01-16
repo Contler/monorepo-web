@@ -15,28 +15,25 @@ import { MaterialModule } from '../material/material.module';
     MaterialModule,
     RouterModule.forChild([
       {
-        path: "",
+        path: '',
         component: HomePage,
         children: [
-          { path: "", redirectTo: "inmediate-requests", pathMatch: "full" },
+          { path: '', redirectTo: 'inmediate-requests', pathMatch: 'full' },
           {
-            path: "inmediate-requests",
+            path: 'inmediate-requests',
             loadChildren: () =>
-              import("./inmediate-requests/inmediate-requests.module").then(
-                m => m.InmediateRequestsPageModule
-              )
+              import('./inmediate-requests/inmediate-requests.module').then(m => m.InmediateRequestsPageModule),
           },
           {
-            path: "special-requests",
+            path: 'special-requests',
             loadChildren: () =>
-              import("./special-requests/special-requests.module").then(
-                m => m.SpecialRequestsPageModule
-              )
-          }
-        ]
-      }
-    ])
+              import('./special-requests/special-requests.module').then(m => m.SpecialRequestsPageModule),
+          },
+          { path: 'wake-up', loadChildren: () => import('../wake-up/wake-up.module').then(m => m.WakeUpModule) },
+        ],
+      },
+    ]),
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
 })
 export class HomePageModule {}

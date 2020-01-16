@@ -18,6 +18,8 @@ export class WakeUpEntity {
 
   name!: string;
 
+  complete!: boolean;
+
 
   hotel!: HotelEntity;
 

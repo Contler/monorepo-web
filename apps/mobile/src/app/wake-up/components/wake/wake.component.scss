@@ -1,0 +1,26 @@
+@import "styles/variables";
+.wake {
+  border-bottom: 1px solid #c8c8c8;
+  display: grid;
+  grid-template-columns: auto max-content max-content;
+  font-family: $family;
+  line-height: 1.31;
+  letter-spacing: 0.4px;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 12.2px;
+  align-items:  center;
+  padding-bottom: 17px;
+  column-gap: 10px;
+  &--no-margin {
+    margin: 0;
+  }
+  &__guest {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 20.2px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  &__time {
+    margin-right: 30px;
+  }
+}
