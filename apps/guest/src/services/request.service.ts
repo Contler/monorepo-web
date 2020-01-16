@@ -4,12 +4,19 @@ import { Request } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
 import { map, switchMap } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
+import { RequestRequest } from '@contler/models/request-request';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'guest/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RequestService {
-  constructor(private afDb: AngularFireDatabase, private guestService: GuestService) {}
+  constructor(private afDb: AngularFireDatabase, private guestService: GuestService, private http: HttpClient) {}
+
+  saveRequest(request: RequestRequest) {
+    return this.http.post(environment.apiUrl + 'request', request)
+  }
 
   getRequestFinish() {
     return this.guestService.$guest.pipe(

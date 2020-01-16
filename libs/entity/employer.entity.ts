@@ -1,5 +1,6 @@
 import { HotelEntity } from './hotel.entity';
-import { ZoneEntity } from '@contler/entity/zone.entity';
+import { ZoneEntity } from './zone.entity';
+import { RequestEntity } from './request.entity';
 
 export class EmployerEntity {
   uid!: string;
@@ -12,11 +13,21 @@ export class EmployerEntity {
 
   totalScore!: number;
 
+  averageScore!: number;
+
   totalServices!: number;
 
   totalTime!: number;
 
+  active!: boolean;
+
+  pushToken!: string;
+
   hotel!: HotelEntity;
 
   leaderZones!: ZoneEntity[];
+
+  requestAttended!: RequestEntity[];
+
+  requestSolved!: RequestEntity[];
 }

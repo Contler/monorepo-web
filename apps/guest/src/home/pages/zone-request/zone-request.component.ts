@@ -1,18 +1,19 @@
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { GuestService } from 'guest/services/guest.service';
-import { Request, User } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'guest/services/zone.service';
-import { map, switchMap, take } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { SUB_CATEGORY, SUB_CATEGORY_DRINKS } from '@contler/const';
 import { NotificationsService } from 'guest/services/notifications.service';
 import { UsersService } from 'guest/services/users.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
+import { RequestRequest } from '@contler/models/request-request';
+import { RequestService } from 'guest/services/request.service';
 
 @Component({
   selector: 'contler-zone-request',
@@ -44,6 +45,7 @@ export class ZoneRequestComponent implements OnDestroy {
     private route: ActivatedRoute,
     private afDb: AngularFireDatabase,
     private zoneService: ZoneService,
+    private requestService: RequestService,
     private notificationsService: NotificationsService,
     private usersService: UsersService,
     private messagesService: MessagesService,
@@ -54,8 +56,7 @@ export class ZoneRequestComponent implements OnDestroy {
     this.zoneSubscribe = this.zoneService.$zones
       .pipe(map(zones => zones.find(zone => zone.uid === this.zoneUid)))
       .subscribe(zone => {
-        this.zone = zone
-        console.log(zone);
+        this.zone = zone;
       });
   }
 
@@ -70,39 +71,28 @@ export class ZoneRequestComponent implements OnDestroy {
   }
 
   async saveRequest() {
-    const chiefTokens: string[] = await this.getChiefTokens();
     this.loader = true;
+    const chiefTokens: string[] = this.zone!.leaders.filter(leader => !!leader.pushToken).map(
+      leader => leader.pushToken,
+    );
     this.guestService.$guest
       .pipe(
         map(guest => {
-          const request = new Request(
-            this.afDb.createPushId()!,
-            this.hotel!.uid!,
-            guest!.uid,
-            `${guest!.name} ${guest!.lastName}`,
-            this.zoneUid!,
-            this.zone ? this.zone.name : '-',
-            this.requestController.value,
-          );
-          request.room = guest!.room!.name;
-          if (this.isSubCategory) {
-            // MÁS ADELANTE PUEDEN HABER DIFERENTES TIPOS DE 'SUB CATEGORÍAS PARA TENER EN CUENTA
-            request.drinkData = {
-              typeKey: null,
-              typeName: this.typeName,
-              drinkKey: null,
-              drinkName: this.drinkName,
-              units: this.drinksQuantity,
-            };
-          }
+          const request = new RequestRequest();
+          request.hotel = guest!.hotel;
+          request.guest = guest!;
+          request.room = guest!.room;
+          request.zone = this.zone!;
+          request.special = false;
+          request.message = this.requestController.value + ' ' + this.drinkName + ' ' + this.drinksQuantity;
           return request;
         }),
-        switchMap(request => this.afDb.object(`${Request.REF}/${request.uid}`).set(request.serialize())),
+        switchMap(request => this.requestService.saveRequest(request)),
       )
       .subscribe(
-        async () => {
-          await this.notificationsService.sendMassiveNotification('Tienes una nueva solicitud inmediata', chiefTokens);
+        () => {
           this.loader = false;
+          this.notificationsService.sendMassiveNotification('Tienes una nueva solicitud inmediata', chiefTokens);
           this.requestController.reset();
           this.router.navigate(['/home']);
           this.messagesService.showToastMessage('Solicitud inmediata creada exitosamente');
@@ -112,38 +102,6 @@ export class ZoneRequestComponent implements OnDestroy {
           this.messagesService.showServerError();
         },
       );
-  }
-
-  private getChiefTokens(): Promise<string[]> {
-    return new Promise(async resolve => {
-      let chiefTokens: string[] = [];
-      const users: User[] = (await this.usersService
-        .getChiefsByHotel(this.hotel && this.hotel.uid ? this.hotel.uid : '')
-        .pipe(
-          map(userss => userss.filter((user: any) => user.leaderZone[this.zone ? this.zone.uid : ''])),
-          take(1),
-        )
-        .toPromise()) as User[];
-      for (let i = 0; i < users.length; i++) {
-        const userTokens = await this.usersService
-          .getTokensByUser(<string>users[i].uid)
-          .pipe(
-            take(1),
-            map((data: any) => {
-              const tokens: string[] = [];
-              for (const token in data) {
-                if (token in data) {
-                  tokens.push(token);
-                }
-              }
-              return tokens;
-            }),
-          )
-          .toPromise();
-        chiefTokens = chiefTokens.concat(userTokens);
-      }
-      resolve(chiefTokens);
-    });
   }
 
   setQuickRequest(value: string) {

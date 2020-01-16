@@ -4,4 +4,5 @@ export * from './zone.entity';
 export * from './category.entity';
 export * from './room.entity';
 export * from './wake-up.entity';
-
+export * from './request.entity';
+export * from './guest.entity';

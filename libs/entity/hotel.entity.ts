@@ -1,7 +1,9 @@
 import { EmployerEntity } from './employer.entity';
 import { ZoneEntity } from './zone.entity';
-import { RoomEntity } from '@contler/entity/room.entity';
-import { WakeUpEntity } from '@contler/entity/wake-up.entity';
+import { RoomEntity } from './room.entity';
+import { GuestEntity } from './guest.entity';
+import { WakeUpEntity } from './wake-up.entity';
+import { RequestEntity } from './request.entity';
 
 export class HotelEntity {
   uid!: string;
@@ -18,5 +20,9 @@ export class HotelEntity {
 
   rooms!: RoomEntity[];
 
+  guests!: GuestEntity[];
+
   wakeUps!: WakeUpEntity[];
+
+  request!: RequestEntity[];
 }
