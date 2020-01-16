@@ -13,4 +13,6 @@ export * from './guest'
 export * from './request'
 export * from './special-request';
 export * from './wake-request';
+export * from './wakeTable';
+
 

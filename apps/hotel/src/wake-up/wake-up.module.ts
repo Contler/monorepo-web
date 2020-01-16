@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { WakeUpRoutingModule } from './wake-up-routing.module';
 import { WakeUpComponent } from './wake-up.component';
@@ -17,5 +17,6 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     FormsModule,
   ],
+  providers: [DatePipe]
 })
 export class WakeUpModule { }
