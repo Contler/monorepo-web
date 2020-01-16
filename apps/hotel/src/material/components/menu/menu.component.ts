@@ -61,7 +61,7 @@ export class MenuComponent implements OnInit {
     {
       name: 'Wake up calls',
       icon: 'access_alarm',
-      link: ['/home', 'wakeup-calls'],
+      link: ['/home', 'wake-up'],
       primary: false,
     },
     {

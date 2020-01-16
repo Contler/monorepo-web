@@ -55,7 +55,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       name: 'Wake up Calls',
       icon: 'access_alarm',
       outlined: false,
-      link: null,
+      link: ['home', 'wake-up'],
     },
     {
       name: 'Late Checkouts',
