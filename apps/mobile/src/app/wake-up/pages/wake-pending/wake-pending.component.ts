@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { EmployerEntity, WakeUpEntity } from '@contler/entity';
 import { AuthService } from '../../../services/auth.service';
 import { WakeService } from '../../../services/wake.service';
-import { filter, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { MenuController } from '@ionic/angular';
 import { MatDialog } from '@angular/material';
 import { ModalConfirmWakeComponent } from '../../components/modal-confirm-wake/modal-confirm-wake.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'contler-wake-pending',
@@ -14,8 +15,9 @@ import { ModalConfirmWakeComponent } from '../../components/modal-confirm-wake/m
 })
 export class WakePendingComponent implements OnInit {
   user: EmployerEntity | null = null;
-  wakes: WakeUpEntity[] = [];
+
   search = '';
+  private wakes: Observable<WakeUpEntity[]>;
 
   constructor(
     private auth: AuthService,
@@ -24,19 +26,14 @@ export class WakePendingComponent implements OnInit {
     public dialog: MatDialog,
   ) {
     this.auth.$user
-      .pipe(tap(user => wakeService.getWakeIncomplete(user!.hotel.uid).subscribe(wake => (this.wakes = wake))))
+      .pipe(tap(user => wakeService.getWakeIncomplete(user!.hotel.uid).subscribe()))
       .subscribe(user => (this.user = user));
+    this.wakes = wakeService.$wakeIncomplete;
   }
 
   ngOnInit() {}
 
   goToComplete(wake: WakeUpEntity) {
-    this.dialog
-      .open(ModalConfirmWakeComponent, { data: wake })
-      .afterClosed()
-      .pipe(filter(finish => !!finish))
-      .subscribe(() => {
-        this.wakes = this.wakes.filter(w => w.id !== wake.id);
-      });
+    this.dialog.open(ModalConfirmWakeComponent, { data: wake });
   }
 }

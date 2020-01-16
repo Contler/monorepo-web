@@ -45,7 +45,6 @@ export class HomePage implements OnInit {
       this.user = user;
       const chiefZones: string[] = [];
       this.user!.leaderZones.forEach(zone => chiefZones.push(zone.name));
-      console.log(chiefZones);
       this.chiefZonesLabel = chiefZones.join('-');
     });
   }

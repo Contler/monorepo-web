@@ -5,6 +5,7 @@ import { WakeService } from '../../../services/wake.service';
 import { MenuController } from '@ionic/angular';
 import { MatDialog } from '@angular/material';
 import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'contler-wake-complete',
@@ -13,8 +14,8 @@ import { tap } from 'rxjs/operators';
 })
 export class WakeCompleteComponent implements OnInit {
   user: EmployerEntity | null = null;
-  wakes: WakeUpEntity[] = [];
   search = '';
+  wakes: Observable<WakeUpEntity[]>;
 
   constructor(
     private auth: AuthService,
@@ -23,8 +24,9 @@ export class WakeCompleteComponent implements OnInit {
     public dialog: MatDialog,
   ) {
     this.auth.$user
-      .pipe(tap(user => wakeService.getWakeComplete(user!.hotel.uid).subscribe(wake => (this.wakes = wake))))
+      .pipe(tap(user => wakeService.getWakeComplete(user!.hotel.uid).subscribe()))
       .subscribe(user => (this.user = user));
+    this.wakes = wakeService.$wakeComplete
   }
 
   ngOnInit() {}
