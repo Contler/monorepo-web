@@ -7,11 +7,11 @@
       <ng-container *ngIf="requests.length else empty">
         <div class="item" *ngFor="let request of requests" (click)="goToRequest(request)">
           <div class="item__info-container">
-            <p class="username">{{request.userName}}</p>
-            <p class="zone">{{request.zoneName}}</p>
+            <p class="username">{{request.guest.name}} {{request.guest.lastName}}</p>
+            <p class="zone">{{request.zone.name}}</p>
           </div>
           <div class="item__data-container">
-            <p class="time">{{request.created_at|date:'HH:mm'}}</p>
+            <p class="time">{{request.createAt|date:'HH:mm'}}</p>
             <button mat-icon-button>
               <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
             </button>

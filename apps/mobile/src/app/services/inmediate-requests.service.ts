@@ -1,37 +1,31 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 
-import { map } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { Request } from '@contler/models';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { RequestEntity } from '@contler/entity';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class InmediateRequestsService {
-  constructor(
-    private afDb: AngularFireDatabase,
-    private authService: AuthService
-  ) {}
+  constructor(private http: HttpClient, private afDb: AngularFireDatabase, private authService: AuthService) {}
 
-  listenInmediateRequestByHotel() {
-    return this.afDb
-      .object<Request>(Request.REF)
-      .valueChanges()
-      .pipe(
-        map((data: any) => {
-          return Object.values(data) as Request[];
-        }),
-        // map((data: Request[]) =>
-        //   data
-        //     .filter(request => request.hotel === this.authService.user!.hotel && this.authService.user!.leaderZone[request.zone])
-        //     .sort(this.sortRequests)
-        // )
-      );
+  listenImmediateRequestByHotel(complete: boolean) {
+    return this.authService.$user.pipe(
+      switchMap(user =>
+        this.http.get<RequestEntity[]>(
+          environment.apiUrl + `employer/${user!.uid}/request?complete=${complete ? 't' : 'f'}`,
+        ),
+      ),
+    );
   }
 
-  updateRequest(requestKey: string, data: any) {
-    return this.afDb.object(`${Request.REF}/${requestKey}`).update(data);
+  updateRequest(request: RequestEntity) {
+    return this.http.put(environment.apiUrl + 'request', request);
   }
 
   private sortRequests(a: Request, b: Request) {

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Request } from '@contler/models';
 import { ModalController } from '@ionic/angular';
-import { map } from 'rxjs/operators';
 import { ModalInmediateRequestPage } from '../../../modals/modal-inmediate-request/modal-inmediate-request.page';
 import { InmediateRequestsService } from '../../../services/inmediate-requests.service';
 import { GeneralService } from '../../../services/general.service';
+import { RequestEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-ready-inmediate-requests',
@@ -14,7 +13,7 @@ import { GeneralService } from '../../../services/general.service';
 })
 export class ReadyInmediateRequestsPage implements OnInit {
   private inmediateRequestsSubscription: Subscription | null = null;
-  public requests: Request[] = [];
+  public requests: RequestEntity[] = [];
 
   constructor(
     private inmediateRequestsService: InmediateRequestsService,
@@ -26,8 +25,7 @@ export class ReadyInmediateRequestsPage implements OnInit {
 
   ionViewWillEnter() {
     this.inmediateRequestsSubscription = this.inmediateRequestsService
-      .listenInmediateRequestByHotel()
-      .pipe(map(data => data.filter(request => request.finished_at)))
+      .listenImmediateRequestByHotel(true)
       .subscribe(requests => {
         this.requests = requests;
       });
@@ -39,7 +37,7 @@ export class ReadyInmediateRequestsPage implements OnInit {
     }
   }
 
-  async goToRequest(request: Request) {
+  async goToRequest(request: RequestEntity) {
     const modal = await this.modalController.create({
       component: ModalInmediateRequestPage,
       componentProps: {

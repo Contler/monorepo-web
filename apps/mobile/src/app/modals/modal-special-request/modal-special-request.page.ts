@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Employer, SpecialRequest } from '@contler/models';
+import { SpecialRequest } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { ModalController, NavParams } from '@ionic/angular';
 import { MessagesService } from '../../services/messages/messages.service';
 import { GeneralService } from '../../services/general.service';
 import { EmployerService } from '../../services/employer.service';
 import { SpecialRequestsService } from '../../services/special-requests.service';
+import { EmployerEntity } from '@contler/entity';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { SpecialRequestsService } from '../../services/special-requests.service'
 export class ModalSpecialRequestPage implements OnInit, OnDestroy {
   public request: SpecialRequest | undefined;
 
-  public employers: Employer[] = [];
+  public employers: EmployerEntity[] = [];
   private subscription: Subscription | null = null;
   public isFinished = false;
 

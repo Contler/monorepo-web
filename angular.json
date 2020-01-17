@@ -492,6 +492,9 @@
               },
               {
                 "input": "apps/mobile/src/theme/variables.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/ionic.bundle.css"
               }
             ],
             "scripts": []
