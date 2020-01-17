@@ -53,6 +53,7 @@ const routes: Routes = [
     loadChildren: () => import('hotel/guest/guest.module').then(m => m.GuestModule),
   },
   { path: 'wake-up', loadChildren: () => import('../wake-up/wake-up.module').then(m => m.WakeUpModule) },
+  { path: 'statistics', loadChildren: () => import('../statistics/statistics.module').then(m => m.StatisticsModule) },
   {
     path: '**',
     component: AdminHomeComponent,

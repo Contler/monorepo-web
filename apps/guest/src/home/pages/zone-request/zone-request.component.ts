@@ -36,7 +36,7 @@ export class ZoneRequestComponent implements OnDestroy {
 
   //CODIGO TEMPORAL HASTA DEFINIR LOGICA DE PRODUCTOS
   public typeName: string | null = null;
-  public drinkName: string | null = null;
+  public drinkName = '';
   public drinksQuantity: number | null = null;
 
   constructor(
@@ -72,6 +72,7 @@ export class ZoneRequestComponent implements OnDestroy {
 
   async saveRequest() {
     this.loader = true;
+    const msg = this.requestController.value
     const chiefTokens: string[] = this.zone!.leaders.filter(leader => !!leader.pushToken).map(
       leader => leader.pushToken,
     );
@@ -84,7 +85,7 @@ export class ZoneRequestComponent implements OnDestroy {
           request.room = guest!.room;
           request.zone = this.zone!;
           request.special = false;
-          request.message = this.requestController.value + ' ' + this.drinkName + ' ' + this.drinksQuantity;
+          request.message = msg;
           return request;
         }),
         switchMap(request => this.requestService.saveRequest(request)),

@@ -10,9 +10,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ModalRemoveEmployerComponent } from 'hotel/employer/components/modal-remove-employer/modal-remove-employer.component';
 import { filter, switchMap, tap } from 'rxjs/operators';
-import { ModalEditEmployerComponent } from 'hotel/employer/components/modal-edit-employer/modal-edit-employer.component';
 import { LoaderComponent } from 'hotel/material/components/loader/loader.component';
 import { EmployerEntity } from '@contler/entity';
+import { ModalEditEmployerComponent } from 'hotel/common-components/modal-edit-employer/modal-edit-employer.component';
 
 @Component({
   selector: 'contler-employer',

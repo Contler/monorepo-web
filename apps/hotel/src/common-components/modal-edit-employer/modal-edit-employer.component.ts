@@ -34,7 +34,7 @@ export class ModalEditEmployerComponent implements OnInit {
       leader: [employer.role === CHIEF, Validators.required],
       lastName: [employer.lastName, Validators.required],
       score: [employer.totalScore, Validators.required],
-      averageTime: [employer.totalTime, Validators.required],
+      averageTime: [employer.averageTime, Validators.required],
       numRequest: [employer.totalServices, Validators.required],
     });
     this.$zone = this.zoneService.getZones();

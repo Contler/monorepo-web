@@ -9,7 +9,9 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { ADMIN } from '@contler/const';
 import { EmployerEntity } from '@contler/entity';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class EmployerService {
   private url = environment.apiUrl;
 

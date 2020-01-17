@@ -6,7 +6,9 @@ import { HttpClient } from '@angular/common/http';
 import { CategoryEntity, ZoneEntity } from '@contler/entity';
 import { environment } from 'hotel/environments/environment';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ZoneService {
   constructor(private afDb: AngularFireDatabase, private userService: UserService, private http: HttpClient) {}
 

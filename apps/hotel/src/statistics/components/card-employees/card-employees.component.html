@@ -1,0 +1,18 @@
+<div class="card-emp" *ngIf="employer">
+  <div class="card-emp__data">
+    <div>
+      <p class="card-emp__title">{{employer.name}} {{employer.lastName}}</p>
+      <div class="card-emp__statistic">
+        <p class="card-emp__statistic-txt">Tiempo promedio:</p>
+        <p class="card-emp__statistic-txt">{{employer.averageTime}}</p>
+        <p class="card-emp__statistic-txt"> No de servicios:</p>
+        <p class="card-emp__statistic-txt">{{employer.totalServices}}</p>
+        <p class="card-emp__statistic-txt"> Calificación:</p>
+        <p class="card-emp__statistic-txt">{{employer.averageScore}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-emp__btn">
+    <button mat-stroked-button (click)="openEmployerEditModal(employer)">Perfil completo</button>
+  </div>
+</div>

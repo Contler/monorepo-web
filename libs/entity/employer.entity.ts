@@ -15,6 +15,8 @@ export class EmployerEntity {
 
   averageScore!: number;
 
+  averageTime!: number;
+
   totalServices!: number;
 
   totalTime!: number;

@@ -79,7 +79,7 @@ export class MenuComponent implements OnInit {
     {
       name: 'Calificaciones',
       icon: 'favorite',
-      link: ['/home', 'califactions'],
+      link: ['/home', 'statistics'],
       primary: false,
     },
   ];

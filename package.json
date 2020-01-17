@@ -62,6 +62,8 @@
     "@nestjs/platform-express": "^6.8.3",
     "@nestjs/typeorm": "^6.2.0",
     "@nrwl/angular": "^8.7.1",
+    "@types/chart.js": "^2.9.9",
+    "chart.js": "^2.9.3",
     "class-transformer": "^0.2.3",
     "class-validator": "latest",
     "cordova-sqlite-storage": "^4.0.0",

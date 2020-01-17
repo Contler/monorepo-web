@@ -9,6 +9,7 @@ import { RequestService } from 'guest/services/request.service';
 import { GeneralService } from 'guest/services/general.service';
 import { GuestEntity } from '@contler/entity/guest.entity';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'contler-guest-requests',
@@ -41,7 +42,7 @@ export class GuestRequestsComponent implements OnDestroy {
       this.showedZones = this.allZonesShowed ? this.zones.slice() : this.zones.filter(zone => zone.principal);
     });
 
-    this.requestSubscription = this.requestService.getRequests(true).subscribe(requests => {
+    this.requestSubscription = this.requestService.getRequests(true).pipe(map(reqs => reqs.filter(req => req.score === null))).subscribe(requests => {
       if (requests && requests.length > 0) {
         requests.forEach(request => {
           console.log('request', request);
