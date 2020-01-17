@@ -41,7 +41,7 @@ export class GuestRequestsComponent implements OnDestroy {
       this.showedZones = this.allZonesShowed ? this.zones.slice() : this.zones.filter(zone => zone.principal);
     });
 
-    this.requestSubscription = this.requestService.getRequestFinish().subscribe(requests => {
+    this.requestSubscription = this.requestService.getRequests(true).subscribe(requests => {
       if (requests && requests.length > 0) {
         requests.forEach(request => {
           console.log('request', request);

@@ -6,16 +6,16 @@
       <form>
         <div class="two-inputs">
           <mat-form-field appearance="fill">
-            <input matInput [value]="request.created_at | date: 'dd/MM/yyyy'" name="created_at_date" readonly />
+            <input matInput [value]="request.createAt | date: 'dd/MM/yyyy'" name="created_at_date" readonly />
             <mat-hint>Fecha solicitud</mat-hint>
           </mat-form-field>
           <mat-form-field appearance="fill">
-            <input matInput [value]="request.created_at | date: 'HH:mm'" name="created_at_time" readonly />
+            <input matInput [value]="request.createAt | date: 'HH:mm'" name="created_at_time" readonly />
             <mat-hint>Hora solicitud</mat-hint>
           </mat-form-field>
         </div>
         <mat-form-field appearance="fill">
-          <input matInput [value]="request.zoneName" name="zoneName" readonly />
+          <input matInput [value]="request.zone.name" name="zoneName" readonly />
           <mat-hint>Zona</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
@@ -23,11 +23,11 @@
           <mat-hint>Necesita</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <input matInput [value]="request.employerName" name="employerName" readonly />
+          <input matInput [value]="request.solved.name" name="employerName" readonly />
           <mat-hint>Empleado encargado</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <input matInput [value]="request.finished_at ? 'Cumplida' : 'Pendiente'" name="finished_at" readonly />
+          <input matInput [value]="request.complete ? 'Cumplida' : 'Pendiente'" name="finished_at" readonly />
           <mat-hint>Estado de la solicitud</mat-hint>
         </mat-form-field>
         <div class="score-container">
@@ -37,7 +37,7 @@
           <textarea
             matInput
             cdkTextareaAutosize
-            [(ngModel)]="request.scoreComments"
+            [(ngModel)]="request.comment"
             name="scoreComments"
             required
           ></textarea>
@@ -45,7 +45,7 @@
         </mat-form-field>
         <button
           [loading]="loader"
-          [disabled]="loader"
+          [disabled]="loader || request.complete"
           class="full-width custom-button"
           mat-raised-button
           contlerButton

@@ -2,11 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { InmediateRequestsService } from 'guest/services/inmediate-requests.service';
 import { GeneralService } from 'guest/services/general.service';
 import { Subscription } from 'rxjs';
-import { Request } from '@contler/models/request';
 import { Router } from '@angular/router';
 import { GuestService } from 'guest/services/guest.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { HotelEntity } from '@contler/entity';
+import { HotelEntity, RequestEntity } from '@contler/entity';
+import { RequestService } from 'guest/services/request.service';
 
 @Component({
   selector: 'contler-my-inmediate-requests',
@@ -21,13 +21,14 @@ export class MyInmediateRequestsComponent implements OnInit, OnDestroy {
   public currentPage = this.PAGES.PENDING;
 
   private inmediateRequestsSubscription: Subscription | null = null;
-  public pendingRequests: Request[] = [];
-  public readyRequests: Request[] = [];
+  public pendingRequests: RequestEntity[] = [];
+  public readyRequests: RequestEntity[] = [];
 
   hotel: HotelEntity | null | undefined;
   private guestSubscribe: Subscription;
 
   constructor(
+    private requestService:RequestService,
     private inmediateRequestsService: InmediateRequestsService,
     public generalService: GeneralService,
     private guestService: GuestService,
@@ -38,12 +39,8 @@ export class MyInmediateRequestsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.inmediateRequestsSubscription = this.inmediateRequestsService
-      .listenInmediateRequestByHotel()
-      .subscribe((requests: Request[]) => {
-        this.pendingRequests = requests.filter(request => !request.finished_at);
-        this.readyRequests = requests.filter(request => !!request.finished_at);
-      });
+    this.requestService.getRequests(false).subscribe(req => this.pendingRequests = req);
+    this.requestService.getRequests(true).subscribe(req => this.readyRequests = req);
   }
 
   ngOnDestroy() {
@@ -55,8 +52,8 @@ export class MyInmediateRequestsComponent implements OnInit, OnDestroy {
     }
   }
 
-  goToRequest(request: Request) {
-    this.router.navigate(['/home', 'inmediate-request', request.uid]);
+  goToRequest(request: RequestEntity) {
+    this.router.navigate(['/home', 'inmediate-request', request.id]);
   }
 
   getColorHotel() {

@@ -8,10 +8,10 @@
           <div class="item" *ngFor="let request of pendingRequests" (click)="goToRequest(request)">
             <div class="item__info-container">
               <p class="username">{{ request.message }}</p>
-              <p class="zone">{{ request.zoneName }}</p>
+              <p class="zone">{{ request.zone.name }}</p>
             </div>
             <div class="item__data-container">
-              <p class="time">{{ request.created_at | date: 'dd/MM/yyyy' }}</p>
+              <p class="time">{{ request.createAt | date: 'dd/MM/yyyy' }}</p>
               <button mat-icon-button>
                 <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
               </button>
@@ -24,7 +24,7 @@
           <div class="item" *ngFor="let request of readyRequests" (click)="goToRequest(request)">
             <div class="item__info-container">
               <p class="username">{{ request.message }}</p>
-              <p class="zone">{{ request.zoneName }}</p>
+              <p class="zone">{{ request.zone.name }}</p>
             </div>
             <div class="item__data-container">
               <p class="time">{{ request | requestTime }}</p>

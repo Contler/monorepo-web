@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { InmediateRequestsService } from 'guest/services/inmediate-requests.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { pluck, switchMap, take } from 'rxjs/operators';
+import { pluck, switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import { Request } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MessagesService } from 'guest/services/messages/messages.service';
-import { HotelEntity } from '@contler/entity';
+import { HotelEntity, RequestEntity } from '@contler/entity';
+import { RequestService } from 'guest/services/request.service';
 
 @Component({
   selector: 'contler-inmediate-request',
@@ -16,7 +16,7 @@ import { HotelEntity } from '@contler/entity';
 })
 export class InmediateRequestComponent implements OnInit, OnDestroy {
   private requestSubscription: Subscription | null = null;
-  public request: Request | null = null;
+  public request: RequestEntity | null = null;
 
   hotel: HotelEntity | null | undefined;
   private guestSubscribe: Subscription;
@@ -29,7 +29,8 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
     private guestService: GuestService,
     private sanitizer: DomSanitizer,
     private messagesService: MessagesService,
-    private router: Router
+    private router: Router,
+    private requestService: RequestService,
   ) {
     this.guestSubscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
   }
@@ -39,10 +40,10 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
       .pipe(
         pluck('uid'),
         switchMap(uid => {
-          return this.inmediateRequestsService.getInmediateRequestByKey(uid).pipe(take(1));
+          return this.requestService.getRequest(uid);
         }),
       )
-      .subscribe(request => (this.request = request as Request), () => {});
+      .subscribe(request => (this.request = request), () => {});
   }
 
   ngOnDestroy() {
@@ -57,9 +58,9 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
   saveRequest() {
     this.loader = true;
     const score = this.request ? this.request.score : 0;
-    const scoreComments = this.request ? this.request.scoreComments : null;
+    const scoreComments = this.request ? this.request.score : null;
     this.inmediateRequestsService
-      .updateRequest(this.request ? this.request.uid : '', { score, scoreComments })
+      .updateRequest(this.request ? this.request.id + '' : '', { score, scoreComments })
       .then(() => {
         this.loader = false;
         this.router.navigate(['/home']);

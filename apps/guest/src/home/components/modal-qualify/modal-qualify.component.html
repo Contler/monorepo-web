@@ -1,9 +1,9 @@
-<div class="cnt-qualify" *ngIf="request">
+<div class="cnt-qualify" *ngIf="data">
   <img src="assets/img/rating.svg" alt="" class="cnt-qualify__img" />
   <!-- <p class="cnt-qualify__title">Cómo te pareció el servicio que acaba de prestar nuestro equipo</p> -->
   <p class="cnt-qualify__title">
-    Cómo te parecio el servicio que prestó nuestro equipo en tu solicitud {{ request.message }} en
-    {{ request.zoneName }} el día {{ request.created_at | date: 'dd/MM/yyyy' }}.
+    Cómo te parecio el servicio que prestó nuestro equipo en tu solicitud {{ data.message }} en
+    {{ data.zone.name }} el día {{ data.createAt | date: 'dd/MM/yyyy' }}.
   </p>
   <star-rating
     value="0"

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { Request } from '@contler/models';
 import { RequestService } from 'guest/services/request.service';
+import { RequestEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-modal-qualify',
@@ -13,15 +13,12 @@ export class ModalQualifyComponent implements OnInit {
   comment: string | undefined;
   load = false;
   readonly textRate = ['Muy malo', 'Malo', 'Regular', 'Bueno', 'Exelente'];
-  public request: Request;
 
   constructor(
     private dialogRef: MatDialogRef<ModalQualifyComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: Request,
+    @Inject(MAT_DIALOG_DATA) public data: RequestEntity,
     private requestService: RequestService,
-  ) {
-    this.request = Object.assign({}, data);
-  }
+  ) {}
 
   ngOnInit() {}
 
@@ -31,9 +28,9 @@ export class ModalQualifyComponent implements OnInit {
 
   close() {
     this.load = true;
-    this.data.scoreComments = this.comment || '';
-    this.data.score = this.value;
-    this.requestService.updateRequest(this.data).then(_ => {
+    this.data.comment = this.comment || '';
+    this.data.score = this.value!;
+    this.requestService.updateRequest(this.data).subscribe(() => {
       this.dialogRef.close();
     });
   }
