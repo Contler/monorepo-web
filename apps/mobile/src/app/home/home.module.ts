@@ -30,6 +30,7 @@ import { MaterialModule } from '../material/material.module';
               import('./special-requests/special-requests.module').then(m => m.SpecialRequestsPageModule),
           },
           { path: 'wake-up', loadChildren: () => import('../wake-up/wake-up.module').then(m => m.WakeUpModule) },
+          { path: 'statistic', loadChildren: () => import('../statistic/statistic.module').then(m => m.StatisticModule) },
         ],
       },
     ]),

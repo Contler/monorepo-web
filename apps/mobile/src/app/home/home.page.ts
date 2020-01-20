@@ -30,6 +30,11 @@ export class HomePage implements OnInit {
       name: 'Solicitudes especiales',
       route: '/home/special-requests',
     },
+    {
+      icon: 'bar_chart',
+      name: 'Estadisticas',
+      route: '/home/statistic'
+    }
   ];
   public currentRoute: string | undefined;
   public chiefZonesLabel: string | undefined;
