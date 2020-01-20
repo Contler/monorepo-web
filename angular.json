@@ -34,14 +34,17 @@
               }
             ],
             "styles": [
-              "apps/hotel/src/styles.scss"
+              "apps/hotel/src/styles.scss",
+              "apps/hotel/src/assets/loanding/loading-bar.min.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "apps/hotel/src"
               ]
             },
-            "scripts": []
+            "scripts": [
+              "apps/hotel/src/assets/loanding/loading-bar.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -92,6 +95,9 @@
           "configurations": {
             "production": {
               "browserTarget": "hotel:build:production"
+            },
+            "qa": {
+              "browserTarget": "hotel:build:qa"
             }
           }
         },
@@ -368,6 +374,9 @@
           "configurations": {
             "production": {
               "browserTarget": "guest:build:production"
+            },
+            "qa": {
+              "browserTarget": "guest:build:qa"
             }
           }
         },
@@ -528,6 +537,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/mobile/src/environments/environment.ts",
+                  "with": "apps/mobile/src/environments/environment.qa.ts"
+                }
+              ]
             }
           }
         },
@@ -539,6 +556,9 @@
           "configurations": {
             "production": {
               "browserTarget": "mobile:build:production"
+            },
+            "qa": {
+              "browserTarget": "mobile:build:qa"
             }
           }
         },

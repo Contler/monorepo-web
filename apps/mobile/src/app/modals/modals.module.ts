@@ -6,6 +6,7 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ModalSpecialRequestPage } from './modal-special-request/modal-special-request.page';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   declarations: [ModalInmediateRequestPage, ModalSpecialRequestPage],
@@ -15,7 +16,8 @@ import { ModalSpecialRequestPage } from './modal-special-request/modal-special-r
     CommonComponentsModule,
     MaterialModule,
     FormsModule,
-    IonicModule
-  ]
+    IonicModule,
+    RatingModule,
+  ],
 })
 export class ModalsModule {}

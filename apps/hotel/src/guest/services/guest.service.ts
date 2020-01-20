@@ -13,7 +13,7 @@ export class GuestService {
   constructor(private http: HttpClient, private userService: UserService, private afStore: AngularFirestore) {}
 
   saveGuest(guestRequest: GuestRequest) {
-    return this.http.post(environment.apiUrl + 'guest', guestRequest);
+    return this.http.post<GuestEntity>(environment.apiUrl + 'guest', guestRequest);
   }
 
   updateGuest(guest: GuestEntity) {

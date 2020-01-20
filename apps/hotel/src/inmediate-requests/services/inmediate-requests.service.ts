@@ -2,29 +2,20 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Request } from '@contler/models';
 import { UserService } from '@contler/core';
-import { map, switchMap, take } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
+import { AuthService } from 'hotel/services/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'hotel/environments/environment';
+import { RequestEntity } from '@contler/entity';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InmediateRequestsService {
-  constructor(private afDb: AngularFireDatabase, private userService: UserService) {}
+  constructor(private authService: AuthService, private http: HttpClient, private afDb: AngularFireDatabase, private userService: UserService) {}
 
   listenInmediateRequestByHotel() {
-    return this.userService.getUser().pipe(
-      take(1),
-      switchMap(user => {
-        return this.afDb
-          .object<Request>(Request.REF)
-          .valueChanges()
-          .pipe(
-            map((data: any) => {
-              return data ? (Object.values(data) as Request[]) : [];
-            }),
-            map((data: Request[]) => data.filter(request => request.hotel === user.hotel.uid).sort(this.sortRequests)),
-          );
-      }),
-    );
+    return this.authService.$employer.pipe(switchMap(user => this.http.get<RequestEntity[]>(environment.apiUrl + `hotel/${user.hotel.uid}/request`)))
   }
 
   updateRequest(requestKey: string, data: any) {

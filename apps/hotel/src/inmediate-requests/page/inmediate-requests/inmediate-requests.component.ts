@@ -3,9 +3,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { Subscription } from 'rxjs';
-import { Request } from '@contler/models';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalInmediateRequestComponent } from 'hotel/inmediate-requests/components/modal-inmediate-request/modal-inmediate-request.component';
+import { RequestEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-inmediate-requests',
@@ -14,7 +14,7 @@ import { ModalInmediateRequestComponent } from 'hotel/inmediate-requests/compone
 })
 export class InmediateRequestsComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['userName', 'zone', 'room', 'message', 'created_at', 'employerName', 'status', 'actions'];
-  dataSource = new MatTableDataSource<Request>([]);
+  dataSource = new MatTableDataSource<RequestEntity>([]);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
 
   private inmediateRequestsSubscription: Subscription | null = null;
@@ -30,16 +30,16 @@ export class InmediateRequestsComponent implements OnInit, OnDestroy {
     this.dataSource.filter = this.filterByStatusSelected;
     this.dataSource.filterPredicate = (data, filter) => {
       if (filter === this.requestStatus.ACTIVE) {
-        return data.finished_at ? false : true;
+        return data.finishAt ? false : true;
       }
       if (filter === this.requestStatus.ALL) {
         return true;
       }
       const response =
-        data.userName.toLowerCase().includes(filter) ||
-        data.zoneName.toLowerCase().includes(filter) ||
+        data.guest.name.toLowerCase().includes(filter) ||
+        data.zone.name.toLowerCase().includes(filter) ||
         data.message.toLowerCase().includes(filter) ||
-        (data.employerName && data.employerName.toLowerCase().includes(filter));
+        (data.solved.name && data.solved.name.toLowerCase().includes(filter));
       return response ? true : false;
     };
     this.inmediateRequestsSubscription = this.inmediateRequestsService
@@ -64,11 +64,9 @@ export class InmediateRequestsComponent implements OnInit, OnDestroy {
     }
   }
 
-  update(request: Request) {
+  update(request: RequestEntity) {
     this.dialog.open(ModalInmediateRequestComponent, {
-      data: {
-        request: Object.assign({}, request),
-      },
+      data: {...request},
     });
   }
 

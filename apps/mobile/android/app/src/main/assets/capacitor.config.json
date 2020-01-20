@@ -1,11 +1,8 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "com.contler.contler",
   "appName": "mobile",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "../../dist/apps/mobile",
-  "cordova": {},
-  "server": {
-    "url": "http://192.168.1.58:8100"
-  }
+  "cordova": {}
 }

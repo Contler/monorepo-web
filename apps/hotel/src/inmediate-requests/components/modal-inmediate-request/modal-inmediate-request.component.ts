@@ -1,12 +1,11 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EmployerService } from 'hotel/employer/services/employer.service';
-import { Request } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { SUB_CATEGORY_DRINKS } from '@contler/const';
-import { EmployerEntity } from '@contler/entity';
+import { EmployerEntity, RequestEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-modal-inmediate-request',
@@ -16,7 +15,7 @@ import { EmployerEntity } from '@contler/entity';
 export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
   loading = false;
 
-  public request: Request | null = null;
+  public request: RequestEntity | null = null;
 
   public employers: EmployerEntity[] = [];
   private subscription: Subscription | null = null;
@@ -30,9 +29,7 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
     private inmediateRequestsService: InmediateRequestsService,
     private messagesService: MessagesService,
     @Inject(MAT_DIALOG_DATA)
-    public data: {
-      request: Request;
-    },
+    public data: RequestEntity
   ) {}
 
   onNoClick(): void {
@@ -40,7 +37,7 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.request = this.data.request;
+    this.request = this.data;
     this.isFinished = this.request.complete;
     this.subscription = this.employerService.getEmployers().subscribe(employers => (this.employers = employers));
   }
@@ -54,18 +51,18 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
   save() {
     if (this.request) {
       this.loading = true;
-      const employerToFind: string = this.request.employer || '';
+      const employerToFind: string = this.request.solved.name || '';
       const employerFound = this.employers.find(employer => employer.uid === employerToFind);
       if (employerFound) {
-        this.request.employer = employerFound.uid;
-        this.request.employerName = `${employerFound.name} ${employerFound.lastName}`;
+        this.request.solved.name = employerFound.uid;
+        this.request.solved.name = `${employerFound.name} ${employerFound.lastName}`;
       }
       if (this.isFinished && !this.request.complete) {
-        this.request.finished_at = new Date().getTime();
+        this.request.finishAt = new Date()
         this.request.complete = true;
       }
       this.inmediateRequestsService
-        .updateRequest(this.request.uid, this.request)
+        .updateRequest(this.request.id + '', this.request)
         .then(() => {
           this.loading = false;
           this.messagesService.showToastMessage('Solicitud actualizada exitosamente');

@@ -16,6 +16,9 @@
     letter-spacing: normal;
     color: rgba(0, 0, 0, 0.87);
     margin: 0 0 7px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   &__statistic {
@@ -30,6 +33,9 @@
       letter-spacing: 0.25px;
       color: rgba(0, 0, 0, 0.6);
       margin: 0 0 2px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
   }
 

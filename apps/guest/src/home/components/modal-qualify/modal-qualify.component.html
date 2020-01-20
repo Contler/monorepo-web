@@ -11,8 +11,7 @@
     checkedcolor="#dfae00"
     uncheckedcolor="#6c6c6c"
     size="24px"
-    (rate)="selectStart($event)"
-  ></star-rating>
+    (rate)="selectStart($event)"></star-rating>
   <p class="cnt-qualify__info" *ngIf="value !== undefined">{{ textRate[value - 1] }} {{ value }}/5</p>
   <mat-form-field appearance="fill" class="full_width cnt-qualify__input">
     <input matInput [(ngModel)]="comment" />

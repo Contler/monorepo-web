@@ -108,6 +108,27 @@ table {
   }
 }
 
-.cursor{
+.cursor {
   cursor: pointer;
+}
+
+.score-progress {
+  .ldBar-label {
+    font-family: $family;
+    font-size: 24.3px;
+    color: #55413a;
+    &:after {
+      content: '' !important;
+    }
+  }
+}
+
+.ldBar path.baseline {
+  stroke-width: 2;
+  stroke: #2ee0ce;
+}
+
+.ldBar path.mainline {
+  stroke-width: 8;
+  stroke: #2ee0ce;
 }

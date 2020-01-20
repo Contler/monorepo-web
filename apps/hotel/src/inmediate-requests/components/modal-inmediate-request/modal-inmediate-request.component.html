@@ -1,60 +1,54 @@
 <div mat-dialog-content>
   <div class="main-container">
     <p class="main-container__title">Solicitud inmediata</p>
+
     <div class="two-inputs main-container__first-row">
       <mat-form-field appearance="fill">
-        <input matInput [ngModel]="request.userName" readonly />
+        <input matInput [ngModel]="request.guest.name" readonly />
         <mat-icon matSuffix class="material-icons-outlined">account_circle</mat-icon>
         <mat-hint>Nombre huésped</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <input matInput [ngModel]="request.zoneName" readonly />
+        <input matInput [ngModel]="request.zone.name" readonly />
         <mat-icon matSuffix>where_to_vote</mat-icon>
         <mat-hint>Zona</mat-hint>
       </mat-form-field>
     </div>
+
+
     <div class="two-inputs main-container__second-row">
       <div class="two-inputs">
         <mat-form-field appearance="fill">
-          <input matInput [value]="request.created_at | date: 'HH:mm'" readonly />
+          <input matInput [value]="request.createAt | date: 'HH:mm'" readonly />
           <mat-icon matSuffix class="material-icons-outlined">watch_later</mat-icon>
           <mat-hint>Hora de solicitud</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <input matInput [value]="request.finished_at | date: 'HH:mm'" readonly />
+          <input matInput [value]="request.finishAt | date: 'HH:mm'" readonly />
           <mat-icon matSuffix class="material-icons-outlined">watch_later</mat-icon>
           <mat-hint>Hora de entrega</mat-hint>
         </mat-form-field>
       </div>
       <mat-form-field appearance="fill">
-        <mat-select [(ngModel)]="request.employer">
+        <mat-select [(ngModel)]="request.solved">
           <mat-option *ngFor="let employer of employers" [value]="employer.uid">
             {{ employer.name }} {{ employer.lastName }}
           </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
-    <mat-form-field class="main-container__third-row" appearance="fill">
-      <input matInput [ngModel]="request.message" readonly />
-      <mat-hint>Solicitud</mat-hint>
-    </mat-form-field>
 
-    <ng-container *ngIf="request.message === DRINKS_SUBCATEGORY">
-      <div class="drinks-container">
-        <mat-form-field class="full-width" appearance="fill">
-          <input matInput [ngModel]="request.drinkData.typeName" readonly />
-          <mat-hint>Tipo de bebida</mat-hint>
-        </mat-form-field>
-        <mat-form-field class="full-width" appearance="fill">
-          <input matInput [ngModel]="request.drinkData.drinkName" readonly />
-          <mat-hint>Bebida</mat-hint>
-        </mat-form-field>
-        <mat-form-field class="full-width" appearance="fill">
-          <input matInput [ngModel]="request.drinkData.units" readonly />
-          <mat-hint>Cantidad</mat-hint>
-        </mat-form-field>
-      </div>
-    </ng-container>
+    <div class="two-inputs main-container__first-row">
+      <mat-form-field appearance="fill">
+        <input matInput [ngModel]="request.room.name" readonly />
+        <mat-hint>Habitación</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <input matInput [ngModel]="request.message" readonly />
+        <mat-hint>Solicitud</mat-hint>
+      </mat-form-field>
+    </div>
+
 
     <div class="two-inputs main-container__fourth-row">
       <mat-form-field appearance="fill">
@@ -80,7 +74,7 @@
             readonly="true"
           ></star-rating>
         </div>
-        <p class="user-comment">{{ request.scoreComments }}</p>
+        <p class="user-comment">{{ request.score }}</p>
       </div>
     </div>
     <button mat-raised-button color="accent" contlerButton [loading]="loading" [disabled]="loading" (click)="save()">

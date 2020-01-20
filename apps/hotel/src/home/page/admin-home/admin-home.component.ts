@@ -2,9 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { map } from 'rxjs/operators';
-import { Request, SpecialRequest } from '@contler/models';
+import { SpecialRequest } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { SpecialRequestsService } from 'hotel/special-requests/services/special-requests.service';
+import { RequestEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-admin-home',
@@ -88,7 +89,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     this.inmediateRequestsSubscription = this.inmediateRequestsService
       .listenInmediateRequestByHotel()
       .pipe(
-        map((requests: Request[]) => requests.filter(request => !request.finished_at)),
+        map((requests: RequestEntity[]) => requests.filter(request => !request.finishAt)),
         map(requests => requests.length),
       )
       .subscribe(quantity => (this.sections[3].badge = quantity));

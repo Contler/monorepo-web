@@ -29,12 +29,14 @@ export class ModalEditEmployerComponent implements OnInit {
     private zoneService: ZoneService,
     private messagesService: MessagesService,
   ) {
+    console.log(employer);
+    console.log(employer.avgTime);
     this.formEmployer = formBuild.group({
       name: [employer.name, Validators.required],
       leader: [employer.role === CHIEF, Validators.required],
       lastName: [employer.lastName, Validators.required],
-      score: [employer.totalScore, Validators.required],
-      averageTime: [employer.averageTime, Validators.required],
+      score: [employer.averageScore, Validators.required],
+      averageTime: [employer.avgTime, Validators.required],
       numRequest: [employer.totalServices, Validators.required],
     });
     this.$zone = this.zoneService.getZones();

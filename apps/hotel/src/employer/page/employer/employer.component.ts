@@ -2,14 +2,13 @@ import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { ModalEmployerComponent } from 'hotel/employer/components/modal-employer/modal-employer.component';
-import { Employer } from '@contler/models';
 import { EmployerService } from 'hotel/employer/services/employer.service';
 import { Subscription } from 'rxjs';
-import { CHIEF } from '@contler/const';
+import { ADMIN, CHIEF } from '@contler/const';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ModalRemoveEmployerComponent } from 'hotel/employer/components/modal-remove-employer/modal-remove-employer.component';
-import { filter, switchMap, tap } from 'rxjs/operators';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { LoaderComponent } from 'hotel/material/components/loader/loader.component';
 import { EmployerEntity } from '@contler/entity';
 import { ModalEditEmployerComponent } from 'hotel/common-components/modal-edit-employer/modal-edit-employer.component';
@@ -35,14 +34,23 @@ export class EmployerComponent implements OnDestroy {
   private subscription: Subscription;
 
   constructor(private dialog: MatDialog, private employerService: EmployerService) {
-    this.subscription = this.employerService.getEmployers().subscribe(employers => (this.dataSource.data = employers));
+    this.subscription = this.employerService
+      .getEmployers()
+      .pipe(map(employers => employers.filter(employer => employer.role !== ADMIN)))
+      .subscribe(employers => (this.dataSource.data = employers));
     this.dataSource.paginator = this.paginator!;
   }
 
   openEmployerModal() {
-    this.dialog.open<ModalEmployerComponent, void, Employer>(ModalEmployerComponent, {
-      width: '940px',
-    });
+    this.dialog
+      .open<ModalEmployerComponent, void, EmployerEntity>(ModalEmployerComponent, {
+        width: '940px',
+      })
+      .afterClosed()
+      .pipe(filter(data => !!data))
+      .subscribe(data => {
+        this.dataSource.data = [...this.dataSource.data!, data!];
+      });
   }
 
   openEmployerEditModal(employer: EmployerEntity) {

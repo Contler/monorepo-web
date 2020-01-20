@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'hotel/services/auth.service';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { environment } from 'hotel/environments/environment';
 import { Statistic } from '@contler/models/statistic';
+import { Interval } from '@contler/models/interval';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,13 @@ export class HotelService {
 
   getTime() {
     return this.authService.$employer.pipe(
-      switchMap(user => this.http.get<Statistic[]>(environment.apiUrl + `hotel/${user.hotel.uid}/time`)),
+      switchMap(user => this.http.get<Interval>(environment.apiUrl + `hotel/${user.hotel.uid}/time`)),
+      map(data => {
+        const hours =  'hours' in data ? data.hours + ' hrs' : '';
+        const minutes = 'minutes' in data ? data.minutes + ' mins': '';
+        const seconds = 'seconds' in data ? data.seconds + ' secs': '';
+        return [hours, minutes, seconds].join(' ').trim()
+      })
     );
   }
 }

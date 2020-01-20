@@ -11,6 +11,7 @@ import { ModalsModule } from '../../../modals/modals.module';
 import { CommonComponentsModule } from '../../../common-components/common-components.module';
 import { MaterialModule } from '../../../material/material.module';
 import { PipesModule } from '../../../pipes/pipes.module';
+import { RatingModule } from 'ng-starrating';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { PipesModule } from '../../../pipes/pipes.module';
     CommonComponentsModule,
     MaterialModule,
     PipesModule,
-    ModalsModule
+    ModalsModule,
+    RatingModule
   ],
   declarations: [ReadyInmediateRequestsPage],
   entryComponents: []

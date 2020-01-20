@@ -6,8 +6,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { map, switchMap } from 'rxjs/operators';
 import { UserService } from '@contler/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { ADMIN } from '@contler/const';
 import { EmployerEntity } from '@contler/entity';
+import { plainToClass } from 'class-transformer';
 
 @Injectable({
   providedIn: 'root',
@@ -23,13 +23,15 @@ export class EmployerService {
   ) {}
 
   saveEmployer(data: EmployerRequest) {
-    return this.http.post<Employer>(this.url + 'employer', data);
+    return this.http
+      .post<Employer>(this.url + 'employer', data)
+      .pipe(map(employer => plainToClass(EmployerEntity, employer)));
   }
 
   getEmployers() {
     return this.userService.getUser().pipe(
       switchMap(user => this.http.get<EmployerEntity[]>(this.url + `hotel/${user.hotel.uid}/employer`)),
-      map(employers => employers.filter(employer => employer.role !== ADMIN)),
+      map(employees => employees.map(employer => plainToClass(EmployerEntity, employer))),
     );
   }
 

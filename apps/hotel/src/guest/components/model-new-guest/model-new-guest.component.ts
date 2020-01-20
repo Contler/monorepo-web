@@ -58,9 +58,9 @@ export class ModelNewGuestComponent {
         switchMap(guestRequest => this.guestService.saveGuest(guestRequest)),
       )
       .subscribe(
-        () => {
+        (guest) => {
           this.load = false;
-          this.dialogRef.close();
+          this.dialogRef.close(guest);
         },
         error => {
           this.load = false;

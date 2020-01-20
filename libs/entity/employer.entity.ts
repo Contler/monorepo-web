@@ -1,6 +1,7 @@
 import { HotelEntity } from './hotel.entity';
 import { ZoneEntity } from './zone.entity';
 import { RequestEntity } from './request.entity';
+import { Interval } from '@contler/models/interval';
 
 export class EmployerEntity {
   uid!: string;
@@ -15,7 +16,7 @@ export class EmployerEntity {
 
   averageScore!: number;
 
-  averageTime!: number;
+  averageTime!: Interval;
 
   totalServices!: number;
 
@@ -32,4 +33,11 @@ export class EmployerEntity {
   requestAttended!: RequestEntity[];
 
   requestSolved!: RequestEntity[];
+
+  get avgTime() {
+    const hours =  'hours' in this.averageTime ? this.averageTime.hours + ' hrs' : '';
+    const minutes = 'minutes' in this.averageTime ? this.averageTime.minutes + ' mins': '';
+    const seconds = 'seconds' in this.averageTime ? this.averageTime.seconds + ' secs': '';
+    return [hours, minutes, seconds].join(' ').trim()
+  }
 }

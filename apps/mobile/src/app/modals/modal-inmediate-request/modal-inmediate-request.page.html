@@ -47,6 +47,14 @@
           <input matInput [ngModel]="request.message" name="message" readonly />
           <mat-hint>Necesita</mat-hint>
         </mat-form-field>
+
+        <star-rating *ngIf="request.complete"
+          [value]="request.score"
+          totalstars="5"
+          checkedcolor="#dfae00"
+          uncheckedcolor="#6c6c6c"
+          size="24px" style="text-align: center; margin-bottom: 10px; display: block" ></star-rating>
+
         <button
           type="submit"
           class="custom-button"

@@ -9,6 +9,7 @@ import { DOCUMENT_TYPE } from '@contler/const';
 import { LoaderComponent } from 'hotel/material/components/loader/loader.component';
 import { ModalEditGuestComponent } from 'hotel/guest/components/modal-edit-guest/modal-edit-guest.component';
 import { GuestEntity } from '@contler/entity/guest.entity';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'contler-guest',
@@ -29,11 +30,13 @@ export class GuestComponent implements OnDestroy {
   }
 
   openModalNewGuest() {
-    this.dialog.open(ModelNewGuestComponent, {
+    this.dialog.open<ModelNewGuestComponent, void, GuestEntity>(ModelNewGuestComponent, {
       width: '940px',
       maxWidth: '940px',
       panelClass: 'cnt-modal',
-    });
+    }).afterClosed().pipe(filter(data => !!data)).subscribe(data => {
+      this.dataSource.data = [...this.dataSource.data, data!]
+    })
   }
 
   getDocumentType(type: number) {

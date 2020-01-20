@@ -30,15 +30,15 @@
         <table mat-table [dataSource]="dataSource">
           <ng-container matColumnDef="userName">
             <th mat-header-cell *matHeaderCellDef>Nombre huésped</th>
-            <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.guest.name }}</td>
           </ng-container>
           <ng-container matColumnDef="zone">
             <th mat-header-cell *matHeaderCellDef>Zona</th>
-            <td mat-cell *matCellDef="let element">{{ element.zoneName }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.zone.name }}</td>
           </ng-container>
           <ng-container matColumnDef="room">
             <th mat-header-cell *matHeaderCellDef>Cuarto</th>
-            <td mat-cell *matCellDef="let element">{{ element.room }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.room.name }}</td>
           </ng-container>
           <ng-container matColumnDef="message">
             <th mat-header-cell *matHeaderCellDef>Mensaje</th>
@@ -46,11 +46,11 @@
           </ng-container>
           <ng-container matColumnDef="created_at">
             <th mat-header-cell *matHeaderCellDef>Hora</th>
-            <td mat-cell *matCellDef="let element">{{ element.created_at | date: 'HH:mm' }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.createAt | date: 'HH:mm' }}</td>
           </ng-container>
           <ng-container matColumnDef="employerName">
             <th mat-header-cell *matHeaderCellDef>Empleado</th>
-            <td mat-cell *matCellDef="let element">{{ element.employerName }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.solved?.name }}</td>
           </ng-container>
           <ng-container matColumnDef="status">
             <th mat-header-cell *matHeaderCellDef>Estado</th>
