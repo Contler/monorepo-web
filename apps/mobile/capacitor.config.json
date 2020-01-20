@@ -1,6 +1,6 @@
 {
   "appId": "com.contler.contler",
-  "appName": "mobile",
+  "appName": "Contler",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "../../dist/apps/mobile",
