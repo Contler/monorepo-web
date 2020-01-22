@@ -7,7 +7,7 @@
   padding: 16px;
   &__data {
     display: grid;
-    grid-template-columns: auto 80px;
+    grid-template-columns: 1fr;
     column-gap: 10px;
   }
   &__title {

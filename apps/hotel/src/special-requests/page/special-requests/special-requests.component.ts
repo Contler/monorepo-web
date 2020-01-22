@@ -5,6 +5,7 @@ import { SpecialRequest } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { SpecialRequestsService } from 'hotel/special-requests/services/special-requests.service';
+import { RequestEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-special-requests',
@@ -13,7 +14,7 @@ import { SpecialRequestsService } from 'hotel/special-requests/services/special-
 })
 export class SpecialRequestsComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['userName', 'roomName', 'description', 'checkIn', 'checkOut', 'actions'];
-  dataSource = new MatTableDataSource<SpecialRequest>([]);
+  dataSource = new MatTableDataSource<RequestEntity>([]);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
 
   private specialRequestsSubscription: Subscription | null = null;
@@ -29,15 +30,15 @@ export class SpecialRequestsComponent implements OnInit, OnDestroy {
     this.dataSource.filter = this.filterByStatusSelected;
     this.dataSource.filterPredicate = (data, filter) => {
       if (filter === this.requestStatus.ACTIVE) {
-        return data.isActive;
+        return data.complete;
       }
       if (filter === this.requestStatus.ALL) {
         return true;
       }
       const response =
-        (data.userName && data.userName.toLowerCase().includes(filter)) ||
-        (data.roomName && data.roomName.toLowerCase().includes(filter)) ||
-        (data.description && data.description.toLowerCase().includes(filter));
+        (data.guest && data.guest.name.toLowerCase().includes(filter)) ||
+        (data.room && data.room.name.toLowerCase().includes(filter)) ||
+        (data.message && data.message.toLowerCase().includes(filter));
       return response ? true : false;
     };
     this.specialRequestsSubscription = this.specialRequestsService.listenSpecialRequestByHotel().subscribe(requests => {

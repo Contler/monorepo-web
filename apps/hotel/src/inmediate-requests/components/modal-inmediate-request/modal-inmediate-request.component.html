@@ -30,7 +30,7 @@
         </mat-form-field>
       </div>
       <mat-form-field appearance="fill">
-        <mat-select [(ngModel)]="request.solved">
+        <mat-select [(ngModel)]="idSelected">
           <mat-option *ngFor="let employer of employers" [value]="employer.uid">
             {{ employer.name }} {{ employer.lastName }}
           </mat-option>

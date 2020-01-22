@@ -6,6 +6,8 @@ import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inme
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { SUB_CATEGORY_DRINKS } from '@contler/const';
 import { EmployerEntity, RequestEntity } from '@contler/entity';
+import { switchMap } from 'rxjs/operators';
+import { AuthService } from 'hotel/services/auth.service';
 
 @Component({
   selector: 'contler-modal-inmediate-request',
@@ -14,6 +16,7 @@ import { EmployerEntity, RequestEntity } from '@contler/entity';
 })
 export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
   loading = false;
+  idSelected: string;
 
   public request: RequestEntity | null = null;
 
@@ -29,8 +32,11 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
     private inmediateRequestsService: InmediateRequestsService,
     private messagesService: MessagesService,
     @Inject(MAT_DIALOG_DATA)
-    public data: RequestEntity
-  ) {}
+    public data: RequestEntity,
+    private authService: AuthService
+  ) {
+    this.idSelected = data.solved ? data.solved.uid : '';
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -51,29 +57,27 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
   save() {
     if (this.request) {
       this.loading = true;
-      const employerToFind: string = this.request.solved.name || '';
-      const employerFound = this.employers.find(employer => employer.uid === employerToFind);
-      if (employerFound) {
-        this.request.solved.name = employerFound.uid;
-        this.request.solved.name = `${employerFound.name} ${employerFound.lastName}`;
-      }
-      if (this.isFinished && !this.request.complete) {
-        this.request.finishAt = new Date()
-        this.request.complete = true;
-      }
-      this.inmediateRequestsService
-        .updateRequest(this.request.id + '', this.request)
-        .then(() => {
-          this.loading = false;
-          this.messagesService.showToastMessage('Solicitud actualizada exitosamente');
-          this.dialogRef.close();
-        })
-        .catch(() => {
-          this.loading = false;
-          //this.dialogRef.close();
-          this.messagesService.showServerError();
-          console.error('Hubo un error');
-        });
+      this.request!.solved = this.employers.find(e => e.uid === this.idSelected)!;
+      this.authService.$employer
+        .pipe(
+          switchMap(user => {
+            this.request!.attended = user!;
+            this.request!.complete = this.isFinished;
+            return this.inmediateRequestsService.updateRequest(this.request!);
+          }),
+        )
+        .subscribe(
+          () => {
+            this.loading = false;
+            this.messagesService.showToastMessage('Solicitud actualizada exitosamente');
+            this.dialogRef.close();
+          },
+          err => {
+            this.loading = false;
+            this.messagesService.showServerError();
+            console.error('Hubo un error');
+          },
+        );
     }
   }
 }
