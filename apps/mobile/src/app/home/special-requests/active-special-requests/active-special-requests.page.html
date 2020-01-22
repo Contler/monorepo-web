@@ -10,11 +10,11 @@
       <ng-container *ngIf="requestsResults.length">
         <div class="item" *ngFor="let request of requestsResults" (click)="goToRequest(request)">
           <div class="item__info-container">
-            <p class="username">{{request.userName}}</p>
-            <p class="zone">{{request.description}}</p>
+            <p class="username">{{request.guest.name}}</p>
+            <p class="zone">{{request.message}}</p>
           </div>
           <div class="item__data-container">
-            <p class="time">{{request.roomName}}</p>
+            <p class="time">{{request.room.name}}</p>
             <button mat-icon-button>
               <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
             </button>
@@ -33,11 +33,11 @@
         <ng-container *ngIf="requests.length else empty">
           <div class="item" *ngFor="let request of requests">
             <div class="item__info-container">
-              <p class="username">{{request.userName}}</p>
-              <p class="zone">{{request.description}}</p>
+              <p class="username">{{request.guest.name}}</p>
+              <p class="zone">{{request.message}}</p>
             </div>
             <div class="item__data-container">
-              <p class="time">{{request.roomName}}</p>
+              <p class="time">{{request.room.name}}</p>
               <button mat-icon-button (click)="goToRequest(request)">
                 <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
               </button>

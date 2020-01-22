@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { SpecialRequest } from '@contler/models';
 import { ModalController } from '@ionic/angular';
-import { map } from 'rxjs/operators';
 import { SpecialRequestsService } from '../../../services/special-requests.service';
 import { GeneralService } from '../../../services/general.service';
 import { ModalSpecialRequestPage } from '../../../modals/modal-special-request/modal-special-request.page';
+import { RequestEntity } from '@contler/entity';
 
 @Component({
   selector: "contler-past-special-requests",
@@ -14,11 +13,11 @@ import { ModalSpecialRequestPage } from '../../../modals/modal-special-request/m
 })
 export class PastSpecialRequestsPage implements OnInit {
   private specialRequestsSubscription: Subscription | null = null;
-  public requests: SpecialRequest[] = [];
+  public requests: RequestEntity[] = [];
 
   public searchRequestsEnabled: boolean | undefined;
   private searchSubscription: Subscription | undefined;
-  public requestsResults: SpecialRequest[] = [];
+  public requestsResults: RequestEntity[] = [];
 
   constructor(
     private specialRequestsService: SpecialRequestsService,
@@ -30,8 +29,7 @@ export class PastSpecialRequestsPage implements OnInit {
 
   ionViewWillEnter() {
     this.specialRequestsSubscription = this.specialRequestsService
-      .listenSpecialRequestByHotel()
-      .pipe(map(data => data.filter(request => !request.isActive)))
+      .listenSpecialRequestByHotel(true)
       .subscribe(requests => {
         this.requests = requests;
       });
@@ -54,20 +52,20 @@ export class PastSpecialRequestsPage implements OnInit {
 
   searchRequests(term: string) {
     this.requestsResults = this.requests.filter(request => {
-      if (request.userName!.toLowerCase().includes(term)) {
+      if (request.guest.name!.toLowerCase().includes(term)) {
         return true;
       }
-      if (request.description!.toLowerCase().includes(term)) {
+      if (request.message!.toLowerCase().includes(term)) {
         return true;
       }
-      if (request.roomName!.toLowerCase().includes(term)) {
+      if (request.room.name!.toLowerCase().includes(term)) {
         return true;
       }
       return false;
     });
   }
 
-  async goToRequest(request: Request | SpecialRequest) {
+  async goToRequest(request: RequestEntity) {
     const modal = await this.modalController.create({
       component: ModalSpecialRequestPage,
       componentProps: {

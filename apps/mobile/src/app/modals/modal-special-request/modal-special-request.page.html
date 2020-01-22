@@ -14,7 +14,7 @@
         <mat-form-field appearance="fill">
           <input
             matInput
-            [ngModel]="request.userName"
+            [ngModel]="request.guest.name"
             name="userName"
             readonly
           />
@@ -26,7 +26,7 @@
           <mat-form-field appearance="fill">
             <input
               matInput
-              [ngModel]="request.roomName"
+              [ngModel]="request.room.name"
               name="roomName"
               readonly
             />
@@ -35,7 +35,7 @@
           <mat-form-field appearance="fill">
             <input
               matInput
-              [value]="request.created_at|date:'HH:mm'"
+              [value]="request.createAt|date:'HH:mm'"
               name="created_at"
               readonly
             />
@@ -48,7 +48,7 @@
           <textarea
             matInput
             cdkTextareaAutosize
-            [ngModel]="request.description"
+            [ngModel]="request.message"
             name="description"
             readonly
           ></textarea>
@@ -60,7 +60,7 @@
           <mat-form-field appearance="fill">
             <input
               matInput
-              [value]="request.checkIn|date:'dd/MM/yyyy'"
+              [value]="request.guest.checkIn|date:'dd/MM/yyyy'"
               name="checkIn"
               readonly
             />
@@ -69,7 +69,7 @@
           <mat-form-field appearance="fill">
             <input
               matInput
-              [value]="request.checkOut|date:'dd/MM/yyyy'"
+              [value]="request.guest.checkOut|date:'dd/MM/yyyy'"
               name="checkOut"
               readonly
             />
@@ -79,7 +79,7 @@
 
         <!-- EMPLOYERS -->
         <mat-form-field appearance="fill">
-          <mat-select [(ngModel)]="request.employer" name="employer">
+          <mat-select [(ngModel)]="employerId" name="employer">
             <mat-option
               *ngFor="let employer of employers"
               [value]="employer.uid"
@@ -92,9 +92,8 @@
         <!-- STATUS -->
         <mat-form-field appearance="fill">
           <mat-select
-            [(ngModel)]="isFinished"
+            [(ngModel)]="request.complete"
             name="isFinished"
-            [disabled]="!request.isActive"
           >
             <mat-option [value]="false">
               Pendiente

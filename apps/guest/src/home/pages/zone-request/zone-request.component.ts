@@ -79,7 +79,7 @@ export class ZoneRequestComponent implements OnDestroy {
     this.guestService.$guest
       .pipe(
         map(guest => {
-          const request = new RequestRequest();
+            const request = new RequestRequest();
           request.hotel = guest!.hotel;
           request.guest = guest!;
           request.room = guest!.room;

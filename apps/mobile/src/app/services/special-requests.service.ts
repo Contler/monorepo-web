@@ -1,36 +1,28 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AuthService } from './auth.service';
-import { SpecialRequest } from '@contler/models';
-import { map } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
+import { RequestEntity } from '@contler/entity';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class SpecialRequestsService {
-  constructor(
-    private afDb: AngularFireDatabase,
-    private authService: AuthService
-  ) {}
+  constructor(private http: HttpClient, private authService: AuthService, private afDb: AngularFireDatabase) {}
 
-  listenSpecialRequestByHotel() {
-    return this.afDb
-      .object<SpecialRequest>(SpecialRequest.REF)
-      .valueChanges()
-      .pipe(
-        map((data: any) => {
-          return Object.values(data) as SpecialRequest[];
-        }),
-        map((data: SpecialRequest[]) =>
-          data.filter(
-            request =>
-              request.hotel === this.authService.user!.hotel
-          )
-        )
-      );
+  listenSpecialRequestByHotel(complete: boolean) {
+    return this.authService.$user.pipe(
+      switchMap(user =>
+        this.http.get<RequestEntity[]>(
+          environment.apiUrl + `hotel/${user!.hotel.uid}/special-request?complete=${complete ? 't' : 'f'}`,
+        ),
+      ),
+    );
   }
 
-  updateRequest(requestKey: string, data: any) {
-    return this.afDb.object(`${SpecialRequest.REF}/${requestKey}`).update(data);
+  updateRequest(request: RequestEntity) {
+    return this.http.put(environment.apiUrl + 'request', request);
   }
 }

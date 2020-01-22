@@ -1,25 +1,25 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SpecialRequest } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { ModalController, NavParams } from '@ionic/angular';
 import { MessagesService } from '../../services/messages/messages.service';
 import { GeneralService } from '../../services/general.service';
 import { EmployerService } from '../../services/employer.service';
 import { SpecialRequestsService } from '../../services/special-requests.service';
-import { EmployerEntity } from '@contler/entity';
-
+import { EmployerEntity, RequestEntity } from '@contler/entity';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: "contler-modal-special-request",
-  templateUrl: "./modal-special-request.page.html",
-  styleUrls: ["./modal-special-request.page.scss"]
+  selector: 'contler-modal-special-request',
+  templateUrl: './modal-special-request.page.html',
+  styleUrls: ['./modal-special-request.page.scss'],
 })
 export class ModalSpecialRequestPage implements OnInit, OnDestroy {
-  public request: SpecialRequest | undefined;
+  public request: RequestEntity | undefined;
 
   public employers: EmployerEntity[] = [];
   private subscription: Subscription | null = null;
-  public isFinished = false;
+  employerId = '';
+  private employer: EmployerEntity | undefined;
 
   constructor(
     public generalService: GeneralService,
@@ -28,16 +28,15 @@ export class ModalSpecialRequestPage implements OnInit, OnDestroy {
     private specialRequestsService: SpecialRequestsService,
     private messagesService: MessagesService,
     private modalController: ModalController,
+    private auth: AuthService,
   ) {
-
+    this.auth.$user.subscribe(employer => (this.employer = employer!));
   }
 
   ngOnInit() {
-    this.request = this.navParams.get("request");
-    this.isFinished = !this.request!.isActive;
-    this.subscription = this.employerService
-      .getEmployers()
-      .subscribe(employers => (this.employers = employers));
+    this.request = this.navParams.get('request');
+    this.employerId = this.request!.solved.uid;
+    this.subscription = this.employerService.getEmployers().subscribe(employers => (this.employers = employers));
   }
 
   ngOnDestroy(): void {
@@ -48,28 +47,19 @@ export class ModalSpecialRequestPage implements OnInit, OnDestroy {
 
   save() {
     const loader = this.messagesService.showLoader();
-    const employerToFind: string = this.request!.employer || "";
-    const employerFound = this.employers.find(
-      employer => employer.uid === employerToFind
-    );
-    if (employerFound) {
-      this.request!.employer = employerFound.uid;
-      this.request!.employerName = `${employerFound.name} ${employerFound.lastName}`;
-    }
-    this.request!.isActive = !this.isFinished;
-    this.specialRequestsService
-      .updateRequest(this.request!.uid!, this.request)
-      .then(() => {
+    this.request!.solved = this.employers.find(e => e.uid === this.employerId)!;
+    this.request!.attended = this.employer!;
+    this.specialRequestsService.updateRequest(this.request!).subscribe(
+      () => {
         this.messagesService.closeLoader(loader);
-        this.messagesService.showToastMessage(
-          "Solicitud modificada exitosamente"
-        );
+        this.messagesService.showToastMessage('Solicitud modificada exitosamente');
         this.modalController.dismiss();
-      })
-      .catch(() => {
+      },
+      err => {
         this.messagesService.closeLoader(loader);
         this.messagesService.showServerError();
-        console.error("Hubo un error");
-      });
+        console.error('Hubo un error');
+      },
+    );
   }
 }
