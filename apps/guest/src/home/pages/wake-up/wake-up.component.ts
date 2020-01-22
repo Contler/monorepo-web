@@ -20,7 +20,9 @@ export class WakeUpComponent implements OnInit {
   constructor(private guestService: GuestService, private sanitizer: DomSanitizer, private wakeService: WakeUpService) {
     this.guestService.$hotel.pipe(take(1)).subscribe(hotel => (this.hotel = hotel));
     this.guestService.$guest.pipe(take(1)).subscribe(guest => (this.guest = guest!));
-    this.wakeService.$wakeUp.subscribe(wakes => (this.wakes = wakes));
+    this.wakeService.$wakeUp.subscribe(wakes => {
+      this.wakes = wakes;
+    });
   }
 
   ngOnInit() {}

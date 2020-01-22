@@ -52,6 +52,6 @@ export class AuthService {
   }
 
   get $user(): Observable<EmployerEntity | null> {
-    return this.employerSubject.asObservable().pipe(filter(user => !!user))
+    return this.employerSubject.asObservable().pipe(filter(user => !!user));
   }
 }

@@ -60,6 +60,11 @@ export class CreateWakeComponent implements OnInit {
     request.time = this.wakeUpForm.value.time;
     request.name = this.wakeUpForm.value.name;
     request.date = this.wakeUpForm.value.date;
+    request.totalTime = this.wakeUpForm.value.date;
+    request.totalTime.setHours(request.time.getHours());
+    request.totalTime.setMinutes(request.time.getMinutes());
+    request.totalTime.setSeconds(request.time.getSeconds());
+    request.totalTime.setMilliseconds(request.time.getMilliseconds());
     request.room = this.guest.room;
     request.guest = this.guest;
     request.hotel = this.hotel!;

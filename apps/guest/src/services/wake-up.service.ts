@@ -6,7 +6,7 @@ import { WakeUpEntity } from '@contler/entity';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
-import { plainToClass } from 'class-transformer';
+import { classToPlain, plainToClass } from 'class-transformer';
 
 @Injectable({
   providedIn: 'root',
@@ -26,11 +26,14 @@ export class WakeUpService {
   getWake(idGuest: string) {
     return this.http
       .get<WakeUpEntity[]>(environment.apiUrl + `guest/${idGuest}/wake-up`)
-      .pipe(map(wakes => wakes!.map(wake => plainToClass(WakeUpEntity, wake))));
+      .pipe(map(wakes => wakes!.map(wake => plainToClass(WakeUpEntity, wake))), tap(data => {
+        console.log(data);
+      }));
   }
 
   saveWake(wake: WakeRequest) {
-    return this.http.post<WakeUpEntity>(environment.apiUrl + 'wake-up', wake).pipe(
+    const request = classToPlain(wake)
+    return this.http.post<WakeUpEntity>(environment.apiUrl + 'wake-up', request).pipe(
       map(wakeUp => plainToClass(WakeUpEntity, wakeUp)),
       tap(wakeUp =>
         this.wakeSubject.next([...(this.wakeSubject.getValue() ? this.wakeSubject.getValue()! : []), wakeUp]),

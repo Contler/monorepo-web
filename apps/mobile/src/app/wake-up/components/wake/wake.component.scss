@@ -1,4 +1,4 @@
-@import "styles/variables";
+@import 'styles/variables';
 .wake {
   border-bottom: 1px solid #c8c8c8;
   display: grid;
@@ -8,7 +8,7 @@
   letter-spacing: 0.4px;
   color: rgba(0, 0, 0, 0.87);
   font-size: 12.2px;
-  align-items:  center;
+  align-items: center;
   padding-bottom: 17px;
   column-gap: 10px;
   &--no-margin {
@@ -22,5 +22,14 @@
   }
   &__time {
     margin-right: 30px;
+    text-align: right;
+  }
+
+  &__btn {
+    color: rgb(125, 125, 125);
+  }
+
+  &__complete {
+    color: $primary;
   }
 }
