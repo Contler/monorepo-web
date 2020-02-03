@@ -1,0 +1,13 @@
+<contler-marco [backUrl]="'/home/guest-requests'">
+  <div marcoBody class="reservation">
+    <img *ngIf="hotel" [src]="hotel.logo" class="reservation__logo" />
+    <h1 class="reservation__title">¿En qué espacio quieres hacer tu reserva?</h1>
+
+    <div *ngFor="let item of zoneReservation" class="reservation-item" routerLink="/home/reservation/{{item.id}}">
+      <mat-icon>{{item.icon || 'room_service'}}</mat-icon>
+      <p class="reservation-item__text">{{item.name}}</p>
+      <mat-icon>arrow_forward_ios</mat-icon>
+    </div>
+
+  </div>
+</contler-marco>

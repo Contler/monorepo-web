@@ -60,3 +60,9 @@ div:focus {
   border-radius: 11px !important;
   color: $text-5 !important;
 }
+
+.full-field {
+  .mat-form-field-infix {
+    width: 100%;
+  }
+}

@@ -59,6 +59,10 @@ const routes: Routes = [
         component: CreateWakeComponent,
       },
       {
+        path: 'reservation',
+        loadChildren: () => import('../reservation/reservation.module').then(m => m.ReservationModule),
+      },
+      {
         path: '',
         redirectTo: 'guest-requests',
         pathMatch: 'full',

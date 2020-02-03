@@ -15,6 +15,7 @@ import { CoreModule, HotelService, UserService } from '@contler/core';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
-    CoreModule,
+    CoreModule.forRoot({urlBackend: environment.apiUrl}),
+    NgxMaskModule.forRoot(),
   ],
   providers: [HotelService, UserService],
   bootstrap: [AppComponent],
