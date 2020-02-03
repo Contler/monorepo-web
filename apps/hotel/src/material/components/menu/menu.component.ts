@@ -50,7 +50,7 @@ export class MenuComponent implements OnInit {
       name: 'Reservas de espacios',
       icon: 'calendar_today',
       primary: false,
-      link: ['/home', 'reservations'],
+      link: ['/home', 'reservation'],
     },
     {
       name: 'Pedidos remotos',

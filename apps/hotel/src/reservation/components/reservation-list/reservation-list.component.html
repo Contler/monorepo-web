@@ -1,0 +1,18 @@
+<mat-card>
+  <p class="title">Nombre zona</p>
+  <div class="list" *ngFor="let item of zoneReservations">
+    <p class="list__text">{{ item.name }}</p>
+    <button mat-icon-button [routerLink]="['/home', 'reservation', item.id]">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      [disabled]="load || item.schedule!.length > 0"
+      (click)="deleteReservation(item)"
+      contlerButton
+      [loading]="load"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</mat-card>

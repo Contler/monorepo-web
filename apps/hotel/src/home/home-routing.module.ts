@@ -54,6 +54,7 @@ const routes: Routes = [
   },
   { path: 'wake-up', loadChildren: () => import('../wake-up/wake-up.module').then(m => m.WakeUpModule) },
   { path: 'statistics', loadChildren: () => import('../statistics/statistics.module').then(m => m.StatisticsModule) },
+  { path: 'reservation', loadChildren: () => import('../reservation/reservation.module').then(m => m.ReservationModule) },
   {
     path: '**',
     component: AdminHomeComponent,

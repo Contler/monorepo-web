@@ -132,3 +132,9 @@ table {
   stroke-width: 8;
   stroke: #2ee0ce;
 }
+
+.full-field {
+  .mat-form-field-infix {
+    width: 100%;
+  }
+}

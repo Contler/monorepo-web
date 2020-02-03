@@ -14,5 +14,5 @@ export * from './request'
 export * from './special-request';
 export * from './wake-request';
 export * from './wakeTable';
-
-
+export * from './reservation-request';
+export * from './core-config';

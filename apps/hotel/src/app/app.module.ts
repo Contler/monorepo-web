@@ -8,15 +8,14 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 
-
-import { HotelService, UserService } from '@contler/core';
+import { CoreModule, HotelService, UserService } from '@contler/core';
 
 import { AppComponent } from 'hotel/app/app.component';
 import { environment } from 'hotel/environments/environment';
 import { AppRoutingModule } from 'hotel/app/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from 'hotel/material/material.module';
-
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +29,11 @@ import { MaterialModule } from 'hotel/material/material.module';
     AngularFireDatabaseModule,
     AppRoutingModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    NgxMaskModule.forRoot(),
+    CoreModule.forRoot({
+      urlBackend: environment.apiUrl,
+    }),
   ],
   providers: [UserService, HotelService],
   bootstrap: [AppComponent],

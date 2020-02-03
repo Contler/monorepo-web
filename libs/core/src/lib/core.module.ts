@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonDirective } from './directives/button.directive';
 import { ZoneListComponent } from './components/zone-list/zone-list.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,6 +18,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CoreConfig } from '@contler/models';
+import { ReservationService } from 'lib/lib/services/reservation.service';
 
 const materialModules = [
   MatFormFieldModule,
@@ -43,6 +45,16 @@ const materialModules = [
   imports: [CommonModule, MatCheckboxModule, ...materialModules],
   declarations: [ButtonDirective, ZoneListComponent],
   exports: [ButtonDirective, ZoneListComponent, ...materialModules],
-  entryComponents: []
+  entryComponents: [],
+  providers: [ReservationService]
 })
-export class CoreModule {}
+export class CoreModule {
+  static forRoot(config: CoreConfig): ModuleWithProviders {
+    return {
+      ngModule: CoreModule,
+      providers: [
+        {provide: CoreConfig, useValue: config}
+      ]
+    }
+  }
+}

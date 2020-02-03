@@ -1,4 +1,5 @@
 import { ZoneEntity } from './zone.entity';
+import { ZoneReserveEntity } from './zone-reserve.entity';
 
 export class CategoryEntity {
   id!: number;
@@ -6,4 +7,6 @@ export class CategoryEntity {
   name!: string;
 
   zones!: ZoneEntity[];
+
+  zonesReservation!: ZoneReserveEntity[];
 }

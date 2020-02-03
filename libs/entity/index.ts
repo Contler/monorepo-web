@@ -6,3 +6,5 @@ export * from './room.entity';
 export * from './wake-up.entity';
 export * from './request.entity';
 export * from './guest.entity';
+export * from './schedule.entity';
+

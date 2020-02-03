@@ -74,7 +74,7 @@
             readonly="true"
           ></star-rating>
         </div>
-        <p class="user-comment">{{ request.score }}</p>
+        <p class="user-comment">{{ request.comment }}</p>
       </div>
     </div>
     <button mat-raised-button color="accent" contlerButton [loading]="loading" [disabled]="loading" (click)="save()">

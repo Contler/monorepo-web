@@ -20,6 +20,11 @@ import { RouterModule } from '@angular/router';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { RangeComponent } from './components/range/range.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { NgxMaskModule } from 'ngx-mask';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const materialModules = [
   MatFormFieldModule,
@@ -38,12 +43,14 @@ const materialModules = [
   MatNativeDateModule,
   MatProgressSpinnerModule,
   MatSnackBarModule,
+  MatAutocompleteModule,
+  MatSlideToggleModule,
 ];
 
 @NgModule({
-  declarations: [MenuComponent, LoaderComponent],
-  imports: [CommonModule, ...materialModules, RouterModule],
-  exports: [...materialModules, MenuComponent, LoaderComponent],
+  declarations: [MenuComponent, LoaderComponent, RangeComponent],
+  imports: [CommonModule, ...materialModules, RouterModule, NgxMaskModule, FormsModule, ReactiveFormsModule],
+  exports: [...materialModules, MenuComponent, LoaderComponent, RangeComponent],
   entryComponents: [LoaderComponent],
 })
 export class MaterialModule {}

@@ -1,0 +1,38 @@
+<div class="range" [formGroup]="rangeForm">
+  <mat-form-field appearance="fill" class="full-field">
+    <mat-select formControlName="day">
+      <mat-option *ngFor="let day of days" [value]="day">{{ day }}</mat-option>
+    </mat-select>
+    <mat-hint>Día de la semana</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-field">
+    <mat-select formControlName="init" [compareWith]="compareWith">
+      <mat-option *ngFor="let day of time; let i = index" [value]="getHour(i)">
+        {{ getHour(i) | date: 'shortTime' }}
+      </mat-option>
+    </mat-select>
+    <mat-hint>Hora de inicio</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-field">
+    <mat-select formControlName="end" [compareWith]="compareWith">
+      <mat-option *ngFor="let day of time; let i = index" [value]="getHour(i)">
+        {{ getHour(i) | date: 'shortTime' }}
+      </mat-option>
+    </mat-select>
+    <mat-hint>Hora final</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-field" >
+    <input matInput mask="90" formControlName="quota">
+    <mat-hint>Cupos</mat-hint>
+  </mat-form-field>
+
+  <mat-slide-toggle class="range__opt" formControlName="active"></mat-slide-toggle>
+
+  <button mat-icon-button class="range__opt" (click)="deleteRange()" type="button">
+    <mat-icon style="color: #757575">delete</mat-icon>
+  </button>
+
+</div>

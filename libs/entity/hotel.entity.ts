@@ -4,6 +4,7 @@ import { RoomEntity } from './room.entity';
 import { GuestEntity } from './guest.entity';
 import { WakeUpEntity } from './wake-up.entity';
 import { RequestEntity } from './request.entity';
+import { ZoneReserveEntity } from './zone-reserve.entity';
 
 export class HotelEntity {
   uid!: string;
@@ -17,6 +18,8 @@ export class HotelEntity {
   employees!: EmployerEntity[];
 
   zones!: ZoneEntity[];
+
+  zonesReservation!: ZoneReserveEntity[];
 
   rooms!: RoomEntity[];
 

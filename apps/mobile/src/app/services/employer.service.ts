@@ -5,8 +5,9 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { AuthService } from './auth.service';
 import { Employer, EmployerRequest, Zone } from '@contler/models';
 import { environment } from '../../environments/environment';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { EmployerEntity } from '@contler/entity';
+import { plainToClass } from 'class-transformer';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,7 @@ export class EmployerService {
   getEmployers() {
     return this.authService.$user.pipe(
       switchMap(user => this.http.get<EmployerEntity[]>(this.url + `hotel/${user!.hotel.uid}/employer`)),
+      map(employees => employees.map(employer => plainToClass(EmployerEntity, employer)))
     );
   }
 
