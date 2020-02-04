@@ -31,6 +31,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
       route: '/home/reservation',
     },
     {
+      icon: 'calendar_today',
+      name: 'Mis Reservas',
+      route: '/home/reservation/my-reservation',
+    },
+    {
       icon: 'room_service',
       name: 'Pedidos',
       route: null,

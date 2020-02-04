@@ -2,7 +2,7 @@ import { Injectable, Optional } from '@angular/core';
 import { CoreConfig, ReservationRequest } from '@contler/models';
 import { HttpClient } from '@angular/common/http';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
-import { ScheduleEntity } from '@contler/entity';
+import { BookingEntity, ScheduleEntity } from '@contler/entity';
 import { BookingRequest } from '@contler/models/booking-request';
 
 @Injectable()
@@ -47,5 +47,9 @@ export class ReservationService {
 
   saveBooking(id: number, request: BookingRequest) {
     return this.http.post(this.url + `reservation/schedule/${id}/booking`, request);
+  }
+
+  getBookingByGuest(id: string) {
+    return this.http.get<BookingEntity[]>(this.url + `guest/${id}/reservation`)
   }
 }

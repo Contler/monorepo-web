@@ -9,10 +9,11 @@ import { CreateReservationComponent } from './page/create-reservation/create-res
 import { NgxMaskModule } from 'ngx-mask';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '@contler/core';
+import { MyReservationsComponent } from './page/my-reservations/my-reservations.component';
 
 
 @NgModule({
-  declarations: [ReservationComponent, CreateReservationComponent],
+  declarations: [ReservationComponent, CreateReservationComponent, MyReservationsComponent],
   imports: [
     CommonModule,
     ReservationRoutingModule,
