@@ -28,4 +28,11 @@
       grid-column: span 2;
     }
   }
+
+  &__err {
+    font-size: 14px;
+    color: red;
+    font-family: $family;
+    margin: 0;
+  }
 }

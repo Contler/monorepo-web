@@ -3,7 +3,7 @@
     <img *ngIf="hotel" [src]="hotel.logo" class="new-reservation__logo" />
     <h1 class="new-reservation__title">Vas a reservar en: {{zoneReservation?.name}}</h1>
 
-    <form action="" [formGroup]="reservationForm" class="new-reservation__form">
+    <form action="" [formGroup]="reservationForm" class="new-reservation__form" (ngSubmit)="saveBooking()">
       <mat-form-field appearance="fill" class="full-field">
         <input matInput [matDatepicker]="picker" readonly formControlName="date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -29,7 +29,7 @@
         </mat-select>
         <mat-hint>Franja horaria</mat-hint>
       </mat-form-field>
-
+      <p class="new-reservation__err new-reservation__form-complete">{{err}}</p>
       <button mat-raised-button contlerButton color="accent" class="new-reservation__form-complete" [loading]="loader" [disabled]="loader || reservationForm.invalid">
         Crear Reserva
       </button>

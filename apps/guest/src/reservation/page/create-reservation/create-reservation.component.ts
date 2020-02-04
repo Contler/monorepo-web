@@ -4,10 +4,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ReservationService } from '@contler/core';
 import { GuestEntity, HotelEntity, ScheduleEntity } from '@contler/entity';
 import { map, switchMap, take, tap } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DAYS } from '@contler/const';
+import { BookingRequest } from '@contler/models/booking-request';
 
 @Component({
   selector: 'contler-create-reservation',
@@ -22,11 +23,13 @@ export class CreateReservationComponent implements OnInit {
   reservationForm: FormGroup;
   loader = false;
   schedule: ScheduleEntity[] = [];
+  err = '';
 
   constructor(
     private guestService: GuestService,
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
+    private router: Router,
     private reservationService: ReservationService,
     formBuild: FormBuilder,
   ) {
@@ -52,9 +55,9 @@ export class CreateReservationComponent implements OnInit {
 
   ngOnInit() {
     this.dateReservation.valueChanges.subscribe((date: Date) => {
-      const day = this.days[date.getDay()]
-      this.schedule = this.zoneReservation!.schedule.filter(s => s.day === day && s.active)
-  })
+      const day = this.days[date.getDay()];
+      this.schedule = this.zoneReservation!.schedule.filter(s => s.day === day && s.active);
+    });
   }
 
   getColorHotel() {
@@ -67,5 +70,30 @@ export class CreateReservationComponent implements OnInit {
 
   get dateReservation() {
     return this.reservationForm.get('date')!;
+  }
+
+  saveBooking() {
+    this.err = '';
+    this.loader = true;
+    const { date, quota, name, schedule } = this.reservationForm.value;
+    const request = new BookingRequest();
+    request.date = date;
+    request.quote = Number(quota);
+    request.name = name;
+    request.guest = this.guest!;
+    this.reservationService.saveBooking((schedule as ScheduleEntity).id, request).subscribe(
+      () => {
+        this.loader = true;
+        this.router.navigate(['/home', 'reservation']);
+      },
+      error => {
+        this.loader = false;
+        if(error.status === 400) {
+          this.err = error.error.message
+        } else {
+          this.err = 'No se puedo hacer la reserva';
+        }
+      },
+    );
   }
 }
