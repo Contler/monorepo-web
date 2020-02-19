@@ -28,6 +28,8 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "ionic:mobile:android": "ionic capacitor run android  --external --project=mobile -l",
+    "serve:dev:hotel": "ng serve hotel",
+    "serve:dev:guest": "ng serve guest --port=4201",
     "serve:hotel": "ng serve hotel -c qa",
     "serve:api": "ng serve api",
     "serve:guest": "ng serve guest --port=4201 -c qa",

@@ -19,5 +19,10 @@
 
   <mat-sidenav-content class="menu" [style.padding]="padding">
     <ng-content select="[marcoBody]"></ng-content>
+
+    <div>
+      <ng-content select="[marcoFooter]"></ng-content>
+    </div>
+
   </mat-sidenav-content>
 </mat-sidenav-container>

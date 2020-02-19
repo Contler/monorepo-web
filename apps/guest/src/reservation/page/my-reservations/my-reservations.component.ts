@@ -13,7 +13,7 @@ import { BookingEntity, HotelEntity } from '@contler/entity';
 export class MyReservationsComponent implements OnInit {
   private hotel: HotelEntity | null = null;
 
-  booking: BookingEntity[] = [];
+  bookings: BookingEntity[] = [];
 
   constructor(
     private guestService: GuestService,
@@ -24,7 +24,7 @@ export class MyReservationsComponent implements OnInit {
     this.guestService.$guest
       .pipe(switchMap(data => this.reservationService.getBookingByGuest(data!.uid)))
       .subscribe(data => {
-        this.booking = data;
+        this.bookings = data;
       });
   }
 

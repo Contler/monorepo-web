@@ -50,6 +50,14 @@ export class ReservationService {
   }
 
   getBookingByGuest(id: string) {
-    return this.http.get<BookingEntity[]>(this.url + `guest/${id}/reservation`)
+    return this.http.get<BookingEntity[]>(this.url + `guest/${id}/reservation`);
+  }
+
+  getBooking(id: number) {
+    return this.http.get<BookingEntity>(this.url + `reservation/booking/${id}`);
+  }
+
+  updateBooking(booking: BookingEntity) {
+    return this.http.put(this.url + `reservation/booking`, booking);
   }
 }

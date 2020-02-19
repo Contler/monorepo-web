@@ -10,6 +10,7 @@ import { ReservationFormComponent } from './components/reservation-form/reservat
 import { ReservationListComponent } from './components/reservation-list/reservation-list.component';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { CoreModule } from '@contler/core';
 
 @NgModule({
   declarations: [ReservationComponent, ReservationFormComponent, ReservationListComponent, ScheduleComponent],
@@ -20,6 +21,7 @@ import { NgxMaskModule } from 'ngx-mask';
     MaterialModule,
     ReactiveFormsModule,
     NgxMaskModule,
+    CoreModule,
   ],
 })
 export class ReservationModule { }
