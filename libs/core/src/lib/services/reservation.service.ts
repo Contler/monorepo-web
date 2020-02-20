@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { BookingEntity, ScheduleEntity } from '@contler/entity';
 import { BookingRequest } from '@contler/models/booking-request';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ReservationService {
@@ -50,7 +51,9 @@ export class ReservationService {
   }
 
   getBookingByGuest(id: string) {
-    return this.http.get<BookingEntity[]>(this.url + `guest/${id}/reservation`);
+    return this.http
+      .get<BookingEntity[]>(this.url + `guest/${id}/reservation`)
+      .pipe(map(bookings => bookings.filter(booking => booking.active)));
   }
 
   getBooking(id: number) {
@@ -59,5 +62,9 @@ export class ReservationService {
 
   updateBooking(booking: BookingEntity) {
     return this.http.put(this.url + `reservation/booking`, booking);
+  }
+
+  cancelBooking(booking: BookingEntity) {
+    return this.http.post(this.url + 'reservation/booking/cancel', booking);
   }
 }

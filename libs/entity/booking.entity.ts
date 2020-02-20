@@ -14,6 +14,8 @@ export class BookingEntity {
 
   active!: boolean;
 
+  complete!: boolean;
+
   guest!: GuestEntity;
 
   schedule!: ScheduleEntity;

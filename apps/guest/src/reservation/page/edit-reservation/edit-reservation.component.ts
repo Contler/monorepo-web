@@ -3,10 +3,12 @@ import { GuestService } from 'guest/services/guest.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ReservationService } from '@contler/core';
 import { BookingEntity, HotelEntity, ScheduleEntity } from '@contler/entity';
-import { map, switchMap, take } from 'rxjs/operators';
+import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DAYS } from '@contler/const';
+import { MatDialog } from '@angular/material';
+import { ModalConfirmComponent } from 'guest/reservation/components/modal-confirm/modal-confirm.component';
 
 @Component({
   selector: 'contler-edit-reservation',
@@ -28,14 +30,15 @@ export class EditReservationComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private reservationService: ReservationService,
     private router: Router,
+    private dialog: MatDialog,
     route: ActivatedRoute,
-    formBuild: FormBuilder
+    formBuild: FormBuilder,
   ) {
     this.bookingGroup = formBuild.group({
       date: ['', Validators.required],
       quota: ['', Validators.required],
       name: ['', Validators.required],
-      schedule: ['', Validators.required]
+      schedule: ['', Validators.required],
     });
     this.guestService.$hotel.pipe(take(1)).subscribe(hotel => (this.hotel = hotel));
     route.params
@@ -72,19 +75,37 @@ export class EditReservationComponent implements OnInit {
     return this.bookingGroup.get('date')!;
   }
 
+  confirmCancel() {
+    this.dialog
+      .open(ModalConfirmComponent)
+      .afterClosed()
+      .pipe(
+        filter(data => !!data),
+        tap(() => (this.loader = true)),
+        switchMap(() => this.reservationService.cancelBooking(this.booking!)),
+      )
+      .subscribe(() => {
+        this.loader = false;
+        this.router.navigate(['/home/reservation/my-reservation']);
+      });
+  }
+
   save() {
     this.error = '';
     this.loader = true;
-    const {date, quota, name, schedule} = this.bookingGroup.value;
+    const { date, quota, name, schedule } = this.bookingGroup.value;
     this.booking!.date = date;
     this.booking!.quote = quota;
     this.booking!.name = name;
     this.booking!.schedule = schedule;
-    this.reservationService.updateBooking(this.booking!).subscribe(() => {
-      this.router.navigate(['/home/reservation/my-reservation'])
-    }, error => {
-      this.loader = false;
-      this.error = error.error.message;
-    })
+    this.reservationService.updateBooking(this.booking!).subscribe(
+      () => {
+        this.router.navigate(['/home/reservation/my-reservation']);
+      },
+      error => {
+        this.loader = false;
+        this.error = error.error.message;
+      },
+    );
   }
 }

@@ -11,10 +11,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '@contler/core';
 import { MyReservationsComponent } from './page/my-reservations/my-reservations.component';
 import { EditReservationComponent } from './page/edit-reservation/edit-reservation.component';
-
+import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 
 @NgModule({
-  declarations: [ReservationComponent, CreateReservationComponent, MyReservationsComponent, EditReservationComponent],
+  declarations: [
+    ReservationComponent,
+    CreateReservationComponent,
+    MyReservationsComponent,
+    EditReservationComponent,
+    ModalConfirmComponent,
+  ],
   imports: [
     CommonModule,
     ReservationRoutingModule,
@@ -24,5 +30,8 @@ import { EditReservationComponent } from './page/edit-reservation/edit-reservati
     ReactiveFormsModule,
     CoreModule,
   ],
+  entryComponents: [
+    ModalConfirmComponent
+  ]
 })
-export class ReservationModule { }
+export class ReservationModule {}

@@ -41,7 +41,7 @@
   </div>
 
   <div marcoFooter>
-    <button mat-raised-button routerLink="/home/reservation/my-reservation">CANCELAR</button>
+    <button mat-raised-button contlerButton [loading]="loader" [disabled]="loader" (click)="confirmCancel()">CANCELAR</button>
     <button mat-raised-button contlerButton [loading]="loader" color="accent" [disabled]="loader || bookingGroup.invalid" (click)="save()">ACTUALIZAR</button>
   </div>
 </contler-marco>
