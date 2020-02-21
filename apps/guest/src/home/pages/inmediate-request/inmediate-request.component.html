@@ -1,15 +1,15 @@
 <contler-marco [backUrl]="'/home/my-inmediate-requests'">
   <div class="main-container" marcoBody>
-    <img src="assets/img/logo-hotel-temp.png" class="request__hotel-logo" />
+    <img *ngIf="hotel" [src]="hotel.logo" alt="" class="logo-general" />
     <p class="title" [style]="getColorHotel()">Solicitud inmediata</p>
     <ng-container *ngIf="request">
       <form>
         <div class="two-inputs">
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" class="full-field">
             <input matInput [value]="request.createAt | date: 'dd/MM/yyyy'" name="created_at_date" readonly />
             <mat-hint>Fecha solicitud</mat-hint>
           </mat-form-field>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" class="full-field">
             <input matInput [value]="request.createAt | date: 'HH:mm'" name="created_at_time" readonly />
             <mat-hint>Hora solicitud</mat-hint>
           </mat-form-field>
@@ -23,7 +23,7 @@
           <mat-hint>Necesita</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <input matInput [value]="request.solved.name" name="employerName" readonly />
+          <input matInput [value]="request.solved?.name" name="employerName" readonly />
           <mat-hint>Empleado encargado</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">

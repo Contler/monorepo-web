@@ -64,6 +64,10 @@ export class CreateReservationComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
   }
 
+  getColorButtonHotel() {
+    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '');
+  }
+
   get nameReservation() {
     return this.reservationForm.get('name')!;
   }

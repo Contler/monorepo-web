@@ -28,7 +28,7 @@ export class MyInmediateRequestsComponent implements OnInit, OnDestroy {
   private guestSubscribe: Subscription;
 
   constructor(
-    private requestService:RequestService,
+    private requestService: RequestService,
     private inmediateRequestsService: InmediateRequestsService,
     public generalService: GeneralService,
     private guestService: GuestService,
@@ -39,8 +39,8 @@ export class MyInmediateRequestsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.requestService.getRequests(false).subscribe(req => this.pendingRequests = req);
-    this.requestService.getRequests(true).subscribe(req => this.readyRequests = req);
+    this.requestService.getRequests(false).subscribe(req => (this.pendingRequests = req));
+    this.requestService.getRequests(true).subscribe(req => (this.readyRequests = req));
   }
 
   ngOnDestroy() {
@@ -60,12 +60,16 @@ export class MyInmediateRequestsComponent implements OnInit, OnDestroy {
     return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
   }
 
+  getColorSecondHotel() {
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.colorSecond ? `color: ${this.hotel.colorSecond}` : '',
+    );
+  }
+
   getSelectedTabStyle() {
     return this.sanitizer.bypassSecurityTrustStyle(
       this.hotel && this.hotel.color
-        ? `color: ${this.hotel.color} !important; border-bottom: 2px solid ${
-            this.hotel.color
-          }; background-color: #e4f3eb`
+        ? `color: ${this.hotel.color} !important; border-bottom: 2px solid ${this.hotel.color}; background-color: ${this.hotel.colorSecond}26`
         : '',
     );
   }

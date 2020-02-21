@@ -1,7 +1,7 @@
 <contler-marco [padding]="'16px 0px 0px 0px'">
   <div class="main-container" marcoBody>
-    <img src="assets/img/logo-hotel-temp.png" class="request__hotel-logo" />
-    <p class="title">Mis solicitudes inmediatas</p>
+    <img *ngIf="hotel" [src]="hotel.logo" alt="" class="logo-general" />
+    <p class="title" [style]="getColorHotel()">Mis solicitudes inmediatas</p>
     <div class="page-container" [ngSwitch]="currentPage">
       <div class="page" *ngSwitchCase="PAGES.PENDING">
         <ng-container *ngIf="pendingRequests.length; else empty">
@@ -57,7 +57,7 @@
 
 <ng-template #empty>
   <div class="empty-container">
-    <mat-icon class="custom_icon empty-container__icon">check_circle</mat-icon>
+    <mat-icon class="custom_icon empty-container__icon" [style]="getColorSecondHotel()">check_circle</mat-icon>
     <p class="empty-container__label" [style]="getColorHotel()">
       No tienes ninguna solicitud inmediata
     </p>

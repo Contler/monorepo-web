@@ -13,6 +13,8 @@ export class HotelEntity {
 
   color!: string;
 
+  colorSecond!: string;
+
   logo!: string;
 
   employees!: EmployerEntity[];

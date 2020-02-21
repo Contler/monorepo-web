@@ -44,6 +44,10 @@ export class CreateWakeComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
   }
 
+  getColorButtonHotel() {
+    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '');
+  }
+
   getHour(index: number) {
     const extraTime = 30 * index * 60 * 1000;
     const date = new Date();

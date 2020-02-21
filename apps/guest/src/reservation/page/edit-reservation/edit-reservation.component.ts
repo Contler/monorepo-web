@@ -67,6 +67,10 @@ export class EditReservationComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
   }
 
+  getColorButtonHotel() {
+    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '');
+  }
+
   compare(o1: ScheduleEntity, o2: ScheduleEntity) {
     return o1.id === o2.id;
   }

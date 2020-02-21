@@ -65,7 +65,11 @@ export class ModelNewGuestComponent {
         error => {
           this.load = false;
           if (error.status === 400) {
-            this.error = 'La Habitación ya fue ocupada';
+            if (error.error &&  error.error.message) {
+              this.error = error.error.message;
+            } else {
+              this.error = 'La Habitación ya fue ocupada';
+            }
           } else {
             this.error = 'No pudimos crear el usuario';
           }
