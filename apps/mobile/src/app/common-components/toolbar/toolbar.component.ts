@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 import { GeneralService } from '../../services/general.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class ToolbarComponent implements OnInit {
   @Input() isModal = false;
   @Input() hasSearch = false;
 
-  constructor(public generalService: GeneralService, private modalController: ModalController) {}
+  constructor(public generalService: GeneralService, private modalController: ModalController, public menu: MenuController,) {}
 
   ngOnInit() {}
 

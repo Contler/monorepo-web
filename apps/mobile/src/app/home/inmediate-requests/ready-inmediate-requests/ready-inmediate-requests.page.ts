@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ModalController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 import { ModalInmediateRequestPage } from '../../../modals/modal-inmediate-request/modal-inmediate-request.page';
 import { InmediateRequestsService } from '../../../services/inmediate-requests.service';
 import { GeneralService } from '../../../services/general.service';
-import { RequestEntity } from '@contler/entity';
+import { EmployerEntity, RequestEntity } from '@contler/entity';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'contler-ready-inmediate-requests',
@@ -14,12 +15,17 @@ import { RequestEntity } from '@contler/entity';
 export class ReadyInmediateRequestsPage implements OnInit {
   private inmediateRequestsSubscription: Subscription | null = null;
   public requests: RequestEntity[] = [];
+  user: EmployerEntity | null = null;
 
   constructor(
     private inmediateRequestsService: InmediateRequestsService,
     public generalService: GeneralService,
-    public modalController: ModalController
-  ) {}
+    public modalController: ModalController,
+    private auth: AuthService,
+    public menu: MenuController,
+  ) {
+    this.auth.$user.subscribe(user => (this.user = user));
+  }
 
   ngOnInit() {}
 

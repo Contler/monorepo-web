@@ -2,21 +2,15 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="search()" *ngIf="hasSearch">
-        <ion-icon class="custom_icon" slot="icon-only" [name]="generalService.searchToogle ? 'close' : 'search'"></ion-icon>
+        <mat-icon class="custom_icon" *ngIf="generalService.searchToogle">close</mat-icon>
+        <mat-icon class="custom_icon" *ngIf="!generalService.searchToogle">search</mat-icon>
       </ion-button>
       <ion-button *ngIf="isModal" (click)="closeModal()">
-        <ion-icon
-          class="custom_icon"
-          slot="icon-only"
-          name="arrow-back"
-        ></ion-icon>
+        <mat-icon class="custom_icon">arrow_back_ios</mat-icon>
       </ion-button>
     </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-menu-button *ngIf="!isModal"
-        class="custom_icon"
-        [style.color]="generalService.hotelColor"
-      ></ion-menu-button>
+    <ion-buttons slot="end" *ngIf="!isModal" (click)="menu.toggle()">
+      <mat-icon class="custom_icon">menu</mat-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ModalController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 import { SpecialRequestsService } from '../../../services/special-requests.service';
 import { GeneralService } from '../../../services/general.service';
 import { ModalSpecialRequestPage } from '../../../modals/modal-special-request/modal-special-request.page';
-import { RequestEntity } from '@contler/entity';
+import { EmployerEntity, RequestEntity } from '@contler/entity';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: "contler-active-special-requests",
@@ -18,12 +19,17 @@ export class ActiveSpecialRequestsPage implements OnInit {
   public searchRequestsEnabled: boolean | undefined;
   private searchSubscription: Subscription | undefined;
   public requestsResults: RequestEntity[] = [];
+  user: EmployerEntity | null = null;
 
   constructor(
     private specialRequestsService: SpecialRequestsService,
     public generalService: GeneralService,
-    public modalController: ModalController
-  ) {}
+    public modalController: ModalController,
+    private auth: AuthService,
+    public menu: MenuController,
+  ) {
+    this.auth.$user.subscribe(user => (this.user = user));
+  }
 
   ngOnInit() {}
 

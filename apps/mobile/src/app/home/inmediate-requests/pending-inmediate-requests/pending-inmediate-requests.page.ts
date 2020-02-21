@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { MenuController, ModalController, NavController } from '@ionic/angular';
 import { InmediateRequestsService } from '../../../services/inmediate-requests.service';
 import { GeneralService } from '../../../services/general.service';
 import { ModalInmediateRequestPage } from '../../../modals/modal-inmediate-request/modal-inmediate-request.page';
-import { RequestEntity } from '@contler/entity';
+import { EmployerEntity, RequestEntity } from '@contler/entity';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'contler-pending-inmediate-requests',
@@ -12,13 +13,18 @@ import { RequestEntity } from '@contler/entity';
 })
 export class PendingInmediateRequestsPage implements OnInit {
   public requests: RequestEntity[] = [];
+  user: EmployerEntity | null = null;
 
   constructor(
     private inmediateRequestsService: InmediateRequestsService,
     private navController: NavController,
     public generalService: GeneralService,
     public modalController: ModalController,
-  ) {}
+    private auth: AuthService,
+    public menu: MenuController,
+  ) {
+    this.auth.$user.subscribe(user => (this.user = user));
+  }
 
   ngOnInit() {}
 

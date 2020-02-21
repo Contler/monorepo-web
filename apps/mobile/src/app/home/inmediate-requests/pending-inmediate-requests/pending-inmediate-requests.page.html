@@ -1,7 +1,17 @@
-<contler-toolbar></contler-toolbar>
+<ion-header no-border>
+  <div class="header">
+    <div class="ion-text-center header__logo">
+      <img *ngIf="user" [src]="user.hotel.logo" class="header__img">
+    </div>
+    <button mat-icon-button class="header__menu" (click)="menu.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</ion-header>
+
+
 <ion-content>
   <div class="main-container">
-    <contler-logo></contler-logo>
     <p class="main-container__title">Solicitudes inmediatas pendientes</p>
     <div class="list-container">
       <ng-container *ngIf="requests.length else empty">
