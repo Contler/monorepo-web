@@ -56,6 +56,12 @@ export class ReservationService {
       .pipe(map(bookings => bookings.filter(booking => booking.active)));
   }
 
+  getBookingByHotel(id: string) {
+    return this.http
+      .get<BookingEntity[]>(this.url + `hotel/${id}/booking`)
+      .pipe(map(bookings => bookings.filter(booking => booking.active && !booking.complete)));
+  }
+
   getBooking(id: number) {
     return this.http.get<BookingEntity>(this.url + `reservation/booking/${id}`);
   }
@@ -67,4 +73,10 @@ export class ReservationService {
   cancelBooking(booking: BookingEntity) {
     return this.http.post(this.url + 'reservation/booking/cancel', booking);
   }
+
+  completeBooking(booking: BookingEntity) {
+    return this.http.post(this.url + 'reservation/booking/complete', booking);
+  }
+
+
 }

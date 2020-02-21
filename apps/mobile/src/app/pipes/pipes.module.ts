@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { RequestTimePipe } from './request-time.pipe';
+import { BookingListPipe } from './booking-list.pipe';
 
 @NgModule({
-  declarations: [RequestTimePipe],
+  declarations: [RequestTimePipe, BookingListPipe],
   imports: [CommonModule],
-  exports: [RequestTimePipe]
+  providers: [DatePipe],
+  exports: [RequestTimePipe, BookingListPipe]
 })
 export class PipesModule {}

@@ -31,6 +31,7 @@ import { MaterialModule } from '../material/material.module';
           },
           { path: 'wake-up', loadChildren: () => import('../wake-up/wake-up.module').then(m => m.WakeUpModule) },
           { path: 'statistic', loadChildren: () => import('../statistic/statistic.module').then(m => m.StatisticModule) },
+          { path: 'booking', loadChildren: () => import('../booking/booking.module').then(m => m.BookingModule) },
         ],
       },
     ]),

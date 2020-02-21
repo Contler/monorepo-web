@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
+import { CoreModule } from '@contler/core';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AngularFireAuthGuardModule
+    AngularFireAuthGuardModule,
+    CoreModule.forRoot({urlBackend: environment.apiUrl}),
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

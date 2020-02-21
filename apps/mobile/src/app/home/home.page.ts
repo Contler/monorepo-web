@@ -31,6 +31,11 @@ export class HomePage implements OnInit {
       route: '/home/special-requests',
     },
     {
+      icon: 'calendar_today',
+      name: 'Reservas',
+      route: '/home/booking',
+    },
+    {
       icon: 'bar_chart',
       name: 'Estadisticas',
       route: '/home/statistic'
