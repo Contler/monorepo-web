@@ -4,7 +4,7 @@
       <img *ngIf="user" [src]="user.hotel.logo" class="header__img">
     </div>
     <button mat-icon-button class="header__menu" (click)="menu.toggle()">
-      <mat-icon>menu</mat-icon>
+      <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
     </button>
   </div>
 </ion-header>
@@ -35,7 +35,7 @@
       </ng-template>
     </div>
     <ng-container *ngIf="!searchRequestsEnabled">
-      <p class="main-container__title">Solicitudes especiales pasadas</p>
+      <p class="main-container__title" [style.color]="generalService.hotelColor">Solicitudes especiales pasadas</p>
       <div class="list-container">
         <ng-container *ngIf="requests.length else empty">
           <div class="item" *ngFor="let request of requests">

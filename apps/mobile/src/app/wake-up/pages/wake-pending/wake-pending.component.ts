@@ -7,6 +7,7 @@ import { MenuController } from '@ionic/angular';
 import { MatDialog } from '@angular/material';
 import { ModalConfirmWakeComponent } from '../../components/modal-confirm-wake/modal-confirm-wake.component';
 import { Observable } from 'rxjs';
+import { GeneralService } from '../../../services/general.service';
 
 @Component({
   selector: 'contler-wake-pending',
@@ -24,6 +25,7 @@ export class WakePendingComponent implements OnInit {
     wakeService: WakeService,
     public menu: MenuController,
     public dialog: MatDialog,
+    public generalService: GeneralService
   ) {
     this.auth.$user
       .pipe(tap(user => wakeService.getWakeIncomplete(user!.hotel.uid).subscribe()))

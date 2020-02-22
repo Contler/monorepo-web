@@ -4,7 +4,7 @@
       <img *ngIf="user" [src]="user.hotel.logo" class="header__img">
     </div>
     <button mat-icon-button class="header__menu" (click)="menu.toggle()">
-      <mat-icon>menu</mat-icon>
+      <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
     </button>
   </div>
   <mat-form-field class="content__search">
@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content>
-  <h1 class="content__title">Wake up calls</h1>
+  <h1 class="content__title" [style.color]="generalService.hotelColor">Wake up calls</h1>
   <div class="content__wake">
     <contler-wake *ngFor="let wake of wakes | async | wakeSearch: search" [wake]="wake" (clickSlide)="goToComplete(wake)"></contler-wake>
   </div>

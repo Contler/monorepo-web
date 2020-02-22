@@ -84,18 +84,24 @@ export class ScheduleComponent implements OnInit {
     this.reservation!.category = this.categories.find(cat => cat.id === category)!;
     this.reservation!.icon = icon;
 
+    // new schedule
     const newScheduleObs = this.schedules
       .filter(schedule => !schedule.id)
       .map(schedule => this.reservationService.createSchedule(this.reservation!.id, schedule));
 
+    //delete schedule
     const deleteSchedule = this.removeSchedule.map(schedule => this.reservationService.deleteSchedule(schedule.id));
+    deleteSchedule.forEach(item => item.subscribe());
 
-    forkJoin([
-      ...newScheduleObs,
-      ...deleteSchedule,
-      ...this.reservation!.schedule.map(schedule => this.reservationService.updateSchedule(schedule)),
-      this.reservationService.updateReservation(this.reservation!),
-    ]).subscribe(() => {
+    //update schedule
+    const updateSchedule = this.reservation!.schedule.map(schedule => this.reservationService.updateSchedule(schedule));
+    updateSchedule.forEach(item => item.subscribe());
+
+    // update reservation
+    this.reservationService.updateReservation(this.reservation!).subscribe(() => {
+      setTimeout(() => {
+        forkJoin([...newScheduleObs]).subscribe();
+      }, 100);
       this.loader = false;
       this.router.navigate(['/home', 'reservation']);
     });

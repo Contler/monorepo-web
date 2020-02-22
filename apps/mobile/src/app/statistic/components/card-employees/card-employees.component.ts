@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EmployerEntity } from '@contler/entity';
 import { MatDialog } from '@angular/material';
-import { ModalEditEmployerComponent } from 'hotel/common-components/modal-edit-employer/modal-edit-employer.component';
 
 @Component({
   selector: 'contler-card-employees',
@@ -17,10 +16,10 @@ export class CardEmployeesComponent implements OnInit {
   }
 
   openEmployerEditModal(employer: EmployerEntity) {
-    this.dialog.open(ModalEditEmployerComponent, {
-      width: '940px',
-      data: employer,
-    });
+    // this.dialog.open(ModalEditEmployerComponent, {
+    //   width: '940px',
+    //   data: employer,
+    // });
   }
 
 }

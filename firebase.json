@@ -1,6 +1,21 @@
 {
   "hosting": [
     {
+      "site": "employer-qa",
+      "public": "dist/apps/mobile",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
       "target": "hotel",
       "public": "dist/apps/hotel",
       "ignore": [

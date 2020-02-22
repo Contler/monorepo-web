@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { WakeUpEntity } from '@contler/entity';
 import { WakeService } from '../../../services/wake.service';
+import { GeneralService } from '../../../services/general.service';
 
 @Component({
   selector: 'contler-modal-confirm-wake',
@@ -15,6 +16,7 @@ export class ModalConfirmWakeComponent implements OnInit {
     public dialogRef: MatDialogRef<ModalConfirmWakeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: WakeUpEntity,
     private wakeService: WakeService,
+    public generalService: GeneralService
   ) {}
 
   ngOnInit() {}

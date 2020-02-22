@@ -6,6 +6,7 @@ import { MenuController } from '@ionic/angular';
 import { MatDialog } from '@angular/material';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { GeneralService } from '../../../services/general.service';
 
 @Component({
   selector: 'contler-wake-complete',
@@ -22,6 +23,7 @@ export class WakeCompleteComponent implements OnInit {
     wakeService: WakeService,
     public menu: MenuController,
     public dialog: MatDialog,
+    public generalService: GeneralService
   ) {
     this.auth.$user
       .pipe(tap(user => wakeService.getWakeComplete(user!.hotel.uid).subscribe()))

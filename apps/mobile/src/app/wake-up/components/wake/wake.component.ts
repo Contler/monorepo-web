@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { WakeUpEntity } from '@contler/entity';
+import { GeneralService } from '../../../services/general.service';
 
 @Component({
   selector: 'contler-wake',
@@ -11,7 +12,7 @@ export class WakeComponent implements OnInit {
 
   @Output() clickSlide = new EventEmitter();
 
-  constructor() {}
+  constructor(public generalService: GeneralService) {}
 
   ngOnInit() {}
 }

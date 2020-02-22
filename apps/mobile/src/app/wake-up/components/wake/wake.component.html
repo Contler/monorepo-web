@@ -10,5 +10,5 @@
   <button class="wake__btn" mat-icon-button *ngIf="!wake.complete" (click)="clickSlide.emit($event)">
     <mat-icon>check_circle</mat-icon>
   </button>
-  <mat-icon *ngIf="wake.complete" class="wake__complete">check_circle</mat-icon>
+  <mat-icon *ngIf="wake.complete" class="wake__complete" [style.color]="generalService.hotelSecondColor">check_circle</mat-icon>
 </div>

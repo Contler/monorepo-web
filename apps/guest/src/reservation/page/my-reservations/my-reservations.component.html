@@ -3,7 +3,7 @@
     <img *ngIf="hotel" [src]="hotel.logo" class="my-reservation__logo" />
     <h1 class="my-reservation__title" [style]="getColorHotel()" >Mis reservas</h1>
 
-    <div class="my-reservation__item" *ngFor="let item of bookings">
+    <div class="my-reservation__item" *ngFor="let item of bookings" routerLink="/home/reservation/my-reservation/{{item.id}}">
       <div>
         <p class="my-reservation__item-name">{{item.schedule.reservation.name}}</p>
         <p class="my-reservation__item-text">
@@ -11,7 +11,7 @@
         </p>
       </div>
       <p class="my-reservation__item-text">{{item.date | date: 'dd/MM/yyyy'}}</p>
-      <button mat-icon-button aria-label="Example icon-button with a heart icon" routerLink="/home/reservation/my-reservation/{{item.id}}">
+      <button mat-icon-button aria-label="Example icon-button with a heart icon">
         <mat-icon>keyboard_arrow_right</mat-icon>
       </button>
     </div>

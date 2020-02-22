@@ -6,6 +6,7 @@ import { filter, switchMap } from 'rxjs/operators';
 import { ReservationService } from '@contler/core';
 import { MatDialog } from '@angular/material';
 import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
+import { GeneralService } from '../services/general.service';
 
 @Component({
   selector: 'contler-booking',
@@ -22,6 +23,7 @@ export class BookingComponent implements OnInit {
     public menu: MenuController,
     private reservationService: ReservationService,
     private dialog: MatDialog,
+    public generalService: GeneralService
   ) {
     this.auth.$user.subscribe(user => (this.user = user));
     this.auth.$user
