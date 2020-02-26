@@ -25,6 +25,8 @@ import { RangeComponent } from './components/range/range.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgxMaskModule } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatMenuModule } from '@angular/material/menu';
 
 const materialModules = [
   MatFormFieldModule,
@@ -45,6 +47,8 @@ const materialModules = [
   MatSnackBarModule,
   MatAutocompleteModule,
   MatSlideToggleModule,
+  MatBadgeModule,
+  MatMenuModule,
 ];
 
 @NgModule({

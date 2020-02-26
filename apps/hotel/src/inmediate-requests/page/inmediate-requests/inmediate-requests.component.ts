@@ -4,8 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalInmediateRequestComponent } from 'hotel/inmediate-requests/components/modal-inmediate-request/modal-inmediate-request.component';
 import { RequestEntity } from '@contler/entity';
+import { ModalInmediateRequestComponent } from 'hotel/common-components/modal-inmediate-request/modal-inmediate-request.component';
 
 @Component({
   selector: 'contler-inmediate-requests',

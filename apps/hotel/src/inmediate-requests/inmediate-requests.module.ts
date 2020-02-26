@@ -5,14 +5,13 @@ import { InmediateRequestsRoutingModule } from './inmediate-requests-routing.mod
 import { MaterialModule } from 'hotel/material/material.module';
 import { CoreModule } from '@contler/core';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
-import { ModalInmediateRequestComponent } from './components/modal-inmediate-request/modal-inmediate-request.component';
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from 'ng-starrating';
 import { EmployerService } from 'hotel/employer/services/employer.service';
 
 @NgModule({
-  declarations: [InmediateRequestsComponent, ModalInmediateRequestComponent],
-  entryComponents: [ModalInmediateRequestComponent],
+  declarations: [InmediateRequestsComponent],
+  entryComponents: [],
   imports: [CommonModule, InmediateRequestsRoutingModule, MaterialModule, CoreModule, CommonComponentsModule, FormsModule, RatingModule],
   providers: [EmployerService]
 })

@@ -35,7 +35,7 @@ export class ModalSpecialRequestPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.request = this.navParams.get('request');
-    this.employerId = this.request!.solved.uid;
+    this.employerId = this.request!.solved ? this.request!.solved.uid : '';
     this.subscription = this.employerService.getEmployers().subscribe(employers => (this.employers = employers));
   }
 

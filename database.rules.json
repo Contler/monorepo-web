@@ -10,6 +10,9 @@
     },
     "request": {
       ".indexOn" : ["user"]
+    },
+    "notification": {
+      ".indexOn" : ["view"]
     }
   }
 }

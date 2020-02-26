@@ -78,5 +78,9 @@ export class ReservationService {
     return this.http.post(this.url + 'reservation/booking/complete', booking);
   }
 
+  qualifyBooking(bookingId: number, qualify: number) {
+    return this.http.post(this.url + `reservation/booking/${bookingId}/qualify`, {qualify})
+  }
+
 
 }

@@ -19,4 +19,6 @@ export class BookingEntity {
   guest!: GuestEntity;
 
   schedule!: ScheduleEntity;
+
+  qualification!: number;
 }

@@ -2,5 +2,26 @@
   <button mat-icon-button (click)="emitToggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <img class="cursor" src="assets/img/logo-white.svg" (click)="goToHome()" />
+  <img class="cursor" src="assets/img/logo-white.svg" (click)="goToHome()"/>
+  <div style="flex-grow: 1"></div>
+
+  <button mat-icon-button *ngIf="!notificationList.length" [matMenuTriggerFor]="menu">
+    <mat-icon>notifications_active</mat-icon>
+  </button>
+
+
+  <button mat-icon-button *ngIf="notificationList.length" [matBadge]="notificationList.length + ''" matBadgePosition="after" matBadgeColor="accent"
+          [matMenuTriggerFor]="menu">
+    <mat-icon>notifications_active</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <div mat-menu-item *ngFor="let item of notificationList" class="container" (click)="goToImmediate(item)">
+      <mat-icon color="accent">error</mat-icon>
+      <div>
+        <p class="title">Nueva solicitud</p>
+        <p class="data">{{item.name}} - {{item.zone}} - {{item.message}}</p>
+      </div>
+      <mat-icon class="icon">navigate_next</mat-icon>
+    </div>
+  </mat-menu>
 </mat-toolbar>

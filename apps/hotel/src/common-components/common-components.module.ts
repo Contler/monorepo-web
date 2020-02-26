@@ -6,24 +6,33 @@ import { MaterialModule } from 'hotel/material/material.module';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ModalEditEmployerComponent } from 'hotel/common-components/modal-edit-employer/modal-edit-employer.component';
 import { CoreModule } from '@contler/core';
+import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
+import { ModalInmediateRequestComponent } from 'hotel/common-components/modal-inmediate-request/modal-inmediate-request.component';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   declarations: [
     StatusIconComponent,
     ToolbarComponent,
-    ModalEditEmployerComponent
+    ModalEditEmployerComponent,
+    ModalInmediateRequestComponent
   ],
-  entryComponents: [ModalEditEmployerComponent],
+  entryComponents: [ModalEditEmployerComponent, ModalInmediateRequestComponent],
   exports: [
     StatusIconComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ModalInmediateRequestComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    CoreModule
+    CoreModule,
+    RatingModule
+  ],
+  providers: [
+    InmediateRequestsService
   ]
 })
 export class CommonComponentsModule { }

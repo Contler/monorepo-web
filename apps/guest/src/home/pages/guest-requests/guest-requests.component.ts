@@ -9,7 +9,9 @@ import { RequestService } from 'guest/services/request.service';
 import { GeneralService } from 'guest/services/general.service';
 import { GuestEntity } from '@contler/entity/guest.entity';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
+import { ReservationService } from '@contler/core';
+import { ModalBookingQualifyComponent } from 'guest/home/components/modal-booking-qualify/modal-booking-qualify.component';
 
 @Component({
   selector: 'contler-guest-requests',
@@ -32,6 +34,7 @@ export class GuestRequestsComponent implements OnDestroy {
     private zoneService: ZoneService,
     private sanitizer: DomSanitizer,
     private dialog: MatDialog,
+    private reservationService: ReservationService,
     private requestService: RequestService,
     public generalService: GeneralService,
   ) {
@@ -42,19 +45,46 @@ export class GuestRequestsComponent implements OnDestroy {
       this.showedZones = this.allZonesShowed ? this.zones.slice() : this.zones.filter(zone => zone.principal);
     });
 
-    this.requestSubscription = this.requestService.getRequests(true).pipe(map(reqs => reqs.filter(req => req.score === null))).subscribe(requests => {
-      if (requests && requests.length > 0) {
-        requests.forEach(request => {
-          console.log('request', request);
-          this.dialog.open(ModalQualifyComponent, {
-            width: '342px',
-            panelClass: 'cot-dialog',
-            data: request,
-            disableClose: true,
+    this.requestSubscription = this.requestService
+      .getRequests(true)
+      .pipe(map(reqs => reqs.filter(req => req.score === null)))
+      .subscribe(requests => {
+        if (requests && requests.length > 0) {
+          requests.forEach(request => {
+            this.dialog.open(ModalQualifyComponent, {
+              width: '342px',
+              panelClass: 'cot-dialog',
+              data: request,
+              disableClose: true,
+            });
           });
-        });
-      }
-    });
+        }
+      });
+    this.qualifyReservation();
+  }
+
+  qualifyReservation() {
+    this.$guest
+      .pipe(
+        switchMap(guest => this.reservationService.getBookingByGuest(guest!.uid)),
+        map(booking =>
+          booking.filter(
+            book => book.complete && new Date(book.date).getTime() < Date.now() && book.qualification == null,
+          ),
+        ),
+      )
+      .subscribe(data => {
+        if (data && data.length) {
+          data.forEach(booking => {
+            this.dialog.open(ModalBookingQualifyComponent, {
+              width: '342px',
+              panelClass: 'cot-dialog',
+              data: booking,
+              disableClose: true,
+            })
+          })
+        }
+      });
   }
 
   showAllZones() {

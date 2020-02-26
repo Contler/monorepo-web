@@ -32,6 +32,7 @@ export class ReservationComponent implements OnInit {
     this.load = true;
     request.hotel = this.hotel!;
     this.reservationService.createReservation(request).subscribe(data => {
+      data.schedule = [];
       this.reservationForm.reset();
       this.load = false;
       this.zoneReservations = [...this.zoneReservations, data];

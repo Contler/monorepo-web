@@ -24,6 +24,8 @@ export class InmediateRequestsService {
     return this.http.put(environment.apiUrl + 'request', request);
   }
 
-
+  getRequest(id: number) {
+    return this.http.get(environment.apiUrl + `request/${id}`)
+  }
 
 }

@@ -8,7 +8,7 @@ import { ReservationService } from '@contler/core';
   styleUrls: ['./reservation-list.component.scss'],
 })
 export class ReservationListComponent implements OnInit {
-  @Input() zoneReservations!: ZoneReserveEntity[];
+  @Input() zoneReservations: ZoneReserveEntity[] = [];
   load = false;
 
   constructor(private reservationService: ReservationService) {}
