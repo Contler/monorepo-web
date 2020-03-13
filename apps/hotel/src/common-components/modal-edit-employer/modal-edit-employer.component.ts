@@ -20,7 +20,6 @@ export class ModalEditEmployerComponent implements OnInit {
   formEmployer: FormGroup;
   leaderZone: { [key: string]: boolean } = {};
   $zone: Observable<ZoneEntity[]>;
-
   constructor(
     public dialogRef: MatDialogRef<ModalEditEmployerComponent>,
     formBuild: FormBuilder,
@@ -29,8 +28,6 @@ export class ModalEditEmployerComponent implements OnInit {
     private zoneService: ZoneService,
     private messagesService: MessagesService,
   ) {
-    console.log(employer);
-    console.log(employer.avgTime);
     this.formEmployer = formBuild.group({
       name: [employer.name, Validators.required],
       leader: [employer.role === CHIEF, Validators.required],

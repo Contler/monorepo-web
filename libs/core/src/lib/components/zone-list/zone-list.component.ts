@@ -11,6 +11,18 @@ import { ZoneEntity } from '@contler/entity';
 export class ZoneListComponent {
   @Input() $zones: Observable<ZoneEntity[]> | undefined;
   @Input() zonesSelected: { [key: string]: boolean } = {};
+
+  @Input() wakeZone: boolean | undefined;
+  @Output() wakeZoneChange = new EventEmitter();
+
+  @Input() lateZone: boolean | undefined;
+  @Output() lateZoneChange = new EventEmitter();
+
+  @Input() deliveryZone: boolean | undefined;
+  @Output() deliveryZoneChange = new EventEmitter();
+
+
+
   @Output() selected = new EventEmitter<{ [key: string]: boolean }>();
 
   select(event: MatCheckboxChange, zone: ZoneEntity) {

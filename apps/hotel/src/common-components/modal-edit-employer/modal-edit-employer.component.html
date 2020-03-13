@@ -6,9 +6,8 @@
 
 <form [formGroup]="formEmployer" (ngSubmit)="saveUser()">
   <div class="content">
-
     <mat-form-field appearance="fill" class="content__2-columns">
-      <input matInput formControlName="name">
+      <input matInput formControlName="name" />
       <mat-icon matSuffix>account_circle</mat-icon>
       <mat-hint>Nombre</mat-hint>
     </mat-form-field>
@@ -22,33 +21,46 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="content__2-columns">
-      <input matInput formControlName="lastName">
+      <input matInput formControlName="lastName" />
       <mat-icon matSuffix>account_circle</mat-icon>
       <mat-hint>Apellidos</mat-hint>
     </mat-form-field>
 
     <div class="content__2-columns content__zone content__3-row">
       <p class="content__zone-text">Zona donde es líder:</p>
-      <contler-zone-list [$zones]="$zone" [zonesSelected]="leaderZone" (selected)="leaderZone = $event"></contler-zone-list>
+      <contler-zone-list
+        [$zones]="$zone"
+        [(wakeZone)]="employer.wakeZone"
+        [(lateZone)]="employer.lateZone"
+        [(deliveryZone)]="employer.deliveryZone"
+        [zonesSelected]="leaderZone"
+        (selected)="leaderZone = $event"
+      ></contler-zone-list>
     </div>
 
     <mat-form-field appearance="fill" class="custom-filed">
-      <input matInput formControlName="score" readonly>
+      <input matInput formControlName="score" readonly />
       <mat-hint>Calificación</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="custom-filed">
-      <input matInput formControlName="averageTime" readonly>
+      <input matInput formControlName="averageTime" readonly />
       <mat-hint>Tiempo promedio</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="custom-filed">
-      <input matInput formControlName="numRequest" readonly>
+      <input matInput formControlName="numRequest" readonly />
       <mat-hint>Número de servicios</mat-hint>
     </mat-form-field>
   </div>
 
-  <button mat-raised-button color="accent" contlerButton [loading]="loading" [disabled]="loading || formEmployer.invalid">
+  <button
+    mat-raised-button
+    color="accent"
+    contlerButton
+    [loading]="loading"
+    [disabled]="loading || formEmployer.invalid"
+  >
     Actualizar
   </button>
 </form>

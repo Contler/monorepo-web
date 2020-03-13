@@ -1,20 +1,18 @@
 <ion-menu side="end" type="push" contentId="menu">
   <div class="menu-container">
     <div class="header-menu">
-      <img *ngIf="user" [src]="user.hotel.logo" class="header-menu__hotel-logo">
+      <img *ngIf="user" [src]="user.hotel.logo" class="header-menu__hotel-logo" />
       <p class="header-menu__name">{{ user?.name }} {{ user?.lastName }}</p>
       <p class="header-menu__zone-label">Lider área - {{chiefZonesLabel}}</p>
     </div>
     <div class="menu">
-      <div
-        class="menu__item"
+      <contler-menu-item
         *ngFor="let item of menuItems"
+        [item]="item"
+        [selected]="isRouteSelected(item.route)"
         (click)="goToRoute(item.route)"
-        [ngClass]="{ 'menu__item--selected': isRouteSelected(item.route) }"
       >
-        <mat-icon class="custom_icon">{{item.icon}}</mat-icon>
-        <p class="label">{{item.name}}</p>
-      </div>
+      </contler-menu-item>
       <div class="menu__item" (click)="logout()">
         <mat-icon class="custom_icon">exit_to_app</mat-icon>
         <p class="label">Cerrar Sesión</p>

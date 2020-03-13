@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { MaterialModule } from '../material/material.module';
+import { CommonComponentsModule } from '../common-components/common-components.module';
 
 @NgModule({
   imports: [
@@ -30,11 +31,15 @@ import { MaterialModule } from '../material/material.module';
               import('./special-requests/special-requests.module').then(m => m.SpecialRequestsPageModule),
           },
           { path: 'wake-up', loadChildren: () => import('../wake-up/wake-up.module').then(m => m.WakeUpModule) },
-          { path: 'statistic', loadChildren: () => import('../statistic/statistic.module').then(m => m.StatisticModule) },
+          {
+            path: 'statistic',
+            loadChildren: () => import('../statistic/statistic.module').then(m => m.StatisticModule),
+          },
           { path: 'booking', loadChildren: () => import('../booking/booking.module').then(m => m.BookingModule) },
         ],
       },
     ]),
+    CommonComponentsModule,
   ],
   declarations: [HomePage],
 })

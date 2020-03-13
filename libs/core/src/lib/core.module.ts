@@ -20,6 +20,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CoreConfig } from '@contler/models';
 import { ReservationService } from 'lib/lib/services/reservation.service';
+import { FormsModule } from '@angular/forms';
 
 const materialModules = [
   MatFormFieldModule,
@@ -42,7 +43,7 @@ const materialModules = [
 
 
 @NgModule({
-  imports: [CommonModule, MatCheckboxModule, ...materialModules],
+  imports: [CommonModule, MatCheckboxModule, ...materialModules, FormsModule],
   declarations: [ButtonDirective, ZoneListComponent],
   exports: [ButtonDirective, ZoneListComponent, ...materialModules],
   entryComponents: [],

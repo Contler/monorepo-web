@@ -24,6 +24,12 @@ export class EmployerEntity {
 
   active!: boolean;
 
+  wakeZone!: boolean;
+
+  lateZone!: boolean;
+
+  deliveryZone!: boolean;
+
   pushToken!: string;
 
   hotel!: HotelEntity;

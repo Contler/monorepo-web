@@ -19,26 +19,31 @@ export class HomePage implements OnInit {
       icon: 'error',
       name: 'Solicitudes inmediatas',
       route: '/home/inmediate-requests',
+      show: true
     },
     {
       icon: 'access_alarm',
       name: 'Wake up calls',
       route: '/home/wake-up',
+      show: false
     },
     {
       icon: 'sms_failed',
       name: 'Solicitudes especiales',
       route: '/home/special-requests',
+      show: true
     },
     {
       icon: 'calendar_today',
       name: 'Reservas',
       route: '/home/booking',
+      show: true
     },
     {
       icon: 'bar_chart',
       name: 'Estadisticas',
-      route: '/home/statistic'
+      route: '/home/statistic',
+      show: true
     }
   ];
   public currentRoute: string | undefined;
@@ -56,6 +61,7 @@ export class HomePage implements OnInit {
       const chiefZones: string[] = [];
       this.user!.leaderZones.forEach(zone => chiefZones.push(zone.name));
       this.chiefZonesLabel = chiefZones.join('-');
+      this.menuItems[1].show = this.user!.wakeZone
     });
   }
 
@@ -108,4 +114,5 @@ interface MenuItem {
   icon: string;
   name: string;
   route: string | null;
+  show: boolean;
 }

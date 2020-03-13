@@ -29,7 +29,7 @@ export class SpecialRequestsService {
           environment.apiUrl + `hotel/${user!.hotel.uid}/special-request?complete=${complete ? 't' : 'f'}`,
         ),
       ),
-    );
+    )
 
     return this.afAuth.idTokenResult.pipe(
       switchMap(token => iif(() => token!.claims.role === ADMIN, adminRequest, employerRequest)),
