@@ -21,6 +21,8 @@ export class RequestEntity {
 
   complete!: boolean;
 
+  public!: boolean;
+
   attended!: EmployerEntity;
 
   solved!: EmployerEntity;
