@@ -63,6 +63,10 @@ const routes: Routes = [
         loadChildren: () => import('../reservation/reservation.module').then(m => m.ReservationModule),
       },
       {
+        path: 'late',
+        loadChildren: () => import('../late-check-out/late-check-out.module').then(m => m.LateCheckOutModule),
+      },
+      {
         path: '',
         redirectTo: 'guest-requests',
         pathMatch: 'full',

@@ -16,3 +16,4 @@ export * from './wake-request';
 export * from './wakeTable';
 export * from './reservation-request';
 export * from './core-config';
+export * from './late-check'

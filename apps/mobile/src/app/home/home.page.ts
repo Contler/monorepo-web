@@ -44,6 +44,12 @@ export class HomePage implements OnInit {
       name: 'Estadisticas',
       route: '/home/statistic',
       show: true
+    },
+    {
+      icon: 'transfer_within_a_station',
+      name: 'Late Checkout',
+      route: '/home/late',
+      show: false
     }
   ];
   public currentRoute: string | undefined;
@@ -61,7 +67,8 @@ export class HomePage implements OnInit {
       const chiefZones: string[] = [];
       this.user!.leaderZones.forEach(zone => chiefZones.push(zone.name));
       this.chiefZonesLabel = chiefZones.join('-');
-      this.menuItems[1].show = this.user!.wakeZone
+      this.menuItems[1].show = this.user!.wakeZone;
+      this.menuItems[4].show = this.user!.lateZone;
     });
   }
 

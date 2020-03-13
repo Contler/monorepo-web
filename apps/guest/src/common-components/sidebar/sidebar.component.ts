@@ -53,7 +53,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     {
       icon: 'directions_walk',
       name: 'Late Checkout',
-      route: null,
+      route: '/home/late',
     },
   ];
 

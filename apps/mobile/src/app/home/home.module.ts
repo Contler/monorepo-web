@@ -36,6 +36,10 @@ import { CommonComponentsModule } from '../common-components/common-components.m
             loadChildren: () => import('../statistic/statistic.module').then(m => m.StatisticModule),
           },
           { path: 'booking', loadChildren: () => import('../booking/booking.module').then(m => m.BookingModule) },
+          {
+            path: 'late',
+            loadChildren: () => import('../latecheck-out/latecheck-out.module').then(m => m.LatecheckOutModule),
+          },
         ],
       },
     ]),
