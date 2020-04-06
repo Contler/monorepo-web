@@ -8,5 +8,6 @@ export * from './request.entity';
 export * from './guest.entity';
 export * from './schedule.entity';
 export * from './booking.entity';
+export * from './product.entity';
 
 

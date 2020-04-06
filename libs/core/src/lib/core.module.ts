@@ -23,6 +23,8 @@ import { ReservationService } from 'lib/lib/services/reservation.service';
 import { FormsModule } from '@angular/forms';
 import { LateCheckOutService } from 'lib/lib/services/late-check-out.service';
 import { LateSearchPipe } from './pipes/late-search.pipe';
+import { ProductService } from 'lib/lib/services/product.service';
+import { ProductItemComponent } from './components/product-item/product-item.component';
 
 const materialModules = [
   MatFormFieldModule,
@@ -46,10 +48,10 @@ const materialModules = [
 
 @NgModule({
   imports: [CommonModule, MatCheckboxModule, ...materialModules, FormsModule],
-  declarations: [ButtonDirective, ZoneListComponent, LateSearchPipe],
-  exports: [ButtonDirective, ZoneListComponent, ...materialModules, LateSearchPipe],
+  declarations: [ButtonDirective, ZoneListComponent, LateSearchPipe, ProductItemComponent],
+  exports: [ButtonDirective, ZoneListComponent, ...materialModules, LateSearchPipe, ProductItemComponent],
   entryComponents: [],
-  providers: [ReservationService, LateCheckOutService, DatePipe]
+  providers: [ReservationService, LateCheckOutService, DatePipe, ProductService]
 })
 export class CoreModule {
   static forRoot(config: CoreConfig): ModuleWithProviders {

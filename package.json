@@ -75,6 +75,7 @@
     "firebase-admin": "^8.7.0",
     "hammerjs": "^2.0.8",
     "ng-starrating": "^1.0.11",
+    "ngx-currency": "^2.2.2",
     "ngx-mask": "^8.1.7",
     "onesignal-cordova-plugin": "^2.8.1",
     "pg": "^7.17.1",

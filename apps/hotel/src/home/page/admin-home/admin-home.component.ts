@@ -49,7 +49,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       name: 'Pedidos Remotos',
       icon: 'room_service',
       outlined: false,
-      link: null,
+      link: ['home', 'product'],
     },
     {
       name: 'Wake up Calls',

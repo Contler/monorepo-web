@@ -1,0 +1,23 @@
+:host {
+  position: relative;
+  display: block;
+}
+
+.modal {
+  &-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 10px;
+  }
+
+  &-close {
+    position: absolute;
+    right: -22px;
+    top: -22px;
+  }
+
+  &-preview {
+    grid-column: span 2;
+  }
+}

@@ -55,7 +55,7 @@ export class MenuComponent implements OnInit {
     {
       name: 'Pedidos remotos',
       icon: 'room_service',
-      link: ['/home', 'remotes'],
+      link: ['/home', 'product'],
       primary: false,
     },
     {

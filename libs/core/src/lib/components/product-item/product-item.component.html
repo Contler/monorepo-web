@@ -1,0 +1,13 @@
+<div class="product">
+  <div>
+    <p class="product__title">{{product?.name}}</p>
+    <p class="product__subtitle"><span>{{product?.value | currency: 'cop': '$' : '1.0-0'}}</span> - {{product?.description}}</p>
+  </div>
+  <button type="button" mat-icon-button (click)="remove()" style="justify-self: end;">
+    <mat-icon>remove</mat-icon>
+  </button>
+  <p class="product__count">{{count}}</p>
+  <button type="button" mat-icon-button style="color: rgba(0, 0, 0, 0.38)" (click)="add()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
