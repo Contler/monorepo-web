@@ -12,11 +12,18 @@ export class ProductService {
   }
 
   createProduct(request: ProductRequest) {
-    return this.http.post(`${this.url}product`, request)
+    return this.http.post(`${this.url}product`, request);
   }
 
   getAllProducts(hotelId: string) {
-    return this.http.get<ProductEntity[]>(`${this.url}hotel/${hotelId}/product`)
+    return this.http.get<ProductEntity[]>(`${this.url}hotel/${hotelId}/product`);
   }
 
+  getProduct(productId: number) {
+    return this.http.get<ProductEntity>(`${this.url}product/${productId}`);
+  }
+
+  updateProduct(product: ProductEntity) {
+    return this.http.post(`${this.url}product/${product.id}`, product);
+  }
 }
