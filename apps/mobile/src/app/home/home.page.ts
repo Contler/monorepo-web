@@ -90,7 +90,7 @@ export class HomePage implements OnInit {
     const {pushToken, userId} = await this.notificationsService.getPlayerId();
     console.log('------>  ',pushToken);
     this.auth.$user.subscribe(async user => {
-      await this.notificationsService.setTokenToUser(user!.uid!, userId);
+      await this.notificationsService.setTokenToUser(user!.uid!, userId + '');
     })
 
   }

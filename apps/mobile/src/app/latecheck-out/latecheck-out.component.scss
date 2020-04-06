@@ -2,3 +2,24 @@
   text-align: center;
   margin-top: 20px;
 }
+
+.late {
+  &-item {
+    display: grid;
+    grid-template-columns: max-content max-content auto max-content;
+    column-gap: 10px;
+    margin: 0 20px;
+    text-align: center;
+    border-bottom: 1px solid #cccccc;
+    align-items: center;
+    p {
+      color: rgba(0, 0, 0, 0.6);
+      margin: 0;
+    }
+  }
+
+  &-search {
+    display: block;
+    padding: 0 40px;
+  }
+}

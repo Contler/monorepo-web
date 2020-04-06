@@ -1,5 +1,5 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ButtonDirective } from './directives/button.directive';
 import { ZoneListComponent } from './components/zone-list/zone-list.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -21,6 +21,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CoreConfig } from '@contler/models';
 import { ReservationService } from 'lib/lib/services/reservation.service';
 import { FormsModule } from '@angular/forms';
+import { LateCheckOutService } from 'lib/lib/services/late-check-out.service';
+import { LateSearchPipe } from './pipes/late-search.pipe';
 
 const materialModules = [
   MatFormFieldModule,
@@ -44,10 +46,10 @@ const materialModules = [
 
 @NgModule({
   imports: [CommonModule, MatCheckboxModule, ...materialModules, FormsModule],
-  declarations: [ButtonDirective, ZoneListComponent],
-  exports: [ButtonDirective, ZoneListComponent, ...materialModules],
+  declarations: [ButtonDirective, ZoneListComponent, LateSearchPipe],
+  exports: [ButtonDirective, ZoneListComponent, ...materialModules, LateSearchPipe],
   entryComponents: [],
-  providers: [ReservationService]
+  providers: [ReservationService, LateCheckOutService, DatePipe]
 })
 export class CoreModule {
   static forRoot(config: CoreConfig): ModuleWithProviders {

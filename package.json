@@ -35,7 +35,6 @@
     "serve:api": "ng serve api",
     "serve:guest": "ng serve guest --port=4201 -c qa",
     "serve:mobile": "ionic serve --project=mobile -c qa",
-    "build:qa:api": "node --max_old_space_size=8192 node_modules/.bin/ng build --configuration=qa api",
     "build:qa:hotel": "ng build --configuration=qa hotel",
     "build:qa:guest": "ng build --configuration=qa guest",
     "build:qa:mobile": "ionic cap sync --project=mobile -c qa",

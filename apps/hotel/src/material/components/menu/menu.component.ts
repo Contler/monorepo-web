@@ -67,7 +67,7 @@ export class MenuComponent implements OnInit {
     {
       name: 'Late Checkouts',
       icon: 'directions_walk',
-      link: ['/home', 'late-checkouts'],
+      link: ['/home', 'late'],
       primary: false,
     },
     {

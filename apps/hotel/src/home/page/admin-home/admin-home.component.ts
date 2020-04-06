@@ -61,7 +61,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       name: 'Late Checkouts',
       icon: 'directions_walk',
       outlined: false,
-      link: null,
+      link: ['home', 'late'],
     },
     {
       name: 'Solicitudes Especiales',

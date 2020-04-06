@@ -5,6 +5,7 @@ import { RoomService } from 'hotel/room/services/room.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { RoomEntity, ZoneEntity } from '@contler/entity';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'contler-room',
@@ -34,7 +35,7 @@ export class RoomComponent {
   createRoom() {
     this.load = true;
     const { name, zone } = this.roomGroup.value;
-    this.roomService.saveRoom(name).subscribe(
+    this.roomService.saveRoom( 'Habitación '+name).pipe(take(1)).subscribe(
       room => {
         this.load = false;
         this.messagesService.showToastMessage('Habitación creada exitosamente');

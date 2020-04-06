@@ -23,7 +23,7 @@ export class NotificationsService {
 
   setTokenToUser(uid: string, token: string) {
     this.userTokens = { uid, token };
-    this.oneSignal.setExternalUserId(uid);
+    // this.oneSignal.setExternalUserId(uid);
     return this.db.object(`user-tokens/${uid}/${token}`).set(true);
   }
 }

@@ -39,7 +39,7 @@ export class InmediateRequestsComponent implements OnInit, OnDestroy {
         data.guest.name.toLowerCase().includes(filter) ||
         data.zone.name.toLowerCase().includes(filter) ||
         data.message.toLowerCase().includes(filter) ||
-        (data.solved.name && data.solved.name.toLowerCase().includes(filter));
+        (data.solved && data.solved.name && data.solved.name.toLowerCase().includes(filter));
       return response ? true : false;
     };
     this.inmediateRequestsSubscription = this.inmediateRequestsService
