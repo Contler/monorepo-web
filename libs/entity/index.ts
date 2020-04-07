@@ -9,5 +9,7 @@ export * from './guest.entity';
 export * from './schedule.entity';
 export * from './booking.entity';
 export * from './product.entity';
+export * from './order.entity';
+export * from './product-order.entity';
 
 

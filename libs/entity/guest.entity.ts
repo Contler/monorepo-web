@@ -3,6 +3,7 @@ import { RoomEntity } from './room.entity';
 import { WakeUpEntity } from './wake-up.entity';
 import { RequestEntity } from './request.entity';
 import { BookingEntity } from './booking.entity';
+import { OrderEntity } from './order.entity';
 
 export class GuestEntity {
   uid!: string;
@@ -30,4 +31,6 @@ export class GuestEntity {
   request!: RequestEntity[];
 
   booking!: BookingEntity[];
+
+  orders!: OrderEntity[];
 }
