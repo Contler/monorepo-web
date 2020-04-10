@@ -7,10 +7,26 @@ import { MarcoComponent } from './marco/marco.component';
 import { ScoreComponent } from './score/score.component';
 import { RatingModule } from 'ng-starrating';
 import { PipesModule } from 'guest/pipes/pipes.module';
+import { ColorHotelDirective } from './color-hotel.directive';
+import { ColorBtnHotelDirective } from './color-btn-hotel.directive';
 
 @NgModule({
-  declarations: [ToolbarComponent, SidebarComponent, MarcoComponent, ScoreComponent],
+  declarations: [
+    ToolbarComponent,
+    SidebarComponent,
+    MarcoComponent,
+    ScoreComponent,
+    ColorHotelDirective,
+    ColorBtnHotelDirective,
+  ],
   imports: [CommonModule, MaterialModule, RatingModule, PipesModule],
-  exports: [ToolbarComponent, SidebarComponent, MarcoComponent, ScoreComponent],
+  exports: [
+    ToolbarComponent,
+    SidebarComponent,
+    MarcoComponent,
+    ScoreComponent,
+    ColorHotelDirective,
+    ColorBtnHotelDirective,
+  ],
 })
 export class CommonComponentsModule {}

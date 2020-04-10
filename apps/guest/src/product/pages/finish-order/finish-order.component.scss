@@ -1,0 +1,39 @@
+.finish-order {
+  &__list {
+    max-height: 179px;
+    overflow: auto;
+    margin-top: 19px;
+    margin-bottom: 35px;
+
+    &-text {
+      font-family: Raleway, serif;
+      font-size: 14.2px;
+      line-height: 1.41;
+      letter-spacing: 0.25px;
+      color: #191615;
+      margin: 0;
+    }
+
+    &-products {
+      display: grid;
+      grid-template-columns: auto max-content;
+      column-gap: 5px;
+      row-gap: 5px;
+    }
+  }
+
+  &__total {
+    font-family: Raleway, serif;
+    font-size: 20.2px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: #006633;
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 5px;
+  }
+}

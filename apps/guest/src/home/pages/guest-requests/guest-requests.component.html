@@ -1,6 +1,5 @@
 <contler-marco>
   <div marcoBody class="main-container">
-    <img *ngIf="hotel" [src]="hotel.logo" alt="" class="request__hotel-logo" />
     <p class="request__label request__user" [style]="getColorHotel()">¡Hola {{ ($guest | async)?.name }}!</p>
     <p class="request__label request__space" [style]="getColorHotel()">
       ¿En qué zona necesitas que <br />

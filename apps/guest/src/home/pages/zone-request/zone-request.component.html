@@ -1,6 +1,5 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
   <div class="container" marcoBody #content>
-    <img *ngIf="hotel" [src]="hotel.logo" class="container__hotel-logo" />
     <p class="container__label" [style]="getColorHotel()">
       Estás en {{ zone?.category.name }} <br />
       ¿Qué necesitas?

@@ -1,0 +1,64 @@
+@import "styles/variables";
+.product {
+
+  &-menu {
+    border-top: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
+    height: 72px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 25px;
+    position: relative;
+
+    .btn-select {
+      border-bottom: 2px solid #006633;
+    }
+
+    &__icon {
+      color: #8dc53e;
+    }
+    &__text {
+      font-family: $family;
+      font-size: 14.2px;
+      font-weight: 500;
+      line-height: 1.13;
+      letter-spacing: 1.25px;
+      text-align: center;
+      color: rgba(0, 0, 0, 0.6);
+      margin: 0;
+    }
+  }
+
+  &-line {
+    position: absolute;
+    width: calc(100% / 3);
+    border-bottom: 1px solid #006633;
+    bottom: 0;
+    left: 0;
+  }
+
+  &-content {
+    padding: 30px;
+  }
+
+  &-footer {
+    text-align: center;
+    padding: 30px 50px 0;
+    background: #fafafa;
+    height: 96px;
+    box-sizing: border-box;
+    button {
+      width: 100%;
+      text-transform: uppercase;
+    }
+  }
+
+  &-error {
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+.mat-button {
+  border-radius: 0;
+}

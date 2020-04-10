@@ -1,6 +1,5 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
   <div marcoBody class="reservation">
-    <img *ngIf="hotel" [src]="hotel.logo" class="reservation__logo" />
     <h1 class="reservation__title" [style]="getColorHotel()">¿En qué espacio quieres hacer tu reserva?</h1>
 
     <div *ngFor="let item of zoneReservation" class="reservation-item" routerLink="/home/reservation/{{item.id}}">

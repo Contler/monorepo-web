@@ -50,7 +50,7 @@ div:focus {
 
 .custom-button{
   height: 55px;
-  font-family: Raleway;
+  font-family: Raleway, serif;
   font-size: 14.2px;
   font-weight: 500;
   font-stretch: normal;
@@ -68,7 +68,19 @@ div:focus {
 }
 
 .logo-general {
-  display: block;
-  margin: 0 auto;
   width: 100px;
+}
+
+.ctl-title {
+  font-family: $family;
+  font-size: 20.2px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  text-align: center;
+  color: #006633;
+}
+
+
+button[disabled] {
+  background-color: rgba(0,0,0,.12) !important;
 }

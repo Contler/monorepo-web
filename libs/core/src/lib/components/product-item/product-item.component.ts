@@ -9,7 +9,8 @@ import { ProductEntity } from '@contler/entity';
 export class ProductItemComponent {
   @Input() product: ProductEntity | undefined;
   @Input() count = 0;
-  @Output() changeCount = new EventEmitter<number>();
+  @Output() countChange = new EventEmitter<number>();
+  @Output() valueChange = new EventEmitter<void>();
 
   constructor() {}
 
@@ -19,7 +20,8 @@ export class ProductItemComponent {
     } else {
       this.count ++;
     }
-    this.changeCount.emit(this.count);
+    this.countChange.emit(this.count);
+    this.valueChange.emit();
   }
 
   remove() {
@@ -28,6 +30,7 @@ export class ProductItemComponent {
     } else {
       this.count --;
     }
-    this.changeCount.emit(this.count);
+    this.countChange.emit(this.count);
+    this.valueChange.emit();
   }
 }

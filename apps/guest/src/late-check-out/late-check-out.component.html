@@ -1,6 +1,5 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
   <div marcoBody>
-    <img *ngIf="hotel" [src]="hotel.logo" class="logo-general" />
     <p class="late__title" [style]="getColorHotel()">Mis late check out</p>
 
     <div *ngFor="let item of lateList | async" class="late__item">

@@ -1,6 +1,5 @@
 <contler-marco [backUrl]="'/home/my-inmediate-requests'">
   <div class="main-container" marcoBody>
-    <img *ngIf="hotel" [src]="hotel.logo" alt="" class="logo-general" />
     <p class="title" [style]="getColorHotel()">Solicitud inmediata</p>
     <ng-container *ngIf="request">
       <form>

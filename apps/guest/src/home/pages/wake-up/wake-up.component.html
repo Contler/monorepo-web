@@ -1,6 +1,5 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
   <div marcoBody class="wake-up">
-    <img *ngIf="hotel" [src]="hotel.logo" class="logo-general" />
     <p class="wake-up__title" [style]="getColorHotel()">Mis Wakeup Calls</p>
 
     <mat-spinner color="accent" style="margin: auto" *ngIf="!wakes"></mat-spinner>

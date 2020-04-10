@@ -38,7 +38,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     {
       icon: 'room_service',
       name: 'Pedidos',
-      route: null,
+      route: '/home/product',
     },
     {
       icon: 'sms_failed',

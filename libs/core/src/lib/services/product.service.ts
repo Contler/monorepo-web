@@ -2,6 +2,7 @@ import { Injectable, Optional } from '@angular/core';
 import { CoreConfig, ProductRequest } from '@contler/models';
 import { HttpClient } from '@angular/common/http';
 import { ProductEntity } from '@contler/entity';
+import { OrderRequest } from '@contler/models/order-request';
 
 @Injectable()
 export class ProductService {
@@ -25,5 +26,9 @@ export class ProductService {
 
   updateProduct(product: ProductEntity) {
     return this.http.post(`${this.url}product/${product.id}`, product);
+  }
+
+  createOrder(orderRequest: OrderRequest) {
+    return this.http.post(`${this.url}product/order`, orderRequest);
   }
 }

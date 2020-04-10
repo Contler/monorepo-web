@@ -30,7 +30,7 @@ export class CreateLateComponent implements OnInit {
 
   ngOnInit() {}
 
-  getHour(index: number) {
+  getHour (index: number) {
     const extraTime = 30 * index * 60 * 1000;
     const date = new Date();
     date.setHours(0);

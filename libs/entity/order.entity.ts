@@ -13,4 +13,9 @@ export class OrderEntity {
   guest!: GuestEntity;
 
   zone!: ZoneEntity;
+
+  comment!: string;
+
+  time!: Date;
+
 }

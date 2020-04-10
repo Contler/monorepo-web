@@ -1,6 +1,5 @@
 <contler-marco [backUrl]="'/home/wake-up'">
   <div marcoBody class="wake">
-    <img *ngIf="hotel" [src]="hotel.logo" class="wake__logo"/>
     <p class="wake__title" [style]="getColorHotel()">Agendar nueva llamada</p>
     <form [formGroup]="wakeUpForm" (ngSubmit)="createWakeUp()">
       <div class="wake__content">

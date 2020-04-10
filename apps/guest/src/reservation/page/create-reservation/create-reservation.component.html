@@ -1,6 +1,5 @@
 <contler-marco [backUrl]="'/home/reservation'">
   <div marcoBody class="new-reservation">
-    <img *ngIf="hotel" [src]="hotel.logo" class="new-reservation__logo" />
     <h1 class="new-reservation__title" [style]="getColorHotel()">Vas a reservar en: {{ zoneReservation?.name }}</h1>
 
     <form action="" [formGroup]="reservationForm" class="new-reservation__form" (ngSubmit)="saveBooking()">

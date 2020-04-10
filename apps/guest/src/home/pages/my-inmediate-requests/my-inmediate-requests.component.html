@@ -1,6 +1,5 @@
 <contler-marco [padding]="'16px 0px 0px 0px'">
   <div class="main-container" marcoBody>
-    <img *ngIf="hotel" [src]="hotel.logo" alt="" class="logo-general" />
     <p class="title" [style]="getColorHotel()">Mis solicitudes inmediatas</p>
     <div class="page-container" [ngSwitch]="currentPage">
       <div class="page" *ngSwitchCase="PAGES.PENDING">
