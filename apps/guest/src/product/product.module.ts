@@ -9,10 +9,13 @@ import { CoreModule } from '@contler/core';
 import { ConfirmOrderComponent } from './pages/confirm-order/confirm-order.component';
 import { FinishOrderComponent } from './pages/finish-order/finish-order.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrderComponent } from './pages/order/order.component';
+import { ActiveOrderPipe } from 'guest/product/pipes/active-order.pipe';
+import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
 
 
 @NgModule({
-  declarations: [ProductComponent, ConfirmOrderComponent, FinishOrderComponent],
+  declarations: [ProductComponent, ConfirmOrderComponent, FinishOrderComponent, OrderComponent, ActiveOrderPipe, OrderDetailComponent],
   imports: [
     CommonModule,
     ProductRoutingModule,

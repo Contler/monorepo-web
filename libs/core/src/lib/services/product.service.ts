@@ -1,7 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
 import { CoreConfig, ProductRequest } from '@contler/models';
 import { HttpClient } from '@angular/common/http';
-import { ProductEntity } from '@contler/entity';
+import { OrderEntity, ProductEntity } from '@contler/entity';
 import { OrderRequest } from '@contler/models/order-request';
 
 @Injectable()
@@ -30,5 +30,13 @@ export class ProductService {
 
   createOrder(orderRequest: OrderRequest) {
     return this.http.post(`${this.url}product/order`, orderRequest);
+  }
+
+  getOrderByGuest(idGuest: string) {
+    return this.http.get<OrderEntity[]>(`${this.url}guest/${idGuest}/order`)
+  }
+
+  getOrder(idOrder: number) {
+    return this.http.get<OrderEntity>(`${this.url}product/order/${idOrder}`);
   }
 }

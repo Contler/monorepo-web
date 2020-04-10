@@ -25,6 +25,7 @@ import { LateCheckOutService } from 'lib/lib/services/late-check-out.service';
 import { LateSearchPipe } from './pipes/late-search.pipe';
 import { ProductService } from 'lib/lib/services/product.service';
 import { ProductItemComponent } from './components/product-item/product-item.component';
+import { OrderItemComponent } from './components/order-item/order-item.component';
 
 const materialModules = [
   MatFormFieldModule,
@@ -48,8 +49,8 @@ const materialModules = [
 
 @NgModule({
   imports: [CommonModule, MatCheckboxModule, ...materialModules, FormsModule],
-  declarations: [ButtonDirective, ZoneListComponent, LateSearchPipe, ProductItemComponent],
-  exports: [ButtonDirective, ZoneListComponent, ...materialModules, LateSearchPipe, ProductItemComponent],
+  declarations: [ButtonDirective, ZoneListComponent, LateSearchPipe, ProductItemComponent, OrderItemComponent],
+  exports: [ButtonDirective, ZoneListComponent, ...materialModules, LateSearchPipe, ProductItemComponent, OrderItemComponent],
   entryComponents: [],
   providers: [ReservationService, LateCheckOutService, DatePipe, ProductService]
 })

@@ -39,7 +39,7 @@ export class FinishOrderComponent {
       this.router.navigate(['/home/product']);
     }
     this.total = this.productOrderService.calculateTotal(this.productList);
-    this.zones$ = this.zoneService.$zones.pipe(take(1));
+    this.zones$ = this.zoneService.$zones;
     this.orderForm = this.formBuild.group({
       time: ['', Validators.required],
       zone: ['', Validators.required],
@@ -73,8 +73,9 @@ export class FinishOrderComponent {
     };
 
     this.productService.createOrder(order).subscribe(() => {
+      this.productOrderService.resetOrder();
       this.loading = false;
-      this.router.navigate(['/home/guest-requests']);
+      this.router.navigate(['/home/product']);
     });
   }
 }

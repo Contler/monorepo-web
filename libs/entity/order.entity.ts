@@ -18,4 +18,6 @@ export class OrderEntity {
 
   time!: Date;
 
+  state!: number;
+
 }

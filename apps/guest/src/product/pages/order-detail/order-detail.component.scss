@@ -1,0 +1,35 @@
+.detail {
+  &-id {
+    font-family: Raleway, serif;
+    font-size: 14.2px;
+    line-height: 1.41;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 0 0 15px;
+  }
+
+  &-total {
+    font-family: Raleway, serif;
+    font-size: 20.2px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: #006633;
+  }
+
+  &-comment {
+    font-family: Raleway, serif;
+    font-size: 14.2px;
+    line-height: 1.41;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  &-extra {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 5px;
+  }
+}

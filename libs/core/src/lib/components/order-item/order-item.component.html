@@ -1,0 +1,11 @@
+<div>
+  <p class="order__title">{{total | currency: 'COP': '$': '1.0-0'}} - ID: {{order?.id}}</p>
+  <p class="order__text">{{textProducts}}</p>
+</div>
+
+<div style="text-align: right">
+  <p class="order__text">{{order.time | date : 'shortTime'}}</p>
+  <p class="order__text">{{order.time | date : 'dd/MM/yyyy'}}</p>
+</div>
+
+<mat-icon>navigate_next</mat-icon>

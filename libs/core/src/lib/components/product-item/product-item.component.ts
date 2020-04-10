@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ProductEntity } from '@contler/entity';
+import { ProductEntity, ProductOrderEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-product-item',
@@ -7,10 +7,11 @@ import { ProductEntity } from '@contler/entity';
   styleUrls: ['./product-item.component.scss'],
 })
 export class ProductItemComponent {
-  @Input() product: ProductEntity | undefined;
+  @Input() product: ProductEntity |  undefined;
   @Input() count = 0;
   @Output() countChange = new EventEmitter<number>();
   @Output() valueChange = new EventEmitter<void>();
+  @Input() disable = false;
 
   constructor() {}
 

@@ -9,6 +9,7 @@ import { RatingModule } from 'ng-starrating';
 import { PipesModule } from 'guest/pipes/pipes.module';
 import { ColorHotelDirective } from './color-hotel.directive';
 import { ColorBtnHotelDirective } from './color-btn-hotel.directive';
+import { BtnMenuHotelDirective } from './btn-menu-hotel.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ColorBtnHotelDirective } from './color-btn-hotel.directive';
     ScoreComponent,
     ColorHotelDirective,
     ColorBtnHotelDirective,
+    BtnMenuHotelDirective,
   ],
   imports: [CommonModule, MaterialModule, RatingModule, PipesModule],
   exports: [
@@ -27,6 +29,7 @@ import { ColorBtnHotelDirective } from './color-btn-hotel.directive';
     ScoreComponent,
     ColorHotelDirective,
     ColorBtnHotelDirective,
+    BtnMenuHotelDirective
   ],
 })
 export class CommonComponentsModule {}
