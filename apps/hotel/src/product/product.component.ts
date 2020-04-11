@@ -6,6 +6,7 @@ import { filter, switchMap, take } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'hotel/services/auth.service';
 import { ProductService } from '@contler/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'contler-product',
@@ -16,7 +17,7 @@ export class ProductComponent implements OnInit {
   dataSource = new MatTableDataSource<ProductEntity>();
   displayedColumns: string[] = ['name', 'description', 'value', 'category', 'state'];
 
-  constructor(private dialog: MatDialog, private auth: AuthService, private productService: ProductService) {}
+  constructor(private dialog: MatDialog, private auth: AuthService, private productService: ProductService, private router: Router) {}
 
   ngOnInit() {
     this.auth.$employer
@@ -36,5 +37,9 @@ export class ProductComponent implements OnInit {
         filter(data => !!data),
       )
       .subscribe(data => (this.dataSource.data = [...this.dataSource.data, data]));
+  }
+
+  goToProduct(product: ProductEntity) {
+    this.router.navigate(['home/product', product.id])
   }
 }

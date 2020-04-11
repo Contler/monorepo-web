@@ -9,19 +9,22 @@ import { CoreModule } from '@contler/core';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { ModalInmediateRequestComponent } from 'hotel/common-components/modal-inmediate-request/modal-inmediate-request.component';
 import { RatingModule } from 'ng-starrating';
+import { MarcoAdminComponent } from './marco-admin/marco-admin.component';
 
 @NgModule({
   declarations: [
     StatusIconComponent,
     ToolbarComponent,
     ModalEditEmployerComponent,
-    ModalInmediateRequestComponent
+    ModalInmediateRequestComponent,
+    MarcoAdminComponent
   ],
   entryComponents: [ModalEditEmployerComponent, ModalInmediateRequestComponent],
   exports: [
     StatusIconComponent,
     ToolbarComponent,
-    ModalInmediateRequestComponent
+    ModalInmediateRequestComponent,
+    MarcoAdminComponent
   ],
   imports: [
     CommonModule,

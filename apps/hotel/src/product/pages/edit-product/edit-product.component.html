@@ -1,0 +1,51 @@
+<contler-marco-admin title="Producto">
+  <ng-container marcoHeader>
+    <button mat-raised-button (click)="deleteProduct()" contlerButton [loading]="load">Eliminar</button>
+    <button mat-raised-button color="accent" [disabled]="productForm?.invalid || load" contlerButton [loading]="load" (click)="updateProduct()">
+      Actualizar
+    </button>
+  </ng-container>
+
+  <div marcoBody class="edit-product">
+    <form *ngIf="productForm" [formGroup]="productForm" class="edit-product__form">
+      <mat-form-field appearance="fill">
+        <input type="text" matInput formControlName="name" (ngModelChange)="product.name = $event">
+        <mat-hint>Nombre del producto</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <input type="text" matInput formControlName="value" (ngModelChange)="product.value = $event" currencyMask [options]="{precision: 0, align: 'left'}">
+        <mat-hint>Valor</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="state" (ngModelChange)="product.state = $event">
+          <mat-option [value]="true">Activo</mat-option>
+          <mat-option [value]="false">Inactivo</mat-option>
+        </mat-select>
+        <mat-hint>Estado</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="double">
+        <input type="text" matInput formControlName="description" (ngModelChange)="product.description = $event">
+        <mat-hint>Descripción</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="category" (ngModelChange)="product.category = $event">
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{category}}
+          </mat-option>
+        </mat-select>
+        <mat-hint>Catgoría</mat-hint>
+      </mat-form-field>
+    </form>
+
+    <div>
+      <contler-product-item [product]="product"></contler-product-item>
+      <mat-error>{{error}}</mat-error>
+    </div>
+
+
+  </div>
+</contler-marco-admin>

@@ -1,0 +1,32 @@
+:host ::ng-deep .marco__menu  {
+  & > * {
+    margin-right: 10px;
+  }
+
+  & > :last-child {
+    margin-right: 0px;
+  }
+}
+
+.marco {
+  padding: 42px 52px;
+  min-width: calc(1024px - 52px - 52px);
+  box-sizing: border-box;
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    & > :first-child {
+      flex-grow: 1;
+    }
+    & > :last-child {
+      margin-right: 0px;
+    }
+
+    & > * {
+      margin-right: 10px;
+    }
+  }
+}
+

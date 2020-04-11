@@ -28,6 +28,10 @@ export class ProductService {
     return this.http.post(`${this.url}product/${product.id}`, product);
   }
 
+  deleteProduct(productId: number) {
+    return this.http.delete(`${this.url}product/${productId}`)
+  }
+
   createOrder(orderRequest: OrderRequest) {
     return this.http.post(`${this.url}product/order`, orderRequest);
   }

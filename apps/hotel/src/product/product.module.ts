@@ -9,10 +9,11 @@ import { ModalProductComponent } from './components/modal-product/modal-product.
 import { NgxCurrencyModule } from 'ngx-currency';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '@contler/core';
+import { EditProductComponent } from './pages/edit-product/edit-product.component';
 
 
 @NgModule({
-  declarations: [ProductComponent, ModalProductComponent],
+  declarations: [ProductComponent, ModalProductComponent, EditProductComponent],
   entryComponents: [ModalProductComponent],
   imports: [
     CommonModule,
