@@ -43,4 +43,8 @@ export class ProductService {
   getOrder(idOrder: number) {
     return this.http.get<OrderEntity>(`${this.url}product/order/${idOrder}`);
   }
+
+  getOrdersByHotel(hotelId: string) {
+    return this.http.get<OrderEntity[]>(`${this.url}hotel/${hotelId}/orders`);
+  }
 }
