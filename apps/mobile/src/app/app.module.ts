@@ -18,7 +18,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { CoreModule } from '@contler/core';
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -34,12 +33,9 @@ import { CoreModule } from '@contler/core';
     BrowserAnimationsModule,
     HttpClientModule,
     AngularFireAuthGuardModule,
-    CoreModule.forRoot({urlBackend: environment.apiUrl}),
+    CoreModule.forRoot({ urlBackend: environment.apiUrl }),
   ],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    OneSignal
-  ],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, OneSignal],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

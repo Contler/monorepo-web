@@ -34,7 +34,7 @@
     "serve:hotel": "ng serve hotel -c qa",
     "serve:api": "ng serve api",
     "serve:guest": "ng serve guest --port=4201 -c qa",
-    "serve:mobile": "ionic serve --project=mobile -c qa",
+    "serve:mobile": "ionic serve --project=mobile --configuration=qa",
     "build:qa:hotel": "ng build --configuration=qa hotel",
     "build:qa:guest": "ng build --configuration=qa guest",
     "build:qa:mobile": "ionic cap sync --project=mobile -c qa",

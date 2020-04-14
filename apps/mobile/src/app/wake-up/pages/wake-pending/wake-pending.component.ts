@@ -18,14 +18,14 @@ export class WakePendingComponent implements OnInit {
   user: EmployerEntity | null = null;
 
   search = '';
-  private wakes: Observable<WakeUpEntity[]>;
+  wakes: Observable<WakeUpEntity[]>;
 
   constructor(
     private auth: AuthService,
     wakeService: WakeService,
     public menu: MenuController,
     public dialog: MatDialog,
-    public generalService: GeneralService
+    public generalService: GeneralService,
   ) {
     this.auth.$user
       .pipe(tap(user => wakeService.getWakeIncomplete(user!.hotel.uid).subscribe()))

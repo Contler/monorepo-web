@@ -19,38 +19,44 @@ export class HomePage implements OnInit {
       icon: 'error',
       name: 'Solicitudes inmediatas',
       route: '/home/inmediate-requests',
-      show: true
+      show: true,
     },
     {
       icon: 'access_alarm',
       name: 'Wake up calls',
       route: '/home/wake-up',
-      show: false
+      show: false,
     },
     {
       icon: 'sms_failed',
       name: 'Solicitudes especiales',
       route: '/home/special-requests',
-      show: true
+      show: true,
     },
     {
       icon: 'calendar_today',
       name: 'Reservas',
       route: '/home/booking',
-      show: true
+      show: true,
+    },
+    {
+      icon: 'room_service',
+      name: 'Pedidos remotos',
+      route: '/home/order',
+      show: true,
     },
     {
       icon: 'bar_chart',
       name: 'Estadisticas',
       route: '/home/statistic',
-      show: true
+      show: true,
     },
     {
       icon: 'transfer_within_a_station',
       name: 'Late Checkout',
       route: '/home/late',
-      show: false
-    }
+      show: false,
+    },
   ];
   public currentRoute: string | undefined;
   public chiefZonesLabel: string | undefined;
@@ -87,12 +93,11 @@ export class HomePage implements OnInit {
   }
 
   async setUserToken() {
-    const {pushToken, userId} = await this.notificationsService.getPlayerId();
-    console.log('------>  ',pushToken);
+    const { pushToken, userId } = await this.notificationsService.getPlayerId();
+    console.log('------>  ', pushToken);
     this.auth.$user.subscribe(async user => {
       await this.notificationsService.setTokenToUser(user!.uid!, userId + '');
-    })
-
+    });
   }
 
   goToRoute(url: string) {
