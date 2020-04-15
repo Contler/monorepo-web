@@ -62,7 +62,14 @@ const routes: Routes = [
     path: 'late',
     loadChildren: () => import('../late-check-out/late-check-out.module').then(m => m.LateCheckOutModule),
   },
-  { path: 'product', loadChildren: () => import('../product/product.module').then(m => m.ProductModule) },
+  {
+    path: 'product',
+    loadChildren: () => import('../product/product.module').then(m => m.ProductModule)
+  },
+  {
+    path: 'order',
+    loadChildren: () => import('../order/order.module').then(m => m.OrderModule)
+  },
   {
     path: '**',
     component: AdminHomeComponent,
