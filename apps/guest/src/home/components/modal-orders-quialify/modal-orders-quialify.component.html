@@ -1,0 +1,25 @@
+<div class="order-qualify">
+  <img src="assets/img/rating.svg" alt="" class="order-qualify__img" />
+  <p class="order-qualify__title">
+    Cómo te pareció el servicio que acaba de prestar nuestro equipo
+  </p>
+  <star-rating
+    value="0"
+    totalstars="5"
+    checkedcolor="#dfae00"
+    uncheckedcolor="#6c6c6c"
+    size="24px"
+    (rate)="selectStart($event)"></star-rating>
+  <p class="order-qualify__info" *ngIf="value !== undefined">{{ textRate[value - 1] }} {{ value }}/5</p>
+  <button
+    mat-raised-button
+    color="accent"
+    class="order-qualify__btn"
+    contlerButton
+    [loading]="load"
+    [disabled]="!( !!value) || load"
+    (click)="close()"
+  >
+    Calificar
+  </button>
+</div>

@@ -18,6 +18,7 @@ import { MessagesModule } from 'guest/services/messages/messages.module';
 import { WakeUpComponent } from './pages/wake-up/wake-up.component';
 import { CreateWakeComponent } from './pages/create-wake/create-wake.component';
 import { ModalBookingQualifyComponent } from './components/modal-booking-qualify/modal-booking-qualify.component';
+import { ModalOrdersQuialifyComponent } from './components/modal-orders-quialify/modal-orders-quialify.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ModalBookingQualifyComponent } from './components/modal-booking-qualify
     WakeUpComponent,
     CreateWakeComponent,
     ModalBookingQualifyComponent,
+    ModalOrdersQuialifyComponent,
   ],
   imports: [
     CommonModule,
@@ -44,6 +46,6 @@ import { ModalBookingQualifyComponent } from './components/modal-booking-qualify
     RatingModule,
     MessagesModule,
   ],
-  entryComponents: [ModalQualifyComponent, ModalBookingQualifyComponent],
+  entryComponents: [ModalQualifyComponent, ModalBookingQualifyComponent, ModalOrdersQuialifyComponent],
 })
 export class HomeModule {}

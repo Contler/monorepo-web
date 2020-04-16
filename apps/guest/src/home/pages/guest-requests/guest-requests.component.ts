@@ -9,9 +9,10 @@ import { RequestService } from 'guest/services/request.service';
 import { GeneralService } from 'guest/services/general.service';
 import { GuestEntity } from '@contler/entity/guest.entity';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
-import { map, switchMap } from 'rxjs/operators';
-import { ReservationService } from '@contler/core';
+import { filter, map, switchMap, take } from 'rxjs/operators';
+import { ProductService, ReservationService } from '@contler/core';
 import { ModalBookingQualifyComponent } from 'guest/home/components/modal-booking-qualify/modal-booking-qualify.component';
+import { ModalOrdersQuialifyComponent } from 'guest/home/components/modal-orders-quialify/modal-orders-quialify.component';
 
 @Component({
   selector: 'contler-guest-requests',
@@ -37,12 +38,16 @@ export class GuestRequestsComponent implements OnDestroy {
     private reservationService: ReservationService,
     private requestService: RequestService,
     public generalService: GeneralService,
+    private productService: ProductService,
   ) {
     this.$guest = this.guestService.$guest;
+
     this.subscribe = this.guestService.$hotel.subscribe(hotel => {
       this.hotel = hotel;
       this.zones = hotel!.zones;
-      this.showedZones = this.allZonesShowed ? this.zones.slice() : this.zones.filter(zone => zone.principal);
+      this.showedZones = this.allZonesShowed
+        ? this.zones.slice()
+        : this.zones.filter(zone => zone.principal);
     });
 
     this.requestSubscription = this.requestService
@@ -61,6 +66,27 @@ export class GuestRequestsComponent implements OnDestroy {
         }
       });
     this.qualifyReservation();
+    this.qualifyOrders();
+  }
+
+  qualifyOrders() {
+    this.$guest
+      .pipe(
+        take(1),
+        switchMap(guest => this.productService.getOrderByGuest(guest!.uid)),
+        map(orders => orders.filter(order => order.state === 2 && order.qualification == null)),
+        filter(data => data.length > 0)
+      )
+      .subscribe(data => {
+        data.forEach(item => {
+          this.dialog.open(ModalOrdersQuialifyComponent, {
+            width: '342px',
+            panelClass: 'cot-dialog',
+            data: item,
+            disableClose: true,
+          });
+        })
+      });
   }
 
   qualifyReservation() {
@@ -69,7 +95,10 @@ export class GuestRequestsComponent implements OnDestroy {
         switchMap(guest => this.reservationService.getBookingByGuest(guest!.uid)),
         map(booking =>
           booking.filter(
-            book => book.complete && new Date(book.date).getTime() < Date.now() && book.qualification == null,
+            book =>
+              book.complete &&
+              new Date(book.date).getTime() < Date.now() &&
+              book.qualification == null,
           ),
         ),
       )
@@ -81,8 +110,8 @@ export class GuestRequestsComponent implements OnDestroy {
               panelClass: 'cot-dialog',
               data: booking,
               disableClose: true,
-            })
-          })
+            });
+          });
         }
       });
   }
@@ -93,7 +122,9 @@ export class GuestRequestsComponent implements OnDestroy {
   }
 
   getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
+    );
   }
 
   ngOnDestroy(): void {

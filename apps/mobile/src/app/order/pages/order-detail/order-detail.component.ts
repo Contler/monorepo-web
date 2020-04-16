@@ -61,6 +61,9 @@ export class OrderDetailComponent implements OnInit {
   complete() {
     this.load2 = true;
     this.order.state = 2;
+    if(this.order.dateComplete == null) {
+      this.order.dateComplete = new Date()
+    }
     this.productService.updateOrder(this.order).subscribe(() => {
       this.load2 = false;
     });
