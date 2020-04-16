@@ -12,5 +12,5 @@
 <ion-content padding="16px">
   <h1 class="order__title" [style.color]="generalService.hotelColor">Pedidos</h1>
 
-  <contler-item *ngFor="let item of orders" [order]="item"></contler-item>
+  <contler-item *ngFor="let item of orders" [order]="item" routerLink="/home/order/{{item.id}}"></contler-item>
 </ion-content>

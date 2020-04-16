@@ -1,0 +1,47 @@
+@import "styles/variables";
+
+.detail {
+  &__title {
+    font-family: $family;
+    font-size: 20.2px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: #006633;
+    margin: 0 0 40px;
+  }
+
+  &__id-text {
+    font-family: Raleway, serif;
+    font-size: 14.2px;
+    line-height: 1.41;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  &__total {
+    font-family: Raleway, serif;
+    font-size: 20.2px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: #006633;
+  }
+
+  &__comments {
+    font-family: Raleway, serif;
+    font-size: 14.2px;
+    line-height: 1.41;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  &__data {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 5px;
+  }
+}

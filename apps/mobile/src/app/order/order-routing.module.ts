@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { OrderComponent } from './order.component';
 import { OrderPendingComponent } from './pages/order-pending/order-pending.component';
 import { OrderCompleteComponent } from './pages/order-complete/order-complete.component';
+import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: ':id',
+    component: OrderDetailComponent
+  }
 ];
 
 @NgModule({

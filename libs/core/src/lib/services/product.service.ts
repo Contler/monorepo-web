@@ -47,4 +47,12 @@ export class ProductService {
   getOrdersByHotel(hotelId: string) {
     return this.http.get<OrderEntity[]>(`${this.url}hotel/${hotelId}/orders`);
   }
+
+  updateOrder(order: OrderEntity) {
+    return this.http.put(`${this.url}product/order`, order)
+  }
+
+  deleteOrder(idOrder: number) {
+    return this.http.delete(`${this.url}product/order/${idOrder}`)
+  }
 }
