@@ -4,7 +4,6 @@ import { ProductService } from '@contler/core';
 import { map, switchMap } from 'rxjs/operators';
 import { ProductEntity } from '@contler/entity';
 import { OrderEntity } from '@contler/entity';
-import { CATEGORY_PRODUCTS } from '@contler/const';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -16,13 +15,15 @@ export class ViewOrderComponent {
   product!: ProductEntity;
   order!: OrderEntity;
 
-  categories = CATEGORY_PRODUCTS;
+  readonly states = [{ name: 'Pendiente', value: 0 }, { name: 'Cumplido', value: 1 }];
+  state = 0;
 
   productForm!: FormGroup;
   orderForm!: FormGroup;
 
   load = false;
   error = '';
+
 
   constructor(
     private route: ActivatedRoute,
@@ -33,10 +34,12 @@ export class ViewOrderComponent {
     this.route.params
       .pipe(
         map(data => data['id']),
-        switchMap(id => this.productService.getOrder(id)),
+        switchMap((id) => this.productService.getOrder(id)),
       )
       .subscribe(order => {
         this.order = order;
+        this.state = this.order.state;
+
         this.orderForm = formBuild.group({
           comment: [order.comment, Validators.required],
           time: [order.time, Validators.required],
@@ -48,6 +51,11 @@ export class ViewOrderComponent {
       });
   }
 
+  changeOrderState(event: number) {
+    this.order.state = event;
+    this.state = this.order.state;
+  }
+
   orderProductsTotalValue(order : OrderEntity) {
     let totalOrder = 0;
     order.productsOrder.forEach(elm => {
@@ -56,25 +64,25 @@ export class ViewOrderComponent {
     return totalOrder;
   }
 
-  updateProduct() {
+  updateOrder() {
     this.error = '';
     this.load = true;
-    this.productService.updateProduct(this.product).subscribe(() => {
+    this.productService.updateOrder(this.order).subscribe(() => {
       this.load = false;
-      this.router.navigate(['home/product']);
+      this.router.navigate(['home/order']);
     });
   }
 
-  deleteProduct() {
+  deleteOrder() {
     this.load = true;
     this.error = '';
-    this.productService.deleteProduct(this.product.id).subscribe(
+    this.productService.deleteOrder(this.order.id).subscribe(
       () => {
-        this.router.navigate(['home/product']);
+        this.router.navigate(['home/order']);
       },
       () => {
         this.load = false;
-        this.error = 'No se puede borrar el producto';
+        this.error = 'No se puede borrar el pedido';
       },
     );
   }

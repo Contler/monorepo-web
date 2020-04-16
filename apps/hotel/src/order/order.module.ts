@@ -6,8 +6,7 @@ import { OrderComponent } from './order.component';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { MaterialModule } from 'hotel/material/material.module';
 import { NgxCurrencyModule } from 'ngx-currency';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CoreModule } from '@contler/core';
 import { ViewOrderComponent } from './pages/view-order/view-order.component';
 

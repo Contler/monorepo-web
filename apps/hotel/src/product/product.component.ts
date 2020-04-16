@@ -16,13 +16,49 @@ import { Router } from '@angular/router';
 export class ProductComponent implements OnInit {
   dataSource = new MatTableDataSource<ProductEntity>();
   displayedColumns: string[] = ['name', 'description', 'value', 'category', 'state'];
+  readonly filters = [{ name: 'Todos', value: 0 }, { name: 'Activo', value: 1 }, { name: 'Inactivo', value: 2 }];
+  filter = 0;
+  private products: ProductEntity[] = [];
 
   constructor(private dialog: MatDialog, private auth: AuthService, private productService: ProductService, private router: Router) {}
 
   ngOnInit() {
+    this.getAllProducts();
+  }
+
+  changeProductState(event: number) {
+    if (event === 0) {
+      this.getAllProducts();
+    } else if (event === 1) {
+      this.getActiveProduct();
+    } else {
+      this.getInactiveProduct();
+    }
+  }
+
+  textFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase()
+  }
+
+  getAllProducts() {
     this.auth.$employer
       .pipe(switchMap(user => this.productService.getAllProducts(user.hotel.uid)))
-      .subscribe(products => (this.dataSource.data = products));
+      .subscribe(products => {
+        this.products = products;
+        this.dataSource.data = products;
+      });
+  }
+
+  getActiveProduct() {
+    this.dataSource.data = this.products.filter((item) => {
+      return item.state === true;
+    });
+  }
+  
+  getInactiveProduct() {
+    this.dataSource.data = this.products.filter((item) => {
+      return item.state === false;
+    });
   }
 
   openCreateProductModel() {

@@ -45,8 +45,8 @@
       <ng-container matColumnDef="state">
         <th mat-header-cell *matHeaderCellDef>Estado</th>
         <td mat-cell *matCellDef="let element">
-          <span *ngIf="element.state">Pendiente</span>
-          <span *ngIf="!element.state">Cumplido</span>
+          <span *ngIf="!element.state">Pendiente</span>
+          <span *ngIf="element.state">Cumplido</span>
         </td>
       </ng-container>
 

@@ -10,15 +10,16 @@
       <div class="product__menu">
         <h1 class="cnt-title">Productos</h1>
         <button mat-raised-button color="accent" (click)="openCreateProductModel()">crear producto</button>
-        <mat-form-field appearance="fill">
-          <mat-select>
-            <mat-option [value]="true">Activo</mat-option>
-            <mat-option [value]="false">Inactivo</mat-option>
+        <mat-form-field appearance="fill" class="select">
+          <mat-select [(ngModel)]="filter" (ngModelChange)="changeProductState($event)">
+            <mat-option *ngFor="let option of filters" [value]="option.value">
+              {{option.name}}
+            </mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input type="text" matInput placeholder="Busca...">
+          <input type="text" matInput placeholder="Busca..." (input)="textFilter($event.target.value)">
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
       </div>

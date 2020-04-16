@@ -1,14 +1,15 @@
 <contler-marco-admin title="Pedido">
   <ng-container marcoHeader>
-    <mat-form-field appearance="fill" class="header-form-field">
-      <mat-select>
-        <mat-option [value]="true">Pendiente</mat-option>
-        <mat-option [value]="false">Cumplido</mat-option>
+    <mat-form-field appearance="fill" class="select">
+      <mat-select [(ngModel)]="state" (ngModelChange)="changeOrderState($event)">
+        <mat-option *ngFor="let option of states" [value]="option.value">
+          {{option.name}}
+        </mat-option>
       </mat-select>
       <mat-hint>Estado</mat-hint>
     </mat-form-field>
-    <button mat-raised-button (click)="deleteProduct()" contlerButton [loading]="load">Eliminar</button>
-    <button mat-raised-button color="accent" [disabled]="productForm?.invalid || load" contlerButton [loading]="load" (click)="updateProduct()">
+    <button mat-raised-button (click)="deleteOrder()" contlerButton [loading]="load">Eliminar</button>
+    <button mat-raised-button color="accent" [disabled]="productForm?.invalid || load" contlerButton [loading]="load" (click)="updateOrder()">
       Actualizar
     </button>
   </ng-container>
@@ -32,14 +33,14 @@
 
         <div class="grid-70-30">
           <mat-form-field appearance="fill">
-            <input type="text" matInput [value]="order.time | date: 'HH:mm'" readonly>
+            <input type="text" matInput [value]="order.time | date: 'dd/MM/yyyy HH:mm aa'" readonly>
             <mat-icon matSuffix>query_builder</mat-icon>
-            <mat-hint>Time</mat-hint>
+            <mat-hint>Fecha y Hora</mat-hint>
           </mat-form-field>
       
           <mat-form-field appearance="fill">
             <input type="text" matInput [value]="order.zone.name" readonly>
-            <mat-icon matSuffix>location_on</mat-icon>
+            <mat-icon matSuffix>{{order.zone.icon}}</mat-icon>
             <mat-hint>Entrega</mat-hint>
           </mat-form-field>
         </div>
@@ -60,13 +61,13 @@
 
         <div class="grid-70-30">
           <mat-form-field appearance="fill">
-            <input type="text" matInput [placeholder]="'Miguel Angel S'" readonly>
+            <input type="text" class="txt-capitalize" matInput [value]="order.employer.name + ' ' + order.employer.lastName" readonly>
             <mat-icon matSuffix>account_circle</mat-icon>
             <mat-hint>Lider que atendio la solicitud</mat-hint>
           </mat-form-field>
       
           <mat-form-field appearance="fill">
-            <input type="text" matInput [placeholder]="'08:23 p.m'" readonly>
+            <input type="text" matInput [value]="order.dateComplete || ''" readonly>
             <mat-icon matSuffix>query_builder</mat-icon>
             <mat-hint>Hora de entrega</mat-hint>
           </mat-form-field>

@@ -13,10 +13,11 @@ import { Router } from '@angular/router';
 })
 export class OrderComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
-  readonly filters = [{ name: 'Pendientes', value: 0 }, { name: 'Cumplidos', value: 1 }];
+  readonly filters = [{ name: 'Todos', value: 0 }, { name: 'Cumplidos', value: 1 }, { name: 'Pendientes', value: 2 }];
   filter = 0;
   dataSource = new MatTableDataSource<OrderEntity>();
   displayedColumns: string[] = ['id', 'guest', 'zone', 'value', 'time', 'state', 'actions'];
+  private orders: OrderEntity[] = [];
 
   constructor(private auth: AuthService, private productService: ProductService, private router: Router) {
     this.getAllOrders();
@@ -26,7 +27,9 @@ export class OrderComponent implements OnInit {
   ngOnInit() {}
 
   changeOrderView(event: number) {
-    if (event === 1) {
+    if (event === 0) {
+      this.getAllOrders();
+    } else if (event === 1) {
       this.getCompleteOrder();
     } else {
       this.getInCompleteOrder();
@@ -41,16 +44,22 @@ export class OrderComponent implements OnInit {
     this.auth.$employer
     .pipe(take(1), switchMap(user => this.productService.getOrdersByHotel(user.hotel.uid)))
     .subscribe((orders) => {
+      this.orders = orders;
       this.dataSource.data = orders;
     });
   }
 
   getCompleteOrder() {
-    console.log('getCompleteOrder');
+    this.dataSource.data = this.orders.filter((item) => {
+      return item.state === 1;
+    });
   }
 
   getInCompleteOrder() {
-    console.log('getInCompleteOrder');
+    this.dataSource.data = this.orders.filter((item) => {
+      return item.state !== 1
+      ;
+    });
   }
 
   orderProductsTotalValue(order : OrderEntity) {

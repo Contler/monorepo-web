@@ -7,7 +7,7 @@ import { CommonComponentsModule } from 'hotel/common-components/common-component
 import { MaterialModule } from 'hotel/material/material.module';
 import { ModalProductComponent } from './components/modal-product/modal-product.component';
 import { NgxCurrencyModule } from 'ngx-currency';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CoreModule } from '@contler/core';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 
@@ -22,6 +22,7 @@ import { EditProductComponent } from './pages/edit-product/edit-product.componen
     MaterialModule,
     NgxCurrencyModule,
     ReactiveFormsModule,
+    FormsModule,
     CoreModule,
   ],
 })
