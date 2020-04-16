@@ -10,9 +10,10 @@ import { OrderCompleteComponent } from './pages/order-complete/order-complete.co
 import { IonicModule } from '@ionic/angular';
 import { ItemComponent } from './components/item/item.component';
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [OrderComponent, OrderPendingComponent, OrderCompleteComponent, ItemComponent, OrderDetailComponent],
-  imports: [CommonModule, OrderRoutingModule, CoreModule, MaterialModule, IonicModule],
+  imports: [CommonModule, OrderRoutingModule, CoreModule, MaterialModule, IonicModule, FormsModule],
 })
 export class OrderModule {}

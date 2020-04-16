@@ -18,6 +18,8 @@ export class OrderDetailComponent implements OnInit {
   order!: OrderEntity;
   total = 0;
   employers: EmployerEntity[] = [];
+  load = false;
+  load2 = false;
 
   constructor(
     private auth: AuthService,
@@ -30,15 +32,14 @@ export class OrderDetailComponent implements OnInit {
     route.params
       .pipe(
         map(data => data['id']),
-        take(1),
         switchMap(id => this.productService.getOrder(id)),
       )
       .subscribe(order => {
-        this.order = order
-        this.total = this.calculateTotal(order.productsOrder)
+        this.order = order;
+        this.total = this.calculateTotal(order.productsOrder);
       });
     this.auth.$user.pipe(take(1)).subscribe(user => (this.user = user));
-    this.employerService.getEmployers().subscribe(employers => this.employers = employers)
+    this.employerService.getEmployers().subscribe(employers => (this.employers = employers));
   }
 
   ngOnInit() {}
@@ -47,5 +48,25 @@ export class OrderDetailComponent implements OnInit {
     return products.reduce((previousValue, currentValue) => {
       return currentValue.quantity * currentValue.product.value + previousValue;
     }, 0);
+  }
+
+  update() {
+    this.load = true;
+    this.order.state = 1;
+    this.productService.updateOrder(this.order).subscribe(() => {
+      this.load = false;
+    });
+  }
+
+  complete() {
+    this.load2 = true;
+    this.order.state = 2;
+    this.productService.updateOrder(this.order).subscribe(() => {
+      this.load2 = false;
+    });
+  }
+
+  compare(a: EmployerEntity, b: EmployerEntity) {
+    return b && a.uid === b.uid;
   }
 }

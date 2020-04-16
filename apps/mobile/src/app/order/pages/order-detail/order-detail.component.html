@@ -1,7 +1,12 @@
 <ion-header no-border>
   <div class="header">
+    <button mat-icon-button class="header__menu" routerLink="/home/order">
+      <mat-icon [style.color]="generalService.hotelColor">arrow_back_ios</mat-icon>
+    </button>
+
+
     <div class="ion-text-center header__logo">
-      <img *ngIf="user" [src]="user.hotel.logo" class="header__img" />
+      <img *ngIf="user" [src]="user.hotel.logo" class="header__img"/>
     </div>
     <button mat-icon-button class="header__menu" (click)="menu.toggle()">
       <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
@@ -17,7 +22,8 @@
     {{order?.guest.room.name}} - {{order?.time | date: 'shortTime'}}
   </h1>
 
-  <contler-product-item *ngFor="let item of order?.productsOrder" [product]="item.product" [disable]="true" [count]="item.quantity"></contler-product-item>
+  <contler-product-item *ngFor="let item of order?.productsOrder" [product]="item.product" [disable]="true"
+                        [count]="item.quantity"></contler-product-item>
 
   <p class="detail__total" [style.color]="generalService.hotelColor">
     Total: {{total | currency: 'cop': 'COP $': '1.0-0'}}
@@ -25,8 +31,8 @@
   <p class="detail__comments">Comentarios: {{order?.comment}}</p>
 
   <div class="detail__data">
-    <mat-form-field appearance="fill">
-      <mat-select>
+    <mat-form-field appearance="fill" *ngIf="order">
+      <mat-select [(ngModel)]="order.employer" [compareWith]="compare">
         <mat-option *ngFor="let item of employers" [value]="item">{{item.name}} {{item.lastName}}</mat-option>
       </mat-select>
       <mat-hint>Empleado encargado</mat-hint>
@@ -37,8 +43,11 @@
       <mat-hint>Entrega</mat-hint>
     </mat-form-field>
 
-    <button mat-raised-button>Actualizar</button>
-    <button mat-raised-button color="accent" [style.background]="generalService.hotelColor" [style.color]="'white'">Entregado</button>
+    <button mat-raised-button contlerButton [loading]="load" (click)="update()" [disabled]="load2">Actualizar</button>
+    <button mat-raised-button color="accent" [style.background]="generalService.hotelColor" [style.color]="'white'"
+            [disabled]="!order?.employer || load2" contlerButton [loading]="load2" (click)="complete()">
+      Entregado
+    </button>
 
   </div>
 
