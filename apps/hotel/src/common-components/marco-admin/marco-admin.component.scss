@@ -15,7 +15,7 @@
 
   &__menu {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     margin-bottom: 20px;
     & > :first-child {
       flex-grow: 1;
