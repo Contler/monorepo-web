@@ -3,7 +3,7 @@ import { GeneralService } from 'guest/services/general.service';
 import { CATEGORY_PRODUCTS } from '@contler/const';
 import { GuestService } from 'guest/services/guest.service';
 import { ProductService } from '@contler/core';
-import { switchMap, take } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { ObjectCategoryProduct, ProductListModel } from '@contler/models/product-list-model';
 import { ProductOrderService } from 'guest/product/services/product-order.service';
 import { Router } from '@angular/router';
@@ -47,6 +47,7 @@ export class ProductComponent implements OnInit {
       .pipe(
         take(1),
         switchMap(hotel => this.productService.getAllProducts(hotel!.uid)),
+        map(products => products.filter(prod => prod.state))
       )
       .subscribe(products => {
         products.forEach(product => {
