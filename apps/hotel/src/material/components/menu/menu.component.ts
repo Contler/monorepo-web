@@ -54,6 +54,12 @@ export class MenuComponent implements OnInit {
     },
     {
       name: 'Pedidos remotos',
+      icon: 'shopping_cart',
+      link: ['/home', 'order'],
+      primary: false,
+    },
+    {
+      name: 'Productos',
       icon: 'room_service',
       link: ['/home', 'product'],
       primary: false,
