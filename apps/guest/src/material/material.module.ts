@@ -16,6 +16,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatRadioModule } from '@angular/material/radio';
 
 const materialModules = [
   MatFormFieldModule,
@@ -33,6 +34,7 @@ const materialModules = [
   MatSnackBarModule,
   MatProgressSpinnerModule,
   MatDatepickerModule,
+  MatRadioModule,
 ];
 
 @NgModule({

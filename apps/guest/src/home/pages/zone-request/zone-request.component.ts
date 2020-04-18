@@ -22,7 +22,8 @@ import { RequestService } from 'guest/services/request.service';
 })
 export class ZoneRequestComponent implements OnDestroy {
   @ViewChild('content', { static: false }) content!: ElementRef<HTMLDivElement>;
-
+  selectedSubcategory = '';
+  showRequestField = false;
   hotel: HotelEntity | null | undefined;
   requestController = new FormControl('', Validators.required);
   loader = false;
@@ -58,10 +59,6 @@ export class ZoneRequestComponent implements OnDestroy {
       .subscribe(zone => {
         this.zone = zone;
       });
-  }
-
-  getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
   }
 
   getButtonColorHotel() {
@@ -106,12 +103,29 @@ export class ZoneRequestComponent implements OnDestroy {
   }
 
   setQuickRequest(value: string) {
-    this.requestController.setValue(value);
+    this.selectedSubcategory = value;
     const temp = this.content.nativeElement.parentNode as any;
     temp.scrollTop = temp.scrollHeight;
     if (value === SUB_CATEGORY_DRINKS) {
       this.isSubCategory = true;
     }
+    if (value === 'Otro') {
+      this.showRequestField = true;
+    } else {
+      this.showRequestField = false;
+    }
+  }
+
+  buttonDisabled() {
+    let disabledButton = true;
+    if (this.selectedSubcategory !== null) {
+      disabledButton = false;
+    } else if (this.selectedSubcategory === 'Otro' && this.requestController.invalid) {
+      disabledButton = true;
+    } else if (this.selectedSubcategory === 'Otro' && this.requestController.valid) {
+      disabledButton = false;
+    }
+    return disabledButton;
   }
 
   ngOnDestroy(): void {

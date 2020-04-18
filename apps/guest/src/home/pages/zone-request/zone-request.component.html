@@ -1,27 +1,29 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
   <div class="container" marcoBody #content>
-    <p class="container__label" [style]="getColorHotel()">
+    <p class="container__label" contlerColorHotel="primary">
       Estás en {{ zone?.category.name }} <br />
       ¿Qué necesitas?
     </p>
 
     <ng-container *ngIf="!isSubCategory">
       <div class="features-container" *ngIf="zone">
-        <div
-          class="features-container-item"
-          *ngFor="let subcategory of categories[zone.category.id]"
-          (click)="setQuickRequest(subcategory.name)"
-        >
-          <mat-icon class="features-container-item__icon">{{ subcategory.icon }}</mat-icon>
-          <p class="features-container-item__name">{{ subcategory.name }}</p>
-        </div>
+        <mat-radio-group [(ngModel)]="selectedSubcategory">
+          <mat-radio-button *ngFor="let subcategory of categories[zone.category.id]"
+            (click)="setQuickRequest(subcategory.name)"
+            class="features-container-item"
+            color="primary">
+            <mat-icon class="features-container-item__icon" contlerColorHotel="primary">{{ subcategory.icon }}</mat-icon>
+            <p class="features-container-item__name">{{ subcategory.name }}</p>
+          </mat-radio-button>
+        </mat-radio-group>
       </div>
-
-      <p class="container__specific-label">Algo específico</p>
-      <mat-form-field appearance="fill" class="full_width container__input">
-      <input matInput [formControl]="requestController" />
-      <mat-hint>Escribe lo que necesitas</mat-hint>
-    </mat-form-field>
+      
+      <div *ngIf="showRequestField">
+        <mat-form-field appearance="fill" class="full_width container__input">
+          <input matInput [formControl]="requestController" />
+          <mat-hint>Escribe lo que necesitas</mat-hint>
+        </mat-form-field>
+      </div>
     </ng-container>
 
     <ng-container *ngIf="isSubCategory">
@@ -69,14 +71,14 @@
     </ng-container>
 
     <button
-      class="full_width custom-button container__button"
-      mat-raised-button
-      contlerButton
-      [loading]="loader"
-      [disabled]="loader || requestController.invalid"
-      color="accent"
       (click)="saveRequest()"
-      [style]="requestController.invalid ? '' : getButtonColorHotel()"
+      [disabled]="loader || buttonDisabled()"
+      [loading]="loader"
+      [style]="buttonDisabled() ? '' : getButtonColorHotel()"
+      class="full_width custom-button container__button"
+      color="accent"
+      contlerButton
+      mat-raised-button
     >
       CREAR SOLICITUD
     </button>
