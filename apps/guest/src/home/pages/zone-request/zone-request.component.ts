@@ -63,20 +63,22 @@ export class ZoneRequestComponent implements OnDestroy {
 
   getButtonColorHotel() {
     return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `background-color: ${this.hotel.color}; color: #ffffff !important` : '',
+      this.hotel && this.hotel.color
+        ? `background-color: ${this.hotel.color}; color: #ffffff !important`
+        : '',
     );
   }
 
   async saveRequest() {
     this.loader = true;
-    const msg = this.requestController.value
+    const msg = this.selectedSubcategory || this.requestController.value;
     const chiefTokens: string[] = this.zone!.leaders.filter(leader => !!leader.pushToken).map(
       leader => leader.pushToken,
     );
     this.guestService.$guest
       .pipe(
         map(guest => {
-            const request = new RequestRequest();
+          const request = new RequestRequest();
           request.hotel = guest!.hotel;
           request.guest = guest!;
           request.room = guest!.room;
@@ -90,7 +92,10 @@ export class ZoneRequestComponent implements OnDestroy {
       .subscribe(
         () => {
           this.loader = false;
-          this.notificationsService.sendMassiveNotification('Tienes una nueva solicitud inmediata', chiefTokens);
+          this.notificationsService.sendMassiveNotification(
+            'Tienes una nueva solicitud inmediata',
+            chiefTokens,
+          );
           this.requestController.reset();
           this.router.navigate(['/home']);
           this.messagesService.showToastMessage('Solicitud inmediata creada exitosamente');
@@ -103,7 +108,6 @@ export class ZoneRequestComponent implements OnDestroy {
   }
 
   setQuickRequest(value: string) {
-    this.selectedSubcategory = value;
     const temp = this.content.nativeElement.parentNode as any;
     temp.scrollTop = temp.scrollHeight;
     if (value === SUB_CATEGORY_DRINKS) {
@@ -117,13 +121,11 @@ export class ZoneRequestComponent implements OnDestroy {
   }
 
   buttonDisabled() {
-    let disabledButton = true;
-    if (this.selectedSubcategory !== null) {
-      disabledButton = false;
+    let disabledButton = false;
+    if (!this.selectedSubcategory) {
+      disabledButton = true;
     } else if (this.selectedSubcategory === 'Otro' && this.requestController.invalid) {
       disabledButton = true;
-    } else if (this.selectedSubcategory === 'Otro' && this.requestController.valid) {
-      disabledButton = false;
     }
     return disabledButton;
   }
