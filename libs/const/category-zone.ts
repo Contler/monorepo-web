@@ -34,6 +34,7 @@ export const SUB_CATEGORY = {
     { name: 'Toallas', icon: 'bookmark' },
     { name: 'Bebidas', icon: 'local_bar' },
     { name: 'Reservas de espacios', icon: 'calendar_today' },
+    { name: 'Otro', icon: 'add' },
   ],
   3: [
     { name: 'Room Service', icon: 'notifications_active' },

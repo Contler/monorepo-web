@@ -22,7 +22,8 @@ import { RequestService } from 'guest/services/request.service';
 })
 export class ZoneRequestComponent implements OnDestroy {
   @ViewChild('content', { static: false }) content!: ElementRef<HTMLDivElement>;
-
+  selectedSubcategory = '';
+  showRequestField = false;
   hotel: HotelEntity | null | undefined;
   requestController = new FormControl('', Validators.required);
   loader = false;
@@ -60,26 +61,24 @@ export class ZoneRequestComponent implements OnDestroy {
       });
   }
 
-  getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
-  }
-
   getButtonColorHotel() {
     return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `background-color: ${this.hotel.color}; color: #ffffff !important` : '',
+      this.hotel && this.hotel.color
+        ? `background-color: ${this.hotel.color}; color: #ffffff !important`
+        : '',
     );
   }
 
   async saveRequest() {
     this.loader = true;
-    const msg = this.requestController.value
+    const msg = this.selectedSubcategory || this.requestController.value;
     const chiefTokens: string[] = this.zone!.leaders.filter(leader => !!leader.pushToken).map(
       leader => leader.pushToken,
     );
     this.guestService.$guest
       .pipe(
         map(guest => {
-            const request = new RequestRequest();
+          const request = new RequestRequest();
           request.hotel = guest!.hotel;
           request.guest = guest!;
           request.room = guest!.room;
@@ -93,7 +92,10 @@ export class ZoneRequestComponent implements OnDestroy {
       .subscribe(
         () => {
           this.loader = false;
-          this.notificationsService.sendMassiveNotification('Tienes una nueva solicitud inmediata', chiefTokens);
+          this.notificationsService.sendMassiveNotification(
+            'Tienes una nueva solicitud inmediata',
+            chiefTokens,
+          );
           this.requestController.reset();
           this.router.navigate(['/home']);
           this.messagesService.showToastMessage('Solicitud inmediata creada exitosamente');
@@ -106,12 +108,26 @@ export class ZoneRequestComponent implements OnDestroy {
   }
 
   setQuickRequest(value: string) {
-    this.requestController.setValue(value);
     const temp = this.content.nativeElement.parentNode as any;
     temp.scrollTop = temp.scrollHeight;
     if (value === SUB_CATEGORY_DRINKS) {
       this.isSubCategory = true;
     }
+    if (value === 'Otro') {
+      this.showRequestField = true;
+    } else {
+      this.showRequestField = false;
+    }
+  }
+
+  buttonDisabled() {
+    let disabledButton = false;
+    if (!this.selectedSubcategory) {
+      disabledButton = true;
+    } else if (this.selectedSubcategory === 'Otro' && this.requestController.invalid) {
+      disabledButton = true;
+    }
+    return disabledButton;
   }
 
   ngOnDestroy(): void {
