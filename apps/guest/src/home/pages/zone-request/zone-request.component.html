@@ -7,20 +7,26 @@
 
     <ng-container *ngIf="!isSubCategory">
       <div class="features-container" *ngIf="zone">
-        <mat-radio-group [(ngModel)]="selectedSubcategory">
-          <mat-radio-button
-            *ngFor="let subcategory of categories[zone.category.id]"
-            [value]="subcategory.name"
-            (click)="setQuickRequest(subcategory.name)"
-            class="features-container-item"
-            color="primary"
+        <div
+          class="features-container-item"
+          *ngFor="let subcategory of categories[zone.category.id]"
+          (click)="setQuickRequest(subcategory.name)"
+        >
+          <mat-icon
+            class="features-container-item__icon"
+            *ngIf="subcategory.name != selectedSubcategory"
           >
-            <mat-icon class="features-container-item__icon" contlerColorHotel="primary">{{
-              subcategory.icon
-            }}</mat-icon>
-            <p class="features-container-item__name">{{ subcategory.name }}</p>
-          </mat-radio-button>
-        </mat-radio-group>
+            {{ subcategory.icon }}
+          </mat-icon>
+          <mat-icon
+            class="features-container-item__icon"
+            contlerColorHotel="primary"
+            *ngIf="subcategory.name === selectedSubcategory"
+          >
+            {{ subcategory.icon }}
+          </mat-icon>
+          <p class="features-container-item__name">{{ subcategory.name }}</p>
+        </div>
       </div>
 
       <div *ngIf="showRequestField">

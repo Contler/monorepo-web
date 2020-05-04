@@ -108,8 +108,7 @@ export class ZoneRequestComponent implements OnDestroy {
   }
 
   setQuickRequest(value: string) {
-    const temp = this.content.nativeElement.parentNode as any;
-    temp.scrollTop = temp.scrollHeight;
+    this.selectedSubcategory = value;
     if (value === SUB_CATEGORY_DRINKS) {
       this.isSubCategory = true;
     }

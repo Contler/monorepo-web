@@ -6,11 +6,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'contler-modal-orders-quialify',
   templateUrl: './modal-orders-quialify.component.html',
-  styleUrls: ['./modal-orders-quialify.component.scss']
+  styleUrls: ['./modal-orders-quialify.component.scss'],
 })
 export class ModalOrdersQuialifyComponent implements OnInit {
-
-  private value: number | undefined;
+  value: number | undefined;
   readonly textRate = ['Muy malo', 'Malo', 'Regular', 'Bueno', 'Exelente'];
   load = false;
 
@@ -18,10 +17,9 @@ export class ModalOrdersQuialifyComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: OrderEntity,
     private dialogRef: MatDialogRef<ModalOrdersQuialifyComponent>,
     private productService: ProductService,
-  ) { }
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   selectStart(value: any) {
     this.value = value.newValue;
@@ -34,5 +32,4 @@ export class ModalOrdersQuialifyComponent implements OnInit {
       this.dialogRef.close();
     });
   }
-
 }
