@@ -30,7 +30,8 @@
             ],
             "styles": [
               "apps/hotel/src/styles.scss",
-              "apps/hotel/src/assets/loanding/loading-bar.min.css"
+              "apps/hotel/src/assets/loanding/loading-bar.min.css",
+              "node_modules/angular-calendar/css/angular-calendar.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [

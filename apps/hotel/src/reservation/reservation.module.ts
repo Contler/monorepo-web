@@ -11,9 +11,17 @@ import { ReservationListComponent } from './components/reservation-list/reservat
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { CoreModule } from '@contler/core';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { CalendarMonthModule } from 'angular-calendar';
 
 @NgModule({
-  declarations: [ReservationComponent, ReservationFormComponent, ReservationListComponent, ScheduleComponent],
+  declarations: [
+    ReservationComponent,
+    ReservationFormComponent,
+    ReservationListComponent,
+    ScheduleComponent,
+    CalendarComponent,
+  ],
   imports: [
     CommonModule,
     ReservationRoutingModule,
@@ -22,6 +30,7 @@ import { CoreModule } from '@contler/core';
     ReactiveFormsModule,
     NgxMaskModule,
     CoreModule,
+    CalendarMonthModule,
   ],
 })
-export class ReservationModule { }
+export class ReservationModule {}

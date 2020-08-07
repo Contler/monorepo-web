@@ -17,6 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from 'hotel/material/material.module';
 import { NgxMaskModule } from 'ngx-mask';
 
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -33,6 +36,10 @@ import { NgxMaskModule } from 'ngx-mask';
     NgxMaskModule.forRoot(),
     CoreModule.forRoot({
       urlBackend: environment.apiUrl,
+    }),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
     }),
   ],
   providers: [UserService, HotelService],
