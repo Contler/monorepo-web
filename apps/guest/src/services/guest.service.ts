@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserService } from '@contler/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, switchMap, tap } from 'rxjs/operators';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
@@ -22,12 +22,14 @@ export class GuestService {
     private afAuth: AngularFireAuth,
     private http: HttpClient,
   ) {
-    this.afAuth.user.pipe(
-      filter(user => !!user),
-      switchMap(user => this.http.get<GuestEntity>(environment.apiUrl + `guest/${user!.uid}`)),
-      tap(guest => this.guestSubject.next(guest)),
-      tap(guest => this.hotelSubject.next(guest.hotel))
-    ).subscribe()
+    this.afAuth.user
+      .pipe(
+        filter(user => !!user),
+        switchMap(user => this.http.get<GuestEntity>(environment.apiUrl + `guest/${user!.uid}`)),
+        tap(guest => this.guestSubject.next(guest)),
+        tap(guest => this.hotelSubject.next(guest.hotel)),
+      )
+      .subscribe();
   }
 
   get $guest(): Observable<GuestEntity | null> {
@@ -36,5 +38,9 @@ export class GuestService {
 
   get $hotel(): Observable<HotelEntity | null> {
     return this.hotelSubject.asObservable().pipe(filter(hotel => !!hotel));
+  }
+
+  checkAvailableUser() {
+    return this.$guest.pipe(map(data => new Date(data!.checkIn)));
   }
 }

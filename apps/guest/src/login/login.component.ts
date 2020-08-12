@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { GUEST } from '@contler/const';
+import { GuestService } from "guest/services/guest.service";
 
 @Component({
   selector: 'contler-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
   loader = false;
   error: string | undefined;
 
-  constructor(formBuilder: FormBuilder, private afAuth: AngularFireAuth, private router: Router) {
+  constructor(formBuilder: FormBuilder, private afAuth: AngularFireAuth, private router: Router, private guestService: GuestService) {
     this.loginForm = formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required]],
@@ -27,17 +28,22 @@ export class LoginComponent {
     const { email, pass } = this.loginForm.value;
     try {
       const userCredential = await this.afAuth.auth.signInWithEmailAndPassword(email, pass);
-
-      this.router.navigate(['/home']);
       const token = await userCredential.user!.getIdTokenResult();
       if (token.claims.role !== GUEST) {
         this.error = 'No tiene permisos para acceder'
       }
-      this.loader = false;
+      this.guestService.checkAvailableUser().subscribe(checkIn => {
+        this.loader = false;
+        if (new Date() >= checkIn) {
+          this.router.navigate(['/home']);
+        } else {
+          this.afAuth.auth.signOut()
+          this.error = 'Tu fecha de ingreso es el ' + checkIn.toLocaleDateString() + '. Te invitamos a iniciar sesión en esta fecha'
+        }
+      })
     } catch (error) {
       this.loader = false;
       const { code } = error;
-      console.log(code);
       switch (code) {
         case 'auth/user-not-found':
         case 'auth/wrong-password':

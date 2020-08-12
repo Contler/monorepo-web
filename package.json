@@ -38,7 +38,8 @@
     "build:qa:hotel": "ng build --configuration=qa hotel",
     "build:qa:guest": "ng build --configuration=qa guest",
     "build:qa:mobile": "ionic cap sync --project=mobile -c qa",
-    "deploy:qa:api": "npm run build:qa:api && heroku container:push web -a contler && heroku container:release web -a contler"
+    "deploy:qa:api": "npm run build:qa:api && heroku container:push web -a contler && heroku container:release web -a contler",
+    "deploy:hotel": "firebase deploy --only hosting:hotel"
   },
   "private": true,
   "dependencies": {

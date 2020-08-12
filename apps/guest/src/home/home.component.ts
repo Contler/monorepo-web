@@ -4,13 +4,10 @@ import { SidebarService } from '../services/sidebar.service';
 @Component({
   selector: 'contler-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  
-  constructor(public sidebarService: SidebarService) { }
+  constructor(public sidebarService: SidebarService) {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
