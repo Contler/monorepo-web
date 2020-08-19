@@ -11,9 +11,11 @@ import { IonicModule } from '@ionic/angular';
 import { ItemComponent } from './components/item/item.component';
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
 import { FormsModule } from '@angular/forms';
+import { CheckOrdersService } from "./services/check-orders.service";
 
 @NgModule({
   declarations: [OrderComponent, OrderPendingComponent, OrderCompleteComponent, ItemComponent, OrderDetailComponent],
   imports: [CommonModule, OrderRoutingModule, CoreModule, MaterialModule, IonicModule, FormsModule],
+  providers: [CheckOrdersService]
 })
 export class OrderModule {}

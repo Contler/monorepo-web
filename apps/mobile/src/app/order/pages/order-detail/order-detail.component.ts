@@ -5,8 +5,9 @@ import { GeneralService } from '../../../services/general.service';
 import { ProductService } from '@contler/core';
 import { EmployerEntity, OrderEntity, ProductOrderEntity } from '@contler/entity';
 import { map, switchMap, take, tap } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from "@angular/router";
 import { EmployerService } from '../../../services/employer.service';
+import { CheckOrdersService } from "../../services/check-orders.service";
 
 @Component({
   selector: 'contler-order-detail',
@@ -27,6 +28,8 @@ export class OrderDetailComponent implements OnInit {
     public generalService: GeneralService,
     private productService: ProductService,
     private employerService: EmployerService,
+    private router: Router,
+    private checkProduct: CheckOrdersService,
     route: ActivatedRoute,
   ) {
     route.params
@@ -66,6 +69,8 @@ export class OrderDetailComponent implements OnInit {
     }
     this.productService.updateOrder(this.order).subscribe(() => {
       this.load2 = false;
+      this.checkProduct.complete()
+      this.router.navigate(['/home/order/pending'])
     });
   }
 
