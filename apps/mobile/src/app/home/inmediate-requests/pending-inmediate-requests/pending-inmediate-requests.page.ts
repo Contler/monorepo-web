@@ -36,7 +36,14 @@ export class PendingInmediateRequestsPage implements OnInit {
   }
 
   async goToRequest(request: RequestEntity) {
-    this.dialog.open(ModalInmediateRequestPage, { data: request, maxWidth: '100vw', panelClass: 'modalApp'  });
+    this.dialog
+      .open(ModalInmediateRequestPage, { data: request, maxWidth: '100vw', panelClass: 'modalApp' })
+      .afterClosed()
+      .subscribe(() => {
+        if (request.complete) {
+          this.requests = this.requests.filter(req => req.id !== request.id);
+        }
+      });
 
     // const modal = await this.modalController.create({
     //   component: ModalInmediateRequestPage,
