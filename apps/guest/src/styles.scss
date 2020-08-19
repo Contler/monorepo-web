@@ -80,6 +80,9 @@ div:focus {
   color: #006633;
 }
 
+button {
+  text-transform: uppercase;
+}
 
 button[disabled] {
   background-color: rgba(0,0,0,.12) !important;
