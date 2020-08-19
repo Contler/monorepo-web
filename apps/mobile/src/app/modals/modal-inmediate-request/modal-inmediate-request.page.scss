@@ -2,7 +2,6 @@
 @import "../../../styles/mixin";
 
 .main-container {
-  @include wrapper();
   &__title {
     font-family: Raleway;
     font-size: 20.2px;

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, ModalController, NavController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 import { InmediateRequestsService } from '../../../services/inmediate-requests.service';
 import { GeneralService } from '../../../services/general.service';
 import { ModalInmediateRequestPage } from '../../../modals/modal-inmediate-request/modal-inmediate-request.page';
 import { EmployerEntity, RequestEntity } from '@contler/entity';
 import { AuthService } from '../../../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'contler-pending-inmediate-requests',
@@ -19,8 +20,8 @@ export class PendingInmediateRequestsPage implements OnInit {
     private inmediateRequestsService: InmediateRequestsService,
     private navController: NavController,
     public generalService: GeneralService,
-    public modalController: ModalController,
     private auth: AuthService,
+    private dialog: MatDialog,
     public menu: MenuController,
   ) {
     this.auth.$user.subscribe(user => (this.user = user));
@@ -35,12 +36,14 @@ export class PendingInmediateRequestsPage implements OnInit {
   }
 
   async goToRequest(request: RequestEntity) {
-    const modal = await this.modalController.create({
-      component: ModalInmediateRequestPage,
-      componentProps: {
-        request: Object.assign({}, request),
-      },
-    });
-    modal.present();
+    this.dialog.open(ModalInmediateRequestPage, { data: request, maxWidth: '100vw', panelClass: 'modalApp'  });
+
+    // const modal = await this.modalController.create({
+    //   component: ModalInmediateRequestPage,
+    //   componentProps: {
+    //     request: Object.assign({}, request),
+    //   },
+    // });
+    // modal.present();
   }
 }

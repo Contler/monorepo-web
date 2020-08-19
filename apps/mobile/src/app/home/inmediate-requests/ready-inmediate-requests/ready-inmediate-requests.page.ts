@@ -6,6 +6,7 @@ import { InmediateRequestsService } from '../../../services/inmediate-requests.s
 import { GeneralService } from '../../../services/general.service';
 import { EmployerEntity, RequestEntity } from '@contler/entity';
 import { AuthService } from '../../../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'contler-ready-inmediate-requests',
@@ -22,6 +23,7 @@ export class ReadyInmediateRequestsPage implements OnInit {
     public generalService: GeneralService,
     public modalController: ModalController,
     private auth: AuthService,
+    private dialog: MatDialog,
     public menu: MenuController,
   ) {
     this.auth.$user.subscribe(user => (this.user = user));
@@ -44,12 +46,10 @@ export class ReadyInmediateRequestsPage implements OnInit {
   }
 
   async goToRequest(request: RequestEntity) {
-    const modal = await this.modalController.create({
-      component: ModalInmediateRequestPage,
-      componentProps: {
-        request: Object.assign({}, request)
-      }
+    this.dialog.open(ModalInmediateRequestPage, {
+      data: request,
+      maxWidth: '100vw',
+      panelClass: 'modalApp',
     });
-    return await modal.present();
   }
 }

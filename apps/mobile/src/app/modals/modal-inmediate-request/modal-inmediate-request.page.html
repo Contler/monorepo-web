@@ -1,5 +1,5 @@
-<contler-toolbar [isModal]="true"></contler-toolbar>
-<ion-content>
+<contler-toolbar [isModal]="true" (closeClick)="dialogRef.close()"></contler-toolbar>
+
   <div class="section">
     <div class="main-container">
       <div class="main-container__title" [style.color]="generalService.hotelColor">
@@ -39,7 +39,7 @@
           </mat-form-field>
         </div>
         <mat-form-field appearance="fill">
-          <input matInput [ngModel]="request.zone.name" name="zoneName" readonly />
+          <input matInput [ngModel]="request.zone?.name" name="zoneName" readonly />
           <mat-hint>Zona</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
@@ -69,4 +69,4 @@
       </form>
     </div>
   </div>
-</ion-content>
+

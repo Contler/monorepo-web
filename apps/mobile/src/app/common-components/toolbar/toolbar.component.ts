@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { MenuController, ModalController } from '@ionic/angular';
 import { GeneralService } from '../../services/general.service';
 
@@ -10,13 +10,14 @@ import { GeneralService } from '../../services/general.service';
 export class ToolbarComponent implements OnInit {
   @Input() isModal = false;
   @Input() hasSearch = false;
+  @Output() closeClick = new EventEmitter()
 
   constructor(public generalService: GeneralService, private modalController: ModalController, public menu: MenuController,) {}
 
   ngOnInit() {}
 
   closeModal(){
-    this.modalController.dismiss();
+    this.closeClick.emit()
   }
 
   search() {
