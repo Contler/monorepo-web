@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderRequest } from '@contler/models/order-request';
 import { GuestService } from 'guest/services/guest.service';
 import { ProductService } from '@contler/core';
+import generateTine from 'guest/utils/generateTime';
 
 @Component({
   selector: 'contler-finish-order',
@@ -19,7 +20,7 @@ import { ProductService } from '@contler/core';
 export class FinishOrderComponent {
   productList: ProductListModel[];
   total = 0;
-  time = new Array(48);
+  time = generateTine();
   zones$: Observable<ZoneEntity[]>;
   orderForm: FormGroup;
   loading = false;

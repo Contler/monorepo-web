@@ -17,8 +17,8 @@
     <form class="finish-order__form" [formGroup]="orderForm" (ngSubmit)="createOrder()">
       <mat-form-field appearance="fill">
         <mat-select formControlName="time">
-          <mat-option *ngFor="let _ of time; let i = index" [value]="getHour(i)">
-            {{getHour(i) | date: 'shortTime'}}
+          <mat-option *ngFor="let dat of time; let i = index" [value]="dat">
+            {{dat | date: 'shortTime'}}
           </mat-option>
         </mat-select>
         <mat-hint>Hora a la que queires recibirlo</mat-hint>
