@@ -8,6 +8,11 @@
     width: 100px;
   }
 
+  &__icon {
+    position: relative;
+    top: 7px;
+  }
+
   &__title {
     font-family: $family;
     font-size: 20.2px;
