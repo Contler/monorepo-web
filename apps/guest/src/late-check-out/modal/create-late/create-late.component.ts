@@ -22,7 +22,6 @@ export class CreateLateComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private guestService: GuestService,
     private afFirestore: AngularFirestore,
-    public dialogRef: MatDialogRef<CreateLateComponent>,
   ) {
     this.guestService.$hotel.pipe(take(1)).subscribe(hotel => (this.hotel = hotel));
     this.guestService.$guest.subscribe(guest => (this.guest = guest));
@@ -30,7 +29,7 @@ export class CreateLateComponent implements OnInit {
 
   ngOnInit() {}
 
-  getHour (index: number) {
+  getHour(index: number) {
     const extraTime = 30 * index * 60 * 1000;
     const date = new Date();
     date.setHours(0);
@@ -42,7 +41,9 @@ export class CreateLateComponent implements OnInit {
 
   getColorButtonHotel() {
     return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '',
+      this.hotel && this.hotel.color
+        ? `background: ${this.hotel.color};  color: #ffffff !important`
+        : '',
     );
   }
 
@@ -59,6 +60,5 @@ export class CreateLateComponent implements OnInit {
         user: this.guest!.uid,
         status: 0,
       });
-    this.dialogRef.close()
   }
 }
