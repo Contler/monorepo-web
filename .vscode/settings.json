@@ -3,6 +3,6 @@
     "**/ios": true
   },
   "files.watcherExclude": {
-    "**/ios": true
+    "**/ios/**": true
   }
 }
