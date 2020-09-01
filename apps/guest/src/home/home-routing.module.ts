@@ -14,6 +14,7 @@ import { MyInmediateRequestsComponent } from './pages/my-inmediate-requests/my-i
 import { InmediateRequestComponent } from './pages/inmediate-request/inmediate-request.component';
 import { WakeUpComponent } from 'guest/home/pages/wake-up/wake-up.component';
 import { CreateWakeComponent } from 'guest/home/pages/create-wake/create-wake.component';
+import { DrinkRequestComponent } from 'guest/home/pages/drink-request/drink-request.component';
 
 const redirectUnauthorizedToLogin = () =>
   pipe(
@@ -47,6 +48,10 @@ const routes: Routes = [
         component: ZoneRequestComponent,
       },
       {
+        path: 'zone-request/:id/drink',
+        component: DrinkRequestComponent,
+      },
+      {
         path: 'special-requests',
         component: SpecialRequestComponent,
       },
@@ -60,13 +65,18 @@ const routes: Routes = [
       },
       {
         path: 'reservation',
-        loadChildren: () => import('../reservation/reservation.module').then(m => m.ReservationModule),
+        loadChildren: () =>
+          import('../reservation/reservation.module').then(m => m.ReservationModule),
       },
       {
         path: 'late',
-        loadChildren: () => import('../late-check-out/late-check-out.module').then(m => m.LateCheckOutModule),
+        loadChildren: () =>
+          import('../late-check-out/late-check-out.module').then(m => m.LateCheckOutModule),
       },
-      { path: 'product', loadChildren: () => import('../product/product.module').then(m => m.ProductModule) },
+      {
+        path: 'product',
+        loadChildren: () => import('../product/product.module').then(m => m.ProductModule),
+      },
       {
         path: '',
         redirectTo: 'guest-requests',

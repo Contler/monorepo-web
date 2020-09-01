@@ -1,85 +1,39 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
-  <div class="container" marcoBody #content>
+  <div class="container" marcoBody>
     <p class="container__label" contlerColorHotel="primary">
       Estás en {{ zone?.category.name }} <br />
       ¿Qué necesitas?
     </p>
 
-    <ng-container *ngIf="!isSubCategory">
-      <div class="features-container" *ngIf="zone">
-        <div
-          class="features-container-item"
-          *ngFor="let subcategory of categories[zone.category.id]"
-          (click)="setQuickRequest(subcategory.name)"
+    <div class="features-container" *ngIf="zone">
+      <div
+        class="features-container-item"
+        *ngFor="let subcategory of categories[zone.category.id]"
+        (click)="setQuickRequest(subcategory.name)"
+      >
+        <mat-icon
+          class="features-container-item__icon"
+          *ngIf="subcategory.name != selectedSubcategory"
         >
-          <mat-icon
-            class="features-container-item__icon"
-            *ngIf="subcategory.name != selectedSubcategory"
-          >
-            {{ subcategory.icon }}
-          </mat-icon>
-          <mat-icon
-            class="features-container-item__icon"
-            contlerColorHotel="primary"
-            *ngIf="subcategory.name === selectedSubcategory"
-          >
-            {{ subcategory.icon }}
-          </mat-icon>
-          <p class="features-container-item__name">{{ subcategory.name }}</p>
-        </div>
+          {{ subcategory.icon }}
+        </mat-icon>
+        <mat-icon
+          class="features-container-item__icon"
+          contlerColorHotel="primary"
+          *ngIf="subcategory.name === selectedSubcategory"
+        >
+          {{ subcategory.icon }}
+        </mat-icon>
+        <p class="features-container-item__name">{{ subcategory.name }}</p>
       </div>
+    </div>
 
-      <div *ngIf="showRequestField">
-        <mat-form-field appearance="fill" class="full_width container__input">
-          <input matInput [formControl]="requestController" />
-          <mat-hint>Escribe lo que necesitas</mat-hint>
-        </mat-form-field>
-      </div>
-    </ng-container>
-
-    <ng-container *ngIf="isSubCategory">
-      <div class="drin-container">
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-select [(ngModel)]="typeName" name="typeName">
-            <mat-option [value]="'Cervezas Nacionales'">
-              Cervezas Nacionales
-            </mat-option>
-            <mat-option [value]="'Cervezas Internacionales'">
-              Cervezas Internacionales
-            </mat-option>
-          </mat-select>
-          <mat-hint>Tipo de bebida</mat-hint>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-select [(ngModel)]="drinkName" name="drinkName">
-            <mat-option [value]="'Club Colombia - $9.900'">
-              Club Colombia - $9.900
-            </mat-option>
-            <mat-option [value]="'Corona'">
-              Corona
-            </mat-option>
-          </mat-select>
-          <mat-hint>Bebida</mat-hint>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-select [(ngModel)]="drinksQuantity" name="drinksQuantity">
-            <mat-option [value]="1">
-              1 unidad
-            </mat-option>
-            <mat-option [value]="2">
-              2 unidades
-            </mat-option>
-            <mat-option [value]="3">
-              3 unidades
-            </mat-option>
-            <mat-option [value]="4">
-              4 unidades
-            </mat-option>
-          </mat-select>
-          <mat-hint>Cantidad</mat-hint>
-        </mat-form-field>
-      </div>
-    </ng-container>
+    <div *ngIf="showRequestField">
+      <mat-form-field appearance="fill" class="full_width container__input">
+        <input matInput [formControl]="requestController" />
+        <mat-hint>Escribe lo que necesitas</mat-hint>
+      </mat-form-field>
+    </div>
 
     <button
       (click)="saveRequest()"

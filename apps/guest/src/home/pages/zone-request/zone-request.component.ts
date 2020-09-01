@@ -21,7 +21,6 @@ import { RequestService } from 'guest/services/request.service';
   styleUrls: ['./zone-request.component.scss'],
 })
 export class ZoneRequestComponent implements OnDestroy {
-  @ViewChild('content', { static: false }) content!: ElementRef<HTMLDivElement>;
   selectedSubcategory = '';
   showRequestField = false;
   hotel: HotelEntity | null | undefined;
@@ -110,12 +109,9 @@ export class ZoneRequestComponent implements OnDestroy {
   setQuickRequest(value: string) {
     this.selectedSubcategory = value;
     if (value === SUB_CATEGORY_DRINKS) {
-      this.isSubCategory = true;
-    }
-    if (value === 'Otro') {
-      this.showRequestField = true;
+      this.router.navigate([ './drink'], {relativeTo: this.route});
     } else {
-      this.showRequestField = false;
+      this.showRequestField = value === 'Otro';
     }
   }
 

@@ -23,19 +23,28 @@ export class InmediateRequestsService {
   ) {}
 
   listenImmediateRequestByHotel(complete: boolean) {
+    const commonParams = {
+      complete: complete ? 't' : 'f',
+      special: 'f',
+      time: '7',
+    };
+
     const adminRequest = this.authService.$user.pipe(
       switchMap(user =>
         this.http.get<RequestEntity[]>(
-          environment.apiUrl + `hotel/${user!.hotel.uid}/request-admin?complete=${complete ? 't' : 'f'}&special=f`,
+          environment.apiUrl + `hotel/${user!.hotel.uid}/request-admin`,
+          {
+            params: { ...commonParams },
+          },
         ),
       ),
     );
 
     const employerRequest = this.authService.$user.pipe(
       switchMap(user =>
-        this.http.get<RequestEntity[]>(
-          environment.apiUrl + `employer/${user!.uid}/request?complete=${complete ? 't' : 'f'}`,
-        ),
+        this.http.get<RequestEntity[]>(environment.apiUrl + `employer/${user!.uid}/request`, {
+          params: { ...commonParams },
+        }),
       ),
     );
 

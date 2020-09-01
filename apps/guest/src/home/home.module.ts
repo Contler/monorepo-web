@@ -19,6 +19,7 @@ import { WakeUpComponent } from './pages/wake-up/wake-up.component';
 import { CreateWakeComponent } from './pages/create-wake/create-wake.component';
 import { ModalBookingQualifyComponent } from './components/modal-booking-qualify/modal-booking-qualify.component';
 import { ModalOrdersQuialifyComponent } from './components/modal-orders-quialify/modal-orders-quialify.component';
+import { DrinkRequestComponent } from './pages/drink-request/drink-request.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ModalOrdersQuialifyComponent } from './components/modal-orders-quialify
     CreateWakeComponent,
     ModalBookingQualifyComponent,
     ModalOrdersQuialifyComponent,
+    DrinkRequestComponent,
   ],
   imports: [
     CommonModule,

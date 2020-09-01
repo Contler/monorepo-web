@@ -15,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class PendingInmediateRequestsPage implements OnInit {
   public requests: RequestEntity[] = [];
   user: EmployerEntity | null = null;
+  loadData = false;
 
   constructor(
     private inmediateRequestsService: InmediateRequestsService,
@@ -27,11 +28,11 @@ export class PendingInmediateRequestsPage implements OnInit {
     this.auth.$user.subscribe(user => (this.user = user));
   }
 
-  ngOnInit() {}
-
-  ionViewWillEnter() {
+  ngOnInit() {
+    this.loadData = true;
     this.inmediateRequestsService.listenImmediateRequestByHotel(false).subscribe(requests => {
       this.requests = requests;
+      this.loadData = false;
     });
   }
 
@@ -44,13 +45,5 @@ export class PendingInmediateRequestsPage implements OnInit {
           this.requests = this.requests.filter(req => req.id !== request.id);
         }
       });
-
-    // const modal = await this.modalController.create({
-    //   component: ModalInmediateRequestPage,
-    //   componentProps: {
-    //     request: Object.assign({}, request),
-    //   },
-    // });
-    // modal.present();
   }
 }
