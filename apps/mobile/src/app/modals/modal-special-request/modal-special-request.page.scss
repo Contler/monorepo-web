@@ -1,0 +1,30 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixin";
+
+.main-container {
+  @include wrapper();
+  &__title {
+    font-family: Raleway;
+    font-size: 20.2px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.25px;
+    text-align: center;
+    margin: 38px 0px;
+  }
+}
+mat-form-field {
+  width: 100%;
+  margin-bottom: 21px;
+}
+.two-inputs {
+  display: grid;
+  grid-template-columns: calc(50% - 8px) calc(50% - 8px);
+  column-gap: 16px;
+}
+button{
+    color: #ffffff !important;
+    width: 100%;
+}

@@ -1,0 +1,46 @@
+@import 'styles/variables';
+@import 'styles/mixin';
+
+$temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
+
+.request {
+  &__hotel-logo {
+    display: block;
+    margin: 0 auto 29px;
+    width: 100px;
+  }
+  &__label {
+    @include text($text-3, 20px, 500);
+    text-align: center;
+  }
+  &__space {
+    margin-bottom: 20px
+  }
+  &__user {
+    margin-bottom: 10px;
+  }
+
+  &__zone {
+    display: grid;
+    grid-template-columns: max-content auto max-content;
+    column-gap: 16px;
+    padding: 20px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    align-items: center;
+    text-decoration: none;
+    &-icon {
+      color: $lighterIcon;
+    }
+    &-text {
+      @include text(rgba(0, 0, 0, 0.87), 20px, 500);
+      letter-spacing: 0.25px;
+    }
+  }
+}
+.main-container{
+  height: 100%;
+  .zones-container{
+    max-height: 45%;
+    overflow: auto;
+  }
+}

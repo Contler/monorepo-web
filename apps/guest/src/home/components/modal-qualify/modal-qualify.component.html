@@ -1,0 +1,31 @@
+<div class="cnt-qualify" *ngIf="data">
+  <img src="assets/img/rating.svg" alt="" class="cnt-qualify__img" />
+  <!-- <p class="cnt-qualify__title">Cómo te pareció el servicio que acaba de prestar nuestro equipo</p> -->
+  <p class="cnt-qualify__title">
+    Cómo te parecio el servicio que prestó nuestro equipo en tu solicitud {{ data.message }} en
+    {{ data.zone.name }} el día {{ data.createAt | date: 'dd/MM/yyyy' }}.
+  </p>
+  <star-rating
+    value="0"
+    totalstars="5"
+    checkedcolor="#dfae00"
+    uncheckedcolor="#6c6c6c"
+    size="24px"
+    (rate)="selectStart($event)"></star-rating>
+  <p class="cnt-qualify__info" *ngIf="value !== undefined">{{ textRate[value - 1] }} {{ value }}/5</p>
+  <mat-form-field appearance="fill" class="full_width cnt-qualify__input">
+    <input matInput [(ngModel)]="comment" />
+    <mat-hint>Cuéntanos un poco más</mat-hint>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="accent"
+    class="cnt-qualify__btn"
+    contlerButton
+    [loading]="load"
+    [disabled]="!( !!value) || load"
+    (click)="close()"
+  >
+    Calificar
+  </button>
+</div>

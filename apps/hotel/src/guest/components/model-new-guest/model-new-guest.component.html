@@ -1,0 +1,74 @@
+<form class="cnt-modal-guest" [formGroup]="guestGroup" (ngSubmit)="saveUser()">
+  <h1 class="cnt-modal-guest__title">Crear nuevo huesped</h1>
+  <div class="cnt-modal-guest__form_guest">
+
+    <mat-form-field appearance="fill" class="cnt-modal-guest__span2">
+      <input matInput formControlName="name">
+      <mat-icon matSuffix>check_circle</mat-icon>
+      <mat-hint>Nombre</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="cnt-modal-guest__span2">
+      <input matInput formControlName="lastName">
+      <mat-icon matSuffix>check_circle</mat-icon>
+      <mat-hint>Apellidos</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="cnt-modal-guest__span2">
+      <input matInput formControlName="email">
+      <mat-icon matSuffix fontSet="material-icons-outlined">email</mat-icon>
+      <mat-hint>Correo electrónico</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-filed">
+      <mat-select formControlName="typeDocument">
+        <mat-option *ngFor="let type of documentTypes" [value]="type.value">{{type.name}}</mat-option>
+      </mat-select>
+      <mat-hint>Tipo de documento</mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill" class="custom-filed">
+      <input matInput formControlName="document">
+      <mat-icon matSuffix>check_circle</mat-icon>
+      <mat-hint>Documento</mat-hint>
+    </mat-form-field>
+
+  </div>
+  <div class="cnt-modal-guest__form_hotel">
+
+    <mat-form-field appearance="fill">
+      <mat-select formControlName="room">
+        <mat-option *ngFor="let room of rooms" [value]="room">{{room.name}}</mat-option>
+      </mat-select>
+      <mat-hint>Habitación</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-filed">
+      <input matInput [matDatepicker]="picker" readonly formControlName="checkIn">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-hint>Fecha de ingreso</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="custom-filed">
+      <input matInput [matDatepicker]="picker2" readonly formControlName="checkOut">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+      <mat-hint>Fecha de salida</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <p class="cnt-modal-guest__label">Recuerda al huesped que para el ingreso en el app <br>
+    su usuario será su correo electrónico y su contraseña su documento</p>
+
+  <button mat-raised-button color="accent" style="width: 217px" contlerButton [loading]="load" [disabled]="guestGroup.invalid || load">
+    Crear
+  </button>
+  <p class="cnt-modal-guest__error">{{error}}</p>
+</form>
+
+
+<button mat-icon-button class="cnt-modal-guest__close" (click)="dialogRef.close()">
+  <mat-icon>close</mat-icon>
+</button>

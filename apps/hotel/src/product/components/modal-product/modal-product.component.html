@@ -1,0 +1,35 @@
+<h1 matDialogTitle class="cnt-title">Nuevo producto</h1>
+<form matDialogContent class="modal-form" [formGroup]="productForm" (ngSubmit)="createProduct()">
+  <mat-form-field appearance="fill">
+    <input type="text" placeholder="Nombre" matInput formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input type="text" matInput placeholder="Valor" currencyMask formControlName="value" [options]="{precision: 0, thousands: '.', decimal: ','}">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input type="text" matInput placeholder="Descripción" formControlName="description">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-select placeholder="Categoría" formControlName="category">
+      <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-card class="modal-preview">
+    <mat-card-title>Previsualización</mat-card-title>
+    <mat-card-content>
+      <contler-product-item [product]="product"></contler-product-item>
+    </mat-card-content>
+  </mat-card>
+
+  <button mat-raised-button color="accent" [disabled]="productForm.invalid || loading" contlerButton [loading]="loading">
+    Crear
+  </button>
+</form>
+
+<button mat-icon-button class="modal-close" (click)="dialogRef.close()">
+  <mat-icon>close</mat-icon>
+</button>

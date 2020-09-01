@@ -1,0 +1,30 @@
+<contler-marco backUrl="home/product" padding="16px 40px">
+  <ng-container marcoBody>
+
+    <p class="detail-id">ID Pedido: {{order?.id}}</p>
+
+    <h1 class="ctl-title" contlerColorHotel="primary">
+      {{order?.guest.name}} <br />
+      {{order?.guest.room.name}} - {{order?.time | date : 'shortTime'}}
+    </h1>
+
+    <contler-product-item [disable]="true" *ngFor="let item of order?.productsOrder" [product]="item.product" [count]="item.quantity">
+    </contler-product-item>
+
+    <p contlerColorHotel="primary" class="detail-total">Total: {{total | currency: 'COP' : 'COP $' : '1.0-0'}}</p>
+    <p class="detail-comment" *ngIf="order?.comment">Comentarios: {{order?.comment}}</p>
+
+    <div class="detail-extra">
+      <mat-form-field appearance="fill">
+        <input type="text" readonly matInput [value]="status[order?.state]">
+        <mat-hint>Estado del pedido</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <input type="text" readonly matInput [value]="order?.zone.name">
+        <mat-hint>Entrega</mat-hint>
+      </mat-form-field>
+    </div>
+
+  </ng-container>
+</contler-marco>

@@ -1,0 +1,48 @@
+<contler-marco padding="16px 40px 131px">
+  <ng-container marcoBody>
+    <h1 class="ctl-title" contlerColorHotel="primary">
+      Mis pedidos <span *ngIf="pending">Pendientes</span> <span *ngIf="!pending">Cumplidos</span>
+    </h1>
+
+    <contler-order-item
+      *ngFor="let order of order$ | async | activeOrder: pending"
+      [order]="order"
+      (click)="goToOrder(order)"
+    ></contler-order-item>
+
+    <div class="order-footer">
+      <div style="padding: 0 40px; box-sizing: border-box">
+        <button
+          mat-raised-button
+          color="accent"
+          contlerColorBtnHotel="primary"
+          routerLink="/home/product/create"
+          style="width: 100%"
+        >
+          Hacer un pedido nuevo
+        </button>
+      </div>
+
+      <div class="order-footer__btn">
+        <button
+          mat-button
+          disableRipple
+          contlerBtnMenuHotel
+          [select]="pending"
+          (click)="pending = true"
+        >
+          Pendientes
+        </button>
+        <button
+          mat-button
+          disableRipple
+          contlerBtnMenuHotel
+          [select]="!pending"
+          (click)="pending = false"
+        >
+          Cumplidos
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</contler-marco>

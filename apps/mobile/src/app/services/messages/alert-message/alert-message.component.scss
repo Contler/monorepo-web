@@ -1,0 +1,26 @@
+.center_container{
+    text-align: center;
+    max-width: 200px;
+
+    mat-icon{
+        padding: 20px;
+        border-radius: 100%;
+        font-size: 2rem;
+        height: auto;
+        width: auto;
+
+        border: 2px solid #d6aa01;
+        color: #d6aa01;
+
+        margin-bottom: 10px;
+    }
+
+    p{
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    button{
+        width: 100%;
+    }
+}

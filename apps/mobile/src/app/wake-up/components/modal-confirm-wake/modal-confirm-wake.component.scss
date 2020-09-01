@@ -1,0 +1,32 @@
+@import "styles/variables";
+
+.modal-confirm {
+  text-align: center;
+  &__check {
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    color: #8cc640;
+  }
+
+  &__text {
+    max-width: 283px;
+    font-family: $family;
+    font-size: 16px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.15px;
+    text-align: center;
+    color: #0b0807;
+    margin: 38px 0 0;
+  }
+
+  &__btn {
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    text-transform: uppercase;
+  }
+}

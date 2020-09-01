@@ -1,0 +1,18 @@
+@import "styles/variables";
+
+.reservation {
+  width: 1280px;
+  margin: auto;
+  padding: 55px 52px;
+  display: flex;
+  justify-content: space-between;
+
+
+  &__form {
+    width: 458px;
+  }
+
+  &__list {
+    width: 582px;
+  }
+}

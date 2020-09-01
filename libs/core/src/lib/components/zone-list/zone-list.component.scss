@@ -1,0 +1,15 @@
+.contler-zone {
+  box-sizing: border-box;
+  border: solid 1px #e2e2e2;
+  padding: 20px;
+  overflow: scroll;
+  height: 239px;
+
+  &__check {
+    display: block;
+  }
+
+  &__sub {
+    margin-left: 15px;
+  }
+}

@@ -1,0 +1,22 @@
+<div class="menu-container">
+  <div class="header">
+    <img *ngIf="hotel" [src]="hotel.logo" class="header__hotel-logo" />
+    <p class="header__name">{{ user?.name }} {{ user?.lastName }}</p>
+    <p class="header__zone-label">Habitación {{ user?.room.name }}</p>
+  </div>
+  <div class="menu">
+    <div
+      class="menu__item"
+      *ngFor="let item of menuItems"
+      (click)="goToRoute(item.route)"
+      [ngClass]="{ 'menu__item--selected': isSelectedRoute(item.route) }"
+    >
+      <mat-icon class="custom_icon">{{ item.icon }}</mat-icon>
+      <p class="label">{{ item.name }}</p>
+    </div>
+    <div class="menu__item" (click)="logout()">
+      <mat-icon class="custom_icon">exit_to_app</mat-icon>
+      <p class="label">Cerrar Sesión</p>
+    </div>
+  </div>
+</div>

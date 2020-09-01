@@ -1,0 +1,29 @@
+@import "styles/variables";
+
+.item {
+  display: grid;
+  grid-template-columns: 54px auto;
+  padding: 12px 10px 8px 10px;
+  margin-bottom: 9px;
+  .label{
+    margin: 0;
+    font-family: $family;
+    font-size: 14.2px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.41;
+    letter-spacing: 0.25px;
+    color: $text-4;
+  }
+}
+
+.selected {
+  background-color: $borderColor;
+  mat-icon{
+    color: $black;
+  }
+  .label{
+    color: $text-3;
+  }
+}

@@ -1,0 +1,15 @@
+.dialog_container{
+
+    mat-form-field{
+        width: 100%;
+    }
+}
+
+.dialog_footer{
+    display: flex;
+    justify-content: flex-end;
+
+    .save_button{
+        margin-left: 10px;
+    }
+}

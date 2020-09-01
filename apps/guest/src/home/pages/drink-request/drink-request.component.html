@@ -1,0 +1,30 @@
+<contler-marco [backUrl]="'/home/zone-request/' + id">
+  <div marcoBody>
+    <mat-spinner
+      color="primary"
+      style="margin: auto"
+      contlerColorHotel="primary"
+      *ngIf="load"
+    ></mat-spinner>
+
+    <contler-product-item
+      *ngFor="let item of products"
+      [product]="item.product"
+      [(count)]="item.quantity"
+    ></contler-product-item>
+  </div>
+
+  <div marcoFooter class="drink__footer">
+    <button
+      mat-raised-button
+      color="accent"
+      contlerColorBtnHotel="primary"
+      contlerButton
+      [loading]="loading"
+      [disabled]="loading || checkQuantity === 0"
+      (click)="createRequest()"
+    >
+      CREAR SOLICITUD
+    </button>
+  </div>
+</contler-marco>

@@ -1,0 +1,11 @@
+.product {
+  padding: 42px 52px;
+  min-width: calc(1024px - 52px - 52px);
+
+  &__menu {
+    display: grid;
+    grid-template-columns: auto repeat(3, max-content);
+    column-gap: 20px;
+    align-items: baseline;
+  }
+}

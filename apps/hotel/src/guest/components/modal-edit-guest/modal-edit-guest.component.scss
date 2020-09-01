@@ -1,0 +1,53 @@
+@import "styles/variables";
+@import "styles/mixin";
+
+$gap-form: 10px;
+
+.cnt-edit-guest {
+  padding: 72px 120px 84px;
+  text-align: center;
+
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  &__error {
+    @include text(red, 12px);
+    text-align: center;
+    margin-top: 10px;
+  }
+  &__title {
+    @include text($text-3, 20px, 500);
+    letter-spacing: 0.25px;
+    margin-bottom: 53px;
+    text-align: center;
+  }
+
+  &__form_guest {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: $gap-form;
+  }
+
+  &__span2 {
+    grid-column: span 2;
+  }
+
+  &__form_hotel {
+    margin-top: $gap-form;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+  }
+
+  &__label {
+    @include text($text-3, 12px);
+    line-height: 1.31;
+    letter-spacing: 0.4px;
+    text-align: center;
+    margin: 62px 0 38px;
+  }
+
+}

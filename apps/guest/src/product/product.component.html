@@ -1,0 +1,39 @@
+<contler-marco padding="16px 0 0" backUrl="/home/product">
+  <div marcoBody>
+    <h1 class="ctl-title" contlerColorHotel="primary">Elige lo que quieres pedir</h1>
+    <div class="product-menu">
+      <button
+        mat-button
+        (click)="selectCategory(cat.category)"
+        [class.btn-select]="isSelect(i)"
+        *ngFor="let cat of categories; let i = index"
+        [style.border-color]="general.getStringColorHotel()"
+      >
+        <mat-icon
+          class="product-menu__icon"
+          [contlerColorHotel]="isSelect(i) ? 'primary' : 'second'"
+        >
+          {{ cat.icon }}
+        </mat-icon>
+        <p *ngIf="isSelect(i)" contlerColorHotel="primary" class="product-menu__text">
+          {{ cat.category }}
+        </p>
+        <p *ngIf="!isSelect(i)" class="product-menu__text">
+          {{ cat.category }}
+        </p>
+      </button>
+    </div>
+
+    <div class="product-content">
+      <contler-product-item *ngFor="let item of productCategories[actualCategory]?.productList" [product]="item.product" [(count)]="item.quantity">
+      </contler-product-item>
+    </div>
+  </div>
+
+
+  <div marcoFooter class="product-footer">
+    <button contlerColorBtnHotel="primary" mat-raised-button color="accent" (click)="nextStep()">Siguiente</button>
+    <mat-error class="product-error">{{error}}</mat-error>
+  </div>
+
+</contler-marco>

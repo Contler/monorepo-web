@@ -1,0 +1,34 @@
+<ion-header no-border>
+  <div class="header">
+    <div class="ion-text-center header__logo">
+      <img *ngIf="user" [src]="user.hotel.logo" class="header__img">
+    </div>
+    <button mat-icon-button class="header__menu" (click)="menu.toggle()">
+      <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
+    </button>
+  </div>
+  <mat-form-field class="late-search">
+    <input matInput [(ngModel)]="search" placeholder="Buscar" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</ion-header>
+
+<ion-content>
+  <h1 class="content__title" [style.color]="generalService.hotelColor">Late Check Outs</h1>
+
+  <div class="late-item" *ngFor="let item of lateList | lateSearch: search ">
+    <p>Cuarto <br> {{item.user.room.name}}</p>
+    <p>{{item.date | date: 'shortTime'}}</p>
+    <p [ngSwitch]="item.status">
+      <span *ngSwitchCase="0">Creada</span>
+      <span *ngSwitchCase="1">No aceptada</span>
+      <span *ngSwitchCase="2">Aceptada</span>
+    </p>
+    <p>
+      <button mat-button color="accent" (click)="acceptLate(item)">Aceptar</button>
+      <br>
+      <button mat-button color="warn" (click)="cancelLate(item)">Rechazar</button>
+    </p>
+  </div>
+
+</ion-content>

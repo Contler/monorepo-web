@@ -1,0 +1,30 @@
+:host{
+  padding-top: 56px;
+  position: relative;
+  display: block;
+}
+
+.mat-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 99;
+  display: grid;
+  grid-template-columns: 40px auto 40px;
+}
+
+.marco {
+  &__menu {
+    grid-column-start: 3;
+  }
+}
+
+.menu {
+  //padding: 16px 16px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto max-content;
+}

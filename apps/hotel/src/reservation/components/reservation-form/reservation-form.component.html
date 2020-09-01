@@ -1,0 +1,36 @@
+<h1 class="cnt-title title">Zona de reserva</h1>
+<form class="reservation-form" [formGroup]="zoneForm" (ngSubmit)="complete()">
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="name" />
+    <mat-hint>Nombre de la zona</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-select formControlName="category">
+      <mat-option *ngFor="let category of categoryZone | async" [value]="category">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
+    <mat-hint>Categoría de esta zona</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-select formControlName="icon">
+      <mat-option *ngFor="let icon of icons" [value]="icon">
+        <mat-icon>{{ icon }}</mat-icon>
+      </mat-option>
+    </mat-select>
+    <mat-hint>Selecciona un icono</mat-hint>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="accent"
+    contlerButton
+    style="width: 217px;"
+    [loading]="load"
+    [disabled]="load || zoneForm.invalid"
+  >
+    Crear zona
+  </button>
+</form>

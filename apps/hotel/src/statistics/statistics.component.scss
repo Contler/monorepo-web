@@ -1,0 +1,66 @@
+@import "styles/variables";
+
+
+.statistics {
+  padding: 0 51px;
+  &__header {
+    display: grid;
+    grid-template-columns: auto max-content max-content;
+    column-gap: 20px;
+    align-items: baseline;
+    margin-top: 43px;
+    margin-bottom: 30px;
+  }
+
+  &__general {
+    width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 70px;
+    align-items: start;
+    &-left {
+      position: relative;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    &-data {
+      font-family: $family;
+      font-size: 24.3px;
+      color: #55413a;
+      margin: 0;
+    }
+
+    &-txt {
+      font-family: $family;
+      font-size: 16.2px;
+      line-height: 1.36;
+      letter-spacing: 0.5px;
+      text-align: center;
+      color: #696969;
+      margin: 0;
+    }
+
+    &-label {
+      margin: 10px 0 22px;
+    }
+
+    &-score-avg {
+      position: absolute;
+      left: 0;
+      width: 110px;
+      text-align: center;
+      top: 42px;
+    }
+  }
+
+  &__emp {
+    width: 1000px;
+    margin: 30px auto auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 80px;
+    row-gap: 30px;
+  }
+}

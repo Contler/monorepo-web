@@ -1,0 +1,16 @@
+.edit-product {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  align-items: center;
+
+  &__form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    .double {
+      grid-column: span 2;
+    }
+  }
+}

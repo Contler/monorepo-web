@@ -1,0 +1,28 @@
+<contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
+
+<mat-sidenav-container class="statistics">
+  <mat-sidenav mode="over" #sidenav>
+    <contler-menu></contler-menu>
+  </mat-sidenav>
+
+  <div class="statistics__header">
+    <h1 class="cnt-title">Calificaciones</h1>
+  </div>
+
+  <div class="statistics__general">
+    <div class="statistics__general-left">
+      <div id="myItem1" class="ldBar label-center score-progress" style="width: 110px; height: 110px; margin: auto" data-preset="circle"></div>
+      <p class="statistics__general-txt statistics__general-label">Calificación promedio</p>
+      <p class="statistics__general-data">{{ timeAvg }}</p>
+      <p class="statistics__general-txt" style="margin-top: 10px">Tiempo promedio</p>
+    </div>
+
+    <div>
+      <canvas #bar></canvas>
+    </div>
+  </div>
+
+  <div class="statistics__emp">
+    <contler-card-employees *ngFor="let emp of employees" [employer]="emp"></contler-card-employees>
+  </div>
+</mat-sidenav-container>

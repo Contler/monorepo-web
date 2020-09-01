@@ -1,0 +1,126 @@
+<contler-marco-admin title="Pedido">
+  <ng-container marcoHeader>
+    <mat-form-field appearance="fill" class="select">
+      <mat-select [(ngModel)]="state" (ngModelChange)="changeOrderState($event)">
+        <mat-option *ngFor="let option of states" [value]="option.value">
+          {{ option.name }}
+        </mat-option>
+      </mat-select>
+      <mat-hint>Estado</mat-hint>
+    </mat-form-field>
+    <button mat-raised-button (click)="deleteOrder()" contlerButton [loading]="load">
+      Eliminar
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      [disabled]="productForm?.invalid || load"
+      contlerButton
+      [loading]="load"
+      (click)="updateOrder()"
+    >
+      Actualizar
+    </button>
+  </ng-container>
+  <div marcoBody class="view-order">
+    <div class="view-order__detail">
+      <p class="title">Datos del pedido</p>
+      <form *ngIf="orderForm" [formGroup]="orderForm" class="view-order__form">
+        <div class="grid-70-30">
+          <mat-form-field appearance="fill">
+            <input
+              type="text"
+              class="txt-capitalize"
+              matInput
+              [value]="order.guest.name + ' ' + order.guest.lastName"
+              readonly
+            />
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-hint>Nombre del huesped</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <input type="text" matInput [value]="'Habitación ' + order.guest.room.name" readonly />
+            <mat-icon matSuffix>location_on</mat-icon>
+            <mat-hint>Habitación</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="grid-70-30">
+          <mat-form-field appearance="fill">
+            <input
+              type="text"
+              matInput
+              [value]="order.time | date: 'dd/MM/yyyy HH:mm aa'"
+              readonly
+            />
+            <mat-icon matSuffix>query_builder</mat-icon>
+            <mat-hint>Fecha y Hora</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <input type="text" matInput [value]="order.zone.name" readonly />
+            <mat-icon matSuffix>{{ order.zone.icon }}</mat-icon>
+            <mat-hint>Entrega</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="grid-70-30 mb-4">
+          <mat-form-field appearance="fill">
+            <input type="text" matInput [value]="order.comment" readonly />
+            <mat-hint>Observaciones del pedido</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <input
+              type="text"
+              matInput
+              [value]="orderProductsTotalValue(order)"
+              currencyMask
+              [options]="{ precision: 0, align: 'left' }"
+              readonly
+            />
+            <mat-hint>Valor</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <p class="title">Equipo del hotel</p>
+
+        <div class="grid-70-30">
+          <mat-form-field appearance="fill">
+            <input
+              type="text"
+              class="txt-capitalize"
+              matInput
+              [value]="order.employer?.name + ' ' + order.employer?.lastName"
+              readonly
+            />
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-hint>Lider que atendio la solicitud</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <input
+              type="text"
+              matInput
+              [value]="(order.dateComplete | date: 'shortTime') || ''"
+              readonly
+            />
+            <mat-icon matSuffix>query_builder</mat-icon>
+            <mat-hint>Hora de entrega</mat-hint>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+    <div class="view-order__products">
+      <p class="title">Pedido</p>
+      <contler-product-item
+        [disable]="true"
+        *ngFor="let item of order?.productsOrder"
+        [product]="item.product"
+        [count]="item.quantity"
+      >
+      </contler-product-item>
+    </div>
+  </div>
+</contler-marco-admin>

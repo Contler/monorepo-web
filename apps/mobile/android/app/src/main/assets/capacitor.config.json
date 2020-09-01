@@ -1,0 +1,8 @@
+{
+  "appId": "com.contler.contler",
+  "appName": "Contler",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "../../dist/apps/mobile",
+  "cordova": {}
+}

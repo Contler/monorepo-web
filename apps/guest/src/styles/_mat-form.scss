@@ -1,0 +1,17 @@
+.mat-form-field-suffix {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.mat-form-field {
+  color: $text-1;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-infix {
+  padding: 16px 0;
+  border: 0;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  padding-top: 0 !important;
+  align-items: center;
+}

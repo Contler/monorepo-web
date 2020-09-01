@@ -1,0 +1,13 @@
+<contler-marco padding="16px 30px 127px" backUrl="/home/product/create">
+  <div marcoBody>
+    <h1 class="ctl-title" contlerColorHotel="primary">Confirma tu pedido</h1>
+
+    <contler-product-item *ngFor="let item of products" [product]="item.product" [(count)]="item.quantity" (valueChange)="calculateTotal()">
+    </contler-product-item>
+
+    <div class="confirm-footer">
+      <p contlerColorHotel="primary" class="confirm-total">Total: {{total | currency: 'cop': 'COP $': '1.0-0'}}</p>
+      <button contlerColorBtnHotel="primary" mat-raised-button color="accent" [disabled]="total == 0" (click)="nextStep()">Siguiente</button>
+    </div>
+  </div>
+</contler-marco>

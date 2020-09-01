@@ -1,0 +1,44 @@
+.product {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+
+  &__description {
+    flex-grow: 1;
+  }
+
+  &__title {
+    font-family: Raleway, serif;
+    font-size: 20.2px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__subtitle {
+    font-family: Raleway, serif;
+    font-size: 12.2px;
+    line-height: 1.31;
+    letter-spacing: 0.4px;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__count {
+    font-family: Raleway, serif;
+    font-size: 20.2px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: #006633;
+  }
+}

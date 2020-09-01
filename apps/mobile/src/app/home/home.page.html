@@ -1,0 +1,23 @@
+<ion-menu side="end" type="push" contentId="menu">
+  <div class="menu-container">
+    <div class="header-menu">
+      <img *ngIf="user" [src]="user.hotel.logo" class="header-menu__hotel-logo" />
+      <p class="header-menu__name">{{ user?.name }} {{ user?.lastName }}</p>
+      <p class="header-menu__zone-label">Lider área - {{chiefZonesLabel}}</p>
+    </div>
+    <div class="menu">
+      <contler-menu-item
+        *ngFor="let item of menuItems"
+        [item]="item"
+        [selected]="isRouteSelected(item.route)"
+        (click)="goToRoute(item.route)"
+      >
+      </contler-menu-item>
+      <div class="menu__item" (click)="logout()">
+        <mat-icon class="custom_icon">exit_to_app</mat-icon>
+        <p class="label">Cerrar Sesión</p>
+      </div>
+    </div>
+  </div>
+</ion-menu>
+<ion-router-outlet id="menu"></ion-router-outlet>

@@ -1,0 +1,50 @@
+@import "styles/variables";
+
+:host {
+  display: block;
+  padding-top: 56px;
+
+  .mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: max-content auto max-content;
+  column-gap: 5px;
+  padding: 15px 18px;
+  align-items: center;
+}
+
+.title {
+  font-family: $family;
+  font-size: 12.2px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.31;
+  letter-spacing: 0.4px;
+  color: rgba(0, 0, 0, 0.87);
+  margin: 0;
+}
+
+.data {
+  font-family: $family;
+  font-size: 14.2px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.69;
+  letter-spacing: 0.1px;
+  color: rgba(0, 0, 0, 0.87);
+  margin: 0;
+}
+
+
+.icon {
+  color: rgba(0, 0, 0, 0.54);
+}

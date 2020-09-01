@@ -1,0 +1,52 @@
+<contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav>
+    <contler-menu></contler-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="cnt-wake">
+    <div class="cnt-wake__header">
+      <h1 class="cnt-title">Wake up Calls</h1>
+      <mat-form-field appearance="fill" class="select">
+        <mat-select [(ngModel)]="filter" (ngModelChange)="changeWakeView($event)">
+          <mat-option *ngFor="let option of filters" [value]="option.value">
+            {{option.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="select">
+        <input matInput placeholder="Buscar" (input)="textFilter($event.target.value)">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="cnt-wake__table">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nombre huesped </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="room">
+        <th mat-header-cell *matHeaderCellDef> Habitación </th>
+        <td mat-cell *matCellDef="let element"> {{element.room}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Fecha llamada </th>
+        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef> Fecha llamada </th>
+        <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 40, 100]" showFirstLastButtons></mat-paginator>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

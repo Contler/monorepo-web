@@ -1,0 +1,46 @@
+@import "styles/variables";
+
+.card-emp {
+  border-radius: 20px;
+  background: white;
+  border: 1px solid $iconColor;
+  padding: 16px;
+  &__data {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 10px;
+  }
+  &__title {
+    font-family: $family;
+    font-size: 24.3px;
+    letter-spacing: normal;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 0 0 7px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__statistic {
+    display: grid;
+    grid-template-columns: max-content auto;
+    column-gap: 2px;
+
+    &-txt {
+      font-family: $family;
+      font-size: 14.2px;
+      line-height: 1.41;
+      letter-spacing: 0.25px;
+      color: rgba(0, 0, 0, 0.6);
+      margin: 0 0 2px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  &__btn {
+    text-align: right;
+    margin-top: 10px;
+  }
+}

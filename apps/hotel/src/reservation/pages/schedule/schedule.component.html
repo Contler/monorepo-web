@@ -1,0 +1,65 @@
+<contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav>
+    <contler-menu></contler-menu>
+  </mat-sidenav>
+
+  <form [formGroup]="reservationForm" (ngSubmit)="save()" class="schedule">
+    <div class="schedule__header">
+      <h1 class="cnt-title">Información de la zona</h1>
+      <button mat-raised-button type="button" [disabled]="loader || !reservation?.schedule.length" (click)="deleteReservation()">Eliminar zona</button>
+      <button
+        mat-raised-button
+        color="accent"
+        contlerButton
+        [loading]="loader"
+        [disabled]="loader || reservationForm.invalid"
+      >
+        Actualizar
+      </button>
+    </div>
+
+    <mat-card class="schedule__information">
+      <mat-form-field appearance="fill">
+        <input matInput formControlName="name" />
+        <mat-hint>Nombre de la zona</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let category of categoryZone | async" [value]="category.id">
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>Categoría de esta zona</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <input matInput [matAutocomplete]="auto" formControlName="icon" />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let icon of filterIcon | async" [value]="icon">
+            <mat-icon>{{ icon }}</mat-icon> {{ icon }}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-hint>Selecciona un ícono</mat-hint>
+      </mat-form-field>
+    </mat-card>
+
+    <h2 class="cnt-title" style="margin-top: 21px">Disponibilidad de la zona</h2>
+
+    <mat-card class="schedule__availability">
+      <div class="schedule__availability-option">
+        <contler-range
+          *ngFor="let schedule of schedules; let i = index"
+          [schedule]="schedule"
+          [formGroup]="reservationForm"
+          (delete)="removeElement(schedule, i)"
+        ></contler-range>
+      </div>
+      <button mat-raised-button [class.schedule__btn]="schedules.length" type="button" (click)="addSchedule()">
+        Agregar rango
+      </button>
+    </mat-card>
+  </form>
+</mat-sidenav-container>

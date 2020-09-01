@@ -1,0 +1,84 @@
+<div mat-dialog-content>
+  <div class="main-container">
+    <p class="main-container__title">Solicitud inmediata</p>
+
+    <div class="two-inputs main-container__first-row">
+      <mat-form-field appearance="fill">
+        <input matInput [ngModel]="request.guest.name" readonly />
+        <mat-icon matSuffix class="material-icons-outlined">account_circle</mat-icon>
+        <mat-hint>Nombre huésped</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <input matInput [ngModel]="request.zone.name" readonly />
+        <mat-icon matSuffix>where_to_vote</mat-icon>
+        <mat-hint>Zona</mat-hint>
+      </mat-form-field>
+    </div>
+
+
+    <div class="two-inputs main-container__second-row">
+      <div class="two-inputs">
+        <mat-form-field appearance="fill">
+          <input matInput [value]="request.createAt | date: 'HH:mm'" readonly />
+          <mat-icon matSuffix class="material-icons-outlined">watch_later</mat-icon>
+          <mat-hint>Hora de solicitud</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <input matInput [value]="request.finishAt | date: 'HH:mm'" readonly />
+          <mat-icon matSuffix class="material-icons-outlined">watch_later</mat-icon>
+          <mat-hint>Hora de entrega</mat-hint>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-select [(ngModel)]="idSelected">
+          <mat-option *ngFor="let employer of employers" [value]="employer.uid">
+            {{ employer.name }} {{ employer.lastName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="two-inputs main-container__first-row">
+      <mat-form-field appearance="fill">
+        <input matInput [ngModel]="request.room.name" readonly />
+        <mat-hint>Habitación</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <input matInput [ngModel]="request.message" readonly />
+        <mat-hint>Solicitud</mat-hint>
+      </mat-form-field>
+    </div>
+
+
+    <div class="two-inputs main-container__fourth-row">
+      <mat-form-field appearance="fill">
+        <mat-select [(ngModel)]="isFinished" [disabled]="request.complete">
+          <mat-option [value]="false">
+            Activa
+          </mat-option>
+          <mat-option [value]="true">
+            Cumplido
+          </mat-option>
+        </mat-select>
+        <mat-hint>Estado</mat-hint>
+      </mat-form-field>
+      <div class="ranking-container">
+        <div class="score-info">
+          <p class="ranking-container__label">Calificación</p>
+          <star-rating
+            [value]="request.score"
+            totalstars="5"
+            checkedcolor="#dfae00"
+            uncheckedcolor="#e0e0e0"
+            size="24px"
+            readonly="true"
+          ></star-rating>
+        </div>
+        <p class="user-comment">{{ request.comment }}</p>
+      </div>
+    </div>
+    <button mat-raised-button color="accent" contlerButton [loading]="loading" [disabled]="loading" (click)="save()">
+      ACTUALIZAR
+    </button>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<contler-marco>
+  <div marcoBody>
+    <p [style]="getColorHotel()" class="label">
+      Cuéntanos tus solicitudes especiales durante tu estadía, estaremos felices de complacerte
+    </p>
+    <form #specialRequestForm (ngSubmit)="saveRequest()">
+      <mat-form-field appearance="fill" class="full-width">
+        <textarea
+          matInput
+          cdkAutosizeMinRows="20"
+          cdkTextareaAutosize
+          placeholder="Escribe tus solicitudes"
+          [(ngModel)]="description"
+          name="description"
+          required
+        ></textarea>
+      </mat-form-field>
+      <button
+        class="full-width custom-button"
+        mat-raised-button
+        contlerButton
+        [loading]="loader"
+        [disabled]="loader || specialRequestForm.invalid"
+        [style]="specialRequestForm.invalid ? '' : getButtonColorHotel()"
+      >
+        ENVIAR
+      </button>
+    </form>
+  </div>
+</contler-marco>

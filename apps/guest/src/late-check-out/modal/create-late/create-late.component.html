@@ -1,0 +1,15 @@
+<div class="content">
+  <mat-form-field appearance="fill" class="custom-filed">
+    <mat-select [(ngModel)]="timeSelect">
+      <mat-option *ngFor="let food of time; let i = index" [value]="getHour(i)">
+        {{ getHour(i) | date: 'shortTime' }}
+      </mat-option>
+    </mat-select>
+    <mat-hint>Hora de salida</mat-hint>
+  </mat-form-field>
+
+  <button mat-raised-button contlerButton color="accent" [style]="getColorButtonHotel()" (click)="create()">
+    Crear
+  </button>
+</div>
+

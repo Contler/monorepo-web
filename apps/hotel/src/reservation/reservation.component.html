@@ -1,0 +1,19 @@
+<contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav>
+    <contler-menu></contler-menu>
+  </mat-sidenav>
+
+  <div class="reservation">
+    <div class="reservation__form">
+      <contler-reservation-form
+        [load]="load"
+        (reservationRequest)="createReservation($event)"
+      ></contler-reservation-form>
+    </div>
+    <div class="reservation__list">
+      <contler-reservation-list [zoneReservations]="zoneReservations"></contler-reservation-list>
+    </div>
+  </div>
+</mat-sidenav-container>

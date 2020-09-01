@@ -1,0 +1,60 @@
+<contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav>
+    <contler-menu></contler-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="cnt-room">
+    <div class="container">
+      <div class="form_section">
+        <p class="title">Habitaciones</p>
+        <form [formGroup]="roomGroup" (ngSubmit)="createRoom()">
+          <mat-form-field appearance="fill">
+            <input matInput formControlName="name" />
+            <mat-hint>Habitación</mat-hint>
+          </mat-form-field>
+          <!-- <mat-form-field appearance="fill">
+            <mat-select formControlName="zone">
+              <mat-option *ngFor="let zone of zones " [value]="zone.uid">
+                {{ zone.name }}
+              </mat-option>
+            </mat-select>
+            <mat-hint>Zona</mat-hint>
+          </mat-form-field> -->
+          <button
+            mat-raised-button
+            color="accent"
+            contlerButton
+            [loading]="load"
+            [disabled]="load || roomGroup.invalid"
+          >
+            CREAR HABITACIÓN
+          </button>
+        </form>
+      </div>
+      <div class="rooms_section">
+        <mat-card class="crud_table">
+          <div class="row">
+            <div class="row_container header two_column">
+              <p>Habitación</p>
+            </div>
+          </div>
+          <div class="row" *ngFor="let room of rooms">
+            <div class="row_container two_column">
+              <p>{{ room.name }}</p>
+              <div class="actions">
+                <button mat-icon-button>
+                  <mat-icon class="custom_icon">edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deleteRoom(room)">
+                  <mat-icon class="custom_icon">delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

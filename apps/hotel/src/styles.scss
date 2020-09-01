@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap');
+@import 'styles/variables';
+@import 'styles/mixin';
+@import 'styles/animation';
+@import 'styles/material';
+@import 'styles/mat-form';
+@import 'styles/buttons';
+@import 'styles/global.scss';
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: $family;
+}
+
+a {
+  color: $text-2;
+  font-size: 12.2px;
+  line-height: 1.31;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+}
+
+.custom_icon {
+  color: $iconColor;
+}
+
+div:focus {
+  outline: none;
+}
+
+.crud_table {
+  padding: 17px 0px 57px 0px !important;
+  .row {
+    .row_container {
+      display: grid;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 19px 41px 12px 41px;
+      p {
+        font-family: Nunito;
+        font-size: 15.2px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.58;
+        letter-spacing: 0.1px;
+        color: rgba(0, 0, 0, 0.6);
+        margin: 0;
+      }
+      .actions {
+        justify-self: flex-end;
+      }
+    }
+    .two_column {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 10px;
+    }
+    .three_column {
+      grid-template-columns: calc(35% - 5px) calc(50% - 10px) calc(15% - 5px);
+      column-gap: 10px;
+    }
+    .header {
+      border-bottom: none;
+      p {
+        font-family: Nunito;
+        font-size: 15.2px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.58;
+        letter-spacing: 0.1px;
+        color: rgba(0, 0, 0, 0.87);
+        margin: 0;
+      }
+    }
+    .subrows_container {
+      .sub_row {
+        padding-left: 81px;
+      }
+    }
+  }
+}
+
+table {
+  th {
+    font-family: Raleway;
+    font-weight: 600 !important;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.41;
+    letter-spacing: 0.25px;
+    color: $text-3 !important;
+  }
+  td {
+    font-family: Raleway;
+    font-weight: normal !important;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.41;
+    letter-spacing: 0.25px;
+    color: $text-4 !important;
+  }
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.score-progress {
+  .ldBar-label {
+    font-family: $family;
+    font-size: 24.3px;
+    color: #55413a;
+    &:after {
+      content: '' !important;
+    }
+  }
+}
+
+.ldBar path.baseline {
+  stroke-width: 2;
+  stroke: #2ee0ce;
+}
+
+.ldBar path.mainline {
+  stroke-width: 8;
+  stroke: #2ee0ce;
+}
+
+.full-field {
+  .mat-form-field-infix {
+    width: 100%;
+  }
+}
+
+.mat-menu-panel {
+  max-width: max-content !important;
+}
