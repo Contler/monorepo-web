@@ -14,8 +14,8 @@ module.exports = {
 
 function checkRunBuild(project, fromHash, toHash) {
   const execSync = require('child_process').execSync;
-  // const command = `nx affected:apps --plain --base=${fromHash} --head=${toHash}`
-  const command = `nx affected:apps --plain`
+  const command = `nx affected:apps --plain --base=${fromHash} --head=${toHash}`
+  // const command = `nx affected:apps --plain`
   console.log(command)
   const output = execSync(command).toString().replace('\n', '')
   console.log(output);
