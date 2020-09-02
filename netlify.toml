@@ -3,5 +3,5 @@ package = "./tools/plugins/stop-build"
 
 [[redirects]]
 from = "/*"
-to = "/index.html"
+to = "/"
 status = 302
