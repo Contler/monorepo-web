@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar, MatDialog } from '@angular/material';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { Observable } from 'rxjs';
 import { ResultResponseComponent } from './result-response/result-response.component';
 import { AlertMessageComponent } from './alert-message/alert-message.component';
 import { InputMessageComponent } from './input-message/input-message.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
@@ -53,7 +54,7 @@ export class MessagesService {
     confirmText: string = 'Aceptar',
     cancelText: string = 'Cancelar',
   ): Observable<boolean> {
-    let ref = this.dialog.open(ConfirmComponent, {
+    const ref = this.dialog.open(ConfirmComponent, {
       data: { title, content, confirmText, cancelText },
       panelClass: 'rounded_modal',
     });
@@ -61,7 +62,7 @@ export class MessagesService {
   }
 
   errorMessage(message: string, duration: number = 3000) {
-    let ref = this.dialog.open(ResultResponseComponent, {
+    const ref = this.dialog.open(ResultResponseComponent, {
       data: { message, type: 'error', icon: 'close' },
     });
     setTimeout(() => {
@@ -72,7 +73,7 @@ export class MessagesService {
   }
 
   successMessage(message: string, duration: number = 3000) {
-    let ref = this.dialog.open(ResultResponseComponent, {
+    const ref = this.dialog.open(ResultResponseComponent, {
       data: { message, type: 'success', icon: 'done' },
     });
     setTimeout(() => {
@@ -90,7 +91,7 @@ export class MessagesService {
   }
 
   inputMessage(placeholder: string, type: string = 'text', required: boolean = false) {
-    let ref = this.dialog.open(InputMessageComponent, {
+    const ref = this.dialog.open(InputMessageComponent, {
       data: { placeholder, type, required },
     });
     return ref.afterClosed();

@@ -55,7 +55,7 @@ const materialModules = [
   providers: [ReservationService, LateCheckOutService, DatePipe, ProductService]
 })
 export class CoreModule {
-  static forRoot(config: CoreConfig): ModuleWithProviders {
+  static forRoot(config: CoreConfig): ModuleWithProviders<CoreModule> {
     return {
       ngModule: CoreModule,
       providers: [

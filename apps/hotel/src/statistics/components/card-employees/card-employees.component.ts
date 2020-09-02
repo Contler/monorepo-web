@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EmployerEntity } from '@contler/entity';
-import { MatDialog } from '@angular/material';
 import { ModalEditEmployerComponent } from 'hotel/common-components/modal-edit-employer/modal-edit-employer.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'contler-card-employees',

@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OrderEntity } from '@contler/entity';
 import { switchMap, take } from 'rxjs/operators';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'hotel/services/auth.service';
 import { ProductService } from '@contler/core';
 import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'contler-order',
@@ -69,7 +70,7 @@ export class OrderComponent implements OnInit {
     });
     return totalOrder;
   }
-  
+
   goToOrder(order: OrderEntity) {
     this.router.navigate(['home/order', order.id])
   }

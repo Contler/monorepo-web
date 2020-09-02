@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CATEGORY_PRODUCTS } from '@contler/const';
-import { MatDialogRef } from '@angular/material';
 import { ProductService } from '@contler/core';
 import { AuthService } from 'hotel/services/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'contler-modal-product',

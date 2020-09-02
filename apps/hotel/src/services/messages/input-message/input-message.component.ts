@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-input-message',
+  selector: 'contler-input-message',
   templateUrl: './input-message.component.html',
   styleUrls: ['./input-message.component.scss']
 })

@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { WakeService } from 'hotel/wake-up/services/wake.service';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { WakeUpEntity } from '@contler/entity';
 import { AuthService } from 'hotel/services/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
 import { WakeTable } from '@contler/models';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'contler-wake-up',
