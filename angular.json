@@ -476,6 +476,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "firebase",
+              "@firebase/app",
+              "@firebase/database",
+              "@firebase/firestore",
+              "@firebase/auth",
+              "class-transformer",
+              "chart.js",
+              "validator",
+              "@mattlewis92/dom-autoscroller"
+            ],
             "outputPath": "dist/apps/mobile",
             "index": "apps/mobile/src/index.html",
             "main": "apps/mobile/src/main.ts",

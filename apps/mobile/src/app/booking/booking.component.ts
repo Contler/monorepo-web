@@ -4,9 +4,9 @@ import { BookingEntity, EmployerEntity } from '@contler/entity';
 import { MenuController } from '@ionic/angular';
 import { filter, switchMap } from 'rxjs/operators';
 import { ReservationService } from '@contler/core';
-import { MatDialog } from '@angular/material';
 import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 import { GeneralService } from '../services/general.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'contler-booking',

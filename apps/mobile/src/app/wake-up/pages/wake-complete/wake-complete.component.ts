@@ -3,10 +3,10 @@ import { EmployerEntity, WakeUpEntity } from '@contler/entity';
 import { AuthService } from '../../../services/auth.service';
 import { WakeService } from '../../../services/wake.service';
 import { MenuController } from '@ionic/angular';
-import { MatDialog } from '@angular/material';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { GeneralService } from '../../../services/general.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'contler-wake-complete',

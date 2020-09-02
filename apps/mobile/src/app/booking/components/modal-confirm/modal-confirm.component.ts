@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
 import { GeneralService } from '../../../services/general.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'contler-modal-confirm',

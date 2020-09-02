@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { WakeUpEntity } from '@contler/entity';
 import { WakeService } from '../../../services/wake.service';
 import { GeneralService } from '../../../services/general.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'contler-modal-confirm-wake',

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { MatDialog, MatSnackBar } from '@angular/material';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { Observable } from 'rxjs';
 import { ResultResponseComponent } from './result-response/result-response.component';
 import { AlertMessageComponent } from './alert-message/alert-message.component';
 import { InputMessageComponent } from './input-message/input-message.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
