@@ -14,6 +14,8 @@ function checkRunBuild(project) {
   const execSync = require('child_process').execSync;
   const command = 'nx affected:apps --plain'
   const output = execSync(command).toString().replace('\n', '')
+  console.log(output);
   const apps = output.split(' ')
+  console.log(apps);
   return apps.includes(project)
 }
