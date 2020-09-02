@@ -3,7 +3,6 @@ import { Observable, Subscription } from 'rxjs';
 import { GuestService } from 'guest/services/guest.service';
 import { ZoneService } from 'guest/services/zone.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MatDialog } from '@angular/material';
 import { ModalQualifyComponent } from 'guest/home/components/modal-qualify/modal-qualify.component';
 import { RequestService } from 'guest/services/request.service';
 import { GeneralService } from 'guest/services/general.service';
@@ -13,6 +12,7 @@ import { filter, map, switchMap, take } from 'rxjs/operators';
 import { ProductService, ReservationService } from '@contler/core';
 import { ModalBookingQualifyComponent } from 'guest/home/components/modal-booking-qualify/modal-booking-qualify.component';
 import { ModalOrdersQuialifyComponent } from 'guest/home/components/modal-orders-quialify/modal-orders-quialify.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'contler-guest-requests',

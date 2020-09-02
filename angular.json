@@ -18,6 +18,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "firebase",
+              "@firebase/app",
+              "@firebase/database",
+              "@firebase/firestore",
+              "@firebase/auth",
+              "class-transformer",
+              "chart.js",
+              "validator",
+              "@mattlewis92/dom-autoscroller"
+            ],
             "outputPath": "dist/apps/hotel",
             "index": "apps/hotel/src/index.html",
             "main": "apps/hotel/src/main.ts",
@@ -304,6 +315,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "firebase",
+              "@firebase/app",
+              "@firebase/database",
+              "@firebase/firestore",
+              "@firebase/auth",
+              "class-transformer",
+              "chart.js",
+              "validator",
+              "@mattlewis92/dom-autoscroller"
+            ],
             "outputPath": "dist/apps/guest",
             "index": "apps/guest/src/index.html",
             "main": "apps/guest/src/main.ts",

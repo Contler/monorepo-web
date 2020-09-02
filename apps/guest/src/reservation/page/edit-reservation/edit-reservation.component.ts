@@ -7,8 +7,8 @@ import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DAYS } from '@contler/const';
-import { MatDialog } from '@angular/material';
 import { ModalConfirmComponent } from 'guest/reservation/components/modal-confirm/modal-confirm.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'contler-edit-reservation',

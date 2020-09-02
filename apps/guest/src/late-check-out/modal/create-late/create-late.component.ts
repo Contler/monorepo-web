@@ -4,7 +4,6 @@ import { GuestService } from 'guest/services/guest.service';
 import { take } from 'rxjs/operators';
 import { GuestEntity, HotelEntity } from '@contler/entity';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'contler-create-late',

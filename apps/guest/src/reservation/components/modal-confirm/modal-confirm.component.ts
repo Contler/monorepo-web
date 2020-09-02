@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { GuestService } from 'guest/services/guest.service';
 import { HotelEntity } from '@contler/entity';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'contler-modal-confirm',

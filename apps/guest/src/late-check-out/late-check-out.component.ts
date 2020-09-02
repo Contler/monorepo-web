@@ -3,11 +3,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { HotelEntity } from '@contler/entity';
 import { map, take } from 'rxjs/operators';
 import { GuestService } from 'guest/services/guest.service';
-import { MatDialog } from '@angular/material';
 import { CreateLateComponent } from 'guest/late-check-out/modal/create-late/create-late.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { LateCheck } from '@contler/models';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'contler-late-check-out',
