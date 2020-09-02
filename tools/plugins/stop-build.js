@@ -2,6 +2,7 @@ module.exports = {
   onPreBuild: ({utils: {build}}) => {
     const currentProject = process.env.PROJECT_NAME;
     const lastDeployedCommit = process.env.CACHED_COMMIT_REF;
+    console.log(lastDeployedCommit)
     const latestCommit = 'HEAD';
     const projectChange = checkRunBuild(currentProject,  lastDeployedCommit, latestCommit)
     if(!projectChange) {
