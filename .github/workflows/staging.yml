@@ -24,10 +24,10 @@ jobs:
 
       - uses: actions/cache@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node_mod-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-node_mod-
 
       # Runs a single command using the runners shell
       - name: install dependencies
@@ -35,3 +35,6 @@ jobs:
 
       - name: build hotel
         run: npm run build:qa:hotel
+
+      - name: check affected apps
+        run: nx affected:apps --plain --base=cf831f0a897ab08824643f6ea0505760851c2b4f --head=835b6efb12f7e71306bebd4b33176abc7abdf454
