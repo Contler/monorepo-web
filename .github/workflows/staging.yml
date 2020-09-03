@@ -32,3 +32,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: install dependencies
         run: npm ci
+
+      - name: build hotel
+        run: npm run build:qa:hotel
