@@ -19,4 +19,6 @@ export class ZoneEntity {
   leaders!: EmployerEntity[];
 
   orders!: OrderEntity[];
+
+  admitOrders!: boolean;
 }
