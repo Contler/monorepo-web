@@ -42,4 +42,4 @@ jobs:
       #      - name: build hotel
       #        run: npm run build:qa:hotel
       - name: check affected apps
-        run: npm run affected:apps --plain --base=cf831f0a897ab08824643f6ea0505760851c2b4f --base=origin/master
+        run: npm run affected:apps -- --plain --base=origin/master
