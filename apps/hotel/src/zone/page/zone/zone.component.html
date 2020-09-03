@@ -33,7 +33,9 @@
             <mat-hint>Selecciona un icono</mat-hint>
           </mat-form-field>
 
-          <mat-checkbox formControlName="principal">Zona destacada (podrás elegir máximo 4 zonas)</mat-checkbox>
+          <mat-checkbox formControlName="principal"
+            >Zona destacada (podrás elegir máximo 4 zonas)</mat-checkbox
+          >
 
           <button
             mat-raised-button
@@ -54,7 +56,7 @@
               <p>Nombre zona</p>
             </div>
           </div>
-          <div class="row" *ngFor="let zone of zones ">
+          <div class="row" *ngFor="let zone of zones">
             <div class="row_container two_column">
               <p>{{ zone.name }}</p>
               <div class="actions">
@@ -64,6 +66,7 @@
                 <button mat-icon-button>
                   <mat-icon class="custom_icon" (click)="deleteZone(zone)">delete</mat-icon>
                 </button>
+                <mat-slide-toggle color="accent" [(ngModel)]="zone.admitOrders" disabled>Pedidos</mat-slide-toggle>
               </div>
             </div>
           </div>

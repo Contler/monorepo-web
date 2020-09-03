@@ -3,7 +3,7 @@ import { ProductOrderService } from 'guest/product/services/product-order.servic
 import { Router } from '@angular/router';
 import { ProductListModel } from '@contler/models/product-list-model';
 import { ZoneService } from 'guest/services/zone.service';
-import { take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { GuestEntity, HotelEntity, ZoneEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -40,14 +40,16 @@ export class FinishOrderComponent {
       this.router.navigate(['/home/product']);
     }
     this.total = this.productOrderService.calculateTotal(this.productList);
-    this.zones$ = this.zoneService.$zones;
+    this.zones$ = this.zoneService.$zones.pipe(
+      map((zones) => zones.filter((zone) => zone.admitOrders)),
+    );
     this.orderForm = this.formBuild.group({
       time: ['', Validators.required],
       zone: ['', Validators.required],
       comment: [''],
     });
-    this.guestService.$hotel.pipe(take(1)).subscribe(hotel => (this.hotel = hotel));
-    this.guestService.$guest.pipe(take(1)).subscribe(guest => (this.guest = guest));
+    this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => (this.hotel = hotel));
+    this.guestService.$guest.pipe(take(1)).subscribe((guest) => (this.guest = guest));
   }
 
   getHour(index: number) {

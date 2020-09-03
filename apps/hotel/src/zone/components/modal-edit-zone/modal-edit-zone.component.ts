@@ -27,14 +27,16 @@ export class ModalEditZoneComponent implements OnInit {
     this.zoneGroup = formBuild.group({
       name: [data.name, Validators.required],
       icon: [data.icon],
+      admitOrder: [data.admitOrders]
     });
   }
 
   save() {
     this.load = true;
-    const { name, icon } = this.zoneGroup.value;
+    const { name, icon, admitOrder } = this.zoneGroup.value;
     this.data.name = name;
     this.data.icon = icon;
+    this.data.admitOrders = admitOrder
     this.zoneService.updateZone(this.data).subscribe(
       () => {
         this.load = false;
