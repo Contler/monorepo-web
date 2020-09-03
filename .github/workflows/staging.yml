@@ -21,6 +21,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          # The ref command explicitly sets the commit to be checked out as the latest commit from the pull request that was initiated.
+          ref: ${{ github.event.pull_request.head.ref }}
+          # fetch-depth is set to 0 then then the entire history of commits is fetched
+          fetch-depth: 0
 
       - uses: actions/cache@v2
         with:
@@ -29,11 +34,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_mod-
 
-      # Runs a single command using the runners shell
+      - run: git fetch --no-tags --prune --depth=5 origin master
+
       - name: install dependencies
         run: npm ci
 
       #      - name: build hotel
       #        run: npm run build:qa:hotel
       - name: check affected apps
-        run: npm run nx -- affected:apps --plain
+        run: npm run affected:apps --plain --base=cf831f0a897ab08824643f6ea0505760851c2b4f --base=origin/master
