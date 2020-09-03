@@ -1,7 +1,0 @@
-[[plugins]]
-package = "./tools/plugins/stop-build"
-
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
