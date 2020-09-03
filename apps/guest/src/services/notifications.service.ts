@@ -27,7 +27,9 @@ export class NotificationsService {
         include_player_ids: [payerId],
       };
       // Go to OneSignal REST API endpoint to send push
-      return this.http.post(this.NOTIFICATION_URL, message, this.getNotificationHeaders()).toPromise();
+      return this.http
+        .post(this.NOTIFICATION_URL, message, this.getNotificationHeaders())
+        .toPromise();
     } catch (err) {
       console.error(err);
     }
@@ -38,7 +40,7 @@ export class NotificationsService {
 
   sendMassiveNotification(message: string, tokens: string[]) {
     return new Promise((resolve, reject) => {
-      let promisesToExecute: Promise<any>[] = [];
+      const promisesToExecute: Promise<any>[] = [];
       for (let i = 0; i < tokens.length; i++) {
         promisesToExecute.push(this.sendNotification(message, tokens[i]));
       }

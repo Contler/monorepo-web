@@ -6,7 +6,6 @@ import { ResultResponseComponent } from './result-response/result-response.compo
 import { AlertMessageComponent } from './alert-message/alert-message.component';
 import { InputMessageComponent } from './input-message/input-message.component';
 import { FormsModule } from '@angular/forms';
-import { LoaderComponent } from './loader/loader.component';
 import { MaterialModule } from 'guest/material/material.module';
 
 @NgModule({
@@ -16,22 +15,15 @@ import { MaterialModule } from 'guest/material/material.module';
     ResultResponseComponent,
     AlertMessageComponent,
     InputMessageComponent,
-    LoaderComponent
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FormsModule
-  ],
+  imports: [CommonModule, MaterialModule, FormsModule],
   entryComponents: [
     SpinnerComponent,
     ConfirmComponent,
     ResultResponseComponent,
     AlertMessageComponent,
-    InputMessageComponent
+    InputMessageComponent,
   ],
-  exports: [
-      LoaderComponent
-  ]
+  exports: [],
 })
-export class MessagesModule { }
+export class MessagesModule {}

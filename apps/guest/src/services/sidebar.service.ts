@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class SidebarService {
   public readonly HOME_PATH: string = '/home/guest-requests';
 
-  public opened: boolean = false;
+  public opened = false;
   public backUrl: string | null = null;
 
   constructor() {}

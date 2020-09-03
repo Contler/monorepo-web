@@ -12,19 +12,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent {
-
-  pending = true
+  pending = true;
   order$: Observable<OrderEntity[]>;
 
-  constructor(private productService: ProductService, private guest: GuestService, private router: Router) {
-    this.order$ = this.guest.$guest.pipe(
+  constructor(
+    private productService: ProductService,
+    private guestService: GuestService,
+    private router: Router,
+  ) {
+    this.order$ = this.guestService.$guest.pipe(
       take(1),
-      switchMap(guest => this.productService.getOrderByGuest(guest!.uid)),
+      switchMap((guest) => this.productService.getOrderByGuest(guest!.uid)),
     );
   }
 
   goToOrder(order: OrderEntity) {
-    this.router.navigate(['home/product', order.id])
+    this.router.navigate(['home/product', order.id]);
   }
-
 }

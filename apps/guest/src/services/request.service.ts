@@ -24,14 +24,14 @@ export class RequestService {
 
   createRequest(zoneId: string, msg: string, isSpecial = false) {
     const zone$ = this.zoneService.$zones.pipe(
-      map(zones => zones.find(zone => zone.uid === zoneId)),
+      map((zones) => zones.find((zone) => zone.uid === zoneId)),
     );
 
-    return combineLatest(zone$, this.guestService.$guest).pipe(
+    return combineLatest([zone$, this.guestService.$guest]).pipe(
       tap(([zone]) => {
         const tokens = zone!.leaders
-          .filter(leader => !!leader.pushToken)
-          .map(leader => leader.pushToken);
+          .filter((leader) => !!leader.pushToken)
+          .map((leader) => leader.pushToken);
         this.ntfService.sendMassiveNotification('Tienes una nueva solicitud inmediata', tokens);
       }),
       map(([zone, guest]) => {
@@ -44,7 +44,7 @@ export class RequestService {
           message: msg,
         } as RequestRequest;
       }),
-      switchMap(req => this.saveRequest(req)),
+      switchMap((req) => this.saveRequest(req)),
     );
   }
 
@@ -54,7 +54,7 @@ export class RequestService {
 
   getRequests(complete: boolean) {
     return this.guestService.$guest.pipe(
-      switchMap(guest =>
+      switchMap((guest) =>
         this.http.get<RequestEntity[]>(
           environment.apiUrl + `guest/${guest!.uid}/request?complete=${complete ? 't' : 'f'}`,
         ),
