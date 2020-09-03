@@ -35,6 +35,5 @@ jobs:
 
       - name: build hotel
         run: npm run build:qa:hotel
-
-      - name: check affected apps
-        run: node_modules\.bin\nx affected:apps --plain --base=cf831f0a897ab08824643f6ea0505760851c2b4f --head=835b6efb12f7e71306bebd4b33176abc7abdf454
+#      - name: check affected apps
+#        run: node_modules/.bin/nx affected:apps --plain --base=cf831f0a897ab08824643f6ea0505760851c2b4f --head=835b6efb12f7e71306bebd4b33176abc7abdf454
