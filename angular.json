@@ -35,23 +35,16 @@
             "polyfills": "apps/hotel/src/polyfills.ts",
             "tsConfig": "apps/hotel/tsconfig.app.json",
             "aot": false,
-            "assets": [
-              "apps/hotel/src/favicon.ico",
-              "apps/hotel/src/assets"
-            ],
+            "assets": ["apps/hotel/src/favicon.ico", "apps/hotel/src/assets"],
             "styles": [
               "apps/hotel/src/styles.scss",
               "apps/hotel/src/assets/loanding/loading-bar.min.css",
               "node_modules/angular-calendar/css/angular-calendar.css"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "apps/hotel/src"
-              ]
+              "includePaths": ["apps/hotel/src"]
             },
-            "scripts": [
-              "apps/hotel/src/assets/loanding/loading-bar.min.js"
-            ]
+            "scripts": ["apps/hotel/src/assets/loanding/loading-bar.min.js"]
           },
           "configurations": {
             "production": {
@@ -117,14 +110,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/hotel/tsconfig.app.json",
-              "apps/hotel/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/hotel/**"
-            ]
+            "tsConfig": ["apps/hotel/tsconfig.app.json", "apps/hotel/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/hotel/**"]
           }
         },
         "test": {
@@ -186,80 +173,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/hotel-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/hotel-e2e/**"
-            ]
-          }
-        }
-      }
-    },
-    "api": {
-      "root": "apps/api",
-      "sourceRoot": "apps/api/src",
-      "projectType": "application",
-      "prefix": "api",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "options": {
-            "outputPath": "dist/apps/api",
-            "main": "apps/api/src/main.ts",
-            "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": [
-              "apps/api/src/assets"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/api/src/environments/environment.ts",
-                  "with": "apps/api/src/environments/environment.prod.ts"
-                }
-              ]
-            },
-            "qa": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/api/src/environments/environment.ts",
-                  "with": "apps/api/src/environments/environment.qa.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "api:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/api/tsconfig.app.json",
-              "apps/api/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/api/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/api/jest.config.js",
-            "tsConfig": "apps/api/tsconfig.spec.json"
+            "tsConfig": ["apps/hotel-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/hotel-e2e/**"]
           }
         }
       }
@@ -273,14 +188,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/core/tsconfig.lib.json",
-              "libs/core/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/core/**"
-            ]
+            "tsConfig": ["libs/core/tsconfig.lib.json", "libs/core/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/core/**"]
           }
         },
         "test": {
@@ -332,18 +241,13 @@
             "polyfills": "apps/guest/src/polyfills.ts",
             "tsConfig": "apps/guest/tsconfig.app.json",
             "aot": false,
-            "assets": [
-              "apps/guest/src/favicon.ico",
-              "apps/guest/src/assets"
-            ],
+            "assets": ["apps/guest/src/favicon.ico", "apps/guest/src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "apps/guest/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "apps/guest/src"
-              ]
+              "includePaths": ["apps/guest/src"]
             },
             "scripts": []
           },
@@ -410,14 +314,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/guest/tsconfig.app.json",
-              "apps/guest/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/guest/**"
-            ]
+            "tsConfig": ["apps/guest/tsconfig.app.json", "apps/guest/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/guest/**"]
           }
         },
         "test": {
@@ -451,13 +349,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/guest-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/guest-e2e/**"
-            ]
+            "tsConfig": ["apps/guest-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/guest-e2e/**"]
           }
         }
       }
@@ -493,14 +386,9 @@
             "polyfills": "apps/mobile/src/polyfills.ts",
             "tsConfig": "apps/mobile/tsconfig.app.json",
             "aot": false,
-            "assets": [
-              "apps/mobile/src/favicon.ico",
-              "apps/mobile/src/assets"
-            ],
+            "assets": ["apps/mobile/src/favicon.ico", "apps/mobile/src/assets"],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "apps/mobile/src"
-              ]
+              "includePaths": ["apps/mobile/src"]
             },
             "styles": [
               "apps/mobile/src/styles.scss",
@@ -603,14 +491,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/mobile/tsconfig.app.json",
-              "apps/mobile/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/mobile/**"
-            ]
+            "tsConfig": ["apps/mobile/tsconfig.app.json", "apps/mobile/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/mobile/**"]
           }
         },
         "test": {
@@ -644,13 +526,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/mobile-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/mobile-e2e/**"
-            ]
+            "tsConfig": ["apps/mobile-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/mobile-e2e/**"]
           }
         }
       }
