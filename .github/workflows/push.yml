@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 12.x ]
+        node-version: [12.x]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,11 +26,16 @@ jobs:
           # fetch-depth is set to 0 then then the entire history of commits is fetched
           fetch-depth: 0
 
+      - name: hash package
+        env:
+          GITHUB_CONTEXT: ${{ hashFiles('package-lock.json') }}
+        run: echo "$GITHUB_CONTEXT"
+
       - uses: actions/cache@v2
         with:
           id: npm-cache
           path: ./node_modules
-          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-npm-cache-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-cache-
 
@@ -45,7 +50,6 @@ jobs:
 
       - name: check affected apps
         run: npm run affected:apps -- --base=origin/master --plain
-
 
       - name: check affected lint
         run: npm run affected:lint -- --base=origin/master
