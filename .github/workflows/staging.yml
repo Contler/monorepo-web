@@ -43,5 +43,10 @@ jobs:
         run: npm i
         if: steps.npm-cache.outputs.cache-hit != 'true'
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
 #      - name: check affected apps
 #        run: npm run affected:apps -- --plain --base=origin/master
