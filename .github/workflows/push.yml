@@ -32,8 +32,8 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
 
       - uses: actions/cache@v2
+        id: npm-cache
         with:
-          id: npm-cache
           path: ./node_modules
           key: ${{ runner.os }}-npm-cache-${{ hashFiles('package-lock.json') }}
           restore-keys: |
