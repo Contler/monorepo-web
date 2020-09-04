@@ -40,11 +40,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: install dependencies
-        run: npm i
+        run: npm i -s
         if: steps.npm-cache.outputs.cache-hit != 'true'
 
-      - name: check affected lint
-        run: npm run affected:apps -- --base=origin/master
+      - name: check affected apps
+        run: npm run affected:apps -- --base=origin/master --plain
 
 
       - name: check affected lint
@@ -52,8 +52,3 @@ jobs:
 
       - name: build affected apps
         run: npm run affected:build -- --base=origin/master
-
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
