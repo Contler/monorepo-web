@@ -12,6 +12,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 12.x ]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -25,32 +28,24 @@ jobs:
 
       - uses: actions/cache@v2
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node_mod-${{ hashFiles('**/package-lock.json') }}
+          id: npm-cache
+          path: ./node_modules
+          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node_mod-
+            ${{ runner.os }}-npm-cache-
 
-      - run: git fetch --no-tags --prune --depth=5 origin master
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: install dependencies
         run: npm i
+        if: steps.npm-cache.outputs.cache-hit != 'true'
 
       - name: Get the latest commit on PR
         id: get-latest-commit
         uses: ActionsRML/get-PR-latest-commit@v1
 
-      - name: print the info of the latest commit
-        run: |
-          echo "The commit message:"
-          echo "${{ steps.get-latest-commit.outputs.latest_commit_message }}"
-
-          echo "The commit sha:"
-          echo "${{ steps.get-latest-commit.outputs.latest_commit_sha }}"
-
-          echo "The commit context:"
-          cat ${{ steps.get-latest-commit.outputs.latest_commit_context }}
-
-      #      - name: build hotel
-      #        run: npm run build:qa:hotel
-      - name: check affected apps
-        run: npm run affected:apps -- --plain --base=origin/master
+#      - name: check affected apps
+#        run: npm run affected:apps -- --plain --base=origin/master
