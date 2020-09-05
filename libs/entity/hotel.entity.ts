@@ -7,6 +7,7 @@ import { RequestEntity } from './request.entity';
 import { ZoneReserveEntity } from './zone-reserve.entity';
 import { ProductEntity } from './product.entity';
 import { OrderEntity } from './order.entity';
+import { RestaurantEntity } from './restaurant.entity';
 
 export class HotelEntity {
   uid!: string;
@@ -36,4 +37,6 @@ export class HotelEntity {
   products!: ProductEntity[];
 
   orders!: OrderEntity[];
+
+  restaurants!: RestaurantEntity[];
 }
