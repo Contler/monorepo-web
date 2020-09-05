@@ -21,4 +21,8 @@ export class RestaurantService {
   getAllRestaurantsByHotel(hotelId: string) {
     return this.http.get<RestaurantEntity[]>(`${this.url}/hotel/${hotelId}/restaurant`);
   }
+
+  deleteRestaurant(restaurantId: string) {
+    return this.http.delete(`${this.url}/restaurant/${restaurantId}`);
+  }
 }
