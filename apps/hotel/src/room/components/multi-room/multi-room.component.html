@@ -1,0 +1,37 @@
+<form [formGroup]="roomGroup" (ngSubmit)="saveRooms()">
+  <div class="multi-room">
+    <mat-form-field appearance="fill">
+      <input mask="0*" matInput formControlName="init" />
+      <mat-hint>Habitación Inicial</mat-hint>
+      <mat-error *ngIf="initRoom.hasError('badRooms')">
+        Habitación Inicial debe ser menor a {{ endRoom.value }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <input mask="0*" matInput formControlName="end" />
+      <mat-hint>Habitación Final</mat-hint>
+      <mat-error *ngIf="endRoom.hasError('badRooms')">
+        Habitación final debe ser mayor a {{ initRoom.value }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-error
+    *ngIf="initRoom.hasError('maxRooms') || endRoom.hasError('maxRooms')"
+    style="margin-top: 10px"
+  >
+    No se pueden crear más de 20 habitaciones al tiempo
+  </mat-error>
+
+  <button
+    mat-raised-button
+    color="accent"
+    contlerButton
+    [loading]="load"
+    [disabled]="load || roomGroup.invalid"
+    style="margin-top: 10px"
+  >
+    CREAR HABITACIÓN
+  </button>
+</form>

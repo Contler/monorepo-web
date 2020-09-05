@@ -9,29 +9,20 @@
     <div class="container">
       <div class="form_section">
         <p class="title">Habitaciones</p>
-        <form [formGroup]="roomGroup" (ngSubmit)="createRoom()">
-          <mat-form-field appearance="fill">
-            <input matInput formControlName="name" />
-            <mat-hint>Habitación</mat-hint>
-          </mat-form-field>
-          <!-- <mat-form-field appearance="fill">
-            <mat-select formControlName="zone">
-              <mat-option *ngFor="let zone of zones " [value]="zone.uid">
-                {{ zone.name }}
-              </mat-option>
-            </mat-select>
-            <mat-hint>Zona</mat-hint>
-          </mat-form-field> -->
-          <button
-            mat-raised-button
-            color="accent"
-            contlerButton
-            [loading]="load"
-            [disabled]="load || roomGroup.invalid"
-          >
-            CREAR HABITACIÓN
-          </button>
-        </form>
+
+        <mat-slide-toggle color="accent" [(ngModel)]="isFullRooms" class="toggle">
+          {{ isFullRooms ? 'Rango de habitaciones' : 'Habitación unica' }}
+        </mat-slide-toggle>
+
+        <contler-single-room
+          (completeRoomCreation)="completeSingleRoom($event)"
+          *ngIf="!isFullRooms"
+        ></contler-single-room>
+
+        <contler-multi-room
+          *ngIf="isFullRooms"
+          (completeRoomCreation)="completeMultipleRoom($event)"
+        ></contler-multi-room>
       </div>
       <div class="rooms_section">
         <mat-card class="crud_table">
