@@ -1,0 +1,15 @@
+<form [formGroup]="roomGroup" (ngSubmit)="createRoom()" class="form-room">
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="name" />
+    <mat-hint>Habitación</mat-hint>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="accent"
+    contlerButton
+    [loading]="load"
+    [disabled]="load || roomGroup.invalid"
+  >
+    CREAR HABITACIÓN
+  </button>
+</form>

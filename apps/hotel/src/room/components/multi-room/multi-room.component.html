@@ -1,0 +1,23 @@
+<form [formGroup]="roomGroup">
+  <div class="multi-room">
+    <mat-form-field appearance="fill">
+      <input mask="0*" matInput formControlName="init" />
+      <mat-hint>Habitación Inicial</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <input mask="0*" matInput formControlName="end" />
+      <mat-hint>Habitación Final</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <button
+    mat-raised-button
+    color="accent"
+    contlerButton
+    [loading]="load"
+    [disabled]="load || roomGroup.invalid"
+  >
+    CREAR HABITACIÓN
+  </button>
+</form>
