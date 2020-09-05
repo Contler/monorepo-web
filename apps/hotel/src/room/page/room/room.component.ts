@@ -33,6 +33,10 @@ export class RoomComponent {
     this.rooms = [...this.rooms, room];
   }
 
+  completeMultipleRoom(room: RoomEntity[]) {
+    this.rooms = [...this.rooms, ...room];
+  }
+
   deleteRoom(room: RoomEntity) {
     if (room.guest) {
       this.snackBar.open('Este cuarto esta en usu, no se puede eliminar', 'cerrar', {

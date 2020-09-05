@@ -1,4 +1,4 @@
-<form [formGroup]="roomGroup">
+<form [formGroup]="roomGroup" (ngSubmit)="saveRooms()">
   <div class="multi-room">
     <mat-form-field appearance="fill">
       <input mask="0*" matInput formControlName="init" />

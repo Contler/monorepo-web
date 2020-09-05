@@ -19,7 +19,10 @@
           *ngIf="!isFullRooms"
         ></contler-single-room>
 
-        <contler-multi-room *ngIf="isFullRooms"></contler-multi-room>
+        <contler-multi-room
+          *ngIf="isFullRooms"
+          (completeRoomCreation)="completeMultipleRoom($event)"
+        ></contler-multi-room>
       </div>
       <div class="rooms_section">
         <mat-card class="crud_table">
