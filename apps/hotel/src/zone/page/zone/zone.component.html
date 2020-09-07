@@ -26,16 +26,17 @@
 
           <mat-form-field appearance="fill">
             <mat-select formControlName="icon">
-              <mat-option *ngFor="let icon of icons" [value]="icon">
-                <mat-icon>{{ icon }}</mat-icon>
+              <mat-option *ngFor="let icon of $icons | async" [value]="icon.key">
+                <contler-icon [key]="icon.key"></contler-icon>
+                <span style="margin-left: 10px">{{ icon.name }}</span>
               </mat-option>
             </mat-select>
             <mat-hint>Selecciona un icono</mat-hint>
           </mat-form-field>
 
-          <mat-checkbox formControlName="principal"
-            >Zona destacada (podrás elegir máximo 4 zonas)</mat-checkbox
-          >
+          <mat-checkbox formControlName="principal">
+            Zona destacada (podrás elegir máximo 4 zonas)
+          </mat-checkbox>
 
           <button
             mat-raised-button
@@ -66,7 +67,9 @@
                 <button mat-icon-button>
                   <mat-icon class="custom_icon" (click)="deleteZone(zone)">delete</mat-icon>
                 </button>
-                <mat-slide-toggle color="accent" [(ngModel)]="zone.admitOrders" disabled>Pedidos</mat-slide-toggle>
+                <mat-slide-toggle color="accent" [(ngModel)]="zone.admitOrders" disabled
+                  >Pedidos</mat-slide-toggle
+                >
               </div>
             </div>
           </div>

@@ -8,8 +8,7 @@ import { ZoneService } from 'hotel/zone/services/zone.service';
 import { CoreModule } from '@contler/core';
 import { ModalEditZoneComponent } from './components/modal-edit-zone/modal-edit-zone.component';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
-
-
+import { UiModule } from '@contler/ui';
 
 @NgModule({
   declarations: [ZoneComponent, ModalEditZoneComponent],
@@ -20,9 +19,10 @@ import { CommonComponentsModule } from 'hotel/common-components/common-component
     FormsModule,
     CoreModule,
     ReactiveFormsModule,
-    CommonComponentsModule
+    CommonComponentsModule,
+    UiModule,
   ],
   providers: [ZoneService],
-  entryComponents: [ModalEditZoneComponent]
+  entryComponents: [ModalEditZoneComponent],
 })
-export class ZoneModule { }
+export class ZoneModule {}

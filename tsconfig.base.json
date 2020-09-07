@@ -26,7 +26,8 @@
       "api/*": ["apps/api/src/*"],
       "hotel/*": ["apps/hotel/src/*"],
       "guest/*": ["apps/guest/src/*"],
-      "lib/*": ["libs/core/src/*"]
+      "lib/*": ["libs/core/src/*"],
+      "@contler/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

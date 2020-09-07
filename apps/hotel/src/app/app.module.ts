@@ -19,6 +19,7 @@ import { NgxMaskModule } from 'ngx-mask';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { UiModule } from '@contler/ui';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +38,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     CoreModule.forRoot({
       urlBackend: environment.apiUrl,
     }),
+    UiModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,

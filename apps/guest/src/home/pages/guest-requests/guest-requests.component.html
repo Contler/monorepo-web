@@ -1,20 +1,26 @@
 <contler-marco>
   <div marcoBody class="main-container">
-      <p class="request__label request__user" [style]="getColorHotel()">¡Hola {{ ($guest | async)?.name }}!</p>
-      <p class="request__label request__space" [style]="getColorHotel()">
-        ¿En qué zona necesitas que <br />
-        atendamos tu solicitud?
-      </p>
+    <p class="request__label request__user" [style]="getColorHotel()">
+      ¡Hola {{ ($guest | async)?.name }}!
+    </p>
+    <p class="request__label request__space" [style]="getColorHotel()">
+      ¿En qué zona necesitas que <br />
+      atendamos tu solicitud?
+    </p>
 
-      <a class="request__zone" *ngFor="let zone of showedZones" routerLink="/home/zone-request/{{ zone.uid }}">
-        <mat-icon class="request__zone-icon">{{ zone.icon || 'home' }}</mat-icon>
-        <p class="request__zone-text">{{ zone.name }}</p>
-        <mat-icon class="request__zone-icon">navigate_next</mat-icon>
-      </a>
-      <a (click)="showAllZones()" class="request__zone" *ngIf="!allZonesShowed">
-        <mat-icon class="request__zone-icon">add</mat-icon>
-        <p class="request__zone-text">Ver todas las zonas</p>
-        <mat-icon class="request__zone-icon">navigate_next</mat-icon>
-      </a>
+    <a
+      class="request__zone"
+      *ngFor="let zone of showedZones"
+      routerLink="/home/zone-request/{{ zone.uid }}"
+    >
+      <contler-icon class="request__zone-icon" [key]="zone.icon"></contler-icon>
+      <p class="request__zone-text">{{ zone.name }}</p>
+      <mat-icon class="request__zone-icon">navigate_next</mat-icon>
+    </a>
+    <a (click)="showAllZones()" class="request__zone" *ngIf="!allZonesShowed">
+      <mat-icon class="request__zone-icon">add</mat-icon>
+      <p class="request__zone-text">Ver todas las zonas</p>
+      <mat-icon class="request__zone-icon">navigate_next</mat-icon>
+    </a>
   </div>
 </contler-marco>

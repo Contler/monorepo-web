@@ -20,6 +20,7 @@ import { CreateWakeComponent } from './pages/create-wake/create-wake.component';
 import { ModalBookingQualifyComponent } from './components/modal-booking-qualify/modal-booking-qualify.component';
 import { ModalOrdersQuialifyComponent } from './components/modal-orders-quialify/modal-orders-quialify.component';
 import { DrinkRequestComponent } from './pages/drink-request/drink-request.component';
+import { UiModule } from '@contler/ui';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,12 @@ import { DrinkRequestComponent } from './pages/drink-request/drink-request.compo
     PipesModule,
     RatingModule,
     MessagesModule,
+    UiModule,
   ],
-  entryComponents: [ModalQualifyComponent, ModalBookingQualifyComponent, ModalOrdersQuialifyComponent],
+  entryComponents: [
+    ModalQualifyComponent,
+    ModalBookingQualifyComponent,
+    ModalOrdersQuialifyComponent,
+  ],
 })
 export class HomeModule {}
