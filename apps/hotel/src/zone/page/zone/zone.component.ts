@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { ICONS } from '@contler/const';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEditZoneComponent } from 'hotel/zone/components/modal-edit-zone/modal-edit-zone.component';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { CategoryEntity, ZoneEntity } from '@contler/entity';
+import { IconsService } from '@contler/ui';
+import { IconModel } from '@contler/models/icon.model';
 
 @Component({
   selector: 'contler-zone',
@@ -16,15 +17,16 @@ import { CategoryEntity, ZoneEntity } from '@contler/entity';
 export class ZoneComponent {
   zoneGroup: FormGroup;
   load = false;
-  icons = ICONS;
   zones: ZoneEntity[] = [];
   categoryZone: Observable<CategoryEntity[]>;
+  $icons: Observable<IconModel[]>;
 
   constructor(
     private zoneService: ZoneService,
     private formBuild: FormBuilder,
     public dialog: MatDialog,
     private messagesService: MessagesService,
+    iconsService: IconsService,
   ) {
     this.categoryZone = this.zoneService.getCategories();
     this.zoneGroup = formBuild.group({
@@ -33,14 +35,15 @@ export class ZoneComponent {
       icon: [''],
       principal: [false],
     });
-    this.zoneService.getZones().subscribe(zones => (this.zones = zones));
+    this.zoneService.getZones().subscribe((zones) => (this.zones = zones));
+    this.$icons = iconsService.$icons;
   }
 
   saveZone() {
     this.load = true;
     const { name, category, icon, principal } = this.zoneGroup.value;
     this.zoneService.saveZone(name, principal, icon, category).subscribe(
-      zone => {
+      (zone) => {
         this.zones = [...this.zones, zone];
         this.load = false;
         this.messagesService.showToastMessage('Zona creada exitosamente');
@@ -60,16 +63,16 @@ export class ZoneComponent {
   deleteZone(zone: ZoneEntity) {
     this.zoneService.deleteZone(zone).subscribe(
       () => {
-        this.zones = this.zones.filter(actualZone => actualZone.uid !== zone.uid);
+        this.zones = this.zones.filter((actualZone) => actualZone.uid !== zone.uid);
         this.messagesService.showToastMessage('Zona eliminada exitosamente');
       },
       (err) => {
         if (err.error.statusCode === 400) {
-          this.messagesService.showServerError(err, err.error.message)
+          this.messagesService.showServerError(err, err.error.message);
         } else {
-          this.messagesService.showServerError()
+          this.messagesService.showServerError();
         }
-      }
+      },
     );
   }
 }

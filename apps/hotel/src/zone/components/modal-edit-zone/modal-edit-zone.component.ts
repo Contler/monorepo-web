@@ -1,10 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { ICONS } from '@contler/const';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { ZoneEntity } from '@contler/entity';
+import { IconsService } from '@contler/ui';
+import { IconModel } from '@contler/models/icon.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'contler-modal-edit-zone',
@@ -12,10 +14,10 @@ import { ZoneEntity } from '@contler/entity';
   styleUrls: ['./modal-edit-zone.component.scss'],
 })
 export class ModalEditZoneComponent implements OnInit {
-  icons = ICONS;
   load = false;
 
   zoneGroup: FormGroup;
+  $icons: Observable<IconModel[]>;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ZoneEntity,
@@ -23,12 +25,14 @@ export class ModalEditZoneComponent implements OnInit {
     private zoneService: ZoneService,
     private messagesService: MessagesService,
     formBuild: FormBuilder,
+    iconService: IconsService,
   ) {
     this.zoneGroup = formBuild.group({
       name: [data.name, Validators.required],
       icon: [data.icon],
-      admitOrder: [data.admitOrders]
+      admitOrder: [data.admitOrders],
     });
+    this.$icons = iconService.$icons;
   }
 
   save() {
@@ -36,7 +40,7 @@ export class ModalEditZoneComponent implements OnInit {
     const { name, icon, admitOrder } = this.zoneGroup.value;
     this.data.name = name;
     this.data.icon = icon;
-    this.data.admitOrders = admitOrder
+    this.data.admitOrders = admitOrder;
     this.zoneService.updateZone(this.data).subscribe(
       () => {
         this.load = false;
