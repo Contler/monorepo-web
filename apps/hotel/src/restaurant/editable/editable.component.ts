@@ -13,7 +13,7 @@ import { fromEvent, Subject } from 'rxjs';
 import { filter, take, switchMapTo } from 'rxjs/operators';
 
 @Component({
-  selector: 'editable',
+  selector: 'contler-editable',
   template: ` <ng-container *ngTemplateOutlet="currentView"></ng-container> `,
   styleUrls: [],
 })
