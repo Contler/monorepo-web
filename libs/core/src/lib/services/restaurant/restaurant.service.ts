@@ -25,4 +25,10 @@ export class RestaurantService {
   deleteRestaurant(restaurantId: string) {
     return this.http.delete(`${this.url}/restaurant/${restaurantId}`);
   }
+
+  updateNameRestaurant(restaurantId: string, newName: string) {
+    return this.http.post<RestaurantEntity>(`${this.url}/restaurant/${restaurantId}`, {
+      name: newName,
+    });
+  }
 }
