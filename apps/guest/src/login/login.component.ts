@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { GUEST } from '@contler/const';
-import { GuestService } from "guest/services/guest.service";
+import { GuestService } from 'guest/services/guest.service';
 
 @Component({
   selector: 'contler-login',
@@ -15,7 +15,12 @@ export class LoginComponent {
   loader = false;
   error: string | undefined;
 
-  constructor(formBuilder: FormBuilder, private afAuth: AngularFireAuth, private router: Router, private guestService: GuestService) {
+  constructor(
+    formBuilder: FormBuilder,
+    private afAuth: AngularFireAuth,
+    private router: Router,
+    private guestService: GuestService,
+  ) {
     this.loginForm = formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required]],
@@ -30,17 +35,23 @@ export class LoginComponent {
       const userCredential = await this.afAuth.auth.signInWithEmailAndPassword(email, pass);
       const token = await userCredential.user!.getIdTokenResult();
       if (token.claims.role !== GUEST) {
-        this.error = 'No tiene permisos para acceder'
+        this.error = 'No tiene permisos para acceder';
       }
-      this.guestService.checkAvailableUser().subscribe(checkIn => {
+      this.guestService.checkAvailableUser().subscribe(({ checkIn, checkOut }) => {
         this.loader = false;
-        if (new Date() >= checkIn) {
-          this.router.navigate(['/home']);
+        if (new Date() < checkIn) {
+          this.afAuth.auth.signOut();
+          this.error =
+            'Tu fecha de ingreso es el ' +
+            checkIn.toLocaleDateString() +
+            '. Te invitamos a iniciar sesión en esta fecha';
+        } else if (new Date() > checkOut) {
+          this.afAuth.auth.signOut();
+          this.error = 'Tu fecha de salida fue el ' + checkOut.toLocaleDateString() + '.';
         } else {
-          this.afAuth.auth.signOut()
-          this.error = 'Tu fecha de ingreso es el ' + checkIn.toLocaleDateString() + '. Te invitamos a iniciar sesión en esta fecha'
+          this.router.navigate(['/home']);
         }
-      })
+      });
     } catch (error) {
       this.loader = false;
       const { code } = error;
