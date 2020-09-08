@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { UserService } from '@contler/core';
 import { HttpClient } from '@angular/common/http';
 import { switchMap } from 'rxjs/operators';

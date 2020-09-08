@@ -15,21 +15,21 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./restaurant.component.scss'],
 })
 export class RestaurantComponent implements OnInit, OnDestroy {
-  public restaurantGroup: FormGroup;
-  public restaurantArray: FormArray;
-  public load = false;
-  public restaurants: RestaurantEntity[] = [];
+  restaurantGroup: FormGroup;
+  restaurantArray: FormArray;
+  load = false;
+  restaurants: RestaurantEntity[] = [];
 
   dataSource: any;
   displayedColumns: string[] = ['name', 'actions'];
-  public pageSize = 5;
-  public currentPage = 0;
-  public totalSize = 0;
-  public pageIndex: number;
+  pageSize = 5;
+  currentPage = 0;
+  totalSize = 0;
+  pageIndex: number;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  public hotelId: string = null;
-  private subscription: Subscription[] = [];
+  hotelId: string = null;
+  subscription: Subscription[] = [];
 
   constructor(
     private formBuild: FormBuilder,
@@ -54,7 +54,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     this.subscription.forEach((subs) => subs.unsubscribe());
   }
 
-  public save() {
+  save() {
     this.load = true;
     const { name } = this.restaurantGroup.value;
     this.restaurantServ.saveRestaurant(name, this.hotelId).subscribe(
@@ -73,18 +73,18 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     );
   }
 
-  public resetForm() {
+  resetForm() {
     this.restaurantGroup.markAsPristine();
     this.restaurantGroup.markAsUntouched();
     this.restaurantGroup.reset();
   }
 
-  public handlePage(e: any) {
+  handlePage(e: any) {
     this.currentPage = e.pageIndex;
     this.pageSize = e.pageSize;
   }
 
-  public updateField(index: number, field: string, restId: string) {
+  updateField(index: number, field: string, restId: string) {
     const control = this.getControl(index, field);
     if (control.valid) {
       this.restaurantServ.updateRestaurant(control.value, restId).subscribe(() => {
@@ -94,17 +94,14 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     }
   }
 
-  public getControl(index: number, fieldName: string) {
+  getControl(index: number, fieldName: string) {
     const a = this.restaurantArray.at(index).get(fieldName) as FormControl;
     return this.restaurantArray.at(index).get(fieldName) as FormControl;
   }
 
-  public deleteRest(restaurant: RestaurantEntity) {
+  deleteRest(restaurant: RestaurantEntity) {
     this.restaurantServ.deleteRestaurant(restaurant).subscribe(
       () => {
-        // this.restaurants = this.restaurants.filter(
-        //   (currentRestaurant) => currentRestaurant.uid !== restaurant.uid,
-        // );
         this.getRestaurants();
         this.messagesService.showToastMessage('Restaurante eliminado exitosamente');
       },
@@ -118,7 +115,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     );
   }
 
-  public getRestaurants() {
+  getRestaurants() {
     this.restaurantServ.getRestaurants().subscribe((restaurants: any) => {
       if (restaurants.length > 0) {
         this.dataSource = new MatTableDataSource<Element>(restaurants);
