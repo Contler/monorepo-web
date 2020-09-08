@@ -4,8 +4,7 @@ import { RestaurantComponent } from './page/restaurant/restaurant.component';
 import { RestaurantRoutingModule } from './restaurant-routing.module';
 import { MaterialModule } from 'hotel/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RestaurantService } from './services/restaurant.service';
-import { CoreModule } from '@contler/core';
+import { CoreModule, RestaurantService } from '@contler/core';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 
 // editable table

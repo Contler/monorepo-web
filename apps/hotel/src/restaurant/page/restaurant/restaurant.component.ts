@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
-import { RestaurantService } from 'hotel/restaurant/services/restaurant.service';
+import { RestaurantService } from '../../../../../../libs/core/src/lib/services/restaurant/restaurant.service';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { AuthService } from 'hotel/services/auth.service';
@@ -44,9 +44,11 @@ export class RestaurantComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getRestaurants();
     this.subscription.push(
-      this.authServ.$employer.subscribe((user) => (this.hotelId = user.hotel.uid)),
+      this.authServ.$employer.subscribe((user) => {
+        this.hotelId = user.hotel.uid;
+        this.getRestaurants();
+      }),
     );
   }
 
@@ -57,7 +59,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
   save() {
     this.load = true;
     const { name } = this.restaurantGroup.value;
-    this.restaurantServ.saveRestaurant(name, this.hotelId).subscribe(
+    this.restaurantServ.createRestaurant(name, this.hotelId).subscribe(
       (restaurant) => {
         this.dataSource.data = [...this.dataSource.data, restaurant].sort((a: any, b: any) =>
           a.name.localeCompare(b.name),
@@ -87,7 +89,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
   updateField(index: number, field: string, restId: string) {
     const control = this.getControl(index, field);
     if (control.valid) {
-      this.restaurantServ.updateRestaurant(control.value, restId).subscribe(() => {
+      this.restaurantServ.updateNameRestaurant(restId, control.value).subscribe(() => {
         this.getRestaurants();
         this.messagesService.showToastMessage('Restaurante actualizado exitosamente');
       });
@@ -100,7 +102,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
   }
 
   deleteRest(restaurant: RestaurantEntity) {
-    this.restaurantServ.deleteRestaurant(restaurant).subscribe(
+    this.restaurantServ.deleteRestaurant(restaurant.uid).subscribe(
       () => {
         this.getRestaurants();
         this.messagesService.showToastMessage('Restaurante eliminado exitosamente');
@@ -116,7 +118,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
   }
 
   getRestaurants() {
-    this.restaurantServ.getRestaurants().subscribe((restaurants: any) => {
+    this.restaurantServ.getAllRestaurantsByHotel(this.hotelId).subscribe((restaurants: any) => {
       if (restaurants.length > 0) {
         this.dataSource = new MatTableDataSource<Element>(restaurants);
         this.dataSource.data.sort((a: any, b: any) => a.name.localeCompare(b.name));

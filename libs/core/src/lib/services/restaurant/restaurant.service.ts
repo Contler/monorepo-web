@@ -12,22 +12,22 @@ export class RestaurantService {
   }
 
   createRestaurant(nameRestaurant: string, hotelId: string) {
-    return this.http.post<RestaurantEntity>(`${this.url}/restaurant`, {
+    return this.http.post<RestaurantEntity>(`${this.url}restaurant`, {
       name: nameRestaurant,
       hotelId,
     });
   }
 
   getAllRestaurantsByHotel(hotelId: string) {
-    return this.http.get<RestaurantEntity[]>(`${this.url}/hotel/${hotelId}/restaurant`);
+    return this.http.get<RestaurantEntity[]>(`${this.url}hotel/${hotelId}/restaurant`);
   }
 
   deleteRestaurant(restaurantId: string) {
-    return this.http.delete(`${this.url}/restaurant/${restaurantId}`);
+    return this.http.delete(`${this.url}restaurant/${restaurantId}`);
   }
 
   updateNameRestaurant(restaurantId: string, newName: string) {
-    return this.http.post<RestaurantEntity>(`${this.url}/restaurant/${restaurantId}`, {
+    return this.http.post<RestaurantEntity>(`${this.url}restaurant/${restaurantId}`, {
       name: newName,
     });
   }
