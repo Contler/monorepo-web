@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
-import { RestaurantService } from '../../../../../../libs/core/src/lib/services/restaurant/restaurant.service';
+import { RestaurantService } from '@contler/core';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { AuthService } from 'hotel/services/auth.service';
