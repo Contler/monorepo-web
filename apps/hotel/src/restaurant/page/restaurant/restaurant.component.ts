@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { RestaurantService } from '@contler/core';
 import { MessagesService } from 'hotel/services/messages/messages.service';
@@ -7,6 +7,7 @@ import { AuthService } from 'hotel/services/auth.service';
 import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { EditableComponent } from '../../editable/editable.component';
 
 @Component({
   selector: 'contler-restaurant',
@@ -26,6 +27,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
   totalSize = 0;
   pageIndex: number;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChildren(EditableComponent) editable: EditableComponent[];
 
   hotelId: string = null;
   subscription: Subscription[] = [];
@@ -91,6 +93,13 @@ export class RestaurantComponent implements OnInit, OnDestroy {
         this.getRestaurants();
         this.messagesService.showToastMessage('Restaurante actualizado exitosamente');
       });
+    }
+  }
+
+  editRest(index: number) {
+    const findEditable = this.editable.find((_, indexEdit: number) => indexEdit === index);
+    if (findEditable) {
+      findEditable.mode = 'edit';
     }
   }
 
