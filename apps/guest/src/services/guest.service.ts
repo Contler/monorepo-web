@@ -24,23 +24,26 @@ export class GuestService {
   ) {
     this.afAuth.user
       .pipe(
-        filter(user => !!user),
-        switchMap(user => this.http.get<GuestEntity>(environment.apiUrl + `guest/${user!.uid}`)),
-        tap(guest => this.guestSubject.next(guest)),
-        tap(guest => this.hotelSubject.next(guest.hotel)),
+        filter((user) => !!user),
+        tap((user) => console.log(user)),
+        switchMap((user) => this.http.get<GuestEntity>(environment.apiUrl + `guest/${user!.uid}`)),
+        tap((guest) => this.guestSubject.next(guest)),
+        tap((guest) => this.hotelSubject.next(guest.hotel)),
       )
       .subscribe();
   }
 
   get $guest(): Observable<GuestEntity | null> {
-    return this.guestSubject.asObservable().pipe(filter(guest => !!guest));
+    return this.guestSubject.asObservable().pipe(filter((guest) => !!guest));
   }
 
   get $hotel(): Observable<HotelEntity | null> {
-    return this.hotelSubject.asObservable().pipe(filter(hotel => !!hotel));
+    return this.hotelSubject.asObservable().pipe(filter((hotel) => !!hotel));
   }
 
   checkAvailableUser() {
-    return this.$guest.pipe(map(data => new Date(data!.checkIn)));
+    return this.$guest.pipe(
+      map((data) => ({ checkIn: new Date(data!.checkIn), checkOut: new Date(data!.checkOut) })),
+    );
   }
 }
