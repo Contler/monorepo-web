@@ -25,7 +25,6 @@ export class GuestService {
     this.afAuth.user
       .pipe(
         filter((user) => !!user),
-        tap((user) => console.log(user)),
         switchMap((user) => this.http.get<GuestEntity>(environment.apiUrl + `guest/${user!.uid}`)),
         tap((guest) => this.guestSubject.next(guest)),
         tap((guest) => this.hotelSubject.next(guest.hotel)),

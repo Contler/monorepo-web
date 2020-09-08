@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { MessagesService } from '../../services/messages/messages.service';
 import { GeneralService } from '../../services/general.service';
@@ -7,7 +7,7 @@ import { InmediateRequestsService } from '../../services/inmediate-requests.serv
 import { EmployerEntity, RequestEntity } from '@contler/entity';
 import { AuthService } from '../../services/auth.service';
 import { switchMap } from 'rxjs/operators';
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'contler-modal-inmediate-request',
@@ -27,25 +27,24 @@ export class ModalInmediateRequestPage implements OnInit {
     private inmediateRequestsService: InmediateRequestsService,
     private messagesService: MessagesService,
     private authService: AuthService,
-    private modalController: ModalController,
     public dialogRef: MatDialogRef<ModalInmediateRequestPage>,
-    @Inject(MAT_DIALOG_DATA) public data: RequestEntity
+    @Inject(MAT_DIALOG_DATA) public data: RequestEntity,
   ) {
-    this.request = data
+    this.request = data;
   }
 
   ngOnInit() {
     this.idSelected = this.request!.solved ? this.request!.solved.uid : null;
     this.isFinished = this.request!.complete;
-    this.employerService.getEmployers().subscribe(employers => (this.employers = employers));
+    this.employerService.getEmployers().subscribe((employers) => (this.employers = employers));
   }
 
   save() {
     const loader = this.messagesService.showLoader();
-    this.request!.solved = this.employers.find(e => e.uid === this.idSelected)!;
+    this.request!.solved = this.employers.find((e) => e.uid === this.idSelected)!;
     this.authService.$user
       .pipe(
-        switchMap(user => {
+        switchMap((user) => {
           this.request!.attended = user!;
           this.request!.complete = this.isFinished;
           return this.inmediateRequestsService.updateRequest(this.request!);
@@ -55,9 +54,9 @@ export class ModalInmediateRequestPage implements OnInit {
         () => {
           this.messagesService.closeLoader(loader);
           this.messagesService.showToastMessage('Solicitud modificada exitosamente');
-          this.dialogRef.close()
+          this.dialogRef.close();
         },
-        err => {
+        (err) => {
           this.messagesService.closeLoader(loader);
           this.messagesService.showServerError();
           console.error(err);
