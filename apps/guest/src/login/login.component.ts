@@ -47,7 +47,7 @@ export class LoginComponent {
             '. Te invitamos a iniciar sesión en esta fecha';
         } else if (new Date() > checkOut) {
           this.afAuth.auth.signOut();
-          this.error = 'Tu fecha de salida fue el ' + checkOut.toLocaleDateString() + '.';
+          this.error = 'Tu fecha de salida fué el ' + checkOut.toLocaleDateString() + '.';
         } else {
           this.router.navigate(['/home']);
         }
