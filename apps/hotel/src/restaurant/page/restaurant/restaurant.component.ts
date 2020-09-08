@@ -4,7 +4,6 @@ import { RestaurantService } from '@contler/core';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { AuthService } from 'hotel/services/auth.service';
-import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -36,7 +35,6 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     private restaurantServ: RestaurantService,
     private messagesService: MessagesService,
     private authServ: AuthService,
-    public dialog: MatDialog,
   ) {
     this.restaurantGroup = formBuild.group({
       name: [null, Validators.required],
@@ -97,7 +95,6 @@ export class RestaurantComponent implements OnInit, OnDestroy {
   }
 
   getControl(index: number, fieldName: string) {
-    const a = this.restaurantArray.at(index).get(fieldName) as FormControl;
     return this.restaurantArray.at(index).get(fieldName) as FormControl;
   }
 
@@ -124,10 +121,13 @@ export class RestaurantComponent implements OnInit, OnDestroy {
         this.dataSource.data.sort((a: any, b: any) => a.name.localeCompare(b.name));
         this.dataSource.paginator = this.paginator;
         const groupRestaurant = restaurants.map((rest: any) => {
-          return new FormGroup({
-            name: new FormControl(rest.name, Validators.required),
-            uid: new FormControl(rest.uid),
-          });
+          return new FormGroup(
+            {
+              name: new FormControl(rest.name, Validators.required),
+              uid: new FormControl(rest.uid),
+            },
+            { updateOn: 'blur' },
+          );
         });
 
         this.restaurantArray = new FormArray(groupRestaurant);

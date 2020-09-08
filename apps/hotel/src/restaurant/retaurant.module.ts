@@ -9,18 +9,11 @@ import { CommonComponentsModule } from 'hotel/common-components/common-component
 
 // editable table
 import { EditableComponent } from './editable/editable.component';
-import { EditableOnEnterDirective } from './editable/edit-on-enter.directive';
 import { EditModeDirective } from './editable/edit-mode.directive';
 import { ViewModeDirective } from './editable/view-mode.directive';
 
 @NgModule({
-  declarations: [
-    RestaurantComponent,
-    EditableComponent,
-    EditableOnEnterDirective,
-    EditModeDirective,
-    ViewModeDirective,
-  ],
+  declarations: [RestaurantComponent, EditableComponent, EditModeDirective, ViewModeDirective],
   imports: [
     CommonModule,
     RestaurantRoutingModule,
@@ -31,11 +24,6 @@ import { ViewModeDirective } from './editable/view-mode.directive';
     CommonComponentsModule,
   ],
   providers: [RestaurantService],
-  entryComponents: [
-    EditableComponent,
-    EditableOnEnterDirective,
-    EditModeDirective,
-    ViewModeDirective,
-  ],
+  entryComponents: [EditableComponent, EditModeDirective, ViewModeDirective],
 })
 export class RestaurantModule {}

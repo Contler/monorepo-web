@@ -1,12 +1,4 @@
-import {
-  Component,
-  ContentChild,
-  ElementRef,
-  EventEmitter,
-  Output,
-  OnInit,
-  OnDestroy,
-} from '@angular/core';
+import { Component, ContentChild, ElementRef, EventEmitter, Output, OnInit } from '@angular/core';
 import { ViewModeDirective } from './view-mode.directive';
 import { EditModeDirective } from './edit-mode.directive';
 import { fromEvent, Subject } from 'rxjs';
@@ -17,7 +9,7 @@ import { filter, take, switchMapTo } from 'rxjs/operators';
   template: ` <ng-container *ngTemplateOutlet="currentView"></ng-container> `,
   styleUrls: [],
 })
-export class EditableComponent implements OnInit, OnDestroy {
+export class EditableComponent implements OnInit {
   @ContentChild(ViewModeDirective) viewModeTpl: ViewModeDirective;
   @ContentChild(EditModeDirective) editModeTpl: EditModeDirective;
   @Output() update = new EventEmitter();
@@ -43,17 +35,16 @@ export class EditableComponent implements OnInit, OnDestroy {
     return this.host.nativeElement;
   }
 
-  private viewModeHandler() {
-    fromEvent(this.element, 'dblclick').subscribe(() => {
+  viewModeHandler() {
+    fromEvent(this.element, 'click').subscribe(() => {
       this.mode = 'edit';
       this.editMode.next(true);
     });
   }
 
-  private editModeHandler() {
+  editModeHandler() {
     const clickOutside$ = fromEvent(document, 'click').pipe(
       filter(({ target }) => this.element.contains(target) === false),
-      take(1),
     );
 
     this.editMode$.pipe(switchMapTo(clickOutside$)).subscribe((event) => this.toViewMode());
@@ -62,6 +53,4 @@ export class EditableComponent implements OnInit, OnDestroy {
   get currentView() {
     return this.mode === 'view' ? this.viewModeTpl.tpl : this.editModeTpl.tpl;
   }
-
-  ngOnDestroy() {}
 }

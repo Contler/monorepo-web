@@ -8,6 +8,18 @@ table {
   width: 100%;
 }
 
+.iconMat {
+  margin-left: 250px;
+}
+
+.aligned-spinner {
+  margin: auto;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -31,16 +43,6 @@ table {
       margin-bottom: 19px;
       &:last-of-type {
         margin-bottom: 33px;
-      }
-    }
-    mat-checkbox {
-      display: block;
-      margin-bottom: 35px;
-      ::ng-deep {
-        .mat-checkbox-frame,
-        .mat-checkbox-background {
-          border-radius: 50% !important;
-        }
       }
     }
     button {
