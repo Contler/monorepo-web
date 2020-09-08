@@ -6,6 +6,7 @@ import { ModalInmediateRequestPage } from '../../../modals/modal-inmediate-reque
 import { EmployerEntity, RequestEntity } from '@contler/entity';
 import { AuthService } from '../../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'contler-pending-inmediate-requests',
@@ -24,13 +25,14 @@ export class PendingInmediateRequestsPage implements OnInit {
     private auth: AuthService,
     private dialog: MatDialog,
     public menu: MenuController,
+    private snackBar: MatSnackBar,
   ) {
-    this.auth.$user.subscribe(user => (this.user = user));
+    this.auth.$user.subscribe((user) => (this.user = user));
   }
 
   ngOnInit() {
     this.loadData = true;
-    this.inmediateRequestsService.listenImmediateRequestByHotel(false).subscribe(requests => {
+    this.inmediateRequestsService.listenImmediateRequestByHotel(false).subscribe((requests) => {
       this.requests = requests;
       this.loadData = false;
     });
@@ -42,8 +44,18 @@ export class PendingInmediateRequestsPage implements OnInit {
       .afterClosed()
       .subscribe(() => {
         if (request.complete) {
-          this.requests = this.requests.filter(req => req.id !== request.id);
+          this.requests = this.requests.filter((req) => req.id !== request.id);
         }
       });
+  }
+
+  completeRequest(request: RequestEntity) {
+    request.complete = true;
+    this.inmediateRequestsService.updateRequest(request).subscribe(() => {
+      this.snackBar.open('Esta solicitud fue resuelta', 'cerrar', {
+        duration: 5000,
+      });
+      this.requests = this.requests.filter((req) => req.id !== request.id);
+    });
   }
 }

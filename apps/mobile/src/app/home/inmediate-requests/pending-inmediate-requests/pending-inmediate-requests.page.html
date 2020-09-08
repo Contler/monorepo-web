@@ -19,15 +19,24 @@
 
       <ng-container *ngIf="!loadData">
         <ng-container *ngIf="requests.length else empty">
-          <div class="item" *ngFor="let request of requests" (click)="goToRequest(request)">
-            <div class="item__info-container">
+          <div class="item" *ngFor="let request of requests">
+            <div class="item__info-container" (click)="goToRequest(request)">
               <p class="username">{{request.guest?.name}} {{request.guest?.lastName}}</p>
               <p class="zone">{{request.zone?.name}}</p>
             </div>
             <div class="item__data-container">
-              <p class="time">{{request.createAt|date:'HH:mm'}}</p>
-              <button mat-icon-button>
+              <p class="time" (click)="goToRequest(request)">{{request.createAt|date:'HH:mm'}}</p>
+              <button mat-icon-button *ngIf="!request.solved" (click)="goToRequest(request)">
                 <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
+              </button>
+
+              <button
+                mat-icon-button
+                *ngIf="request.solved"
+                color="accent"
+                (click)="completeRequest(request)"
+              >
+                <mat-icon class="custom_icon">timer</mat-icon>
               </button>
             </div>
           </div>
