@@ -1,6 +1,6 @@
 import { Component, ContentChild, ElementRef, EventEmitter, Output, OnInit } from '@angular/core';
-import { ViewModeDirective } from './view-mode.directive';
-import { EditModeDirective } from './edit-mode.directive';
+import { ViewModeDirective } from '../directives/view-mode.directive';
+import { EditModeDirective } from '../directives/edit-mode.directive';
 import { fromEvent, Subject } from 'rxjs';
 import { filter, take, switchMapTo } from 'rxjs/operators';
 

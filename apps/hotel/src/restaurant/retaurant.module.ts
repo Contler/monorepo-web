@@ -8,9 +8,9 @@ import { CoreModule, RestaurantService } from '@contler/core';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 
 // editable table
-import { EditableComponent } from './editable/editable.component';
-import { EditModeDirective } from './editable/edit-mode.directive';
-import { ViewModeDirective } from './editable/view-mode.directive';
+import { EditableComponent } from './components/editable/editable.component';
+import { EditModeDirective } from './components/directives/edit-mode.directive';
+import { ViewModeDirective } from './components/directives/view-mode.directive';
 
 @NgModule({
   declarations: [RestaurantComponent, EditableComponent, EditModeDirective, ViewModeDirective],

@@ -7,7 +7,7 @@ import { AuthService } from 'hotel/services/auth.service';
 import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { EditableComponent } from '../../editable/editable.component';
+import { EditableComponent } from '../../components/editable/editable.component';
 
 @Component({
   selector: 'contler-restaurant',
