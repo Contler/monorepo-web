@@ -1,0 +1,44 @@
+@import 'styles/variables';
+
+.cnt-restaurant {
+  padding: 55px 51px 0;
+}
+
+table {
+  width: 100%;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  padding-bottom: 20px;
+  .form_section {
+    p.title {
+      font-family: $family;
+      font-size: 24.3px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: $primary;
+      margin: 0;
+      margin-bottom: 29px;
+    }
+    mat-form-field {
+      width: 80%;
+      margin-bottom: 19px;
+      &:last-of-type {
+        margin-bottom: 33px;
+      }
+    }
+    .button {
+      width: 40%;
+    }
+  }
+}

@@ -65,6 +65,12 @@ export class MenuComponent implements OnInit {
       primary: false,
     },
     {
+      name: 'Restaurante',
+      icon: 'restaurant',
+      link: ['/home', 'restaurant'],
+      primary: false,
+    },
+    {
       name: 'Wake up calls',
       icon: 'access_alarm',
       link: ['/home', 'wake-up'],
@@ -90,7 +96,11 @@ export class MenuComponent implements OnInit {
     },
   ];
 
-  constructor(private hotelService: HotelService, private afAuth: AngularFireAuth, private router: Router) {
+  constructor(
+    private hotelService: HotelService,
+    private afAuth: AngularFireAuth,
+    private router: Router,
+  ) {
     this.$hotel = this.hotelService.getHotel();
   }
 

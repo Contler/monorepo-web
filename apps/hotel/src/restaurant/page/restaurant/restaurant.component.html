@@ -1,0 +1,70 @@
+<contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav>
+    <contler-menu></contler-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="cnt-restaurant">
+    <div class="container">
+      <div class="form_section">
+        <p class="title">Restaurantes</p>
+        <form [formGroup]="restaurantGroup" (ngSubmit)="save()">
+          <mat-form-field appearance="fill">
+            <input matInput formControlName="name" />
+            <mat-hint>Nombre de restaurante</mat-hint>
+          </mat-form-field>
+
+          <button
+            class="button"
+            mat-raised-button
+            color="accent"
+            contlerButton
+            [disabled]="restaurantGroup.invalid"
+            [loading]="load"
+          >
+            CREAR RESTAURANTE
+          </button>
+        </form>
+      </div>
+
+      <div class="rooms_section">
+        <mat-card class="crud_table">
+          <div class="row">
+            <div class="row_container header two_column">
+              <p>Nombre restaurante</p>
+            </div>
+          </div>
+
+          <div *ngIf="dataSource">
+            <div class="row" *ngFor="let restaurant of dataSource.data; let index = index">
+              <div class="row_container two_column">
+                <contler-editable
+                  #contlerEdit
+                  class="cursor"
+                  (update)="updateField(index, 'name', restaurant.uid)"
+                >
+                  <ng-template contlerViewMode>
+                    {{ restaurant.name }}
+                  </ng-template>
+                  <ng-template contlerEditMode>
+                    <mat-form-field appearance="fill">
+                      <input matInput [formControl]="getControl(index, 'name')" />
+                    </mat-form-field>
+                  </ng-template>
+                </contler-editable>
+                <div class="actions">
+                  <button mat-icon-button>
+                    <mat-icon class="custom_icon" (click)="editRest(index)">edit</mat-icon>
+                  </button>
+                  <button mat-icon-button>
+                    <mat-icon class="custom_icon" (click)="deleteRest(restaurant)">delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
