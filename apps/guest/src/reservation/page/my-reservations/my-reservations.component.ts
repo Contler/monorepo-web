@@ -20,16 +20,24 @@ export class MyReservationsComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private reservationService: ReservationService,
   ) {
-    this.guestService.$hotel.pipe(take(1)).subscribe(hotel => (this.hotel = hotel));
+    this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => (this.hotel = hotel));
     this.guestService.$guest
-      .pipe(switchMap(data => this.reservationService.getBookingByGuest(data!.uid)))
-      .subscribe(data => {
+      .pipe(switchMap((data) => this.reservationService.getBookingByGuest(data!.uid)))
+      .subscribe((data) => {
         this.bookings = data;
       });
   }
 
   ngOnInit() {}
   getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
+    );
+  }
+
+  getColorSecondHotel() {
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.colorSecond ? `color: ${this.hotel.colorSecond}` : '',
+    );
   }
 }
