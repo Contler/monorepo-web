@@ -51,11 +51,11 @@ export class ZoneRequestComponent implements OnDestroy {
     private messagesService: MessagesService,
     private router: Router,
   ) {
-    this.guestSubscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
+    this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
     this.zoneUid = this.route.snapshot.paramMap.get('id');
     this.zoneSubscribe = this.zoneService.$zones
-      .pipe(map(zones => zones.find(zone => zone.uid === this.zoneUid)))
-      .subscribe(zone => {
+      .pipe(map((zones) => zones.find((zone) => zone.uid === this.zoneUid)))
+      .subscribe((zone) => {
         this.zone = zone;
       });
   }
@@ -71,12 +71,12 @@ export class ZoneRequestComponent implements OnDestroy {
   async saveRequest() {
     this.loader = true;
     const msg = this.selectedSubcategory || this.requestController.value;
-    const chiefTokens: string[] = this.zone!.leaders.filter(leader => !!leader.pushToken).map(
-      leader => leader.pushToken,
+    const chiefTokens: string[] = this.zone!.leaders.filter((leader) => !!leader.pushToken).map(
+      (leader) => leader.pushToken,
     );
     this.guestService.$guest
       .pipe(
-        map(guest => {
+        map((guest) => {
           const request = new RequestRequest();
           request.hotel = guest!.hotel;
           request.guest = guest!;
@@ -86,15 +86,17 @@ export class ZoneRequestComponent implements OnDestroy {
           request.message = msg;
           return request;
         }),
-        switchMap(request => this.requestService.saveRequest(request)),
+        switchMap((request) => this.requestService.saveRequest(request)),
+        switchMap(() =>
+          this.notificationsService.sendNotification(
+            `Hay una solicitud inmediata en ${this.zone.name} esperando a ser atendida. `,
+            chiefTokens,
+          ),
+        ),
       )
       .subscribe(
         () => {
           this.loader = false;
-          this.notificationsService.sendMassiveNotification(
-            'Tienes una nueva solicitud inmediata',
-            chiefTokens,
-          );
           this.requestController.reset();
           this.router.navigate(['/home']);
           this.messagesService.showToastMessage('Solicitud inmediata creada exitosamente');
@@ -109,7 +111,7 @@ export class ZoneRequestComponent implements OnDestroy {
   setQuickRequest(value: string) {
     this.selectedSubcategory = value;
     if (value === SUB_CATEGORY_DRINKS) {
-      this.router.navigate([ './drink'], {relativeTo: this.route});
+      this.router.navigate(['./drink'], { relativeTo: this.route });
     } else {
       this.showRequestField = value === 'Otro';
     }
