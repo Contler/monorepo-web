@@ -32,7 +32,12 @@ export class RequestService {
         const tokens = zone!.leaders
           .filter((leader) => !!leader.pushToken)
           .map((leader) => leader.pushToken);
-        this.ntfService.sendMassiveNotification('Tienes una nueva solicitud inmediata', tokens);
+        this.ntfService
+          .sendNotification(
+            `Hay una solicitud inmediata en ${zone.name} esperando a ser atendida. `,
+            tokens,
+          )
+          .subscribe();
       }),
       map(([zone, guest]) => {
         return {

@@ -4,6 +4,7 @@ import { GuestService } from 'guest/services/guest.service';
 import { take } from 'rxjs/operators';
 import { GuestEntity, HotelEntity } from '@contler/entity';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'contler-create-late',
@@ -21,9 +22,10 @@ export class CreateLateComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private guestService: GuestService,
     private afFirestore: AngularFirestore,
+    private snackBar: MatSnackBar,
   ) {
-    this.guestService.$hotel.pipe(take(1)).subscribe(hotel => (this.hotel = hotel));
-    this.guestService.$guest.subscribe(guest => (this.guest = guest));
+    this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => (this.hotel = hotel));
+    this.guestService.$guest.subscribe((guest) => (this.guest = guest));
   }
 
   ngOnInit() {}
@@ -49,15 +51,19 @@ export class CreateLateComponent implements OnInit {
   async create() {
     this.load = true;
     const key = this.afFirestore.createId();
-    this.afFirestore
-      .collection('late')
-      .doc(key)
-      .set({
-        uid: key,
-        date: this.timeSelect!.toUTCString(),
-        hotel: this.hotel!.uid,
-        user: this.guest!.uid,
-        status: 0,
-      });
+    this.snackBar.open(
+      'Tu solicitud de Late checkout fue recibida. El área encargada la revisará y te contactará para la confirmación de esta.',
+      'cerrar',
+      {
+        duration: 4000,
+      },
+    );
+    await this.afFirestore.collection('late').doc(key).set({
+      uid: key,
+      date: this.timeSelect!.toUTCString(),
+      hotel: this.hotel!.uid,
+      user: this.guest!.uid,
+      status: 0,
+    });
   }
 }

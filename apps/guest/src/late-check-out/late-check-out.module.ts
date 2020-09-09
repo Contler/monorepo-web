@@ -8,7 +8,7 @@ import { MaterialModule } from 'guest/material/material.module';
 import { CreateLateComponent } from './modal/create-late/create-late.component';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '@contler/core';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [LateCheckOutComponent, CreateLateComponent],
@@ -19,7 +19,8 @@ import { CoreModule } from '@contler/core';
     MaterialModule,
     FormsModule,
     CoreModule,
+    MatSnackBarModule,
   ],
   entryComponents: [CreateLateComponent],
 })
-export class LateCheckOutModule { }
+export class LateCheckOutModule {}
