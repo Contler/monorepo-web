@@ -1,0 +1,74 @@
+<contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav>
+    <contler-menu></contler-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="cnt-menu-category">
+    <div class="container">
+      <div class="form_section">
+        <p class="title">Categorias de Menú</p>
+        <form [formGroup]="menuCategoryForm" (ngSubmit)="save()">
+          <mat-form-field appearance="fill">
+            <input matInput formControlName="category" />
+            <mat-hint>Categoria</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="restaurant">
+              <mat-option *ngFor="let restaurant of restaurants" [value]="restaurant">
+                {{ restaurant.name }}
+              </mat-option>
+            </mat-select>
+            <mat-hint>Restaurante</mat-hint>
+          </mat-form-field>
+
+          <button
+            class="button"
+            mat-raised-button
+            color="accent"
+            contlerButton
+            [disabled]="menuCategoryForm.invalid"
+            [loading]="load"
+          >
+            CREAR CATEGORIA
+          </button>
+        </form>
+      </div>
+
+      <div class="rooms_section">
+        <mat-card class="crud_table card-p">
+          <div class="row">
+            <div class="row_container header two_column">
+              <p class="color-ct-p">Categorias</p>
+            </div>
+          </div>
+
+          <mat-accordion>
+            <mat-expansion-panel *ngFor="let ctMenu of categoriesMenu" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <p class="color-p">{{ ctMenu.restaurant }}</p>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="row" *ngFor="let category of ctMenu.categories">
+                <div class="row_container two_column">
+                  <p>{{ category.name }}</p>
+                  <div class="actions">
+                    <button mat-icon-button>
+                      <mat-icon class="custom_icon" (click)="editZone(zone)">edit</mat-icon>
+                    </button>
+                    <button mat-icon-button>
+                      <mat-icon class="custom_icon" (click)="deleteZone(zone)">delete</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-card>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
