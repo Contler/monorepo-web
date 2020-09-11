@@ -6,19 +6,24 @@
       <p class="finish-order__list-text" style="margin-bottom: 20px">Resumen del pedido:</p>
       <div class="finish-order__list-products">
         <ng-template ngFor let-item [ngForOf]="productList">
-          <p class="finish-order__list-text">{{item.product.name}}</p>
-          <p class="finish-order__list-text">{{(item.quantity * item.product.value) | currency: 'COP': '$': '1.0-0'}}</p>
+          <p class="finish-order__list-text">{{ item.product.name }}</p>
+          <p class="finish-order__list-text">
+            {{ item.quantity * item.product.value | currency: 'COP':'$':'1.0-0' }}
+          </p>
         </ng-template>
       </div>
     </div>
 
-    <p contlerColorHotel="primary" class="finish-order__total">Total: {{total | currency: 'COP': '$': '1.0-0'}}</p>
+    <p contlerColorHotel="primary" class="finish-order__total">
+      Total: {{ total | currency: 'COP':'$':'1.0-0' }}
+    </p>
 
     <form class="finish-order__form" [formGroup]="orderForm" (ngSubmit)="createOrder()">
       <mat-form-field appearance="fill">
         <mat-select formControlName="time">
+          <mat-option [value]="actualTime">De inmediato</mat-option>
           <mat-option *ngFor="let dat of time; let i = index" [value]="dat">
-            {{dat | date: 'shortTime'}}
+            {{ dat | date: 'shortTime' }}
           </mat-option>
         </mat-select>
         <mat-hint>Hora a la que quieres recibirlo</mat-hint>
@@ -27,17 +32,30 @@
 
       <mat-form-field appearance="fill">
         <mat-select formControlName="zone">
-          <mat-option *ngFor="let zone of zones$ | async" [value]="zone">{{zone.name}}</mat-option>
+          <mat-option *ngFor="let zone of zones$ | async" [value]="zone">{{
+            zone.name
+          }}</mat-option>
         </mat-select>
         <mat-hint>Dónde quieres recibirlo</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <textarea formControlName="comment" matInput placeholder="Obervaciones de tu pedido:"></textarea>
+        <textarea
+          formControlName="comment"
+          matInput
+          placeholder="Obervaciones de tu pedido:"
+        ></textarea>
       </mat-form-field>
 
-      <button mat-raised-button contlerColorBtnHotel="primary" [disabled]="orderForm.invalid || loading" contlerButton [loading]="loading">Finalizar</button>
+      <button
+        mat-raised-button
+        contlerColorBtnHotel="primary"
+        [disabled]="orderForm.invalid || loading"
+        contlerButton
+        [loading]="loading"
+      >
+        Finalizar
+      </button>
     </form>
-
   </div>
 </contler-marco>

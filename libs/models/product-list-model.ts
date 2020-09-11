@@ -1,4 +1,4 @@
-import { ProductEntity } from '@contler/entity';
+import { ProductEntity } from '../entity/product.entity';
 
 export interface ObjectCategoryProduct {
   [key: string]: CategoryProductList;
