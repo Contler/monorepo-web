@@ -1,10 +1,13 @@
 .calendar {
-
   margin-top: 20px;
 
   &-menu {
     margin-top: 20px;
     display: flex;
     flex-direction: row-reverse;
+    align-items: baseline;
+    & > * {
+      margin-left: 10px;
+    }
   }
 }
