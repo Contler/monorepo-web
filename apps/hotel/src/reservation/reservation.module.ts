@@ -5,7 +5,7 @@ import { ReservationRoutingModule } from './reservation-routing.module';
 import { ReservationComponent } from './reservation.component';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { MaterialModule } from 'hotel/material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReservationFormComponent } from './components/reservation-form/reservation-form.component';
 import { ReservationListComponent } from './components/reservation-list/reservation-list.component';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
@@ -13,6 +13,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { CoreModule } from '@contler/core';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { CalendarMonthModule } from 'angular-calendar';
+import { ZoneBookPipe } from './pipes/zone-book.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CalendarMonthModule } from 'angular-calendar';
     ReservationListComponent,
     ScheduleComponent,
     CalendarComponent,
+    ZoneBookPipe,
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,7 @@ import { CalendarMonthModule } from 'angular-calendar';
     NgxMaskModule,
     CoreModule,
     CalendarMonthModule,
+    FormsModule,
   ],
 })
 export class ReservationModule {}

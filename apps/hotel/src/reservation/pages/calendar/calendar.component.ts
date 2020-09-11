@@ -1,47 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ReservationService, UserService } from '@contler/core';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take, tap } from 'rxjs/operators';
 import { CalendarEvent } from 'angular-calendar';
 import { MonthViewDay } from 'calendar-utils';
 import * as fns from 'date-fns';
-
-
+import { ZoneService } from 'hotel/zone/services/zone.service';
+import { BookingEntity, ZoneEntity } from '@contler/entity';
+import { Observable } from 'rxjs';
+import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 
 @Component({
   selector: 'contler-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent {
   viewDate = new Date();
   events: CalendarEvent[] = [];
   activeDayIsOpen = false;
+  zone: ZoneReserveEntity;
 
-  constructor(private reservation: ReservationService, private usrService: UserService) {
-    this.usrService
+  booking$: Observable<BookingEntity[]>;
+  zones$: Observable<ZoneReserveEntity[]>;
+
+  constructor(
+    private reservation: ReservationService,
+    private usrService: UserService,
+    private reservationService: ReservationService,
+  ) {
+    this.zones$ = this.usrService
       .getUser()
-      .pipe(
-        switchMap(usr => this.reservation.getBookingByHotel(usr.hotel.uid)),
-        map(info =>
-          info.map(book => {
-            const start = new Date(book.schedule.timeInit);
-            start.setDate(new Date(book.date).getDate());
-
-            const end = new Date(book.schedule.timeFinish);
-            end.setDate(new Date(book.date).getDate());
-
-            const event: CalendarEvent = {
-              title: `${book.schedule.reservation.name} - ${book.name} (${fns.format(start, 'H:mm')} - ${fns.format(end, 'H:mm')})`,
-              start,
-              end,
-            };
-            return event;
-          }),
-        ),
-      )
-      .subscribe(data => {
-        this.events = data;
-      });
+      .pipe(switchMap((user) => this.reservationService.getHotelReservation(user.hotel.uid)));
+    this.booking$ = this.usrService
+      .getUser()
+      .pipe(switchMap((usr) => this.reservation.getBookingByHotel(usr.hotel.uid)));
   }
 
   dayClicked(event: { day: MonthViewDay<any>; sourceEvent: any }) {
@@ -53,5 +45,28 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  convertBooking(booking: BookingEntity[]) {
+    return booking ? booking.map(this.bookingToCalendar) : [];
+  }
+
+  private bookingToCalendar(book: BookingEntity): CalendarEvent {
+    const start = new Date(book.schedule.timeInit);
+    start.setDate(new Date(book.date).getDate());
+    start.setMonth(new Date(book.date).getMonth());
+    start.setFullYear(new Date(book.date).getFullYear());
+
+    const end = new Date(book.schedule.timeFinish);
+    end.setDate(new Date(book.date).getDate());
+    end.setMonth(new Date(book.date).getMonth());
+    end.setFullYear(new Date(book.date).getFullYear());
+
+    return {
+      title: `${book.schedule.reservation.name} - ${book.name} (${fns.format(
+        start,
+        'H:mm',
+      )} - ${fns.format(end, 'H:mm')})`,
+      start,
+      end,
+    };
+  }
 }
