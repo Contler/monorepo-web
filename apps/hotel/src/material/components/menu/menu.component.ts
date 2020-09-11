@@ -71,6 +71,12 @@ export class MenuComponent implements OnInit {
       primary: false,
     },
     {
+      name: 'Categorias de Menú',
+      icon: 'menu_book',
+      link: ['/home', 'menu-category'],
+      primary: false,
+    },
+    {
       name: 'Wake up calls',
       icon: 'access_alarm',
       link: ['/home', 'wake-up'],

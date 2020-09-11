@@ -86,6 +86,11 @@ const routes: Routes = [
     loadChildren: () => import('../restaurant/retaurant.module').then((m) => m.RestaurantModule),
   },
   {
+    path: 'menu-category',
+    loadChildren: () =>
+      import('../menu-category/menu-category.module').then((m) => m.MenuCategoryModule),
+  },
+  {
     path: '**',
     component: AdminHomeComponent,
   },
