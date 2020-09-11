@@ -26,6 +26,7 @@ import { LateSearchPipe } from './pipes/late-search.pipe';
 import { ProductService } from 'lib/lib/services/product.service';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 const materialModules = [
   MatFormFieldModule,
@@ -46,21 +47,37 @@ const materialModules = [
   MatSnackBarModule,
 ];
 
-
 @NgModule({
-  imports: [CommonModule, MatCheckboxModule, ...materialModules, FormsModule],
-  declarations: [ButtonDirective, ZoneListComponent, LateSearchPipe, ProductItemComponent, OrderItemComponent],
-  exports: [ButtonDirective, ZoneListComponent, ...materialModules, LateSearchPipe, ProductItemComponent, OrderItemComponent],
+  imports: [
+    CommonModule,
+    MatCheckboxModule,
+    ...materialModules,
+    FormsModule,
+    AngularFireDatabaseModule,
+  ],
+  declarations: [
+    ButtonDirective,
+    ZoneListComponent,
+    LateSearchPipe,
+    ProductItemComponent,
+    OrderItemComponent,
+  ],
+  exports: [
+    ButtonDirective,
+    ZoneListComponent,
+    ...materialModules,
+    LateSearchPipe,
+    ProductItemComponent,
+    OrderItemComponent,
+  ],
   entryComponents: [],
-  providers: [ReservationService, LateCheckOutService, DatePipe, ProductService]
+  providers: [ReservationService, LateCheckOutService, DatePipe, ProductService],
 })
 export class CoreModule {
   static forRoot(config: CoreConfig): ModuleWithProviders<CoreModule> {
     return {
       ngModule: CoreModule,
-      providers: [
-        {provide: CoreConfig, useValue: config}
-      ]
-    }
+      providers: [{ provide: CoreConfig, useValue: config }],
+    };
   }
 }

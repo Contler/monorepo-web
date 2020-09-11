@@ -41,6 +41,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     this.restaurantGroup = formBuild.group({
       name: [null, Validators.required],
     });
+    this.restaurantServ.createCategoryRestaurant('123', 'category');
   }
 
   ngOnInit(): void {
