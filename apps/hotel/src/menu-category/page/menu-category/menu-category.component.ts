@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { AuthService } from 'hotel/services/auth.service';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { RestaurantService } from '@contler/core';
 
@@ -28,7 +28,7 @@ export class MenuCategoryComponent implements OnInit, OnDestroy {
       ],
     },
   ];
-  restaurants: Observable<RestaurantEntity[]>;
+  restaurants: RestaurantEntity[] = [];
   load = false;
   panelOpenState = false;
   hotelId: string = null;
@@ -42,7 +42,7 @@ export class MenuCategoryComponent implements OnInit, OnDestroy {
     private restaurantServ: RestaurantService,
   ) {
     this.menuCategoryForm = formBuild.group({
-      category: [null, Validators.required],
+      name: [null, Validators.required],
       restaurant: [null, Validators.required],
     });
   }
@@ -59,7 +59,18 @@ export class MenuCategoryComponent implements OnInit, OnDestroy {
 
   save() {
     if (this.menuCategoryForm.valid) {
-      console.log('formulario: ', this.menuCategoryForm.value);
+      this.load = true;
+      const { name, restaurant } = this.menuCategoryForm.value;
+      this.restaurantServ
+        .createCategoryRestaurant(restaurant.uid, name)
+        .then(() => {
+          this.load = false;
+          this.messagesService.showToastMessage('Restaurante creado exitosamente');
+          this.resetForm();
+        })
+        .catch(() => {
+          this.messagesService.showServerError();
+        });
     }
   }
 
