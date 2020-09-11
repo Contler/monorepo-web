@@ -81,4 +81,8 @@ export class FinishOrderComponent {
       this.router.navigate(['/home/product']);
     });
   }
+
+  get actualTime() {
+    return new Date();
+  }
 }

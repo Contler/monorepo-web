@@ -1,23 +1,27 @@
 <div class="cnt-qualify">
   <img src="assets/img/rating.svg" alt="" class="cnt-qualify__img" />
   <p class="cnt-qualify__title">
-    Cómo te parecio el servicio que prestó nuestro equipo en tu reserva en {{ data.schedule.reservation.name }} el día {{ data.date | date: 'dd/MM/yyyy' }}.
+    Cómo te parecio el servicio que prestó nuestro equipo en tu reserva en
+    {{ data.schedule.reservation.name }} el día {{ data.date | date: 'dd/MM/yyyy' }}.
   </p>
-  <star-rating
+  <contler-start
     value="0"
     totalstars="5"
     checkedcolor="#dfae00"
     uncheckedcolor="#6c6c6c"
     size="24px"
-    (rate)="selectStart($event)"></star-rating>
-  <p class="cnt-qualify__info" *ngIf="value !== undefined">{{ textRate[value - 1] }} {{ value }}/5</p>
+    (rate)="selectStart($event)"
+  ></contler-start>
+  <p class="cnt-qualify__info" *ngIf="value !== undefined">
+    {{ textRate[value - 1] }} {{ value }}/5
+  </p>
   <button
     mat-raised-button
     color="accent"
     class="cnt-qualify__btn"
     contlerButton
     [loading]="load"
-    [disabled]="!( !!value) || load"
+    [disabled]="!!!value || load"
     (click)="close()"
   >
     Calificar
