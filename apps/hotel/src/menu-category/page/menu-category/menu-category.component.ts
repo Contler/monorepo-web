@@ -30,6 +30,7 @@ export class MenuCategoryComponent implements OnInit, OnDestroy {
   ];
   restaurants: Observable<RestaurantEntity[]>;
   load = false;
+  panelOpenState = false;
   hotelId: string = null;
   subscription: Subscription[] = [];
 
