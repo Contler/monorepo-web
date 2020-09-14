@@ -1,38 +1,27 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { AuthService } from 'hotel/services/auth.service';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { RestaurantService } from '@contler/core';
+import { switchMap, take, tap } from 'rxjs/operators';
+import { CategoryModels } from '@contler/models/category.models';
 
 @Component({
   selector: 'contler-menu-category',
   templateUrl: './menu-category.component.html',
   styleUrls: ['./menu-category.component.scss'],
 })
-export class MenuCategoryComponent implements OnInit, OnDestroy {
+export class MenuCategoryComponent implements OnInit {
+  restaurants$: Observable<RestaurantEntity[]>;
+  categories: { [key: string]: Observable<CategoryModels[]> } = {};
+
   menuCategoryForm: FormGroup;
-  categoriesMenu: any[] = [
-    {
-      restaurant: 'Plaza norte',
-      categories: [{ name: 'categoria 1' }, { name: 'categoria 2' }, { name: 'categoria 3' }],
-    },
-    {
-      restaurant: 'Plaza sur',
-      categories: [
-        { name: 'categoria sur 1' },
-        { name: 'categoria sur 2' },
-        { name: 'categoria sur 3' },
-      ],
-    },
-  ];
-  restaurants: RestaurantEntity[] = [];
   load = false;
   panelOpenState = false;
   hotelId: string = null;
-  subscription: Subscription[] = [];
 
   constructor(
     private formBuild: FormBuilder,
@@ -48,12 +37,10 @@ export class MenuCategoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription.push(
-      this.authServ.$employer.subscribe((user) => {
-        this.hotelId = user.hotel.uid;
-        this.getRestaurants();
-        // this.getmenuCategories();
-      }),
+    this.restaurants$ = this.authServ.$employer.pipe(
+      take(1),
+      switchMap((usr) => this.restaurantServ.getAllRestaurantsByHotel(usr.hotel.uid)),
+      tap(this.loadCategories.bind(this)),
     );
   }
 
@@ -80,19 +67,9 @@ export class MenuCategoryComponent implements OnInit, OnDestroy {
     this.menuCategoryForm.reset();
   }
 
-  getmenuCategories() {}
-
-  getRestaurants() {
-    this.subscription.push(
-      this.restaurantServ.getAllRestaurantsByHotel(this.hotelId).subscribe((restaurant: any) => {
-        if (restaurant) {
-          this.restaurants = restaurant ? restaurant : [];
-        }
-      }),
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.forEach((subs) => subs.unsubscribe());
+  private loadCategories(restaurants: RestaurantEntity[]) {
+    restaurants.forEach(({ uid }) => {
+      this.categories[uid] = this.restaurantServ.getCategoryRestaurant(uid);
+    });
   }
 }
