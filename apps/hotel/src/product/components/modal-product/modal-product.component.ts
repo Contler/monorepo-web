@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CATEGORY_PRODUCTS } from '@contler/const';
-import { ProductService } from '@contler/core';
+import { ProductService, RestaurantService } from '@contler/core';
 import { AuthService } from 'hotel/services/auth.service';
-import { switchMap } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { switchMap, take } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
 import { MatDialogRef } from '@angular/material/dialog';
+import { RestaurantEntity } from '@contler/entity/restaurant.entity';
+import { CategoryModels } from '@contler/models/category.models';
 
 @Component({
   selector: 'contler-modal-product',
@@ -13,8 +15,10 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./modal-product.component.scss'],
 })
 export class ModalProductComponent implements OnInit, OnDestroy {
+  restaurants$: Observable<RestaurantEntity[]>;
+  categories$: Observable<CategoryModels[]>;
+
   productForm: FormGroup;
-  categories = CATEGORY_PRODUCTS;
   loading = false;
   product = {
     name: '',
@@ -30,19 +34,31 @@ export class ModalProductComponent implements OnInit, OnDestroy {
     public dialogRef: MatDialogRef<ModalProductComponent>,
     private productService: ProductService,
     private auth: AuthService,
+    private restaurantService: RestaurantService,
   ) {
     this.productForm = formBuild.group({
       name: ['', Validators.required],
       value: ['', Validators.required],
       description: ['', Validators.required],
+      restaurant: ['', Validators.required],
       category: ['', Validators.required],
     });
   }
 
   ngOnInit() {
-    this.sc1 = this.nameControl.valueChanges.subscribe(data => (this.product = { ...this.product, name: data }));
-    this.sc2 = this.valueControl.valueChanges.subscribe(data => (this.product = { ...this.product, value: data }));
-    this.sc3 = this.descriptionControl.valueChanges.subscribe(data => (this.product = { ...this.product, description: data }));
+    this.sc1 = this.nameControl.valueChanges.subscribe(
+      (data) => (this.product = { ...this.product, name: data }),
+    );
+    this.sc2 = this.valueControl.valueChanges.subscribe(
+      (data) => (this.product = { ...this.product, value: data }),
+    );
+    this.sc3 = this.descriptionControl.valueChanges.subscribe(
+      (data) => (this.product = { ...this.product, description: data }),
+    );
+    this.restaurants$ = this.auth.$employer.pipe(
+      take(1),
+      switchMap(({ hotel }) => this.restaurantService.getAllRestaurantsByHotel(hotel.uid)),
+    );
   }
 
   ngOnDestroy(): void {
@@ -51,18 +67,23 @@ export class ModalProductComponent implements OnInit, OnDestroy {
     this.sc3!.unsubscribe();
   }
 
+  updateCategories(restaurant: RestaurantEntity) {
+    this.productForm.get('category').reset();
+    this.categories$ = this.restaurantService.getCategoryRestaurant(restaurant.uid);
+  }
+
   createProduct() {
     this.loading = true;
     this.auth.$employer
       .pipe(
-        switchMap(user =>
+        switchMap((user) =>
           this.productService.createProduct({
             hotelId: user.hotel.uid,
             ...this.productForm.value,
           }),
         ),
       )
-      .subscribe(product => {
+      .subscribe((product) => {
         this.loading = false;
         this.dialogRef.close(product);
       });
@@ -79,6 +100,4 @@ export class ModalProductComponent implements OnInit, OnDestroy {
   get descriptionControl() {
     return this.productForm.get('description')!;
   }
-
-
 }
