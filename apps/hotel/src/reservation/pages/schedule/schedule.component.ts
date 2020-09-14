@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { CategoryEntity, ScheduleEntity } from '@contler/entity';
 import { ICONS } from '@contler/const';
@@ -9,6 +9,7 @@ import { filter, map, startWith, switchMap, tap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { plainToClass } from 'class-transformer';
+import { DAYS, AllDays } from '@contler/const';
 
 @Component({
   selector: 'contler-schedule',
@@ -18,6 +19,7 @@ import { plainToClass } from 'class-transformer';
 export class ScheduleComponent implements OnInit {
   categoryZone: Observable<CategoryEntity[]>;
   icons = ICONS;
+  days = DAYS;
   reservationForm: FormGroup;
   schedules: ScheduleEntity[] = [];
   filterIcon: Observable<String[]>;
@@ -33,8 +35,11 @@ export class ScheduleComponent implements OnInit {
     private router: Router,
     route: ActivatedRoute,
     formBuild: FormBuilder,
+    private cdRef: ChangeDetectorRef,
   ) {
-    this.categoryZone = this.zoneServices.getCategories().pipe(tap(cat => (this.categories = cat)));
+    this.categoryZone = this.zoneServices
+      .getCategories()
+      .pipe(tap((cat) => (this.categories = cat)));
 
     this.reservationForm = formBuild.group({
       name: ['', Validators.required],
@@ -44,17 +49,19 @@ export class ScheduleComponent implements OnInit {
     this.filterIcon = this.icon.valueChanges.pipe(
       startWith(''),
       map((data: string) => data.toLowerCase()),
-      map(data => this.icons.filter(icon => icon.toLowerCase().includes(data))),
+      map((data) => this.icons.filter((icon) => icon.toLowerCase().includes(data))),
     );
     route.params
       .pipe(
-        filter(data => !!data['id']),
-        map(data => data['id'] as number),
-        switchMap(id => reservationService.getReservation(id)),
+        filter((data) => !!data['id']),
+        map((data) => data['id'] as number),
+        switchMap((id) => reservationService.getReservation(id)),
       )
-      .subscribe(reservation => {
+      .subscribe((reservation) => {
         this.reservation = reservation;
-        this.reservation.schedule = this.reservation.schedule.map(schedule => plainToClass(ScheduleEntity, schedule));
+        this.reservation.schedule = this.reservation.schedule.map((schedule) =>
+          plainToClass(ScheduleEntity, schedule),
+        );
         this.schedules = this.reservation.schedule;
         this.reservationForm.get('name')!.setValue(this.reservation.name);
         this.reservationForm.get('category')!.setValue(this.reservation.category.id);
@@ -65,9 +72,32 @@ export class ScheduleComponent implements OnInit {
   ngOnInit() {}
 
   addSchedule() {
+    const finderSchedule = this.schedules.find((el) => el.day === AllDays);
+    const arrSchedules: any[] = [];
     const temp = new ScheduleEntity();
-    temp.active = false;
-    this.schedules = [...this.schedules, temp];
+
+    if (finderSchedule) {
+      this.schedules = [];
+      for (let idx = 0; idx < this.days.length; idx++) {
+        arrSchedules.push({
+          active: finderSchedule.active,
+          day: this.days[idx],
+          quota: finderSchedule.quota,
+          timeInit: finderSchedule.timeInit,
+          timeFinish: finderSchedule.timeFinish,
+        });
+      }
+      this.schedules = arrSchedules;
+      this.removeElement(
+        finderSchedule,
+        this.schedules.findIndex((el) => el.day === AllDays),
+      );
+    } else {
+      temp.active = false;
+      this.schedules = [...this.schedules, temp];
+    }
+
+    this.cdRef.detectChanges();
   }
 
   removeElement(schedule: ScheduleEntity, index: number) {
@@ -81,21 +111,25 @@ export class ScheduleComponent implements OnInit {
     this.loader = true;
     const { name, category, icon } = this.reservationForm.value;
     this.reservation!.name = name;
-    this.reservation!.category = this.categories.find(cat => cat.id === category)!;
+    this.reservation!.category = this.categories.find((cat) => cat.id === category)!;
     this.reservation!.icon = icon;
 
     // new schedule
     const newScheduleObs = this.schedules
-      .filter(schedule => !schedule.id)
-      .map(schedule => this.reservationService.createSchedule(this.reservation!.id, schedule));
+      .filter((schedule) => !schedule.id)
+      .map((schedule) => this.reservationService.createSchedule(this.reservation!.id, schedule));
 
     //delete schedule
-    const deleteSchedule = this.removeSchedule.map(schedule => this.reservationService.deleteSchedule(schedule.id));
-    deleteSchedule.forEach(item => item.subscribe());
+    const deleteSchedule = this.removeSchedule.map((schedule) =>
+      this.reservationService.deleteSchedule(schedule.id),
+    );
+    deleteSchedule.forEach((item) => item.subscribe());
 
     //update schedule
-    const updateSchedule = this.reservation!.schedule.map(schedule => this.reservationService.updateSchedule(schedule));
-    updateSchedule.forEach(item => item.subscribe());
+    const updateSchedule = this.reservation!.schedule.map((schedule) =>
+      this.reservationService.updateSchedule(schedule),
+    );
+    updateSchedule.forEach((item) => item.subscribe());
 
     // update reservation
     this.reservationService.updateReservation(this.reservation!).subscribe(() => {
@@ -110,8 +144,10 @@ export class ScheduleComponent implements OnInit {
   deleteReservation() {
     this.loader = true;
     const deleteSchedule = [
-      ...this.removeSchedule.map(schedule => this.reservationService.deleteSchedule(schedule.id)),
-      ...this.reservation!.schedule.map(schedule => this.reservationService.deleteSchedule(schedule.id)),
+      ...this.removeSchedule.map((schedule) => this.reservationService.deleteSchedule(schedule.id)),
+      ...this.reservation!.schedule.map((schedule) =>
+        this.reservationService.deleteSchedule(schedule.id),
+      ),
     ];
 
     forkJoin(deleteSchedule)

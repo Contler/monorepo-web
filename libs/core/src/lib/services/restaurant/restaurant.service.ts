@@ -53,6 +53,14 @@ export class RestaurantService {
     return this.afDb.list<CategoryModels>(ref).valueChanges();
   }
 
+  updateCategoryRestaurant(restaurantId: string, categoryId: string, name: string) {
+    const ref = this.afDb.database
+      .ref('restaurantCategories')
+      .child(restaurantId)
+      .child(categoryId);
+    return ref.update({ name });
+  }
+
   deleteRestaurantCategory(restaurantId: string, categoryId: string) {
     const ref = this.afDb.database
       .ref('restaurantCategories')

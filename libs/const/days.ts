@@ -6,4 +6,7 @@ export const DAYS = [
   'Jueves',
   'Viernes',
   'Sabado',
+  'Todos los días',
 ];
+
+export const AllDays = 'Todos los días';
