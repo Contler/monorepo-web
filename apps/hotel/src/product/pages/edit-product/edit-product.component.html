@@ -1,7 +1,16 @@
 <contler-marco-admin title="Producto">
   <ng-container marcoHeader>
-    <button mat-raised-button (click)="deleteProduct()" contlerButton [loading]="load">Eliminar</button>
-    <button mat-raised-button color="accent" [disabled]="productForm?.invalid || load" contlerButton [loading]="load" (click)="updateProduct()">
+    <button mat-raised-button (click)="deleteProduct()" contlerButton [loading]="load">
+      Eliminar
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      [disabled]="productForm?.invalid || load"
+      contlerButton
+      [loading]="load"
+      (click)="updateProduct()"
+    >
       Actualizar
     </button>
   </ng-container>
@@ -9,12 +18,24 @@
   <div marcoBody class="edit-product">
     <form *ngIf="productForm" [formGroup]="productForm" class="edit-product__form">
       <mat-form-field appearance="fill">
-        <input type="text" matInput formControlName="name" (ngModelChange)="product.name = $event">
+        <input
+          type="text"
+          matInput
+          formControlName="name"
+          (ngModelChange)="product.name = $event"
+        />
         <mat-hint>Nombre del producto</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <input type="text" matInput formControlName="value" (ngModelChange)="product.value = $event" currencyMask [options]="{precision: 0, align: 'left'}">
+        <input
+          type="text"
+          matInput
+          formControlName="value"
+          (ngModelChange)="product.value = $event"
+          currencyMask
+          [options]="{ precision: 0, align: 'left' }"
+        />
         <mat-hint>Valor</mat-hint>
       </mat-form-field>
 
@@ -26,15 +47,35 @@
         <mat-hint>Estado</mat-hint>
       </mat-form-field>
 
-      <mat-form-field appearance="fill" class="double">
-        <input type="text" matInput formControlName="description" (ngModelChange)="product.description = $event">
+      <mat-form-field appearance="fill" class="full">
+        <input
+          type="text"
+          matInput
+          formControlName="description"
+          (ngModelChange)="product.description = $event"
+        />
         <mat-hint>Descripción</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
+        <mat-select
+          placeholder="Restaurante"
+          formControlName="restaurant"
+          (valueChange)="updateCategories($event)"
+          [compareWith]="compareRestaurant"
+          (ngModelChange)="product.restaurant = $event"
+        >
+          <mat-option *ngFor="let restaurant of restaurants$ | async" [value]="restaurant">
+            {{ restaurant.name }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>Restaurante</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
         <mat-select formControlName="category" (ngModelChange)="product.category = $event">
-          <mat-option *ngFor="let category of categories" [value]="category">
-            {{category}}
+          <mat-option *ngFor="let category of categories$ | async" [value]="category.uid">
+            {{ category.name }}
           </mat-option>
         </mat-select>
         <mat-hint>Catgoría</mat-hint>
@@ -43,9 +84,7 @@
 
     <div>
       <contler-product-item [product]="product"></contler-product-item>
-      <mat-error>{{error}}</mat-error>
+      <mat-error>{{ error }}</mat-error>
     </div>
-
-
   </div>
 </contler-marco-admin>

@@ -15,12 +15,21 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ProductComponent implements OnInit {
   dataSource = new MatTableDataSource<ProductEntity>();
-  displayedColumns: string[] = ['name', 'description', 'value', 'category', 'state'];
-  readonly filters = [{ name: 'Todos', value: 0 }, { name: 'Activo', value: 1 }, { name: 'Inactivo', value: 2 }];
+  displayedColumns: string[] = ['name', 'description', 'value', 'restaurant', 'state'];
+  readonly filters = [
+    { name: 'Todos', value: 0 },
+    { name: 'Activo', value: 1 },
+    { name: 'Inactivo', value: 2 },
+  ];
   filter = 0;
   private products: ProductEntity[] = [];
 
-  constructor(private dialog: MatDialog, private auth: AuthService, private productService: ProductService, private router: Router) {}
+  constructor(
+    private dialog: MatDialog,
+    private auth: AuthService,
+    private productService: ProductService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.getAllProducts();
@@ -37,13 +46,13 @@ export class ProductComponent implements OnInit {
   }
 
   textFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase()
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   getAllProducts() {
     this.auth.$employer
-      .pipe(switchMap(user => this.productService.getAllProducts(user.hotel.uid)))
-      .subscribe(products => {
+      .pipe(switchMap((user) => this.productService.getAllProducts(user.hotel.uid)))
+      .subscribe((products) => {
         this.products = products;
         this.dataSource.data = products;
       });
@@ -70,12 +79,12 @@ export class ProductComponent implements OnInit {
       .afterClosed()
       .pipe(
         take(1),
-        filter(data => !!data),
+        filter((data) => !!data),
       )
-      .subscribe(data => (this.dataSource.data = [...this.dataSource.data, data]));
+      .subscribe((data) => (this.dataSource.data = [...this.dataSource.data, data]));
   }
 
   goToProduct(product: ProductEntity) {
-    this.router.navigate(['home/product', product.id])
+    this.router.navigate(['home/product', product.id]);
   }
 }

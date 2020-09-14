@@ -27,6 +27,7 @@ import { ProductService } from 'lib/lib/services/product.service';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { RestaurantService } from 'lib/lib/services/restaurant/restaurant.service';
 
 const materialModules = [
   MatFormFieldModule,
@@ -71,7 +72,7 @@ const materialModules = [
     OrderItemComponent,
   ],
   entryComponents: [],
-  providers: [ReservationService, LateCheckOutService, DatePipe, ProductService],
+  providers: [ReservationService, LateCheckOutService, DatePipe, ProductService, RestaurantService],
 })
 export class CoreModule {
   static forRoot(config: CoreConfig): ModuleWithProviders<CoreModule> {

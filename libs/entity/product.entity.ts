@@ -1,4 +1,5 @@
 import { HotelEntity } from './hotel.entity';
+import { RestaurantEntity } from './restaurant.entity';
 
 export class ProductEntity {
   id!: number;
@@ -14,4 +15,6 @@ export class ProductEntity {
   category!: string;
 
   hotel!: HotelEntity;
+
+  restaurant: RestaurantEntity;
 }
