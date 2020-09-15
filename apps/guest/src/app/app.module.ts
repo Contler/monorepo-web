@@ -16,6 +16,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule } from 'ngx-mask';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -31,8 +33,12 @@ import { NgxMaskModule } from 'ngx-mask';
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
-    CoreModule.forRoot({urlBackend: environment.apiUrl}),
+    CoreModule.forRoot({ urlBackend: environment.apiUrl }),
     NgxMaskModule.forRoot(),
+    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+    }),
   ],
   providers: [HotelService, UserService],
   bootstrap: [AppComponent],

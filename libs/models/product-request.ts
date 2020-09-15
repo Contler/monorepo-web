@@ -1,4 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
+import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 
 export class ProductRequest {
   @IsNotEmpty()
@@ -12,6 +13,9 @@ export class ProductRequest {
 
   @IsNotEmpty()
   category!: string;
+
+  @IsNotEmpty()
+  restaurant!: RestaurantEntity;
 
   @IsNotEmpty()
   hotelId!: string;

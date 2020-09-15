@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
-import { ProductOrderService } from 'guest/product/services/product-order.service';
-import { ProductListModel } from '@contler/models/product-list-model';
 import { Router } from '@angular/router';
+import { State } from 'guest/app/reducers';
+import { Store } from '@ngrx/store';
+import * as OrderReducer from 'guest/app/reducers/order/order.reducer';
+import { orderFeatureKey } from 'guest/app/reducers/order/order.reducer';
+import { Observable } from 'rxjs';
+import { ProductEntity } from '@contler/entity';
+import * as OrderAction from 'guest/app/reducers/order/order.actions';
 
 @Component({
   selector: 'contler-confirm-order',
@@ -9,23 +14,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./confirm-order.component.scss'],
 })
 export class ConfirmOrderComponent {
-  products: ProductListModel[] = [];
-  total = 0;
+  products$: Observable<OrderReducer.ProductOrder[]>;
+  total$: Observable<number>;
 
-  constructor(private productOrderService: ProductOrderService, private router: Router) {
-    this.products = this.productOrderService.getOrder();
-    if (!this.products.length) {
-      this.router.navigate(['/home/product']);
-    }
-    this.calculateTotal();
+  constructor(private router: Router, private store: Store<State>) {
+    this.products$ = this.store.select((state) => OrderReducer.selectAll(state[orderFeatureKey]));
+    this.total$ = this.store.select((state) => state[orderFeatureKey].totalPrice);
   }
 
-  calculateTotal() {
-    this.total = this.productOrderService.calculateTotal(this.products);
+  updateProduct(product: ProductEntity, quantity: number) {
+    this.store.dispatch(OrderAction.AddProduct({ product, quantity }));
   }
 
   nextStep() {
-    this.productOrderService.saveOrder(this.products)
-    this.router.navigate(['/home/product/finish'])
+    this.router.navigate(['/home/product/finish']);
   }
 }

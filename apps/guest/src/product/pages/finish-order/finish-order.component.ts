@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { ProductOrderService } from 'guest/product/services/product-order.service';
 import { Router } from '@angular/router';
-import { ProductListModel } from '@contler/models/product-list-model';
 import { ZoneService } from 'guest/services/zone.service';
-import { map, take } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { GuestEntity, HotelEntity, ZoneEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,6 +10,10 @@ import { OrderRequest } from '@contler/models/order-request';
 import { GuestService } from 'guest/services/guest.service';
 import { ProductService } from '@contler/core';
 import generateTine from 'guest/utils/generateTime';
+import { Store } from '@ngrx/store';
+import { State } from 'guest/app/reducers';
+import * as OrderReducer from 'guest/app/reducers/order/order.reducer';
+import { orderFeatureKey, ProductOrder } from 'guest/app/reducers/order/order.reducer';
 
 @Component({
   selector: 'contler-finish-order',
@@ -18,10 +21,11 @@ import generateTine from 'guest/utils/generateTime';
   styleUrls: ['./finish-order.component.scss'],
 })
 export class FinishOrderComponent {
-  productList: ProductListModel[];
-  total = 0;
-  time = generateTine();
+  products$: Observable<ProductOrder[]>;
   zones$: Observable<ZoneEntity[]>;
+  totalPrice$: Observable<number>;
+
+  time = generateTine();
   orderForm: FormGroup;
   loading = false;
   hotel!: HotelEntity | null;
@@ -34,12 +38,10 @@ export class FinishOrderComponent {
     private formBuild: FormBuilder,
     private guestService: GuestService,
     private productService: ProductService,
+    private store: Store<State>,
   ) {
-    this.productList = this.productOrderService.getOrder();
-    if (!this.productList.length) {
-      this.router.navigate(['/home/product']);
-    }
-    this.total = this.productOrderService.calculateTotal(this.productList);
+    this.products$ = this.store.select((state) => OrderReducer.selectAll(state[orderFeatureKey]));
+    this.totalPrice$ = this.store.select((state) => state[orderFeatureKey].totalPrice);
     this.zones$ = this.zoneService.$zones.pipe(
       map((zones) => zones.filter((zone) => zone.admitOrders)),
     );
@@ -52,34 +54,31 @@ export class FinishOrderComponent {
     this.guestService.$guest.pipe(take(1)).subscribe((guest) => (this.guest = guest));
   }
 
-  getHour(index: number) {
-    const extraTime = 30 * index * 60 * 1000;
-    const date = new Date();
-    date.setHours(0);
-    date.setMinutes(0);
-    date.setSeconds(0);
-    date.setMilliseconds(0);
-    return new Date(date.getTime() + extraTime);
-  }
-
   createOrder() {
     const { time, zone, comment } = this.orderForm.value;
     this.loading = true;
 
-    const order: OrderRequest = {
-      time,
-      comment,
-      zone,
-      productList: this.productList,
-      hotel: this.hotel!,
-      guest: this.guest!,
-    };
-
-    this.productService.createOrder(order).subscribe(() => {
-      this.productOrderService.resetOrder();
-      this.loading = false;
-      this.router.navigate(['/home/product']);
-    });
+    this.products$
+      .pipe(
+        take(1),
+        map(
+          (products) =>
+            ({
+              time,
+              comment,
+              zone,
+              productList: products,
+              hotel: this.hotel!,
+              guest: this.guest!,
+            } as OrderRequest),
+        ),
+        switchMap((request) => this.productService.createOrder(request)),
+      )
+      .subscribe(() => {
+        this.productOrderService.resetOrder();
+        this.loading = false;
+        this.router.navigate(['/home/product']);
+      });
   }
 
   get actualTime() {

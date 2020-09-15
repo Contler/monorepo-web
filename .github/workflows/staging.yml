@@ -7,7 +7,7 @@ name: CI
 on:
   push:
     branches:
-      - "master"
+      - 'master'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 12.x ]
+        node-version: [12.x]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -46,10 +46,17 @@ jobs:
         run: npm i
         if: steps.npm-cache.outputs.cache-hit != 'true'
 
+      - name: check affectet apps
+        env:
+          BEFORE_COMMIT: ${{ github.event.before }}
+          AFTHER_COMMIT: ${{ github.event.after }}
+        run: |
+          echo "$BEFORE_COMMIT"
+          echo "AFTHER_COMMIT"
+
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-
 #      - name: check affected apps
 #        run: npm run affected:apps -- --plain --base=origin/master
