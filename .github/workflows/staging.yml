@@ -41,15 +41,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-npm-cache-
 
+      - uses: actions/cache@v2
+        with:
+          name: 'cache dist'
+          key: ${{ runner.os }}-dist-cache
+          path: dist/apps
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-
-      - uses: actions/download-artifact@v2
-        with:
-          name: dist
-          path: dist/apps
 
       - name: Display structure of downloaded files
         run: ls -R
@@ -69,8 +70,3 @@ jobs:
         run: |
           npm run build:qa:hotel
           npm run build:qa:guest
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: dist
-          path: dist/apps

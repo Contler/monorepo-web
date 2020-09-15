@@ -26,11 +26,6 @@ jobs:
           # fetch-depth is set to 0 then then the entire history of commits is fetched
           fetch-depth: 0
 
-      - name: hash package
-        env:
-          GITHUB_CONTEXT: ${{ hashFiles('package-lock.json') }}
-        run: echo "$GITHUB_CONTEXT"
-
       - uses: actions/cache@v2
         id: npm-cache
         with:
