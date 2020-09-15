@@ -52,9 +52,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      #      - name: Display structure of downloaded files
-      #        run: ls -R
-      #        working-directory: dist/apps
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: dist/apps
 
       - name: install dependencies
         run: npm i -s
@@ -65,8 +65,3 @@ jobs:
 
       - name: build affected apps
         run: npm run affected:build -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT" --configuration qa
-
-      - name: build all
-        run: |
-          npm run build:qa:hotel
-          npm run build:qa:guest
