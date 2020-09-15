@@ -46,13 +46,11 @@ jobs:
         run: npm i
         if: steps.npm-cache.outputs.cache-hit != 'true'
 
-      - name: check affectet apps
+      - name: check affected apps
         env:
           BEFORE_COMMIT: ${{ github.event.before }}
           AFTHER_COMMIT: ${{ github.event.after }}
-        run: |
-          echo "$BEFORE_COMMIT"
-          echo "AFTHER_COMMIT"
+        run: npm run affected:apps -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT"
 
       - name: Dump GitHub context
         env:
