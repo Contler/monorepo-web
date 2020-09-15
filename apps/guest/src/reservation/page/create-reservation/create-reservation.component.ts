@@ -9,6 +9,7 @@ import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DAYS } from '@contler/const';
 import { BookingRequest } from '@contler/models/booking-request';
+import { MessagesService } from 'guest/services/messages/messages.service';
 
 @Component({
   selector: 'contler-create-reservation',
@@ -32,6 +33,7 @@ export class CreateReservationComponent implements OnInit {
     private router: Router,
     private reservationService: ReservationService,
     formBuild: FormBuilder,
+    private messagesService: MessagesService,
   ) {
     this.reservationForm = formBuild.group({
       date: ['', Validators.required],
@@ -39,16 +41,16 @@ export class CreateReservationComponent implements OnInit {
       name: ['', Validators.required],
       schedule: ['', Validators.required],
     });
-    this.guestService.$hotel.pipe(take(1)).subscribe(hotel => (this.hotel = hotel));
+    this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => (this.hotel = hotel));
     this.guestService.$guest
-      .pipe(tap(guest => this.nameReservation.setValue(guest!.name + ' ' + guest!.lastName)))
-      .subscribe(guest => (this.guest = guest));
+      .pipe(tap((guest) => this.nameReservation.setValue(guest!.name + ' ' + guest!.lastName)))
+      .subscribe((guest) => (this.guest = guest));
     this.route.params
       .pipe(
-        map(data => data['id']),
-        switchMap(id => this.reservationService.getReservation(id)),
+        map((data) => data['id']),
+        switchMap((id) => this.reservationService.getReservation(id)),
       )
-      .subscribe(data => {
+      .subscribe((data) => {
         this.zoneReservation = data;
       });
   }
@@ -56,16 +58,31 @@ export class CreateReservationComponent implements OnInit {
   ngOnInit() {
     this.dateReservation.valueChanges.subscribe((date: Date) => {
       const day = this.days[date.getDay()];
-      this.schedule = this.zoneReservation!.schedule.filter(s => s.day === day && s.active);
+      this.schedule = this.zoneReservation!.schedule.filter((s) => s.day === day && s.active);
+
+      // Check time slot
+      if (this.schedule.length === 0) {
+        this.messagesService.showToastMessage(
+          'No existe franja horaria para la fecha seleccionada.',
+          'Cerrar',
+          10000,
+        );
+      }
     });
   }
 
   getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
+    );
   }
 
   getColorButtonHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color
+        ? `background: ${this.hotel.color};  color: #ffffff !important`
+        : '',
+    );
   }
 
   get nameReservation() {
@@ -90,10 +107,10 @@ export class CreateReservationComponent implements OnInit {
         this.loader = true;
         this.router.navigate(['/home', 'reservation']);
       },
-      error => {
+      (error) => {
         this.loader = false;
-        if(error.status === 400) {
-          this.err = error.error.message
+        if (error.status === 400) {
+          this.err = error.error.message;
         } else {
           this.err = 'No se puedo hacer la reserva';
         }
