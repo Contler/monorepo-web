@@ -37,30 +37,43 @@
       </div>
 
       <div class="rooms_section">
-        <mat-card class="crud_table">
-          <div class="row">
-            <div class="row_container header">
+        <mat-card class="menu-category-table">
+          <div class="row_head">
+            <div class="row_container header two_column">
               <p>Categorias</p>
             </div>
           </div>
 
           <mat-accordion>
-            <mat-expansion-panel *ngFor="let restaurant of restaurants$ | async" hideToggle>
+            <mat-expansion-panel
+              class="parametersPanel"
+              *ngFor="let restaurant of restaurants$ | async; let idxRest = index"
+              hideToggle
+            >
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   <p class="color-p">{{ restaurant.name }}</p>
                 </mat-panel-title>
               </mat-expansion-panel-header>
 
-              <div class="row" *ngFor="let category of categories[restaurant.uid] | async">
+              <div
+                class="row_table"
+                *ngFor="let category of categories[restaurant.uid] | async; let idxCT = index"
+              >
                 <div class="row_container two_column">
-                  <p>{{ category.name }}</p>
+                  <p>- {{ category.name }}</p>
                   <div class="actions">
                     <button mat-icon-button>
-                      <mat-icon class="custom_icon" (click)="editZone(zone)">edit</mat-icon>
+                      <mat-icon class="custom_icon" (click)="editMenuCT(restaurant, category)"
+                        >edit</mat-icon
+                      >
                     </button>
                     <button mat-icon-button>
-                      <mat-icon class="custom_icon" (click)="deleteZone(zone)">delete</mat-icon>
+                      <mat-icon
+                        class="custom_icon"
+                        (click)="deleteMenuCT(restaurant.uid, category.uid)"
+                        >delete</mat-icon
+                      >
                     </button>
                   </div>
                 </div>

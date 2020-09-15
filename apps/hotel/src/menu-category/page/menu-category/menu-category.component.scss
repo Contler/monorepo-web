@@ -67,13 +67,64 @@ table {
     0px 0px 0px 0px rgba(0, 0, 0, 0.12);
 }
 
+.parametersPanel .mat-expansion-panel-body {
+  padding: 0;
+}
+
 .menu-category-table {
-  padding: 17px 0px 57px 0px !important;
-  .row {
+  .row_table {
+    border-top: 1px solid #e5e5e5 !important;
+    .row_container {
+      display: grid;
+      padding: 8px 26px 10px 26px;
+      p {
+        font-family: Nunito;
+        font-size: 15.2px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.58;
+        letter-spacing: 0.1px;
+        color: rgba(0, 0, 0, 0.6);
+        margin: 0;
+      }
+      .actions {
+        justify-self: flex-end;
+      }
+    }
+    .two_column {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 10px;
+    }
+    .three_column {
+      grid-template-columns: calc(35% - 5px) calc(50% - 10px) calc(15% - 5px);
+      column-gap: 10px;
+    }
+    .header {
+      border-bottom: none;
+      p {
+        font-family: Nunito;
+        font-size: 15.2px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.58;
+        letter-spacing: 0.1px;
+        color: rgba(0, 0, 0, 0.87);
+        margin: 0;
+      }
+    }
+    .subrows_container {
+      .sub_row {
+        padding-left: 81px;
+      }
+    }
+  }
+  .row_head {
     .row_container {
       display: grid;
       border-bottom: 1px solid #e5e5e5;
-      padding: 19px 41px 12px 41px;
+      padding: 10px 26px 10px 26px;
       p {
         font-family: Nunito;
         font-size: 15.2px;

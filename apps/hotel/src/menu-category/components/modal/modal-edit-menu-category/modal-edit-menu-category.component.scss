@@ -1,0 +1,31 @@
+@import 'styles/variables';
+:host {
+  position: relative;
+  text-align: center;
+  display: block;
+}
+
+.contler-edit-category {
+  padding: 0 80px;
+
+  &__close {
+    position: absolute;
+    top: -46px;
+    right: -23px;
+    color: $text-4;
+  }
+
+  &__title {
+    color: $text-1;
+    letter-spacing: 0.25px;
+    font-size: 20.2px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+  }
+}

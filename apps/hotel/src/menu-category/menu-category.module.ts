@@ -6,9 +6,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule, RestaurantService } from '@contler/core';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { MenuCategoryRoutingModule } from './menu-category-routing.module';
+import { ModalEditMenuCategoryComponent } from './components/modal/modal-edit-menu-category/modal-edit-menu-category.component';
 
 @NgModule({
-  declarations: [MenuCategoryComponent],
+  declarations: [MenuCategoryComponent, ModalEditMenuCategoryComponent],
   imports: [
     CommonModule,
     MenuCategoryRoutingModule,
@@ -19,6 +20,6 @@ import { MenuCategoryRoutingModule } from './menu-category-routing.module';
     CommonComponentsModule,
   ],
   providers: [RestaurantService],
-  entryComponents: [],
+  entryComponents: [ModalEditMenuCategoryComponent],
 })
 export class MenuCategoryModule {}

@@ -8,6 +8,7 @@ import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { RestaurantService } from '@contler/core';
 import { switchMap, take, tap } from 'rxjs/operators';
 import { CategoryModels } from '@contler/models/category.models';
+import { ModalEditMenuCategoryComponent } from '../../components/modal/modal-edit-menu-category/modal-edit-menu-category.component';
 
 @Component({
   selector: 'contler-menu-category',
@@ -20,7 +21,6 @@ export class MenuCategoryComponent implements OnInit {
 
   menuCategoryForm: FormGroup;
   load = false;
-  panelOpenState = false;
   hotelId: string = null;
 
   constructor(
@@ -59,6 +59,22 @@ export class MenuCategoryComponent implements OnInit {
           this.messagesService.showServerError();
         });
     }
+  }
+
+  editMenuCT(restaurant: RestaurantEntity, category: CategoryModels) {
+    this.dialog.open(ModalEditMenuCategoryComponent, {
+      width: '600px',
+      data: {
+        restaurant,
+        category,
+      },
+    });
+  }
+
+  deleteMenuCT(idRestaurant: string, idCategory: string) {
+    this.restaurantServ.deleteRestaurantCategory(idRestaurant, idCategory).then(() => {
+      this.messagesService.showToastMessage('Categoria eliminada correctamente');
+    });
   }
 
   resetForm() {
