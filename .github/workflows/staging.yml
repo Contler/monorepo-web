@@ -19,6 +19,10 @@ jobs:
       matrix:
         node-version: [12.x]
 
+    env:
+      BEFORE_COMMIT: ${{ github.event.before }}
+      AFTHER_COMMIT: ${{ github.event.after }}
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -47,14 +51,7 @@ jobs:
         if: steps.npm-cache.outputs.cache-hit != 'true'
 
       - name: check affected apps
-        env:
-          BEFORE_COMMIT: ${{ github.event.before }}
-          AFTHER_COMMIT: ${{ github.event.after }}
         run: npm run affected:apps -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT"
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-#      - name: check affected apps
-#        run: npm run affected:apps -- --plain --base=origin/master
+      - name: build affected apps
+        run: npm run affected:build -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT" --configuration qa
