@@ -1,0 +1,29 @@
+<div class="contler-edit-category">
+  <p class="contler-edit-category__title">Editar categoria</p>
+  <form
+    class="contler-edit-category__form"
+    [formGroup]="categoryGroup"
+    (ngSubmit)="updateCategory()"
+  >
+    <mat-form-field appearance="fill" class="content__2-columns">
+      <input matInput formControlName="name" />
+      <mat-hint>Nombre de la categoria</mat-hint>
+    </mat-form-field>
+
+    <div>
+      <button
+        mat-raised-button
+        contlerButton
+        color="accent"
+        [loading]="load"
+        [disabled]="load || categoryGroup.invalid"
+      >
+        actualizar
+      </button>
+    </div>
+  </form>
+</div>
+
+<button mat-icon-button class="contler-edit-category__close" (click)="dialogRef.close()">
+  <mat-icon>close</mat-icon>
+</button>

@@ -27,6 +27,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 const materialModules = [
   MatFormFieldModule,
@@ -49,11 +50,19 @@ const materialModules = [
   MatSlideToggleModule,
   MatBadgeModule,
   MatMenuModule,
+  MatExpansionModule,
 ];
 
 @NgModule({
   declarations: [MenuComponent, LoaderComponent, RangeComponent],
-  imports: [CommonModule, ...materialModules, RouterModule, NgxMaskModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ...materialModules,
+    RouterModule,
+    NgxMaskModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   exports: [...materialModules, MenuComponent, LoaderComponent, RangeComponent],
   entryComponents: [LoaderComponent],
 })
