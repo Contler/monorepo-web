@@ -2,12 +2,27 @@
   <div marcoBody>
     <h1 class="ctl-title" contlerColorHotel="primary">Confirma tu pedido</h1>
 
-    <contler-product-item *ngFor="let item of products" [product]="item.product" [(count)]="item.quantity" (valueChange)="calculateTotal()">
+    <contler-product-item
+      *ngFor="let item of products$ | async"
+      [product]="item.product"
+      [count]="item.quantity"
+      (countChange)="updateProduct(item.product, $event)"
+    >
     </contler-product-item>
 
     <div class="confirm-footer">
-      <p contlerColorHotel="primary" class="confirm-total">Total: {{total | currency: 'cop': 'COP $': '1.0-0'}}</p>
-      <button contlerColorBtnHotel="primary" mat-raised-button color="accent" [disabled]="total == 0" (click)="nextStep()">Siguiente</button>
+      <p contlerColorHotel="primary" class="confirm-total">
+        Total: {{ total$ | async | currency: 'cop':'COP $':'1.0-0' }}
+      </p>
+      <button
+        contlerColorBtnHotel="primary"
+        mat-raised-button
+        color="accent"
+        [disabled]="(total$ | async) == 0"
+        (click)="nextStep()"
+      >
+        Siguiente
+      </button>
     </div>
   </div>
 </contler-marco>
