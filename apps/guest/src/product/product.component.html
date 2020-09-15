@@ -12,6 +12,7 @@
           <contler-product-item
             *ngFor="let prod of getProductsByCategory(restaurant.products, category.uid)"
             [product]="prod"
+            (countChange)="updateProduct(prod, $event)"
           ></contler-product-item>
         </ng-container>
       </mat-expansion-panel>

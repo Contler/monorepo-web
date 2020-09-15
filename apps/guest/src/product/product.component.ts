@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'guest/services/general.service';
-import { CATEGORY_PRODUCTS } from '@contler/const';
 import { GuestService } from 'guest/services/guest.service';
 import { ProductService, RestaurantService } from '@contler/core';
-import { map, switchMap, take, tap } from 'rxjs/operators';
+import { switchMap, take, tap } from 'rxjs/operators';
 import { ObjectCategoryProduct, ProductListModel } from '@contler/models/product-list-model';
 import { ProductOrderService } from 'guest/product/services/product-order.service';
 import { Router } from '@angular/router';
@@ -11,6 +10,11 @@ import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { Observable } from 'rxjs';
 import { CategoryModels } from '@contler/models/category.models';
 import { ProductEntity } from '@contler/entity';
+import { Store } from '@ngrx/store';
+import { State } from 'guest/app/reducers';
+import * as OrderAction from 'guest/app/reducers/order/order.actions';
+import * as OrderReduce from 'guest/app/reducers/order/order.reducer';
+import { orderFeatureKey } from 'guest/app/reducers/order/order.reducer';
 
 @Component({
   selector: 'contler-product',
@@ -23,6 +27,7 @@ export class ProductComponent implements OnInit {
   categories: { [key: string]: Observable<CategoryModels[]> } = {};
   productCategories: ObjectCategoryProduct = {};
   error = '';
+  private totalProd$: Observable<number>;
 
   constructor(
     public general: GeneralService,
@@ -31,7 +36,10 @@ export class ProductComponent implements OnInit {
     private restaurantService: RestaurantService,
     private productOrderService: ProductOrderService,
     private router: Router,
-  ) {}
+    private store: Store<State>,
+  ) {
+    this.totalProd$ = this.store.select(({ order }) => OrderReduce.selectTotal(order));
+  }
 
   ngOnInit() {
     this.restaurant$ = this.guestService.$hotel.pipe(
@@ -41,21 +49,20 @@ export class ProductComponent implements OnInit {
     );
   }
 
+  updateProduct(product: ProductEntity, quantity: number) {
+    this.store.dispatch(OrderAction.AddProduct({ product, quantity }));
+  }
+
   nextStep() {
     this.error = '';
-    let totalProducts: ProductListModel[] = [];
-    Object.values(this.productCategories).forEach((data) => {
-      totalProducts = [
-        ...totalProducts,
-        ...data.productList.filter((product) => product.quantity > 0),
-      ];
+    this.totalProd$.pipe(take(1)).subscribe((total) => {
+      if (total) {
+        // this.productOrderService.saveOrder(totalProducts);
+        this.router.navigate(['/home/product/order']);
+      } else {
+        this.error = 'Debes seleccionar al menos un producto';
+      }
     });
-    if (totalProducts.length) {
-      this.productOrderService.saveOrder(totalProducts);
-      this.router.navigate(['/home/product/order']);
-    } else {
-      this.error = 'Debes seleccionar al menos un producto';
-    }
   }
 
   getProductsByCategory(products: ProductEntity[], category: string) {

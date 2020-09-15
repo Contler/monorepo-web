@@ -5,7 +5,7 @@
     <div class="finish-order__list">
       <p class="finish-order__list-text" style="margin-bottom: 20px">Resumen del pedido:</p>
       <div class="finish-order__list-products">
-        <ng-template ngFor let-item [ngForOf]="productList">
+        <ng-template ngFor let-item [ngForOf]="products$ | async">
           <p class="finish-order__list-text">{{ item.product.name }}</p>
           <p class="finish-order__list-text">
             {{ item.quantity * item.product.value | currency: 'COP':'$':'1.0-0' }}
@@ -15,7 +15,7 @@
     </div>
 
     <p contlerColorHotel="primary" class="finish-order__total">
-      Total: {{ total | currency: 'COP':'$':'1.0-0' }}
+      Total: {{ totalPrice$ | async | currency: 'COP':'$':'1.0-0' }}
     </p>
 
     <form class="finish-order__form" [formGroup]="orderForm" (ngSubmit)="createOrder()">
