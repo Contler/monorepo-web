@@ -77,7 +77,7 @@ table {
     .row_container {
       display: grid;
       padding: 8px 26px 10px 26px;
-      p {
+      .row_table_p {
         font-family: Nunito;
         font-size: 15.2px;
         font-weight: normal;
@@ -102,7 +102,7 @@ table {
     }
     .header {
       border-bottom: none;
-      p {
+      .header-p {
         font-family: Nunito;
         font-size: 15.2px;
         font-weight: normal;
@@ -125,7 +125,7 @@ table {
       display: grid;
       border-bottom: 1px solid #e5e5e5;
       padding: 10px 26px 10px 26px;
-      p {
+      .header-p {
         font-family: Nunito;
         font-size: 15.2px;
         font-weight: normal;
@@ -150,17 +150,6 @@ table {
     }
     .header {
       border-bottom: none;
-      p {
-        font-family: Nunito;
-        font-size: 15.2px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.58;
-        letter-spacing: 0.1px;
-        color: rgba(0, 0, 0, 0.87);
-        margin: 0;
-      }
     }
     .subrows_container {
       .sub_row {

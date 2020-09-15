@@ -40,7 +40,7 @@
         <mat-card class="menu-category-table">
           <div class="row_head">
             <div class="row_container header two_column">
-              <p>Categorias</p>
+              <p class="header-p">Categorias</p>
             </div>
           </div>
 
@@ -61,7 +61,7 @@
                 *ngFor="let category of categories[restaurant.uid] | async; let idxCT = index"
               >
                 <div class="row_container two_column">
-                  <p>- {{ category.name }}</p>
+                  <p class="row_table_p">- {{ category.name }}</p>
                   <div class="actions">
                     <button mat-icon-button>
                       <mat-icon class="custom_icon" (click)="editMenuCT(restaurant, category)"
