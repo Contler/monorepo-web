@@ -58,6 +58,9 @@ jobs:
         run: ls -R
         working-directory: dist/apps
 
+      - name: install firebase
+        run: npm i -g firebase-tools
+
       - name: install dependencies
         run: npm i -s
         if: steps.npm-cache.outputs.cache-hit != 'true'
@@ -69,14 +72,7 @@ jobs:
         run: npm run affected:build -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT" --configuration qa
 
       - name: deploy hotel
-        run: |
-          npm i -g firebase-tools
-          firebase deploy --token "$FIREBASE_TOKEN" --project "$FIREBASE_PROJECT" --only hosting:hotel
+        run: firebase deploy --token "$FIREBASE_TOKEN" --project "$FIREBASE_PROJECT" --only hosting:hotel
 
-#      - name: deploy guest
-#        uses: doonstore/firebase-deploy@v1
-#        env:
-#          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-#          FIREBASE_PROJECT: ${{ secrets.FIREBASE_DEV_PROJECT }}
-#        with:
-#          params: --only hosting:guest
+      - name: deploy guest
+        run: firebase deploy --token "$FIREBASE_TOKEN" --project "$FIREBASE_PROJECT" --only hosting:guest
