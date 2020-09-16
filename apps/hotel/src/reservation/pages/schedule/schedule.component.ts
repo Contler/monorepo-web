@@ -73,31 +73,35 @@ export class ScheduleComponent implements OnInit {
 
   addSchedule() {
     const finderSchedule = this.schedules.find((el) => el.day === AllDays);
-    const arrSchedules: any[] = [];
     const temp = new ScheduleEntity();
 
+    // Create schedules all days
     if (finderSchedule) {
-      this.schedules = [];
-      for (let idx = 0; idx < this.days.length; idx++) {
-        arrSchedules.push({
-          active: finderSchedule.active,
-          day: this.days[idx],
-          quota: finderSchedule.quota,
-          timeInit: finderSchedule.timeInit,
-          timeFinish: finderSchedule.timeFinish,
-        });
-      }
-      this.schedules = arrSchedules;
-      this.removeElement(
-        finderSchedule,
-        this.schedules.findIndex((el) => el.day === AllDays),
-      );
+      this.createRangeAllDays(finderSchedule);
     } else {
       temp.active = false;
       this.schedules = [...this.schedules, temp];
     }
 
     this.cdRef.detectChanges();
+  }
+
+  createRangeAllDays(finderSchedule: ScheduleEntity) {
+    const arrSchedules: any[] = [];
+    for (let idx = 0; idx < this.days.length; idx++) {
+      arrSchedules.push({
+        active: finderSchedule.active,
+        day: this.days[idx],
+        quota: finderSchedule.quota,
+        timeInit: finderSchedule.timeInit,
+        timeFinish: finderSchedule.timeFinish,
+      });
+    }
+    this.schedules = [...arrSchedules, ...this.schedules.filter((el) => el.day !== AllDays)];
+    this.removeElement(
+      finderSchedule,
+      this.schedules.findIndex((el) => el.day === AllDays),
+    );
   }
 
   removeElement(schedule: ScheduleEntity, index: number) {
@@ -113,6 +117,12 @@ export class ScheduleComponent implements OnInit {
     this.reservation!.name = name;
     this.reservation!.category = this.categories.find((cat) => cat.id === category)!;
     this.reservation!.icon = icon;
+
+    // Create schedules all days
+    const finderSchedule = this.schedules.find((el) => el.day === AllDays);
+    if (finderSchedule) {
+      this.createRangeAllDays(finderSchedule);
+    }
 
     // new schedule
     const newScheduleObs = this.schedules
