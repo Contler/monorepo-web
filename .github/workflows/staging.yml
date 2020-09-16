@@ -35,9 +35,10 @@ jobs:
           # fetch-depth is set to 0 then then the entire history of commits is fetched
           fetch-depth: 0
 
-      - uses: actions/cache@v2
+      - name: npm cahce
+        uses: actions/cache@v2
+        id: npm-cache
         with:
-          id: npm-cache
           path: ./node_modules
           key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
@@ -53,10 +54,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Display structure of downloaded files
-        run: ls -R
-        working-directory: dist/apps
 
       - name: install firebase
         run: npm i -g firebase-tools
