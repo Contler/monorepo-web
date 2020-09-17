@@ -82,7 +82,10 @@
                   "replace": "apps/hotel/src/environments/environment.ts",
                   "with": "apps/hotel/src/environments/environment.qa.ts"
                 }
-              ]
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "extractCss": true
             }
           }
         },
@@ -287,7 +290,10 @@
                   "replace": "apps/guest/src/environments/environment.ts",
                   "with": "apps/guest/src/environments/environment.qa.ts"
                 }
-              ]
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "extractCss": true
             }
           }
         },
