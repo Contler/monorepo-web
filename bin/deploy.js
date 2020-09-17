@@ -1,6 +1,8 @@
 const { execSync, spawn } = require('child_process');
 
 const project = process.argv[2];
+const token = process.argv[3];
+const firebaseProject = process.argv[4];
 
 console.log('checking....', project);
 
@@ -16,9 +18,9 @@ if (projectsAffected.includes(project)) {
   const command = spawn('firebase', [
     'deploy',
     '--token',
-    '"$FIREBASE_TOKEN"',
+    token,
     '--project',
-    '"$FIREBASE_PROJECT"',
+    firebaseProject,
     '--only',
     `hosting:${project}`,
   ]);
