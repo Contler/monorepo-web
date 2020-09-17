@@ -49,20 +49,18 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: install firebase
-        run: npm i -g firebase-tools
-
-      - name: install dependencies
-        run: npm i -s
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-
-      - name: check affected apps
-        run: npm run affected:apps -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT"
-
-      - name: build affected apps
-        run: npm run affected:build -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT" --configuration qa
+      #      - name: install firebase
+      #        run: npm i -g firebase-tools
+      #
+      #      - name: install dependencies
+      #        run: npm i -s
+      #        if: steps.npm-cache.outputs.cache-hit != 'true'
+      #
+      #      - name: check affected apps
+      #        run: npm run affected:apps -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT"
+      #
+      #      - name: build affected apps
+      #        run: npm run affected:build -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT" --configuration qa
 
       - name: deploy hotel
         run: node bin/deploy.js hotel
-#      - name: deploy guest
-#        run: firebase deploy --token "$FIREBASE_TOKEN" --project "$FIREBASE_PROJECT" --only hosting:guest
