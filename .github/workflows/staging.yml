@@ -44,12 +44,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-npm-cache-
 
-      - name: 'cache dist'
-        uses: actions/cache@v2
-        with:
-          key: ${{ runner.os }}-dist-cache
-          path: dist/apps
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -69,7 +63,6 @@ jobs:
         run: npm run affected:build -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT" --configuration qa
 
       - name: deploy hotel
-        run: firebase deploy --token "$FIREBASE_TOKEN" --project "$FIREBASE_PROJECT" --only hosting:hotel
-
-      - name: deploy guest
-        run: firebase deploy --token "$FIREBASE_TOKEN" --project "$FIREBASE_PROJECT" --only hosting:guest
+        run: node bin/deploy.js hotel
+#      - name: deploy guest
+#        run: firebase deploy --token "$FIREBASE_TOKEN" --project "$FIREBASE_PROJECT" --only hosting:guest
