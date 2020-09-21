@@ -1,0 +1,10 @@
+.complete-modal {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  &__text {
+    margin: 29px 0 48px;
+    font-size: 14px;
+  }
+}

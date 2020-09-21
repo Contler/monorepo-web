@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'guest/services/general.service';
 import { GuestService } from 'guest/services/guest.service';
 import { ProductService, RestaurantService } from '@contler/core';
-import { switchMap, take, tap } from 'rxjs/operators';
-import { ObjectCategoryProduct, ProductListModel } from '@contler/models/product-list-model';
+import { map, switchMap, take, tap } from 'rxjs/operators';
 import { ProductOrderService } from 'guest/product/services/product-order.service';
 import { Router } from '@angular/router';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
@@ -14,7 +13,6 @@ import { Store } from '@ngrx/store';
 import { State } from 'guest/app/reducers';
 import * as OrderAction from 'guest/app/reducers/order/order.actions';
 import * as OrderReduce from 'guest/app/reducers/order/order.reducer';
-import { orderFeatureKey } from 'guest/app/reducers/order/order.reducer';
 
 @Component({
   selector: 'contler-product',
@@ -25,7 +23,6 @@ export class ProductComponent implements OnInit {
   restaurant$: Observable<RestaurantEntity[]>;
 
   categories: { [key: string]: Observable<CategoryModels[]> } = {};
-  productCategories: ObjectCategoryProduct = {};
   error = '';
   private totalProd$: Observable<number>;
 
@@ -45,6 +42,7 @@ export class ProductComponent implements OnInit {
     this.restaurant$ = this.guestService.$hotel.pipe(
       take(1),
       switchMap((hotel) => this.restaurantService.getAllRestaurantsByHotel(hotel!.uid)),
+      map((restaurants) => restaurants.filter((rest) => rest.products.length)),
       tap(this.loadCategories.bind(this)),
     );
   }
@@ -57,7 +55,6 @@ export class ProductComponent implements OnInit {
     this.error = '';
     this.totalProd$.pipe(take(1)).subscribe((total) => {
       if (total) {
-        // this.productOrderService.saveOrder(totalProducts);
         this.router.navigate(['/home/product/order']);
       } else {
         this.error = 'Debes seleccionar al menos un producto';
@@ -71,7 +68,16 @@ export class ProductComponent implements OnInit {
 
   private loadCategories(restaurants: RestaurantEntity[]) {
     restaurants.forEach(
-      ({ uid }) => (this.categories[uid] = this.restaurantService.getCategoryRestaurant(uid)),
+      ({ uid, products }) =>
+        (this.categories[uid] = this.restaurantService
+          .getCategoryRestaurant(uid)
+          .pipe(
+            map((categories) =>
+              categories.filter(
+                (category) => this.getProductsByCategory(products, category.uid).length,
+              ),
+            ),
+          )),
     );
   }
 }

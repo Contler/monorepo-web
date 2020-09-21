@@ -1,9 +1,8 @@
-@import "styles/variables";
+@import 'styles/variables';
 .product {
-
   &-menu {
-    border-top: 1px solid #E4E4E4;
-    border-bottom: 1px solid #E4E4E4;
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
     height: 72px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -61,4 +60,11 @@
 
 .mat-button {
   border-radius: 0;
+}
+
+.mat-expansion-panel:nth-child(3n-1) {
+  .mat-expansion-panel-header {
+    background: #f6f6f6;
+  }
+  background: #f6f6f6;
 }
