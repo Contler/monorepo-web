@@ -13,6 +13,8 @@ import { OrderComponent } from './pages/order/order.component';
 import { ActiveOrderPipe } from 'guest/product/pipes/active-order.pipe';
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { CompleteOrderModalComponent } from './components/complete-order-modal/complete-order-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     OrderComponent,
     ActiveOrderPipe,
     OrderDetailComponent,
+    CompleteOrderModalComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +34,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     CoreModule,
     ReactiveFormsModule,
     MatExpansionModule,
+    MatDialogModule,
   ],
 })
 export class ProductModule {}

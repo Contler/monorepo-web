@@ -35,12 +35,12 @@ div:focus {
   cursor: pointer;
 }
 
-.full-width{
+.full-width {
   width: 100% !important;
 }
 
 .cot-dialog {
-  .mat-dialog-container  {
+  .mat-dialog-container {
     padding: 0;
     border-radius: 10px;
     box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.5);
@@ -48,7 +48,7 @@ div:focus {
   }
 }
 
-.custom-button{
+.custom-button {
   height: 55px;
   font-family: Raleway, serif;
   font-size: 14.2px;
@@ -68,7 +68,7 @@ div:focus {
 }
 
 .logo-general {
-  width: 100px;
+  height: 50px;
 }
 
 .ctl-title {
@@ -85,5 +85,5 @@ button {
 }
 
 button[disabled] {
-  background-color: rgba(0,0,0,.12) !important;
+  background-color: rgba(0, 0, 0, 0.12) !important;
 }

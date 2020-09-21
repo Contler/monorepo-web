@@ -24,6 +24,8 @@ export class HotelEntity {
 
   zones!: ZoneEntity[];
 
+  colorText!: string;
+
   zonesReservation!: ZoneReserveEntity[];
 
   rooms!: RoomEntity[];

@@ -11,7 +11,7 @@ export class ColorBtnHotelDirective implements OnChanges {
   private hotel!: HotelEntity | null;
 
   constructor(private guestService: GuestService, private elemRef: ElementRef) {
-    this.guestService.$hotel.pipe(take(1)).subscribe(hotel => {
+    this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => {
       this.hotel = hotel;
       this.setColor();
     });
@@ -32,6 +32,6 @@ export class ColorBtnHotelDirective implements OnChanges {
       backGroundColor = this.hotel!.colorSecond;
     }
     this.elemRef.nativeElement!.style.backgroundColor = backGroundColor;
-    this.elemRef.nativeElement!.style.color = textColor;
+    this.elemRef.nativeElement!.style.color = this.hotel.colorText || textColor;
   }
 }

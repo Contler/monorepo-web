@@ -14,6 +14,8 @@ import { Store } from '@ngrx/store';
 import { State } from 'guest/app/reducers';
 import * as OrderReducer from 'guest/app/reducers/order/order.reducer';
 import { orderFeatureKey, ProductOrder } from 'guest/app/reducers/order/order.reducer';
+import { MatDialog } from '@angular/material/dialog';
+import { CompleteOrderModalComponent } from 'guest/product/components/complete-order-modal/complete-order-modal.component';
 
 @Component({
   selector: 'contler-finish-order',
@@ -39,6 +41,7 @@ export class FinishOrderComponent {
     private guestService: GuestService,
     private productService: ProductService,
     private store: Store<State>,
+    private dialog: MatDialog,
   ) {
     this.products$ = this.store.select((state) => OrderReducer.selectAll(state[orderFeatureKey]));
     this.totalPrice$ = this.store.select((state) => state[orderFeatureKey].totalPrice);
@@ -55,24 +58,13 @@ export class FinishOrderComponent {
   }
 
   createOrder() {
-    const { time, zone, comment } = this.orderForm.value;
     this.loading = true;
-
     this.products$
       .pipe(
         take(1),
-        map(
-          (products) =>
-            ({
-              time,
-              comment,
-              zone,
-              productList: products,
-              hotel: this.hotel!,
-              guest: this.guest!,
-            } as OrderRequest),
-        ),
+        map((products) => this.generateProductOrderRequest(products)),
         switchMap((request) => this.productService.createOrder(request)),
+        switchMap(() => this.dialog.open(CompleteOrderModalComponent).afterClosed()),
       )
       .subscribe(() => {
         this.productOrderService.resetOrder();
@@ -83,5 +75,17 @@ export class FinishOrderComponent {
 
   get actualTime() {
     return new Date();
+  }
+
+  private generateProductOrderRequest(products: ProductOrder[]): OrderRequest {
+    const { time, zone, comment } = this.orderForm.value;
+    return {
+      time,
+      comment,
+      zone,
+      productList: products,
+      hotel: this.hotel!,
+      guest: this.guest!,
+    };
   }
 }

@@ -37,7 +37,6 @@ export class ZoneRequestComponent implements OnDestroy {
   //CODIGO TEMPORAL HASTA DEFINIR LOGICA DE PRODUCTOS
   public typeName: string | null = null;
   public drinkName = '';
-  public drinksQuantity: number | null = null;
 
   constructor(
     private guestService: GuestService,
@@ -111,7 +110,7 @@ export class ZoneRequestComponent implements OnDestroy {
   setQuickRequest(value: string) {
     this.selectedSubcategory = value;
     if (value === SUB_CATEGORY_DRINKS) {
-      this.router.navigate(['./drink'], { relativeTo: this.route });
+      this.router.navigate(['/home/product/create']);
     } else {
       this.showRequestField = value === 'Otro';
     }
