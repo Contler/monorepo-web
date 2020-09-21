@@ -19,9 +19,9 @@ import { DrinkRequestComponent } from 'guest/home/pages/drink-request/drink-requ
 const redirectUnauthorizedToLogin = () =>
   pipe(
     customClaims,
-    map(claims => claims.role === GUEST),
-    tap(guest => !guest && firebase.auth().signOut()),
-    map(guest => guest || ['/login']),
+    map((claims) => claims.role === GUEST),
+    tap((guest) => !guest && firebase.auth().signOut()),
+    map((guest) => guest || ['/login']),
   );
 
 const routes: Routes = [
@@ -66,16 +66,20 @@ const routes: Routes = [
       {
         path: 'reservation',
         loadChildren: () =>
-          import('../reservation/reservation.module').then(m => m.ReservationModule),
+          import('../reservation/reservation.module').then((m) => m.ReservationModule),
       },
       {
         path: 'late',
         loadChildren: () =>
-          import('../late-check-out/late-check-out.module').then(m => m.LateCheckOutModule),
+          import('../late-check-out/late-check-out.module').then((m) => m.LateCheckOutModule),
       },
       {
         path: 'product',
-        loadChildren: () => import('../product/product.module').then(m => m.ProductModule),
+        loadChildren: () => import('../product/product.module').then((m) => m.ProductModule),
+      },
+      {
+        path: 'reception',
+        loadChildren: () => import('../reception/reception.module').then((m) => m.ReceptionModule),
       },
       {
         path: '',

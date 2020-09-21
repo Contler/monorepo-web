@@ -1,0 +1,13 @@
+<contler-marco padding="16px 0">
+  <ng-container marcoBody>
+    <h1 class="ctl-title reception__title" contlerColorHotel="primary">
+      You are in the reception. What do you need?
+    </h1>
+
+    <a class="reception__item" *ngFor="let opt of options">
+      <contler-icon [key]="opt.icon" class="reception__icon"></contler-icon>
+      <span contlerColorHotel="primary" class="reception__item-text">{{ opt.name }}</span>
+      <contler-icon key="fas fa-chevron-right"></contler-icon>
+    </a>
+  </ng-container>
+</contler-marco>
