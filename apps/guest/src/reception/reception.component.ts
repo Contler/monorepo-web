@@ -10,6 +10,7 @@ export class ReceptionComponent {
     {
       name: 'Transportation',
       icon: 'fas fa-taxi',
+      link: '/home/reception/transportation',
     },
     {
       name: 'Cash loan',
