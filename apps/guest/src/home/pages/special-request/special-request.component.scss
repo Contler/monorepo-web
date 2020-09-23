@@ -5,9 +5,13 @@
   display: block;
   margin: 0 auto;
 }
-p.label {
+.p-label {
+  width: 90%;
+  display: block;
   font-family: $family;
   font-size: 16.2px;
+  margin-left: auto;
+  margin-right: auto;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -17,8 +21,15 @@ p.label {
   margin-top: 38px;
   margin-bottom: 20px;
 }
-button {
+.btn {
   margin-top: 28px;
+}
+
+.wd-area {
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .btn-styles {

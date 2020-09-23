@@ -1,10 +1,10 @@
 <contler-marco>
   <div marcoBody>
-    <p [style]="getColorHotel()" class="label">
+    <p [style]="getColorHotel()" class="p-label">
       Tell us about your special request during your staying, we will be happy to please you
     </p>
     <form #specialRequestForm (ngSubmit)="saveRequest()">
-      <mat-form-field appearance="fill" class="full-width">
+      <mat-form-field appearance="fill" class="wd-area">
         <textarea
           matInput
           cdkAutosizeMinRows="15"
@@ -16,7 +16,7 @@
         ></textarea>
       </mat-form-field>
       <button
-        class="btn-styles"
+        class="btn btn-styles"
         mat-raised-button
         contlerButton
         [loading]="loader"
