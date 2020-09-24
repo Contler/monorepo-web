@@ -1,6 +1,6 @@
 <contler-marco padding="16px 30px 127px" backUrl="/home/product/create">
   <div marcoBody>
-    <h1 class="ctl-title" contlerColorHotel="primary">Confirm tou order</h1>
+    <h1 class="ctl-title pto-title" contlerColorHotel="primary">Confirm your order</h1>
 
     <contler-product-item
       *ngFor="let item of products$ | async"
@@ -15,6 +15,7 @@
         Total: {{ total$ | async | currency: 'cop':'COP $':'1.0-0' }}
       </p>
       <button
+        class="btn-next"
         contlerColorBtnHotel="primary"
         mat-raised-button
         color="accent"

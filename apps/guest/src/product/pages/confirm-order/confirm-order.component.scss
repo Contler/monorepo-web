@@ -16,8 +16,23 @@
     left: 0;
     width: 100%;
     padding: 0 30px 30px;
-    button {
+
+    .btn-next {
       width: 100%;
+      border-radius: 12px !important;
+      height: 50px !important;
+      font-family: Raleway !important;
+      font-size: 14.2px !important;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      letter-spacing: 1.25px;
+      text-align: center;
     }
   }
+}
+
+.pto-title {
+  margin-bottom: 30px;
+  margin-top: 30px;
 }

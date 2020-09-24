@@ -40,13 +40,13 @@ export class EditReservationComponent implements OnInit {
       name: ['', Validators.required],
       schedule: ['', Validators.required],
     });
-    this.guestService.$hotel.pipe(take(1)).subscribe(hotel => (this.hotel = hotel));
+    this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => (this.hotel = hotel));
     route.params
       .pipe(
-        map(data => data['id'] as number),
-        switchMap(id => reservationService.getBooking(id)),
+        map((data) => data['id'] as number),
+        switchMap((id) => reservationService.getBooking(id)),
       )
-      .subscribe(booking => {
+      .subscribe((booking) => {
         this.booking = booking;
         this.booking.date = new Date(this.booking.date);
         this.bookingGroup.get('date')!.setValue(this.booking.date);
@@ -59,16 +59,24 @@ export class EditReservationComponent implements OnInit {
   ngOnInit() {
     this.dateReservation.valueChanges.subscribe((date: Date) => {
       const day = this.days[date.getDay()];
-      this.schedule = this.booking!.schedule.reservation.schedule.filter(s => s.day === day && s.active);
+      this.schedule = this.booking!.schedule.reservation.schedule.filter(
+        (s) => s.day === day && s.active,
+      );
     });
   }
 
   getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
+    );
   }
 
   getColorButtonHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color
+        ? `background: ${this.hotel.color};  color: #ffffff !important`
+        : '',
+    );
   }
 
   compare(o1: ScheduleEntity, o2: ScheduleEntity) {
@@ -81,10 +89,14 @@ export class EditReservationComponent implements OnInit {
 
   confirmCancel() {
     this.dialog
-      .open(ModalConfirmComponent)
+      .open(ModalConfirmComponent, {
+        width: '342px',
+        height: '353px',
+        panelClass: 'cot-dialog',
+      })
       .afterClosed()
       .pipe(
-        filter(data => !!data),
+        filter((data) => !!data),
         tap(() => (this.loader = true)),
         switchMap(() => this.reservationService.cancelBooking(this.booking!)),
       )
@@ -106,7 +118,7 @@ export class EditReservationComponent implements OnInit {
       () => {
         this.router.navigate(['/home/reservation/my-reservation']);
       },
-      error => {
+      (error) => {
         this.loader = false;
         this.error = error.error.message;
       },

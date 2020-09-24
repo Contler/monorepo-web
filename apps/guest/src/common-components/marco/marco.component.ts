@@ -1,7 +1,7 @@
-import { Component, Input } from "@angular/core";
-import { GuestService } from "guest/services/guest.service";
-import { Router } from "@angular/router";
-import { GeneralService } from "guest/services/general.service";
+import { Component, Input } from '@angular/core';
+import { GuestService } from 'guest/services/guest.service';
+import { Router } from '@angular/router';
+import { GeneralService } from 'guest/services/general.service';
 
 @Component({
   selector: 'contler-marco',
@@ -14,9 +14,13 @@ export class MarcoComponent {
   logo: string | undefined;
   maxHeight = '';
 
-  constructor(private guestService: GuestService, public generalService: GeneralService, private router: Router) {
-    this.guestService.$hotel.subscribe(hotel => (this.logo = hotel!.logo));
-    this.maxHeight = (window.innerHeight - 56) + 'px'
+  constructor(
+    private guestService: GuestService,
+    public generalService: GeneralService,
+    private router: Router,
+  ) {
+    this.guestService.$hotel.subscribe((hotel) => (this.logo = hotel!.logo));
+    this.maxHeight = window.innerHeight + 'px';
   }
 
   goToRoute(url: string) {

@@ -1,6 +1,8 @@
 <contler-marco padding="16px 30px" backUrl="/home/product/order">
   <div marcoBody>
-    <h1 class="ctl-title" contlerColorHotel="primary">Confirm tou order and hour of delivery</h1>
+    <h1 class="ctl-title pto-title" contlerColorHotel="primary">
+      Confirm tou order and hour of delivery
+    </h1>
 
     <div class="finish-order__list">
       <p class="finish-order__list-text" style="margin-bottom: 20px">Order summary in:</p>
@@ -44,6 +46,7 @@
       </mat-form-field>
 
       <button
+        class="finish-order__btn"
         mat-raised-button
         contlerColorBtnHotel="primary"
         [disabled]="orderForm.invalid || loading"

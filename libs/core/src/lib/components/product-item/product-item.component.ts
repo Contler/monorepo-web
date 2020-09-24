@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ProductEntity, ProductOrderEntity } from '@contler/entity';
+import { HotelEntity, ProductEntity } from '@contler/entity';
+import { DomSanitizer } from '@angular/platform-browser';
+import { GuestService } from 'lib/lib/services/guest.service';
 
 @Component({
   selector: 'contler-product-item',
@@ -7,19 +9,22 @@ import { ProductEntity, ProductOrderEntity } from '@contler/entity';
   styleUrls: ['./product-item.component.scss'],
 })
 export class ProductItemComponent {
-  @Input() product: ProductEntity |  undefined;
+  @Input() product: ProductEntity | undefined;
   @Input() count = 0;
   @Output() countChange = new EventEmitter<number>();
   @Output() valueChange = new EventEmitter<void>();
   @Input() disable = false;
+  hotel: HotelEntity | null | undefined;
 
-  constructor() {}
+  constructor(public guestService: GuestService, private sanitizer: DomSanitizer) {
+    this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
+  }
 
   add() {
     if (this.count >= 99) {
       this.count = 99;
     } else {
-      this.count ++;
+      this.count++;
     }
     this.countChange.emit(this.count);
     this.valueChange.emit();
@@ -29,9 +34,15 @@ export class ProductItemComponent {
     if (this.count <= 0) {
       this.count = 0;
     } else {
-      this.count --;
+      this.count--;
     }
     this.countChange.emit(this.count);
     this.valueChange.emit();
+  }
+
+  getColorHotel() {
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
+    );
   }
 }

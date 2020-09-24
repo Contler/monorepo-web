@@ -6,8 +6,11 @@
     margin-bottom: 35px;
 
     &-text {
-      font-family: Raleway, serif;
+      font-family: Raleway;
       font-size: 14.2px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
       line-height: 1.41;
       letter-spacing: 0.25px;
       color: #191615;
@@ -23,12 +26,14 @@
   }
 
   &__total {
-    font-family: Raleway, serif;
-    font-size: 20.2px;
-    font-weight: 500;
-    letter-spacing: 0.25px;
+    font-family: Raleway;
+    font-size: 16.2px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0.15px;
+    line-height: 1.48;
     text-align: center;
-    color: #006633;
+    font-style: normal;
   }
 
   &__form {
@@ -36,4 +41,20 @@
     grid-template-columns: 1fr;
     row-gap: 5px;
   }
+
+  &__btn {
+    border-radius: 12px !important;
+    height: 50px !important;
+    font-family: Raleway !important;
+    font-size: 14.2px !important;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 1.25px !important;
+  }
+}
+
+.pto-title {
+  margin-bottom: 30px;
+  margin-top: 30px;
 }

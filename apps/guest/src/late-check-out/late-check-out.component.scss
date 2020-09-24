@@ -1,18 +1,17 @@
-@import "styles/variables";
+@import 'styles/variables';
 .late {
   &__title {
-    font-family: $family;
-    font-size: 20.2px;
-    font-weight: 500;
+    font-family: Raleway !important;
+    font-size: 16.2px;
+    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
-    line-height: normal;
-    letter-spacing: 0.25px;
+    line-height: 1.48;
+    letter-spacing: 0.15px;
     text-align: center;
     color: $text-3;
     margin: 38px auto 76px;
   }
-
 
   &__footer {
     display: block;
@@ -27,5 +26,10 @@
     p {
       margin: 0;
     }
+  }
+
+  &__marco-body {
+    padding: 20px;
+    margin-bottom: 20%;
   }
 }

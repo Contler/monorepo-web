@@ -1,8 +1,8 @@
 <div class="cnt-qualify" *ngIf="data">
   <img src="assets/img/rating.svg" alt="" class="cnt-qualify__img" />
   <p class="cnt-qualify__title">
-    Cómo te parecio el servicio que prestó nuestro equipo en tu solicitud {{ data.message }} en
-    {{ data.zone.name }} el día {{ data.createAt | date: 'dd/MM/yyyy' }}.
+    How did you find the service our team provided in your application {{ data.message }} on
+    {{ data.zone.name }} day {{ data.createAt | date: 'dd/MM/yyyy' }}.
   </p>
 
   <contler-start
@@ -31,6 +31,6 @@
     [disabled]="!!!value || load"
     (click)="close()"
   >
-    Calificar
+    qualify
   </button>
 </div>

@@ -42,7 +42,7 @@ div:focus {
 .cot-dialog {
   .mat-dialog-container {
     padding: 0;
-    border-radius: 10px;
+    border-radius: 10px !important;
     box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.5);
     background-color: #ffffff;
   }

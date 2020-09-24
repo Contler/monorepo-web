@@ -5,11 +5,17 @@
         {{ getHour(i) | date: 'shortTime' }}
       </mat-option>
     </mat-select>
-    <mat-hint>Hora de salida</mat-hint>
+    <mat-hint>Departure time</mat-hint>
   </mat-form-field>
 
-  <button mat-raised-button contlerButton color="accent" [style]="getColorButtonHotel()" (click)="create()">
-    Crear
+  <button
+    class="custom-button"
+    mat-raised-button
+    contlerButton
+    color="accent"
+    [style]="getColorButtonHotel()"
+    (click)="create()"
+  >
+    Create
   </button>
 </div>
-

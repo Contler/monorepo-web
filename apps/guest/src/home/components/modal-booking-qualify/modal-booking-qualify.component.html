@@ -1,8 +1,8 @@
 <div class="cnt-qualify">
   <img src="assets/img/rating.svg" alt="" class="cnt-qualify__img" />
   <p class="cnt-qualify__title">
-    Cómo te parecio el servicio que prestó nuestro equipo en tu reserva en
-    {{ data.schedule.reservation.name }} el día {{ data.date | date: 'dd/MM/yyyy' }}.
+    How did you find the service our team provided in your reservation in
+    {{ data.schedule.reservation.name }} that day {{ data.date | date: 'dd/MM/yyyy' }}.
   </p>
   <contler-start
     value="0"
@@ -24,6 +24,6 @@
     [disabled]="!!!value || load"
     (click)="close()"
   >
-    Calificar
+    qualify
   </button>
 </div>
