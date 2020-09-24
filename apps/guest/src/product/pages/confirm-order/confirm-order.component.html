@@ -1,6 +1,6 @@
 <contler-marco padding="16px 30px 127px" backUrl="/home/product/create">
   <div marcoBody>
-    <h1 class="ctl-title" contlerColorHotel="primary">Confirma tu pedido</h1>
+    <h1 class="ctl-title" contlerColorHotel="primary">Confirm tou order</h1>
 
     <contler-product-item
       *ngFor="let item of products$ | async"
@@ -21,7 +21,7 @@
         [disabled]="(total$ | async) == 0"
         (click)="nextStep()"
       >
-        Siguiente
+        NEXT
       </button>
     </div>
   </div>

@@ -21,6 +21,19 @@ $big-desktop: 1366px;
   }
 }
 
+@mixin mobile-landscape {
+  @media (min-width: 320px) and (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin table {
+  @media (min-width: 650px) and
+         (max-width: #{$big-desktop}) {
+    @content;
+  }
+}
+
 @mixin loading($width: 64px, $height: 64px, $size: 6px, $color: #fff) {
   &:after {
     content: '';
@@ -45,17 +58,4 @@ $big-desktop: 1366px;
 
 .cnt-loading {
   @include loading(15px, 15px, 2px, #000);
-}
-
-@mixin mobile-landscape {
-  @media (min-width: 320px) and (max-width: 900px) {
-    @content;
-  }
-}
-
-@mixin table {
-  @media (min-width: 650px) and
-         (max-width: #{$big-desktop}) {
-    @content;
-  }
 }

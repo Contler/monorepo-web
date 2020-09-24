@@ -10,12 +10,15 @@
   }
 
   &__title {
-    font-family: $family;
-    font-size: 20.2px;
-    font-weight: 500;
-    letter-spacing: 0.25px;
+    font-family: Raleway;
+    font-size: 16.2px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    font-size: 16.2px;
+    letter-spacing: 0.15px;
+    line-height: 1.48;
     text-align: center;
-    color: $text-3;
     margin: 38px 0 48px;
   }
 
@@ -39,7 +42,44 @@
   }
 }
 
-button {
+.btn {
   width: 100%;
   margin-bottom: 20px;
+
+  &__container-btn {
+    margin-top: 73px;
+    width: 90%;
+    position: absolute;
+    bottom: 8%;
+    right: 5%;
+  }
+
+  &__update {
+    grid-column: span 2;
+    height: 40px;
+    font-family: Raleway, serif;
+    font-size: 14.2px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: 0.1px;
+    border-radius: 11px !important;
+    color: #ffffff !important;
+  }
+
+  &__cancel {
+    grid-column: span 2;
+    height: 40px;
+    margin-top: 50px;
+    font-family: Raleway, serif;
+    font-size: 14.2px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: 0.1px;
+    border-radius: 11px !important;
+    color: #142c63 !important;
+  }
 }

@@ -1,8 +1,6 @@
 <contler-marco padding="16px 40px">
   <ng-container marcoBody>
-    <h1 class="ctl-title" contlerColorHotel="primary">
-      Mis pedidos <span *ngIf="pending">Pendientes</span> <span *ngIf="!pending">Cumplidos</span>
-    </h1>
+    <h1 class="ctl-title" contlerColorHotel="primary">My orders</h1>
 
     <contler-order-item
       *ngFor="let order of order$ | async | activeOrder: pending"
