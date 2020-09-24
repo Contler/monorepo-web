@@ -1,4 +1,5 @@
 @import 'styles/variables';
+@import 'styles/material';
 
 .reservation {
   padding: 0 24px 10px;
@@ -56,30 +57,10 @@
 
   &__update {
     grid-column: span 2;
-    height: 40px;
-    font-family: $family;
-    font-size: 14.2px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.13;
-    letter-spacing: 0.1px;
-    border-radius: 11px;
-    color: #ffffff;
   }
 
   &__cancel {
     grid-column: span 2;
-    height: 40px;
-    margin-top: 50px;
-    font-family: $family;
-    font-size: 14.2px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.13;
-    letter-spacing: 0.1px;
-    border-radius: 11px;
-    color: #142c63;
+    color: #142c63 !important;
   }
 }

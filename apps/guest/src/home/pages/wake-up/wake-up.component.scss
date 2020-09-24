@@ -1,6 +1,6 @@
 @import 'styles/variables';
-@import 'styles/variables';
 @import 'styles/mixin';
+@import 'styles/material';
 
 .wake-up {
   padding: 15px 24px 80px;
@@ -86,18 +86,4 @@
       width: 100%;
     }
   }
-}
-
-.btn-styles {
-  border-radius: 12px;
-  height: 50px;
-  font-family: $family;
-  font-size: 14.2px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.13;
-  letter-spacing: 0.1px;
-  border-radius: 11px;
-  color: #ffffff;
 }

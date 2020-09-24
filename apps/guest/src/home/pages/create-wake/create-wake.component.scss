@@ -1,4 +1,5 @@
 @import 'styles/variables';
+@import 'styles/material';
 
 .wake {
   padding: 0 34px;
@@ -55,18 +56,4 @@
     opacity: 0.08;
     background-color: rgba(0, 0, 0, 0.87);
   }
-}
-
-.btn-styles {
-  border-radius: 12px;
-  height: 50px;
-  font-family: $family;
-  font-size: 14.2px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.13;
-  letter-spacing: 1.25px;
-  border-radius: 11px;
-  color: #ffffff;
 }

@@ -94,6 +94,23 @@ $hotel-theme: mat-light-theme($hotel-primary, $hotel-accent, $hotel-warn);
   font-family: $family;
 }
 
+.mat-raised-button {
+  border-radius: 12px;
+  height: 50px;
+  width: 90%;
+  font-family: $family;
+  font-size: 14.2px;
+  font-weight: 500;
+  display: block;
+  font-stretch: normal;
+  font-style: normal;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.13;
+  letter-spacing: 0.25px;
+  color: #ffffff !important;
+}
+
 .mat-form-field-appearance-fill .mat-select-arrow-wrapper {
   transform: translateY(0) !important;
 }

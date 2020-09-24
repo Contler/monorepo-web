@@ -1,5 +1,6 @@
 @import 'styles/variables';
 @import 'styles/mixin';
+@import 'styles/material';
 
 .request__hotel-logo {
   display: block;
@@ -35,23 +36,6 @@ mat-form-field {
 
 .score-container {
   margin-bottom: 39px;
-}
-
-.btn-styles {
-  height: 55px;
-  width: 90%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: $family;
-  font-size: 14.2px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.13;
-  letter-spacing: 1.25px;
-  border-radius: 11px;
-  color: #ffffff;
 }
 
 .main-container {

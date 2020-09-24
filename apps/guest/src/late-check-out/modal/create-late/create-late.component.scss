@@ -1,5 +1,6 @@
 @import 'styles/variables';
 @import 'styles/mixin';
+@import 'styles/material';
 
 .content {
   display: grid;
@@ -10,22 +11,4 @@
     margin-top: 10%;
     position: inherit;
   }
-}
-
-.btn-styles {
-  border-radius: 12px;
-  height: 50px;
-  width: 90%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: $family;
-  font-size: 14.2px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.13;
-  letter-spacing: 0.1px;
-  border-radius: 11px;
-  color: #ffffff;
 }
