@@ -5,7 +5,7 @@
     </button>
   </div>
 
-  <img *ngIf="logo" [src]="logo" class="logo-general" />
+  <img *ngIf="logo" [src]="logo" class="logo-general" alt="logo" />
 
   <div class="marco__menu">
     <button mat-icon-button (click)="sidenav.toggle()" [style]="generalService.getColorHotel()">
@@ -22,13 +22,12 @@
   </mat-sidenav>
 
   <mat-sidenav-content class="menu">
-    <div [style.padding]="padding">
+    <div [style.padding]="padding" style="overflow: scroll">
       <ng-content select="[marcoBody]"></ng-content>
     </div>
 
     <div>
       <ng-content select="[marcoFooter]"></ng-content>
     </div>
-
   </mat-sidenav-content>
 </mat-sidenav-container>

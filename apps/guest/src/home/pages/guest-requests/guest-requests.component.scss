@@ -14,7 +14,7 @@ $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
     text-align: center;
   }
   &__space {
-    margin-bottom: 20px
+    margin-bottom: 20px;
   }
   &__user {
     margin-bottom: 10px;
@@ -34,12 +34,13 @@ $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
     &-text {
       @include text(rgba(0, 0, 0, 0.87), 20px, 500);
       letter-spacing: 0.25px;
+      text-transform: uppercase;
     }
   }
 }
-.main-container{
+.main-container {
   height: 100%;
-  .zones-container{
+  .zones-container {
     max-height: 45%;
     overflow: auto;
   }

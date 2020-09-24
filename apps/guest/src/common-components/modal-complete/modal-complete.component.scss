@@ -1,0 +1,20 @@
+@import 'styles/variables';
+@import 'styles/mixin';
+
+.modalInfo {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  &__icon {
+    font-size: 50px;
+    color: rgba(0, 0, 0, 0.38);
+  }
+
+  &__text {
+    @include text(rgba(0, 0, 0, 0.87), 14px, 500);
+    line-height: 1.69;
+    letter-spacing: 0.1px;
+    margin: 43px 0 66px;
+  }
+}

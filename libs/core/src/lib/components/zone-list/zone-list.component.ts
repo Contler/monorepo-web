@@ -21,7 +21,8 @@ export class ZoneListComponent {
   @Input() deliveryZone: boolean | undefined;
   @Output() deliveryZoneChange = new EventEmitter();
 
-
+  @Input() receptionZone: boolean | undefined;
+  @Output() receptionZoneChange = new EventEmitter();
 
   @Output() selected = new EventEmitter<{ [key: string]: boolean }>();
 
@@ -31,7 +32,6 @@ export class ZoneListComponent {
     } else {
       delete this.zonesSelected[zone.uid];
     }
-    this.selected.emit(this.zonesSelected)
+    this.selected.emit(this.zonesSelected);
   }
-
 }

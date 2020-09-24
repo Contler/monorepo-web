@@ -1,0 +1,13 @@
+.transport {
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    margin-top: 23px;
+  }
+
+  &__footer {
+    padding: 0 50px 16px;
+    display: grid;
+  }
+}

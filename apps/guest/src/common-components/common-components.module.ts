@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UiModule } from '@contler/ui';
 import { MaterialModule } from '../material/material.module';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -10,6 +11,7 @@ import { PipesModule } from 'guest/pipes/pipes.module';
 import { ColorHotelDirective } from './color-hotel.directive';
 import { ColorBtnHotelDirective } from './color-btn-hotel.directive';
 import { BtnMenuHotelDirective } from './btn-menu-hotel.directive';
+import { ModalCompleteComponent } from './modal-complete/modal-complete.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { BtnMenuHotelDirective } from './btn-menu-hotel.directive';
     ColorHotelDirective,
     ColorBtnHotelDirective,
     BtnMenuHotelDirective,
+    ModalCompleteComponent,
   ],
   imports: [CommonModule, MaterialModule, RatingModule, PipesModule],
   exports: [
@@ -29,7 +32,9 @@ import { BtnMenuHotelDirective } from './btn-menu-hotel.directive';
     ScoreComponent,
     ColorHotelDirective,
     ColorBtnHotelDirective,
-    BtnMenuHotelDirective
+    BtnMenuHotelDirective,
+    ModalCompleteComponent,
+    UiModule,
   ],
 })
 export class CommonComponentsModule {}

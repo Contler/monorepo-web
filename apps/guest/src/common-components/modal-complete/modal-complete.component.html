@@ -1,0 +1,7 @@
+<div class="modalInfo">
+  <contler-icon class="modalInfo__icon" [key]="config.icon"></contler-icon>
+  <p class="modalInfo__text">{{ config.text }}</p>
+  <button mat-raised-button contlerColorBtnHotel="primary" (click)="dialogRef.close()">
+    {{ config.close }}
+  </button>
+</div>
