@@ -1,3 +1,6 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixin';
+
 .request__hotel-logo {
   display: block;
   margin: 0 auto;
@@ -22,11 +25,24 @@ p.title {
   column-gap: 16px;
 }
 
-mat-form-field{
+mat-form-field {
   width: 100%;
   margin-bottom: 26px;
 }
 
-.score-container{
+.score-container {
   margin-bottom: 39px;
+}
+
+.custom-button {
+  height: 55px;
+  font-family: Raleway, serif;
+  font-size: 14.2px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: 1.25px;
+  border-radius: 11px !important;
+  color: #ffffff !important;
 }

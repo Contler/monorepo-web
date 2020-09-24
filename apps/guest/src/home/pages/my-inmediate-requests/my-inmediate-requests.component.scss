@@ -1,4 +1,5 @@
 @import '../../../styles/variables';
+@import '../../../styles/mixin';
 
 .main-container {
   height: 100%;
@@ -13,13 +14,15 @@
 }
 
 p.title {
+  width: 362px;
+  height: 24px;
   font-family: Raleway;
-  font-size: 20.2px;
-  font-weight: 500;
+  font-size: 16.2px;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: normal;
-  letter-spacing: 0.25px;
+  line-height: 1.48;
+  letter-spacing: 0.15px;
   text-align: center;
   color: #006633;
   margin-top: 37px;

@@ -21,31 +21,34 @@ export const CATEGORY_ZONE = [
   },
 ];
 
-export const SUB_CATEGORY_DRINKS = 'Bebidas';
+export const SUB_CATEGORY_DRINKS = 'A drink';
 
 export const SUB_CATEGORY = {
   1: [
-    { name: 'Llaves de mi habitación', icon: 'vpn_key' },
-    { name: 'Reservas de espacios', icon: 'calendar_today' },
-    { name: 'Bebidas', icon: 'local_bar' },
-    { name: 'Llamar al personal del hotel', icon: 'people' },
+    { name: 'Room keys', icon: 'vpn_key' },
+    { name: 'Reserve a space', icon: 'calendar_today' },
+    { name: 'A drink', icon: 'local_bar' },
+    { name: 'Call the hotel staff', icon: 'people' },
   ],
   2: [
-    { name: 'Toallas', icon: 'bookmark' },
-    { name: 'Bebidas', icon: 'local_bar' },
-    { name: 'Reservas de espacios', icon: 'calendar_today' },
-    { name: 'Otro', icon: 'add' },
+    { name: 'Towels', icon: 'bookmark' },
+    { name: 'A drink', icon: 'local_bar' },
+    { name: 'Reserve a space', icon: 'calendar_today' },
+    { name: 'Other', icon: 'add' },
   ],
   3: [
     { name: 'Room Service', icon: 'notifications_active' },
-    { name: 'Solicitar Limpieza', icon: 'bathtub' },
-    { name: 'Programar wake up call', icon: 'watch_later' },
-    { name: 'Solicitar late check-out', icon: 'today' },
+    { name: 'Request cleaning', icon: 'bathtub' },
+    { name: 'Program wake up call', icon: 'watch_later' },
+    { name: 'Request late check-out', icon: 'today' },
   ],
   4: [
-    { name: 'Pre-ordenar comida', icon: 'fastfood' },
-    { name: 'Solicitar limpieza de la habitación', icon: 'watch_later' },
-    { name: 'Solicitudes especiales', icon: 'deck' },
+    { name: 'Pre-order food', icon: 'fastfood' },
+    { name: 'Request room cleaning', icon: 'watch_later' },
+    { name: 'Special requests', icon: 'deck' },
   ],
-  5: [{ name: 'Mesero', icon: 'person' }, { name: 'Llaves de mi habitación', icon: 'vpn_key' }],
+  5: [
+    { name: 'Waiter', icon: 'person' },
+    { name: 'Room keys', icon: 'vpn_key' },
+  ],
 };

@@ -1,5 +1,5 @@
-@import 'styles/variables';
-@import 'styles/mixin';
+@import '../../../styles/variables';
+@import '../../../styles/mixin';
 
 $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
 
@@ -17,7 +17,18 @@ $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
     margin-bottom: 20px;
   }
   &__user {
-    margin-bottom: 10px;
+    margin-bottom: -16px;
+  }
+  &__request_question {
+    font-family: Raleway;
+    font-size: 16.2px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.48;
+    letter-spacing: 0.15px;
+    text-align: center;
+    margin-top: 7%;
   }
 
   &__zone {
@@ -25,6 +36,7 @@ $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
     grid-template-columns: max-content auto max-content;
     column-gap: 16px;
     padding: 20px 16px;
+    height: 30px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     align-items: center;
     text-decoration: none;
@@ -35,13 +47,39 @@ $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
       @include text(rgba(0, 0, 0, 0.87), 20px, 500);
       letter-spacing: 0.25px;
       text-transform: uppercase;
+      font-family: Raleway;
+      font-size: 14.2px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.13;
+      letter-spacing: 1.25px;
+      color: #142c63;
     }
   }
 }
 .main-container {
   height: 100%;
+  width: 100%;
   .zones-container {
     max-height: 45%;
     overflow: auto;
   }
+  .request__zone:nth-child(even) {
+    background-color: #f6f6f6;
+  }
+}
+
+.request-question {
+  width: 362px;
+  height: 93px;
+  font-family: Raleway;
+  font-size: 16.2px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.48;
+  letter-spacing: 0.15px;
+  text-align: center;
+  color: #142c63;
 }

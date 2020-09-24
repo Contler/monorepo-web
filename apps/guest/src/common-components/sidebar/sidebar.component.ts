@@ -17,32 +17,32 @@ export class SidebarComponent implements OnInit, OnDestroy {
   public readonly menuItems: MenuItem[] = [
     {
       icon: 'error',
-      name: 'Solicitud inmediata',
+      name: 'Inmediate Request',
       route: '/home/guest-requests',
     },
     {
       icon: 'error_outline',
-      name: 'Mis solicitudes inmediatas',
+      name: 'My immediate requests',
       route: '/home/my-inmediate-requests',
     },
     {
       icon: 'calendar_today',
-      name: 'Reservas',
+      name: 'Reservations',
       route: '/home/reservation',
     },
     {
       icon: 'calendar_today',
-      name: 'Mis Reservas',
+      name: 'My Reservations',
       route: '/home/reservation/my-reservation',
     },
     {
       icon: 'room_service',
-      name: 'Pedidos',
+      name: 'Orders',
       route: '/home/product',
     },
     {
       icon: 'sms_failed',
-      name: 'Solicitudes especiales',
+      name: 'Special requests',
       route: '/home/special-requests',
     },
     {
@@ -52,7 +52,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     },
     {
       icon: 'directions_walk',
-      name: 'Late Checkout',
+      name: 'Late Check-out',
       route: '/home/late',
     },
   ];
@@ -70,7 +70,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     private auth: AngularFireAuth,
     private guestService: GuestService,
   ) {
-    this.guestSubscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
+    this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
   }
 
   async ngOnInit() {
@@ -90,14 +90,17 @@ export class SidebarComponent implements OnInit, OnDestroy {
   private listenCurrentRoute() {
     this.currentRoute = this.router.url;
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((data: any) => (this.currentRoute = data.url));
   }
 
   private listenUser() {
     this.userSubscription = this.usersService
       .getUserByKey(this.auth.auth.currentUser ? this.auth.auth.currentUser.uid : '')
-      .subscribe(user => (this.user = user as User), () => {});
+      .subscribe(
+        (user) => (this.user = user as User),
+        () => {},
+      );
   }
 
   goToRoute(url: string) {
