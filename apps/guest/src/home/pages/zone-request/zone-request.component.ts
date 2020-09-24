@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'guest/services/zone.service';
 import { map, switchMap } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { SUB_CATEGORY, SUB_CATEGORY_DRINKS } from '@contler/const';
+import { SUB_CATEGORY, SUB_CATEGORY_DRINKS, ROOM_SERVICE } from '@contler/const';
 import { NotificationsService } from 'guest/services/notifications.service';
 import { UsersService } from 'guest/services/users.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
@@ -109,7 +109,7 @@ export class ZoneRequestComponent implements OnDestroy {
 
   setQuickRequest(value: string) {
     this.selectedSubcategory = value;
-    if (value === SUB_CATEGORY_DRINKS) {
+    if (value === SUB_CATEGORY_DRINKS || value === ROOM_SERVICE) {
       this.router.navigate(['/home/product/create']);
     } else {
       this.showRequestField = value === 'Other';

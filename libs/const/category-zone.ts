@@ -21,7 +21,8 @@ export const CATEGORY_ZONE = [
   },
 ];
 
-export const SUB_CATEGORY_DRINKS = 'A drink';
+export const SUB_CATEGORY_DRINKS = 'Bebidas';
+export const ROOM_SERVICE = 'Room Service';
 
 export const SUB_CATEGORY = {
   1: [
