@@ -94,10 +94,6 @@ $hotel-theme: mat-light-theme($hotel-primary, $hotel-accent, $hotel-warn);
   font-family: $family;
 }
 
-.mat-drawer-container {
-  //height: calc(100vh - 56px);
-}
-
 .mat-form-field-appearance-fill .mat-select-arrow-wrapper {
   transform: translateY(0) !important;
 }

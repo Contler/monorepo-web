@@ -1,5 +1,5 @@
-@import '../styles/variables';
-@import '../styles/mixin';
+@import 'styles/variables';
+@import 'styles/mixin';
 
 .reservation {
   padding: 20px 0px 0px;
@@ -10,7 +10,7 @@
   }
 
   &__title {
-    font-family: Raleway;
+    font-family: $family;
     font-size: 16.2px;
     font-weight: normal;
     font-stretch: normal;
@@ -35,7 +35,7 @@
     }
     &-text {
       @include text(rgba(0, 0, 0, 0.87), 20px, 500);
-      font-family: Raleway;
+      font-family: $family;
       font-size: 14.2px;
       font-weight: 500;
       font-stretch: normal;

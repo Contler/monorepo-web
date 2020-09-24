@@ -1,6 +1,6 @@
-@import '../../../styles/variables';
-@import '../../../styles/variables';
-@import '../../../styles/mixin';
+@import 'styles/variables';
+@import 'styles/variables';
+@import 'styles/mixin';
 
 .wake-up {
   padding: 15px 24px 80px;
@@ -11,7 +11,7 @@
   }
 
   &__title {
-    font-family: Raleway;
+    font-family: $family;
     font-size: 16.2px;
     font-weight: normal;
     font-stretch: normal;
@@ -52,7 +52,7 @@
   }
 
   &__complete-date {
-    font-family: Raleway;
+    font-family: $family;
     font-size: 20.2px;
     font-weight: 500;
     font-stretch: normal;
@@ -63,7 +63,7 @@
   }
 
   &__short-date {
-    font-family: Raleway;
+    font-family: $family;
     font-size: 16.2px;
     font-weight: normal;
     font-stretch: normal;
@@ -88,16 +88,16 @@
   }
 }
 
-.custom-button {
-  border-radius: 12px !important;
-  height: 50px !important;
-  font-family: Raleway !important;
+.btn-styles {
+  border-radius: 12px;
+  height: 50px;
+  font-family: $family;
   font-size: 14.2px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.13;
   letter-spacing: 0.1px;
-  border-radius: 11px !important;
-  color: #ffffff !important;
+  border-radius: 11px;
+  color: #ffffff;
 }

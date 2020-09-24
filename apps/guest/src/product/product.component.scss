@@ -1,8 +1,9 @@
 @import 'styles/variables';
+
 .product {
   &__item {
     text-align: center;
-    font-family: Raleway;
+    font-family: $family;
     font-size: 16.2px;
     font-weight: normal;
     font-stretch: normal;
@@ -37,9 +38,9 @@
 
     .btn-next {
       width: 100%;
-      border-radius: 12px !important;
-      height: 50px !important;
-      font-family: Raleway !important;
+      border-radius: 12px;
+      height: 50px;
+      font-family: $family;
       text-transform: uppercase;
       font-size: 14.2px;
       font-weight: 500;

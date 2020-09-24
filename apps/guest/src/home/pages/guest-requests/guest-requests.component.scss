@@ -1,5 +1,5 @@
-@import '../../../styles/variables';
-@import '../../../styles/mixin';
+@import 'styles/variables';
+@import 'styles/mixin';
 
 $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
 
@@ -20,7 +20,7 @@ $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
     margin-bottom: -16px;
   }
   &__question {
-    font-family: Raleway;
+    font-family: $family;
     font-size: 16.2px;
     font-weight: normal;
     font-stretch: normal;
@@ -47,6 +47,7 @@ $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
       letter-spacing: 0.25px;
       text-transform: uppercase;
       font-family: Raleway;
+      font-family: $family;
       font-size: 14.2px;
       font-weight: 500;
       font-stretch: normal;
@@ -71,7 +72,7 @@ $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
 .request-question {
   width: 362px;
   height: 93px;
-  font-family: Raleway;
+  font-family: $family;
   font-size: 16.2px;
   font-weight: normal;
   font-stretch: normal;

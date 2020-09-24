@@ -1,5 +1,5 @@
-@import '../../../styles/variables';
-@import '../../../styles/mixin';
+@import 'styles/variables';
+@import 'styles/mixin';
 
 .request__hotel-logo {
   display: block;
@@ -7,7 +7,7 @@
 }
 
 p.title {
-  font-family: Raleway;
+  font-family: $family;
   font-size: 20.2px;
   font-weight: 500;
   font-stretch: normal;
@@ -34,15 +34,19 @@ mat-form-field {
   margin-bottom: 39px;
 }
 
-.custom-button {
+.btn-styles {
   height: 55px;
-  font-family: Raleway, serif;
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: $family;
   font-size: 14.2px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.13;
   letter-spacing: 1.25px;
-  border-radius: 11px !important;
-  color: #ffffff !important;
+  border-radius: 11px;
+  color: #ffffff;
 }

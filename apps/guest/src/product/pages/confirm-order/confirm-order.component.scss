@@ -1,6 +1,8 @@
+@import 'styles/variables';
+
 .confirm {
   &-total {
-    font-family: Raleway, serif;
+    font-family: $family;
     font-size: 20.2px;
     font-weight: 500;
     letter-spacing: 0.25px;
@@ -19,10 +21,10 @@
 
     .btn-next {
       width: 100%;
-      border-radius: 12px !important;
-      height: 50px !important;
-      font-family: Raleway !important;
-      font-size: 14.2px !important;
+      border-radius: 12px;
+      height: 50px;
+      font-family: $family;
+      font-size: 14.2px;
       font-weight: 500;
       font-stretch: normal;
       font-style: normal;

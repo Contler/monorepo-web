@@ -33,7 +33,7 @@
 }
 
 .text {
-  font-family: Raleway;
+  font-family: $family;
   font-size: 14.2px;
   font-stretch: normal;
   font-style: normal;
@@ -45,9 +45,9 @@
   margin: 0 auto 20px;
 }
 
-.custom-botton {
+.btn-styles {
   height: 45px !important;
-  font-family: Raleway;
+  font-family: $family;
   font-size: 14.2px;
   font-weight: 500;
   font-stretch: normal;

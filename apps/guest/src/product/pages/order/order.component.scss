@@ -1,5 +1,12 @@
+@import 'styles/variables';
+
 .order {
   &-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+
     &__btn {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -18,17 +25,17 @@
   }
 }
 
-.custom-button {
+.btn-styles {
   width: 100%;
-  border-radius: 12px !important;
-  height: 50px !important;
-  font-family: Raleway !important;
+  border-radius: 12px;
+  height: 50px;
+  font-family: $family;
   font-size: 14.2px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.13;
   letter-spacing: 1.25px;
-  color: #ffffff !important;
+  color: #ffffff;
   text-align: center;
 }

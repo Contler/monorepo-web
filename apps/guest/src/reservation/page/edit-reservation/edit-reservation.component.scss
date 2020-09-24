@@ -10,7 +10,7 @@
   }
 
   &__title {
-    font-family: Raleway;
+    font-family: $family;
     font-size: 16.2px;
     font-weight: normal;
     font-stretch: normal;
@@ -57,29 +57,29 @@
   &__update {
     grid-column: span 2;
     height: 40px;
-    font-family: Raleway, serif;
+    font-family: $family;
     font-size: 14.2px;
     font-weight: 500;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.13;
     letter-spacing: 0.1px;
-    border-radius: 11px !important;
-    color: #ffffff !important;
+    border-radius: 11px;
+    color: #ffffff;
   }
 
   &__cancel {
     grid-column: span 2;
     height: 40px;
     margin-top: 50px;
-    font-family: Raleway, serif;
+    font-family: $family;
     font-size: 14.2px;
     font-weight: 500;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.13;
     letter-spacing: 0.1px;
-    border-radius: 11px !important;
-    color: #142c63 !important;
+    border-radius: 11px;
+    color: #142c63;
   }
 }
