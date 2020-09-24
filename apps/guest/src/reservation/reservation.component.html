@@ -1,12 +1,17 @@
-<contler-marco [backUrl]="'/home/guest-requests'">
+<contler-marco padding="0" [backUrl]="'/home/guest-requests'">
   <div marcoBody class="reservation">
-    <h1 class="reservation__title" [style]="getColorHotel()">¿En qué espacio quieres hacer tu reserva?</h1>
+    <h1 class="reservation__title" [style]="getColorHotel()">
+      Where do you want to make your reservation?
+    </h1>
 
-    <div *ngFor="let item of zoneReservation" class="reservation-item" routerLink="/home/reservation/{{item.id}}">
-      <mat-icon>{{item.icon || 'room_service'}}</mat-icon>
-      <p class="reservation-item__text">{{item.name}}</p>
-      <mat-icon>arrow_forward_ios</mat-icon>
-    </div>
-
+    <a
+      class="reservation__zone striped"
+      *ngFor="let item of zoneReservation"
+      routerLink="/home/reservation/{{ item.id }}"
+    >
+      <mat-icon class="reservation__zone-icon">{{ item.icon || 'room_service' }}</mat-icon>
+      <p class="reservation__zone-text" [style]="getColorHotel()">{{ item.name | uppercase }}</p>
+      <mat-icon class="reservation__zone-icon">navigate_next</mat-icon>
+    </a>
   </div>
 </contler-marco>

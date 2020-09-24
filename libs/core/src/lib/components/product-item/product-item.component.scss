@@ -1,16 +1,19 @@
 .product {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+  border-bottom: 1px solid #ececec;
 
   &__description {
     flex-grow: 1;
   }
 
   &__title {
-    font-family: Raleway, serif;
-    font-size: 20.2px;
+    font-family: Raleway;
+    font-size: 16.2px;
     font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
     letter-spacing: 0.25px;
     color: rgba(0, 0, 0, 0.87);
     margin: 0;
@@ -39,6 +42,5 @@
     font-weight: 500;
     letter-spacing: 0.25px;
     text-align: center;
-    color: #006633;
   }
 }

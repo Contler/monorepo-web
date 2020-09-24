@@ -1,5 +1,6 @@
 @import 'styles/variables';
 @import 'styles/mixin';
+@import 'styles/material';
 
 $grayFeatures: #9e9e9e; // OJO!: HAY VARIOS GRISES DISTINTOS EN ZEPLIN
 
@@ -11,16 +12,16 @@ $grayFeatures: #9e9e9e; // OJO!: HAY VARIOS GRISES DISTINTOS EN ZEPLIN
   }
   &__label {
     margin-top: 29px;
-    font-family: $family;
-    font-size: 20.2px;
+    font-size: 16.2px;
     font-weight: 500;
     font-stretch: normal;
     font-style: normal;
-    line-height: normal;
-    letter-spacing: 0.25px;
-    text-align: center;
     color: $text-3;
-    margin-bottom: 52px;
+    margin-bottom: 80px;
+    font-family: $family;
+    line-height: 1.48;
+    letter-spacing: 0.15px;
+    text-align: center;
   }
 
   &__category {
@@ -56,7 +57,11 @@ $grayFeatures: #9e9e9e; // OJO!: HAY VARIOS GRISES DISTINTOS EN ZEPLIN
 
   &__button {
     margin-top: 73px;
-    width: 100%;
+    width: 80%;
+    position: absolute;
+    bottom: 4%;
+    right: 9%;
+    border-radius: 12px;
   }
 
   .features-container {

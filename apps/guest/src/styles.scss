@@ -50,7 +50,7 @@ div:focus {
 
 .custom-button {
   height: 55px;
-  font-family: Raleway, serif;
+  font-family: $family;
   font-size: 14.2px;
   font-weight: 500;
   font-stretch: normal;
@@ -73,7 +73,6 @@ div:focus {
 
 .ctl-title {
   font-family: $family;
-  color: #006633;
   font-size: 16.2px;
   font-weight: normal;
   font-stretch: normal;

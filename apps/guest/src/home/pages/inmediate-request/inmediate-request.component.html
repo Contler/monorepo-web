@@ -1,33 +1,48 @@
 <contler-marco [backUrl]="'/home/my-inmediate-requests'">
   <div class="main-container" marcoBody>
-    <p class="title" [style]="getColorHotel()">Solicitud inmediata</p>
+    <p class="p-title" [style]="getColorHotel()">Immediate request</p>
     <ng-container *ngIf="request">
       <form>
         <div class="two-inputs">
           <mat-form-field appearance="fill" class="full-field">
-            <input matInput [value]="request.createAt | date: 'dd/MM/yyyy'" name="created_at_date" readonly />
-            <mat-hint>Fecha solicitud</mat-hint>
+            <input
+              matInput
+              [value]="request.createAt | date: 'dd/MM/yyyy'"
+              name="created_at_date"
+              readonly
+            />
+            <mat-hint>Date od request</mat-hint>
           </mat-form-field>
           <mat-form-field appearance="fill" class="full-field">
-            <input matInput [value]="request.createAt | date: 'HH:mm'" name="created_at_time" readonly />
-            <mat-hint>Hora solicitud</mat-hint>
+            <input
+              matInput
+              [value]="request.createAt | date: 'HH:mm'"
+              name="created_at_time"
+              readonly
+            />
+            <mat-hint>Hour of request</mat-hint>
           </mat-form-field>
         </div>
         <mat-form-field appearance="fill">
           <input matInput [value]="request.zone.name" name="zoneName" readonly />
-          <mat-hint>Zona</mat-hint>
+          <mat-hint>Area</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <input matInput [value]="request.message" name="message" readonly />
-          <mat-hint>Necesita</mat-hint>
+          <mat-hint>Needing</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <input matInput [value]="request.solved?.name" name="employerName" readonly />
-          <mat-hint>Empleado encargado</mat-hint>
+          <mat-hint>Employee in charge</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <input matInput [value]="request.complete ? 'Cumplida' : 'Pendiente'" name="finished_at" readonly />
-          <mat-hint>Estado de la solicitud</mat-hint>
+          <input
+            matInput
+            [value]="request.complete ? 'Cumplida' : 'Pendiente'"
+            name="finished_at"
+            readonly
+          />
+          <mat-hint>Request status</mat-hint>
         </mat-form-field>
         <div class="score-container">
           <contler-score [score]="request.score" (value)="request.score = $event"></contler-score>
@@ -40,19 +55,19 @@
             name="scoreComments"
             required
           ></textarea>
-          <mat-hint>Cuéntanos un poco más</mat-hint>
+          <mat-hint>Please, tell us more</mat-hint>
         </mat-form-field>
         <button
           [loading]="loader"
           [disabled]="loader || request.complete"
-          class="full-width custom-button"
           mat-raised-button
           contlerButton
-          color="accent"
+          style="margin-left: 5%"
+          contlerColorBtnHotel="primary"
           (click)="saveRequest()"
           [style]="getButtonColorHotel()"
         >
-          ACTUALIZAR
+          UPDATE
         </button>
       </form>
     </ng-container>

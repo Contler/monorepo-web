@@ -1,18 +1,30 @@
-@import "styles/variables";
+@import 'styles/variables';
 .late {
   &__title {
     font-family: $family;
-    font-size: 20.2px;
+    font-size: 16.2px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.48;
+    letter-spacing: 0.15px;
+    text-align: center;
+    margin: 30px auto 76px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+
+  &__p-label-date {
+    font-family: $family;
+    font-size: 16.2px;
     font-weight: 500;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
     letter-spacing: 0.25px;
-    text-align: center;
-    color: $text-3;
-    margin: 38px auto 76px;
+    color: rgba(0, 0, 0, 0.87);
   }
-
 
   &__footer {
     display: block;
@@ -24,8 +36,15 @@
     grid-template-columns: auto max-content;
     padding: 20px 0;
     border-bottom: 1px solid #cccccc;
+    margin: 3%;
+
     p {
       margin: 0;
     }
+  }
+
+  &__marco-body {
+    padding: 20px;
+    margin-bottom: 20%;
   }
 }

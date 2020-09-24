@@ -1,3 +1,6 @@
+@import 'styles/variables';
+@import 'styles/material';
+
 .finish-order {
   &__list {
     max-height: 179px;
@@ -6,8 +9,11 @@
     margin-bottom: 35px;
 
     &-text {
-      font-family: Raleway, serif;
+      font-family: $family;
       font-size: 14.2px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
       line-height: 1.41;
       letter-spacing: 0.25px;
       color: #191615;
@@ -23,12 +29,14 @@
   }
 
   &__total {
-    font-family: Raleway, serif;
-    font-size: 20.2px;
-    font-weight: 500;
-    letter-spacing: 0.25px;
+    font-family: $family;
+    font-size: 16.2px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0.15px;
+    line-height: 1.48;
     text-align: center;
-    color: #006633;
+    font-style: normal;
   }
 
   &__form {
@@ -36,4 +44,8 @@
     grid-template-columns: 1fr;
     row-gap: 5px;
   }
+}
+
+.pto-title {
+  margin-top: 20px;
 }

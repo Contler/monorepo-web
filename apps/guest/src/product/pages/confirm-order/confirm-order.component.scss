@@ -1,6 +1,9 @@
+@import 'styles/variables';
+@import 'styles/material';
+
 .confirm {
   &-total {
-    font-family: Raleway, serif;
+    font-family: $family;
     font-size: 20.2px;
     font-weight: 500;
     letter-spacing: 0.25px;
@@ -16,8 +19,10 @@
     left: 0;
     width: 100%;
     padding: 0 30px 30px;
-    button {
-      width: 100%;
-    }
   }
+}
+
+.pto-title {
+  margin-bottom: 30px;
+  margin-top: 30px;
 }

@@ -1,19 +1,35 @@
-.request__hotel-logo{
-    display: block;
-    margin: 0 auto;
+@import 'styles/variables';
+@import 'styles/mixin';
+@import 'styles/material';
+
+.request__hotel-logo {
+  display: block;
+  margin: 0 auto;
 }
-p.label{
-    font-family: Raleway;
-    font-size: 20.2px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: 0.25px;
-    text-align: center;
-    margin-top: 38px;
-    margin-bottom: 20px;
+.p-label {
+  width: 90%;
+  display: block;
+  font-family: $family;
+  font-size: 16.2px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.48;
+  letter-spacing: 0.15px;
+  text-align: center;
+  margin-top: 38px;
+  margin-bottom: 20px;
 }
-button{
-    margin-top: 28px;
+.btn {
+  margin-top: 28px;
+  margin-left: 5%;
+}
+
+.wd-area {
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

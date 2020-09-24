@@ -1,8 +1,8 @@
-@import '../../../styles/variables';
+@import 'styles/variables';
+@import 'styles/mixin';
 
 .main-container {
   height: 100%;
-  //position: relative;
   display: flex;
   flex-direction: column;
 }
@@ -12,14 +12,16 @@
   margin: 0 auto;
 }
 
-p.title {
-  font-family: Raleway;
-  font-size: 20.2px;
-  font-weight: 500;
+.p-title {
+  width: 362px;
+  height: 24px;
+  font-family: $family;
+  font-size: 16.2px;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: normal;
-  letter-spacing: 0.25px;
+  line-height: 1.48;
+  letter-spacing: 0.15px;
   text-align: center;
   color: #006633;
   margin-top: 37px;
@@ -35,25 +37,27 @@ p.title {
       margin: 0;
     }
     .item {
-      padding: 16px 0px 18px 0px;
+      padding: 14px 4px 10px 0px;
+      width: 100%;
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px solid $darkenBorderColor;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+
       &__info-container {
         padding-right: 10px;
         p.username {
-          font-family: Raleway;
+          font-family: $family;
           font-size: 20.2px;
           font-weight: 500;
           font-stretch: normal;
           font-style: normal;
           line-height: normal;
           letter-spacing: 0.25px;
-          color: $text-4;
           margin-bottom: 8px;
+          color: rgba(0, 0, 0, 0.87);
         }
         p.zone {
-          font-family: Raleway;
+          font-family: $family;
           font-size: 12.2px;
           font-weight: normal;
           font-stretch: normal;
@@ -67,7 +71,7 @@ p.title {
         display: flex;
         align-items: center;
         p.time {
-          font-family: Raleway;
+          font-family: $family;
           font-size: 12.2px;
           font-weight: normal;
           font-stretch: normal;
@@ -89,7 +93,7 @@ p.title {
   display: flex;
   .tab {
     flex: 1;
-    height: 75px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,7 +101,7 @@ p.title {
     color: $text-4;
     &__label {
       margin: 0;
-      font-family: Raleway;
+      font-family: $family;
       font-size: 14.2px;
       font-weight: 500;
       font-stretch: normal;
@@ -128,7 +132,7 @@ p.title {
     margin-bottom: 38px;
   }
   &__label {
-    font-family: Raleway;
+    font-family: $family;
     font-size: 20.2px;
     font-weight: 500;
     font-stretch: normal;

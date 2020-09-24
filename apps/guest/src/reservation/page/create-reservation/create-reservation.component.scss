@@ -1,7 +1,8 @@
 @import 'styles/variables';
+@import 'styles/material';
 
 .new-reservation {
-  padding: 0 24px 80px;
+  padding: 24px 24px 80px;
   &__logo {
     display: block;
     margin: 0 auto;
@@ -15,12 +16,14 @@
 
   &__title {
     font-family: $family;
-    font-size: 20.2px;
-    font-weight: 500;
-    letter-spacing: 0.25px;
-    text-align: center;
-    color: $text-3;
+    font-size: 16.2px;
+    letter-spacing: 0.15px;
     margin: 38px 0 48px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.48;
+    text-align: center;
   }
 
   &__form {
@@ -40,4 +43,8 @@
     font-family: $family;
     margin: 0;
   }
+}
+
+.btn {
+  width: 100%;
 }

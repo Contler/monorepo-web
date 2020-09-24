@@ -112,7 +112,7 @@ export class ZoneRequestComponent implements OnDestroy {
     if (value === SUB_CATEGORY_DRINKS) {
       this.router.navigate(['/home/product/create']);
     } else {
-      this.showRequestField = value === 'Otro';
+      this.showRequestField = value === 'Other';
     }
   }
 
@@ -120,7 +120,7 @@ export class ZoneRequestComponent implements OnDestroy {
     let disabledButton = false;
     if (!this.selectedSubcategory) {
       disabledButton = true;
-    } else if (this.selectedSubcategory === 'Otro' && this.requestController.invalid) {
+    } else if (this.selectedSubcategory === 'Other' && this.requestController.invalid) {
       disabledButton = true;
     }
     return disabledButton;

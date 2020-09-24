@@ -1,6 +1,6 @@
 <contler-marco [padding]="'16px 0px 0px 0px'">
   <div class="main-container" marcoBody>
-    <p class="title" [style]="getColorHotel()">Mis solicitudes inmediatas</p>
+    <p class="p-title" [style]="getColorHotel()">My inmediate pending request</p>
     <div class="page-container" [ngSwitch]="currentPage">
       <div class="page" *ngSwitchCase="PAGES.PENDING">
         <ng-container *ngIf="pendingRequests.length; else empty">
@@ -41,14 +41,14 @@
         (click)="currentPage = PAGES.PENDING"
         [style]="currentPage == PAGES.PENDING ? getSelectedTabStyle() : ''"
       >
-        <p class="tab__label">PENDIENTES</p>
+        <p class="tab__label">TO DO</p>
       </div>
       <div
         class="tab"
         (click)="currentPage = PAGES.READY"
         [style]="currentPage == PAGES.READY ? getSelectedTabStyle() : ''"
       >
-        <p class="tab__label">RESUELTAS</p>
+        <p class="tab__label">DONE</p>
       </div>
     </div>
   </div>
@@ -56,9 +56,9 @@
 
 <ng-template #empty>
   <div class="empty-container">
-    <mat-icon class="custom_icon empty-container__icon" [style]="getColorSecondHotel()">check_circle</mat-icon>
-    <p class="empty-container__label" [style]="getColorHotel()">
-      No tienes ninguna solicitud inmediata
-    </p>
+    <mat-icon class="custom_icon empty-container__icon" [style]="getColorSecondHotel()"
+      >check_circle</mat-icon
+    >
+    <p class="empty-container__label" [style]="getColorHotel()">You have no immediate request</p>
   </div>
 </ng-template>

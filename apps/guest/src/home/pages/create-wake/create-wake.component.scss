@@ -1,4 +1,5 @@
 @import 'styles/variables';
+@import 'styles/material';
 
 .wake {
   padding: 0 34px;
@@ -8,16 +9,15 @@
     width: 100px;
   }
 
-  &__title{
+  &__title {
     font-family: $family;
-    font-size: 20.2px;
-    font-weight: 500;
+    font-size: 16.2px;
+    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
-    line-height: normal;
-    letter-spacing: 0.25px;
+    line-height: 1.48;
+    letter-spacing: 0.15px;
     text-align: center;
-    color: $text-3;
     margin: 38px auto 36px;
   }
 
@@ -43,10 +43,17 @@
     padding: 0 50px;
     box-sizing: border-box;
   }
-
-
 }
 
 .btn {
- width: 100%
+  width: 100%;
+}
+
+.custom-filed {
+  .mat-form-field-infix {
+    width: 175px;
+    height: 56px;
+    opacity: 0.08;
+    background-color: rgba(0, 0, 0, 0.87);
+  }
 }

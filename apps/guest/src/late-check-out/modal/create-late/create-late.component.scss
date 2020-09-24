@@ -1,5 +1,14 @@
+@import 'styles/variables';
+@import 'styles/mixin';
+@import 'styles/material';
+
 .content {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 10px;
+
+  &__btn-create {
+    margin-top: 10%;
+    position: inherit;
+  }
 }

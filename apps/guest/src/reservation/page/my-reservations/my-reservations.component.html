@@ -1,6 +1,6 @@
 <contler-marco [backUrl]="'/home/reservation'">
   <div marcoBody class="my-reservation">
-    <h1 class="my-reservation__title" [style]="getColorHotel()">Mis reservas</h1>
+    <h1 class="my-reservation__title" [style]="getColorHotel()">My reservations</h1>
 
     <ng-container *ngIf="bookings.length; else empty">
       <div
@@ -28,8 +28,6 @@
     <mat-icon class="custom_icon empty-container__icon" [style]="getColorSecondHotel()"
       >check_circle</mat-icon
     >
-    <p class="empty-container__label" [style]="getColorHotel()">
-      No tienes ninguna solicitud de reserva
-    </p>
+    <p class="empty-container__label" [style]="getColorHotel()">You have no reservation request</p>
   </div>
 </ng-template>

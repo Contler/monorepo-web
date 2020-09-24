@@ -1,9 +1,17 @@
+@import 'styles/variables';
+@import 'styles/material';
+
 .order {
   &-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+
     &__btn {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      height: 75px;
+      height: 60px;
       margin-top: 20px;
 
       .select {
@@ -12,4 +20,13 @@
       }
     }
   }
+  &__make {
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+}
+
+.pto-title {
+  // margin-bottom: 30px;
+  margin-top: 30px;
 }

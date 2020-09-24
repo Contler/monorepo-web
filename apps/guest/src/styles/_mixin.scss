@@ -1,23 +1,61 @@
 $phone: 480px;
 $tablet: 768px;
 $desktop: 1024px;
+$big-desktop: 1366px;
 
 @mixin phone {
-    @media only screen and (max-width: #{$phone}) {
-            @content;
-    }
+  @media only screen and (max-width: #{$phone}) {
+    @content;
+  }
 }
 
 @mixin tablet {
-    @media only screen and (max-width: #{$tablet}) {
-            @content;
-    }
+  @media only screen and (max-width: #{$tablet}) {
+    @content;
+  }
 }
 
 @mixin desktop {
-    @media only screen and (max-width: #{$desktop}) {
-            @content;
-    }
+  @media only screen and (max-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin mobile-landscape {
+  @media (min-width: 480px) and (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin mobile-portrait {
+  @media (min-width: 320px) and (max-width: 479px) {
+    @content;
+  }
+}
+
+@mixin small-tablet-portrait {
+  @media (min-width: 600px) and (max-width: 800px) {
+    @content;
+  }
+}
+
+@mixin small-tablet-landscape {
+  @media (min-width: 800px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet-portrai {
+  @media (min-width: #{$tablet}) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin table {
+  @media (min-width: 650px) and
+         (max-width: #{$big-desktop}) {
+    @content;
+  }
 }
 
 @mixin loading($width: 64px, $height: 64px, $size: 6px, $color: #fff) {
@@ -43,5 +81,5 @@ $desktop: 1024px;
 }
 
 .cnt-loading {
-  @include loading(15px, 15px, 2px, #000)
+  @include loading(15px, 15px, 2px, #000);
 }

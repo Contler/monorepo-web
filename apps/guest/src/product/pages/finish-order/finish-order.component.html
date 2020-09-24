@@ -1,9 +1,11 @@
 <contler-marco padding="16px 30px" backUrl="/home/product/order">
   <div marcoBody>
-    <h1 class="ctl-title" contlerColorHotel="primary">Confirma tu pedido y hora de entrega</h1>
+    <h1 class="ctl-title pto-title" contlerColorHotel="primary">
+      Confirm your order and hour of delivery
+    </h1>
 
     <div class="finish-order__list">
-      <p class="finish-order__list-text" style="margin-bottom: 20px">Resumen del pedido:</p>
+      <p class="finish-order__list-text" style="margin-bottom: 20px">Order summary in:</p>
       <div class="finish-order__list-products">
         <ng-template ngFor let-item [ngForOf]="products$ | async">
           <p class="finish-order__list-text">{{ item.product.name }}</p>
@@ -21,12 +23,12 @@
     <form class="finish-order__form" [formGroup]="orderForm" (ngSubmit)="createOrder()">
       <mat-form-field appearance="fill">
         <mat-select formControlName="time">
-          <mat-option [value]="actualTime">De inmediato</mat-option>
+          <mat-option [value]="actualTime">Immediately</mat-option>
           <mat-option *ngFor="let dat of time; let i = index" [value]="dat">
             {{ dat | date: 'shortTime' }}
           </mat-option>
         </mat-select>
-        <mat-hint>Hora a la que quieres recibirlo</mat-hint>
+        <mat-hint>Select your hour of delivery</mat-hint>
         <mat-icon matSuffix>query_builder</mat-icon>
       </mat-form-field>
 
@@ -36,15 +38,11 @@
             zone.name
           }}</mat-option>
         </mat-select>
-        <mat-hint>Dónde quieres recibirlo</mat-hint>
+        <mat-hint>Where do you want to receive it</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <textarea
-          formControlName="comment"
-          matInput
-          placeholder="Obervaciones de tu pedido:"
-        ></textarea>
+        <textarea formControlName="comment" matInput placeholder="Order remarks:"></textarea>
       </mat-form-field>
 
       <button
@@ -54,7 +52,7 @@
         contlerButton
         [loading]="loading"
       >
-        Finalizar
+        ORDER
       </button>
     </form>
   </div>

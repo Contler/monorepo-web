@@ -1,23 +1,24 @@
 @import 'styles/variables';
+@import 'styles/mixin';
+@import 'styles/material';
 
 .wake-up {
-  padding: 0 24px 80px;
+  padding: 15px 24px 80px;
   &__logo {
     display: block;
     margin: 0 auto;
     width: 100px;
   }
 
-  &__title{
+  &__title {
     font-family: $family;
-    font-size: 20.2px;
-    font-weight: 500;
+    font-size: 16.2px;
+    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
-    line-height: normal;
-    letter-spacing: 0.25px;
+    line-height: 1.48;
+    letter-spacing: 0.15px;
     text-align: center;
-    color: $text-3;
     margin: 38px auto 76px;
   }
 
@@ -48,6 +49,29 @@
     column-gap: 20px;
     border-bottom: 1px solid #c8c8c8;
     align-items: center;
+  }
+
+  &__complete-date {
+    font-family: $family;
+    font-size: 20.2px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.25px;
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  &__short-date {
+    font-family: $family;
+    font-size: 16.2px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.48;
+    letter-spacing: 0.15px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
   }
 
   &__btn {
