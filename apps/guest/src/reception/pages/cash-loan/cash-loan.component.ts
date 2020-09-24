@@ -7,7 +7,7 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./cash-loan.component.scss'],
 })
 export class CashLoanComponent {
-  cashControl = new FormControl('1', Validators.required);
+  cashControl = new FormControl('', Validators.required);
 
   constructor() {}
 }
