@@ -1,5 +1,5 @@
 <form [formGroup]="changeForm" (ngSubmit)="save()">
-  <contler-marco padding="20px 50px">
+  <contler-marco padding="20px 50px" backUrl="/home/reception">
     <ng-container marcoBody>
       <h1 class="ctl-title" contlerColorHotel="primary">
         Do you need a currency exchange? Fill out this information.
@@ -7,16 +7,16 @@
 
       <div class="exchange__form">
         <mat-form-field appearance="fill">
-          <mat-select formControlName="money">
+          <mat-select formControlName="money" (ngModelChange)="updateSymbol($event.symbol)">
             <mat-option *ngFor="let money of moneyOptions" [value]="money">
-              {{ money }}
+              {{ money.name }}
             </mat-option>
           </mat-select>
           <mat-hint>Currency to change</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <span matPrefix>$ &nbsp;</span>
+          <span matPrefix>{{ symbol }} &nbsp;</span>
           <input
             matInput
             type="tel"
@@ -35,7 +35,7 @@
     </ng-container>
 
     <div marcoFooter class="exchange__footer">
-      <button mat-raised-button contlerColorBtnHotel="primary" [disabled]="changeForm.invalid">
+      <button mat-raised-button contlerColorBtnHotel="primary" [disabled]="changeForm.invalid || load">
         CREATE REQUEST
       </button>
     </div>
