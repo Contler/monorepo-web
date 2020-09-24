@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { ReceptionRoutingModule } from './reception-routing.module';
 import { ReceptionComponent } from './reception.component';
@@ -28,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     CoreModule,
     ReactiveFormsModule,
+    MatDialogModule,
   ],
 })
 export class ReceptionModule {}

@@ -1,7 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { filter, map, switchMap, take } from 'rxjs/operators';
-import { Admin, CoreConfig, Employer, Guest } from '@contler/models';
+import { CoreConfig, Guest } from '@contler/models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { plainToClass } from 'class-transformer';
 import { HttpClient } from '@angular/common/http';
@@ -9,7 +9,6 @@ import { EmployerEntity } from '@contler/entity';
 
 @Injectable()
 export class UserService {
-  private activeUser: Admin | Employer | undefined;
   private readonly url: string;
 
   constructor(
