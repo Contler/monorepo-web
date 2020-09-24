@@ -1,4 +1,4 @@
-<contler-marco [backUrl]="'/home/guest-requests'">
+<contler-marco padding="0" [backUrl]="'/home/guest-requests'">
   <div marcoBody class="reservation">
     <h1 class="reservation__title" [style]="getColorHotel()">
       Where do you want to make your reservation?
@@ -10,7 +10,7 @@
       routerLink="/home/reservation/{{ item.id }}"
     >
       <mat-icon class="reservation__zone-icon">{{ item.icon || 'room_service' }}</mat-icon>
-      <p class="reservation__zone-text">{{ item.name | uppercase }}</p>
+      <p class="reservation__zone-text" [style]="getColorHotel()">{{ item.name | uppercase }}</p>
       <mat-icon class="reservation__zone-icon">navigate_next</mat-icon>
     </a>
   </div>

@@ -20,7 +20,7 @@ export class MarcoComponent {
     private router: Router,
   ) {
     this.guestService.$hotel.subscribe((hotel) => (this.logo = hotel!.logo));
-    this.maxHeight = window.innerHeight + 'px';
+    this.maxHeight = window.innerHeight - 56 + 'px';
   }
 
   goToRoute(url: string) {

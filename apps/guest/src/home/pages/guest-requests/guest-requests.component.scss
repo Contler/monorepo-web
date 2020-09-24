@@ -19,7 +19,7 @@ $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
   &__user {
     margin-bottom: -16px;
   }
-  &__request_question {
+  &__question {
     font-family: Raleway;
     font-size: 16.2px;
     font-weight: normal;
@@ -37,7 +37,6 @@ $temporalColor: #006633; // OJO!: ESTE DEBE SER EL COLOR DE CADA HOTEL
     column-gap: 16px;
     padding: 20px 16px;
     height: 30px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     align-items: center;
     text-decoration: none;
     &-icon {
