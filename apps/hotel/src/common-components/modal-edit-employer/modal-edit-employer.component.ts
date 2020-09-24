@@ -23,7 +23,7 @@ export class ModalEditEmployerComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ModalEditEmployerComponent>,
     formBuild: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) private employer: EmployerEntity,
+    @Inject(MAT_DIALOG_DATA) public employer: EmployerEntity,
     private employerService: EmployerService,
     private zoneService: ZoneService,
     private messagesService: MessagesService,
@@ -37,7 +37,7 @@ export class ModalEditEmployerComponent implements OnInit {
       numRequest: [employer.totalServices],
     });
     this.$zone = this.zoneService.getZones();
-    employer.leaderZones.forEach(zone => (this.leaderZone[zone.uid] = true));
+    employer.leaderZones.forEach((zone) => (this.leaderZone[zone.uid] = true));
   }
 
   saveUser() {
@@ -48,17 +48,17 @@ export class ModalEditEmployerComponent implements OnInit {
     this.employer.lastName = value.lastName;
     this.$zone
       .pipe(
-        map(zones => {
+        map((zones) => {
           let newZones: ZoneEntity[] = [];
-          Object.keys(this.leaderZone).forEach(id => {
-            const zone = zones.find(z => z.uid === id);
+          Object.keys(this.leaderZone).forEach((id) => {
+            const zone = zones.find((z) => z.uid === id);
             if (zone) {
               newZones = [...newZones, zone];
             }
           });
           return newZones;
         }),
-        switchMap(zones => {
+        switchMap((zones) => {
           this.employer.leaderZones = zones;
           return this.employerService.updateEmployer(this.employer);
         }),

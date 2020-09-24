@@ -30,6 +30,8 @@ export class EmployerEntity {
 
   deliveryZone!: boolean;
 
+  receptionZone!: boolean;
+
   pushToken!: string;
 
   hotel!: HotelEntity;
@@ -41,9 +43,12 @@ export class EmployerEntity {
   requestSolved!: RequestEntity[];
 
   get avgTime() {
-    const hours =  this.averageTime && 'hours' in this.averageTime ? this.averageTime.hours + ' hrs' : '';
-    const minutes = this.averageTime && 'minutes' in this.averageTime ? this.averageTime.minutes + ' mins': '';
-    const seconds = this.averageTime && 'seconds' in this.averageTime ? this.averageTime.seconds + ' secs': '';
-    return [hours, minutes, seconds].join(' ').trim()
+    const hours =
+      this.averageTime && 'hours' in this.averageTime ? this.averageTime.hours + ' hrs' : '';
+    const minutes =
+      this.averageTime && 'minutes' in this.averageTime ? this.averageTime.minutes + ' mins' : '';
+    const seconds =
+      this.averageTime && 'seconds' in this.averageTime ? this.averageTime.seconds + ' secs' : '';
+    return [hours, minutes, seconds].join(' ').trim();
   }
 }

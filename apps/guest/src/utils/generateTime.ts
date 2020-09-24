@@ -8,7 +8,7 @@ export default function () {
 export function fullRangeDates() {
   const actual = startOfToday();
   const range = generateRange(actual);
-  return range.slice(0, range.length - 2);
+  return range.slice(0, range.length - 1);
 }
 
 function generateRange(init: Date) {

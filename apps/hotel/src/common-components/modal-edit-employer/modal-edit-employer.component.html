@@ -7,7 +7,7 @@
 <form [formGroup]="formEmployer" (ngSubmit)="saveUser()">
   <div class="content">
     <mat-form-field appearance="fill" class="content__2-columns">
-      <input matInput formControlName="name" />
+      <input matInput formControlName="name" aria-label="name" />
       <mat-icon matSuffix>account_circle</mat-icon>
       <mat-hint>Nombre</mat-hint>
     </mat-form-field>
@@ -21,7 +21,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="content__2-columns">
-      <input matInput formControlName="lastName" />
+      <input matInput formControlName="lastName" aria-label="last-name" />
       <mat-icon matSuffix>account_circle</mat-icon>
       <mat-hint>Apellidos</mat-hint>
     </mat-form-field>
@@ -33,13 +33,14 @@
         [(wakeZone)]="employer.wakeZone"
         [(lateZone)]="employer.lateZone"
         [(deliveryZone)]="employer.deliveryZone"
+        [(receptionZone)]="employer.receptionZone"
         [zonesSelected]="leaderZone"
         (selected)="leaderZone = $event"
       ></contler-zone-list>
     </div>
 
     <mat-form-field appearance="fill" class="custom-filed">
-      <input matInput formControlName="score" readonly />
+      < input matInput formControlName="score" readonly />
       <mat-hint>Calificación</mat-hint>
     </mat-form-field>
 

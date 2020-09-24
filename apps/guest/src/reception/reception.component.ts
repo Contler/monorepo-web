@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OPTIONS_RECEPTION } from 'guest/reception/const/reception-options.const';
 
 @Component({
   selector: 'contler-reception',
@@ -6,23 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./reception.component.scss'],
 })
 export class ReceptionComponent {
-  options = [
-    {
-      name: 'Transportation',
-      icon: 'fas fa-taxi',
-      link: '/home/reception/transportation',
-    },
-    {
-      name: 'Cash loan',
-      icon: 'fas fa-dollar-sign',
-    },
-    {
-      name: 'Curency exchange',
-      icon: 'fas fa-globe',
-    },
-    {
-      name: 'Concierge',
-      icon: 'fas fa-map-marker-alt',
-    },
-  ];
+  options = OPTIONS_RECEPTION;
 }
