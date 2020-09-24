@@ -53,3 +53,10 @@ export const SUB_CATEGORY = {
     { name: 'Room keys', icon: 'vpn_key' },
   ],
 };
+
+export const SUB_CATEGORY_ROOM = [
+  { name: '', icon: '' },
+  { name: '', icon: '' },
+  { name: '', icon: '' },
+  { name: '', icon: '' },
+];
