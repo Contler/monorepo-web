@@ -1,0 +1,23 @@
+<contler-marco padding="20px 50px">
+  <ng-container marcoBody>
+    <h1 class="ctl-title" contlerColorHotel="primary">
+      Do you need a cash loan? Fill out this information.
+    </h1>
+    <mat-form-field appearance="fill" class="cash__field">
+      <input
+        aria-label="money"
+        matInput
+        currencyMask
+        [options]="{ precision: 0 }"
+        [formControl]="cashControl"
+      />
+      <mat-hint>Cash amount (COP)</mat-hint>
+    </mat-form-field>
+  </ng-container>
+
+  <div marcoFooter class="cash__footer">
+    <button mat-raised-button contlerColorBtnHotel="primary" [disabled]="cashControl.invalid">
+      CREATE REQUEST
+    </button>
+  </div>
+</contler-marco>
