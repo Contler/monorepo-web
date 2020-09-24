@@ -13,6 +13,7 @@ export const OPTIONS_RECEPTION: Options[] = [
   {
     name: 'Cash loan',
     icon: 'fas fa-dollar-sign',
+    link: '/home/reception/cash',
   },
   {
     name: 'Curency exchange',

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 import { ReceptionRoutingModule } from './reception-routing.module';
 import { ReceptionComponent } from './reception.component';
@@ -14,9 +15,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { CoreModule } from '@contler/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CashLoanComponent } from './pages/cash-loan/cash-loan.component';
 
 @NgModule({
-  declarations: [ReceptionComponent, TransportationComponent],
+  declarations: [ReceptionComponent, TransportationComponent, CashLoanComponent],
   imports: [
     CommonModule,
     ReceptionRoutingModule,
@@ -30,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CoreModule,
     ReactiveFormsModule,
     MatDialogModule,
+    NgxCurrencyModule,
   ],
 })
 export class ReceptionModule {}

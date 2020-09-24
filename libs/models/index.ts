@@ -18,3 +18,4 @@ export * from './core-config';
 export * from './late-check';
 export * from './product-request';
 export * from './transport.model';
+export * from './money.model';

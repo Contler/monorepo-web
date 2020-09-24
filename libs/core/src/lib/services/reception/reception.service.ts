@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { transportConverted, TransportModel } from '@contler/models';
+import { MoneyModel, transportConverted, TransportModel } from '@contler/models';
 
 @Injectable()
 export class ReceptionService {
@@ -17,7 +17,22 @@ export class ReceptionService {
       .valueChanges();
   }
 
+  createMoneyChange(money: MoneyModel) {
+    const moneyDoc = this.moneyRef.doc();
+    return moneyDoc.set({ ...money, uid: moneyDoc.id });
+  }
+
+  getMoneyChangesById(hotelId: string) {
+    return this.afs
+      .collection<MoneyModel>(this.moneyRef, (ref) => ref.where('hotel', '==', hotelId))
+      .valueChanges();
+  }
+
   private get transportRef() {
     return this.afs.firestore.collection('transport').withConverter(transportConverted);
+  }
+
+  private get moneyRef() {
+    return this.afs.firestore.collection('moneyChange');
   }
 }
