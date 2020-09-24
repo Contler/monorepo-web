@@ -8,11 +8,11 @@
   text-transform: uppercase;
 
   &__not {
-    color: #142c63 !important;
-    margin: 5% !important;
+    color: #142c63;
+    margin: 5%;
   }
   &__delete {
-    color: #ffffff !important;
+    color: #ffffff;
   }
 }
 
@@ -39,6 +39,6 @@
   line-height: 1.69;
   letter-spacing: 0.1px;
   text-align: center;
-  color: rgba(0, 0, 0, 0.87) !important;
+  color: rgba(0, 0, 0, 0.87);
   margin: 0 auto 20px;
 }
