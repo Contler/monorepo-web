@@ -1,4 +1,4 @@
-<contler-marco padding="20px 50px">
+<contler-marco padding="20px 50px" backUrl="/home/reception">
   <ng-container marcoBody>
     <h1 class="ctl-title" contlerColorHotel="primary">
       Do you need a cash loan? Fill out this information.
@@ -16,7 +16,12 @@
   </ng-container>
 
   <div marcoFooter class="cash__footer">
-    <button mat-raised-button contlerColorBtnHotel="primary" [disabled]="cashControl.invalid">
+    <button
+      mat-raised-button
+      contlerColorBtnHotel="primary"
+      [disabled]="load || cashControl.invalid"
+      (click)="savePetition()"
+    >
       CREATE REQUEST
     </button>
   </div>
