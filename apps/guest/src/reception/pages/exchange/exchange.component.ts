@@ -43,7 +43,7 @@ export class ExchangeComponent {
     const { money, value } = this.changeForm.value;
     const modalConf: ModalConfigModel = {
       text:
-        'Your currency exchange request has been succesfully received. Come to the reception to receive your money.',
+        'Your currency exchange request has been successfully received. Come to the reception to receive your money.',
       close: 'Got it!',
       icon: 'fas fa-check-circle',
     };
