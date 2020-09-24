@@ -3,7 +3,7 @@
     <p class="late__title" [style]="getColorHotel()">Late check-out requests</p>
 
     <div *ngFor="let item of lateList | async" class="late__item">
-      <p>{{ item.date | date: 'shortTime' }}</p>
+      <p class="late__p-label-date">{{ item.date | date: 'shortTime' }}</p>
       <p [ngSwitch]="item.status">
         <span *ngSwitchCase="0">Created</span>
         <span *ngSwitchCase="1">Not accepted</span>
