@@ -6,9 +6,7 @@
       <mat-expansion-panel *ngFor="let restaurant of restaurant$ | async">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <span class="product__panel-title" contlerColorHotel="primary">{{
-              restaurant.name
-            }}</span>
+            <span class="product__panel-title" contlerColorHotel="primary">{{ restaurant.name }}</span>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-container *ngFor="let category of categories[restaurant.uid] | async">
@@ -24,15 +22,7 @@
   </div>
 
   <div marcoFooter class="product-footer">
-    <button
-      contlerColorBtnHotel="primary"
-      style="margin-left: 5%"
-      mat-raised-button
-      color="accent"
-      (click)="nextStep()"
-    >
-      NEXT
-    </button>
+    <button contlerColorBtnHotel="primary" mat-raised-button color="accent" (click)="nextStep()">NEXT</button>
     <mat-error class="product-error">{{ error }}</mat-error>
   </div>
 </contler-marco>
