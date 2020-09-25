@@ -25,6 +25,7 @@ export class CreateReservationComponent implements OnInit {
   loader = false;
   schedule: ScheduleEntity[] = [];
   err = '';
+  filterDate: any;
 
   constructor(
     private guestService: GuestService,
@@ -53,20 +54,28 @@ export class CreateReservationComponent implements OnInit {
       .subscribe((data) => {
         this.zoneReservation = data;
       });
+
+    this.filterDate = (d: Date | null): boolean => {
+      const blockDates = this.zoneReservation!.schedule.map((dSchedule) => dSchedule.day.valueOf());
+      const currentDay = this.days[d.getDay()];
+      return blockDates.includes(currentDay);
+    };
   }
 
   ngOnInit() {
     this.dateReservation.valueChanges.subscribe((date: Date) => {
-      const day = this.days[date.getDay()];
-      this.schedule = this.zoneReservation!.schedule.filter((s) => s.day === day && s.active);
+      if (date) {
+        const day = this.days[date.getDay()];
+        this.schedule = this.zoneReservation!.schedule.filter((s) => s.day === day && s.active);
 
-      // Check time slot
-      if (this.schedule.length === 0) {
-        this.messagesService.showToastMessage(
-          'No existe franja horaria para la fecha seleccionada.',
-          'Cerrar',
-          10000,
-        );
+        // Check time slot
+        if (this.schedule.length === 0) {
+          this.messagesService.showToastMessage(
+            'No existe franja horaria para la fecha seleccionada.',
+            'Cerrar',
+            10000,
+          );
+        }
       }
     });
   }
@@ -79,9 +88,7 @@ export class CreateReservationComponent implements OnInit {
 
   getColorButtonHotel() {
     return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color
-        ? `background: ${this.hotel.color};  color: #ffffff !important`
-        : '',
+      this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '',
     );
   }
 
