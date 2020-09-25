@@ -102,18 +102,14 @@ export class MenuComponent implements OnInit {
     },
   ];
 
-  constructor(
-    private hotelService: HotelService,
-    private afAuth: AngularFireAuth,
-    private router: Router,
-  ) {
+  constructor(private hotelService: HotelService, private afAuth: AngularFireAuth, private router: Router) {
     this.$hotel = this.hotelService.getHotel();
   }
 
   ngOnInit() {}
 
   logOut() {
-    this.afAuth.auth.signOut();
+    this.afAuth.signOut();
     this.router.navigate(['/login']);
   }
 }

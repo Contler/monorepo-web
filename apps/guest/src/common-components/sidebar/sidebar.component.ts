@@ -94,13 +94,12 @@ export class SidebarComponent implements OnInit, OnDestroy {
       .subscribe((data: any) => (this.currentRoute = data.url));
   }
 
-  private listenUser() {
-    this.userSubscription = this.usersService
-      .getUserByKey(this.auth.auth.currentUser ? this.auth.auth.currentUser.uid : '')
-      .subscribe(
-        (user) => (this.user = user as User),
-        () => {},
-      );
+  private async listenUser() {
+    const usr = await this.auth.currentUser;
+    this.userSubscription = this.usersService.getUserByKey(usr ? usr.uid : '').subscribe(
+      (user) => (this.user = user as User),
+      () => {},
+    );
   }
 
   goToRoute(url: string) {
@@ -112,7 +111,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   async logout() {
-    this.auth.auth
+    this.auth
       .signOut()
       .then(() => this.router.navigate(['/login']))
       .catch(() => {});

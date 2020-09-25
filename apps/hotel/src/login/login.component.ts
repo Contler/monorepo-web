@@ -10,31 +10,28 @@ import { ADMIN } from '@contler/const';
 @Component({
   selector: 'contler-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-
   loginForm: FormGroup;
 
   constructor(formBuild: FormBuilder, private afAuth: AngularFireAuth, private router: Router) {
     this.loginForm = formBuild.group({
       email: ['', [Validators.required, Validators.email]],
-      pass: ['', [Validators.required, Validators.minLength(6)]]
-    })
+      pass: ['', [Validators.required, Validators.minLength(6)]],
+    });
   }
 
   login() {
-    const {email, pass} = this.loginForm.value;
-    this.afAuth.auth.signInWithEmailAndPassword(email, pass).then(async userCredential => {
+    const { email, pass } = this.loginForm.value;
+    this.afAuth.signInWithEmailAndPassword(email, pass).then(async (userCredential) => {
       const token = await userCredential.user!.getIdTokenResult();
-      const {rol} = token.claims as Claim;
+      const { rol } = token.claims as Claim;
       if (rol === ADMIN) {
-        this.router.navigate(['home', 'admin'])
+        this.router.navigate(['home', 'admin']);
       } else {
-        this.router.navigate(['home'])
+        this.router.navigate(['home']);
       }
-    })
+    });
   }
-
-
 }

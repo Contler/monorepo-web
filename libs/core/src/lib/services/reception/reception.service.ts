@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { MoneyModel, transportConverted, TransportModel } from '@contler/models';
+import { ExchangeReqModel, MoneyModel, transportConverted, TransportModel } from '@contler/models';
 
 @Injectable()
 export class ReceptionService {
@@ -28,11 +28,20 @@ export class ReceptionService {
       .valueChanges();
   }
 
+  createExchangePetition(money: ExchangeReqModel) {
+    const ref = this.exchangeRef.doc();
+    return ref.set({ ...money, uid: ref.id });
+  }
+
   private get transportRef() {
     return this.afs.firestore.collection('transport').withConverter(transportConverted);
   }
 
   private get moneyRef() {
-    return this.afs.firestore.collection('moneyChange');
+    return this.afs.firestore.collection('moneyReq');
+  }
+
+  private get exchangeRef() {
+    return this.afs.firestore.collection('exchangeReq');
   }
 }

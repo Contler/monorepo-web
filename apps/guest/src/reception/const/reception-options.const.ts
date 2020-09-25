@@ -18,6 +18,7 @@ export const OPTIONS_RECEPTION: Options[] = [
   {
     name: 'Curency exchange',
     icon: 'fas fa-globe',
+    link: '/home/reception/exchange',
   },
   {
     name: 'Concierge',
