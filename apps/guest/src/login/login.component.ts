@@ -32,7 +32,7 @@ export class LoginComponent {
     this.loader = true;
     const { email, pass } = this.loginForm.value;
     try {
-      const userCredential = await this.afAuth.auth.signInWithEmailAndPassword(email, pass);
+      const userCredential = await this.afAuth.signInWithEmailAndPassword(email, pass);
       const token = await userCredential.user!.getIdTokenResult();
       if (token.claims.role !== GUEST) {
         this.error = 'No tiene permisos para acceder';
@@ -40,13 +40,13 @@ export class LoginComponent {
       this.guestService.checkAvailableUser().subscribe(({ checkIn, checkOut }) => {
         this.loader = false;
         if (new Date() < checkIn) {
-          this.afAuth.auth.signOut();
+          this.afAuth.signOut();
           this.error =
             'Tu fecha de ingreso es el ' +
             checkIn.toLocaleDateString() +
             '. Te invitamos a iniciar sesión en esta fecha';
         } else if (new Date() > checkOut) {
-          this.afAuth.auth.signOut();
+          this.afAuth.signOut();
           this.error = 'Tu fecha de salida fué el ' + checkOut.toLocaleDateString() + '.';
         } else {
           this.router.navigate(['/home']);

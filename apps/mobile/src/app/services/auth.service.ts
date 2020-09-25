@@ -24,22 +24,22 @@ export class AuthService {
   ) {
     this.auth.user
       .pipe(
-        filter(user => !!user),
-        switchMap(user => this.http.get<EmployerEntity>(environment.apiUrl + `employer/${user!.uid}`)),
+        filter((user) => !!user),
+        switchMap((user) => this.http.get<EmployerEntity>(environment.apiUrl + `employer/${user!.uid}`)),
       )
-      .subscribe(employer => this.employerSubject.next(employer));
+      .subscribe((employer) => this.employerSubject.next(employer));
   }
 
   loginWithEmail(email: string, password: string) {
-    return this.auth.auth.signInWithEmailAndPassword(email, password);
+    return this.auth.signInWithEmailAndPassword(email, password);
   }
 
   logout() {
-    return this.auth.auth.signOut();
+    return this.auth.signOut();
   }
 
   saveUserDataStorage(user: User) {
-    return new Promise(async resolve => {
+    return new Promise(async (resolve) => {
       this.user = Object.assign({}, user);
       if (this.platform.is('cordova')) {
         await this.storage.set('user', user);
@@ -52,6 +52,6 @@ export class AuthService {
   }
 
   get $user(): Observable<EmployerEntity | null> {
-    return this.employerSubject.asObservable().pipe(filter(user => !!user));
+    return this.employerSubject.asObservable().pipe(filter((user) => !!user));
   }
 }
