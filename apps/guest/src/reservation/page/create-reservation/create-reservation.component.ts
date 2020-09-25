@@ -25,7 +25,7 @@ export class CreateReservationComponent implements OnInit {
   loader = false;
   schedule: ScheduleEntity[] = [];
   err = '';
-  filterDate: any;
+  filterDate: Function;
 
   constructor(
     private guestService: GuestService,
@@ -71,8 +71,8 @@ export class CreateReservationComponent implements OnInit {
         // Check time slot
         if (this.schedule.length === 0) {
           this.messagesService.showToastMessage(
-            'No existe franja horaria para la fecha seleccionada.',
-            'Cerrar',
+            'There is no time slot for the selected date.',
+            'To close',
             10000,
           );
         }
@@ -119,7 +119,7 @@ export class CreateReservationComponent implements OnInit {
         if (error.status === 400) {
           this.err = error.error.message;
         } else {
-          this.err = 'No se puedo hacer la reserva';
+          this.err = "I can't make the reservation";
         }
       },
     );
