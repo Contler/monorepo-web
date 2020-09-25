@@ -7,8 +7,8 @@
     <form class="maintenance__form" [formGroup]="maintenanceControl">
       <mat-form-field appearance="fill">
         <mat-select formControlName="time">
-          <mat-option *ngFor="let food of time; let i = index" [value]="getHour(i)">
-            {{ getHour(i) | date: 'shortTime' }}
+          <mat-option *ngFor="let time of timeOptions" [value]="time">
+            {{ time | date: 'shortTime' }}
           </mat-option>
         </mat-select>
         <mat-icon matSuffix>query_builder</mat-icon>

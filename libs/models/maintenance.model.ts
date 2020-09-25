@@ -15,9 +15,9 @@ export const maintenanceConverted: FirestoreDataConverter<MaintenanceModel> = {
     options: firebase.firestore.SnapshotOptions,
   ): MaintenanceModel {
     const data = snapshot.data(options) as MaintenanceModel;
-    return { ...data };
+    return { ...data, time: new Date(data.time) };
   },
   toFirestore(modelObject: MaintenanceModel): firebase.firestore.DocumentData {
-    return { ...modelObject };
+    return { ...modelObject, date: modelObject.time.toString() };
   },
 };

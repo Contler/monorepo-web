@@ -27,7 +27,6 @@
     </div>
 
     <button
-      (click)="saveRequest()"
       [disabled]="loader || buttonDisabled()"
       [loading]="loader"
       [style]="buttonDisabled() ? '' : getButtonColorHotel()"

@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { SUB_CATEGORY_ROOM, SUB_CATEGORY_DRINKS, ROOM_SERVICE } from '@contler/const';
+import { SUB_CATEGORY_ROOM } from '@contler/const';
 import { HotelEntity } from '@contler/entity';
 import { GuestService } from 'guest/services/guest.service';
 import { Subscription } from 'rxjs';
@@ -20,7 +19,7 @@ export class MyRoomComponent implements OnInit, OnDestroy {
 
   private guestSubscribe: Subscription;
 
-  constructor(private router: Router, private sanitizer: DomSanitizer, private guestService: GuestService) {}
+  constructor(private sanitizer: DomSanitizer, private guestService: GuestService) {}
 
   ngOnInit() {
     this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
@@ -31,8 +30,6 @@ export class MyRoomComponent implements OnInit, OnDestroy {
       this.guestSubscribe.unsubscribe();
     }
   }
-
-  saveRequest() {}
 
   subCategorySelected(value: string) {
     this.selectedSubcategory = value;
