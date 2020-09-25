@@ -55,8 +55,8 @@ export const SUB_CATEGORY = {
 };
 
 export const SUB_CATEGORY_ROOM = [
-  { name: '', icon: '' },
-  { name: '', icon: '' },
-  { name: '', icon: '' },
-  { name: '', icon: '' },
+  { name: 'Room Service', icon: 'fastfood', link: '/home/product/create' },
+  { name: 'Request cleaning', icon: 'house' },
+  { name: 'Request maintenance', icon: 'build', link: '/home/my-room/maintenance' },
+  { name: 'Room keys', icon: 'lock_open' },
 ];

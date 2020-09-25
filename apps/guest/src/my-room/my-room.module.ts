@@ -7,6 +7,7 @@ import { CommonComponentsModule } from '../common-components/common-components.m
 import { MyRoomRoutingModule } from './my-room.routing.module';
 import { UiModule } from '@contler/ui';
 import { CoreModule } from '@contler/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [MyRoomComponent, MaintenanceComponent],
@@ -17,6 +18,7 @@ import { CoreModule } from '@contler/core';
     MyRoomRoutingModule,
     UiModule,
     CoreModule,
+    ReactiveFormsModule,
   ],
 })
 export class MyRoomModule {}
