@@ -7,7 +7,7 @@ import { map, switchMap, take, tap } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DAYS } from '@contler/const';
+import { DAYS, TYPE_ERROR } from '@contler/const';
 import { BookingRequest } from '@contler/models/booking-request';
 import { MessagesService } from 'guest/services/messages/messages.service';
 
@@ -117,7 +117,7 @@ export class CreateReservationComponent implements OnInit {
       (error) => {
         this.loader = false;
         if (error.status === 400) {
-          this.err = error.error.message;
+          this.err = error.error.message ? TYPE_ERROR.space_available : '';
         } else {
           this.err = "I can't make the reservation";
         }
