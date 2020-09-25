@@ -18,16 +18,16 @@
     line-height: 1.48;
     letter-spacing: 0.15px;
     text-align: center;
-    margin: 30px 0 50px;
+    margin: 30px 0px 30px;
     padding: 2%;
   }
 
   &__zone {
     display: grid;
     grid-template-columns: max-content auto max-content;
-    column-gap: 16px;
-    padding: 25px 30px 30px;
-    height: 30px;
+    column-gap: 5px;
+    padding: 25px 26px 22px;
+    min-height: 30px;
     align-items: center;
     text-decoration: none;
     &-icon {
