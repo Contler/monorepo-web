@@ -6,11 +6,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReceptionService } from '@contler/core';
 import { GuestEntity } from '@contler/entity';
 import { ExchangeReqModel } from '@contler/models';
+import { ModalConfigModel } from '@contler/models/modal-config.model';
+
+import { map, switchMap } from 'rxjs/operators';
 
 import { MONEY_OPTIONS } from '../../const/exchange.const';
 import { GuestService } from '../../../services/guest.service';
-import { map, switchMap } from 'rxjs/operators';
-import { ModalConfigModel } from '../../../../../../libs/models/modal-config.model';
 import { ModalCompleteComponent } from '../../../common-components/modal-complete/modal-complete.component';
 
 @Component({

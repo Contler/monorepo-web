@@ -1,0 +1,37 @@
+<form [formGroup]="formGroup" (ngSubmit)="save()">
+  <contler-marco padding="20px 50px 10px" backUrl="/home/reception">
+    <ng-container marcoBody>
+      <h1 class="ctl-title" contlerColorHotel="primary">
+        Tell us which tourist spot you would like to go to and when you want to visit it
+      </h1>
+
+      <div class="concierge__form">
+        <mat-form-field appearance="fill">
+          <mat-select formControlName="date">
+            <mat-option *ngFor="let time of hoursOptions" [value]="time">
+              {{ time | date: 'HH:mm' }}
+            </mat-option>
+          </mat-select>
+          <mat-hint>Date for the service</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <textarea
+            formControlName="comment"
+            matInput
+            cdkAutosizeMinRows="5"
+            cdkAutosizeMaxRows="10"
+            cdkTextareaAutosize
+            aria-label="description"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </ng-container>
+
+    <div marcoFooter class="concierge__footer">
+      <button mat-raised-button contlerColorBtnHotel="primary" [disabled]="formGroup.invalid || load">
+        CREATE REQUEST
+      </button>
+    </div>
+  </contler-marco>
+</form>
