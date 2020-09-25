@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ExchangeReqModel, MoneyModel, transportConverted, TransportModel } from '@contler/models';
+import {
+  ExchangeReqModel,
+  MoneyModel,
+  transportConverted,
+  TransportModel,
+  ConciergeModel,
+  conciergeConverter,
+} from '@contler/models';
 
 @Injectable()
 export class ReceptionService {
@@ -33,6 +40,11 @@ export class ReceptionService {
     return ref.set({ ...money, uid: ref.id });
   }
 
+  createConciergeReq(concierge: ConciergeModel) {
+    const ref = this.conciergeRef.doc();
+    return ref.set({ ...concierge, uid: ref.id });
+  }
+
   private get transportRef() {
     return this.afs.firestore.collection('transport').withConverter(transportConverted);
   }
@@ -43,5 +55,9 @@ export class ReceptionService {
 
   private get exchangeRef() {
     return this.afs.firestore.collection('exchangeReq');
+  }
+
+  private get conciergeRef() {
+    return this.afs.firestore.collection('conciergeReq').withConverter(conciergeConverter);
   }
 }

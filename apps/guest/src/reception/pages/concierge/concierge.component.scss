@@ -1,0 +1,11 @@
+.concierge {
+  &__form {
+    display: grid;
+    row-gap: 20px;
+  }
+
+  &__footer {
+    display: grid;
+    padding: 0 50px 40px;
+  }
+}

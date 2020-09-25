@@ -18,9 +18,16 @@ import { CoreModule } from '@contler/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CashLoanComponent } from './pages/cash-loan/cash-loan.component';
 import { ExchangeComponent } from './pages/exchange/exchange.component';
+import { ConciergeComponent } from './pages/concierge/concierge.component';
 
 @NgModule({
-  declarations: [ReceptionComponent, TransportationComponent, CashLoanComponent, ExchangeComponent],
+  declarations: [
+    ReceptionComponent,
+    TransportationComponent,
+    CashLoanComponent,
+    ExchangeComponent,
+    ConciergeComponent,
+  ],
   imports: [
     CommonModule,
     ReceptionRoutingModule,

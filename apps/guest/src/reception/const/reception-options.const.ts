@@ -23,5 +23,6 @@ export const OPTIONS_RECEPTION: Options[] = [
   {
     name: 'Concierge',
     icon: 'fas fa-map-marker-alt',
+    link: '/home/reception/concierge',
   },
 ];
