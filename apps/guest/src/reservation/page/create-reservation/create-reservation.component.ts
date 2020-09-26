@@ -7,7 +7,7 @@ import { map, switchMap, take, tap } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DAYS } from '@contler/const';
+import { DAYS, TYPE_ERROR } from '@contler/const';
 import { BookingRequest } from '@contler/models/booking-request';
 import { MessagesService } from 'guest/services/messages/messages.service';
 
@@ -25,6 +25,7 @@ export class CreateReservationComponent implements OnInit {
   loader = false;
   schedule: ScheduleEntity[] = [];
   err = '';
+  filterDate: Function;
 
   constructor(
     private guestService: GuestService,
@@ -53,20 +54,28 @@ export class CreateReservationComponent implements OnInit {
       .subscribe((data) => {
         this.zoneReservation = data;
       });
+
+    this.filterDate = (d: Date | null): boolean => {
+      const blockDates = this.zoneReservation!.schedule.map((dSchedule) => dSchedule.day.valueOf());
+      const currentDay = this.days[d.getDay()];
+      return blockDates.includes(currentDay);
+    };
   }
 
   ngOnInit() {
     this.dateReservation.valueChanges.subscribe((date: Date) => {
-      const day = this.days[date.getDay()];
-      this.schedule = this.zoneReservation!.schedule.filter((s) => s.day === day && s.active);
+      if (date) {
+        const day = this.days[date.getDay()];
+        this.schedule = this.zoneReservation!.schedule.filter((s) => s.day === day && s.active);
 
-      // Check time slot
-      if (this.schedule.length === 0) {
-        this.messagesService.showToastMessage(
-          'No existe franja horaria para la fecha seleccionada.',
-          'Cerrar',
-          10000,
-        );
+        // Check time slot
+        if (this.schedule.length === 0) {
+          this.messagesService.showToastMessage(
+            'There is no time slot for the selected date.',
+            'To close',
+            10000,
+          );
+        }
       }
     });
   }
@@ -79,9 +88,7 @@ export class CreateReservationComponent implements OnInit {
 
   getColorButtonHotel() {
     return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color
-        ? `background: ${this.hotel.color};  color: #ffffff !important`
-        : '',
+      this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '',
     );
   }
 
@@ -110,9 +117,9 @@ export class CreateReservationComponent implements OnInit {
       (error) => {
         this.loader = false;
         if (error.status === 400) {
-          this.err = error.error.message;
+          this.err = error.error.message ? TYPE_ERROR.space_available : '';
         } else {
-          this.err = 'No se puedo hacer la reserva';
+          this.err = "I can't make the reservation";
         }
       },
     );
