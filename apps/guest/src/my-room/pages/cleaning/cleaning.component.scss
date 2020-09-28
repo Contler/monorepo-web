@@ -1,0 +1,27 @@
+@import 'styles/variables';
+@import 'styles/material';
+
+.cleaning {
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    margin-top: 23px;
+  }
+
+  &__footer {
+    padding: 0 50px 16px;
+    display: grid;
+  }
+
+  &__title {
+    font-family: $family;
+    font-size: 16.2px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.48;
+    letter-spacing: 0.15px;
+    text-align: center;
+  }
+}
