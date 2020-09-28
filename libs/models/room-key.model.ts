@@ -7,6 +7,7 @@ export interface RoomKeyModel {
   guest: string;
   time: Date;
   nameRequest: string;
+  createAt: Date;
 }
 
 export const roomKeysConverted: FirestoreDataConverter<RoomKeyModel> = {
@@ -15,9 +16,9 @@ export const roomKeysConverted: FirestoreDataConverter<RoomKeyModel> = {
     options: firebase.firestore.SnapshotOptions,
   ): RoomKeyModel {
     const data = snapshot.data(options) as RoomKeyModel;
-    return { ...data, time: new Date(data.time) };
+    return { ...data, time: new Date(data.time), createAt: new Date(data.createAt) };
   },
   toFirestore(modelObject: RoomKeyModel): firebase.firestore.DocumentData {
-    return { ...modelObject, date: modelObject.time.toString() };
+    return { ...modelObject, time: modelObject.time.toString(), createAt: modelObject.time.toString() };
   },
 };

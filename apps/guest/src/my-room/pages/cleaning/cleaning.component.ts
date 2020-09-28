@@ -54,6 +54,7 @@ export class CleaningComponent {
               time,
               cleaning,
               recomendation,
+              createAt: new Date(),
               what: cleaning === 'Other' ? what : '',
               guest: guest.uid,
               hotel: guest.hotel.uid,

@@ -50,6 +50,7 @@ export class MaintenanceComponent {
             ({
               time,
               maintenance,
+              createAt: new Date(),
               guest: guest.uid,
               hotel: guest.hotel.uid,
             } as MaintenanceModel),

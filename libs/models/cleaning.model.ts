@@ -9,6 +9,7 @@ export interface CleaningModel {
   cleaning: string;
   what?: string;
   recomendation: string;
+  createAt: Date;
 }
 
 export const cleaningConverted: FirestoreDataConverter<CleaningModel> = {
@@ -17,9 +18,9 @@ export const cleaningConverted: FirestoreDataConverter<CleaningModel> = {
     options: firebase.firestore.SnapshotOptions,
   ): CleaningModel {
     const data = snapshot.data(options) as CleaningModel;
-    return { ...data, time: new Date(data.time) };
+    return { ...data, time: new Date(data.time), createAt: new Date(data.createAt) };
   },
   toFirestore(modelObject: CleaningModel): firebase.firestore.DocumentData {
-    return { ...modelObject, date: modelObject.time.toString() };
+    return { ...modelObject, time: modelObject.time.toString(), createAt: modelObject.time.toString() };
   },
 };
