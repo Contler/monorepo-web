@@ -82,6 +82,10 @@ const routes: Routes = [
         loadChildren: () => import('../reception/reception.module').then((m) => m.ReceptionModule),
       },
       {
+        path: 'my-room',
+        loadChildren: () => import('../my-room/my-room.module').then((m) => m.MyRoomModule),
+      },
+      {
         path: '',
         redirectTo: 'guest-requests',
         pathMatch: 'full',

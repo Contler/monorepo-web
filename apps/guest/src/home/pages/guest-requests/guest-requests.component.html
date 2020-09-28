@@ -1,15 +1,18 @@
 <contler-marco padding="0">
   <div marcoBody class="main-container">
-    <p class="request__label request__user request__question" [style]="getColorHotel()">
+    <p class="request__label request__user request__question" contlerColorHotel>
       ¡Hello {{ ($guest | async)?.name }}!
     </p>
-    <p class="request__label request__space request__question" [style]="getColorHotel()">
-      Where do you need us?
-    </p>
+    <p class="request__label request__space request__question" contlerColorHotel>Where do you need us?</p>
 
     <a class="request__zone" routerLink="/home/reception">
       <contler-icon class="request__zone-icon" key="fas fa-concierge-bell"></contler-icon>
-      <p class="request__zone-text" [style]="getColorHotel()">reception</p>
+      <p class="request__zone-text" contlerColorHotel>reception</p>
+      <mat-icon class="request__zone-icon">navigate_next</mat-icon>
+    </a>
+    <a class="request__zone" routerLink="/home/my-room">
+      <contler-icon class="request__zone-icon" key="fas fa-bed"></contler-icon>
+      <p class="request__zone-text" contlerColorHotel>room</p>
       <mat-icon class="request__zone-icon">navigate_next</mat-icon>
     </a>
     <a
@@ -18,12 +21,12 @@
       routerLink="/home/zone-request/{{ zone.uid }}"
     >
       <contler-icon class="request__zone-icon" [key]="zone.icon"></contler-icon>
-      <p class="request__zone-text" [style]="getColorHotel()">{{ zone.name | uppercase }}</p>
+      <p class="request__zone-text" contlerColorHotel>{{ zone.name | uppercase }}</p>
       <mat-icon class="request__zone-icon">navigate_next</mat-icon>
     </a>
     <a (click)="showAllZones()" class="request__zone" *ngIf="!allZonesShowed">
       <mat-icon class="request__zone-icon request__zone-icon__add">add</mat-icon>
-      <p class="request__zone-text" [style]="getColorHotel()">SEE ALL HOTEL</p>
+      <p class="request__zone-text" contlerColorHotel>SEE ALL HOTEL</p>
       <mat-icon class="request__zone-icon">navigate_next</mat-icon>
     </a>
   </div>

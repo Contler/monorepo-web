@@ -2,57 +2,17 @@
 @import 'styles/mixin';
 @import 'styles/material';
 
-$grayFeatures: #9e9e9e; // OJO!: HAY VARIOS GRISES DISTINTOS EN ZEPLIN
-
-.container {
-  &__hotel-logo {
-    display: block;
-    margin: 0 auto;
-    width: 100px;
-  }
+.my-room-container {
   &__label {
-    margin-top: 29px;
+    height: 93px;
+    font-family: $family;
     font-size: 16.2px;
-    font-weight: 500;
+    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
-    color: $text-3;
-    margin-bottom: 80px;
-    font-family: $family;
     line-height: 1.48;
     letter-spacing: 0.15px;
     text-align: center;
-  }
-
-  &__category {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    &-item {
-      text-align: center;
-      color: #9e9e9e;
-    }
-    &-text {
-      @include text($text-1, 12.2px);
-      line-height: 1.31;
-      letter-spacing: 0.4px;
-    }
-  }
-
-  &__specific-label {
-    font-family: $family;
-    font-size: 14.2px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.69;
-    letter-spacing: 0.1px;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.6);
-  }
-
-  &__input {
-    width: 100%;
   }
 
   &__button {
@@ -60,17 +20,18 @@ $grayFeatures: #9e9e9e; // OJO!: HAY VARIOS GRISES DISTINTOS EN ZEPLIN
     min-width: 80%;
     position: absolute;
     bottom: 5%;
-    margin-left: 6%;
+    margin-left: 10%;
     border-radius: 12px;
   }
 
   .features-container {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 52px;
+    padding: 10px;
+
     .features-container-item {
       flex: 0 0 calc(50% - 11px);
-      padding: 23px 5px;
+      padding: 25px 5px 15px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -101,12 +62,6 @@ $grayFeatures: #9e9e9e; // OJO!: HAY VARIOS GRISES DISTINTOS EN ZEPLIN
       .mat-radio-label-content {
         margin-left: 12px;
       }
-    }
-  }
-
-  .drin-container {
-    mat-form-field {
-      margin-bottom: 21px;
     }
   }
 }

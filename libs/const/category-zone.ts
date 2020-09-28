@@ -21,8 +21,6 @@ export const CATEGORY_ZONE = [
   },
 ];
 
-export const SUB_CATEGORY_DRINKS = 'A drink';
-
 export const SUB_CATEGORY = {
   1: [
     { name: 'Room keys', icon: 'vpn_key' },
@@ -52,3 +50,10 @@ export const SUB_CATEGORY = {
     { name: 'Room keys', icon: 'vpn_key' },
   ],
 };
+
+export const SUB_CATEGORY_ROOM = [
+  { name: 'Room Service', icon: 'fastfood', link: '/home/product/create' },
+  { name: 'Request cleaning', icon: 'house' },
+  { name: 'Request maintenance', icon: 'build', link: '/home/my-room/maintenance' },
+  { name: 'Room keys', icon: 'lock_open' },
+];
