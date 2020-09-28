@@ -1,8 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { GuestService } from 'guest/services/guest.service';
-import { ZoneService } from 'guest/services/zone.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ModalQualifyComponent } from 'guest/home/components/modal-qualify/modal-qualify.component';
 import { RequestService } from 'guest/services/request.service';
 import { GeneralService } from 'guest/services/general.service';
@@ -32,8 +30,6 @@ export class GuestRequestsComponent implements OnDestroy {
 
   constructor(
     private guestService: GuestService,
-    private zoneService: ZoneService,
-    private sanitizer: DomSanitizer,
     private dialog: MatDialog,
     private reservationService: ReservationService,
     private requestService: RequestService,
@@ -42,20 +38,20 @@ export class GuestRequestsComponent implements OnDestroy {
   ) {
     this.$guest = this.guestService.$guest;
 
-    this.subscribe = this.guestService.$hotel.subscribe(hotel => {
+    this.subscribe = this.guestService.$hotel.subscribe((hotel) => {
       this.hotel = hotel;
       this.zones = hotel!.zones;
       this.showedZones = this.allZonesShowed
         ? this.zones.slice()
-        : this.zones.filter(zone => zone.principal);
+        : this.zones.filter((zone) => zone.principal);
     });
 
     this.requestSubscription = this.requestService
       .getRequests(true)
-      .pipe(map(reqs => reqs.filter(req => req.score === null)))
-      .subscribe(requests => {
+      .pipe(map((reqs) => reqs.filter((req) => req.score === null)))
+      .subscribe((requests) => {
         if (requests && requests.length > 0) {
-          requests.forEach(request => {
+          requests.forEach((request) => {
             this.dialog.open(ModalQualifyComponent, {
               width: '342px',
               panelClass: 'cot-dialog',
@@ -73,38 +69,36 @@ export class GuestRequestsComponent implements OnDestroy {
     this.$guest
       .pipe(
         take(1),
-        switchMap(guest => this.productService.getOrderByGuest(guest!.uid)),
-        map(orders => orders.filter(order => order.state === 2 && order.qualification == null)),
-        filter(data => data.length > 0)
+        switchMap((guest) => this.productService.getOrderByGuest(guest!.uid)),
+        map((orders) => orders.filter((order) => order.state === 2 && order.qualification == null)),
+        filter((data) => data.length > 0),
       )
-      .subscribe(data => {
-        data.forEach(item => {
+      .subscribe((data) => {
+        data.forEach((item) => {
           this.dialog.open(ModalOrdersQuialifyComponent, {
             width: '342px',
             panelClass: 'cot-dialog',
             data: item,
             disableClose: true,
           });
-        })
+        });
       });
   }
 
   qualifyReservation() {
     this.$guest
       .pipe(
-        switchMap(guest => this.reservationService.getBookingByGuest(guest!.uid)),
-        map(booking =>
+        switchMap((guest) => this.reservationService.getBookingByGuest(guest!.uid)),
+        map((booking) =>
           booking.filter(
-            book =>
-              book.complete &&
-              new Date(book.date).getTime() < Date.now() &&
-              book.qualification == null,
+            (book) =>
+              book.complete && new Date(book.date).getTime() < Date.now() && book.qualification == null,
           ),
         ),
       )
-      .subscribe(data => {
+      .subscribe((data) => {
         if (data && data.length) {
-          data.forEach(booking => {
+          data.forEach((booking) => {
             this.dialog.open(ModalBookingQualifyComponent, {
               width: '342px',
               panelClass: 'cot-dialog',
@@ -119,12 +113,6 @@ export class GuestRequestsComponent implements OnDestroy {
   showAllZones() {
     this.showedZones = this.zones.slice();
     this.allZonesShowed = true;
-  }
-
-  getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
-    );
   }
 
   ngOnDestroy(): void {
