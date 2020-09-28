@@ -33,16 +33,6 @@ export class MaintenanceComponent {
     });
   }
 
-  getHour(index: number) {
-    const extraTime = 30 * index * 60 * 1000;
-    const date = new Date();
-    date.setHours(0);
-    date.setMinutes(0);
-    date.setSeconds(0);
-    date.setMilliseconds(0);
-    return new Date(date.getTime() + extraTime);
-  }
-
   saveRequest() {
     this.load = true;
     const { time, maintenance } = this.maintenanceControl.value;

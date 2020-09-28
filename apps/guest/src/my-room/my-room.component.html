@@ -27,9 +27,9 @@
     </div>
 
     <button
+      (click)="saveRequest()"
       [disabled]="loader || buttonDisabled()"
       [loading]="loader"
-      [style]="buttonDisabled() ? '' : getButtonColorHotel()"
       class="my-room-container__button"
       color="accent"
       contlerButton

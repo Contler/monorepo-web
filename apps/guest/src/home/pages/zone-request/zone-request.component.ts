@@ -7,13 +7,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'guest/services/zone.service';
 import { map, switchMap } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { SUB_CATEGORY, SUB_CATEGORY_DRINKS, ROOM_SERVICE } from '@contler/const';
+import { SUB_CATEGORY } from '@contler/const';
 import { NotificationsService } from 'guest/services/notifications.service';
 import { UsersService } from 'guest/services/users.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
 import { RequestRequest } from '@contler/models/request-request';
 import { RequestService } from 'guest/services/request.service';
+import { ROOM_SERVICE, SUB_CATEGORY_DRINKS } from './const/zone-const';
 
 @Component({
   selector: 'contler-zone-request',

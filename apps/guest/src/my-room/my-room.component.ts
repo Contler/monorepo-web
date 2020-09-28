@@ -1,9 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { SUB_CATEGORY_ROOM } from '@contler/const';
 import { HotelEntity } from '@contler/entity';
 import { GuestService } from 'guest/services/guest.service';
+import { MessagesService } from 'guest/services/messages/messages.service';
 import { Subscription } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { RoomKeyModel } from '@contler/models';
+import { RoomKeyService } from '@contler/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalConfigModel } from '@contler/models/modal-config.model';
+import { ModalCompleteComponent } from 'guest/common-components/modal-complete/modal-complete.component';
 
 @Component({
   selector: 'contler-my-room',
@@ -19,10 +26,58 @@ export class MyRoomComponent implements OnInit, OnDestroy {
 
   private guestSubscribe: Subscription;
 
-  constructor(private sanitizer: DomSanitizer, private guestService: GuestService) {}
+  constructor(
+    private guestService: GuestService,
+    private router: Router,
+    private messagesService: MessagesService,
+    private roomKeyService: RoomKeyService,
+    private dialog: MatDialog,
+  ) {}
 
   ngOnInit() {
     this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
+  }
+
+  async saveRequest() {
+    this.loader = true;
+    const msg = this.selectedSubcategory ? this.selectedSubcategory : '';
+
+    const modalConfig: ModalConfigModel = {
+      text: 'Your request has been succesfully received.',
+      close: 'Got it!',
+      icon: 'fas fa-check-circle',
+    };
+
+    this.guestService.$guest
+      .pipe(
+        map(
+          (guest) =>
+            ({
+              time: new Date(),
+              nameRequest: msg,
+              guest: guest.uid,
+              hotel: guest.hotel.uid,
+            } as RoomKeyModel),
+        ),
+        switchMap((request) => this.roomKeyService.createRequest(request)),
+        switchMap(() =>
+          this.dialog
+            .open<ModalCompleteComponent, ModalConfigModel>(ModalCompleteComponent, {
+              data: modalConfig,
+            })
+            .afterClosed(),
+        ),
+      )
+      .subscribe(
+        () => {
+          this.loader = false;
+          this.router.navigate(['/home/guest-requests']);
+        },
+        () => {
+          this.loader = false;
+          this.messagesService.showServerError();
+        },
+      );
   }
 
   ngOnDestroy(): void {
@@ -33,14 +88,6 @@ export class MyRoomComponent implements OnInit, OnDestroy {
 
   subCategorySelected(value: string) {
     this.selectedSubcategory = value;
-  }
-
-  getButtonColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color
-        ? `background-color: ${this.hotel.color}; color: #ffffff !important`
-        : '',
-    );
   }
 
   buttonDisabled() {
