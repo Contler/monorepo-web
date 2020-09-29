@@ -7,6 +7,7 @@ export interface ConciergeModel {
   guest: string;
   date: Date;
   comment: string;
+  createAt?: Date;
 }
 
 export const conciergeConverter: FirestoreDataConverter<ConciergeModel> = {
@@ -15,10 +16,11 @@ export const conciergeConverter: FirestoreDataConverter<ConciergeModel> = {
     options: firebase.firestore.SnapshotOptions,
   ): ConciergeModel {
     const data = snapshot.data(options) as ConciergeModel;
-    const { date } = snapshot.data(options);
-    return { ...data, date: new Date(date) };
+    const { date, createAt } = snapshot.data(options);
+    return { ...data, date: new Date(date), createAt: new Date(createAt) };
   },
   toFirestore(modelObject: ConciergeModel): firebase.firestore.DocumentData {
-    return { ...modelObject, date: modelObject.date.toString() };
+    const { date, createAt, ...rest } = modelObject;
+    return { ...rest, date: date.toString(), createAt: createAt.toString() };
   },
 };

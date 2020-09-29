@@ -1,0 +1,8 @@
+<div *ngIf="$guest | async; let guest" class="money">
+  <div class="money__text">
+    <span class="money__text-name">{{ guest.name }} {{ guest.lastName }}</span>
+    <span class="small">Cash loan</span>
+  </div>
+  <div class="small">{{ money.createAt | date: 'shortTime' }}</div>
+  <mat-icon>keyboard_arrow_right</mat-icon>
+</div>

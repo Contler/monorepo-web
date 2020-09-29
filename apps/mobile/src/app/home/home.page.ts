@@ -13,6 +13,7 @@ import { EmployerEntity } from '@contler/entity';
 })
 export class HomePage implements OnInit {
   user: EmployerEntity | null = null;
+  private showReception = false;
 
   public readonly menuItems: MenuItem[] = [
     {
@@ -46,6 +47,12 @@ export class HomePage implements OnInit {
       show: true,
     },
     {
+      icon: 'room_service',
+      name: 'Recepción',
+      route: '/home/reception',
+      show: this.showReception,
+    },
+    {
       icon: 'bar_chart',
       name: 'Estadisticas',
       route: '/home/statistic',
@@ -68,13 +75,14 @@ export class HomePage implements OnInit {
     private platform: Platform,
     private menuController: MenuController,
   ) {
-    this.auth.$user.subscribe(user => {
+    this.auth.$user.subscribe((user) => {
       this.user = user;
       const chiefZones: string[] = [];
-      this.user!.leaderZones.forEach(zone => chiefZones.push(zone.name));
+      this.user!.leaderZones.forEach((zone) => chiefZones.push(zone.name));
       this.chiefZonesLabel = chiefZones.join('-');
       this.menuItems[1].show = this.user!.wakeZone;
       this.menuItems[4].show = this.user!.lateZone;
+      this.showReception = this.user.receptionZone;
     });
   }
 
@@ -87,7 +95,7 @@ export class HomePage implements OnInit {
 
   private listenCurrentRoute() {
     this.currentRoute = this.router.url;
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(data => {
+    this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((data) => {
       this.currentRoute = (data as NavigationEnd).url;
     });
   }
@@ -95,7 +103,7 @@ export class HomePage implements OnInit {
   async setUserToken() {
     const { pushToken, userId } = await this.notificationsService.getPlayerId();
     console.log('------>  ', pushToken);
-    this.auth.$user.subscribe(async user => {
+    this.auth.$user.subscribe(async (user) => {
       await this.notificationsService.setTokenToUser(user!.uid!, userId + '');
     });
   }

@@ -1,0 +1,19 @@
+<ion-header no-border>
+  <div class="header">
+    <div class="ion-text-center header__logo">
+      <img *ngIf="user" [src]="user.hotel.logo" class="header__img" alt="logo" />
+    </div>
+    <button mat-icon-button class="header__menu" (click)="menu.toggle()">
+      <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
+    </button>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="reception">
+    <contler-transport *ngFor="let trs of $transports | async" [transport]="trs"></contler-transport>
+    <contler-money *ngFor="let mn of $money | async" [money]="mn"></contler-money>
+    <contler-exchange *ngFor="let exc of $exchanges | async" [exchange]="exc"></contler-exchange>
+    <contler-concierge *ngFor="let cng of $concierges | async" [concierge]="cng"></contler-concierge>
+  </div>
+</ion-content>

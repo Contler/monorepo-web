@@ -24,37 +24,38 @@ import { CommonComponentsModule } from '../common-components/common-components.m
             path: 'inmediate-requests',
             loadChildren: () =>
               import('./inmediate-requests/inmediate-requests.module').then(
-                m => m.InmediateRequestsPageModule,
+                (m) => m.InmediateRequestsPageModule,
               ),
           },
           {
             path: 'special-requests',
             loadChildren: () =>
-              import('./special-requests/special-requests.module').then(
-                m => m.SpecialRequestsPageModule,
-              ),
+              import('./special-requests/special-requests.module').then((m) => m.SpecialRequestsPageModule),
           },
           {
             path: 'wake-up',
-            loadChildren: () => import('../wake-up/wake-up.module').then(m => m.WakeUpModule),
+            loadChildren: () => import('../wake-up/wake-up.module').then((m) => m.WakeUpModule),
           },
           {
             path: 'statistic',
-            loadChildren: () =>
-              import('../statistic/statistic.module').then(m => m.StatisticModule),
+            loadChildren: () => import('../statistic/statistic.module').then((m) => m.StatisticModule),
           },
           {
             path: 'booking',
-            loadChildren: () => import('../booking/booking.module').then(m => m.BookingModule),
+            loadChildren: () => import('../booking/booking.module').then((m) => m.BookingModule),
           },
           {
             path: 'late',
             loadChildren: () =>
-              import('../latecheck-out/latecheck-out.module').then(m => m.LatecheckOutModule),
+              import('../latecheck-out/latecheck-out.module').then((m) => m.LatecheckOutModule),
           },
           {
             path: 'order',
-            loadChildren: () => import('../order/order.module').then(m => m.OrderModule),
+            loadChildren: () => import('../order/order.module').then((m) => m.OrderModule),
+          },
+          {
+            path: 'reception',
+            loadChildren: () => import('../reception/reception.module').then((m) => m.ReceptionModule),
           },
         ],
       },
