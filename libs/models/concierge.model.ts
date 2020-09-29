@@ -8,6 +8,7 @@ export interface ConciergeModel {
   date: Date;
   comment: string;
   createAt?: Date;
+  active?: boolean;
 }
 
 export const conciergeConverter: FirestoreDataConverter<ConciergeModel> = {
