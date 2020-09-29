@@ -23,3 +23,4 @@ export * from './concierge.model';
 export * from './modal-config.model';
 export * from './maintenance.model';
 export * from './room-key.model';
+export * from './cleaning.model';
