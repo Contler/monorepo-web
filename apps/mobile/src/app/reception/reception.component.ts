@@ -5,11 +5,13 @@ import { EmployerEntity } from '@contler/entity';
 import { ReceptionService } from '@contler/core';
 import { ConciergeModel, ExchangeReqModel, MoneyModel, TransportModel } from '@contler/models';
 
-import { switchMap, take } from 'rxjs/operators';
+import { switchMap, take, tap } from 'rxjs/operators';
 
 import { AuthService } from '../services/auth.service';
 import { GeneralService } from '../services/general.service';
 import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { ReceptionLocalService } from './services/reception/reception-local.service';
 
 @Component({
   selector: 'contler-reception',
@@ -22,28 +24,36 @@ export class ReceptionComponent implements OnInit {
   $money: Observable<MoneyModel[]>;
   $exchanges: Observable<ExchangeReqModel[]>;
   $concierges: Observable<ConciergeModel[]>;
+  private totalTransport: number;
+  private totalMoney: number;
+  private totalExchange: number;
+  private totalConcierge: number;
 
   constructor(
     private auth: AuthService,
     public menu: MenuController,
     public generalService: GeneralService,
-    private receptionService: ReceptionService,
+    private receptionService: ReceptionLocalService,
   ) {
     this.auth.$user.pipe(take(1)).subscribe((user) => (this.user = user));
   }
 
   ngOnInit(): void {
-    this.$transports = this.auth.$user.pipe(
-      switchMap(({ hotel }) => this.receptionService.getTransportById(hotel.uid)),
-    );
-    this.$money = this.auth.$user.pipe(
-      switchMap(({ hotel }) => this.receptionService.getMoneyChangesById(hotel.uid)),
-    );
-    this.$exchanges = this.auth.$user.pipe(
-      switchMap(({ hotel }) => this.receptionService.getExchangePetitionByHotel(hotel.uid)),
-    );
-    this.$concierges = this.auth.$user.pipe(
-      switchMap(({ hotel }) => this.receptionService.getConciergeByHotel(hotel.uid)),
-    );
+    this.$transports = this.receptionService
+      .getTransport()
+      .pipe(tap(({ length }) => (this.totalTransport = length)));
+    this.$money = this.receptionService
+      .getMoneyExchange()
+      .pipe(tap(({ length }) => (this.totalMoney = length)));
+    this.$exchanges = this.receptionService
+      .getExchanges()
+      .pipe(tap(({ length }) => (this.totalExchange = length)));
+    this.$concierges = this.receptionService
+      .getActiveConcierges()
+      .pipe(tap(({ length }) => (this.totalConcierge = length)));
+  }
+
+  get totalPetition() {
+    return this.totalConcierge || this.totalExchange || this.totalMoney || this.totalTransport;
   }
 }

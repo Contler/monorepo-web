@@ -62,6 +62,8 @@ export class ConciergeComponent {
       hotel: guest.hotel.uid,
       date,
       comment,
+      active: true,
+      createAt: new Date(),
     };
   }
 }

@@ -3,6 +3,10 @@ import { ConciergeModel } from '@contler/models';
 import { PetitionBase } from '../petition-base';
 import { AuthService } from '../../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
+import { filter } from 'rxjs/operators';
+import { ReceptionService } from '@contler/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'contler-concierge',
@@ -11,7 +15,13 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ConciergeComponent extends PetitionBase implements AfterViewInit {
   @Input() concierge: ConciergeModel;
-  constructor(authService: AuthService, dialog: MatDialog) {
+  constructor(
+    private reception: ReceptionService,
+    private snackBar: MatSnackBar,
+    private datePipe: DatePipe,
+    authService: AuthService,
+    dialog: MatDialog,
+  ) {
     super(authService, dialog);
   }
 
@@ -20,7 +30,11 @@ export class ConciergeComponent extends PetitionBase implements AfterViewInit {
   }
 
   goToModal() {
-    const { active, comment, createAt, uid } = this.concierge;
-    this.openModal(!!active, comment, 'Concierge', uid, createAt).subscribe();
+    const { active, comment, createAt, uid, date } = this.concierge;
+    const com = `${comment} - ${this.datePipe.transform(date, 'shortTime')}`;
+    this.openModal(!!active, com, 'Concierge', uid, createAt).subscribe(async ({ complete }) => {
+      await this.reception.conciergeRef.doc(this.concierge.uid).update({ active: complete });
+      this.snackBar.open('Petición actualizada', 'cerrar', { duration: 3000 });
+    });
   }
 }

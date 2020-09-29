@@ -7,6 +7,7 @@ export interface MoneyModel {
   uid?: string;
   value: string;
   createAt?: Date;
+  active: boolean;
 }
 
 export const MoneyTransform: FirestoreDataConverter<MoneyModel> = {

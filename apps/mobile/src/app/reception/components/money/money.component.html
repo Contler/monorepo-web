@@ -1,4 +1,4 @@
-<div *ngIf="$guest | async; let guest" class="money">
+<div *ngIf="$guest | async; let guest" class="money" (click)="goToModal()">
   <div class="money__text">
     <span class="money__text-name">{{ guest.name }} {{ guest.lastName }}</span>
     <span class="small">Cash loan</span>

@@ -16,4 +16,6 @@
     <contler-exchange *ngFor="let exc of $exchanges | async" [exchange]="exc"></contler-exchange>
     <contler-concierge *ngFor="let cng of $concierges | async" [concierge]="cng"></contler-concierge>
   </div>
+
+  <p *ngIf="!totalPetition" class="reception__text">No hay solicitudes</p>
 </ion-content>

@@ -42,12 +42,12 @@ export class CashLoanComponent {
               guest: guest.uid,
               hotel: guest.hotel.uid,
               value: this.cashControl.value,
+              active: true,
+              createAt: new Date(),
             } as MoneyModel),
         ),
         switchMap((req) => this.receptionService.createMoneyChange(req)),
-        switchMap(() =>
-          this.dialog.open(ModalCompleteComponent, { data: modalConf }).afterClosed(),
-        ),
+        switchMap(() => this.dialog.open(ModalCompleteComponent, { data: modalConf }).afterClosed()),
       )
       .subscribe(() => {
         this.load = false;

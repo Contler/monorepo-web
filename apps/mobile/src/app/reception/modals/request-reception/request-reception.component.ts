@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { GuestEntity } from '@contler/entity';
 
@@ -7,13 +7,15 @@ import { GuestEntity } from '@contler/entity';
   templateUrl: './request-reception.component.html',
   styleUrls: ['./request-reception.component.scss'],
 })
-export class RequestReceptionComponent implements OnInit {
+export class RequestReceptionComponent {
   constructor(
     public dialogRef: MatDialogRef<RequestReceptionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ReqModalData,
   ) {}
 
-  ngOnInit(): void {}
+  update() {
+    this.dialogRef.close({ complete: this.data.active });
+  }
 }
 
 export interface ReqModalData {

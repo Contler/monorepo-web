@@ -2,10 +2,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { GuestEntity } from '@contler/entity';
 
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
 
 import { AuthService } from '../../services/auth.service';
-import { RequestReceptionComponent } from '../modals/request-reception/request-reception.component';
+import {
+  ReqModalData,
+  RequestReceptionComponent,
+} from '../modals/request-reception/request-reception.component';
 
 export class PetitionBase {
   $guest: Observable<GuestEntity>;
@@ -19,7 +22,7 @@ export class PetitionBase {
     return this.$guest.pipe(
       switchMap((guest) =>
         this.dialog
-          .open(RequestReceptionComponent, {
+          .open<RequestReceptionComponent, ReqModalData, { complete: boolean }>(RequestReceptionComponent, {
             data: {
               active,
               comment,
@@ -29,9 +32,11 @@ export class PetitionBase {
               createAt,
             },
             minWidth: '100%',
+            minHeight: `${window.innerHeight}px`,
           })
           .afterClosed(),
       ),
+      filter((data) => !!data),
     );
   }
 }

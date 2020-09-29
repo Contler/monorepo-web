@@ -14,6 +14,7 @@ import { CommonComponentsModule } from '../common-components/common-components.m
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { ReceptionLocalService } from './services/reception/reception-local.service';
 
 const routes: Routes = [{ path: '', component: ReceptionComponent }];
 
@@ -37,5 +38,6 @@ const routes: Routes = [{ path: '', component: ReceptionComponent }];
     MatSelectModule,
     FormsModule,
   ],
+  providers: [ReceptionLocalService],
 })
 export class ReceptionModule {}

@@ -5,9 +5,13 @@ export interface ExchangeReqModel {
   guest: string;
   hotel: string;
   uid?: string;
-  money: string;
+  money: {
+    name: string;
+    symbol: string;
+  };
   value: string;
   createAt?: Date;
+  active: boolean;
 }
 
 export const ExchangeTransform: FirestoreDataConverter<ExchangeReqModel> = {

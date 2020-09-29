@@ -70,6 +70,8 @@ export class ExchangeComponent {
       hotel: guest.hotel.uid,
       money,
       value,
+      createAt: new Date(),
+      active: true,
     };
   }
 }

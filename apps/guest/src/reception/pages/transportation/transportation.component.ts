@@ -55,8 +55,7 @@ export class TransportationComponent {
     const date: Date = this.transportForm.value.date;
     const departure: Date = this.transportForm.value.departure;
     const modalConfig: ModalConfigModel = {
-      text:
-        'Your transport has been requested, we´ll be waiting you at the reception at the departure time',
+      text: 'Your transport has been requested, we´ll be waiting you at the reception at the departure time',
       close: 'Got it!',
       icon: 'fas fa-check-circle',
     };
@@ -73,6 +72,8 @@ export class TransportationComponent {
               destination: destination === 'Other' ? place : destination,
               guest: guest.uid,
               hotel: guest.hotel.uid,
+              createAt: new Date(),
+              active: true,
             } as TransportModel),
         ),
         switchMap((transport) => this.receptionService.createTransport(transport)),

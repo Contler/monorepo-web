@@ -8,6 +8,7 @@ export interface TransportModel {
   date: Date;
   destination: string;
   createAt?: Date;
+  active: boolean;
 }
 
 export const transportConverted: FirestoreDataConverter<TransportModel> = {
