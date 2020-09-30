@@ -1,8 +1,0 @@
-<div *ngIf="$guest | async; let guest" class="concierge" (click)="goToModal()">
-  <div class="concierge__text">
-    <span class="concierge__text-name">{{ guest.name }} {{ guest.lastName }}</span>
-    <span class="small">Concierge</span>
-  </div>
-  <div class="small">{{ concierge.createAt | date: 'shortTime' }}</div>
-  <mat-icon>keyboard_arrow_right</mat-icon>
-</div>

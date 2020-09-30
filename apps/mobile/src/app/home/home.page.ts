@@ -100,12 +100,8 @@ export class HomePage implements OnInit {
     });
   }
 
-  async setUserToken() {
-    const { pushToken, userId } = await this.notificationsService.getPlayerId();
-    console.log('------>  ', pushToken);
-    this.auth.$user.subscribe(async (user) => {
-      await this.notificationsService.setTokenToUser(user!.uid!, userId + '');
-    });
+  setUserToken() {
+    this.notificationsService.setTokenToUser();
   }
 
   goToRoute(url: string) {

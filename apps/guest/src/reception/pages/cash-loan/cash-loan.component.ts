@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ReceptionService } from '@contler/core';
-import { MoneyModel } from '@contler/models';
+import { ReceptionModel } from '@contler/models';
 import { ModalCompleteComponent } from 'guest/common-components/modal-complete/modal-complete.component';
 import { GuestService } from 'guest/services/guest.service';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
@@ -37,16 +37,17 @@ export class CashLoanComponent {
     this.guestService.$guest
       .pipe(
         map(
-          (guest) =>
+          ({ uid, hotel }) =>
             ({
-              guest: guest.uid,
-              hotel: guest.hotel.uid,
-              value: this.cashControl.value,
+              guest: uid,
+              hotel: hotel.uid,
+              comment: this.cashControl.value,
               active: true,
               createAt: new Date(),
-            } as MoneyModel),
+              type: 'Cash loan',
+            } as ReceptionModel),
         ),
-        switchMap((req) => this.receptionService.createMoneyChange(req)),
+        switchMap((req) => this.receptionService.createReception(req)),
         switchMap(() => this.dialog.open(ModalCompleteComponent, { data: modalConf }).afterClosed()),
       )
       .subscribe(() => {

@@ -11,11 +11,11 @@
 
 <ion-content>
   <div class="reception">
-    <contler-transport *ngFor="let trs of $transports | async" [transport]="trs"></contler-transport>
-    <contler-money *ngFor="let mn of $money | async" [money]="mn"></contler-money>
-    <contler-exchange *ngFor="let exc of $exchanges | async" [exchange]="exc"></contler-exchange>
-    <contler-concierge *ngFor="let cng of $concierges | async" [concierge]="cng"></contler-concierge>
+    <contler-reception-item
+      *ngFor="let item of $receptionReq | async"
+      [reception]="item"
+    ></contler-reception-item>
   </div>
 
-  <p *ngIf="!totalPetition" class="reception__text">No hay solicitudes</p>
+  <p *ngIf="!totalReception" class="reception__text">No hay solicitudes</p>
 </ion-content>

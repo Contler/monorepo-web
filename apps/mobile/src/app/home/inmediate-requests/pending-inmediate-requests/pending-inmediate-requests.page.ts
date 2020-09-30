@@ -38,6 +38,13 @@ export class PendingInmediateRequestsPage implements OnInit {
     });
   }
 
+  doRefresh(event: any) {
+    this.inmediateRequestsService.listenImmediateRequestByHotel(false).subscribe((requests) => {
+      this.requests = requests;
+      event.target.complete();
+    });
+  }
+
   async goToRequest(request: RequestEntity) {
     this.dialog
       .open(ModalInmediateRequestPage, { data: request, maxWidth: '100vw', panelClass: 'modalApp' })

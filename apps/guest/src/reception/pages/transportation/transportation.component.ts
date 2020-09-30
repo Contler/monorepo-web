@@ -7,9 +7,10 @@ import { ReceptionService } from '@contler/core';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
 import { DESTINATION_OPTIONS } from '../../const/transportation.const';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { TransportModel } from '@contler/models';
+import { ReceptionModel } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
 import { map, switchMap } from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'contler-transportation',
@@ -29,6 +30,7 @@ export class TransportationComponent {
     private receptionService: ReceptionService,
     private router: Router,
     private dialog: MatDialog,
+    private datePipe: DatePipe,
   ) {
     this.transportForm = formBuild.group({
       date: ['', Validators.required],
@@ -65,18 +67,19 @@ export class TransportationComponent {
     this.load = true;
     this.guestService.$guest
       .pipe(
-        map(
-          (guest) =>
-            ({
-              date,
-              destination: destination === 'Other' ? place : destination,
-              guest: guest.uid,
-              hotel: guest.hotel.uid,
-              createAt: new Date(),
-              active: true,
-            } as TransportModel),
-        ),
-        switchMap((transport) => this.receptionService.createTransport(transport)),
+        map(({ uid, hotel }) => {
+          const temp = destination === 'Other' ? place : destination;
+          const req: ReceptionModel = {
+            hotel: hotel.uid,
+            active: true,
+            createAt: new Date(),
+            guest: uid,
+            type: 'Transport',
+            comment: `${temp} - ${this.datePipe.transform(date, 'longDate')}`,
+          };
+          return req;
+        }),
+        switchMap((req) => this.receptionService.createReception(req)),
         switchMap(() =>
           this.dialog
             .open<ModalCompleteComponent, ModalConfigModel>(ModalCompleteComponent, {

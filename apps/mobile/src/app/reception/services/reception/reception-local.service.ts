@@ -15,30 +15,17 @@ export class ReceptionLocalService {
     this.$user = this.auth.$user;
   }
 
-  getActiveConcierges() {
-    const ref = this.rec.conciergeRef;
-    return this.getArrayReception(ref);
-  }
-
-  getExchanges() {
-    const ref = this.rec.exchangeRef;
-    return this.getArrayReception(ref);
-  }
-
-  getMoneyExchange() {
-    const ref = this.rec.moneyRef;
-    return this.getArrayReception(ref);
-  }
-
-  getTransport() {
-    return this.getArrayReception(this.rec.transportRef);
+  getReceptionReq() {
+    return this.getArrayReception(this.rec.receptionRef);
   }
 
   private getArrayReception<T>(ref: firebase.firestore.CollectionReference<T>) {
     return this.$user.pipe(
       switchMap(({ hotel }) =>
         this.afs
-          .collection<T>(ref, (ref1) => ref1.where('hotel', '==', hotel.uid).where('active', '==', true))
+          .collection<T>(ref, (ref1) =>
+            ref1.where('hotel', '==', hotel.uid).where('active', '==', true).orderBy('createAt', 'desc'),
+          )
           .valueChanges(),
       ),
     );

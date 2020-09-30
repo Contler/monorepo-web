@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ReceptionService } from '@contler/core';
 import { GuestEntity } from '@contler/entity';
-import { ExchangeReqModel } from '@contler/models';
+import { ReceptionModel } from '@contler/models';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
 
 import { map, switchMap } from 'rxjs/operators';
@@ -51,7 +51,7 @@ export class ExchangeComponent {
     this.guestService.$guest
       .pipe(
         map((guest) => this.generateExchangeReq(guest, money, value)),
-        switchMap((req) => this.receptionService.createExchangePetition(req)),
+        switchMap((req) => this.receptionService.createReception(req)),
         switchMap(() => this.dialog.open(ModalCompleteComponent, { data: modalConf }).afterClosed()),
       )
       .subscribe(() => {
@@ -64,14 +64,21 @@ export class ExchangeComponent {
     this.symbol = symbol;
   }
 
-  private generateExchangeReq(guest: GuestEntity, money: string, value: string): ExchangeReqModel {
+  private generateExchangeReq(
+    guest: GuestEntity,
+    money: {
+      name: string;
+      symbol: string;
+    },
+    value: string,
+  ): ReceptionModel {
     return {
       guest: guest.uid,
       hotel: guest.hotel.uid,
-      money,
-      value,
+      comment: `${money.symbol} ${value}`,
       createAt: new Date(),
       active: true,
+      type: 'Exchange',
     };
   }
 }

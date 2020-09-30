@@ -1,8 +1,0 @@
-<div *ngIf="$guest | async; let guest" class="transport" (click)="goToModal()">
-  <div class="transport__text">
-    <span class="transport__text-name">{{ guest.name }} {{ guest.lastName }}</span>
-    <span class="small">Transporte</span>
-  </div>
-  <div class="small">{{ transport.createAt | date: 'shortTime' }}</div>
-  <mat-icon>keyboard_arrow_right</mat-icon>
-</div>
