@@ -1,63 +1,32 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import {
-  ExchangeReqModel,
-  MoneyModel,
-  transportConverted,
-  TransportModel,
-  ConciergeModel,
-  conciergeConverter,
-} from '@contler/models';
+import { CoreConfig, receptionConverter, ReceptionModel } from '@contler/models';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ReceptionService {
-  constructor(private afs: AngularFirestore) {}
+  private readonly url: string;
 
-  createTransport(transport: TransportModel) {
-    const transportDoc = this.transportRef.doc();
-    return transportDoc.set({ ...transport, uid: transportDoc.id });
+  constructor(
+    private afs: AngularFirestore,
+    @Optional() private config: CoreConfig,
+    private http: HttpClient,
+  ) {
+    this.url = this.config.urlBackend;
   }
 
-  getTransportById(hotelId: string) {
-    return this.afs
-      .collection<TransportModel>(this.transportRef, (ref) => ref.where('hotel', '==', hotelId))
-      .valueChanges();
+  createReception(reception: ReceptionModel) {
+    const receptionDoc = this.receptionRef.doc();
+    reception.uid = receptionDoc.id;
+    this.sendNotification(reception.hotel);
+    return receptionDoc.set({ ...reception });
   }
 
-  createMoneyChange(money: MoneyModel) {
-    const moneyDoc = this.moneyRef.doc();
-    return moneyDoc.set({ ...money, uid: moneyDoc.id });
+  private sendNotification(hotelId: string) {
+    this.http.get(`${this.url}hotel/${hotelId}/notification/reception`).subscribe();
   }
 
-  getMoneyChangesById(hotelId: string) {
-    return this.afs
-      .collection<MoneyModel>(this.moneyRef, (ref) => ref.where('hotel', '==', hotelId))
-      .valueChanges();
-  }
-
-  createExchangePetition(money: ExchangeReqModel) {
-    const ref = this.exchangeRef.doc();
-    return ref.set({ ...money, uid: ref.id });
-  }
-
-  createConciergeReq(concierge: ConciergeModel) {
-    const ref = this.conciergeRef.doc();
-    return ref.set({ ...concierge, uid: ref.id });
-  }
-
-  private get transportRef() {
-    return this.afs.firestore.collection('transport').withConverter(transportConverted);
-  }
-
-  private get moneyRef() {
-    return this.afs.firestore.collection('moneyReq');
-  }
-
-  private get exchangeRef() {
-    return this.afs.firestore.collection('exchangeReq');
-  }
-
-  private get conciergeRef() {
-    return this.afs.firestore.collection('conciergeReq').withConverter(conciergeConverter);
+  get receptionRef() {
+    return this.afs.firestore.collection('reception').withConverter(receptionConverter);
   }
 }

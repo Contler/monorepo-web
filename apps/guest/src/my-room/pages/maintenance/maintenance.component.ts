@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
 import { ModalCompleteComponent } from 'guest/common-components/modal-complete/modal-complete.component';
 import { Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 import { GuestService } from 'guest/services/guest.service';
-import { MaintenanceModel } from '@contler/models';
-import { RoomService } from '@contler/core';
+import { ReceptionModel } from '@contler/models';
+import { ReceptionService } from '@contler/core';
 import { fullRangeDates } from 'guest/utils/generateTime';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'contler-maintenance',
@@ -22,10 +23,11 @@ export class MaintenanceComponent {
 
   constructor(
     private guestService: GuestService,
-    private roomService: RoomService,
+    private receptionService: ReceptionService,
     fb: FormBuilder,
     private dialog: MatDialog,
     private router: Router,
+    private datePipe: DatePipe,
   ) {
     this.maintenanceControl = fb.group({
       time: ['', Validators.required],
@@ -45,17 +47,19 @@ export class MaintenanceComponent {
 
     this.guestService.$guest
       .pipe(
-        map(
-          (guest) =>
-            ({
-              time,
-              maintenance,
-              createAt: new Date(),
-              guest: guest.uid,
-              hotel: guest.hotel.uid,
-            } as MaintenanceModel),
-        ),
-        switchMap((maintenances) => this.roomService.createMaintenance(maintenances)),
+        map((guest) => {
+          const comment = `${this.datePipe.transform(time, 'shortTime')} - ${maintenance}`;
+          const req: ReceptionModel = {
+            createAt: new Date(),
+            guest: guest.uid,
+            hotel: guest.hotel.uid,
+            active: true,
+            comment,
+            type: 'Maintenance',
+          };
+          return req;
+        }),
+        switchMap((req) => this.receptionService.createReception(req)),
         switchMap(() =>
           this.dialog
             .open<ModalCompleteComponent, ModalConfigModel>(ModalCompleteComponent, {

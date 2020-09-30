@@ -5,12 +5,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { MatDialog } from '@angular/material/dialog';
 import { GuestEntity } from '@contler/entity';
-import { ConciergeModel, ModalConfigModel } from '@contler/models';
+import { ModalConfigModel, ReceptionModel } from '@contler/models';
 
 import { fullRangeDates } from 'guest/utils/generateTime';
 import { GuestService } from '../../../services/guest.service';
 import { map, switchMap } from 'rxjs/operators';
 import { ModalCompleteComponent } from '../../../common-components/modal-complete/modal-complete.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'contler-concierge',
@@ -28,6 +29,7 @@ export class ConciergeComponent {
     private guestService: GuestService,
     private dialog: MatDialog,
     private router: Router,
+    private datePipe: DatePipe,
   ) {
     this.formGroup = formBuild.group({
       date: ['', Validators.required],
@@ -47,7 +49,7 @@ export class ConciergeComponent {
     this.guestService.$guest
       .pipe(
         map((guest) => this.generateReq(guest, date, comment)),
-        switchMap((req) => this.receptionService.createConciergeReq(req)),
+        switchMap((req) => this.receptionService.createReception(req)),
         switchMap(() => this.dialog.open(ModalCompleteComponent, { data: modalConf }).afterClosed()),
       )
       .subscribe(() => {
@@ -56,12 +58,14 @@ export class ConciergeComponent {
       });
   }
 
-  private generateReq(guest: GuestEntity, date: Date, comment: string): ConciergeModel {
+  private generateReq(guest: GuestEntity, date: Date, comment: string): ReceptionModel {
     return {
       guest: guest.uid,
       hotel: guest.hotel.uid,
-      date,
-      comment,
+      comment: `${comment} - ${this.datePipe.transform(date, 'shortTime')}`,
+      active: true,
+      createAt: new Date(),
+      type: 'Concierge',
     };
   }
 }

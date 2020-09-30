@@ -1,0 +1,21 @@
+<ion-header no-border>
+  <div class="header">
+    <div class="ion-text-center header__logo">
+      <img *ngIf="user" [src]="user.hotel.logo" class="header__img" alt="logo" />
+    </div>
+    <button mat-icon-button class="header__menu" (click)="menu.toggle()">
+      <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
+    </button>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="reception">
+    <contler-reception-item
+      *ngFor="let item of $receptionReq | async"
+      [reception]="item"
+    ></contler-reception-item>
+  </div>
+
+  <p *ngIf="!totalReception" class="reception__text">No hay solicitudes</p>
+</ion-content>

@@ -7,6 +7,8 @@ export interface TransportModel {
   guest: string;
   date: Date;
   destination: string;
+  createAt?: Date;
+  active: boolean;
 }
 
 export const transportConverted: FirestoreDataConverter<TransportModel> = {
@@ -15,9 +17,10 @@ export const transportConverted: FirestoreDataConverter<TransportModel> = {
     options: firebase.firestore.SnapshotOptions,
   ): TransportModel {
     const data = snapshot.data(options) as TransportModel;
-    return { ...data, date: new Date(data.date) };
+    return { ...data, date: new Date(data.date), createAt: new Date(data.createAt) };
   },
   toFirestore(modelObject: TransportModel): firebase.firestore.DocumentData {
-    return { ...modelObject, date: modelObject.date.toString() };
+    const { date, createAt, ...rest } = modelObject;
+    return { ...rest, date: date.toString(), createAt: createAt.toString() };
   },
 };

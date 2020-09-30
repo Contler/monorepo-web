@@ -28,7 +28,7 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "ionic:mobile:android": "ionic capacitor run android  --external --project=mobile -l",
+    "ionic:mobile:android": "ionic capacitor run android -l --external --project=mobile -c qa",
     "serve:dev:hotel": "ng serve hotel",
     "serve:dev:guest": "ng serve guest --port=4201",
     "serve:dev:mobile": "ionic serve --project=mobile",

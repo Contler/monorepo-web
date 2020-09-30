@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'guest/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -23,10 +24,12 @@ export class NotificationsService {
       },
       include_player_ids: payerId,
     };
-    return this.http.post(this.NOTIFICATION_URL, message, {
-      headers: {
-        Authorization: 'Basic ' + environment.oneSignalKeyApiKey,
-      },
-    });
+    return payerId.length > 0
+      ? this.http.post(this.NOTIFICATION_URL, message, {
+          headers: {
+            Authorization: 'Basic ' + environment.oneSignalKeyApiKey,
+          },
+        })
+      : of({});
   }
 }

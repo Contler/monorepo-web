@@ -6,7 +6,7 @@ import { User } from '@contler/models';
 import { filter, switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { EmployerEntity } from '@contler/entity';
+import { EmployerEntity, GuestEntity } from '@contler/entity';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -53,5 +53,9 @@ export class AuthService {
 
   get $user(): Observable<EmployerEntity | null> {
     return this.employerSubject.asObservable().pipe(filter((user) => !!user));
+  }
+
+  getUserById(uid: string) {
+    return this.http.get<GuestEntity>(environment.apiUrl + `guest/${uid}`);
   }
 }

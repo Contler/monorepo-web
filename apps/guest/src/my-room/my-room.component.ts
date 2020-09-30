@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SUB_CATEGORY_ROOM } from '@contler/const';
 import { HotelEntity } from '@contler/entity';
 import { GuestService } from 'guest/services/guest.service';
@@ -6,8 +6,8 @@ import { MessagesService } from 'guest/services/messages/messages.service';
 import { Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { RoomKeyModel } from '@contler/models';
-import { RoomKeyService } from '@contler/core';
+import { ReceptionModel, RoomKeyModel } from '@contler/models';
+import { ReceptionService } from '@contler/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
 import { ModalCompleteComponent } from 'guest/common-components/modal-complete/modal-complete.component';
@@ -30,7 +30,7 @@ export class MyRoomComponent implements OnInit, OnDestroy {
     private guestService: GuestService,
     private router: Router,
     private messagesService: MessagesService,
-    private roomKeyService: RoomKeyService,
+    private receptionService: ReceptionService,
     private dialog: MatDialog,
   ) {}
 
@@ -53,13 +53,15 @@ export class MyRoomComponent implements OnInit, OnDestroy {
         map(
           (guest) =>
             ({
-              time: new Date(),
-              nameRequest: msg,
+              createAt: new Date(),
+              comment: msg,
               guest: guest.uid,
               hotel: guest.hotel.uid,
-            } as RoomKeyModel),
+              type: 'Room keys',
+              active: true,
+            } as ReceptionModel),
         ),
-        switchMap((request) => this.roomKeyService.createRequest(request)),
+        switchMap((request) => this.receptionService.createReception(request)),
         switchMap(() =>
           this.dialog
             .open<ModalCompleteComponent, ModalConfigModel>(ModalCompleteComponent, {
