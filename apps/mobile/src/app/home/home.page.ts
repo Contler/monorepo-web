@@ -81,8 +81,9 @@ export class HomePage implements OnInit {
       this.user!.leaderZones.forEach((zone) => chiefZones.push(zone.name));
       this.chiefZonesLabel = chiefZones.join('-');
       this.menuItems[1].show = this.user!.wakeZone;
-      this.menuItems[4].show = this.user!.lateZone;
+      this.menuItems[4].show = this.user!.deliveryZone;
       this.menuItems[5].show = this.user.receptionZone;
+      this.menuItems[7].show = this.user.lateZone;
     });
   }
 
