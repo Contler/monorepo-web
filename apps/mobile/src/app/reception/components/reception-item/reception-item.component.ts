@@ -9,7 +9,7 @@ import {
   ReqModalData,
   RequestReceptionComponent,
 } from '../../modals/request-reception/request-reception.component';
-import { ReceptionService } from '../../../../../../../libs/core/src';
+import { ReceptionService } from '@contler/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
