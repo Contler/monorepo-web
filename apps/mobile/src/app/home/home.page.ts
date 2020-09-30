@@ -50,7 +50,7 @@ export class HomePage implements OnInit {
       icon: 'room_service',
       name: 'Recepción',
       route: '/home/reception',
-      show: this.showReception,
+      show: false,
     },
     {
       icon: 'bar_chart',
@@ -82,7 +82,7 @@ export class HomePage implements OnInit {
       this.chiefZonesLabel = chiefZones.join('-');
       this.menuItems[1].show = this.user!.wakeZone;
       this.menuItems[4].show = this.user!.lateZone;
-      this.showReception = this.user.receptionZone;
+      this.menuItems[5].show = this.user.receptionZone;
     });
   }
 

@@ -6,13 +6,16 @@
       <p class="header-menu__zone-label">Lider área - {{chiefZonesLabel}}</p>
     </div>
     <div class="menu">
-      <contler-menu-item
-        *ngFor="let item of menuItems"
-        [item]="item"
-        [selected]="isRouteSelected(item.route)"
-        (click)="goToRoute(item.route)"
-      >
-      </contler-menu-item>
+      <ng-container *ngFor="let item of menuItems">
+        <contler-menu-item
+          *ngIf="item.show"
+          [item]="item"
+          [selected]="isRouteSelected(item.route)"
+          (click)="goToRoute(item.route)"
+        >
+        </contler-menu-item>
+      </ng-container>
+
       <div class="menu__item" (click)="logout()">
         <mat-icon class="custom_icon">exit_to_app</mat-icon>
         <p class="label">Cerrar Sesión</p>
