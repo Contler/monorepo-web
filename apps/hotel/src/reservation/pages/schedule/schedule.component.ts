@@ -25,9 +25,9 @@ export class ScheduleComponent implements OnInit {
   filterIcon: Observable<String[]>;
   loader = false;
 
-  private reservation: ZoneReserveEntity | undefined;
+  reservation: ZoneReserveEntity | undefined;
+  categories: CategoryEntity[] = [];
   private removeSchedule: ScheduleEntity[] = [];
-  private categories: CategoryEntity[] = [];
 
   constructor(
     private zoneServices: ZoneService,
@@ -37,9 +37,7 @@ export class ScheduleComponent implements OnInit {
     formBuild: FormBuilder,
     private cdRef: ChangeDetectorRef,
   ) {
-    this.categoryZone = this.zoneServices
-      .getCategories()
-      .pipe(tap((cat) => (this.categories = cat)));
+    this.categoryZone = this.zoneServices.getCategories().pipe(tap((cat) => (this.categories = cat)));
 
     this.reservationForm = formBuild.group({
       name: ['', Validators.required],
@@ -155,9 +153,7 @@ export class ScheduleComponent implements OnInit {
     this.loader = true;
     const deleteSchedule = [
       ...this.removeSchedule.map((schedule) => this.reservationService.deleteSchedule(schedule.id)),
-      ...this.reservation!.schedule.map((schedule) =>
-        this.reservationService.deleteSchedule(schedule.id),
-      ),
+      ...this.reservation!.schedule.map((schedule) => this.reservationService.deleteSchedule(schedule.id)),
     ];
 
     forkJoin(deleteSchedule)

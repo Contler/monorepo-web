@@ -15,12 +15,16 @@ export class WakeUpComponent implements OnInit {
   hotel: HotelEntity | null | undefined;
   indexLoad: number | null = null;
   private guest!: GuestEntity;
-  private wakes: WakeUpEntity[] | null = null;
+  wakes: WakeUpEntity[] | null = null;
 
-  constructor(private guestService: GuestService, private sanitizer: DomSanitizer, private wakeService: WakeUpService) {
-    this.guestService.$hotel.pipe(take(1)).subscribe(hotel => (this.hotel = hotel));
-    this.guestService.$guest.pipe(take(1)).subscribe(guest => (this.guest = guest!));
-    this.wakeService.$wakeUp.subscribe(wakes => {
+  constructor(
+    private guestService: GuestService,
+    private sanitizer: DomSanitizer,
+    private wakeService: WakeUpService,
+  ) {
+    this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => (this.hotel = hotel));
+    this.guestService.$guest.pipe(take(1)).subscribe((guest) => (this.guest = guest!));
+    this.wakeService.$wakeUp.subscribe((wakes) => {
       this.wakes = wakes;
     });
   }
@@ -28,17 +32,22 @@ export class WakeUpComponent implements OnInit {
   ngOnInit() {}
 
   getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
+    );
   }
 
   getColorSecondHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.colorSecond}` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `color: ${this.hotel.colorSecond}` : '',
+    );
   }
 
   getColorButtonHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '',
+    );
   }
-
 
   delete(wake: WakeUpEntity, index: number) {
     this.indexLoad = index;

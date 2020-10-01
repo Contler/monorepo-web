@@ -1,13 +1,9 @@
 {
   "hosting": [
     {
-      "site": "employer-qa",
-      "public": "dist/apps/mobile",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
+      "target": "guest",
+      "public": "./dist/apps/guest",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
           "source": "**",
@@ -17,27 +13,8 @@
     },
     {
       "target": "hotel",
-      "public": "dist/apps/hotel",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
-      ]
-    },
-    {
-      "target": "guest",
-      "public": "dist/apps/guest",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
+      "public": "./dist/apps/hotel",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
           "source": "**",

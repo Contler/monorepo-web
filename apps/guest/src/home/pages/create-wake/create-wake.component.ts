@@ -12,15 +12,14 @@ import { WakeRequest } from '@contler/models';
 @Component({
   selector: 'contler-create-wake',
   templateUrl: './create-wake.component.html',
-  styleUrls: ['./create-wake.component.scss']
+  styleUrls: ['./create-wake.component.scss'],
 })
 export class CreateWakeComponent implements OnInit {
-
   hotel: HotelEntity | null | undefined;
   time = new Array(48);
   wakeUpForm: FormGroup;
   private guest!: GuestEntity;
-  private load = false;
+  load = false;
 
   constructor(
     private guestService: GuestService,
@@ -29,8 +28,8 @@ export class CreateWakeComponent implements OnInit {
     private wakeService: WakeUpService,
     private router: Router,
   ) {
-    this.guestService.$hotel.pipe(take(1)).subscribe(hotel => (this.hotel = hotel));
-    this.guestService.$guest.pipe(take(1)).subscribe(guest => (this.guest = guest!));
+    this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => (this.hotel = hotel));
+    this.guestService.$guest.pipe(take(1)).subscribe((guest) => (this.guest = guest!));
     this.wakeUpForm = formBuild.group({
       date: ['', Validators.required],
       time: ['', Validators.required],
@@ -41,11 +40,15 @@ export class CreateWakeComponent implements OnInit {
   ngOnInit() {}
 
   getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
+    );
   }
 
   getColorButtonHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '',
+    );
   }
 
   getHour(index: number) {
@@ -74,8 +77,7 @@ export class CreateWakeComponent implements OnInit {
     request.hotel = this.hotel!;
     this.wakeService.saveWake(request).subscribe(() => {
       this.load = false;
-      this.router.navigate(['/home/wake-up'])
+      this.router.navigate(['/home/wake-up']);
     });
   }
-
 }

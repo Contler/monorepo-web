@@ -24,7 +24,7 @@ import { ModalCompleteComponent } from './modal-complete/modal-complete.componen
     BtnMenuHotelDirective,
     ModalCompleteComponent,
   ],
-  imports: [CommonModule, MaterialModule, RatingModule, PipesModule],
+  imports: [CommonModule, MaterialModule, RatingModule, PipesModule, UiModule],
   exports: [
     ToolbarComponent,
     SidebarComponent,

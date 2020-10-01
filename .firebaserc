@@ -9,10 +9,21 @@
           "contler-dev"
         ]
       }
+    },
+    "contler": {
+      "hosting": {
+        "guest": [
+          "contler"
+        ],
+        "hotel": [
+          "hotel-a6137"
+        ]
+      }
     }
   },
   "projects": {
     "dev": "contler-dev",
-    "default": "contler-dev"
+    "default": "contler-dev",
+    "prod": "contler"
   }
 }

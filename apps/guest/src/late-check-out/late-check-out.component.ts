@@ -16,7 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class LateCheckOutComponent implements OnInit {
   hotel: HotelEntity | null | undefined;
-  private lateList: Observable<LateCheck[]> | undefined;
+  lateList: Observable<LateCheck[]> | undefined;
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -24,14 +24,14 @@ export class LateCheckOutComponent implements OnInit {
     private dialog: MatDialog,
     private afFirestore: AngularFirestore,
   ) {
-    this.guestService.$hotel.pipe(take(1)).subscribe(hotel => (this.hotel = hotel));
-    this.guestService.$guest.subscribe(guest => {
+    this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => (this.hotel = hotel));
+    this.guestService.$guest.subscribe((guest) => {
       this.lateList = this.afFirestore
-        .collection<LateCheck>('late', ref => ref.where('user', '==', guest!.uid))
+        .collection<LateCheck>('late', (ref) => ref.where('user', '==', guest!.uid))
         .valueChanges()
         .pipe(
-          map(list =>
-            list.map(item => {
+          map((list) =>
+            list.map((item) => {
               item.date = new Date(item.date);
               return item;
             }),
@@ -53,6 +53,8 @@ export class LateCheckOutComponent implements OnInit {
   }
 
   getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
+    );
   }
 }

@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./modal-booking-qualify.component.scss'],
 })
 export class ModalBookingQualifyComponent implements OnInit {
-  private value: number | undefined;
+  value: number | undefined;
   readonly textRate = ['Muy malo', 'Malo', 'Regular', 'Bueno', 'Exelente'];
   load = false;
 
