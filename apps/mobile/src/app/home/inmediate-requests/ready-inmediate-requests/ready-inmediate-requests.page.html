@@ -1,7 +1,7 @@
 <ion-header no-border>
   <div class="header">
     <div class="ion-text-center header__logo">
-      <img *ngIf="user" [src]="user.hotel.logo" class="header__img">
+      <img *ngIf="user" [src]="user.hotel.logo" class="header__img" />
     </div>
     <button mat-icon-button class="header__menu" (click)="menu.toggle()">
       <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
@@ -11,13 +11,15 @@
 
 <ion-content>
   <div class="main-container">
-    <p class="main-container__title" [style.color]="generalService.hotelColor">Solicitudes inmediatas resueltas</p>
+    <p class="main-container__title" [style.color]="generalService.hotelColor">
+      Solicitudes inmediatas resueltas
+    </p>
     <div class="list-container">
       <ng-container *ngIf="requests.length else empty">
         <div class="item" *ngFor="let request of requests" (click)="goToRequest(request)">
           <div class="item__info-container">
-            <p class="username">{{request.guest.name}} {{request.guest.lastName}}</p>
-            <p class="zone">{{request.zone.name}}</p>
+            <p class="username">{{request.guest?.name}} {{request.guest?.lastName}}</p>
+            <p class="zone">{{request.zone?.name}}</p>
           </div>
           <div class="item__data-container">
             <p class="time">{{request |requestTime}}</p>
