@@ -1,5 +1,1 @@
-export const STATUS_ORDER = [
-  'Creado',
-  'En proceso',
-  'Entregado'
-]
+export const STATUS_ORDER = ['Created', 'In process', 'Delivered'];
