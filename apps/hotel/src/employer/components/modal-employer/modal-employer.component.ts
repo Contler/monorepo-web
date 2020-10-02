@@ -11,6 +11,7 @@ import { ZoneService } from 'hotel/zone/services/zone.service';
 import { Observable } from 'rxjs';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { EmployerEntity, ZoneEntity } from '@contler/entity';
+import { SpecialZonesModel } from 'hotel/core/models/special-zones.model';
 
 @Component({
   selector: 'contler-modal-employer',
@@ -23,6 +24,12 @@ export class ModalEmployerComponent {
   formEmployer: FormGroup;
   leaderZone: { [key: string]: boolean } = {};
   $zone: Observable<ZoneEntity[]>;
+  specialZones: SpecialZonesModel = {
+    wakeZone: false,
+    lateZone: false,
+    receptionZone: false,
+    deliveryZone: false,
+  };
 
   constructor(
     private dialogRef: MatDialogRef<ModalEmployerComponent>,
@@ -49,7 +56,7 @@ export class ModalEmployerComponent {
       .getUser()
       .pipe(
         take(1),
-        map<EmployerEntity, EmployerRequest>(user => ({
+        map<EmployerEntity, EmployerRequest>((user) => ({
           name: employerData.name,
           lastName: employerData.lastName,
           idHotel: user.hotel.uid,
@@ -57,11 +64,12 @@ export class ModalEmployerComponent {
           password: employerData.pass,
           email: employerData.email,
           leaderZone: this.leaderZone,
+          spacialZone: this.specialZones as any,
         })),
-        switchMap(employerRequest => this.employerService.saveEmployer(employerRequest)),
+        switchMap((employerRequest) => this.employerService.saveEmployer(employerRequest)),
       )
       .subscribe(
-        employer => {
+        (employer) => {
           this.loading = false;
           this.dialogRef.close(employer);
           this.messagesService.showToastMessage('Empleado creado exitosamente');
