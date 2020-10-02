@@ -13,7 +13,8 @@ import { NgxMaskModule } from 'ngx-mask';
 import { CoreModule } from '@contler/core';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { CalendarMonthModule } from 'angular-calendar';
-import { ZoneBookPipe } from './pipes/zone-book.pipe';
+import { ZoneBookPipe, CalendarDatePipe } from './pipes';
+import { CalendarPreviuosViewDirective, CalendarNextViewDirective } from './directives';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,9 @@ import { ZoneBookPipe } from './pipes/zone-book.pipe';
     ScheduleComponent,
     CalendarComponent,
     ZoneBookPipe,
+    CalendarDatePipe,
+    CalendarPreviuosViewDirective,
+    CalendarNextViewDirective,
   ],
   imports: [
     CommonModule,

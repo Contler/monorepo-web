@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { ReservationService, UserService } from '@contler/core';
-import { map, switchMap, take, tap } from 'rxjs/operators';
-import { CalendarEvent } from 'angular-calendar';
+import { switchMap } from 'rxjs/operators';
+import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { MonthViewDay } from 'calendar-utils';
 import * as fns from 'date-fns';
-import { ZoneService } from 'hotel/zone/services/zone.service';
-import { BookingEntity, ZoneEntity } from '@contler/entity';
+import { BookingEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 
@@ -15,6 +14,8 @@ import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
   styleUrls: ['./calendar.component.scss'],
 })
 export class CalendarComponent {
+  view: CalendarView = CalendarView.Month;
+  CalendarView = CalendarView;
   viewDate = new Date();
   events: CalendarEvent[] = [];
   activeDayIsOpen = false;
@@ -45,6 +46,10 @@ export class CalendarComponent {
     }
   }
 
+  closeOpenMonthViewDay() {
+    this.activeDayIsOpen = false;
+  }
+
   convertBooking(booking: BookingEntity[]) {
     return booking ? booking.map(this.bookingToCalendar) : [];
   }
@@ -61,10 +66,10 @@ export class CalendarComponent {
     end.setFullYear(new Date(book.date).getFullYear());
 
     return {
-      title: `${book.schedule.reservation.name} - ${book.name} (${fns.format(
-        start,
+      title: `${book.schedule.reservation.name} - ${book.name} (${fns.format(start, 'H:mm')} - ${fns.format(
+        end,
         'H:mm',
-      )} - ${fns.format(end, 'H:mm')})`,
+      )})`,
       start,
       end,
     };
