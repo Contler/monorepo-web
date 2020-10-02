@@ -1,4 +1,5 @@
-@import "styles/variables";
+@import 'styles/variables';
+@import 'styles/mixin';
 
 .header {
   display: grid;
@@ -18,7 +19,6 @@
     color: #8dc53e;
   }
 }
-
 
 .detail {
   &__title {
@@ -63,5 +63,11 @@
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 5px;
+  }
+
+  &__restaurant {
+    @include text(rgba(0, 0, 0, 0.6), 18px);
+    margin-top: 50px;
+    display: block;
   }
 }

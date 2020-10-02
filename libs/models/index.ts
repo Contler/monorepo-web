@@ -21,3 +21,4 @@ export * from './maintenance.model';
 export * from './room-key.model';
 export * from './cleaning.model';
 export * from './reception.model';
+export * from './restaurant-products.model';

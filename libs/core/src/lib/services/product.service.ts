@@ -1,7 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
-import { CoreConfig, ProductRequest } from '@contler/models';
+import { CoreConfig, ProductRequest, RestaurantProductsModel } from '@contler/models';
 import { HttpClient } from '@angular/common/http';
-import { OrderEntity, ProductEntity } from '@contler/entity';
+import { OrderEntity, ProductEntity, ProductOrderEntity } from '@contler/entity';
 import { OrderRequest } from '@contler/models/order-request';
 
 @Injectable()
@@ -10,6 +10,16 @@ export class ProductService {
 
   constructor(@Optional() private config: CoreConfig, private http: HttpClient) {
     this.url = this.config.urlBackend;
+  }
+
+  static convertProductToRestaurantProducts(products: ProductOrderEntity[]) {
+    return products.reduce((previousValue, currentValue) => {
+      if (!previousValue[currentValue.product.restaurant.name]) {
+        previousValue[currentValue.product.restaurant.name] = [];
+      }
+      previousValue[currentValue.product.restaurant.name].push(currentValue);
+      return previousValue;
+    }, {} as RestaurantProductsModel);
   }
 
   createProduct(request: ProductRequest) {
@@ -29,7 +39,7 @@ export class ProductService {
   }
 
   deleteProduct(productId: number) {
-    return this.http.delete(`${this.url}product/${productId}`)
+    return this.http.delete(`${this.url}product/${productId}`);
   }
 
   createOrder(orderRequest: OrderRequest) {
@@ -37,7 +47,7 @@ export class ProductService {
   }
 
   getOrderByGuest(idGuest: string) {
-    return this.http.get<OrderEntity[]>(`${this.url}guest/${idGuest}/order`)
+    return this.http.get<OrderEntity[]>(`${this.url}guest/${idGuest}/order`);
   }
 
   getOrder(idOrder: number) {
@@ -49,10 +59,10 @@ export class ProductService {
   }
 
   updateOrder(order: OrderEntity) {
-    return this.http.put(`${this.url}product/order`, order)
+    return this.http.put(`${this.url}product/order`, order);
   }
 
   deleteOrder(idOrder: number) {
-    return this.http.delete(`${this.url}product/order/${idOrder}`)
+    return this.http.delete(`${this.url}product/order/${idOrder}`);
   }
 }
