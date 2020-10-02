@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { MenuController } from '@ionic/angular';
-import { GeneralService } from '../../../services/general.service';
 import { ProductService } from '@contler/core';
+import { RestaurantProductsModel } from '@contler/models';
 import { EmployerEntity, OrderEntity, ProductOrderEntity } from '@contler/entity';
-import { map, switchMap, take, tap } from 'rxjs/operators';
-import { ActivatedRoute, Router } from "@angular/router";
+
+import { map, switchMap, take } from 'rxjs/operators';
+
+import { AuthService } from '../../../services/auth.service';
+import { GeneralService } from '../../../services/general.service';
 import { EmployerService } from '../../../services/employer.service';
-import { CheckOrdersService } from "../../services/check-orders.service";
+import { CheckOrdersService } from '../../services/check-orders.service';
 
 @Component({
   selector: 'contler-order-detail',
@@ -21,6 +25,7 @@ export class OrderDetailComponent implements OnInit {
   employers: EmployerEntity[] = [];
   load = false;
   load2 = false;
+  productsRestaurant: RestaurantProductsModel;
 
   constructor(
     private auth: AuthService,
@@ -34,15 +39,16 @@ export class OrderDetailComponent implements OnInit {
   ) {
     route.params
       .pipe(
-        map(data => data['id']),
-        switchMap(id => this.productService.getOrder(id)),
+        map((data) => data['id']),
+        switchMap((id) => this.productService.getOrder(id)),
       )
-      .subscribe(order => {
+      .subscribe((order) => {
         this.order = order;
+        this.productsRestaurant = ProductService.convertProductToRestaurantProducts(order.productsOrder);
         this.total = this.calculateTotal(order.productsOrder);
       });
-    this.auth.$user.pipe(take(1)).subscribe(user => (this.user = user));
-    this.employerService.getEmployers().subscribe(employers => (this.employers = employers));
+    this.auth.$user.pipe(take(1)).subscribe((user) => (this.user = user));
+    this.employerService.getEmployers().subscribe((employers) => (this.employers = employers));
   }
 
   ngOnInit() {}
@@ -64,13 +70,13 @@ export class OrderDetailComponent implements OnInit {
   complete() {
     this.load2 = true;
     this.order.state = 2;
-    if(this.order.dateComplete == null) {
-      this.order.dateComplete = new Date()
+    if (this.order.dateComplete == null) {
+      this.order.dateComplete = new Date();
     }
     this.productService.updateOrder(this.order).subscribe(() => {
       this.load2 = false;
-      this.checkProduct.complete()
-      this.router.navigate(['/home/order/pending'])
+      this.checkProduct.complete();
+      this.router.navigate(['/home/order/pending']);
     });
   }
 

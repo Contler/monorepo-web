@@ -5,7 +5,7 @@
     </button>
 
     <div class="ion-text-center header__logo">
-      <img *ngIf="user" [src]="user.hotel.logo" class="header__img" />
+      <img *ngIf="user" [src]="user.hotel.logo" class="header__img" alt="logo" />
     </div>
     <button mat-icon-button class="header__menu" (click)="menu.toggle()">
       <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
@@ -21,12 +21,18 @@
     {{ order?.guest.room.name }} - {{ order?.time | date: 'shortTime' }}
   </h1>
 
-  <contler-product-item
-    *ngFor="let item of order?.productsOrder"
-    [product]="item.product"
-    [disable]="true"
-    [count]="item.quantity"
-  ></contler-product-item>
+  <ng-container *ngFor="let item of productsRestaurant | keyvalue; let i = index">
+    <span class="detail__restaurant" [style.marginTop]="i == 0 ? 0 : '50px'">
+      {{ item.key }}
+    </span>
+
+    <contler-product-item
+      *ngFor="let item of item.value"
+      [product]="item.product"
+      [disable]="true"
+      [count]="item.quantity"
+    ></contler-product-item>
+  </ng-container>
 
   <p class="detail__total" [style.color]="generalService.hotelColor">
     Total: {{ total | currency: 'cop':'COP $':'1.0-0' }}
@@ -44,7 +50,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <input matInput type="text" readonly [value]="order?.zone.name" />
+      <input matInput type="text" readonly [value]="order?.zone.name" aria-label="name" />
       <mat-hint>Entrega</mat-hint>
     </mat-form-field>
 
