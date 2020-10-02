@@ -7,11 +7,16 @@
 
       <div class="concierge__form">
         <mat-form-field appearance="fill">
-          <mat-select formControlName="date">
-            <mat-option *ngFor="let time of hoursOptions" [value]="time">
-              {{ time | date: 'HH:mm' }}
-            </mat-option>
-          </mat-select>
+          <input
+            matInput
+            readonly
+            [matDatepicker]="picker"
+            (click)="picker.open()"
+            formControlName="date"
+            aria-label="date"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
           <mat-hint>Date for the service</mat-hint>
         </mat-form-field>
 
