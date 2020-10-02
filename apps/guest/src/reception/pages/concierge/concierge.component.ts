@@ -6,8 +6,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { GuestEntity } from '@contler/entity';
 import { ModalConfigModel, ReceptionModel } from '@contler/models';
-
-import { fullRangeDates } from 'guest/utils/generateTime';
 import { GuestService } from '../../../services/guest.service';
 import { map, switchMap } from 'rxjs/operators';
 import { ModalCompleteComponent } from '../../../common-components/modal-complete/modal-complete.component';
@@ -19,7 +17,6 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./concierge.component.scss'],
 })
 export class ConciergeComponent {
-  hoursOptions = fullRangeDates();
   formGroup: FormGroup;
   load: boolean;
 
@@ -62,7 +59,7 @@ export class ConciergeComponent {
     return {
       guest: guest.uid,
       hotel: guest.hotel.uid,
-      comment: `${comment} - ${this.datePipe.transform(date, 'shortTime')}`,
+      comment: `${comment} - ${this.datePipe.transform(date, 'longDate')}`,
       active: true,
       createAt: new Date(),
       type: 'Concierge',
