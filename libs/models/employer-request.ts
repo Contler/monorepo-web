@@ -24,4 +24,6 @@ export class EmployerRequest {
 
   @IsNotEmpty()
   leaderZone!: { [key: string]: boolean };
+
+  spacialZone: { [key: string]: boolean };
 }

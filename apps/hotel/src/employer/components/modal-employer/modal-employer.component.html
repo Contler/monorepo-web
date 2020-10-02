@@ -5,10 +5,9 @@
 <p class="title">Empleado</p>
 
 <form [formGroup]="formEmployer" (ngSubmit)="createEmployer()">
-
   <div class="content">
     <mat-form-field appearance="fill" class="content__2-columns">
-      <input matInput formControlName="name">
+      <input matInput formControlName="name" />
       <mat-icon matSuffix>account_circle</mat-icon>
       <mat-hint>Nombre</mat-hint>
     </mat-form-field>
@@ -22,30 +21,42 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="content__2-columns">
-      <input matInput formControlName="lastName">
+      <input matInput formControlName="lastName" />
       <mat-icon matSuffix>account_circle</mat-icon>
       <mat-hint>Apellidos</mat-hint>
     </mat-form-field>
 
     <div class="content__2-columns content__zone content__3-row">
       <p class="content__zone-text">Zona donde es líder:</p>
-      <contler-zone-list [$zones]="$zone" (selected)="leaderZone = $event"></contler-zone-list>
+      <contler-zone-list
+        [$zones]="$zone"
+        (selected)="leaderZone = $event"
+        [(receptionZone)]="specialZones.receptionZone"
+        [(deliveryZone)]="specialZones.deliveryZone"
+        [(lateZone)]="specialZones.lateZone"
+        [(wakeZone)]="specialZones.wakeZone"
+      ></contler-zone-list>
     </div>
 
     <mat-form-field appearance="fill" class="content__2-columns">
-      <input matInput formControlName="email">
+      <input matInput formControlName="email" />
       <mat-icon matSuffix>account_circle</mat-icon>
       <mat-hint>Correo</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="content__2-columns">
-      <input matInput formControlName="pass">
+      <input matInput formControlName="pass" />
       <mat-icon matSuffix>check_circle</mat-icon>
       <mat-hint>Contraseña</mat-hint>
     </mat-form-field>
   </div>
-  <button mat-raised-button color="accent" contlerButton [loading]="loading" [disabled]="loading || formEmployer.invalid">
+  <button
+    mat-raised-button
+    color="accent"
+    contlerButton
+    [loading]="loading"
+    [disabled]="loading || formEmployer.invalid"
+  >
     crear
   </button>
-
 </form>
