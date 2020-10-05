@@ -42,7 +42,6 @@
         locale="es"
         [viewDate]="viewDate"
         [events]="convertBooking(booking$ | async | zoneBook: zone)"
-        [refresh]="refresh"
         [activeDayIsOpen]="activeDayIsOpen"
         (dayClicked)="dayClicked($event)"
       ></mwl-calendar-month-view>
