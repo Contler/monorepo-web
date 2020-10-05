@@ -18,6 +18,10 @@
 
     <div class="calendar">
       <div style="text-align: center">
+        <h3 class="cnt-title">
+          {{ viewDate | calendarDate: view + 'ViewTitle':'Es' | titlecase }}
+        </h3>
+
         <button
           mat-icon-button
           contlerCalendarPreviuosView
