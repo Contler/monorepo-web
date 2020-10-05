@@ -13,7 +13,7 @@ export const environment = {
     messagingSenderId: '424830318314',
     appId: '1:424830318314:web:aa057126d096f3d747c993',
   },
-  apiUrl: 'https://contler.herokuapp.com/'
+  apiUrl: 'https://contler-back-dev.herokuapp.com/',
 };
 
 /*

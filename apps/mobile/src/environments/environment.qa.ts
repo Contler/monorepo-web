@@ -5,15 +5,15 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyC7-kFPHWTHaKaP2WFjIXWoAaf9QfSyr8Q",
-    authDomain: "contler-dev.firebaseapp.com",
-    databaseURL: "https://contler-dev.firebaseio.com",
-    projectId: "contler-dev",
-    storageBucket: "contler-dev.appspot.com",
-    messagingSenderId: "424830318314",
-    appId: "1:424830318314:web:aa057126d096f3d747c993"
+    apiKey: 'AIzaSyC7-kFPHWTHaKaP2WFjIXWoAaf9QfSyr8Q',
+    authDomain: 'contler-dev.firebaseapp.com',
+    databaseURL: 'https://contler-dev.firebaseio.com',
+    projectId: 'contler-dev',
+    storageBucket: 'contler-dev.appspot.com',
+    messagingSenderId: '424830318314',
+    appId: '1:424830318314:web:aa057126d096f3d747c993',
   },
-  apiUrl: 'https://contler.herokuapp.com/',
+  apiUrl: 'https://contler-back-dev.herokuapp.com/',
   oneSignalKey: '04a89f42-34ec-4e3b-aeb1-21df861b6884',
 };
 
