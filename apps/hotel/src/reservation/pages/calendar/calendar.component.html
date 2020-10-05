@@ -1,5 +1,4 @@
 <contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
-
 <mat-sidenav-container>
   <mat-sidenav mode="over" #sidenav>
     <contler-menu></contler-menu>
@@ -11,16 +10,36 @@
       <mat-form-field appearance="fill">
         <mat-select [(ngModel)]="zone">
           <mat-option [value]="null">Todos</mat-option>
-          <mat-option *ngFor="let zone of zones$ | async" [value]="zone">{{
-            zone.name
-          }}</mat-option>
+          <mat-option *ngFor="let zone of zones$ | async" [value]="zone">{{ zone.name }}</mat-option>
         </mat-select>
         <mat-hint>Zona</mat-hint>
       </mat-form-field>
     </div>
 
     <div class="calendar">
+      <div style="text-align: center">
+        <button
+          mat-icon-button
+          contlerCalendarPreviuosView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()"
+        >
+          <mat-icon class="calendar__icon">navigate_before</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          contlerCalendarNextView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()"
+        >
+          <mat-icon class="calendar__icon">navigate_next</mat-icon>
+        </button>
+      </div>
+
       <mwl-calendar-month-view
+        locale="es"
         [viewDate]="viewDate"
         [events]="convertBooking(booking$ | async | zoneBook: zone)"
         [activeDayIsOpen]="activeDayIsOpen"
