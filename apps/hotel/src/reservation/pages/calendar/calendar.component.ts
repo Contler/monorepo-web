@@ -15,9 +15,7 @@ import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 })
 export class CalendarComponent {
   view: CalendarView = CalendarView.Month;
-  CalendarView = CalendarView;
   viewDate = new Date();
-  events: CalendarEvent[] = [];
   activeDayIsOpen = false;
   zone: ZoneReserveEntity;
 
