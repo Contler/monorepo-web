@@ -39,6 +39,7 @@
       </div>
 
       <mwl-calendar-month-view
+        locale="es"
         [viewDate]="viewDate"
         [events]="convertBooking(booking$ | async | zoneBook: zone)"
         [refresh]="refresh"
