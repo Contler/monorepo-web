@@ -69,7 +69,7 @@ export class CalendarComponent {
       title: `${book.schedule.reservation.name} - ${book.name} (${fns.format(start, 'H:mm')} - ${fns.format(
         end,
         'H:mm',
-      )})`,
+      )}) - ${book.quote} Personas`,
       start,
       end,
     };
