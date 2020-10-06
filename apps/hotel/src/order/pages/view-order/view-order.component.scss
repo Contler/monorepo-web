@@ -1,4 +1,6 @@
-@import "../../../styles/variables";
+@import 'styles/variables';
+@import 'styles/mixin';
+
 .view-order {
   align-items: flex-start;
   display: grid;
@@ -25,7 +27,13 @@
     padding: 0 20px;
     overflow-y: scroll;
     max-height: 350px;
-  } 
+  }
+
+  &__restaurant {
+    @include text(rgba(0, 0, 0, 0.6), 18px);
+    margin-top: 50px;
+    display: block;
+  }
 
   .title {
     color: $primary;
@@ -37,9 +45,13 @@
   .grid-70-30 {
     column-gap: 20px;
     display: grid;
-    grid-template-columns: calc(70% - 10px)  calc(30% - 10px)  ;
+    grid-template-columns: calc(70% - 10px) calc(30% - 10px);
   }
 
-  .mb-4 { margin-bottom: 16px }
-  .txt-capitalize { text-transform: capitalize; }
+  .mb-4 {
+    margin-bottom: 16px;
+  }
+  .txt-capitalize {
+    text-transform: capitalize;
+  }
 }

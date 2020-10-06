@@ -8,9 +8,7 @@
       </mat-select>
       <mat-hint>Estado</mat-hint>
     </mat-form-field>
-    <button mat-raised-button (click)="deleteOrder()" contlerButton [loading]="load">
-      Eliminar
-    </button>
+    <button mat-raised-button (click)="deleteOrder()" contlerButton [loading]="load">Eliminar</button>
     <button
       mat-raised-button
       color="accent"
@@ -48,12 +46,7 @@
 
         <div class="grid-70-30">
           <mat-form-field appearance="fill">
-            <input
-              type="text"
-              matInput
-              [value]="order.time | date: 'dd/MM/yyyy HH:mm aa'"
-              readonly
-            />
+            <input type="text" matInput [value]="order.time | date: 'dd/MM/yyyy HH:mm aa'" readonly />
             <mat-icon matSuffix>query_builder</mat-icon>
             <mat-hint>Fecha y Hora</mat-hint>
           </mat-form-field>
@@ -100,12 +93,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="fill">
-            <input
-              type="text"
-              matInput
-              [value]="(order.dateComplete | date: 'shortTime') || ''"
-              readonly
-            />
+            <input type="text" matInput [value]="(order.dateComplete | date: 'shortTime') || ''" readonly />
             <mat-icon matSuffix>query_builder</mat-icon>
             <mat-hint>Hora de entrega</mat-hint>
           </mat-form-field>
@@ -114,13 +102,19 @@
     </div>
     <div class="view-order__products">
       <p class="title">Pedido</p>
-      <contler-product-item
-        [disable]="true"
-        *ngFor="let item of order?.productsOrder"
-        [product]="item.product"
-        [count]="item.quantity"
-      >
-      </contler-product-item>
+      <ng-container *ngFor="let item of restaurantProds | keyvalue; let i = index">
+        <span class="view-order__restaurant" [style.marginTop]="i == 0 ? 0 : '50px'">
+          {{ item.key }}
+        </span>
+
+        <contler-product-item
+          [disable]="true"
+          *ngFor="let item of order?.productsOrder"
+          [product]="item.product"
+          [count]="item.quantity"
+        >
+        </contler-product-item>
+      </ng-container>
     </div>
   </div>
 </contler-marco-admin>

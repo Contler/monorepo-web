@@ -5,6 +5,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { ProductEntity } from '@contler/entity';
 import { OrderEntity } from '@contler/entity';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RestaurantProductsModel } from '@contler/models';
 
 @Component({
   selector: 'contler-view-order',
@@ -14,8 +15,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ViewOrderComponent {
   product!: ProductEntity;
   order!: OrderEntity;
+  restaurantProds: RestaurantProductsModel;
 
-  readonly states = [{ name: 'Pendiente', value: 0 }, { name: 'Cumplido', value: 1 }];
+  readonly states = [
+    { name: 'Pendiente', value: 0 },
+    { name: 'Cumplido', value: 1 },
+  ];
   state = 0;
 
   productForm!: FormGroup;
@@ -23,7 +28,6 @@ export class ViewOrderComponent {
 
   load = false;
   error = '';
-
 
   constructor(
     private route: ActivatedRoute,
@@ -33,12 +37,13 @@ export class ViewOrderComponent {
   ) {
     this.route.params
       .pipe(
-        map(data => data['id']),
+        map((data) => data['id']),
         switchMap((id) => this.productService.getOrder(id)),
       )
-      .subscribe(order => {
+      .subscribe((order) => {
         this.order = order;
         this.state = this.order.state;
+        this.restaurantProds = ProductService.convertProductToRestaurantProducts(order.productsOrder);
 
         this.orderForm = formBuild.group({
           comment: [order.comment, Validators.required],
@@ -46,7 +51,7 @@ export class ViewOrderComponent {
           state: [order.state, Validators.required],
           productsOrder: [order.productsOrder, Validators.required],
           zone: [order.zone, Validators.required],
-          guest: [order.guest, Validators.required]
+          guest: [order.guest, Validators.required],
         });
       });
   }
@@ -56,10 +61,10 @@ export class ViewOrderComponent {
     this.state = this.order.state;
   }
 
-  orderProductsTotalValue(order : OrderEntity) {
+  orderProductsTotalValue(order: OrderEntity) {
     let totalOrder = 0;
-    order.productsOrder.forEach(elm => {
-      totalOrder += (elm.quantity * elm.product.value);
+    order.productsOrder.forEach((elm) => {
+      totalOrder += elm.quantity * elm.product.value;
     });
     return totalOrder;
   }
