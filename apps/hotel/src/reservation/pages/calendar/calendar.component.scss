@@ -17,5 +17,8 @@
     padding: 10px 10px 14px;
     cursor: pointer;
     color: $lighterIcon;
+    &__month {
+      padding: 10px;
+    }
   }
 }

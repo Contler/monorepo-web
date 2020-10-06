@@ -7,6 +7,7 @@ import * as fns from 'date-fns';
 import { BookingEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
+import { convertMonthToString } from 'hotel/utils/returnMonth';
 
 @Component({
   selector: 'contler-calendar',
@@ -18,6 +19,7 @@ export class CalendarComponent {
   viewDate = new Date();
   activeDayIsOpen = false;
   zone: ZoneReserveEntity;
+  currentMonth = convertMonthToString();
 
   booking$: Observable<BookingEntity[]>;
   zones$: Observable<ZoneReserveEntity[]>;
