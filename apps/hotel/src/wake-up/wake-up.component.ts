@@ -16,14 +16,21 @@ import { MatTableDataSource } from '@angular/material/table';
 export class WakeUpComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
 
-  readonly filters = [{ name: 'Pendientes', value: 0 }, { name: 'Completos', value: 1 }];
+  readonly filters = [
+    { name: 'Pendientes', value: 0 },
+    { name: 'Completos', value: 1 },
+  ];
 
   filter = 0;
 
-  displayedColumns: string[] = ['name', 'room', 'date', 'time'];
+  displayedColumns: string[] = ['name', 'wakeCall', 'room', 'date', 'time'];
   dataSource = new MatTableDataSource<WakeTable>();
 
-  constructor(private wakeService: WakeService, private authService: AuthService, private datePipe: DatePipe) {
+  constructor(
+    private wakeService: WakeService,
+    private authService: AuthService,
+    private datePipe: DatePipe,
+  ) {
     this.getIncompleteWake();
     this.dataSource.paginator = this.paginator!;
   }
@@ -38,29 +45,30 @@ export class WakeUpComponent implements OnInit {
 
   getIncompleteWake() {
     this.authService.$employer
-      .pipe(switchMap(user => this.wakeService.getWakeIncomplete(user.hotel.uid)))
-      .subscribe(wakes => (this.dataSource.data = this.convertWake(wakes)));
+      .pipe(switchMap((user) => this.wakeService.getWakeIncomplete(user.hotel.uid)))
+      .subscribe((wakes) => (this.dataSource.data = this.convertWake(wakes)));
   }
 
   textFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase()
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   getCompleteWake() {
     this.authService.$employer
-      .pipe(switchMap(user => this.wakeService.getWakeComplete(user.hotel.uid)))
-      .subscribe(wakes => (this.dataSource.data = this.convertWake(wakes)));
+      .pipe(switchMap((user) => this.wakeService.getWakeComplete(user.hotel.uid)))
+      .subscribe((wakes) => (this.dataSource.data = this.convertWake(wakes)));
   }
 
   ngOnInit() {}
 
   private convertWake(wakes: WakeUpEntity[]): WakeTable[] {
-    return wakes.map(wake => ({
+    return wakes.map((wake) => ({
       id: wake.id,
       name: wake.guest.name + ' ' + wake.guest.lastName,
+      wakeCall: wake.name ? wake.name : '',
       room: wake.room.name,
       date: this.datePipe.transform(wake.date, 'dd/MM/yyyy')!,
-      time: this.datePipe.transform(wake.time, 'shortTime')!
-    }))
+      time: this.datePipe.transform(wake.time, 'shortTime')!,
+    }));
   }
 }
