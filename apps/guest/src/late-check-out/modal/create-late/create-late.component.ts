@@ -42,9 +42,7 @@ export class CreateLateComponent implements OnInit {
 
   getColorButtonHotel() {
     return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color
-        ? `background: ${this.hotel.color};  color: #ffffff !important`
-        : '',
+      this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '',
     );
   }
 
@@ -52,7 +50,7 @@ export class CreateLateComponent implements OnInit {
     this.load = true;
     const key = this.afFirestore.createId();
     this.snackBar.open(
-      'Tu solicitud de Late checkout fue recibida. El área encargada la revisará y te contactará para la confirmación de esta.',
+      'Your late checkout request was received. The area in charge will review it and contact you to confirm it.',
       'cerrar',
       {
         duration: 4000,
