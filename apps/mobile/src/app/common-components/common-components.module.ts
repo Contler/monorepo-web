@@ -8,6 +8,9 @@ import { MaterialModule } from '../material/material.module';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { ColorHotelDirective } from './color-hotel.directive';
 import { BtnHotelDirective } from './btn-hotel.directive';
+import { ReceptionItemComponent } from './reception-item/reception-item.component';
+import { RequestReceptionComponent } from './request-reception/request-reception.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,8 @@ import { BtnHotelDirective } from './btn-hotel.directive';
     MenuItemComponent,
     ColorHotelDirective,
     BtnHotelDirective,
+    ReceptionItemComponent,
+    RequestReceptionComponent,
   ],
   exports: [
     ToolbarComponent,
@@ -25,7 +30,8 @@ import { BtnHotelDirective } from './btn-hotel.directive';
     MenuItemComponent,
     ColorHotelDirective,
     BtnHotelDirective,
+    ReceptionItemComponent,
   ],
-  imports: [CommonModule, IonicModule, MaterialModule],
+  imports: [CommonModule, IonicModule, MaterialModule, FormsModule],
 })
 export class CommonComponentsModule {}

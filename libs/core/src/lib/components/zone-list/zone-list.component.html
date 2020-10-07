@@ -1,5 +1,23 @@
 <div class="contler-zone">
   <mat-checkbox
+    [(ngModel)]="cleanZone"
+    color="primary"
+    class="contler-zone__check"
+    (ngModelChange)="cleanZoneChange.emit($event)"
+  >
+    Limpieza
+  </mat-checkbox>
+
+  <mat-checkbox
+    [(ngModel)]="maintainZone"
+    color="primary"
+    class="contler-zone__check"
+    (ngModelChange)="maintainZoneChange.emit($event)"
+  >
+    Mantenimiento
+  </mat-checkbox>
+
+  <mat-checkbox
     *ngIf="receptionZone !== null"
     [(ngModel)]="receptionZone"
     color="primary"

@@ -24,6 +24,12 @@ export class ZoneListComponent {
   @Input() receptionZone: boolean | undefined;
   @Output() receptionZoneChange = new EventEmitter();
 
+  @Input() cleanZone: boolean | undefined;
+  @Output() cleanZoneChange = new EventEmitter();
+
+  @Input() maintainZone: boolean | undefined;
+  @Output() maintainZoneChange = new EventEmitter();
+
   @Output() selected = new EventEmitter<{ [key: string]: boolean }>();
 
   select(event: MatCheckboxChange, zone: ZoneEntity) {

@@ -57,6 +57,11 @@ import { CommonComponentsModule } from '../common-components/common-components.m
             path: 'reception',
             loadChildren: () => import('../reception/reception.module').then((m) => m.ReceptionModule),
           },
+          { path: 'clean', loadChildren: () => import('../clean/clean.module').then((m) => m.CleanModule) },
+          {
+            path: 'maintain',
+            loadChildren: () => import('../maintain/maintain.module').then((m) => m.MaintainModule),
+          },
         ],
       },
     ]),

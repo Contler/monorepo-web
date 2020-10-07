@@ -64,6 +64,18 @@ export class HomePage implements OnInit {
       route: '/home/late',
       show: false,
     },
+    {
+      icon: 'cleaning_services',
+      name: 'Limpieza',
+      route: '/home/clean',
+      show: false,
+    },
+    {
+      icon: 'engineering',
+      name: 'Mantenimiento',
+      route: '/home/maintain',
+      show: false,
+    },
   ];
   public currentRoute: string | undefined;
   public chiefZonesLabel: string | undefined;
@@ -84,6 +96,8 @@ export class HomePage implements OnInit {
       this.menuItems[4].show = this.user!.deliveryZone;
       this.menuItems[5].show = this.user.receptionZone;
       this.menuItems[7].show = this.user.lateZone;
+      this.menuItems[8].show = this.user.cleanZone;
+      this.menuItems[9].show = this.user.maintainZone;
     });
   }
 

@@ -4,10 +4,12 @@ import { ReceptionService } from '@contler/core';
 import { EmployerEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { AuthService } from '../../../services/auth.service';
 import * as firebase from 'firebase/app';
+import { AuthService } from '../auth.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ReceptionLocalService {
   private $user: Observable<EmployerEntity | null>;
 

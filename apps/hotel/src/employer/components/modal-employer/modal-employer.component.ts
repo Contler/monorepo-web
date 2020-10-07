@@ -29,6 +29,8 @@ export class ModalEmployerComponent {
     lateZone: false,
     receptionZone: false,
     deliveryZone: false,
+    cleanZone: false,
+    maintainZone: false,
   };
 
   constructor(
