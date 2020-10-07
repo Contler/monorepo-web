@@ -1,11 +1,11 @@
-import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { GuestService } from 'guest/services/guest.service';
 import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'guest/services/zone.service';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { SUB_CATEGORY } from '@contler/const';
 import { NotificationsService } from 'guest/services/notifications.service';
@@ -76,6 +76,7 @@ export class ZoneRequestComponent implements OnDestroy {
     );
     this.guestService.$guest
       .pipe(
+        take(1),
         map((guest) => {
           const request = new RequestRequest();
           request.hotel = guest!.hotel;
