@@ -90,7 +90,7 @@ export class ZoneRequestComponent implements OnDestroy {
         switchMap((request) => this.requestService.saveRequest(request)),
         switchMap(() =>
           this.notificationsService.sendNotification(
-            `Hay una solicitud inmediata en ${this.zone.name} esperando a ser atendida. `,
+            `There is an immediate request at ${this.zone.name} waiting to be attended. `,
             chiefTokens,
           ),
         ),
@@ -100,7 +100,7 @@ export class ZoneRequestComponent implements OnDestroy {
           this.loader = false;
           this.requestController.reset();
           this.router.navigate(['/home']);
-          this.messagesService.showToastMessage('Solicitud inmediata creada exitosamente');
+          this.messagesService.showToastMessage('Immediate request successfully created');
         },
         () => {
           this.loader = false;

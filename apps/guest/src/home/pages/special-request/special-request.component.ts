@@ -38,42 +38,51 @@ export class SpecialRequestComponent implements OnInit, OnDestroy {
     private guestService: GuestService,
     private messagesService: MessagesService,
   ) {
-    this.guestSubscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
+    this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
   }
 
   ngOnInit() {}
 
   async saveRequest() {
     this.loader = true;
-    this.guestService.$guest.pipe(
-      take(1),
-      map(guest => {
-        const request = new RequestRequest();
-        request.hotel = this.hotel!;
-        request.guest = guest!;
-        request.room = guest!.room;
-        request.special = true;
-        request.message = this.description!;
-        return request;
-      }),
-      switchMap(request => this.requestService.saveRequest(request))
-    ).subscribe(() => {
-      this.loader = false;
-      this.router.navigate(['/home']);
-      this.messagesService.showToastMessage('Solicitud inmediata creada exitosamente');
-    }, error => {
-      this.loader = false;
-      this.messagesService.showToastMessage('Error al crear la solicitud');
-    })
+    this.guestService.$guest
+      .pipe(
+        take(1),
+        map((guest) => {
+          const request = new RequestRequest();
+          request.hotel = this.hotel!;
+          request.guest = guest!;
+          request.room = guest!.room;
+          request.special = true;
+          request.message = this.description!;
+          return request;
+        }),
+        switchMap((request) => this.requestService.saveRequest(request)),
+      )
+      .subscribe(
+        () => {
+          this.loader = false;
+          this.router.navigate(['/home']);
+          this.messagesService.showToastMessage('Immediate request successfully created');
+        },
+        (error) => {
+          this.loader = false;
+          this.messagesService.showToastMessage('Error creating request');
+        },
+      );
   }
 
   getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
+    );
   }
 
   getButtonColorHotel() {
     return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `background-color: ${this.hotel.color}; color: #ffffff !important` : '',
+      this.hotel && this.hotel.color
+        ? `background-color: ${this.hotel.color}; color: #ffffff !important`
+        : '',
     );
   }
 
