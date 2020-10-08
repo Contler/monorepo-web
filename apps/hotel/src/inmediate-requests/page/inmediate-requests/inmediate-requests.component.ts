@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { REQUEST_STATUS } from 'hotel/inmediate-requests/const/request.const';
+import { REQUEST_STATUS, TYPE_REQUEST } from 'hotel/inmediate-requests/const/request.const';
 
 @Component({
   selector: 'contler-inmediate-requests',
@@ -9,7 +9,9 @@ import { REQUEST_STATUS } from 'hotel/inmediate-requests/const/request.const';
 export class InmediateRequestsComponent {
   filterByStatusSelected: string = REQUEST_STATUS.ACTIVE;
   textFilter: string;
+  activeRequest = 1;
   requestStatus = REQUEST_STATUS;
+  typeRequests = TYPE_REQUEST;
 
   constructor() {}
 }

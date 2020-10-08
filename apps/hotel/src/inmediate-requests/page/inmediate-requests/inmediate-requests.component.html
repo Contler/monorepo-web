@@ -11,6 +11,14 @@
         <p class="header__title">Solicitudes inmediatas</p>
         <div class="buttons-container">
           <mat-form-field appearance="fill">
+            <mat-select [(ngModel)]="activeRequest">
+              <mat-option *ngFor="let req of typeRequests | keyvalue" [value]="req.value.id">
+                {{ req.value.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
             <mat-select [(ngModel)]="filterByStatusSelected">
               <mat-option [value]="requestStatus.ACTIVE"> Activas </mat-option>
               <mat-option [value]="requestStatus.ALL"> Todas </mat-option>
@@ -30,9 +38,15 @@
 
       <div class="mat-elevation-z8">
         <contler-request
+          *ngIf="activeRequest === typeRequests.IMMEDIATE.id"
           [filterByStatusSelected]="filterByStatusSelected"
           [textFilter]="textFilter"
         ></contler-request>
+        <contler-reception-request
+          [filterByStatusSelected]="filterByStatusSelected"
+          [textFilter]="textFilter"
+          *ngIf="activeRequest !== typeRequests.IMMEDIATE.id"
+        ></contler-reception-request>
       </div>
     </div>
   </mat-sidenav-content>
