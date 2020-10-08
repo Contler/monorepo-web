@@ -14,6 +14,7 @@
     <contler-reception-item
       *ngFor="let item of $receptionReq | async"
       [reception]="item"
+      (closeModal)="modalClose($event, item.uid)"
     ></contler-reception-item>
   </div>
 

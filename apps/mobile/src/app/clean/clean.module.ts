@@ -4,8 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { CleanComponent } from './clean.component';
 import { IonicModule } from '@ionic/angular';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonComponentsModule } from '../../../../guest/src/common-components/common-components.module';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonComponentsModule } from '../common-components/common-components.module';
 
 const routes: Routes = [{ path: '', component: CleanComponent }];
 
@@ -18,6 +18,7 @@ const routes: Routes = [{ path: '', component: CleanComponent }];
     MatIconModule,
     CommonComponentsModule,
     MatButtonModule,
+    CommonComponentsModule,
   ],
 })
 export class CleanModule {}

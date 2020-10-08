@@ -29,7 +29,7 @@ import { OrderItemComponent } from './components/order-item/order-item.component
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { RestaurantService } from 'lib/lib/services/restaurant/restaurant.service';
 import { ReceptionService } from 'lib/lib/services/reception/reception.service';
-import { RoomService, RoomKeyService, RoomCleaningService } from 'lib/lib/services/room-service';
+import { RoomService } from './services/room-service/room.service';
 
 const materialModules = [
   MatFormFieldModule,
@@ -76,8 +76,6 @@ const materialModules = [
     RestaurantService,
     ReceptionService,
     RoomService,
-    RoomKeyService,
-    RoomCleaningService,
   ],
 })
 export class CoreModule {

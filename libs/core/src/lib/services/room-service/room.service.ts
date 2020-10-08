@@ -1,17 +1,39 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { maintenanceConverted, MaintenanceModel } from '@contler/models';
+import { CoreConfig, receptionConverter, ReceptionModel } from '@contler/models';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class RoomService {
-  constructor(private afs: AngularFirestore) {}
+  private readonly url: string;
 
-  createMaintenance(maintenance: MaintenanceModel) {
-    const maintenanceDoc = this.maintenanceRef.doc();
-    return maintenanceDoc.set({ ...maintenance, uid: maintenanceDoc.id });
+  constructor(
+    private afs: AngularFirestore,
+    @Optional() private config: CoreConfig,
+    private http: HttpClient,
+  ) {
+    this.url = this.config.urlBackend;
   }
 
-  private get maintenanceRef() {
-    return this.afs.firestore.collection('maintenance').withConverter(maintenanceConverted);
+  createClean(reception: ReceptionModel) {
+    const cleanDoc = this.cleanRef.doc();
+    reception.uid = cleanDoc.id;
+    this.http.get(`${this.url}hotel/${reception.hotel}/notification/clean`).subscribe();
+    return cleanDoc.set({ ...reception });
+  }
+
+  createMaintain(reception: ReceptionModel) {
+    const maintainDoc = this.maintainRef.doc();
+    reception.uid = maintainDoc.id;
+    this.http.get(`${this.url}hotel/${reception.hotel}/notification/maintain`).subscribe();
+    return maintainDoc.set({ ...reception });
+  }
+
+  get cleanRef() {
+    return this.afs.firestore.collection('clean').withConverter(receptionConverter);
+  }
+
+  get maintainRef() {
+    return this.afs.firestore.collection('maintain').withConverter(receptionConverter);
   }
 }

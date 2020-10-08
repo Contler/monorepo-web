@@ -8,7 +8,7 @@ import { GuestEntity } from '@contler/entity';
 import { ReceptionModel } from '@contler/models';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
 
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 
 import { MONEY_OPTIONS } from '../../const/exchange.const';
 import { GuestService } from '../../../services/guest.service';
@@ -50,6 +50,7 @@ export class ExchangeComponent {
     };
     this.guestService.$guest
       .pipe(
+        take(1),
         map((guest) => this.generateExchangeReq(guest, money, value)),
         switchMap((req) => this.receptionService.createReception(req)),
         switchMap(() => this.dialog.open(ModalCompleteComponent, { data: modalConf }).afterClosed()),
