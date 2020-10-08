@@ -9,7 +9,7 @@ import { REQUEST_STATUS, TYPE_REQUEST } from 'hotel/inmediate-requests/const/req
 export class InmediateRequestsComponent {
   filterByStatusSelected: string = REQUEST_STATUS.ACTIVE;
   textFilter: string;
-  activeRequest = 1;
+  activeRequest = 0;
   requestStatus = REQUEST_STATUS;
   typeRequests = TYPE_REQUEST;
 

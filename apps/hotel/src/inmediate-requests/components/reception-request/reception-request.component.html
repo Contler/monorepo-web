@@ -1,1 +1,40 @@
-<p>reception-request works!</p>
+<table mat-table [dataSource]="dataSource" class="table">
+  <ng-container matColumnDef="userName">
+    <th mat-header-cell *matHeaderCellDef>Nombre huésped</th>
+    <td mat-cell *matCellDef="let element">{{ element.guest.name }} {{ element.guest.lastName }}</td>
+  </ng-container>
+  <ng-container matColumnDef="room">
+    <th mat-header-cell *matHeaderCellDef>Cuarto</th>
+    <td mat-cell *matCellDef="let element">{{ element.guest.room?.name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="zone">
+    <th mat-header-cell *matHeaderCellDef>Zona</th>
+    <td mat-cell *matCellDef="let element">{{ element.request.type }}</td>
+  </ng-container>
+  <ng-container matColumnDef="message">
+    <th mat-header-cell *matHeaderCellDef>Mensaje</th>
+    <td mat-cell *matCellDef="let element">{{ element.request.comment }}</td>
+  </ng-container>
+  <ng-container matColumnDef="created_at">
+    <th mat-header-cell *matHeaderCellDef>Hora</th>
+    <td mat-cell *matCellDef="let element">{{ element.request.createAt | date: 'HH:mm' }}</td>
+  </ng-container>
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Estado</th>
+    <td mat-cell *matCellDef="let element">
+      <contler-status-icon [status]="!element.request.active"></contler-status-icon>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>&nbsp;</th>
+    <td mat-cell *matCellDef="let element">
+      <!--      <button mat-icon-button (click)="update(element)">-->
+      <!--        <mat-icon class="custom_icon">remove_red_eye</mat-icon>-->
+      <!--      </button>-->
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[10, 40, 100]" showFirstLastButtons></mat-paginator>

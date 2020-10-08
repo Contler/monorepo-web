@@ -45,6 +45,7 @@
         <contler-reception-request
           [filterByStatusSelected]="filterByStatusSelected"
           [textFilter]="textFilter"
+          [typeReq]="activeRequest"
           *ngIf="activeRequest !== typeRequests.IMMEDIATE.id"
         ></contler-reception-request>
       </div>
