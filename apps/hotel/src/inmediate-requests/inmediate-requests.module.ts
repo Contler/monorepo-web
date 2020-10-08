@@ -8,11 +8,21 @@ import { CommonComponentsModule } from 'hotel/common-components/common-component
 import { FormsModule } from '@angular/forms';
 import { RatingModule } from 'ng-starrating';
 import { EmployerService } from 'hotel/employer/services/employer.service';
+import { RequestComponent } from './components/request/request.component';
+import { ReceptionRequestComponent } from './components/reception-request/reception-request.component';
 
 @NgModule({
-  declarations: [InmediateRequestsComponent],
+  declarations: [InmediateRequestsComponent, RequestComponent, ReceptionRequestComponent],
   entryComponents: [],
-  imports: [CommonModule, InmediateRequestsRoutingModule, MaterialModule, CoreModule, CommonComponentsModule, FormsModule, RatingModule],
-  providers: [EmployerService]
+  imports: [
+    CommonModule,
+    InmediateRequestsRoutingModule,
+    MaterialModule,
+    CoreModule,
+    CommonComponentsModule,
+    FormsModule,
+    RatingModule,
+  ],
+  providers: [EmployerService],
 })
 export class InmediateRequestsModule {}

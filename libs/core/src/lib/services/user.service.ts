@@ -1,11 +1,10 @@
 import { Injectable, Optional } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { filter, map, switchMap, take } from 'rxjs/operators';
-import { CoreConfig, Guest } from '@contler/models';
+import { filter, switchMap } from 'rxjs/operators';
+import { CoreConfig } from '@contler/models';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { plainToClass } from 'class-transformer';
 import { HttpClient } from '@angular/common/http';
-import { EmployerEntity } from '@contler/entity';
+import { EmployerEntity, GuestEntity } from '@contler/entity';
 
 @Injectable()
 export class UserService {
@@ -27,12 +26,7 @@ export class UserService {
     );
   }
 
-  getGuest() {
-    return this.afAuth.user.pipe(
-      filter((user) => !!user),
-      take(1),
-      switchMap((user) => this.afStore.doc<Guest>(`${Guest.REF}/${user!.uid}`).valueChanges()),
-      map((user) => plainToClass(Guest, user)),
-    );
+  getGuestById(uid: string) {
+    return this.http.get<GuestEntity>(this.url + `guest/${uid}`);
   }
 }
