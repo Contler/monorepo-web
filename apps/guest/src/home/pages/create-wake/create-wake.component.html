@@ -1,6 +1,6 @@
 <contler-marco [backUrl]="'/home/wake-up'">
   <div marcoBody class="wake">
-    <p class="wake__title" [style]="getColorHotel()">Schedule new wake up call</p>
+    <p class="wake__title" contlerColorHotel="primary">Schedule new wake up call</p>
     <form [formGroup]="wakeUpForm" (ngSubmit)="createWakeUp()">
       <div class="wake__content">
         <mat-form-field appearance="fill" class="custom-filed">
@@ -12,8 +12,8 @@
 
         <mat-form-field appearance="fill" class="custom-filed">
           <mat-select formControlName="time">
-            <mat-option *ngFor="let food of time; let i = index" [value]="getHour(i)">
-              {{ getHour(i) | date: 'shortTime' }}
+            <mat-option *ngFor="let time of timeOptions" [value]="time">
+              {{ time | date: 'shortTime' }}
             </mat-option>
           </mat-select>
           <mat-hint>Hour of the call</mat-hint>
@@ -32,7 +32,6 @@
           contlerColorBtnHotel="primary"
           [loading]="load"
           [disabled]="load || wakeUpForm.invalid"
-          [style]="load || wakeUpForm.invalid ? '' : getColorButtonHotel()"
           class="btn"
         >
           CREATE REQUEST
