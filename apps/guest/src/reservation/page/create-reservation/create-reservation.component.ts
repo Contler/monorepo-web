@@ -113,6 +113,7 @@ export class CreateReservationComponent implements OnInit {
       () => {
         this.loader = true;
         this.router.navigate(['/home', 'reservation']);
+        this.messagesService.showToastMessage('Your reservation was created successfully');
       },
       (error) => {
         this.loader = false;
