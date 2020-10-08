@@ -11,15 +11,20 @@ import { WakeComponent } from './components/wake/wake.component';
 import { WakeSearchPipe } from './pipes/wake-search.pipe';
 import { FormsModule } from '@angular/forms';
 import { ModalConfirmWakeComponent } from './components/modal-confirm-wake/modal-confirm-wake.component';
-import { CoreModule } from '@contler/core';
 import { WakeCompleteComponent } from './pages/wake-complete/wake-complete.component';
+import { CommonComponentsModule } from '../common-components/common-components.module';
 
-const routes: Routes = [
-  { path: '', component: WakeUpComponent }
-];
+const routes: Routes = [{ path: '', component: WakeUpComponent }];
 
 @NgModule({
-  declarations: [WakeUpComponent, WakePendingComponent, WakeComponent, WakeSearchPipe, ModalConfirmWakeComponent, WakeCompleteComponent],
+  declarations: [
+    WakeUpComponent,
+    WakePendingComponent,
+    WakeComponent,
+    WakeSearchPipe,
+    ModalConfirmWakeComponent,
+    WakeCompleteComponent,
+  ],
   imports: [
     CommonModule,
     WakeUpRoutingModule,
@@ -27,9 +32,9 @@ const routes: Routes = [
     IonicModule,
     MaterialModule,
     FormsModule,
-    CoreModule,
+    CommonComponentsModule,
   ],
   providers: [DatePipe],
-  entryComponents: [ModalConfirmWakeComponent]
+  entryComponents: [ModalConfirmWakeComponent],
 })
-export class WakeUpModule { }
+export class WakeUpModule {}

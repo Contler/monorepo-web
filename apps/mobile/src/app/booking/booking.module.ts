@@ -6,14 +6,12 @@ import { BookingRoutingModule } from './booking-routing.module';
 import { BookingComponent } from './booking.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
-import { CoreModule } from '@contler/core';
 import { IonicModule } from '@ionic/angular';
 import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { CommonComponentsModule } from '../common-components/common-components.module';
 
-const routes: Routes = [
-  { path: '', component: BookingComponent }
-];
+const routes: Routes = [{ path: '', component: BookingComponent }];
 
 @NgModule({
   declarations: [BookingComponent, ModalConfirmComponent],
@@ -23,10 +21,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MaterialModule,
     FormsModule,
-    CoreModule,
     IonicModule,
-    PipesModule
+    PipesModule,
+    CommonComponentsModule,
   ],
-  entryComponents: [ModalConfirmComponent]
+  entryComponents: [ModalConfirmComponent],
 })
-export class BookingModule { }
+export class BookingModule {}

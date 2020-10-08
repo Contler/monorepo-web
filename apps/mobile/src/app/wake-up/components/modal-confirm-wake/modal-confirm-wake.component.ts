@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { WakeUpEntity } from '@contler/entity';
 import { WakeService } from '../../../services/wake.service';
-import { GeneralService } from '../../../services/general.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -16,7 +15,6 @@ export class ModalConfirmWakeComponent implements OnInit {
     public dialogRef: MatDialogRef<ModalConfirmWakeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: WakeUpEntity,
     private wakeService: WakeService,
-    public generalService: GeneralService
   ) {}
 
   ngOnInit() {}
