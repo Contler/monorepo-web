@@ -10,6 +10,7 @@ import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inme
 import { ModalInmediateRequestComponent } from 'hotel/common-components/modal-inmediate-request/modal-inmediate-request.component';
 import { RatingModule } from 'ng-starrating';
 import { MarcoAdminComponent } from './marco-admin/marco-admin.component';
+import { UiModule } from '@contler/ui';
 
 @NgModule({
   declarations: [
@@ -17,25 +18,19 @@ import { MarcoAdminComponent } from './marco-admin/marco-admin.component';
     ToolbarComponent,
     ModalEditEmployerComponent,
     ModalInmediateRequestComponent,
-    MarcoAdminComponent
+    MarcoAdminComponent,
   ],
   entryComponents: [ModalEditEmployerComponent, ModalInmediateRequestComponent],
-  exports: [
-    StatusIconComponent,
-    ToolbarComponent,
-    ModalInmediateRequestComponent,
-    MarcoAdminComponent
-  ],
+  exports: [StatusIconComponent, ToolbarComponent, ModalInmediateRequestComponent, MarcoAdminComponent],
   imports: [
     CommonModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     CoreModule,
-    RatingModule
+    RatingModule,
+    UiModule,
   ],
-  providers: [
-    InmediateRequestsService
-  ]
+  providers: [InmediateRequestsService],
 })
-export class CommonComponentsModule { }
+export class CommonComponentsModule {}

@@ -15,7 +15,6 @@
       </mat-form-field>
     </div>
 
-
     <div class="two-inputs main-container__second-row">
       <div class="two-inputs">
         <mat-form-field appearance="fill">
@@ -49,35 +48,37 @@
       </mat-form-field>
     </div>
 
-
     <div class="two-inputs main-container__fourth-row">
       <mat-form-field appearance="fill">
         <mat-select [(ngModel)]="isFinished" [disabled]="request.complete">
-          <mat-option [value]="false">
-            Activa
-          </mat-option>
-          <mat-option [value]="true">
-            Cumplido
-          </mat-option>
+          <mat-option [value]="false"> Activa </mat-option>
+          <mat-option [value]="true"> Cumplido </mat-option>
         </mat-select>
         <mat-hint>Estado</mat-hint>
       </mat-form-field>
       <div class="ranking-container">
         <div class="score-info">
           <p class="ranking-container__label">Calificación</p>
-          <star-rating
+          <contler-start
             [value]="request.score"
             totalstars="5"
             checkedcolor="#dfae00"
-            uncheckedcolor="#e0e0e0"
+            uncheckedcolor="#6c6c6c"
             size="24px"
             readonly="true"
-          ></star-rating>
+          ></contler-start>
         </div>
         <p class="user-comment">{{ request.comment }}</p>
       </div>
     </div>
-    <button mat-raised-button color="accent" contlerButton [loading]="loading" [disabled]="loading" (click)="save()">
+    <button
+      mat-raised-button
+      color="accent"
+      contlerButton
+      [loading]="loading"
+      [disabled]="loading"
+      (click)="save()"
+    >
       ACTUALIZAR
     </button>
   </div>
