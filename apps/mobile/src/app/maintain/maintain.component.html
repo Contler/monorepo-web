@@ -4,7 +4,7 @@
       <img *ngIf="user" [src]="user.hotel.logo" class="header__img" alt="logo" />
     </div>
     <button mat-icon-button class="header__menu" (click)="menu.toggle()">
-      <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
+      <mat-icon contlerColorHotel="primary">menu</mat-icon>
     </button>
   </div>
 </ion-header>

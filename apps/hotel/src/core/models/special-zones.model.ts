@@ -3,4 +3,6 @@ export interface SpecialZonesModel {
   lateZone: boolean;
   receptionZone: boolean;
   deliveryZone: boolean;
+  cleanZone: boolean;
+  maintainZone: boolean;
 }

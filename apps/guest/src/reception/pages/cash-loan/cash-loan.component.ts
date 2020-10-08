@@ -7,7 +7,7 @@ import { ReceptionModel } from '@contler/models';
 import { ModalCompleteComponent } from 'guest/common-components/modal-complete/modal-complete.component';
 import { GuestService } from 'guest/services/guest.service';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 
 @Component({
   selector: 'contler-cash-loan',
@@ -36,6 +36,7 @@ export class CashLoanComponent {
     this.load = true;
     this.guestService.$guest
       .pipe(
+        take(1),
         map(
           ({ uid, hotel }) =>
             ({

@@ -9,7 +9,7 @@ import { DESTINATION_OPTIONS } from '../../const/transportation.const';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReceptionModel } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -67,6 +67,7 @@ export class TransportationComponent {
     this.load = true;
     this.guestService.$guest
       .pipe(
+        take(1),
         map(({ uid, hotel }) => {
           const temp = destination === 'Other' ? place : destination;
           const req: ReceptionModel = {

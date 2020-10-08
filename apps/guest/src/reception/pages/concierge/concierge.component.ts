@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { GuestEntity } from '@contler/entity';
 import { ModalConfigModel, ReceptionModel } from '@contler/models';
 import { GuestService } from '../../../services/guest.service';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { ModalCompleteComponent } from '../../../common-components/modal-complete/modal-complete.component';
 import { DatePipe } from '@angular/common';
 
@@ -45,6 +45,7 @@ export class ConciergeComponent {
     this.load = true;
     this.guestService.$guest
       .pipe(
+        take(1),
         map((guest) => this.generateReq(guest, date, comment)),
         switchMap((req) => this.receptionService.createReception(req)),
         switchMap(() => this.dialog.open(ModalCompleteComponent, { data: modalConf }).afterClosed()),

@@ -1,29 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { ReceptionComponent } from './reception.component';
+import { CleanComponent } from './clean.component';
 import { IonicModule } from '@ionic/angular';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonComponentsModule } from '../common-components/common-components.module';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
 
-const routes: Routes = [{ path: '', component: ReceptionComponent }];
+const routes: Routes = [{ path: '', component: CleanComponent }];
 
 @NgModule({
-  declarations: [ReceptionComponent],
+  declarations: [CleanComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     IonicModule,
     MatIconModule,
+    CommonComponentsModule,
     MatButtonModule,
     CommonComponentsModule,
-    MatInputModule,
-    MatSelectModule,
-    FormsModule,
   ],
 })
-export class ReceptionModule {}
+export class CleanModule {}

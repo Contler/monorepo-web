@@ -32,6 +32,10 @@ export class EmployerEntity {
 
   receptionZone!: boolean;
 
+  cleanZone!: boolean;
+
+  maintainZone!: boolean;
+
   pushToken!: string;
 
   hotel!: HotelEntity;
@@ -43,8 +47,7 @@ export class EmployerEntity {
   requestSolved!: RequestEntity[];
 
   get avgTime() {
-    const hours =
-      this.averageTime && 'hours' in this.averageTime ? this.averageTime.hours + ' hrs' : '';
+    const hours = this.averageTime && 'hours' in this.averageTime ? this.averageTime.hours + ' hrs' : '';
     const minutes =
       this.averageTime && 'minutes' in this.averageTime ? this.averageTime.minutes + ' mins' : '';
     const seconds =

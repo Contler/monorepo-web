@@ -4,10 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
 import { ModalCompleteComponent } from 'guest/common-components/modal-complete/modal-complete.component';
 import { Router } from '@angular/router';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { GuestService } from 'guest/services/guest.service';
 import { ReceptionModel } from '@contler/models';
-import { ReceptionService } from '@contler/core';
+import { RoomService } from '@contler/core';
 import { fullRangeDates } from 'guest/utils/generateTime';
 import { DatePipe } from '@angular/common';
 
@@ -23,7 +23,7 @@ export class MaintenanceComponent {
 
   constructor(
     private guestService: GuestService,
-    private receptionService: ReceptionService,
+    private roomService: RoomService,
     fb: FormBuilder,
     private dialog: MatDialog,
     private router: Router,
@@ -47,6 +47,7 @@ export class MaintenanceComponent {
 
     this.guestService.$guest
       .pipe(
+        take(1),
         map((guest) => {
           const comment = `${this.datePipe.transform(time, 'shortTime')} - ${maintenance}`;
           const req: ReceptionModel = {
@@ -59,7 +60,7 @@ export class MaintenanceComponent {
           };
           return req;
         }),
-        switchMap((req) => this.receptionService.createReception(req)),
+        switchMap((req) => this.roomService.createMaintain(req)),
         switchMap(() =>
           this.dialog
             .open<ModalCompleteComponent, ModalConfigModel>(ModalCompleteComponent, {

@@ -1,22 +1,37 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ReceptionService } from '@contler/core';
+import { ReceptionService, RoomService } from '@contler/core';
 import { EmployerEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { AuthService } from '../../../services/auth.service';
 import * as firebase from 'firebase/app';
+import { AuthService } from '../auth.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ReceptionLocalService {
   private $user: Observable<EmployerEntity | null>;
 
-  constructor(private rec: ReceptionService, private afs: AngularFirestore, private auth: AuthService) {
+  constructor(
+    private rec: ReceptionService,
+    private afs: AngularFirestore,
+    private auth: AuthService,
+    private roomService: RoomService,
+  ) {
     this.$user = this.auth.$user;
   }
 
   getReceptionReq() {
     return this.getArrayReception(this.rec.receptionRef);
+  }
+
+  getCleanReq() {
+    return this.getArrayReception(this.roomService.cleanRef);
+  }
+
+  getMaintainReq() {
+    return this.getArrayReception(this.roomService.maintainRef);
   }
 
   private getArrayReception<T>(ref: firebase.firestore.CollectionReference<T>) {

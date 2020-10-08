@@ -6,9 +6,9 @@ import { ModalCompleteComponent } from 'guest/common-components/modal-complete/m
 import { Router } from '@angular/router';
 import { GuestService } from 'guest/services/guest.service';
 import { fullRangeDates } from 'guest/utils/generateTime';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { ReceptionModel } from '@contler/models';
-import { ReceptionService } from '@contler/core';
+import { RoomService } from '@contler/core';
 import { SPECIFIC_CLEANING } from '../../const/cleaning.const';
 import { DatePipe } from '@angular/common';
 
@@ -26,10 +26,10 @@ export class CleaningComponent {
   constructor(
     fb: FormBuilder,
     private guestService: GuestService,
-    private receptionService: ReceptionService,
     private dialog: MatDialog,
     private router: Router,
     private datePipe: DatePipe,
+    private roomService: RoomService,
   ) {
     this.cleaningForm = fb.group({
       time: ['', Validators.required],
@@ -51,6 +51,7 @@ export class CleaningComponent {
 
     this.guestService.$guest
       .pipe(
+        take(1),
         map((guest) => {
           const clean = cleaning === 'Other' ? what : cleaning;
           const timeMsj = this.datePipe.transform(time, 'shortTime');
@@ -69,7 +70,7 @@ export class CleaningComponent {
           };
           return req;
         }),
-        switchMap((cleanings) => this.receptionService.createReception(cleanings)),
+        switchMap((cleanings) => this.roomService.createClean(cleanings)),
         switchMap(() =>
           this.dialog
             .open<ModalCompleteComponent, ModalConfigModel>(ModalCompleteComponent, {

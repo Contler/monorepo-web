@@ -1,16 +1,11 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
-import { MatDialog } from '@angular/material/dialog';
+import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ReceptionModel } from '@contler/models';
 import { Observable } from 'rxjs';
 import { GuestEntity } from '@contler/entity';
-import { ReceptionModel } from '@contler/models';
+import { AuthService } from '../../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
 import { filter, switchMap, take } from 'rxjs/operators';
-import {
-  ReqModalData,
-  RequestReceptionComponent,
-} from '../../modals/request-reception/request-reception.component';
-import { ReceptionService } from '@contler/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ReqModalData, RequestReceptionComponent } from '../request-reception/request-reception.component';
 
 @Component({
   selector: 'contler-reception-item',
@@ -19,14 +14,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ReceptionItemComponent implements AfterViewInit {
   @Input() reception: ReceptionModel;
+  @Output() closeModal = new EventEmitter<boolean>();
+
   $guest: Observable<GuestEntity>;
 
-  constructor(
-    private authService: AuthService,
-    private dialog: MatDialog,
-    private receptionService: ReceptionService,
-    private snackBar: MatSnackBar,
-  ) {}
+  constructor(private authService: AuthService, private dialog: MatDialog) {}
 
   ngAfterViewInit(): void {
     this.$guest = this.authService.getUserById(this.reception.guest).pipe(take(1));
@@ -35,8 +27,7 @@ export class ReceptionItemComponent implements AfterViewInit {
   goToModal() {
     const { active, comment, createAt, uid, type } = this.reception;
     this.openModal(active, comment, type, uid, createAt).subscribe(async ({ complete }) => {
-      await this.receptionService.receptionRef.doc(uid).update({ active: complete });
-      this.snackBar.open('Petición actualizada', 'cerrar', { duration: 3000 });
+      this.closeModal.emit(complete);
     });
   }
 
