@@ -32,18 +32,21 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
     private router: Router,
     private requestService: RequestService,
   ) {
-    this.guestSubscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
+    this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
   }
 
   ngOnInit() {
     this.requestSubscription = this.activatedRoute.params
       .pipe(
         pluck('uid'),
-        switchMap(uid => {
+        switchMap((uid) => {
           return this.requestService.getRequest(uid);
         }),
       )
-      .subscribe(request => (this.request = request), () => {});
+      .subscribe(
+        (request) => (this.request = request),
+        () => {},
+      );
   }
 
   ngOnDestroy() {
@@ -64,7 +67,7 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
       .then(() => {
         this.loader = false;
         this.router.navigate(['/home']);
-        this.messagesService.showToastMessage('Solicitud modificada exitosamente');
+        this.messagesService.showToastMessage('Request modified successfully');
       })
       .catch(() => {
         this.loader = false;
@@ -73,12 +76,16 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
   }
 
   getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
+    );
   }
 
   getButtonColorHotel() {
     return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `background-color: ${this.hotel.color}; color: #ffffff !important` : '',
+      this.hotel && this.hotel.color
+        ? `background-color: ${this.hotel.color}; color: #ffffff !important`
+        : '',
     );
   }
 }

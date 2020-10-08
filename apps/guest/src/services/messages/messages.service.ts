@@ -22,7 +22,7 @@ export class MessagesService {
 
   showServerError(
     error = null,
-    message: string = 'Lo sentimos, hubo un error en el servidor',
+    message: string = 'Sorry, there was an error on the server',
     closeMessage: string = 'Cerrar',
     duration: number = 3000,
   ) {
@@ -50,9 +50,9 @@ export class MessagesService {
 
   showConfirm(
     content: string,
-    title: string = 'Confirme por favor',
-    confirmText: string = 'Aceptar',
-    cancelText: string = 'Cancelar',
+    title: string = 'Please confirm',
+    confirmText: string = 'Accept',
+    cancelText: string = 'Cancel',
   ): Observable<boolean> {
     const ref = this.dialog.open(ConfirmComponent, {
       data: { title, content, confirmText, cancelText },
@@ -83,7 +83,7 @@ export class MessagesService {
     }, duration);
   }
 
-  alertMessage(message: string, buttonText: string = 'Aceptar', icon: string = 'warning') {
+  alertMessage(message: string, buttonText: string = 'Accept', icon: string = 'warning') {
     this.dialog.open(AlertMessageComponent, {
       data: { message, buttonText, icon },
       disableClose: true,

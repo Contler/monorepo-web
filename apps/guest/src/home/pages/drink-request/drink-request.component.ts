@@ -28,17 +28,17 @@ export class DrinkRequestComponent {
     guestService: GuestService,
     route: ActivatedRoute,
   ) {
-    route.params.subscribe(data => (this.id = data.id));
+    route.params.subscribe((data) => (this.id = data.id));
 
     guestService.$hotel
       .pipe(
         take(1),
-        switchMap(hotel => productService.getAllProducts(hotel!.uid)),
-        map(products => products.filter(prod => prod.state && prod.category === 'Bebidas')),
-        map(products => products.map(prod => ({ product: prod, quantity: 0 }))),
+        switchMap((hotel) => productService.getAllProducts(hotel!.uid)),
+        map((products) => products.filter((prod) => prod.state && prod.category === 'Bebidas')),
+        map((products) => products.map((prod) => ({ product: prod, quantity: 0 }))),
         tap(() => (this.load = false)),
       )
-      .subscribe(prod => (this.products = prod));
+      .subscribe((prod) => (this.products = prod));
   }
 
   addProduct(quantity: number, product: ProductEntity) {
@@ -51,20 +51,17 @@ export class DrinkRequestComponent {
   createRequest() {
     this.loading = true;
     const msg = this.products
-      .filter(prod => prod.quantity > 0)
+      .filter((prod) => prod.quantity > 0)
       .map(({ product, quantity }) => `${product.name} : ${quantity}`)
       .join(', ');
     this.requestService.createRequest(this.id, msg).subscribe(() => {
-      this.messagesService.showToastMessage('Solicitud inmediata creada exitosamente');
-      this.loading = false
+      this.messagesService.showToastMessage('Immediate request successfully created');
+      this.loading = false;
       this.router.navigate(['/home']);
     });
   }
 
   get checkQuantity() {
-    return this.products.reduce(
-      (previousValue, currentValue) => previousValue + currentValue.quantity,
-      0,
-    );
+    return this.products.reduce((previousValue, currentValue) => previousValue + currentValue.quantity, 0);
   }
 }
