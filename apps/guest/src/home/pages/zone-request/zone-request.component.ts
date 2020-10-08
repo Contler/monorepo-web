@@ -111,8 +111,10 @@ export class ZoneRequestComponent implements OnDestroy {
 
   setQuickRequest(value: string) {
     this.selectedSubcategory = value;
-    if (value === SUB_CATEGORY_DRINKS || value === ROOM_SERVICE) {
+    if (value === SUB_CATEGORY_DRINKS || value === ROOM_SERVICE || value === 'A drink') {
       this.router.navigate(['/home/product/create']);
+    } else if (value === 'Reserve a space') {
+      this.router.navigate(['/home/reservation']);
     } else {
       this.showRequestField = value === 'Other';
     }

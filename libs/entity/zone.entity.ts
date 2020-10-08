@@ -14,7 +14,7 @@ export class ZoneEntity {
 
   hotel!: HotelEntity;
 
-  category!: CategoryEntity;
+  category: CategoryEntity;
 
   leaders!: EmployerEntity[];
 
