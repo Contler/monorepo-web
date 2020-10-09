@@ -14,7 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class MessagesService {
   constructor(private snackBar: MatSnackBar, private dialog: MatDialog) {}
 
-  showToastMessage(message: string, closeMessage: string = 'Cerrar', duration: number = 2000) {
+  showToastMessage(message: string, closeMessage: string = 'Close', duration: number = 2000) {
     this.snackBar.open(message, closeMessage, {
       duration: duration,
     });
@@ -23,7 +23,7 @@ export class MessagesService {
   showServerError(
     error = null,
     message: string = 'Sorry, there was an error on the server',
-    closeMessage: string = 'Cerrar',
+    closeMessage: string = 'Close',
     duration: number = 3000,
   ) {
     if (error) {

@@ -51,7 +51,7 @@ export class CreateLateComponent implements OnInit {
     const key = this.afFirestore.createId();
     this.snackBar.open(
       'Your late checkout request was received. The area in charge will review it and contact you to confirm it.',
-      'cerrar',
+      'close',
       {
         duration: 4000,
       },
