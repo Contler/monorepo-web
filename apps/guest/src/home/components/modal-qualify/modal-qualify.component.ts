@@ -12,7 +12,7 @@ export class ModalQualifyComponent implements OnInit {
   value: number | undefined;
   comment: string | undefined;
   load = false;
-  readonly textRate = ['Muy malo', 'Malo', 'Regular', 'Bueno', 'Exelente'];
+  readonly textRate = ['Very bad', 'Bad', 'Fair', 'Good', 'Excellent'];
 
   constructor(
     private dialogRef: MatDialogRef<ModalQualifyComponent>,
