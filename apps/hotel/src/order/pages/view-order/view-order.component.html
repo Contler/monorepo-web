@@ -108,9 +108,9 @@
         </span>
 
         <contler-product-item
-          [disable]="true"
-          *ngFor="let item of order?.productsOrder"
+          *ngFor="let item of item.value"
           [product]="item.product"
+          [disable]="true"
           [count]="item.quantity"
         >
         </contler-product-item>
