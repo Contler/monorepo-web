@@ -30,7 +30,7 @@ export class SpecialRequestsComponent implements OnInit, OnDestroy {
     this.dataSource.filter = this.filterByStatusSelected;
     this.dataSource.filterPredicate = (data, filter) => {
       if (filter === this.requestStatus.ACTIVE) {
-        return data.complete;
+        return !data.complete;
       }
       if (filter === this.requestStatus.ALL) {
         return true;
@@ -41,9 +41,11 @@ export class SpecialRequestsComponent implements OnInit, OnDestroy {
         (data.message && data.message.toLowerCase().includes(filter));
       return response ? true : false;
     };
-    this.specialRequestsSubscription = this.specialRequestsService.listenSpecialRequestByHotel().subscribe(requests => {
-      this.dataSource.data = requests;
-    });
+    this.specialRequestsSubscription = this.specialRequestsService
+      .listenSpecialRequestByHotel()
+      .subscribe((requests) => {
+        this.dataSource.data = requests;
+      });
     this.dataSource.paginator = this.paginator as MatPaginator;
   }
 
