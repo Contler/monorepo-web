@@ -43,6 +43,7 @@ export class ProductService {
   }
 
   createOrder(orderRequest: OrderRequest) {
+    this.sendNotification(orderRequest.hotel.uid);
     return this.http.post(`${this.url}product/order`, orderRequest);
   }
 
@@ -64,5 +65,9 @@ export class ProductService {
 
   deleteOrder(idOrder: number) {
     return this.http.delete(`${this.url}product/order/${idOrder}`);
+  }
+
+  private sendNotification(hotelId: string) {
+    this.http.get(`${this.url}hotel/${hotelId}/notification/product`).subscribe();
   }
 }
