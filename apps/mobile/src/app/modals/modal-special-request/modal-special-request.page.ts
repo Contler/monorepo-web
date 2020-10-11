@@ -27,16 +27,18 @@ export class ModalSpecialRequestPage implements OnInit, OnDestroy {
     private employerService: EmployerService,
     private specialRequestsService: SpecialRequestsService,
     private messagesService: MessagesService,
-    private modalController: ModalController,
+    public modalController: ModalController,
     private auth: AuthService,
   ) {
-    this.auth.$user.subscribe(employer => (this.employer = employer!));
+    this.auth.$user.subscribe((employer) => (this.employer = employer!));
   }
 
   ngOnInit() {
     this.request = this.navParams.get('request');
     this.employerId = this.request!.solved ? this.request!.solved.uid : '';
-    this.subscription = this.employerService.getEmployers().subscribe(employers => (this.employers = employers));
+    this.subscription = this.employerService
+      .getEmployers()
+      .subscribe((employers) => (this.employers = employers));
   }
 
   ngOnDestroy(): void {
@@ -47,7 +49,7 @@ export class ModalSpecialRequestPage implements OnInit, OnDestroy {
 
   save() {
     const loader = this.messagesService.showLoader();
-    this.request!.solved = this.employers.find(e => e.uid === this.employerId)!;
+    this.request!.solved = this.employers.find((e) => e.uid === this.employerId)!;
     this.request!.attended = this.employer!;
     this.specialRequestsService.updateRequest(this.request!).subscribe(
       () => {
@@ -55,7 +57,7 @@ export class ModalSpecialRequestPage implements OnInit, OnDestroy {
         this.messagesService.showToastMessage('Solicitud modificada exitosamente');
         this.modalController.dismiss();
       },
-      err => {
+      (err) => {
         this.messagesService.closeLoader(loader);
         this.messagesService.showServerError();
         console.error('Hubo un error');
