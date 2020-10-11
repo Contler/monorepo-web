@@ -72,7 +72,7 @@ export class CreateReservationComponent implements OnInit {
         if (this.schedule.length === 0) {
           this.messagesService.showToastMessage(
             'There is no time slot for the selected date.',
-            'To close',
+            'close',
             10000,
           );
         }
