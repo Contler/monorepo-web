@@ -19,7 +19,7 @@ export class ModalSpecialRequestPage implements OnInit, OnDestroy {
   public employers: EmployerEntity[] = [];
   private subscription: Subscription | null = null;
   employerId = '';
-  private employer: EmployerEntity | undefined;
+  employer: EmployerEntity | undefined;
 
   constructor(
     public generalService: GeneralService,

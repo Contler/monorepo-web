@@ -1,7 +1,13 @@
-<contler-toolbar [isModal]="true" (closeClick)="modalController.dismiss()"></contler-toolbar>
+<contler-toolbar
+  style="padding: 10px 30px 0px"
+  [isModal]="true"
+  (closeClick)="modalController.dismiss()"
+></contler-toolbar>
 <ion-content>
   <div class="section">
-    <contler-logo></contler-logo>
+    <div class="ion-text-center header__logo">
+      <img *ngIf="employer" [src]="employer.hotel.logo" class="header__img" />
+    </div>
     <div class="main-container">
       <div class="main-container__title" [style.color]="generalService.hotelColor">Solicitud especial</div>
       <form (ngSubmit)="save()">
