@@ -10,7 +10,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class ModalOrdersQuialifyComponent implements OnInit {
   value: number | undefined;
-  readonly textRate = ['Muy malo', 'Malo', 'Regular', 'Bueno', 'Exelente'];
+  readonly textRate = ['Very bad', 'Bad', 'Fair', 'Good', 'Excellent'];
   load = false;
 
   constructor(
