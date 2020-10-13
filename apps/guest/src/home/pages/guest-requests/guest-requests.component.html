@@ -10,15 +10,10 @@
       <p class="request__zone-text" contlerColorHotel>reception</p>
       <mat-icon class="request__zone-icon">navigate_next</mat-icon>
     </a>
-    <a class="request__zone" routerLink="/home/my-room">
-      <contler-icon class="request__zone-icon" key="fas fa-bed"></contler-icon>
-      <p class="request__zone-text" contlerColorHotel>room</p>
-      <mat-icon class="request__zone-icon">navigate_next</mat-icon>
-    </a>
     <a
       class="request__zone striped"
       *ngFor="let zone of showedZones"
-      routerLink="/home/zone-request/{{ zone.uid }}"
+      [routerLink]="zone.category?.id === 3 ? '/home/my-room' : '/home/zone-request/' + zone.uid"
     >
       <contler-icon class="request__zone-icon" [key]="zone.icon"></contler-icon>
       <p class="request__zone-text" contlerColorHotel>{{ zone.name | uppercase }}</p>

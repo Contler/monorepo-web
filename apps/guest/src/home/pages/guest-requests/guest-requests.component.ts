@@ -24,8 +24,6 @@ export class GuestRequestsComponent implements OnDestroy {
   private zones: ZoneEntity[] = [];
   public showedZones: ZoneEntity[] = [];
   public allZonesShowed = false;
-
-  private zonesSubscription: Subscription | null = null;
   private requestSubscription: Subscription | null = null;
 
   constructor(
@@ -118,9 +116,6 @@ export class GuestRequestsComponent implements OnDestroy {
   ngOnDestroy(): void {
     if (this.subscribe) {
       this.subscribe.unsubscribe();
-    }
-    if (this.zonesSubscription) {
-      this.zonesSubscription.unsubscribe();
     }
     if (this.requestSubscription) {
       this.requestSubscription.unsubscribe();
