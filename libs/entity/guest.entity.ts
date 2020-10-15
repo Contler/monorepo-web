@@ -14,6 +14,8 @@ export class GuestEntity {
 
   lastName!: string;
 
+  email!: string;
+
   typeDocument!: number;
 
   document!: string;

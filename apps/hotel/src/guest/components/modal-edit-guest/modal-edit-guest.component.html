@@ -1,40 +1,50 @@
 <form class="cnt-edit-guest" [formGroup]="guestGroup" (ngSubmit)="saveUser()">
   <h1 class="cnt-edit-guest__title">Editar huesped</h1>
   <div class="cnt-edit-guest__form_guest">
-
     <mat-form-field appearance="fill">
-      <input matInput formControlName="name">
+      <input matInput formControlName="name" />
       <mat-icon matSuffix>check_circle</mat-icon>
       <mat-hint>Nombre</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <input matInput formControlName="lastName">
+      <input matInput formControlName="lastName" />
       <mat-icon matSuffix>check_circle</mat-icon>
       <mat-hint>Apellidos</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <input matInput [matDatepicker]="picker" readonly formControlName="checkIn">
+      <input matInput [matDatepicker]="picker" readonly formControlName="checkIn" />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
       <mat-hint>Fecha de ingreso</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <input matInput [matDatepicker]="picker2" readonly formControlName="checkOut">
+      <input matInput [matDatepicker]="picker2" readonly formControlName="checkOut" />
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
       <mat-hint>Fecha de salida</mat-hint>
     </mat-form-field>
 
+    <mat-form-field appearance="fill" class="cnt-edit-guest__span2">
+      <input matInput formControlName="email" />
+      <mat-icon matSuffix fontSet="material-icons-outlined">email</mat-icon>
+      <mat-hint>Correo electronico</mat-hint>
+    </mat-form-field>
   </div>
 
-  <button mat-raised-button color="accent" style="width: 217px; margin-top: 20px" contlerButton [loading]="load" [disabled]="guestGroup.invalid || load">
+  <button
+    mat-raised-button
+    color="accent"
+    style="width: 217px; margin-top: 20px"
+    contlerButton
+    [loading]="load"
+    [disabled]="guestGroup.invalid || load"
+  >
     Actualizar
   </button>
 </form>
-
 
 <button mat-icon-button class="cnt-edit-guest__close" (click)="dialogRef.close()">
   <mat-icon>close</mat-icon>
