@@ -24,6 +24,7 @@ export class ModalEditGuestComponent {
     this.guestGroup = formBuild.group({
       name: [data.name, Validators.required],
       lastName: [data.lastName, Validators.required],
+      email: [data.email],
       checkIn: [data.checkIn, Validators.required],
       checkOut: [data.checkOut, Validators.required],
     });
