@@ -54,9 +54,14 @@ export class MultiRoomComponent {
         this.roomGroup.reset({ init: '', end: '' });
         this.completeRoomCreation.emit(rooms);
       },
-      () => {
+      (e) => {
         this.load = false;
-        this.messagesService.showServerError();
+        if (e.status === 400) {
+          const rooms = e.error.map((room) => room.name).join(', ');
+          this.messagesService.showToastMessage(`Las habitaciones ${rooms} ya existen`, 'Cerrar', 5000);
+        } else {
+          this.messagesService.showServerError();
+        }
       },
     );
   }

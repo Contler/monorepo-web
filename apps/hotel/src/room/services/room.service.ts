@@ -18,9 +18,7 @@ export class RoomService {
     return this.userService
       .getUser()
       .pipe(
-        switchMap((user) =>
-          this.http.get<RoomEntity[]>(environment.apiUrl + `hotel/${user.hotel.uid}/room`),
-        ),
+        switchMap((user) => this.http.get<RoomEntity[]>(environment.apiUrl + `hotel/${user.hotel.uid}/room`)),
       );
   }
 
@@ -30,6 +28,7 @@ export class RoomService {
 
   saveRoom(name: string) {
     return this.userService.getUser().pipe(
+      take(1),
       switchMap((user) =>
         this.http.post<RoomEntity>(environment.apiUrl + `hotel/${user.hotel.uid}/room`, { name }),
       ),

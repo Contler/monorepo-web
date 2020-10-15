@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { take } from 'rxjs/operators';
 import { RoomService } from 'hotel/room/services/room.service';
@@ -28,7 +28,7 @@ export class SingleRoomComponent {
 
   createRoom() {
     this.load = true;
-    const { name, zone } = this.roomGroup.value;
+    const { name } = this.roomGroup.value;
     this.roomService
       .saveRoom('Habitación ' + name)
       .pipe(take(1))
@@ -39,9 +39,13 @@ export class SingleRoomComponent {
           this.roomGroup.reset({ name: '', zone: '' });
           this.completeRoomCreation.emit(room);
         },
-        () => {
+        (e) => {
           this.load = false;
-          this.messagesService.showServerError();
+          if (e.status === 400) {
+            this.messagesService.showToastMessage('La habitación ya existe');
+          } else {
+            this.messagesService.showServerError();
+          }
         },
       );
   }
