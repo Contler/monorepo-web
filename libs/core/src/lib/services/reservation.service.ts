@@ -53,13 +53,13 @@ export class ReservationService {
   getBookingByGuest(id: string) {
     return this.http
       .get<BookingEntity[]>(this.url + `guest/${id}/reservation`)
-      .pipe(map(bookings => bookings.filter(booking => booking.active)));
+      .pipe(map((bookings) => bookings.filter((booking) => booking.active)));
   }
 
   getBookingByHotel(id: string) {
     return this.http
       .get<BookingEntity[]>(this.url + `hotel/${id}/booking`)
-      .pipe(map(bookings => bookings.filter(booking => booking.active && !booking.complete)));
+      .pipe(map((bookings) => bookings.filter((booking) => booking.active)));
   }
 
   getBooking(id: number) {
@@ -79,8 +79,6 @@ export class ReservationService {
   }
 
   qualifyBooking(bookingId: number, qualify: number) {
-    return this.http.post(this.url + `reservation/booking/${bookingId}/qualify`, {qualify})
+    return this.http.post(this.url + `reservation/booking/${bookingId}/qualify`, { qualify });
   }
-
-
 }

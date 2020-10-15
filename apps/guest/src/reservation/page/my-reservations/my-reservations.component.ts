@@ -22,7 +22,10 @@ export class MyReservationsComponent implements OnInit {
   ) {
     this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => (this.hotel = hotel));
     this.guestService.$guest
-      .pipe(switchMap((data) => this.reservationService.getBookingByGuest(data!.uid)))
+      .pipe(
+        take(1),
+        switchMap((data) => this.reservationService.getBookingByGuest(data!.uid)),
+      )
       .subscribe((data) => {
         this.bookings = data;
       });
