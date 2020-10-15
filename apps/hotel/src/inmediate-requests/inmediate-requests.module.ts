@@ -10,6 +10,7 @@ import { RatingModule } from 'ng-starrating';
 import { EmployerService } from 'hotel/employer/services/employer.service';
 import { RequestComponent } from './components/request/request.component';
 import { ReceptionRequestComponent } from './components/reception-request/reception-request.component';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [InmediateRequestsComponent, RequestComponent, ReceptionRequestComponent],
@@ -22,6 +23,7 @@ import { ReceptionRequestComponent } from './components/reception-request/recept
     CommonComponentsModule,
     FormsModule,
     RatingModule,
+    MatSortModule,
   ],
   providers: [EmployerService],
 })

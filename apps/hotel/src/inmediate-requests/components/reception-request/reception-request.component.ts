@@ -10,6 +10,7 @@ import { GuestEntity } from '@contler/entity';
 import { MatPaginator } from '@angular/material/paginator';
 import { REQUEST_STATUS, TYPE_REQUEST } from '../../const/request.const';
 import { CollectionReference } from '@angular/fire/firestore/interfaces';
+import { MatSort, Sort } from '@angular/material/sort';
 
 interface ReqRecpetionGuest {
   request: ReceptionModel;
@@ -25,10 +26,21 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
   @Input() filterByStatusSelected: string;
   @Input() textFilter: string;
   @Input() typeReq: number;
+
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   dataSource = new MatTableDataSource<ReqRecpetionGuest>([]);
-  displayedColumns: string[] = ['userName', 'room', 'zone', 'message', 'created_at', 'status', 'actions'];
+  displayedColumns: string[] = [
+    'userName',
+    'room',
+    'zone',
+    'message',
+    'createdAtDate',
+    'created_at',
+    'status',
+    'actions',
+  ];
 
   private subscribe: Subscription;
 
@@ -65,6 +77,7 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator as MatPaginator;
+    this.dataSource.sort = this.sort;
     this.dataSource.filter = this.filterByStatusSelected;
     this.dataSource.filterPredicate = (data, filter) => this.getFilterPredicate(data, filter);
   }
@@ -105,5 +118,25 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
         data.request.type.toLowerCase().includes(filter) ||
         data.request.comment.toLowerCase().includes(filter))
     );
+  }
+
+  sortData(sort: Sort) {
+    const data = this.dataSource.data;
+    if (!sort.active || sort.direction === '') {
+      return;
+    }
+    this.dataSource.data = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'createdAtDate':
+          return this.compare(a.request.createAt.getTime(), b.request.createAt.getTime(), isAsc);
+        default:
+          return 0;
+      }
+    });
+  }
+
+  private compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 }
