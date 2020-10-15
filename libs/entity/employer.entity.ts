@@ -12,6 +12,8 @@ export class EmployerEntity {
 
   role!: string;
 
+  email!: string;
+
   totalScore!: number;
 
   averageScore!: number;
