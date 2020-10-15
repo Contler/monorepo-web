@@ -32,6 +32,7 @@ export class ModalEditEmployerComponent implements OnInit {
       name: [employer.name, Validators.required],
       leader: [employer.role === CHIEF, Validators.required],
       lastName: [employer.lastName, Validators.required],
+      email: [employer.email],
       score: [employer.averageScore],
       averageTime: [employer.avgTime],
       numRequest: [employer.totalServices],
