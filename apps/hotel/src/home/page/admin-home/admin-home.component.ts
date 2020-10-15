@@ -14,22 +14,10 @@ import { RequestEntity } from '@contler/entity';
 export class AdminHomeComponent implements OnInit, OnDestroy {
   sections: ItemMenu[] = [
     {
-      name: 'Empleados',
+      name: 'Huéspedes',
       icon: 'account_circle',
-      outlined: true,
-      link: ['home', 'employer'],
-    },
-    {
-      name: 'Habitaciones',
-      icon: 'meeting_room',
+      link: ['/home', 'guest'],
       outlined: false,
-      link: ['home', 'room'],
-    },
-    {
-      name: 'Zonas',
-      icon: 'room',
-      outlined: false,
-      link: ['home', 'zone'],
     },
     {
       name: 'Solicitudes inmediatas',
@@ -40,34 +28,46 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       badge: null,
     },
     {
-      name: 'Reservas de espacios',
-      icon: 'event',
+      name: 'Recepción',
+      icon: 'room_service',
       outlined: false,
       link: null,
     },
     {
-      name: 'Pedidos Remotos',
-      icon: 'room_service',
+      name: 'Zonas',
+      icon: 'room',
       outlined: false,
-      link: ['home', 'product'],
+      link: ['home', 'zone'],
     },
     {
-      name: 'Wake up Calls',
-      icon: 'access_alarm',
+      name: 'Reservas de espacios',
+      icon: 'event',
       outlined: false,
-      link: ['home', 'wake-up'],
+      link: ['home', 'reservation', 'calendar'],
     },
     {
-      name: 'Late Checkouts',
-      icon: 'directions_walk',
+      name: 'Restaurante',
+      icon: 'restaurant',
       outlined: false,
-      link: ['home', 'late'],
+      link: ['home', 'restaurant'],
+    },
+    {
+      name: 'Empleados',
+      icon: 'account_circle',
+      outlined: true,
+      link: ['home', 'employer'],
     },
     {
       name: 'Solicitudes Especiales',
       icon: 'sms_failed',
       outlined: false,
       link: ['home', 'special-requests'],
+    },
+    {
+      name: 'Late Checkouts',
+      icon: 'directions_walk',
+      outlined: false,
+      link: ['home', 'late'],
     },
   ];
 
@@ -88,17 +88,17 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     this.inmediateRequestsSubscription = this.inmediateRequestsService
       .listenInmediateRequestByHotel()
       .pipe(
-        map((requests: RequestEntity[]) => requests.filter(request => !request.finishAt)),
-        map(requests => requests.length),
+        map((requests: RequestEntity[]) => requests.filter((request) => !request.finishAt)),
+        map((requests) => requests.length),
       )
-      .subscribe(quantity => (this.sections[3].badge = quantity));
+      .subscribe((quantity) => (this.sections[3].badge = quantity));
     this.specialRequestsSubscription = this.specialRequestsService
       .listenSpecialRequestByHotel()
       .pipe(
-        map((requests: RequestEntity[]) => requests.filter(request => !request.complete)),
-        map(requests => requests.length),
+        map((requests: RequestEntity[]) => requests.filter((request) => !request.complete)),
+        map((requests) => requests.length),
       )
-      .subscribe(quantity => (this.sections[8].badge = quantity));
+      .subscribe((quantity) => (this.sections[8].badge = quantity));
   }
 
   ngOnDestroy() {
