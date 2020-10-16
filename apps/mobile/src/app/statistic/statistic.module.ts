@@ -8,10 +8,9 @@ import { IonicModule } from '@ionic/angular';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
 import { CardEmployeesComponent } from './components/card-employees/card-employees.component';
+import { CommonComponentsModule } from '../common-components/common-components.module';
 
-const routes: Routes = [
-  { path: '', component: StatisticComponent }
-];
+const routes: Routes = [{ path: '', component: StatisticComponent }];
 
 @NgModule({
   declarations: [StatisticComponent, CardEmployeesComponent],
@@ -22,6 +21,7 @@ const routes: Routes = [
     IonicModule,
     MaterialModule,
     FormsModule,
+    CommonComponentsModule,
   ],
 })
-export class StatisticModule { }
+export class StatisticModule {}

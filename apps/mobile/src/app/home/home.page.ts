@@ -124,6 +124,11 @@ export class HomePage implements OnInit {
     this.menuController.toggle();
   }
 
+  gotHome() {
+    this.router.navigate(['/home']);
+    this.menuController.toggle();
+  }
+
   isRouteSelected(route: string): boolean {
     return this.currentRoute!.includes(route);
   }

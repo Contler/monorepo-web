@@ -1,7 +1,7 @@
 <ion-menu side="end" type="push" contentId="menu">
   <div class="menu-container">
     <div class="header-menu">
-      <img *ngIf="user" [src]="user.hotel.logo" class="header-menu__hotel-logo" />
+      <img *ngIf="user" [src]="user.hotel.logo" (click)="gotHome()" class="header-menu__hotel-logo" />
       <p class="header-menu__name">{{ user?.name }} {{ user?.lastName }}</p>
       <p class="header-menu__zone-label">Lider área - {{chiefZonesLabel}}</p>
     </div>

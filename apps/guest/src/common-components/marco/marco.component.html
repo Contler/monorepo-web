@@ -5,15 +5,10 @@
     </button>
   </div>
 
-  <img *ngIf="logo" [src]="logo" class="logo-general" alt="logo" />
+  <img *ngIf="logo" [src]="logo" (click)="goHome()" class="logo-general" alt="logo" />
 
   <div class="marco__menu">
-    <button
-      mat-icon-button
-      type="button"
-      (click)="sidenav.toggle()"
-      [style]="generalService.getColorHotel()"
-    >
+    <button mat-icon-button type="button" (click)="sidenav.toggle()" [style]="generalService.getColorHotel()">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
