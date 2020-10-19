@@ -91,14 +91,14 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
         map((requests: RequestEntity[]) => requests.filter((request) => !request.finishAt)),
         map((requests) => requests.length),
       )
-      .subscribe((quantity) => (this.sections[3].badge = quantity));
+      .subscribe((quantity) => (this.sections[1].badge = quantity));
     this.specialRequestsSubscription = this.specialRequestsService
       .listenSpecialRequestByHotel()
       .pipe(
         map((requests: RequestEntity[]) => requests.filter((request) => !request.complete)),
         map((requests) => requests.length),
       )
-      .subscribe((quantity) => (this.sections[8].badge = quantity));
+      .subscribe((quantity) => (this.sections[4].badge = quantity));
   }
 
   ngOnDestroy() {
