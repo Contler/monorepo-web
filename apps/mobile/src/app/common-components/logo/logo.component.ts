@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'contler-logo',
@@ -9,9 +8,5 @@ import { Router } from '@angular/router';
 export class LogoComponent {
   @Input() src: string;
 
-  constructor(private router: Router) {}
-
-  goHome() {
-    this.router.navigate(['/home']);
-  }
+  constructor() {}
 }

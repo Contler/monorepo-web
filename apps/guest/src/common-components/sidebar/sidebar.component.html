@@ -1,7 +1,7 @@
 <div class="menu-container">
   <div class="header">
     <div class="header__m10">
-      <img *ngIf="hotel" [src]="hotel.logo" (click)="goHome()" class="header__hotel-logo" />
+      <img *ngIf="hotel" [src]="hotel.logo" routerLink="/home" class="header__hotel-logo" />
       <p class="header__name">{{ user?.name }} {{ user?.lastName }}</p>
     </div>
   </div>

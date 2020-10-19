@@ -106,10 +106,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl(url);
   }
 
-  goHome() {
-    this.router.navigate(['/home']);
-  }
-
   isSelectedRoute(route: string): boolean {
     return this.currentRoute !== null && this.currentRoute.includes(route);
   }

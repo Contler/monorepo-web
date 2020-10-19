@@ -26,8 +26,4 @@ export class MarcoComponent {
   goToRoute(url: string) {
     this.router.navigateByUrl(url);
   }
-
-  goHome() {
-    this.router.navigate(['/home']);
-  }
 }
