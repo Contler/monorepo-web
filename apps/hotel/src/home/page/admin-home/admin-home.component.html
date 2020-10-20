@@ -6,7 +6,11 @@
   <mat-sidenav-content>
     <h1 class="contler-admin__title">Escritorio</h1>
     <div class="contler-admin__options">
-      <mat-card class="contler-admin__options-card" *ngFor="let section of sections" (click)="goToPage(section.link)">
+      <mat-card
+        class="contler-admin__options-card"
+        *ngFor="let section of sections"
+        (click)="goToPage(section.link, section.isReception)"
+      >
         <mat-icon
           *ngIf="section.outlined"
           [class.contler-admin__primary]="section.primary"
