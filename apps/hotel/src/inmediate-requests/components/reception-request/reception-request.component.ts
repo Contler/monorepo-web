@@ -87,16 +87,28 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   private loadData(req: CollectionReference) {
-    this.subscribe = this.afs
-      .collection<ReceptionModel>(req)
-      .valueChanges()
+    this.subscribe = this.auth
+      .getUser()
       .pipe(
+        take(1),
+        switchMap((usr) =>
+          this.afs
+            .collection<ReceptionModel>(req, (ref) =>
+              ref.where('hotel', '==', usr.hotel.uid).orderBy('createAt', 'desc'),
+            )
+            .valueChanges(),
+        ),
         take(1),
         switchMap((data) => from(data)),
         mergeMap((request) =>
           this.auth.getGuestById(request.guest).pipe(map((guest) => ({ request, guest }))),
         ),
         toArray(),
+        map((data) =>
+          data.sort((a, b) =>
+            this.compare(a.request.createAt.getTime(), b.request.createAt.getTime(), false),
+          ),
+        ),
       )
       .subscribe((data) => {
         this.dataSource.data = data;
