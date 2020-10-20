@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivateChild } from '@angular/router';
 
 import { AngularFireAuth } from '@angular/fire/auth';
-import { filter, switchMap, tap, map } from 'rxjs/operators';
+import { filter, switchMap, tap, map, take } from 'rxjs/operators';
 import { environment } from 'guest/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { GuestEntity } from '@contler/entity/guest.entity';
@@ -13,6 +13,7 @@ export class AvalibleUserGuard implements CanActivateChild {
   constructor(private http: HttpClient, private afAuth: AngularFireAuth, private router: Router) {}
   canActivateChild(): Observable<boolean> {
     return this.afAuth.user.pipe(
+      take(1),
       filter((user) => !!user),
       switchMap((user) => this.http.get<GuestEntity>(environment.apiUrl + `guest/${user!.uid}`)),
       tap((guest) => guest),
