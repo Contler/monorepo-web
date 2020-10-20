@@ -12,6 +12,7 @@ import { ColorHotelDirective } from './color-hotel.directive';
 import { ColorBtnHotelDirective } from './color-btn-hotel.directive';
 import { BtnMenuHotelDirective } from './btn-menu-hotel.directive';
 import { ModalCompleteComponent } from './modal-complete/modal-complete.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { ModalCompleteComponent } from './modal-complete/modal-complete.componen
     BtnMenuHotelDirective,
     ModalCompleteComponent,
   ],
-  imports: [CommonModule, MaterialModule, RatingModule, PipesModule, UiModule],
+  imports: [CommonModule, MaterialModule, RatingModule, PipesModule, UiModule, RouterModule],
   exports: [
     ToolbarComponent,
     SidebarComponent,

@@ -1,6 +1,5 @@
-img.logo{
+.img {
+  &__logo {
     width: 75px;
-    height: 83px;
-    display: block;
-    margin: 0 auto;
+  }
 }

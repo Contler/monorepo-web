@@ -1,14 +1,13 @@
 <ion-header no-border>
   <div class="header">
     <div class="ion-text-center header__logo">
-      <img *ngIf="user" [src]="user.hotel.logo" class="header__img">
+      <contler-logo *ngIf="user" [src]="user.hotel.logo"></contler-logo>
     </div>
     <button mat-icon-button class="header__menu" (click)="menu.toggle()">
       <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
     </button>
   </div>
 </ion-header>
-
 
 <ion-content>
   <div class="main-container">
@@ -29,13 +28,13 @@
         </div>
       </ng-container>
       <ng-template #emptyResults>
-        <p class="empty-label" *ngIf="requestsResults.length == 0">
-          No hay resultados para esta búsqueda
-        </p>
+        <p class="empty-label" *ngIf="requestsResults.length == 0">No hay resultados para esta búsqueda</p>
       </ng-template>
     </div>
     <ng-container *ngIf="!searchRequestsEnabled">
-      <p class="main-container__title" [style.color]="generalService.hotelColor">Solicitudes especiales pasadas</p>
+      <p class="main-container__title" [style.color]="generalService.hotelColor">
+        Solicitudes especiales pasadas
+      </p>
       <div class="list-container">
         <ng-container *ngIf="requests.length else empty">
           <div class="item" *ngFor="let request of requests">

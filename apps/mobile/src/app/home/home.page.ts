@@ -121,6 +121,10 @@ export class HomePage implements OnInit {
 
   goToRoute(url: string) {
     this.router.navigateByUrl(url);
+    this.closeToogle();
+  }
+
+  closeToogle() {
     this.menuController.toggle();
   }
 
@@ -132,7 +136,7 @@ export class HomePage implements OnInit {
     this.auth
       .logout()
       .then(() => {
-        this.menuController.toggle();
+        this.closeToogle();
         this.router.navigate(['/login']);
       })
       .catch(() => {

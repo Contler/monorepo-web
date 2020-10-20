@@ -6,7 +6,11 @@
 <ion-content>
   <div class="section">
     <div class="ion-text-center header__logo">
-      <img *ngIf="employer" [src]="employer.hotel.logo" class="header__img" />
+      <contler-logo
+        *ngIf="employer"
+        (click)="modalController.dismiss()"
+        [src]="employer.hotel.logo"
+      ></contler-logo>
     </div>
     <div class="main-container">
       <div class="main-container__title" [style.color]="generalService.hotelColor">Solicitud especial</div>

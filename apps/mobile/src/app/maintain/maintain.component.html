@@ -1,7 +1,7 @@
 <ion-header no-border>
   <div class="header">
     <div class="ion-text-center header__logo">
-      <img *ngIf="user" [src]="user.hotel.logo" class="header__img" alt="logo" />
+      <contler-logo *ngIf="user" [src]="user.hotel.logo"></contler-logo>
     </div>
     <button mat-icon-button class="header__menu" (click)="menu.toggle()">
       <mat-icon contlerColorHotel="primary">menu</mat-icon>

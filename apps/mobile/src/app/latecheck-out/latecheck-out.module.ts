@@ -8,10 +8,9 @@ import { IonicModule } from '@ionic/angular';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '@contler/core';
+import { CommonComponentsModule } from '../common-components/common-components.module';
 
-const routes: Routes = [
-  { path: '', component: LatecheckOutComponent }
-];
+const routes: Routes = [{ path: '', component: LatecheckOutComponent }];
 
 @NgModule({
   declarations: [LatecheckOutComponent],
@@ -23,6 +22,7 @@ const routes: Routes = [
     MaterialModule,
     FormsModule,
     CoreModule,
-  ]
+    CommonComponentsModule,
+  ],
 })
-export class LatecheckOutModule { }
+export class LatecheckOutModule {}
