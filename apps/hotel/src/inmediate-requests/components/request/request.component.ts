@@ -1,4 +1,14 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -52,14 +62,7 @@ export class RequestComponent implements OnInit, OnDestroy, OnChanges {
   ngOnInit(): void {
     this.dataSource.filter = this.filterByStatusSelected;
     this.dataSource.filterPredicate = (data, filter) => this.getFilterPredicate(data, filter);
-
-    this.inmediateRequestsSubscription = this.inmediateRequestsService
-      .listenInmediateRequestByHotel()
-      .subscribe((requests) => {
-        this.dataSource.data = requests;
-      });
-
-    this.dataSource.paginator = this.paginator as MatPaginator;
+    this.setDataSource();
   }
 
   ngOnDestroy() {
@@ -69,9 +72,22 @@ export class RequestComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   update(request: RequestEntity) {
-    this.dialog.open(ModalInmediateRequestComponent, {
-      data: { ...request },
-    });
+    this.dialog
+      .open(ModalInmediateRequestComponent, {
+        data: { ...request },
+      })
+      .afterClosed()
+      .subscribe(() => this.setDataSource());
+  }
+
+  private setDataSource() {
+    this.inmediateRequestsSubscription = this.inmediateRequestsService
+      .listenInmediateRequestByHotel()
+      .subscribe((requests) => {
+        this.dataSource.data = requests;
+      });
+
+    this.dataSource.paginator = this.paginator as MatPaginator;
   }
 
   private getFilterPredicate(data: RequestEntity, filter: string) {
