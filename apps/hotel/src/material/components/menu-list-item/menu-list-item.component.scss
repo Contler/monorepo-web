@@ -1,23 +1,6 @@
 @import 'styles/variables';
 @import 'styles/mixin';
 
-:host {
-  display: flex;
-  flex-direction: column;
-  outline: none;
-  width: 100%;
-
-  .mat-list-item.active {
-    background-color: mat-color($lighterIcon, 50);
-  }
-  &:hover,
-  &:focus {
-    > .mat-list-item:not(.expanded) {
-      background-color: mat-color($lighterIcon, 100) !important;
-    }
-  }
-}
-
 .menu {
   width: 304px;
   padding: 31px 16px 10px;
@@ -27,19 +10,6 @@
   }
   &__name {
     @include text($text-5, 14.2px);
-  }
-
-  &__divide {
-    height: 1px;
-    color: $text-5;
-    background-color: $text-5;
-    border: none;
-    width: 304px;
-    left: -15px;
-    margin-top: 40px;
-    opacity: 0.12;
-    margin-bottom: 30px;
-    margin-left: -16px;
   }
 
   &__primary {
@@ -59,7 +29,7 @@
     align-items: center;
     color: $text-3;
     height: 40px;
-    padding: 0 10px;
+    padding: 5px 10px;
     &:hover {
       background: rgba(193, 193, 193, 0.51);
     }
@@ -75,12 +45,6 @@
   }
 }
 
-.mat-list-item {
-  padding: 8px 0;
-  display: flex;
-  width: auto;
-
-  .routeIcon {
-    margin-right: 40px;
-  }
+.spacer {
+  flex: 1 1 auto;
 }

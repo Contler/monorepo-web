@@ -15,8 +15,91 @@ export class MenuComponent implements OnInit {
   $hotel: Observable<Hotel>;
   sections: ItemMenu[] = [
     {
+      name: 'Huespedes',
+      icon: 'account_circle',
+      link: ['/home', 'guest'],
+      primary: false,
+      children: null,
+    },
+    {
+      name: 'Equipo',
+      icon: 'supervisor_account',
+      link: null,
+      primary: false,
+      children: [
+        {
+          name: 'Empleados',
+          icon: 'account_circle',
+          outlined: true,
+          link: ['/home', 'employer'],
+          primary: false,
+        },
+        {
+          name: 'Calificaciones',
+          icon: 'favorite',
+          link: ['/home', 'statistics'],
+          primary: false,
+        },
+      ],
+    },
+    {
+      name: 'Espacios',
+      icon: 'event',
+      link: null,
+      primary: false,
+      children: [
+        {
+          name: 'Habitaciones',
+          icon: 'meeting_room',
+          outlined: false,
+          link: ['/home', 'room'],
+          primary: false,
+        },
+        {
+          name: 'Zonas',
+          icon: 'room',
+          outlined: false,
+          link: ['/home', 'zone'],
+          primary: false,
+        },
+      ],
+    },
+    {
+      name: 'Solicitudes',
+      icon: 'error_outline',
+      link: null,
+      primary: false,
+      children: [
+        {
+          name: 'Solicitudes inmediatas',
+          icon: 'error',
+          link: ['/home', 'inmediate-requests'],
+          primary: true,
+        },
+        {
+          name: 'Solicitudes especiales',
+          icon: 'sms_failed',
+          link: ['/home', 'special-requests'],
+          primary: false,
+        },
+        {
+          name: 'Wake up calls',
+          icon: 'access_alarm',
+          link: ['/home', 'wake-up'],
+          primary: false,
+        },
+        {
+          name: 'Late Checkouts',
+          icon: 'directions_walk',
+          link: ['/home', 'late'],
+          primary: false,
+        },
+      ],
+    },
+    {
       name: 'Room Service',
       icon: 'room_service',
+      link: null,
       children: [
         {
           name: 'Pedidos remotos',
@@ -44,69 +127,13 @@ export class MenuComponent implements OnInit {
         },
       ],
     },
-    // {
-    //   name: 'Empleados',
-    //   icon: 'account_circle',
-    //   outlined: true,
-    //   link: ['/home', 'employer'],
-    //   primary: false,
-    // },
-    // {
-    //   name: 'Habitaciones',
-    //   icon: 'meeting_room',
-    //   outlined: false,
-    //   link: ['/home', 'room'],
-    //   primary: false,
-    // },
-    // {
-    //   name: 'Zonas',
-    //   icon: 'room',
-    //   outlined: false,
-    //   link: ['/home', 'zone'],
-    //   primary: false,
-    // },
-    // {
-    //   name: 'Huespedes',
-    //   icon: 'account_circle',
-    //   link: ['/home', 'guest'],
-    //   primary: false,
-    // },
-    // {
-    //   name: 'Solicitudes inmediatas',
-    //   icon: 'error',
-    //   link: ['/home', 'inmediate-requests'],
-    //   primary: true,
-    // },
-    // {
-    //   name: 'Reservas de espacios',
-    //   icon: 'calendar_today',
-    //   primary: false,
-    //   link: ['/home', 'reservation', 'calendar'],
-    // },
-    // {
-    //   name: 'Wake up calls',
-    //   icon: 'access_alarm',
-    //   link: ['/home', 'wake-up'],
-    //   primary: false,
-    // },
-    // {
-    //   name: 'Late Checkouts',
-    //   icon: 'directions_walk',
-    //   link: ['/home', 'late'],
-    //   primary: false,
-    // },
-    // {
-    //   name: 'Solicitudes especiales',
-    //   icon: 'sms_failed',
-    //   link: ['/home', 'special-requests'],
-    //   primary: false,
-    // },
-    // {
-    //   name: 'Calificaciones',
-    //   icon: 'favorite',
-    //   link: ['/home', 'statistics'],
-    //   primary: false,
-    // },
+    {
+      name: 'Reservas de espacios',
+      icon: 'calendar_today',
+      primary: false,
+      link: ['/home', 'reservation', 'calendar'],
+      children: null,
+    },
   ];
 
   constructor(private hotelService: HotelService, private afAuth: AngularFireAuth, private router: Router) {

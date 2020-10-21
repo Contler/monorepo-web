@@ -1,25 +1,28 @@
-<a
-  mat-list-item
-  [ngStyle]="{ 'padding-left': depth * 12 + 'px' }"
-  (click)="onItemSelected(item)"
-  class="menu-list-item"
->
-  <mat-icon class="menu__option-icon routeIcon">{{ item.icon }}</mat-icon>
-  <!-- <mat-icon
-        *ngIf="section.outlined"
-        [class.menu__primary]="section.primary"
-        fontSet="material-icons-outlined"
-        class="menu__option-icon"
-      >
-        {{ section.icon }}
-  </mat-icon> -->
-  {{ item.name }}
-  <span fxFlex *ngIf="item.children && item.children.length">
-    <span fxFlex></span>
+<div class="menu__option" (click)="onItemSelected(item)" [routerLink]="item.link">
+  <mat-icon
+    *ngIf="item.outlined"
+    [class.menu__primary]="item.primary"
+    fontSet="material-icons-outlined"
+    class="menu__option-icon"
+  >
+    {{ item.icon }}
+  </mat-icon>
+  <mat-icon *ngIf="!item.outlined" class="menu__option-icon" [class.menu__primary]="item.primary">
+    {{ item.icon }}
+  </mat-icon>
+  <p class="menu__option-text">{{ item.name }}</p>
+  <span class="spacer"></span>
+  <span *ngIf="item.children && item.children.length">
     <mat-icon [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'"> expand_more </mat-icon>
   </span>
-</a>
+</div>
 <div *ngIf="expanded">
-  <contler-menu-list-item *ngFor="let child of item.children" [item]="child" [depth]="depth + 1">
+  <contler-menu-list-item
+    *ngFor="let child of item.children"
+    [item]="child"
+    [depth]="depth + 1"
+    [routerLink]="child.link"
+    routerLinkActive="select"
+  >
   </contler-menu-list-item>
 </div>
