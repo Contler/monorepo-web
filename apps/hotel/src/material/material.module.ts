@@ -16,6 +16,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MenuComponent } from 'hotel/material/components/menu/menu.component';
+import { MenuListItemComponent } from 'hotel/material/components/menu-list-item/menu-list-item.component';
 import { RouterModule } from '@angular/router';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -28,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
 
 const materialModules = [
   MatFormFieldModule,
@@ -51,19 +53,13 @@ const materialModules = [
   MatBadgeModule,
   MatMenuModule,
   MatExpansionModule,
+  MatListModule,
 ];
 
 @NgModule({
-  declarations: [MenuComponent, LoaderComponent, RangeComponent],
-  imports: [
-    CommonModule,
-    ...materialModules,
-    RouterModule,
-    NgxMaskModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
-  exports: [...materialModules, MenuComponent, LoaderComponent, RangeComponent],
+  declarations: [MenuComponent, MenuListItemComponent, LoaderComponent, RangeComponent],
+  imports: [CommonModule, ...materialModules, RouterModule, NgxMaskModule, FormsModule, ReactiveFormsModule],
+  exports: [...materialModules, MenuComponent, MenuListItemComponent, LoaderComponent, RangeComponent],
   entryComponents: [LoaderComponent],
 })
 export class MaterialModule {}
