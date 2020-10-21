@@ -13,6 +13,8 @@ import { ColorBtnHotelDirective } from './color-btn-hotel.directive';
 import { BtnMenuHotelDirective } from './btn-menu-hotel.directive';
 import { ModalCompleteComponent } from './modal-complete/modal-complete.component';
 import { RouterModule } from '@angular/router';
+import { UserService } from '@contler/core';
+import { AvalibleUserGuard } from './guards/avalible-user.guard';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { RouterModule } from '@angular/router';
     BtnMenuHotelDirective,
     ModalCompleteComponent,
     UiModule,
+    AvalibleUserGuard,
   ],
+  providers: [UserService, AvalibleUserGuard],
 })
 export class CommonComponentsModule {}

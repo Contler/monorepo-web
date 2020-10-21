@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule } from 'ngx-mask';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
+import { AvalibleUserGuard } from 'guest/common-components/guards/avalible-user.guard';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -40,7 +41,7 @@ import { reducers, metaReducers } from './reducers';
       metaReducers,
     }),
   ],
-  providers: [HotelService, UserService],
+  providers: [HotelService, UserService, AvalibleUserGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
