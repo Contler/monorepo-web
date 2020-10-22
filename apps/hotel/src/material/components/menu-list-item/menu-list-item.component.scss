@@ -1,0 +1,50 @@
+@import 'styles/variables';
+@import 'styles/mixin';
+
+.menu {
+  width: 304px;
+  padding: 31px 16px 10px;
+  box-sizing: border-box;
+  &__title {
+    @include text($text-5, 20.2px, 500);
+  }
+  &__name {
+    @include text($text-5, 14.2px);
+  }
+
+  &__primary {
+    color: $primary;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 7px;
+  }
+
+  &__option {
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: $text-3;
+    height: 40px;
+    padding: 5px 10px;
+    &:hover {
+      background: rgba(193, 193, 193, 0.51);
+    }
+    &.select {
+      background: rgba(193, 193, 193, 0.51);
+    }
+    &-icon {
+      margin-right: 20px;
+    }
+    &-text {
+      @include text($text-3, 14px);
+    }
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

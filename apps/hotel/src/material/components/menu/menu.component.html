@@ -5,20 +5,13 @@
   <hr class="menu__divide" />
 
   <div class="menu__content">
-    <div class="menu__option" *ngFor="let section of sections" [routerLink]="section.link" routerLinkActive="select">
-      <mat-icon
-        *ngIf="section.outlined"
-        [class.menu__primary]="section.primary"
-        fontSet="material-icons-outlined"
-        class="menu__option-icon"
-      >
-        {{ section.icon }}
-      </mat-icon>
-      <mat-icon *ngIf="!section.outlined" class="menu__option-icon" [class.menu__primary]="section.primary">
-        {{ section.icon }}
-      </mat-icon>
-      <p class="menu__option-text">{{ section.name }}</p>
-    </div>
+    <mat-list>
+      <contler-menu-list-item
+        *ngFor="let item of sections"
+        [item]="item"
+        routerLinkActive="select"
+      ></contler-menu-list-item>
+    </mat-list>
 
     <div class="menu__option" (click)="logOut()">
       <mat-icon class="menu__option-icon">input</mat-icon>
