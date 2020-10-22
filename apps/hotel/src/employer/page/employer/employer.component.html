@@ -6,41 +6,38 @@
   </mat-sidenav>
 
   <mat-sidenav-content class="cnt-employer">
-
-
     <div class="cnt-employer__header">
       <h1 class="cnt-title">Empleados</h1>
       <mat-form-field appearance="fill" class="select">
         <mat-select [(ngModel)]="filter">
           <mat-option *ngFor="let option of filters" [value]="option.value">
-            {{option.name}}
+            {{ option.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <button mat-raised-button color="accent" (click)="openEmployerModal()">Crear empleados</button>
+      <button mat-raised-button routerLink="/home/statistics">ver calificaciones</button>
     </div>
 
-
     <table mat-table [dataSource]="dataSource" class="cnt-employer__table">
-
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Nombre empleado </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} {{element.lastName}}</td>
+        <th mat-header-cell *matHeaderCellDef>Nombre empleado</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }} {{ element.lastName }}</td>
       </ng-container>
 
       <ng-container matColumnDef="leader">
-        <th mat-header-cell *matHeaderCellDef> Líder </th>
-        <td mat-cell *matCellDef="let element"> {{element.role === leader ? 'Sí' : 'No'}}</td>
+        <th mat-header-cell *matHeaderCellDef>Líder</th>
+        <td mat-cell *matCellDef="let element">{{ element.role === leader ? 'Sí' : 'No' }}</td>
       </ng-container>
 
       <ng-container matColumnDef="score">
-        <th mat-header-cell *matHeaderCellDef> Calificación </th>
-        <td mat-cell *matCellDef="let element"> {{element.averageScore}}</td>
+        <th mat-header-cell *matHeaderCellDef>Calificación</th>
+        <td mat-cell *matCellDef="let element">{{ element.averageScore }}</td>
       </ng-container>
 
       <ng-container matColumnDef="request">
-        <th mat-header-cell *matHeaderCellDef> Solicitudes </th>
-        <td mat-cell *matCellDef="let element"> {{element.totalServices}}</td>
+        <th mat-header-cell *matHeaderCellDef>Solicitudes</th>
+        <td mat-cell *matCellDef="let element">{{ element.totalServices }}</td>
       </ng-container>
 
       <ng-container matColumnDef="options">
@@ -56,10 +53,8 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
     <mat-paginator [pageSizeOptions]="[10, 40, 100]" showFirstLastButtons></mat-paginator>
-
-
   </mat-sidenav-content>
 </mat-sidenav-container>

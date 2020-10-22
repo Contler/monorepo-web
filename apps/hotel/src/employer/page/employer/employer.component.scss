@@ -1,11 +1,11 @@
-@import "styles/variables";
+@import 'styles/variables';
 
 .cnt-employer {
   padding: 0 51px;
   &__header {
     display: grid;
-    grid-template-columns: auto max-content max-content;
-    column-gap: 63px;
+    grid-template-columns: auto repeat(3, max-content);
+    column-gap: 20px;
     align-items: baseline;
     margin-top: 43px;
     margin-bottom: 30px;

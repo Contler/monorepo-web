@@ -12,11 +12,21 @@ import { MaterialModule } from 'hotel/material/material.module';
 import { ModalRemoveEmployerComponent } from './components/modal-remove-employer/modal-remove-employer.component';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [EmployerComponent, ModalEmployerComponent, ModalRemoveEmployerComponent, ],
-  entryComponents: [ModalEmployerComponent, ModalRemoveEmployerComponent, ],
-  imports: [CommonModule, EmployerRoutingModule, MaterialModule, FormsModule, CoreModule, ReactiveFormsModule, CommonComponentsModule],
+  declarations: [EmployerComponent, ModalEmployerComponent, ModalRemoveEmployerComponent],
+  entryComponents: [ModalEmployerComponent, ModalRemoveEmployerComponent],
+  imports: [
+    CommonModule,
+    EmployerRoutingModule,
+    MaterialModule,
+    FormsModule,
+    CoreModule,
+    ReactiveFormsModule,
+    CommonComponentsModule,
+    RouterModule,
+  ],
   providers: [EmployerService, ZoneService],
 })
 export class EmployerModule {}
