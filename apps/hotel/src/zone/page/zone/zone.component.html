@@ -34,7 +34,16 @@
             <mat-hint>Selecciona un icono</mat-hint>
           </mat-form-field>
 
-          <mat-checkbox formControlName="principal">
+          <mat-checkbox
+            formControlName="principal"
+            matTooltip="{{
+              maxPrincipalZone >= 4
+                ? 'Ya tienes las cuatro zonas principales elegidas, debes deshabilitar una para poder activar esta.'
+                : ''
+            }}"
+            matTooltipHideDelay="1000"
+            [disabled]="maxPrincipalZone >= 4"
+          >
             Zona destacada (podrás elegir máximo 4 zonas)
           </mat-checkbox>
 
@@ -67,9 +76,15 @@
                 <button mat-icon-button>
                   <mat-icon class="custom_icon" (click)="deleteZone(zone)">delete</mat-icon>
                 </button>
-                <mat-slide-toggle color="accent" [(ngModel)]="zone.admitOrders" disabled
-                  >Pedidos</mat-slide-toggle
-                >
+              </div>
+              <div class="spacer"></div>
+              <div class="group-inline-toogle">
+                <mat-slide-toggle color="accent" [(ngModel)]="zone.admitOrders" disabled>
+                  Pedidos
+                </mat-slide-toggle>
+                <mat-slide-toggle color="accent" [(ngModel)]="zone.principal" disabled>
+                  Zona Principal
+                </mat-slide-toggle>
               </div>
             </div>
           </div>
