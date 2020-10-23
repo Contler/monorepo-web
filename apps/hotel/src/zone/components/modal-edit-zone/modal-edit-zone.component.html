@@ -18,6 +18,19 @@
 
     <mat-slide-toggle color="accent" formControlName="admitOrder">Admitir Pedidos</mat-slide-toggle>
 
+    <mat-slide-toggle
+      color="accent"
+      matTooltip="{{
+        maxPrincipalZone >= 4
+          ? 'Ya tienes las cuatro zonas principales elegidas, debes deshabilitar una para poder activar esta.'
+          : ''
+      }}"
+      matTooltipHideDelay="1000"
+      formControlName="principal"
+    >
+      Principal
+    </mat-slide-toggle>
+
     <div>
       <button
         mat-raised-button

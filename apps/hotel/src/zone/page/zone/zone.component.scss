@@ -1,4 +1,4 @@
-@import "styles/variables";
+@import 'styles/variables';
 
 .cnt-zone {
   padding: 55px 51px 0;
@@ -43,4 +43,14 @@
       width: 40%;
     }
   }
+}
+
+.group-inline-toogle {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }

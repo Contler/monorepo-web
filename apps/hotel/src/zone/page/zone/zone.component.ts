@@ -17,6 +17,7 @@ import { IconModel } from '@contler/models/icon.model';
 export class ZoneComponent {
   zoneGroup: FormGroup;
   load = false;
+  maxPrincipalZone = 0;
   zones: ZoneEntity[] = [];
   categoryZone: Observable<CategoryEntity[]>;
   $icons: Observable<IconModel[]>;
@@ -35,7 +36,10 @@ export class ZoneComponent {
       icon: [''],
       principal: [false],
     });
-    this.zoneService.getZones().subscribe((zones) => (this.zones = zones));
+    this.zoneService.getZones().subscribe((zones) => {
+      this.zones = zones;
+      this.setMaxPrincipalZone();
+    });
     this.$icons = iconsService.$icons;
   }
 
@@ -56,8 +60,15 @@ export class ZoneComponent {
     );
   }
 
+  setMaxPrincipalZone() {
+    this.maxPrincipalZone = this.zones.filter((z) => z.principal === true).length;
+  }
+
   editZone(zone: ZoneEntity) {
-    this.dialog.open(ModalEditZoneComponent, { width: '600px', data: zone });
+    this.dialog
+      .open(ModalEditZoneComponent, { width: '600px', data: zone })
+      .afterClosed()
+      .subscribe(() => this.setMaxPrincipalZone());
   }
 
   deleteZone(zone: ZoneEntity) {

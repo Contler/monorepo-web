@@ -17,7 +17,9 @@ export class ModalEditZoneComponent implements OnInit {
   load = false;
 
   zoneGroup: FormGroup;
+  maxPrincipalZone = 0;
   $icons: Observable<IconModel[]>;
+  zones: ZoneEntity[] = [];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ZoneEntity,
@@ -31,28 +33,55 @@ export class ModalEditZoneComponent implements OnInit {
       name: [data.name, Validators.required],
       icon: [data.icon],
       admitOrder: [data.admitOrders],
+      principal: [data.principal],
     });
     this.$icons = iconService.$icons;
+    this.zoneService.getZones().subscribe((zones) => {
+      this.maxPrincipalZone = zones.filter((z) => z.principal === true).length;
+    });
+  }
+
+  ngOnInit(): void {
+    this.getPrincipal.valueChanges.subscribe((principal) => {
+      if (principal) {
+        this.maxPrincipalZone++;
+      } else {
+        this.maxPrincipalZone--;
+      }
+    });
   }
 
   save() {
     this.load = true;
-    const { name, icon, admitOrder } = this.zoneGroup.value;
+    const { name, icon, admitOrder, principal } = this.zoneGroup.value;
     this.data.name = name;
     this.data.icon = icon;
     this.data.admitOrders = admitOrder;
-    this.zoneService.updateZone(this.data).subscribe(
-      () => {
-        this.load = false;
-        this.dialogRef.close();
-        this.messagesService.showToastMessage('Zona actualizada exitosamente');
-      },
-      () => {
-        this.load = false;
-        this.messagesService.showServerError();
-      },
-    );
+
+    if (this.maxPrincipalZone > 4) {
+      this.messagesService.showToastMessage(
+        'La zona no se pudo actualizar, debes deshabilitar una zona principal para poder activar esta.',
+        'Cerrar',
+        5000,
+      );
+      this.dialogRef.close();
+    } else {
+      this.data.principal = principal;
+      this.zoneService.updateZone(this.data).subscribe(
+        () => {
+          this.load = false;
+          this.dialogRef.close();
+          this.messagesService.showToastMessage('Zona actualizada exitosamente');
+        },
+        () => {
+          this.load = false;
+          this.messagesService.showServerError();
+        },
+      );
+    }
   }
 
-  ngOnInit() {}
+  get getPrincipal() {
+    return this.zoneGroup.get('principal')!;
+  }
 }
