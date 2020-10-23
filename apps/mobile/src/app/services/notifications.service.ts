@@ -32,6 +32,8 @@ export class NotificationsService {
         case 'maintain':
           this.router.navigate(['/home/maintain']);
           break;
+        case 'order':
+          this.router.navigate(['/home/order']);
       }
     });
     this.oneSignal.endInit();
