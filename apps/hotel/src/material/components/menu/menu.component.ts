@@ -62,6 +62,13 @@ export class MenuComponent implements OnInit {
           link: ['/home', 'zone'],
           primary: false,
         },
+        {
+          name: 'Zonas de reserva',
+          icon: 'add_location_alt',
+          outlined: false,
+          link: ['/home', 'reservation'],
+          primary: false,
+        },
       ],
     },
     {
