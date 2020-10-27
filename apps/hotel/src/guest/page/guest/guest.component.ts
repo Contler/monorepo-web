@@ -40,9 +40,8 @@ export class GuestComponent implements OnInit, OnDestroy {
     this.dataSource.filterPredicate = (data, filterData) => this.getFilterPredicate(data, filterData);
   }
 
-  applyFilter(target: any) {
-    const { value }: { value: string } = target;
-    this.dataSource.filter = value;
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   openModalNewGuest() {
@@ -85,12 +84,20 @@ export class GuestComponent implements OnInit, OnDestroy {
   }
 
   private getFilterPredicate(data: GuestEntity, filterData: string) {
+    const textLow = filterData.toLowerCase();
+
     if (filterData === this.requestStatus.ACTIVE) {
       return data.active;
     }
     if (filterData === this.requestStatus.INACTIVE) {
       return !data.active;
     }
+
+    return (
+      data.room.name.toLowerCase().includes(textLow) ||
+      data.name.toLowerCase().includes(textLow) ||
+      data.lastName.toLowerCase().includes(textLow)
+    );
   }
 
   filterByStatus() {
