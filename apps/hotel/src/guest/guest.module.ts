@@ -11,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GuestService } from 'hotel/guest/services/guest.service';
 import { ModalEditGuestComponent } from './components/modal-edit-guest/modal-edit-guest.component';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
-import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [GuestComponent, ModelNewGuestComponent, ModalEditGuestComponent],
@@ -22,9 +22,8 @@ import { FormsModule } from '@angular/forms';
     CoreModule,
     MaterialModule,
     ReactiveFormsModule,
-    CommonComponentsModule,
-    FormsModule,
+    CommonComponentsModule
   ],
-  providers: [RoomService, GuestService, UserService],
+  providers: [RoomService, GuestService, UserService]
 })
-export class GuestModule {}
+export class GuestModule { }
