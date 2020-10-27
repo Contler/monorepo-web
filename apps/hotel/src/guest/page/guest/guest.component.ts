@@ -22,7 +22,7 @@ export class GuestComponent implements OnDestroy {
   dataSource = new MatTableDataSource<GuestEntity>();
   public requestStatus = {
     ACTIVE: 'actives',
-    INACTIVE: 'all',
+    INACTIVE: 'inactives',
   };
   public filterByStatusSelected: string = this.requestStatus.ACTIVE;
 
