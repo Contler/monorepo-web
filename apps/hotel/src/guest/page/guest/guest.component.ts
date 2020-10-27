@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Guest } from '@contler/models';
@@ -16,57 +16,37 @@ import { filter } from 'rxjs/operators';
   templateUrl: './guest.component.html',
   styleUrls: ['./guest.component.scss'],
 })
-export class GuestComponent implements OnInit, OnDestroy {
+export class GuestComponent implements OnDestroy {
   loadCreateGuest = false;
   displayedColumns: string[] = ['name', 'document', 'type', 'room', 'checkIn', 'checkOut', 'actions'];
   dataSource = new MatTableDataSource<GuestEntity>();
 
   private subscription: Subscription;
 
-  requestStatus = {
-    ACTIVE: 'actives',
-    INACTIVE: 'inactives',
-  };
-  filterByStatusSelected: string = this.requestStatus.ACTIVE;
-
-  constructor(private dialog: MatDialog, private guestService: GuestService) {}
-
-  ngOnInit(): void {
-    this.dataSource.filter = this.filterByStatusSelected;
-    this.subscription = this.guestService.getGuest().subscribe((guests) => {
+  constructor(private dialog: MatDialog, private guestService: GuestService) {
+    this.subscription = this.guestService.getGuest().subscribe(guests => {
       this.dataSource.data = guests;
     });
-
-    this.dataSource.filterPredicate = (data, filterData) => this.getFilterPredicate(data, filterData);
-  }
-
-  applyFilter(target: any) {
-    const { value }: { value: string } = target;
-    this.dataSource.filter = value;
   }
 
   openModalNewGuest() {
-    this.dialog
-      .open<ModelNewGuestComponent, void, GuestEntity>(ModelNewGuestComponent, {
-        width: '940px',
-        maxWidth: '940px',
-        panelClass: 'cnt-modal',
-      })
-      .afterClosed()
-      .pipe(filter((data) => !!data))
-      .subscribe((data) => {
-        this.dataSource.data = [...this.dataSource.data, data!];
-      });
+    this.dialog.open<ModelNewGuestComponent, void, GuestEntity>(ModelNewGuestComponent, {
+      width: '940px',
+      maxWidth: '940px',
+      panelClass: 'cnt-modal',
+    }).afterClosed().pipe(filter(data => !!data)).subscribe(data => {
+      this.dataSource.data = [...this.dataSource.data, data!]
+    })
   }
 
   getDocumentType(type: number) {
-    return DOCUMENT_TYPE.find((document) => document.value === type);
+    return DOCUMENT_TYPE.find(document => document.value === type);
   }
 
   deleteGuest(guest: GuestEntity) {
     const ref = this.dialog.open(LoaderComponent, { disableClose: true });
     this.guestService.deleteUser(guest.uid).subscribe(() => {
-      this.dataSource.data = this.dataSource.data.filter((g) => g.uid !== guest.uid);
+      this.dataSource.data = this.dataSource.data.filter(g => g.uid !== guest.uid);
       ref.close();
     });
   }
@@ -82,19 +62,5 @@ export class GuestComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-  }
-
-  private getFilterPredicate(data: GuestEntity, filterData: string) {
-    if (filterData === this.requestStatus.ACTIVE) {
-      return data.active;
-    }
-    if (filterData === this.requestStatus.INACTIVE) {
-      return !data.active;
-    }
-  }
-
-  filterByStatus() {
-    this.dataSource.filter = this.filterByStatusSelected;
-    this.dataSource.filterPredicate = (data, filterData) => this.getFilterPredicate(data, filterData);
   }
 }
