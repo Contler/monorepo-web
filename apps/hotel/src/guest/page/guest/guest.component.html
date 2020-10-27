@@ -9,14 +9,14 @@
     <div class="cnt-guest__header">
       <h1 class="cnt-title">Huespedes</h1>
       <mat-form-field appearance="fill">
-        <mat-select>
-          <mat-option [value]="true">Activos</mat-option>
-          <mat-option [value]="false">Inactivos</mat-option>
+        <mat-select [(ngModel)]="filterByStatusSelected" (ngModelChange)="filterByStatus()">
+          <mat-option [value]="requestStatus.ACTIVE">Activos</mat-option>
+          <mat-option [value]="requestStatus.INACTIVE">Inactivos</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <input matInput placeholder="Busca..." />
+        <input matInput placeholder="Busca..." (keyup)="applyFilter($event.target)" />
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
 
