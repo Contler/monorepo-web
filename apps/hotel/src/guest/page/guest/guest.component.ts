@@ -85,7 +85,6 @@ export class GuestComponent implements OnInit, OnDestroy {
 
   private getFilterPredicate(data: GuestEntity, filterData: string) {
     const textLow = filterData.toLowerCase();
-
     if (filterData === this.requestStatus.ACTIVE) {
       return data.active;
     }
