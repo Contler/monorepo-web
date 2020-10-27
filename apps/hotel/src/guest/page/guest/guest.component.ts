@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Guest } from '@contler/models';
@@ -16,23 +16,19 @@ import { filter } from 'rxjs/operators';
   templateUrl: './guest.component.html',
   styleUrls: ['./guest.component.scss'],
 })
-export class GuestComponent implements OnInit, OnDestroy {
+export class GuestComponent implements OnDestroy {
   loadCreateGuest = false;
   displayedColumns: string[] = ['name', 'document', 'type', 'room', 'checkIn', 'checkOut', 'actions'];
   dataSource = new MatTableDataSource<GuestEntity>();
+  public requestStatus = {
+    ACTIVE: 'actives',
+    INACTIVE: 'all',
+  };
+  public filterByStatusSelected: string = this.requestStatus.ACTIVE;
 
   private subscription: Subscription;
 
-  requestStatus = {
-    ACTIVE: 'actives',
-    INACTIVE: 'inactives',
-  };
-  filterByStatusSelected: string = this.requestStatus.ACTIVE;
-
-  constructor(private dialog: MatDialog, private guestService: GuestService) {}
-
-  ngOnInit(): void {
-    this.dataSource.filter = this.filterByStatusSelected;
+  constructor(private dialog: MatDialog, private guestService: GuestService) {
     this.subscription = this.guestService.getGuest().subscribe((guests) => {
       this.dataSource.data = guests;
     });
