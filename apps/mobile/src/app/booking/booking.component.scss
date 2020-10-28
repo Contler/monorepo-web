@@ -1,4 +1,8 @@
-@import "styles/variables";
+@import 'styles/variables';
+
+.center {
+  text-align: center;
+}
 
 .booking {
   &__search {
