@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { BookingEntity, EmployerEntity } from '@contler/entity';
 import { MenuController } from '@ionic/angular';
-import { filter, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
 import { ReservationService } from '@contler/core';
 import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -25,7 +25,10 @@ export class BookingComponent implements OnInit {
   ) {
     this.auth.$user.subscribe((user) => (this.user = user));
     this.auth.$user
-      .pipe(switchMap((user) => this.reservationService.getBookingByHotel(user!.hotel.uid)))
+      .pipe(
+        switchMap((user) => this.reservationService.getBookingByHotel(user!.hotel.uid)),
+        map((booking) => booking.filter((book) => book.active && !book.complete)),
+      )
       .subscribe((booking) => (this.booking = booking));
   }
 
