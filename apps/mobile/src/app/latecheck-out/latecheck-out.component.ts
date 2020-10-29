@@ -4,7 +4,7 @@ import { EmployerEntity } from '@contler/entity';
 import { AuthService } from '../services/auth.service';
 import { MenuController } from '@ionic/angular';
 import { LateCheckOutService } from '@contler/core';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { LateCheckUser } from '@contler/models';
 
 @Component({
@@ -25,10 +25,13 @@ export class LatecheckOutComponent implements OnInit {
     public menu: MenuController,
     private lateService: LateCheckOutService,
   ) {
-    auth.$user.subscribe(user => (this.user = user));
+    auth.$user.subscribe((user) => (this.user = user));
     auth.$user
-      .pipe(switchMap(user => this.lateService.getLateByHotel(user!.hotel.uid)))
-      .subscribe(list => (this.lateList = list));
+      .pipe(
+        switchMap((user) => this.lateService.getLateByHotel(user!.hotel.uid)),
+        map((lattes) => lattes.filter((late) => !!late.user.room)),
+      )
+      .subscribe((list) => (this.lateList = list));
   }
 
   ngOnInit() {}
