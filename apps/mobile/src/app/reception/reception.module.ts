@@ -9,6 +9,7 @@ import { CommonComponentsModule } from '../common-components/common-components.m
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { ReceptionRoutingModule } from './reception-routing.module';
 
 const routes: Routes = [{ path: '', component: ReceptionComponent }];
 
@@ -24,6 +25,7 @@ const routes: Routes = [{ path: '', component: ReceptionComponent }];
     MatInputModule,
     MatSelectModule,
     FormsModule,
+    ReceptionRoutingModule,
   ],
 })
 export class ReceptionModule {}
