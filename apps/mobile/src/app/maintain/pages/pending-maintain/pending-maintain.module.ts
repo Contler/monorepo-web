@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PendingComponent } from './pending.component';
-import { PendingRoutingModule } from './pending-routing.module';
+import { PendingMaintainComponent } from './pending-maintain.component';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { CommonComponentsModule } from '../../../common-components/common-components.module';
 import { MaterialModule } from '../../../material/material.module';
+import { PendingMaintainRoutingModule } from './pending-routing.module';
 
 @NgModule({
   imports: [
@@ -13,9 +13,9 @@ import { MaterialModule } from '../../../material/material.module';
     FormsModule,
     IonicModule,
     CommonComponentsModule,
-    PendingRoutingModule,
+    PendingMaintainRoutingModule,
     MaterialModule,
   ],
-  declarations: [PendingComponent],
+  declarations: [PendingMaintainComponent],
 })
-export class PendingModule {}
+export class PendingMaintainModule {}

@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonComponentsModule } from '../common-components/common-components.module';
+import { MaintainRoutingModule } from './maintain-routing.module';
 
 const routes: Routes = [{ path: '', component: MaintainComponent }];
 
@@ -18,6 +19,7 @@ const routes: Routes = [{ path: '', component: MaintainComponent }];
     MatButtonModule,
     MatIconModule,
     CommonComponentsModule,
+    MaintainRoutingModule,
   ],
 })
 export class MaintainModule {}

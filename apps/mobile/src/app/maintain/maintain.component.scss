@@ -1,6 +1,33 @@
-.reception {
-  padding: 0 40px 20px;
-  &__text {
-    text-align: center;
+@import 'styles/variables';
+
+.reception-bottom-tabs {
+  height: 56px;
+}
+
+.reception-bottom-tab {
+  --color: #ffffff;
+  --color-selected: #{$primary};
+  font-family: Nunito;
+  font-size: 15.2px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.05;
+  letter-spacing: 1.25px;
+  text-align: center;
+}
+
+.white_icon {
+  color: white !important;
+}
+
+.selected_button {
+  background: #ffffff !important;
+  ion-label {
+    color: $text-4 !important;
   }
+}
+
+ion-tab-button {
+  max-width: 100% !important;
 }

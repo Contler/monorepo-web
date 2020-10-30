@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PendingComponent } from './pending.component';
-import { PendingRoutingModule } from './pending-routing.module';
+import { ReadyCleaningComponent } from './ready-cleaning.component';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { CommonComponentsModule } from '../../../common-components/common-components.module';
 import { MaterialModule } from '../../../material/material.module';
+import { ReadyCleaningRoutingModule } from './ready-routing.module';
 
 @NgModule({
   imports: [
@@ -13,9 +13,9 @@ import { MaterialModule } from '../../../material/material.module';
     FormsModule,
     IonicModule,
     CommonComponentsModule,
-    PendingRoutingModule,
     MaterialModule,
+    ReadyCleaningRoutingModule,
   ],
-  declarations: [PendingComponent],
+  declarations: [ReadyCleaningComponent],
 })
-export class PendingModule {}
+export class ReadyCleaningModule {}
