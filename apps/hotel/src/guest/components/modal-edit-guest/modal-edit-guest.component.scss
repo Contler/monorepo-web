@@ -1,5 +1,5 @@
-@import "styles/variables";
-@import "styles/mixin";
+@import 'styles/variables';
+@import 'styles/mixin';
 
 $gap-form: 10px;
 
@@ -23,12 +23,25 @@ $gap-form: 10px;
     margin-bottom: 53px;
     text-align: center;
   }
+  &__title_table {
+    @include text($text-3, 20px, 500);
+    margin-bottom: 2px;
+    text-align: center;
+  }
+  &__text {
+    @include text($text-1, 16px);
+    padding: 46px 24px 22px;
+  }
 
   &__form_guest {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 20px;
     row-gap: $gap-form;
+  }
+
+  &__form_guest_table {
+    display: grid;
   }
 
   &__span2 {
@@ -49,5 +62,8 @@ $gap-form: 10px;
     text-align: center;
     margin: 62px 0 38px;
   }
+}
 
+.aligned-columnDef {
+  text-align: center;
 }
