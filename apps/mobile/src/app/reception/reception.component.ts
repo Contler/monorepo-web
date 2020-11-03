@@ -1,47 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-
-import { EmployerEntity } from '@contler/entity';
-import { ReceptionModel } from '@contler/models';
-
-import { take, tap } from 'rxjs/operators';
-
-import { AuthService } from '../services/auth.service';
 import { GeneralService } from '../services/general.service';
-import { Observable } from 'rxjs';
-import { ReceptionLocalService } from '../services/reception/reception-local.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ReceptionService } from '@contler/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'contler-reception',
   templateUrl: './reception.component.html',
   styleUrls: ['./reception.component.scss'],
 })
-export class ReceptionComponent implements OnInit {
-  user: EmployerEntity | null = null;
-  totalReception: number;
-  $receptionReq: Observable<ReceptionModel[]>;
+export class ReceptionComponent implements OnDestroy {
+  readonly PAGES = {
+    PENDING: '/home/reception/pending',
+    READY: '/home/reception/ready',
+  };
+  currentPage: string | undefined;
+  private routerSubscription: Subscription | undefined;
 
-  constructor(
-    private auth: AuthService,
-    public menu: MenuController,
-    public generalService: GeneralService,
-    private receptionService: ReceptionService,
-    private receptionLocalService: ReceptionLocalService,
-    private snackBar: MatSnackBar,
-  ) {
-    this.auth.$user.pipe(take(1)).subscribe((user) => (this.user = user));
+  constructor(public menu: MenuController, public generalService: GeneralService, private router: Router) {}
+
+  ionViewWillEnter() {
+    this.currentPage = this.router.url;
+    this.routerSubscription = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((data) => (this.currentPage = (data as NavigationEnd).url));
   }
 
-  ngOnInit(): void {
-    this.$receptionReq = this.receptionLocalService
-      .getReceptionReq()
-      .pipe(tap(({ length }) => (this.totalReception = length)));
+  ngOnDestroy() {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
   }
 
-  async modalClose(complete: boolean, uid: string) {
-    await this.receptionService.receptionRef.doc(uid).update({ active: complete });
-    this.snackBar.open('Petición actualizada', 'cerrar', { duration: 3000 });
+  ionViewWillLeave() {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
   }
 }

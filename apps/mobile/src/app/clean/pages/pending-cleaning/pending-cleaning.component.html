@@ -1,0 +1,23 @@
+<ion-header no-border>
+  <div class="header">
+    <div class="ion-text-center header__logo">
+      <contler-logo *ngIf="user" [src]="user.hotel.logo"></contler-logo>
+    </div>
+    <button mat-icon-button class="header__menu" (click)="menu.toggle()">
+      <mat-icon contlerColorHotel="primary">menu</mat-icon>
+    </button>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="cleaning">
+    <contler-reception-item
+      *ngFor="let item of $receptionReq | async"
+      [reception]="item"
+      [isReady]="true"
+      (closeModal)="modalClose($event, item.uid)"
+    ></contler-reception-item>
+  </div>
+
+  <p *ngIf="!totalReception" class="reception__text">No hay solicitudes</p>
+</ion-content>

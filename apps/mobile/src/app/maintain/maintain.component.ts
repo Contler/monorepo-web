@@ -1,43 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { ReceptionModel } from '@contler/models';
 import { EmployerEntity } from '@contler/entity';
-import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { ReceptionLocalService } from '../services/reception/reception-local.service';
-import { take, tap } from 'rxjs/operators';
-import { RoomService } from '@contler/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable, Subscription } from 'rxjs';
+import { GeneralService } from '../services/general.service';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'contler-maintain',
   templateUrl: './maintain.component.html',
   styleUrls: ['./maintain.component.scss'],
 })
-export class MaintainComponent implements OnInit {
+export class MaintainComponent implements OnDestroy {
   $receptionReq: Observable<ReceptionModel[]>;
 
   user: EmployerEntity | null = null;
   totalReception: number;
 
-  constructor(
-    private auth: AuthService,
-    public menu: MenuController,
-    private receptionService: ReceptionLocalService,
-    private roomService: RoomService,
-    private snackBar: MatSnackBar,
-  ) {
-    this.auth.$user.pipe(take(1)).subscribe((user) => (this.user = user));
+  readonly PAGES = {
+    PENDING: '/home/maintain/pending',
+    READY: '/home/maintain/ready',
+  };
+  currentPage: string | undefined;
+  private routerSubscription: Subscription | undefined;
+
+  constructor(public menu: MenuController, public generalService: GeneralService, private router: Router) {}
+
+  ionViewWillEnter() {
+    this.currentPage = this.router.url;
+    this.routerSubscription = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((data) => (this.currentPage = (data as NavigationEnd).url));
   }
 
-  ngOnInit(): void {
-    this.$receptionReq = this.receptionService
-      .getMaintainReq()
-      .pipe(tap(({ length }) => (this.totalReception = length)));
+  ngOnDestroy() {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
   }
 
-  async modalClose(complete: boolean, uid: string) {
-    await this.roomService.maintainRef.doc(uid).update({ active: complete });
-    this.snackBar.open('Petición actualizada', 'cerrar', { duration: 3000 });
+  ionViewWillLeave() {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
   }
 }

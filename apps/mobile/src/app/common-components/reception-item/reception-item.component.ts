@@ -14,6 +14,7 @@ import { ReqModalData, RequestReceptionComponent } from '../request-reception/re
 })
 export class ReceptionItemComponent implements AfterViewInit {
   @Input() reception: ReceptionModel;
+  @Input() isReady: boolean;
   @Output() closeModal = new EventEmitter<boolean>();
 
   $guest: Observable<GuestEntity>;
@@ -25,10 +26,12 @@ export class ReceptionItemComponent implements AfterViewInit {
   }
 
   goToModal() {
-    const { active, comment, createAt, uid, type } = this.reception;
-    this.openModal(active, comment, type, uid, createAt).subscribe(async ({ complete }) => {
-      this.closeModal.emit(complete);
-    });
+    if (this.isReady) {
+      const { active, comment, createAt, uid, type } = this.reception;
+      this.openModal(active, comment, type, uid, createAt).subscribe(async ({ complete }) => {
+        this.closeModal.emit(complete);
+      });
+    }
   }
 
   private openModal(active: boolean, comment: string, typePetition: string, uid: string, createAt: Date) {

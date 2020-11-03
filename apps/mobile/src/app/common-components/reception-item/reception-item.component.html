@@ -4,5 +4,5 @@
     <span class="small">{{ reception.type }}</span>
   </div>
   <div class="small">{{ reception.createAt | date: 'shortTime' }}</div>
-  <mat-icon>keyboard_arrow_right</mat-icon>
+  <mat-icon *ngIf="isReady">keyboard_arrow_right</mat-icon>
 </div>
