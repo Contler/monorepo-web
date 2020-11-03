@@ -37,6 +37,14 @@
       margin: 0;
     }
 
+    &__cancel_color {
+      color: red;
+    }
+
+    &__confirm_color {
+      color: green;
+    }
+
     &-footer {
       display: flex;
       justify-content: space-between;
