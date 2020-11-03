@@ -32,9 +32,9 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>&nbsp;</th>
     <td mat-cell *matCellDef="let element">
-      <!--      <button mat-icon-button (click)="update(element)">-->
-      <!--        <mat-icon class="custom_icon">remove_red_eye</mat-icon>-->
-      <!--      </button>-->
+      <button mat-icon-button (click)="openModal(element)">
+        <mat-icon class="custom_icon">remove_red_eye</mat-icon>
+      </button>
     </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

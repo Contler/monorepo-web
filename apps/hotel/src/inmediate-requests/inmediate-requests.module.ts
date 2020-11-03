@@ -11,9 +11,16 @@ import { EmployerService } from 'hotel/employer/services/employer.service';
 import { RequestComponent } from './components/request/request.component';
 import { ReceptionRequestComponent } from './components/reception-request/reception-request.component';
 import { MatSortModule } from '@angular/material/sort';
+import { ModalReceptionComponent } from './components/modal-reception/modal-reception.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [InmediateRequestsComponent, RequestComponent, ReceptionRequestComponent],
+  declarations: [
+    InmediateRequestsComponent,
+    RequestComponent,
+    ReceptionRequestComponent,
+    ModalReceptionComponent,
+  ],
   entryComponents: [],
   imports: [
     CommonModule,
@@ -24,6 +31,7 @@ import { MatSortModule } from '@angular/material/sort';
     FormsModule,
     RatingModule,
     MatSortModule,
+    MatDialogModule,
   ],
   providers: [EmployerService],
 })

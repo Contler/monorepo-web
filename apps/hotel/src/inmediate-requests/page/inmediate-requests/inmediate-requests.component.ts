@@ -11,7 +11,7 @@ export class InmediateRequestsComponent implements OnInit {
   queryParams = this.activeRoute.snapshot.queryParams;
   filterByStatusSelected: string = REQUEST_STATUS.ACTIVE;
   textFilter: string;
-  activeRequest = 0;
+  activeRequest = 1;
   requestStatus = REQUEST_STATUS;
   typeRequests = TYPE_REQUEST;
 

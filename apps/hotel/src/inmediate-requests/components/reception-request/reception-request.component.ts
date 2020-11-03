@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { ReceptionService, RoomService, UserService } from '@contler/core';
 import { ReceptionModel } from '@contler/models';
-import { map, mergeMap, switchMap, take, toArray } from 'rxjs/operators';
+import { filter, map, mergeMap, switchMap, take, toArray } from 'rxjs/operators';
 import { from, Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { GuestEntity } from '@contler/entity';
@@ -11,8 +11,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { REQUEST_STATUS, TYPE_REQUEST } from '../../const/request.const';
 import { CollectionReference } from '@angular/fire/firestore/interfaces';
 import { MatSort, Sort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalReceptionComponent } from '../modal-reception/modal-reception.component';
+import { MessagesService } from 'hotel/services/messages/messages.service';
 
-interface ReqRecpetionGuest {
+export interface ReqRecpetionGuest {
   request: ReceptionModel;
   guest: GuestEntity;
 }
@@ -49,6 +52,8 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
     private afs: AngularFirestore,
     private auth: UserService,
     private roomService: RoomService,
+    private dialog: MatDialog,
+    private messageService: MessagesService,
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -79,11 +84,37 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
     this.dataSource.paginator = this.paginator as MatPaginator;
     this.dataSource.sort = this.sort;
     this.dataSource.filter = this.filterByStatusSelected;
-    this.dataSource.filterPredicate = (data, filter) => this.getFilterPredicate(data, filter);
+    this.dataSource.filterPredicate = (data, filter2) => this.getFilterPredicate(data, filter2);
   }
 
   ngOnDestroy(): void {
     this.subscribe?.unsubscribe();
+  }
+
+  openModal(request: ReqRecpetionGuest) {
+    this.dialog
+      .open(ModalReceptionComponent, { data: request })
+      .afterClosed()
+      .pipe()
+      .subscribe((d) => {
+        if (d) {
+          const nReq = request.request;
+          switch (this.typeReq) {
+            case TYPE_REQUEST.CLEAN.id:
+              this.roomService.cleanRef.doc(nReq.uid).update({ active: nReq.active });
+              break;
+            case TYPE_REQUEST.MAINTAIN.id:
+              this.roomService.maintainRef.doc(nReq.uid).update({ active: nReq.active });
+              break;
+            default:
+              this.receptionService.receptionRef.doc(nReq.uid).update({ active: nReq.active });
+          }
+          this.messageService.showToastMessage('Solicitud actualizada');
+          this.dataSource.data = [...this.dataSource.data];
+        } else {
+          request.request.active = true;
+        }
+      });
   }
 
   private loadData(req: CollectionReference) {
@@ -115,20 +146,20 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
       });
   }
 
-  private getFilterPredicate(data: ReqRecpetionGuest, filter: string) {
-    if (filter === REQUEST_STATUS.ACTIVE) {
+  private getFilterPredicate(data: ReqRecpetionGuest, filter2: string) {
+    if (filter2 === REQUEST_STATUS.ACTIVE) {
       return data.request.active;
     }
-    if (filter === REQUEST_STATUS.ALL) {
+    if (filter2 === REQUEST_STATUS.ALL) {
       return true;
     }
 
     const showByStatus = this.filterByStatusSelected === REQUEST_STATUS.ACTIVE ? data.request.active : true;
     return (
       showByStatus &&
-      (data.guest.name.toLowerCase().includes(filter) ||
-        data.request.type.toLowerCase().includes(filter) ||
-        data.request.comment.toLowerCase().includes(filter))
+      (data.guest.name.toLowerCase().includes(filter2) ||
+        data.request.type.toLowerCase().includes(filter2) ||
+        data.request.comment.toLowerCase().includes(filter2))
     );
   }
 
