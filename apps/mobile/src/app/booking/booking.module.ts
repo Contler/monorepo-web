@@ -17,8 +17,8 @@ const routes: Routes = [{ path: '', component: BookingComponent }];
   declarations: [BookingComponent, ModalConfirmComponent],
   imports: [
     CommonModule,
-    BookingRoutingModule,
     RouterModule.forChild(routes),
+    BookingRoutingModule,
     MaterialModule,
     FormsModule,
     IonicModule,

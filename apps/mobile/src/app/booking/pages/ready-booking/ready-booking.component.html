@@ -1,0 +1,35 @@
+<ion-header no-border>
+  <div class="header">
+    <div class="ion-text-center header__logo">
+      <contler-logo *ngIf="user" [src]="user.hotel.logo"></contler-logo>
+    </div>
+    <button mat-icon-button class="header__menu" (click)="menu.toggle()">
+      <mat-icon contlerColorHotel>menu</mat-icon>
+    </button>
+  </div>
+  <mat-form-field class="booking__search">
+    <input matInput [(ngModel)]="search" placeholder="Buscar" />
+    <mat-icon matSuffix contlerColorHotel>search</mat-icon>
+  </mat-form-field>
+</ion-header>
+<ion-content padding>
+  <div *ngIf="booking && booking.length === 0" class="center">No hay reservas</div>
+
+  <mat-card *ngFor="let item of booking | bookingList: search" class="booking__table">
+    <div class="booking__table-content">
+      <div>
+        <p class="booking__table-title">{{ item.schedule.reservation.name }}</p>
+        <p *ngIf="item.guest" class="booking__table-text">
+          Huésped: {{ item.guest?.name + ' ' + item.guest?.lastName }}
+        </p>
+        <p class="booking__table-text">
+          {{ item.schedule.timeInit | date: 'shortTime' }} - {{ item.quote }} personas
+        </p>
+        <p class="booking__table-text" *ngIf="item.active && item.complete">Cancelada</p>
+        <p class="booking__table-text" *ngIf="!item.active && item.complete">Confirmada</p>
+      </div>
+      <p class="booking__table-text">{{ item.date | date: 'dd/MM/yyyy' }}</p>
+      <p *ngIf="item.guest?.room" class="booking__table-text">{{ item.guest?.room.name }}</p>
+    </div>
+  </mat-card>
+</ion-content>
