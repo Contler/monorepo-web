@@ -6,15 +6,13 @@ import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'guest/services/zone.service';
 import { map, switchMap, take } from 'rxjs/operators';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { SUB_CATEGORY } from '@contler/const';
 import { NotificationsService } from 'guest/services/notifications.service';
-import { UsersService } from 'guest/services/users.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
 import { RequestRequest } from '@contler/models/request-request';
 import { RequestService } from 'guest/services/request.service';
-import { ROOM_SERVICE, SUB_CATEGORY_DRINKS } from './const/zone-const';
+import { ROOM_SERVICE, SUB_CATEGORY_DRINKS, CATEGORY_ZONE_EN } from './const/zone-const';
 
 @Component({
   selector: 'contler-zone-request',
@@ -28,6 +26,7 @@ export class ZoneRequestComponent implements OnDestroy {
   requestController = new FormControl('', Validators.required);
   loader = false;
   zone: ZoneEntity | undefined;
+  categoryZones = CATEGORY_ZONE_EN;
   categories = SUB_CATEGORY;
   private zoneUid: string | null;
   private guestSubscribe: Subscription;
@@ -43,11 +42,9 @@ export class ZoneRequestComponent implements OnDestroy {
     private guestService: GuestService,
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private afDb: AngularFireDatabase,
     private zoneService: ZoneService,
     private requestService: RequestService,
     private notificationsService: NotificationsService,
-    private usersService: UsersService,
     private messagesService: MessagesService,
     private router: Router,
   ) {
@@ -56,7 +53,10 @@ export class ZoneRequestComponent implements OnDestroy {
     this.zoneSubscribe = this.zoneService.$zones
       .pipe(map((zones) => zones.find((zone) => zone.uid === this.zoneUid)))
       .subscribe((zone) => {
-        this.zone = zone;
+        if (zone) {
+          this.zone = zone;
+          this.zone.category = this.categoryZones[this.zone.category.id];
+        }
       });
   }
 
