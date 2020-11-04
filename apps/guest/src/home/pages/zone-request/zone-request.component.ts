@@ -55,7 +55,7 @@ export class ZoneRequestComponent implements OnDestroy {
       .subscribe((zone) => {
         if (zone) {
           this.zone = zone;
-          this.zone.category.name = this.categoryZones.find((cz) => cz.id === this.zone.category.id).name;
+          this.zone.category = this.categoryZones[this.zone.category.id];
         }
       });
   }
