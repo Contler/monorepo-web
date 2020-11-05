@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 import { MaterialModule } from '../material/material.module';
 import { CommonComponentsModule } from '../common-components/common-components.module';
+import { PrincipalComponent } from './principal/principal.component';
+import { ItemHomeComponent } from './components/item-home/item-home.component';
 
 @NgModule({
   imports: [
@@ -19,7 +21,11 @@ import { CommonComponentsModule } from '../common-components/common-components.m
         path: '',
         component: HomePage,
         children: [
-          { path: '', redirectTo: 'inmediate-requests', pathMatch: 'full' },
+          { path: '', redirectTo: 'principal', pathMatch: 'full' },
+          {
+            path: 'principal',
+            component: PrincipalComponent,
+          },
           {
             path: 'inmediate-requests',
             loadChildren: () =>
@@ -67,6 +73,6 @@ import { CommonComponentsModule } from '../common-components/common-components.m
     ]),
     CommonComponentsModule,
   ],
-  declarations: [HomePage],
+  declarations: [HomePage, PrincipalComponent, ItemHomeComponent],
 })
 export class HomePageModule {}

@@ -1,0 +1,16 @@
+<ion-header no-border>
+  <div class="header">
+    <div class="ion-text-center header__logo">
+      <contler-logo *ngIf="user" [src]="user.hotel.logo"></contler-logo>
+    </div>
+    <button mat-icon-button class="header__menu" (click)="menu.toggle()">
+      <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
+    </button>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let item of listServices" class="content">
+    <contler-item-home [type]="item"></contler-item-home>
+  </div>
+</ion-content>

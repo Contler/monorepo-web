@@ -13,9 +13,14 @@ import { EmployerEntity } from '@contler/entity';
 })
 export class HomePage implements OnInit {
   user: EmployerEntity | null = null;
-  private showReception = false;
 
   public readonly menuItems: MenuItem[] = [
+    {
+      icon: 'home',
+      name: 'Inicio',
+      route: '/home',
+      show: true,
+    },
     {
       icon: 'error',
       name: 'Solicitudes inmediatas',
@@ -92,12 +97,12 @@ export class HomePage implements OnInit {
       const chiefZones: string[] = [];
       this.user!.leaderZones.forEach((zone) => chiefZones.push(zone.name));
       this.chiefZonesLabel = chiefZones.join('-');
-      this.menuItems[1].show = this.user!.wakeZone;
-      this.menuItems[4].show = this.user!.deliveryZone;
-      this.menuItems[5].show = this.user.receptionZone;
-      this.menuItems[7].show = this.user.lateZone;
-      this.menuItems[8].show = this.user.cleanZone;
-      this.menuItems[9].show = this.user.maintainZone;
+      this.menuItems[2].show = this.user!.wakeZone;
+      this.menuItems[5].show = this.user!.deliveryZone;
+      this.menuItems[6].show = this.user.receptionZone;
+      this.menuItems[8].show = this.user.lateZone;
+      this.menuItems[9].show = this.user.cleanZone;
+      this.menuItems[10].show = this.user.maintainZone;
     });
   }
 

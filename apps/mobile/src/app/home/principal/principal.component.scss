@@ -1,0 +1,9 @@
+.content {
+  &:first-child {
+    margin-top: 80px;
+  }
+
+  &:nth-child(2n) {
+    background: #f6f6f6;
+  }
+}

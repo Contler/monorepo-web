@@ -1,0 +1,9 @@
+<button class="item" [routerLink]="type?.route">
+  <span>
+    <span class="item__count" *ngIf="$count | async; let cc">{{ cc }}</span>
+  </span>
+
+  <mat-icon class="item__icon">{{ type?.icon }}</mat-icon>
+  <span class="item__text">{{ type?.name }}</span>
+  <mat-icon class="item__arrow">keyboard_arrow_right</mat-icon>
+</button>
