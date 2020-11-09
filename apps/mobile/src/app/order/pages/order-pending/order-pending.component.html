@@ -10,7 +10,9 @@
 </ion-header>
 
 <ion-content padding="16px">
-  <h1 class="order__title" [style.color]="generalService.hotelColor">Pedidos</h1>
+  <h1 class="order__title" [style.color]="generalService.hotelColor">Pedidos pendientes</h1>
+
+  <div *ngIf="orders && orders.length === 0" class="center">No hay pedidos</div>
 
   <contler-item
     *ngFor="let item of orders"

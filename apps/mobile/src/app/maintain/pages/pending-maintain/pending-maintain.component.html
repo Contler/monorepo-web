@@ -11,6 +11,10 @@
 
 <ion-content>
   <div class="maintain">
+    <div class="maintain__title center" contlerColorHotel>Solicitudes de mantenimiento pendientes</div>
+
+    <div *ngIf="this.totalReception === 0" class="center">No hay solicitudes</div>
+
     <contler-reception-item
       *ngFor="let item of $receptionReq | async"
       [reception]="item"

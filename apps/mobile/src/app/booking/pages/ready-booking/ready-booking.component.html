@@ -13,6 +13,8 @@
   </mat-form-field>
 </ion-header>
 <ion-content padding>
+  <div class="booking__title center" contlerColorHotel>Solicitudes de reservas resultas</div>
+
   <div *ngIf="booking && booking.length === 0" class="center">No hay reservas</div>
 
   <mat-card *ngFor="let item of booking | bookingList: search" class="booking__table">
