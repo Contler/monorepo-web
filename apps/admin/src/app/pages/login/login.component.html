@@ -1,0 +1,29 @@
+<div class="login">
+  <img src="assets/img/logo.svg" alt="" />
+  <form class="login__form" [formGroup]="loginForm" (ngSubmit)="login()">
+    <mat-form-field appearance="fill">
+      <input matInput placeholder="user@company.com" formControlName="email" aria-label="email" />
+      <mat-icon matSuffix>account_circle</mat-icon>
+      <mat-hint>Usuario</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <input matInput placeholder="123456" type="password" formControlName="pass" aria-label="password" />
+      <mat-icon matSuffix>check_circle</mat-icon>
+      <mat-hint>Contrseña</mat-hint>
+    </mat-form-field>
+
+    <a class="login__form__link">Olvidaste tu contraseña?</a>
+    <span class="login__error">{{ error }}</span>
+    <button
+      mat-raised-button
+      color="accent"
+      class="button"
+      [disabled]="loginForm.invalid"
+      contlerButton
+      [loading]="load"
+    >
+      Ingresar
+    </button>
+  </form>
+</div>
