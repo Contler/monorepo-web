@@ -63,7 +63,7 @@ export class ProductComponent implements OnInit {
   }
 
   getProductsByCategory(products: ProductEntity[], category: string) {
-    return products.filter((pro) => pro.category === category);
+    return products.filter((pro) => pro.category === category && pro.state);
   }
 
   private loadCategories(restaurants: RestaurantEntity[]) {

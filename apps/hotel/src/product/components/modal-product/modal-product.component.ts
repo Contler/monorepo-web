@@ -76,6 +76,7 @@ export class ModalProductComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.auth.$employer
       .pipe(
+        take(1),
         switchMap((user) =>
           this.productService.createProduct({
             hotelId: user.hotel.uid,
