@@ -20,6 +20,12 @@ export class HotelEntity {
 
   logo!: string;
 
+  city: string;
+
+  country: string;
+
+  state: boolean;
+
   employees!: EmployerEntity[];
 
   zones!: ZoneEntity[];

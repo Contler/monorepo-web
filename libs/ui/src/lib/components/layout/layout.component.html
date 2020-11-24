@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="layout__toolbar">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <ng-content select="[layoutToolbar]"></ng-content>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav>
+    <ng-content select="[layoutMenu]"></ng-content>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="layout__marco">
+      <div class="layout__menu">
+        <h1 class="layout__title">{{ title }}</h1>
+        <ng-content select="[layoutHeader]"></ng-content>
+      </div>
+
+      <mat-card>
+        <ng-content select="[layoutBody]"></ng-content>
+      </mat-card>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

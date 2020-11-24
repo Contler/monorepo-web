@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HotelService } from '@contler/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { HotelEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-home',
@@ -6,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(private hotelService: HotelService) {}
 
-  ngOnInit(): void {}
+  displayColumns = ['name', 'city', 'country', 'state', 'guests', 'options'];
+  dataSource = new MatTableDataSource<HotelEntity>();
+
+  ngOnInit(): void {
+    this.hotelService.getAllHotels().subscribe((data) => (this.dataSource.data = data));
+  }
 }
