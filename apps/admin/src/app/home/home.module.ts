@@ -8,10 +8,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { CoreModule } from '@contler/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HotelComponent } from './pages/hotel/hotel.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { NgxMatColorPickerModule } from '@angular-material-components/color-picker';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,6 +33,8 @@ const routes: Routes = [
     FormsModule,
     MaterialFileInputModule,
     NgxMatColorPickerModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
   ],
 })
 export class HomeModule {}

@@ -12,4 +12,12 @@
       grid-column: span 2;
     }
   }
+
+  &__img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 1px solid;
+    margin-top: 20px;
+  }
 }
