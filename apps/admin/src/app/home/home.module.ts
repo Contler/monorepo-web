@@ -9,11 +9,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { CoreModule } from '@contler/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
+import { HotelComponent } from './pages/hotel/hotel.component';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { NgxMatColorPickerModule } from '@angular-material-components/color-picker';
 
-const routes: Routes = [{ path: '', component: HomeComponent }];
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'hotel', component: HotelComponent },
+];
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, HotelComponent],
   imports: [
     CommonModule,
     UiModule,
@@ -24,6 +30,8 @@ const routes: Routes = [{ path: '', component: HomeComponent }];
     MatButtonModule,
     MatSlideToggleModule,
     FormsModule,
+    MaterialFileInputModule,
+    NgxMatColorPickerModule,
   ],
 })
 export class HomeModule {}

@@ -13,6 +13,11 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CoreModule } from '@contler/core';
+import {
+  MAT_COLOR_FORMATS,
+  NGX_MAT_COLOR_FORMATS,
+  NgxMatColorPickerModule,
+} from '@angular-material-components/color-picker';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -33,8 +38,9 @@ import { CoreModule } from '@contler/core';
     AngularFireModule.initializeApp(environment.fire),
     AngularFireAuthModule,
     CoreModule.forRoot({ urlBackend: environment.apiUrl }),
+    NgxMatColorPickerModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

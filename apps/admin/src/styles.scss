@@ -39,3 +39,9 @@ body {
 .cnt-loading {
   @include loading(15px, 15px, 2px, #000);
 }
+
+.full-field {
+  .mat-form-field-infix {
+    width: 100%;
+  }
+}
