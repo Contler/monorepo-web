@@ -1,19 +1,17 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Hotel } from '@contler/models';
-import { map, switchMap, take } from 'rxjs/operators';
-import { plainToClass } from 'class-transformer';
-import { UserService } from 'lib/lib/services/user.service';
+import { Injectable, Optional } from '@angular/core';
+import { CoreConfig } from '@contler/models';
+import { HttpClient } from '@angular/common/http';
+import { HotelEntity } from '@contler/entity';
 
 @Injectable()
 export class HotelService {
-  constructor(private afStore: AngularFirestore, private userService: UserService) {}
+  private readonly url: string;
 
-  getHotel() {
-    return this.userService.getUser().pipe(
-      take(1),
-      switchMap(user => this.afStore.doc<Hotel>(`${Hotel.REF}/${user.hotel.uid}`).valueChanges()),
-      map(data => plainToClass(Hotel, data)),
-    );
+  constructor(@Optional() private config: CoreConfig, private http: HttpClient) {
+    this.url = this.config.urlBackend;
+  }
+
+  getAllHotels() {
+    return this.http.get<HotelEntity[]>(this.url + 'hotel');
   }
 }

@@ -1,0 +1,113 @@
+<contler-layout title="Hotel">
+  <contler-toolbar layoutToolbar></contler-toolbar>
+  <ng-container layoutHeader>
+    <button mat-raised-button color="accent" [disabled]="hotelForm.invalid" (click)="save()">
+      CREAR HOTEL
+    </button>
+  </ng-container>
+
+  <ng-container layoutBody>
+    <div class="hotel">
+      <div>
+        <form [formGroup]="hotelForm" class="hotel__form">
+          <mat-form-field appearance="fill" class="full">
+            <input type="text" aria-label="name" matInput formControlName="name" />
+            <mat-hint>Nombre del hotel</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full">
+            <input type="text" aria-label="country" matInput formControlName="country" />
+            <mat-hint>País</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-field">
+            <input
+              type="text"
+              [ngxMatColorPicker]="picker"
+              aria-label="color first"
+              matInput
+              (click)="picker.open()"
+              readonly
+              formControlName="colorPrimary"
+            />
+            <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
+            <ngx-mat-color-picker #picker></ngx-mat-color-picker>
+            <mat-hint>Color primario</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-field">
+            <input
+              type="text"
+              [ngxMatColorPicker]="picker2"
+              aria-label="color second"
+              matInput
+              (click)="picker2.open()"
+              readonly
+              formControlName="colorSecondary"
+            />
+            <ngx-mat-color-toggle matSuffix [for]="picker2"></ngx-mat-color-toggle>
+            <ngx-mat-color-picker #picker2></ngx-mat-color-picker>
+            <mat-hint>Color secundario</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full">
+            <input type="text" aria-label="city" matInput formControlName="city" />
+            <mat-hint>Ciudad</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-field">
+            <input
+              type="text"
+              [ngxMatColorPicker]="picker3"
+              aria-label="text first"
+              matInput
+              (click)="picker3.open()"
+              readonly
+              formControlName="textPrimary"
+            />
+            <ngx-mat-color-toggle matSuffix [for]="picker3"></ngx-mat-color-toggle>
+            <ngx-mat-color-picker #picker3></ngx-mat-color-picker>
+            <mat-hint>Texto primario</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-field">
+            <input
+              type="text"
+              [ngxMatColorPicker]="picker4"
+              aria-label="text second"
+              matInput
+              (click)="picker4.open()"
+              readonly
+              formControlName="textSecondary"
+            />
+            <ngx-mat-color-toggle matSuffix [for]="picker4"></ngx-mat-color-toggle>
+            <ngx-mat-color-picker #picker4></ngx-mat-color-picker>
+            <mat-hint>Texto secundario</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full">
+            <ngx-mat-file-input
+              accept="image/*"
+              formControlName="file"
+              (change)="loadImage($event)"
+            ></ngx-mat-file-input>
+            <mat-hint>Adjuntar logo (PNG 200 x 200 px)</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-field">
+            <input type="email" aria-label="name" matInput formControlName="email" />
+            <mat-hint>Email del administrador</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-field">
+            <input type="text" aria-label="name" matInput formControlName="password" />
+            <mat-hint>Contraseña del administrador</mat-hint>
+          </mat-form-field>
+        </form>
+        <img *ngIf="imageSrc" class="hotel__img" [src]="imageSrc" alt="" />
+      </div>
+
+      <div></div>
+    </div>
+  </ng-container>
+</contler-layout>

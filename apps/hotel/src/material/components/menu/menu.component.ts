@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HotelService } from '@contler/core';
-import { Observable } from 'rxjs';
-import { Hotel } from '@contler/models';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { ItemMenu } from '../interfaces/item-menu.interface';
@@ -12,7 +9,6 @@ import { ItemMenu } from '../interfaces/item-menu.interface';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  $hotel: Observable<Hotel>;
   sections: ItemMenu[] = [
     {
       name: 'Huespedes',
@@ -143,9 +139,7 @@ export class MenuComponent implements OnInit {
     },
   ];
 
-  constructor(private hotelService: HotelService, private afAuth: AngularFireAuth, private router: Router) {
-    this.$hotel = this.hotelService.getHotel();
-  }
+  constructor(private afAuth: AngularFireAuth, private router: Router) {}
 
   ngOnInit() {}
 

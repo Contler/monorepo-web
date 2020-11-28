@@ -14,6 +14,7 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
       "@contler/const": ["libs/const/index.ts"],
@@ -23,11 +24,11 @@
       "@contler/entity": ["libs/entity/index.ts"],
       "@contler/entity/*": ["libs/entity/*"],
       "@contler/core": ["libs/core/src/index.ts"],
+      "@contler/ui": ["libs/ui/src/index.ts"],
       "api/*": ["apps/api/src/*"],
       "hotel/*": ["apps/hotel/src/*"],
       "guest/*": ["apps/guest/src/*"],
-      "lib/*": ["libs/core/src/*"],
-      "@contler/ui": ["libs/ui/src/index.ts"]
+      "lib/*": ["libs/core/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -30,6 +30,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { RestaurantService } from 'lib/lib/services/restaurant/restaurant.service';
 import { ReceptionService } from 'lib/lib/services/reception/reception.service';
 import { RoomService } from './services/room-service/room.service';
+import { HotelService } from './services/hotel.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const materialModules = [
   MatFormFieldModule,
@@ -51,7 +53,14 @@ const materialModules = [
 ];
 
 @NgModule({
-  imports: [CommonModule, MatCheckboxModule, ...materialModules, FormsModule, AngularFireDatabaseModule],
+  imports: [
+    CommonModule,
+    MatCheckboxModule,
+    ...materialModules,
+    FormsModule,
+    AngularFireDatabaseModule,
+    HttpClientModule,
+  ],
   declarations: [
     ButtonDirective,
     ZoneListComponent,
@@ -76,6 +85,7 @@ const materialModules = [
     RestaurantService,
     ReceptionService,
     RoomService,
+    HotelService,
   ],
 })
 export class CoreModule {
