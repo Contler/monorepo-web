@@ -32,6 +32,7 @@ import { ReceptionService } from 'lib/lib/services/reception/reception.service';
 import { RoomService } from './services/room-service/room.service';
 import { HotelService } from './services/hotel.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SpecialZoneService } from "./services/special-zone/special-zone.service";
 
 const materialModules = [
   MatFormFieldModule,
@@ -86,6 +87,7 @@ const materialModules = [
     ReceptionService,
     RoomService,
     HotelService,
+    SpecialZoneService
   ],
 })
 export class CoreModule {

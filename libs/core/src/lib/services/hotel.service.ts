@@ -1,7 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
 import { CoreConfig } from '@contler/models';
 import { HttpClient } from '@angular/common/http';
-import { HotelEntity } from '@contler/entity';
+import { EmployerEntity, HotelEntity } from "@contler/entity";
 
 @Injectable()
 export class HotelService {
@@ -20,7 +20,7 @@ export class HotelService {
   }
 
   createHotel(req: any) {
-    return this.http.post(`${this.url}employer/admin`, req);
+    return this.http.post<EmployerEntity>(`${this.url}employer/admin`, req);
   }
 
   updateHotel(hotel: HotelEntity) {

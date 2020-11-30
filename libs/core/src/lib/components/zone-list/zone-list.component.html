@@ -1,56 +1,18 @@
 <div class="contler-zone">
-  <mat-checkbox
-    [(ngModel)]="cleanZone"
-    color="primary"
-    class="contler-zone__check"
-    (ngModelChange)="cleanZoneChange.emit($event)"
-  >
-    Limpieza
-  </mat-checkbox>
 
-  <mat-checkbox
-    [(ngModel)]="maintainZone"
-    color="primary"
-    class="contler-zone__check"
-    (ngModelChange)="maintainZoneChange.emit($event)"
-  >
-    Mantenimiento
-  </mat-checkbox>
+  <ng-container *ngFor="let specialZone of specialZones">
+    <mat-checkbox
+      [(ngModel)]="specialZone.status"
+      color="primary"
+      class="contler-zone__check"
+      (ngModelChange)="specialZonesChange.emit(specialZones)"
+    >
+      {{specialZone.zone.text}}
+    </mat-checkbox>
+  </ng-container>
 
-  <mat-checkbox
-    *ngIf="receptionZone !== null"
-    [(ngModel)]="receptionZone"
-    color="primary"
-    class="contler-zone__check"
-    (ngModelChange)="receptionZoneChange.emit($event)"
-  >
-    Reception
-  </mat-checkbox>
 
-  <mat-checkbox
-    *ngIf="wakeZone !== null"
-    [(ngModel)]="wakeZone"
-    color="primary"
-    class="contler-zone__check"
-    (ngModelChange)="wakeZoneChange.emit($event)"
-    >Wakeup calls</mat-checkbox
-  >
-  <mat-checkbox
-    *ngIf="lateZone !== null"
-    [(ngModel)]="lateZone"
-    (ngModelChange)="lateZoneChange.emit($event)"
-    color="primary"
-    class="contler-zone__check"
-    >Late checkouts</mat-checkbox
-  >
-  <mat-checkbox
-    *ngIf="deliveryZone !== null"
-    [(ngModel)]="deliveryZone"
-    (ngModelChange)="deliveryZoneChange.emit($event)"
-    color="primary"
-    class="contler-zone__check"
-    >Pedidos</mat-checkbox
-  >
+
   <ng-container *ngFor="let zone of $zones | async">
     <mat-checkbox
       (change)="select($event, zone)"

@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FileInput } from 'ngx-material-file-input';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { filter, finalize, map, switchMap } from 'rxjs/operators';
+import { filter, finalize, map, switchMap, tap } from 'rxjs/operators';
 import firebase from 'firebase/app';
 import 'firebase/storage';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import TaskState = firebase.storage.TaskState;
 import { Color, ColorAdapter } from '@angular-material-components/color-picker';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HotelService } from '@contler/core';
-import { HotelEntity } from '@contler/entity';
+import { HotelService, SpecialZoneService } from '@contler/core';
+import { EmployerEntity, HotelEntity, SpecialZoneHotelEntity } from '@contler/entity';
+import TaskState = firebase.storage.TaskState;
+import { concat } from 'rxjs';
 
 @Component({
   selector: 'contler-hotel',
@@ -25,6 +26,7 @@ export class HotelComponent implements OnInit {
   edit = false;
 
   private hotel: HotelEntity;
+  specialZones: SpecialZoneHotelEntity[] = [];
 
   constructor(
     route: ActivatedRoute,
@@ -33,6 +35,7 @@ export class HotelComponent implements OnInit {
     private snackBar: MatSnackBar,
     private hotelService: HotelService,
     private router: Router,
+    private specialZoneService: SpecialZoneService,
   ) {
     this.hotelForm = formBuild.group({
       name: ['', Validators.required],
@@ -47,13 +50,15 @@ export class HotelComponent implements OnInit {
       password: ['', Validators.required],
     });
 
-    route.params
-      .pipe(
-        filter((param) => !!param['id']),
+    concat(
+      this.loadDefaultSpecialZone(),
+      route.params.pipe(
+        filter((p) => !!p['id']),
         map((p) => p['id']),
         switchMap((id) => this.hotelService.getHotel(id)),
-      )
-      .subscribe((hotel) => this.loadHotelData(hotel));
+        tap((hotel) => this.loadHotelData(hotel)),
+      ),
+    ).subscribe();
   }
 
   ngOnInit(): void {}
@@ -77,6 +82,7 @@ export class HotelComponent implements OnInit {
             colorTextSecond: `#${(textSecondary as Color).hex}`,
             city: this.hotelForm.value.city,
             country: this.hotelForm.value.country,
+            special: this.specialZones,
           };
         }),
         switchMap((req) => this.hotelService.createHotel(req)),
@@ -98,6 +104,7 @@ export class HotelComponent implements OnInit {
     this.hotel.colorSecond = `#${(colorSecondary as Color).hex}`;
     this.hotel.colorText = `#${(textPrimary as Color).hex}`;
     this.hotel.colorTextSecond = `#${(textSecondary as Color).hex}`;
+    this.hotel.specialZones = this.specialZones;
     if (file) {
       const nFile = (file as FileInput).files[0];
       this.loadFile(nFile, this.hotel.name)
@@ -152,6 +159,7 @@ export class HotelComponent implements OnInit {
 
   private loadHotelData(hotel: HotelEntity) {
     this.hotel = hotel;
+    this.specialZones = hotel.specialZones.length > 0 ? hotel.specialZones : this.specialZones;
     this.edit = true;
     this.hotelForm.removeControl('email');
     this.hotelForm.removeControl('password');
@@ -167,5 +175,12 @@ export class HotelComponent implements OnInit {
       file: '',
     });
     this.imageSrc = hotel.logo;
+  }
+
+  private loadDefaultSpecialZone() {
+    return this.specialZoneService.getSpecialZone().pipe(
+      map((spz) => spz.map((sp) => ({ zone: sp, status: false } as SpecialZoneHotelEntity))),
+      tap((data) => (this.specialZones = data)),
+    );
   }
 }

@@ -11,5 +11,8 @@ export * from './booking.entity';
 export * from './product.entity';
 export * from './order.entity';
 export * from './product-order.entity';
+export * from './SpecialZone.entity';
+export * from './SpecialZoneHotel.entity';
+
 
 

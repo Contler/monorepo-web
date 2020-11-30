@@ -7,7 +7,9 @@ import { ZoneService } from 'hotel/zone/services/zone.service';
 import { Observable } from 'rxjs';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { EmployerEntity, ZoneEntity } from '@contler/entity';
-import { map, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap, take } from 'rxjs/operators';
+import { SpecialZonesModel } from '@contler/models';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'contler-modal-edit-employer',
@@ -20,6 +22,34 @@ export class ModalEditEmployerComponent implements OnInit {
   formEmployer: FormGroup;
   leaderZone: { [key: string]: boolean } = {};
   $zone: Observable<ZoneEntity[]>;
+
+  specialZones: SpecialZonesModel = {
+    wakeZone: {
+      name: 'Wakeup calls',
+      value: false,
+    },
+    lateZone: {
+      name: 'Late checkouts',
+      value: false,
+    },
+    receptionZone: {
+      value: false,
+      name: 'Reception',
+    },
+    deliveryZone: {
+      name: 'Pedidos',
+      value: false,
+    },
+    cleanZone: {
+      name: 'Limpieza',
+      value: false,
+    },
+    maintainZone: {
+      name: 'Mantenimiento',
+      value: false,
+    },
+  };
+
   constructor(
     public dialogRef: MatDialogRef<ModalEditEmployerComponent>,
     formBuild: FormBuilder,
@@ -27,6 +57,7 @@ export class ModalEditEmployerComponent implements OnInit {
     private employerService: EmployerService,
     private zoneService: ZoneService,
     private messagesService: MessagesService,
+    private afDb: AngularFireDatabase,
   ) {
     this.formEmployer = formBuild.group({
       name: [employer.name, Validators.required],
@@ -39,6 +70,14 @@ export class ModalEditEmployerComponent implements OnInit {
     });
     this.$zone = this.zoneService.getZones();
     employer.leaderZones.forEach((zone) => (this.leaderZone[zone.uid] = true));
+    this.afDb
+      .object<SpecialZonesModel>(`employerZoneSpecial/${employer.uid}`)
+      .valueChanges()
+      .pipe(
+        take(1),
+        filter((data) => !!data),
+      )
+      .subscribe((data) => (this.specialZones = data));
   }
 
   saveUser() {
@@ -66,6 +105,9 @@ export class ModalEditEmployerComponent implements OnInit {
       )
       .subscribe(
         () => {
+          this.afDb
+            .object<SpecialZonesModel>(`employerZoneSpecial/${this.employer.uid}`)
+            .set(this.specialZones);
           this.loading = false;
           this.dialogRef.close();
           this.messagesService.showToastMessage('Empleado actualizado exitosamente');

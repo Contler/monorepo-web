@@ -30,12 +30,7 @@
       <p class="content__zone-text">Zona donde es líder:</p>
       <contler-zone-list
         [$zones]="$zone"
-        [(wakeZone)]="employer.wakeZone"
-        [(lateZone)]="employer.lateZone"
-        [(deliveryZone)]="employer.deliveryZone"
-        [(receptionZone)]="employer.receptionZone"
-        [(cleanZone)]="employer.cleanZone"
-        [(maintainZone)]="employer.maintainZone"
+        [(specialZones)]="specialZones"
         [zonesSelected]="leaderZone"
         (selected)="leaderZone = $event"
       ></contler-zone-list>

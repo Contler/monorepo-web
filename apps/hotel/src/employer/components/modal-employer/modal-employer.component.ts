@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CreateEmployer } from 'hotel/employer/models/create-employer';
 import { UserService } from '@contler/core';
-import { EmployerRequest } from '@contler/models';
+import { EmployerRequest, SpecialZonesModel } from '@contler/models';
 import { CHIEF, EMPLOYER } from '@contler/const';
 import { map, switchMap, take } from 'rxjs/operators';
 import { EmployerService } from 'hotel/employer/services/employer.service';
@@ -11,7 +11,7 @@ import { ZoneService } from 'hotel/zone/services/zone.service';
 import { Observable } from 'rxjs';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { EmployerEntity, ZoneEntity } from '@contler/entity';
-import { SpecialZonesModel } from 'hotel/core/models/special-zones.model';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'contler-modal-employer',
@@ -25,12 +25,30 @@ export class ModalEmployerComponent {
   leaderZone: { [key: string]: boolean } = {};
   $zone: Observable<ZoneEntity[]>;
   specialZones: SpecialZonesModel = {
-    wakeZone: false,
-    lateZone: false,
-    receptionZone: false,
-    deliveryZone: false,
-    cleanZone: false,
-    maintainZone: false,
+    wakeZone: {
+      name: 'Wakeup calls',
+      value: false,
+    },
+    lateZone: {
+      name: 'Late checkouts',
+      value: false,
+    },
+    receptionZone: {
+      value: false,
+      name: 'Reception',
+    },
+    deliveryZone: {
+      name: 'Pedidos',
+      value: false,
+    },
+    cleanZone: {
+      name: 'Limpieza',
+      value: false,
+    },
+    maintainZone: {
+      name: 'Mantenimiento',
+      value: false,
+    },
   };
 
   constructor(
@@ -39,6 +57,7 @@ export class ModalEmployerComponent {
     private employerService: EmployerService,
     private zoneService: ZoneService,
     private messagesService: MessagesService,
+    private afDb: AngularFireDatabase,
     formBuild: FormBuilder,
   ) {
     this.formEmployer = formBuild.group({
@@ -66,12 +85,12 @@ export class ModalEmployerComponent {
           password: employerData.pass,
           email: employerData.email,
           leaderZone: this.leaderZone,
-          spacialZone: this.specialZones as any,
         })),
         switchMap((employerRequest) => this.employerService.saveEmployer(employerRequest)),
       )
       .subscribe(
         (employer) => {
+          this.afDb.object(`employerZoneSpecial/${employer.uid}`).set(this.specialZones);
           this.loading = false;
           this.dialogRef.close(employer);
           this.messagesService.showToastMessage('Empleado creado exitosamente');

@@ -31,12 +31,7 @@
       <contler-zone-list
         [$zones]="$zone"
         (selected)="leaderZone = $event"
-        [(receptionZone)]="specialZones.receptionZone"
-        [(deliveryZone)]="specialZones.deliveryZone"
-        [(lateZone)]="specialZones.lateZone"
-        [(wakeZone)]="specialZones.wakeZone"
-        [(cleanZone)]="specialZones.cleanZone"
-        [(maintainZone)]="specialZones.maintainZone"
+        [(specialZones)]="specialZones"
       ></contler-zone-list>
     </div>
 

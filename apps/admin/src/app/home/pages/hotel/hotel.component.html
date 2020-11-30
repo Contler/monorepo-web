@@ -137,7 +137,11 @@
         <img *ngIf="imageSrc" class="hotel__img" [src]="imageSrc" alt="" />
       </div>
 
-      <div></div>
+      <div>
+        <contler-zone-list
+          [(specialZones)]="specialZones"
+        ></contler-zone-list>
+      </div>
     </div>
   </ng-container>
 </contler-layout>
