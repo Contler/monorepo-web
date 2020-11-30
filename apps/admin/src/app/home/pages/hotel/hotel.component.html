@@ -1,8 +1,29 @@
 <contler-layout title="Hotel">
   <contler-toolbar layoutToolbar></contler-toolbar>
   <ng-container layoutHeader>
-    <button mat-raised-button color="accent" [disabled]="hotelForm.invalid" (click)="save()">
+    <button
+      *ngIf="!edit"
+      mat-raised-button
+      color="accent"
+      contlerButton
+      [loading]="load"
+      [disabled]="hotelForm.invalid || load"
+      (click)="save()"
+    >
       CREAR HOTEL
+    </button>
+
+    <button *ngIf="edit" mat-raised-button (click)="save()">ELIMINAR HOTEL</button>
+    <button
+      *ngIf="edit"
+      mat-raised-button
+      color="accent"
+      contlerButton
+      [loading]="load"
+      [disabled]="hotelForm.invalid || load"
+      (click)="updateHotel()"
+    >
+      ACTUALIZAR
     </button>
   </ng-container>
 
@@ -94,12 +115,12 @@
             <mat-hint>Adjuntar logo (PNG 200 x 200 px)</mat-hint>
           </mat-form-field>
 
-          <mat-form-field appearance="fill" class="full-field">
+          <mat-form-field appearance="fill" class="full-field" *ngIf="!edit">
             <input type="email" aria-label="name" matInput formControlName="email" />
             <mat-hint>Email del administrador</mat-hint>
           </mat-form-field>
 
-          <mat-form-field appearance="fill" class="full-field">
+          <mat-form-field appearance="fill" class="full-field" *ngIf="!edit">
             <input type="text" aria-label="name" matInput formControlName="password" />
             <mat-hint>Contraseña del administrador</mat-hint>
           </mat-form-field>

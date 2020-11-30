@@ -18,6 +18,10 @@ export class HotelEntity {
 
   colorSecond!: string;
 
+  colorText!: string;
+
+  colorTextSecond!: string;
+
   logo!: string;
 
   city: string;
@@ -29,8 +33,6 @@ export class HotelEntity {
   employees!: EmployerEntity[];
 
   zones!: ZoneEntity[];
-
-  colorText!: string;
 
   zonesReservation!: ZoneReserveEntity[];
 

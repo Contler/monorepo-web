@@ -25,6 +25,7 @@ import {
   redirectLoggedInTo,
   redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
+import { HttpClientModule } from '@angular/common/http';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const isLogin = () => redirectLoggedInTo(['home']);
@@ -65,6 +66,7 @@ const routers: Routes = [
     AngularFireAuthGuardModule,
     CoreModule.forRoot({ urlBackend: environment.apiUrl }),
     NgxMatColorPickerModule,
+    HttpClientModule,
   ],
   providers: [{ provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }],
   bootstrap: [AppComponent],

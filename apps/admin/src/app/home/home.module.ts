@@ -17,6 +17,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'hotel', component: HotelComponent },
+  { path: 'hotel/:id', component: HotelComponent },
 ];
 
 @NgModule({

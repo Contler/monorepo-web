@@ -14,4 +14,16 @@ export class HotelService {
   getAllHotels() {
     return this.http.get<HotelEntity[]>(this.url + 'hotel');
   }
+
+  getHotel(id: string) {
+    return this.http.get<HotelEntity>(`${this.url}hotel/${id}`);
+  }
+
+  createHotel(req: any) {
+    return this.http.post(`${this.url}employer/admin`, req);
+  }
+
+  updateHotel(hotel: HotelEntity) {
+    return this.http.post(`${this.url}hotel`, hotel);
+  }
 }
