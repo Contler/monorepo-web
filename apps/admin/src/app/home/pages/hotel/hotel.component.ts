@@ -119,6 +119,12 @@ export class HotelComponent implements OnInit {
     }
   }
 
+  deleteHotel() {
+    this.hotelService.deleteHotel(this.hotel.uid).subscribe(() => {
+      this.router.navigate(['home']);
+    })
+  }
+
   loadImage(e: Event) {
     const file = (e.target as HTMLInputElement).files[0];
     const fr = new FileReader();

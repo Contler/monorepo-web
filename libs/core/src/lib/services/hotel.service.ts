@@ -26,4 +26,8 @@ export class HotelService {
   updateHotel(hotel: HotelEntity) {
     return this.http.post(`${this.url}hotel`, hotel);
   }
+
+  deleteHotel(uid: string) {
+    return this.http.delete(`${this.url}hotel/${uid}`)
+  }
 }
