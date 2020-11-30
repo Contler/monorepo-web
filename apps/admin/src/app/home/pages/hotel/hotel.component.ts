@@ -21,6 +21,7 @@ export class HotelComponent implements OnInit {
   hotelForm: FormGroup;
   imageSrc: string;
   load = false;
+  loadDelete = false;
   edit = false;
 
   private hotel: HotelEntity;
@@ -36,11 +37,11 @@ export class HotelComponent implements OnInit {
     this.hotelForm = formBuild.group({
       name: ['', Validators.required],
       country: ['', Validators.required],
-      colorPrimary: [new ColorAdapter().parse('#000000'), Validators.required],
-      colorSecondary: [new ColorAdapter().parse('#000000'), Validators.required],
+      colorPrimary: ['', Validators.required],
+      colorSecondary: ['', Validators.required],
       city: ['', Validators.required],
-      textPrimary: [new ColorAdapter().parse('#000000'), Validators.required],
-      textSecondary: [new ColorAdapter().parse('#000000'), Validators.required],
+      textPrimary: ['', Validators.required],
+      textSecondary: ['', Validators.required],
       file: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -120,9 +121,13 @@ export class HotelComponent implements OnInit {
   }
 
   deleteHotel() {
-    this.hotelService.deleteHotel(this.hotel.uid).subscribe(() => {
-      this.router.navigate(['home']);
-    })
+    this.loadDelete = true;
+    this.hotelService
+      .deleteHotel(this.hotel.uid)
+      .pipe(finalize(() => (this.loadDelete = false)))
+      .subscribe(() => {
+        this.router.navigate(['home']);
+      });
   }
 
   loadImage(e: Event) {
