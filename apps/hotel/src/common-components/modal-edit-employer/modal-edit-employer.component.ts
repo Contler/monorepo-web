@@ -6,10 +6,8 @@ import { EmployerService } from 'hotel/employer/services/employer.service';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { Observable } from 'rxjs';
 import { MessagesService } from 'hotel/services/messages/messages.service';
-import { EmployerEntity, ZoneEntity } from '@contler/entity';
-import { filter, map, switchMap, take } from 'rxjs/operators';
-import { SpecialZonesModel } from '@contler/models';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { EmployerEntity, SpecialZoneHotelEntity, ZoneEntity } from '@contler/entity';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'contler-modal-edit-employer',
@@ -23,32 +21,7 @@ export class ModalEditEmployerComponent implements OnInit {
   leaderZone: { [key: string]: boolean } = {};
   $zone: Observable<ZoneEntity[]>;
 
-  specialZones: SpecialZonesModel = {
-    wakeZone: {
-      name: 'Wakeup calls',
-      value: false,
-    },
-    lateZone: {
-      name: 'Late checkouts',
-      value: false,
-    },
-    receptionZone: {
-      value: false,
-      name: 'Reception',
-    },
-    deliveryZone: {
-      name: 'Pedidos',
-      value: false,
-    },
-    cleanZone: {
-      name: 'Limpieza',
-      value: false,
-    },
-    maintainZone: {
-      name: 'Mantenimiento',
-      value: false,
-    },
-  };
+  specialZones: SpecialZoneHotelEntity[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<ModalEditEmployerComponent>,
@@ -57,8 +30,14 @@ export class ModalEditEmployerComponent implements OnInit {
     private employerService: EmployerService,
     private zoneService: ZoneService,
     private messagesService: MessagesService,
-    private afDb: AngularFireDatabase,
   ) {
+    this.specialZones = employer.hotel.specialZones.filter(sp => sp.status).map(sp => ({...sp, status: false}));
+    employer.leaderSpecialZone.forEach(sp => {
+      const temp = this.specialZones.find(sp2 => sp2.id === sp.id)
+      if(temp) {
+        temp.status = true
+      }
+    })
     this.formEmployer = formBuild.group({
       name: [employer.name, Validators.required],
       leader: [employer.role === CHIEF, Validators.required],
@@ -70,14 +49,6 @@ export class ModalEditEmployerComponent implements OnInit {
     });
     this.$zone = this.zoneService.getZones();
     employer.leaderZones.forEach((zone) => (this.leaderZone[zone.uid] = true));
-    this.afDb
-      .object<SpecialZonesModel>(`employerZoneSpecial/${employer.uid}`)
-      .valueChanges()
-      .pipe(
-        take(1),
-        filter((data) => !!data),
-      )
-      .subscribe((data) => (this.specialZones = data));
   }
 
   saveUser() {
@@ -86,6 +57,7 @@ export class ModalEditEmployerComponent implements OnInit {
     this.employer.name = value.name;
     this.employer.role = value.leader ? CHIEF : EMPLOYER;
     this.employer.lastName = value.lastName;
+    this.employer.leaderSpecialZone = this.specialZones.filter(sp => sp.status)
     this.$zone
       .pipe(
         map((zones) => {
@@ -105,9 +77,6 @@ export class ModalEditEmployerComponent implements OnInit {
       )
       .subscribe(
         () => {
-          this.afDb
-            .object<SpecialZonesModel>(`employerZoneSpecial/${this.employer.uid}`)
-            .set(this.specialZones);
           this.loading = false;
           this.dialogRef.close();
           this.messagesService.showToastMessage('Empleado actualizado exitosamente');

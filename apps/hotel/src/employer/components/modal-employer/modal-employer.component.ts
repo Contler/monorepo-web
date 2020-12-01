@@ -10,7 +10,7 @@ import { EmployerService } from 'hotel/employer/services/employer.service';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { Observable } from 'rxjs';
 import { MessagesService } from 'hotel/services/messages/messages.service';
-import { EmployerEntity, ZoneEntity } from '@contler/entity';
+import { EmployerEntity, SpecialZoneHotelEntity, ZoneEntity } from '@contler/entity';
 import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
@@ -24,32 +24,7 @@ export class ModalEmployerComponent {
   formEmployer: FormGroup;
   leaderZone: { [key: string]: boolean } = {};
   $zone: Observable<ZoneEntity[]>;
-  specialZones: SpecialZonesModel = {
-    wakeZone: {
-      name: 'Wakeup calls',
-      value: false,
-    },
-    lateZone: {
-      name: 'Late checkouts',
-      value: false,
-    },
-    receptionZone: {
-      value: false,
-      name: 'Reception',
-    },
-    deliveryZone: {
-      name: 'Pedidos',
-      value: false,
-    },
-    cleanZone: {
-      name: 'Limpieza',
-      value: false,
-    },
-    maintainZone: {
-      name: 'Mantenimiento',
-      value: false,
-    },
-  };
+  specialZones: SpecialZoneHotelEntity[] = [];
 
   constructor(
     private dialogRef: MatDialogRef<ModalEmployerComponent>,
@@ -68,6 +43,14 @@ export class ModalEmployerComponent {
       pass: ['', [Validators.required, Validators.minLength(6)]],
     });
     this.$zone = this.zoneService.getZones();
+    this.userService
+      .getUser()
+      .pipe(take(1))
+      .subscribe((user) => {
+        this.specialZones = user.hotel.specialZones
+          .filter((zone) => zone.status)
+          .map((zone) => ({ ...zone, status: false }));
+      });
   }
 
   createEmployer() {
@@ -85,6 +68,7 @@ export class ModalEmployerComponent {
           password: employerData.pass,
           email: employerData.email,
           leaderZone: this.leaderZone,
+          specialZone: this.specialZones.filter(sp => sp.status)
         })),
         switchMap((employerRequest) => this.employerService.saveEmployer(employerRequest)),
       )

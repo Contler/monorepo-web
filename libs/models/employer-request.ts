@@ -1,5 +1,6 @@
 import { IsEmail, IsIn, IsNotEmpty } from 'class-validator';
 import { CHIEF, EMPLOYER } from '@contler/const';
+import { SpecialZoneHotelEntity } from "../entity";
 
 export class EmployerRequest {
   @IsEmail()
@@ -24,5 +25,7 @@ export class EmployerRequest {
 
   @IsNotEmpty()
   leaderZone!: { [key: string]: boolean };
+
+  specialZone: SpecialZoneHotelEntity[]
 
 }

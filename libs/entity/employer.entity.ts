@@ -3,6 +3,7 @@ import { ZoneEntity } from './zone.entity';
 import { RequestEntity } from './request.entity';
 import { Interval } from '@contler/models/interval';
 import { SpecialZoneEntity } from "./SpecialZone.entity";
+import { SpecialZoneHotelEntity } from "./SpecialZoneHotel.entity";
 
 export class EmployerEntity {
   uid!: string;
@@ -31,7 +32,7 @@ export class EmployerEntity {
 
   lateZone!: boolean;
 
-  leaderSpecialZone: SpecialZoneEntity[];
+  leaderSpecialZone: SpecialZoneHotelEntity[];
 
   deliveryZone!: boolean;
 
