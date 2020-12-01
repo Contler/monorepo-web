@@ -49,7 +49,7 @@ export class PrincipalComponent implements OnInit {
   constructor(private auth: AuthService, public generalService: GeneralService, public menu: MenuController) {
     this.auth.$user.pipe(take(1)).subscribe((user) => {
       this.user = user;
-      if (this.user!.wakeZone) {
+      if (this.user.leaderSpecialZone.find(sp => sp.zone.name === 'wakeZone')) {
         this.listServices.push({
           icon: 'access_alarm',
           name: 'Wake up calls',
@@ -57,7 +57,7 @@ export class PrincipalComponent implements OnInit {
           type: ServiceType.WAKE_UP,
         });
       }
-      if (this.user!.deliveryZone) {
+      if (this.user.leaderSpecialZone.find(sp => sp.zone.name === 'deliveryZone')) {
         this.listServices.push({
           icon: 'room_service',
           name: 'Pedidos',
@@ -65,7 +65,7 @@ export class PrincipalComponent implements OnInit {
           type: ServiceType.DELIVERY,
         });
       }
-      if (this.user!.receptionZone) {
+      if (this.user.leaderSpecialZone.find(sp => sp.zone.name === 'receptionZone')) {
         this.listServices.push({
           icon: 'room_service',
           name: 'Recepción',
@@ -73,7 +73,7 @@ export class PrincipalComponent implements OnInit {
           type: ServiceType.RECEPTION,
         });
       }
-      if (this.user!.lateZone) {
+      if (this.user.leaderSpecialZone.find(sp => sp.zone.name === 'lateZone')) {
         this.listServices.push({
           icon: 'transfer_within_a_station',
           name: 'Late Checkout',
@@ -81,7 +81,7 @@ export class PrincipalComponent implements OnInit {
           type: ServiceType.CHECK_OUT,
         });
       }
-      if (this.user!.cleanZone) {
+      if (this.user.leaderSpecialZone.find(sp => sp.zone.name === 'cleanZone')) {
         this.listServices.push({
           icon: 'cleaning_services',
           name: 'Limpieza',
@@ -89,7 +89,7 @@ export class PrincipalComponent implements OnInit {
           type: ServiceType.CLEAN,
         });
       }
-      if (this.user!.maintainZone) {
+      if (this.user.leaderSpecialZone.find(sp => sp.zone.name === 'maintainZone')) {
         this.listServices.push({
           icon: 'engineering',
           name: 'Mantenimiento',
