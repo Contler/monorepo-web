@@ -134,13 +134,23 @@
             <mat-hint>Contraseña del administrador</mat-hint>
           </mat-form-field>
         </form>
-        <img *ngIf="imageSrc" class="hotel__img" [src]="imageSrc" alt="" />
+        <div class="hotel__edit">
+          <img *ngIf="imageSrc" class="hotel__img" [src]="imageSrc" alt="" />
+          <div class="hotel__admin" *ngIf="edit && admin?.email">
+            <mat-form-field appearance="fill" class="full">
+              <input type="email" matInput readonly [value]="admin.email" />
+              <mat-hint>Email del administrador</mat-hint>
+            </mat-form-field>
+
+            <button type="button" mat-raised-button color="accent" class="full" (click)="resetPassword()">
+              Reestablecer contraseña
+            </button>
+          </div>
+        </div>
       </div>
 
       <div>
-        <contler-zone-list
-          [(specialZones)]="specialZones"
-        ></contler-zone-list>
+        <contler-zone-list [(specialZones)]="specialZones"></contler-zone-list>
       </div>
     </div>
   </ng-container>

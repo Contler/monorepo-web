@@ -1,7 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
 import { CoreConfig } from '@contler/models';
 import { HttpClient } from '@angular/common/http';
-import { EmployerEntity, HotelEntity } from "@contler/entity";
+import { EmployerEntity, HotelEntity } from '@contler/entity';
 
 @Injectable()
 export class HotelService {
@@ -13,6 +13,10 @@ export class HotelService {
 
   getAllHotels() {
     return this.http.get<HotelEntity[]>(this.url + 'hotel');
+  }
+
+  getAdminHotel(id: string) {
+    return this.http.get<EmployerEntity[]>(`${this.url}hotel/${id}/admin`);
   }
 
   getHotel(id: string) {
@@ -28,6 +32,6 @@ export class HotelService {
   }
 
   deleteHotel(uid: string) {
-    return this.http.delete(`${this.url}hotel/${uid}`)
+    return this.http.delete(`${this.url}hotel/${uid}`);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FileInput } from 'ngx-material-file-input';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { filter, finalize, map, switchMap, tap } from 'rxjs/operators';
@@ -10,8 +10,9 @@ import { Color, ColorAdapter } from '@angular-material-components/color-picker';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HotelService, SpecialZoneService } from '@contler/core';
 import { EmployerEntity, HotelEntity, SpecialZoneHotelEntity } from '@contler/entity';
+import { concat, forkJoin } from 'rxjs';
 import TaskState = firebase.storage.TaskState;
-import { concat } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'contler-hotel',
@@ -27,6 +28,7 @@ export class HotelComponent implements OnInit {
 
   private hotel: HotelEntity;
   specialZones: SpecialZoneHotelEntity[] = [];
+  admin: EmployerEntity;
 
   constructor(
     route: ActivatedRoute,
@@ -36,6 +38,7 @@ export class HotelComponent implements OnInit {
     private hotelService: HotelService,
     private router: Router,
     private specialZoneService: SpecialZoneService,
+    private afAuth: AngularFireAuth,
   ) {
     this.hotelForm = formBuild.group({
       name: ['', Validators.required],
@@ -55,8 +58,13 @@ export class HotelComponent implements OnInit {
       route.params.pipe(
         filter((p) => !!p['id']),
         map((p) => p['id']),
-        switchMap((id) => this.hotelService.getHotel(id)),
-        tap((hotel) => this.loadHotelData(hotel)),
+        switchMap((id) =>
+          forkJoin({
+            hotel: this.hotelService.getHotel(id),
+            admin: this.hotelService.getAdminHotel(id),
+          }),
+        ),
+        tap(({ hotel, admin }) => this.loadHotelData(hotel, admin[0])),
       ),
     ).subscribe();
   }
@@ -146,6 +154,13 @@ export class HotelComponent implements OnInit {
     fr.readAsDataURL(file);
   }
 
+  async resetPassword() {
+    await this.afAuth.sendPasswordResetEmail(this.admin.email);
+    this.snackBar.open('Un correo fue enviado para reestablecer la constraseña', 'cerrar', {
+      duration: 6000,
+    });
+  }
+
   private loadFile(file: File, path: string) {
     const ref = this.fireStorage.ref(path);
     const task = ref.put(file);
@@ -157,7 +172,7 @@ export class HotelComponent implements OnInit {
     );
   }
 
-  private loadHotelData(hotel: HotelEntity) {
+  private loadHotelData(hotel: HotelEntity, admin: EmployerEntity) {
     this.hotel = hotel;
     this.specialZones = hotel.specialZones.length > 0 ? hotel.specialZones : this.specialZones;
     this.edit = true;
@@ -175,6 +190,7 @@ export class HotelComponent implements OnInit {
       file: '',
     });
     this.imageSrc = hotel.logo;
+    this.admin = admin;
   }
 
   private loadDefaultSpecialZone() {

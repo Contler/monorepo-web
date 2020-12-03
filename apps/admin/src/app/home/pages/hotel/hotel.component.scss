@@ -13,11 +13,22 @@
     }
   }
 
+  &__edit {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 20px;
+  }
+
   &__img {
     width: 200px;
     height: 200px;
     object-fit: cover;
     border: 1px solid;
-    margin-top: 20px;
+    margin-right: 20px;
+  }
+
+  &__admin {
+    display: inline-grid;
+    gap: 20px;
   }
 }
