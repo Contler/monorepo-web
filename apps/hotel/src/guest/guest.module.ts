@@ -7,11 +7,11 @@ import { CoreModule, UserService } from '@contler/core';
 import { MaterialModule } from 'hotel/material/material.module';
 import { ModelNewGuestComponent } from './components/model-new-guest/model-new-guest.component';
 import { RoomService } from 'hotel/room/services/room.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GuestService } from 'hotel/guest/services/guest.service';
 import { ModalEditGuestComponent } from './components/modal-edit-guest/modal-edit-guest.component';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
-import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [GuestComponent, ModelNewGuestComponent, ModalEditGuestComponent],
@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     CommonComponentsModule,
     FormsModule,
+    TranslateModule,
   ],
   providers: [RoomService, GuestService, UserService],
 })
