@@ -8,10 +8,10 @@
   <mat-sidenav-content class="cnt-room">
     <div class="container">
       <div class="form_section">
-        <p class="title">Habitaciones</p>
+        <p class="title">{{ 'menu.rooms' | translate }}</p>
 
         <mat-slide-toggle color="accent" [(ngModel)]="isFullRooms" class="toggle">
-          {{ isFullRooms ? 'Rango de habitaciones' : 'Habitación unica' }}
+          {{ (isFullRooms ? 'room.multiple' : 'room.unique') | translate }}
         </mat-slide-toggle>
 
         <contler-single-room
@@ -28,7 +28,7 @@
         <mat-card class="crud_table">
           <div class="row">
             <div class="row_container header two_column">
-              <p>Habitación</p>
+              <p>{{ 'guest.room' | translate }}</p>
             </div>
           </div>
           <div class="row" *ngFor="let room of rooms">

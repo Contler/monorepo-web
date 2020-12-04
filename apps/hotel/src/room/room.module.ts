@@ -11,6 +11,7 @@ import { CommonComponentsModule } from 'hotel/common-components/common-component
 import { SingleRoomComponent } from './components/single-room/single-room.component';
 import { MultiRoomComponent } from './components/multi-room/multi-room.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [RoomComponent, SingleRoomComponent, MultiRoomComponent],
@@ -23,6 +24,7 @@ import { NgxMaskModule } from 'ngx-mask';
     CoreModule,
     CommonComponentsModule,
     NgxMaskModule,
+    TranslateModule,
   ],
   providers: [ZoneService, RoomService],
   entryComponents: [],

@@ -1,7 +1,7 @@
 <form [formGroup]="roomGroup" (ngSubmit)="createRoom()" class="form-room">
   <mat-form-field appearance="fill">
     <input matInput formControlName="name" />
-    <mat-hint>Habitación</mat-hint>
+    <mat-hint>{{ 'guest.room' | translate }}</mat-hint>
   </mat-form-field>
   <button
     mat-raised-button
@@ -10,6 +10,6 @@
     [loading]="load"
     [disabled]="load || roomGroup.invalid"
   >
-    CREAR HABITACIÓN
+    {{ 'room.createBtn' | translate }}
   </button>
 </form>

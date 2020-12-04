@@ -1,69 +1,75 @@
 <form class="cnt-edit-guest" [formGroup]="guestGroup" (ngSubmit)="saveUser()">
-  <h1 class="cnt-edit-guest__title">Editar huesped</h1>
+  <h1 class="cnt-edit-guest__title">{{ 'editGuest.title' | translate }}</h1>
   <div class="cnt-edit-guest__form_guest">
     <mat-form-field appearance="fill">
       <input matInput formControlName="name" />
       <mat-icon matSuffix>check_circle</mat-icon>
-      <mat-hint>Nombre</mat-hint>
+      <mat-hint>{{ 'newGuest.name' | translate }}</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <input matInput formControlName="lastName" />
       <mat-icon matSuffix>check_circle</mat-icon>
-      <mat-hint>Apellidos</mat-hint>
+      <mat-hint>{{ 'newGuest.lastName' | translate }}</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <input matInput [matDatepicker]="picker" readonly formControlName="checkIn" />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-hint>Fecha de ingreso</mat-hint>
+      <mat-hint>{{ 'guest.checkIn' | translate }}</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <input matInput [matDatepicker]="picker2" readonly formControlName="checkOut" />
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
-      <mat-hint>Fecha de salida</mat-hint>
+      <mat-hint>{{ 'guest.checkOut' | translate }}</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="cnt-edit-guest__span2">
       <input matInput formControlName="email" readonly />
       <mat-icon matSuffix fontSet="material-icons-outlined">email</mat-icon>
-      <mat-hint>Correo electronico</mat-hint>
+      <mat-hint>{{ 'newGuest.email' | translate }}</mat-hint>
     </mat-form-field>
   </div>
 
-  <h1 class="cnt-edit-guest__title_table">Solicitudes especiales</h1>
+  <h1 class="cnt-edit-guest__title_table">{{ 'global.SPECIAL_REQUEST' | translate }}</h1>
   <div class="cnt-edit-guest__form_guest_table">
     <div [hidden]="!dataSource.data.length">
       <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="userName">
-          <th mat-header-cell class="aligned-columnDef" *matHeaderCellDef>Nombre huésped</th>
+          <th mat-header-cell class="aligned-columnDef" *matHeaderCellDef>{{ 'guest.name' | translate }}</th>
           <td mat-cell *matCellDef="let element">{{ element.guest.name }} {{ element.guest.lastName }}</td>
         </ng-container>
         <ng-container matColumnDef="roomName">
-          <th mat-header-cell class="aligned-columnDef" *matHeaderCellDef>Habitación</th>
+          <th mat-header-cell class="aligned-columnDef" *matHeaderCellDef>{{ 'guest.room' | translate }}</th>
           <td mat-cell *matCellDef="let element">{{ element.room.name }}</td>
         </ng-container>
         <ng-container matColumnDef="description">
-          <th mat-header-cell class="aligned-columnDef" *matHeaderCellDef>Pedido</th>
+          <th mat-header-cell class="aligned-columnDef" *matHeaderCellDef>
+            {{ 'editGuest.order' | translate }}
+          </th>
           <td mat-cell *matCellDef="let element">{{ element.message }}</td>
         </ng-container>
         <ng-container matColumnDef="checkIn">
-          <th mat-header-cell class="aligned-columnDef" *matHeaderCellDef>Fecha inicio</th>
+          <th mat-header-cell class="aligned-columnDef" *matHeaderCellDef>
+            {{ 'guest.checkIn' | translate }}
+          </th>
           <td mat-cell *matCellDef="let element">
             {{ element.guest.checkIn | date: 'dd/MM/yyyy' }}
           </td>
         </ng-container>
         <ng-container matColumnDef="checkOut">
-          <th mat-header-cell class="aligned-columnDef" *matHeaderCellDef>Fecha salida</th>
+          <th mat-header-cell class="aligned-columnDef" *matHeaderCellDef>
+            {{ 'guest.checkOut' | translate }}
+          </th>
           <td mat-cell *matCellDef="let element">
             {{ element.guest.checkOut | date: 'dd/MM/yyyy' }}
           </td>
         </ng-container>
         <ng-container matColumnDef="status">
-          <th mat-header-cell class="aligned-columnDef" *matHeaderCellDef>Estado</th>
+          <th mat-header-cell class="aligned-columnDef" *matHeaderCellDef>{{ 'editGuest.status' }}</th>
           <td mat-cell *matCellDef="let element">
             <contler-status-icon [status]="!!element.finishAt"></contler-status-icon>
           </td>
@@ -74,7 +80,9 @@
       <mat-paginator [pageSizeOptions]="[3]" showFirstLastButtons></mat-paginator>
     </div>
 
-    <p *ngIf="dataSource.data.length === 0" class="cnt-edit-guest__text">No hay solicitudes</p>
+    <p *ngIf="dataSource.data.length === 0" class="cnt-edit-guest__text">
+      {{ 'editGuest.noRequest' | translate }}
+    </p>
   </div>
 
   <button
@@ -85,7 +93,7 @@
     [loading]="load"
     [disabled]="guestGroup.invalid || load"
   >
-    Actualizar
+    {{ 'editGuest.update' | translate }}
   </button>
 </form>
 

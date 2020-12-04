@@ -4,6 +4,7 @@ import { take } from 'rxjs/operators';
 import { RoomService } from 'hotel/room/services/room.service';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { RoomEntity } from '@contler/entity';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-single-room',
@@ -20,6 +21,7 @@ export class SingleRoomComponent {
     formBuild: FormBuilder,
     private roomService: RoomService,
     private messagesService: MessagesService,
+    private translate: TranslateService,
   ) {
     this.roomGroup = formBuild.group({
       name: ['', Validators.required],
@@ -35,14 +37,18 @@ export class SingleRoomComponent {
       .subscribe(
         (room) => {
           this.load = false;
-          this.messagesService.showToastMessage('Habitación creada exitosamente');
+          this.translate
+            .get('room.susses')
+            .subscribe((value) => this.messagesService.showToastMessage(value));
           this.roomGroup.reset({ name: '', zone: '' });
           this.completeRoomCreation.emit(room);
         },
         (e) => {
           this.load = false;
           if (e.status === 400) {
-            this.messagesService.showToastMessage('La habitación ya existe');
+            this.translate
+              .get('room.exist')
+              .subscribe((value) => this.messagesService.showToastMessage(value));
           } else {
             this.messagesService.showServerError();
           }

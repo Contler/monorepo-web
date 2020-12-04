@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/f
 import { RoomService } from 'hotel/room/services/room.service';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { RoomEntity } from '@contler/entity';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-multi-room',
@@ -19,6 +20,7 @@ export class MultiRoomComponent {
     formBuild: FormBuilder,
     private roomService: RoomService,
     private messagesService: MessagesService,
+    private translate: TranslateService,
   ) {
     this.roomGroup = formBuild.group({
       init: ['', [Validators.required, this.checkRooms.bind(this)]],
@@ -49,16 +51,20 @@ export class MultiRoomComponent {
     }
     this.roomService.saveRooms(names).subscribe(
       (rooms) => {
-        this.load = false;
-        this.messagesService.showToastMessage('Habitación creada exitosamente');
-        this.roomGroup.reset({ init: '', end: '' });
-        this.completeRoomCreation.emit(rooms);
+        this.translate.get('room.susses').subscribe((value) => {
+          this.load = false;
+          this.messagesService.showToastMessage(value);
+          this.roomGroup.reset({ init: '', end: '' });
+          this.completeRoomCreation.emit(rooms);
+        });
       },
       (e) => {
         this.load = false;
         if (e.status === 400) {
           const rooms = e.error.map((room) => room.name).join(', ');
-          this.messagesService.showToastMessage(`Las habitaciones ${rooms} ya existen`, 'Cerrar', 5000);
+          this.translate.get(['room.hasExistRooms', 'global.CLOSE'], { value: rooms }).subscribe((value) => {
+            this.messagesService.showToastMessage(value['room.hasExistRooms'], value['global.CLOSE'], 5000);
+          });
         } else {
           this.messagesService.showServerError();
         }
