@@ -4,4 +4,5 @@ export interface ChildrenMenu {
   link: string[] | null;
   outlined?: boolean;
   primary?: boolean;
+  children?: ChildrenMenu[];
 }

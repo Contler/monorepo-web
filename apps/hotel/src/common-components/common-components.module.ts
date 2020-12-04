@@ -11,6 +11,7 @@ import { ModalInmediateRequestComponent } from 'hotel/common-components/modal-in
 import { RatingModule } from 'ng-starrating';
 import { MarcoAdminComponent } from './marco-admin/marco-admin.component';
 import { UiModule } from '@contler/ui';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { UiModule } from '@contler/ui';
     CoreModule,
     RatingModule,
     UiModule,
+    TranslateModule,
   ],
   providers: [InmediateRequestsService],
 })

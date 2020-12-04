@@ -1,0 +1,33 @@
+{
+  "global": {
+    "EMPLOYER": "Employees",
+    "GUEST": "Guests",
+    "IMMEDIATE_REQUEST": "Immediate requests",
+    "LATE_CHECKOUT": "Late checkouts",
+    "RECEPTION": "Reception",
+    "RESTAURANT": "Restaurant",
+    "SPACE_RESERVATION": "Space reservations",
+    "SPECIAL_REQUEST": "Special requests",
+    "ZONE": "Zones"
+  },
+  "home": {
+    "desktop": "Desktop"
+  },
+  "menu": {
+    "admin": "Administrator",
+    "categories": "Menu Categories",
+    "logout": "Log out",
+    "products": "Products",
+    "qualification": "Ratings",
+    "remoteOrders": "Remote orders",
+    "request": "Request",
+    "reserveAreas": "Reserve areas",
+    "restaurant": "Restaurant",
+    "roomService": "Room Service",
+    "rooms": "Rooms",
+    "space": "Spaces",
+    "spaceReservations": "Space reservations",
+    "team": "Team",
+    "wakeUpCalls": "Wake up calls"
+  }
+}

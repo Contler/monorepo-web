@@ -11,27 +11,27 @@ import { ItemMenu } from '../interfaces/item-menu.interface';
 export class MenuComponent implements OnInit {
   sections: ItemMenu[] = [
     {
-      name: 'Huespedes',
+      name: 'global.GUEST',
       icon: 'account_circle',
       link: ['/home', 'guest'],
       primary: false,
       children: null,
     },
     {
-      name: 'Equipo',
+      name: 'menu.team',
       icon: 'supervisor_account',
       link: null,
       primary: false,
       children: [
         {
-          name: 'Empleados',
+          name: 'global.EMPLOYER',
           icon: 'account_circle',
           outlined: true,
           link: ['/home', 'employer'],
           primary: false,
         },
         {
-          name: 'Calificaciones',
+          name: 'menu.qualification',
           icon: 'favorite',
           link: ['/home', 'statistics'],
           primary: false,
@@ -39,27 +39,27 @@ export class MenuComponent implements OnInit {
       ],
     },
     {
-      name: 'Espacios',
+      name: 'menu.space',
       icon: 'event',
       link: null,
       primary: false,
       children: [
         {
-          name: 'Habitaciones',
+          name: 'menu.rooms',
           icon: 'meeting_room',
           outlined: false,
           link: ['/home', 'room'],
           primary: false,
         },
         {
-          name: 'Zonas',
+          name: 'global.ZONE',
           icon: 'room',
           outlined: false,
           link: ['/home', 'zone'],
           primary: false,
         },
         {
-          name: 'Zonas de reserva',
+          name: 'menu.reserveAreas',
           icon: 'add_location_alt',
           outlined: false,
           link: ['/home', 'reservation'],
@@ -68,31 +68,31 @@ export class MenuComponent implements OnInit {
       ],
     },
     {
-      name: 'Solicitudes',
+      name: 'menu.request',
       icon: 'error_outline',
       link: null,
       primary: false,
       children: [
         {
-          name: 'Solicitudes inmediatas',
+          name: 'global.IMMEDIATE_REQUEST',
           icon: 'error',
           link: ['/home', 'inmediate-requests'],
           primary: true,
         },
         {
-          name: 'Solicitudes especiales',
+          name: 'global.SPECIAL_REQUEST',
           icon: 'sms_failed',
           link: ['/home', 'special-requests'],
           primary: false,
         },
         {
-          name: 'Wake up calls',
+          name: 'menu.wakeUpCalls',
           icon: 'access_alarm',
           link: ['/home', 'wake-up'],
           primary: false,
         },
         {
-          name: 'Late Checkouts',
+          name: 'global.LATE_CHECKOUT',
           icon: 'directions_walk',
           link: ['/home', 'late'],
           primary: false,
@@ -100,30 +100,30 @@ export class MenuComponent implements OnInit {
       ],
     },
     {
-      name: 'Room Service',
+      name: 'menu.roomService',
       icon: 'room_service',
       link: null,
       children: [
         {
-          name: 'Pedidos remotos',
+          name: 'menu.remoteOrders',
           icon: 'shopping_cart',
           link: ['/home', 'order'],
           primary: false,
         },
         {
-          name: 'Productos',
+          name: 'menu.products',
           icon: 'room_service',
           link: ['/home', 'product'],
           primary: false,
         },
         {
-          name: 'Restaurante',
+          name: 'menu.restaurant',
           icon: 'restaurant',
           link: ['/home', 'restaurant'],
           primary: false,
         },
         {
-          name: 'Categorias de Menú',
+          name: 'menu.categories',
           icon: 'menu_book',
           link: ['/home', 'menu-category'],
           primary: false,
@@ -131,7 +131,7 @@ export class MenuComponent implements OnInit {
       ],
     },
     {
-      name: 'Reservas de espacios',
+      name: 'menu.spaceReservations',
       icon: 'calendar_today',
       primary: false,
       link: ['/home', 'reservation', 'calendar'],

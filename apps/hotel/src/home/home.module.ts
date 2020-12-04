@@ -5,14 +5,10 @@ import { HomeRoutingModule } from 'hotel/home/home-routing.module';
 import { AdminHomeComponent } from 'hotel/home/page/admin-home/admin-home.component';
 import { MaterialModule } from 'hotel/material/material.module';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [AdminHomeComponent],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    MaterialModule,
-    CommonComponentsModule
-  ]
+  imports: [CommonModule, HomeRoutingModule, MaterialModule, CommonComponentsModule, TranslateModule],
 })
-export class HomeModule { }
+export class HomeModule {}

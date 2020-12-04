@@ -4,7 +4,7 @@
     <contler-menu></contler-menu>
   </mat-sidenav>
   <mat-sidenav-content>
-    <h1 class="contler-admin__title">Escritorio</h1>
+    <h1 class="contler-admin__title">{{ 'home.desktop' | translate }}</h1>
     <div class="contler-admin__options">
       <mat-card
         class="contler-admin__options-card"
@@ -26,7 +26,7 @@
         >
           {{ section.icon }}
         </mat-icon>
-        <p class="contler-admin__options-text">{{ section.name }}</p>
+        <p class="contler-admin__options-text">{{ section.name | translate }}</p>
         <p class="badge" *ngIf="section.badge">{{ section.badge }}</p>
       </mat-card>
     </div>

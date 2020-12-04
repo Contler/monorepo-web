@@ -1,5 +1,5 @@
 <div class="menu">
-  <p class="menu__name">Administrador</p>
+  <p class="menu__name">{{ 'menu.admin' | translate }}</p>
 
   <hr class="menu__divide" />
 
@@ -14,7 +14,7 @@
 
     <div class="menu__option" (click)="logOut()">
       <mat-icon class="menu__option-icon">input</mat-icon>
-      <p class="menu__option-text">Cerrar sesión</p>
+      <p class="menu__option-text">{{ 'menu.logout' | translate }}</p>
     </div>
   </div>
 </div>

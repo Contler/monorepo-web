@@ -31,6 +31,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslateModule } from '@ngx-translate/core';
 
 const materialModules = [
   MatFormFieldModule,
@@ -60,7 +61,15 @@ const materialModules = [
 
 @NgModule({
   declarations: [MenuComponent, MenuListItemComponent, LoaderComponent, RangeComponent],
-  imports: [CommonModule, ...materialModules, RouterModule, NgxMaskModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ...materialModules,
+    RouterModule,
+    NgxMaskModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule,
+  ],
   exports: [...materialModules, MenuComponent, MenuListItemComponent, LoaderComponent, RangeComponent],
   entryComponents: [LoaderComponent],
 })

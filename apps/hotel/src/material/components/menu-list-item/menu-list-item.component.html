@@ -10,7 +10,7 @@
   <mat-icon *ngIf="!item.outlined" class="menu__option-icon" [class.menu__primary]="item.primary">
     {{ item.icon }}
   </mat-icon>
-  <p class="menu__option-text">{{ item.name }}</p>
+  <p class="menu__option-text">{{ item.name | translate }}</p>
   <span class="spacer"></span>
   <span *ngIf="item.children && item.children.length">
     <mat-icon [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'"> expand_more </mat-icon>
