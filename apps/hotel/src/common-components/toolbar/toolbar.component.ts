@@ -45,7 +45,8 @@ export class ToolbarComponent implements OnInit {
       .subscribe((data) => {
         this.notificationList = data;
       });
-    this.actualLanguage = this.language[0];
+    const { lan } = window.localStorage;
+    this.actualLanguage = this.language.find((l) => l.prefix === lan) || this.language[0];
   }
 
   ngOnInit() {}
@@ -70,5 +71,6 @@ export class ToolbarComponent implements OnInit {
   changeLanguage(lan: Language) {
     this.actualLanguage = lan;
     this.translate.use(lan.prefix);
+    window.localStorage.lan = lan.prefix;
   }
 }

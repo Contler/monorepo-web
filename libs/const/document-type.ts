@@ -1,10 +1,10 @@
 export const DOCUMENT_TYPE = [
   {
-    name: 'Cedula de ciudadania',
+    name: 'guest.type.cc',
     value: 0,
   },
   {
-    name: 'Pasaporte',
+    name: 'guest.type.passport',
     value: 1,
   },
 ];

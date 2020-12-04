@@ -61,7 +61,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-      defaultLanguage: 'es-CO',
+      defaultLanguage: window.localStorage.lan || 'es-CO',
     }),
   ],
   providers: [UserService, HotelService],
