@@ -109,5 +109,29 @@
     "multiple": "Room range",
     "susses": "Successfully created room",
     "unique": "Unique room"
+  },
+  "zone": {
+    "category": "Category of this area",
+    "create": "Create",
+    "createSusses": "Zone created successfully",
+    "deleteSusses": "Zone removed successfully",
+    "errorUpdate": "The zone could not be updated, you must disable a main zone in order to activate it.",
+    "foodZone": "FOOD AREAS",
+    "humidZone": "HUMID AREAS",
+    "maxZoneError": "You already have the four main zones chosen, you must disable one in order to activate this one.",
+    "modal": {
+      "admitOrder": "Admit Orders",
+      "editName": "Edit Zone",
+      "update": "Update"
+    },
+    "myRoom": "MY ROOM",
+    "name": "Zone name",
+    "order": "Orders",
+    "outsideHotel": "OUTSIDE THE HOTEL",
+    "principal": "Main Zone",
+    "principalZone": "Featured area (you can choose a maximum of 4 areas)",
+    "selectIcon": "Select an Icon",
+    "socialZone": "SOCIAL AREAS",
+    "updateSusses": "Zone updated successfully"
   }
 }

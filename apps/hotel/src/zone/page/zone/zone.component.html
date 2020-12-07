@@ -8,20 +8,20 @@
   <mat-sidenav-content class="cnt-zone">
     <div class="container">
       <div class="form_section">
-        <p class="title">Zonas</p>
+        <p class="title">{{ 'global.ZONE' | translate }}</p>
         <form [formGroup]="zoneGroup" (ngSubmit)="saveZone()">
           <mat-form-field appearance="fill">
             <input matInput formControlName="name" />
-            <mat-hint>Nombre de la zona</mat-hint>
+            <mat-hint>{{ 'zone.name' | translate }}</mat-hint>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-select formControlName="category">
               <mat-option *ngFor="let zone of categoryZone | async" [value]="zone">
-                {{ zone.name }}
+                {{ zone.name | translate }}
               </mat-option>
             </mat-select>
-            <mat-hint>Categoría de esta zona</mat-hint>
+            <mat-hint>{{ 'zone.category' | translate }}</mat-hint>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
@@ -31,20 +31,16 @@
                 <span style="margin-left: 10px">{{ icon.name }}</span>
               </mat-option>
             </mat-select>
-            <mat-hint>Selecciona un icono</mat-hint>
+            <mat-hint>{{ 'zone.selectIcon' | translate }}</mat-hint>
           </mat-form-field>
 
           <mat-checkbox
             formControlName="principal"
-            matTooltip="{{
-              maxPrincipalZone >= 4
-                ? 'Ya tienes las cuatro zonas principales elegidas, debes deshabilitar una para poder activar esta.'
-                : ''
-            }}"
+            matTooltip="{{ (maxPrincipalZone >= 4 ? 'zone.maxZoneError' : '') | translate }}"
             matTooltipHideDelay="1000"
             [disabled]="maxPrincipalZone >= 4"
           >
-            Zona destacada (podrás elegir máximo 4 zonas)
+            {{ 'zone.principalZone' | translate }}
           </mat-checkbox>
 
           <button
@@ -54,7 +50,7 @@
             [loading]="load"
             [disabled]="load || zoneGroup.invalid"
           >
-            CREAR ZONA
+            {{ 'zone.create' | translate }}
           </button>
         </form>
       </div>
@@ -63,7 +59,7 @@
         <mat-card class="crud_table">
           <div class="row">
             <div class="row_container header two_column">
-              <p>Nombre zona</p>
+              <p>{{ 'zone.name' | translate }}</p>
             </div>
           </div>
           <div class="row" *ngFor="let zone of zones">
@@ -80,10 +76,10 @@
               <div class="spacer"></div>
               <div class="group-inline-toogle">
                 <mat-slide-toggle color="accent" [(ngModel)]="zone.admitOrders" disabled>
-                  Pedidos
+                  {{ 'zone.order' | translate }}
                 </mat-slide-toggle>
                 <mat-slide-toggle color="accent" [(ngModel)]="zone.principal" disabled>
-                  Zona Principal
+                  {{ 'zone.principal' | translate }}
                 </mat-slide-toggle>
               </div>
             </div>

@@ -109,5 +109,29 @@
     "multiple": "Rango de habitaciones",
     "susses": "Habitación creada exitosamente",
     "unique": "Habitación única"
+  },
+  "zone": {
+    "category": "Categoría de esta zona",
+    "create": "Crear",
+    "createSusses": "Zona creada exitosamente",
+    "deleteSusses": "Zona eliminada exitosamente",
+    "errorUpdate": "La zona no se pudo actualizar, debes deshabilitar una zona principal para poder activar esta.",
+    "foodZone": "ZONAS DE COMIDAS",
+    "humidZone": "ZONAS HÚMEDAS",
+    "maxZoneError": "Ya tienes las cuatro zonas principales elegidas, debes deshabilitar una para poder activar esta.",
+    "modal": {
+      "admitOrder": "Admitir Pedidos",
+      "editName": "Editar zona",
+      "update": "Actualizar"
+    },
+    "myRoom": "MI HABITACIÓN",
+    "name": "Nombre de la zona",
+    "order": "Pedidos",
+    "outsideHotel": "FUERA DEL HOTEL",
+    "principal": "Zona Principal",
+    "principalZone": "Zona destacada(podrás elegir máximo 4 zonas)",
+    "selectIcon": "Selecciona un icono",
+    "socialZone": "ZONAS SOCIALES",
+    "updateSusses": "Zona actualizada exitosamente"
   }
 }

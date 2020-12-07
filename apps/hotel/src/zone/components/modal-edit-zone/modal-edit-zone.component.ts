@@ -7,6 +7,7 @@ import { ZoneEntity } from '@contler/entity';
 import { IconsService } from '@contler/ui';
 import { IconModel } from '@contler/models/icon.model';
 import { Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-modal-edit-zone',
@@ -26,6 +27,7 @@ export class ModalEditZoneComponent implements OnInit {
     public dialogRef: MatDialogRef<ModalEditZoneComponent>,
     private zoneService: ZoneService,
     private messagesService: MessagesService,
+    private translate: TranslateService,
     formBuild: FormBuilder,
     iconService: IconsService,
   ) {
@@ -59,11 +61,12 @@ export class ModalEditZoneComponent implements OnInit {
     this.data.admitOrders = admitOrder;
 
     if (this.maxPrincipalZone > 4) {
-      this.messagesService.showToastMessage(
-        'La zona no se pudo actualizar, debes deshabilitar una zona principal para poder activar esta.',
-        'Cerrar',
-        5000,
-      );
+      this.translate
+        .get(['zone.errorUpdate', 'global.CLOSE'])
+        .subscribe((data) =>
+          this.messagesService.showToastMessage(data['zone.errorUpdate'], data['global.CLOSE'], 5000),
+        );
+
       this.dialogRef.close();
     } else {
       this.data.principal = principal;
@@ -71,7 +74,11 @@ export class ModalEditZoneComponent implements OnInit {
         () => {
           this.load = false;
           this.dialogRef.close();
-          this.messagesService.showToastMessage('Zona actualizada exitosamente');
+          this.translate
+            .get(['zone.updateSusses', 'global.CLOSE'])
+            .subscribe((msg) =>
+              this.messagesService.showToastMessage(msg['zone.updateSusses'], msg['global.CLOSE']),
+            );
         },
         () => {
           this.load = false;

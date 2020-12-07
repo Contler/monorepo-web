@@ -8,6 +8,7 @@ import { MessagesService } from 'hotel/services/messages/messages.service';
 import { CategoryEntity, ZoneEntity } from '@contler/entity';
 import { IconsService } from '@contler/ui';
 import { IconModel } from '@contler/models/icon.model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-zone',
@@ -27,6 +28,7 @@ export class ZoneComponent {
     private formBuild: FormBuilder,
     public dialog: MatDialog,
     private messagesService: MessagesService,
+    private translate: TranslateService,
     iconsService: IconsService,
   ) {
     this.categoryZone = this.zoneService.getCategories();
@@ -50,7 +52,9 @@ export class ZoneComponent {
       (zone) => {
         this.zones = [...this.zones, zone];
         this.load = false;
-        this.messagesService.showToastMessage('Zona creada exitosamente');
+        this.translate
+          .get('zone.createSusses')
+          .subscribe((msg) => this.messagesService.showToastMessage(msg));
         this.zoneGroup.reset({ name: '', category: '', icon: '', principal: false });
       },
       () => {
@@ -75,7 +79,7 @@ export class ZoneComponent {
     this.zoneService.deleteZone(zone).subscribe(
       () => {
         this.zones = this.zones.filter((actualZone) => actualZone.uid !== zone.uid);
-        this.messagesService.showToastMessage('Zona eliminada exitosamente');
+        this.translate.get('deleteSusses').subscribe((msg) => this.messagesService.showToastMessage(msg));
       },
       (err) => {
         if (err.error.statusCode === 400) {

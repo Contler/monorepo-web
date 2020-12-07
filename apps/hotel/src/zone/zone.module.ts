@@ -9,6 +9,7 @@ import { CoreModule } from '@contler/core';
 import { ModalEditZoneComponent } from './components/modal-edit-zone/modal-edit-zone.component';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { UiModule } from '@contler/ui';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [ZoneComponent, ModalEditZoneComponent],
@@ -21,6 +22,7 @@ import { UiModule } from '@contler/ui';
     ReactiveFormsModule,
     CommonComponentsModule,
     UiModule,
+    TranslateModule,
   ],
   providers: [ZoneService],
   entryComponents: [ModalEditZoneComponent],
