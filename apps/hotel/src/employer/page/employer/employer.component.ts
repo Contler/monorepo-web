@@ -23,9 +23,9 @@ export class EmployerComponent implements OnDestroy {
 
   readonly leader = CHIEF;
   readonly filters = [
-    { name: 'Líder de área', value: 0 },
-    { name: 'Empleados', value: 1 },
-    { name: 'Todos', value: 2 },
+    { name: 'employer.leaderOption', value: 0 },
+    { name: 'employer.employerOption', value: 1 },
+    { name: 'employer.allOption', value: 2 },
   ];
 
   filter = 0;
@@ -36,8 +36,8 @@ export class EmployerComponent implements OnDestroy {
   constructor(private dialog: MatDialog, private employerService: EmployerService) {
     this.subscription = this.employerService
       .getEmployers()
-      .pipe(map(employers => employers.filter(employer => employer.role !== ADMIN)))
-      .subscribe(employers => (this.dataSource.data = employers));
+      .pipe(map((employers) => employers.filter((employer) => employer.role !== ADMIN)))
+      .subscribe((employers) => (this.dataSource.data = employers));
     this.dataSource.paginator = this.paginator!;
   }
 
@@ -47,8 +47,8 @@ export class EmployerComponent implements OnDestroy {
         width: '940px',
       })
       .afterClosed()
-      .pipe(filter(data => !!data))
-      .subscribe(data => {
+      .pipe(filter((data) => !!data))
+      .subscribe((data) => {
         this.dataSource.data = [...this.dataSource.data!, data!];
       });
   }
@@ -66,13 +66,13 @@ export class EmployerComponent implements OnDestroy {
       .open(ModalRemoveEmployerComponent, { width: '452px' })
       .afterClosed()
       .pipe(
-        filter(data => !!data),
+        filter((data) => !!data),
         tap(() => (ref = this.dialog.open(LoaderComponent))),
         switchMap(() => this.employerService.deleteEmployer(employer.uid)),
       )
       .subscribe(() => {
         if (ref) {
-          this.dataSource.data = this.dataSource.data.filter(e => e.uid !== employer.uid);
+          this.dataSource.data = this.dataSource.data.filter((e) => e.uid !== employer.uid);
           ref.close();
         }
       });

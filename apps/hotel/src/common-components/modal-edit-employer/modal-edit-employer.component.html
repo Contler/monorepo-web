@@ -2,32 +2,34 @@
   <mat-icon>close</mat-icon>
 </button>
 
-<p class="title">Empleado</p>
+<p class="title">{{ 'employer.modal.title' | translate }}</p>
 
 <form [formGroup]="formEmployer" (ngSubmit)="saveUser()">
   <div class="content">
     <mat-form-field appearance="fill" class="content__2-columns">
       <input matInput formControlName="name" aria-label="name" />
       <mat-icon matSuffix>account_circle</mat-icon>
-      <mat-hint>Nombre</mat-hint>
+      <mat-hint>{{ 'employer.modal.name' | translate }}</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="content__2-columns">
       <mat-select formControlName="leader">
-        <mat-option [value]="true">Sí</mat-option>
-        <mat-option [value]="false">No</mat-option>
+        <mat-option [value]="true">{{ 'employer.modal.yesOption' | translate }}</mat-option>
+        <mat-option [value]="false">{{ 'employer.modal.noOption' | translate }}</mat-option>
       </mat-select>
-      <mat-hint>Líder de área</mat-hint>
+      <mat-hint>{{ 'employer.leaderOption' | translate }}</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="content__2-columns">
       <input matInput formControlName="lastName" aria-label="last-name" />
       <mat-icon matSuffix>account_circle</mat-icon>
-      <mat-hint>Apellidos</mat-hint>
+      <mat-hint>{{ 'employer.modal.lastName' | translate }}</mat-hint>
     </mat-form-field>
 
     <div class="content__2-columns content__zone content__3-row">
-      <p class="content__zone-text">Zona donde es líder:</p>
+      <p class="content__zone-text">
+        {{ 'employer.modal.leaderZone' | translate }}
+      </p>
       <contler-zone-list
         [$zones]="$zone"
         [(specialZones)]="specialZones"
@@ -39,22 +41,22 @@
     <mat-form-field appearance="fill" class="content__2-columns">
       <input matInput formControlName="email" aria-label="email" readonly />
       <mat-icon matSuffix fontSet="material-icons-outlined">email</mat-icon>
-      <mat-hint>Correo electronico</mat-hint>
+      <mat-hint>{{ 'global.EMAIL' | translate }}</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="custom-filed">
       <input matInput formControlName="score" readonly />
-      <mat-hint>Calificación</mat-hint>
+      <mat-hint>{{ 'employer.rating' | translate }}</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="custom-filed">
       <input matInput formControlName="averageTime" readonly />
-      <mat-hint>Tiempo promedio</mat-hint>
+      <mat-hint>{{ 'employer.modal.averageTime' | translate }}</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="custom-filed">
       <input matInput formControlName="numRequest" readonly />
-      <mat-hint>Número de servicios</mat-hint>
+      <mat-hint>{{ 'employer.modal.totalServices' | translate }}</mat-hint>
     </mat-form-field>
   </div>
 
@@ -65,6 +67,6 @@
     [loading]="loading"
     [disabled]="loading || formEmployer.invalid"
   >
-    Actualizar
+    {{ 'employer.modal.update' | translate }}
   </button>
 </form>

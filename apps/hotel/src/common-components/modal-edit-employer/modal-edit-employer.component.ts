@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { EmployerEntity, SpecialZoneHotelEntity, ZoneEntity } from '@contler/entity';
 import { map, switchMap } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-modal-edit-employer',
@@ -30,14 +31,17 @@ export class ModalEditEmployerComponent implements OnInit {
     private employerService: EmployerService,
     private zoneService: ZoneService,
     private messagesService: MessagesService,
+    private translate: TranslateService,
   ) {
-    this.specialZones = employer.hotel.specialZones.filter(sp => sp.status).map(sp => ({...sp, status: false}));
-    employer.leaderSpecialZone.forEach(sp => {
-      const temp = this.specialZones.find(sp2 => sp2.id === sp.id)
-      if(temp) {
-        temp.status = true
+    this.specialZones = employer.hotel.specialZones
+      .filter((sp) => sp.status)
+      .map((sp) => ({ ...sp, status: false }));
+    employer.leaderSpecialZone.forEach((sp) => {
+      const temp = this.specialZones.find((sp2) => sp2.id === sp.id);
+      if (temp) {
+        temp.status = true;
       }
-    })
+    });
     this.formEmployer = formBuild.group({
       name: [employer.name, Validators.required],
       leader: [employer.role === CHIEF, Validators.required],
@@ -57,7 +61,7 @@ export class ModalEditEmployerComponent implements OnInit {
     this.employer.name = value.name;
     this.employer.role = value.leader ? CHIEF : EMPLOYER;
     this.employer.lastName = value.lastName;
-    this.employer.leaderSpecialZone = this.specialZones.filter(sp => sp.status)
+    this.employer.leaderSpecialZone = this.specialZones.filter((sp) => sp.status);
     this.$zone
       .pipe(
         map((zones) => {
@@ -79,7 +83,9 @@ export class ModalEditEmployerComponent implements OnInit {
         () => {
           this.loading = false;
           this.dialogRef.close();
-          this.messagesService.showToastMessage('Empleado actualizado exitosamente');
+          this.translate
+            .get('employer.modal.updateSusses')
+            .subscribe((msg) => this.messagesService.showToastMessage(msg));
         },
         () => {
           this.loading = false;

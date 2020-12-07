@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CreateEmployer } from 'hotel/employer/models/create-employer';
 import { UserService } from '@contler/core';
-import { EmployerRequest, SpecialZonesModel } from '@contler/models';
+import { EmployerRequest } from '@contler/models';
 import { CHIEF, EMPLOYER } from '@contler/const';
 import { map, switchMap, take } from 'rxjs/operators';
 import { EmployerService } from 'hotel/employer/services/employer.service';
@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { EmployerEntity, SpecialZoneHotelEntity, ZoneEntity } from '@contler/entity';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-modal-employer',
@@ -33,6 +34,7 @@ export class ModalEmployerComponent {
     private zoneService: ZoneService,
     private messagesService: MessagesService,
     private afDb: AngularFireDatabase,
+    private translate: TranslateService,
     formBuild: FormBuilder,
   ) {
     this.formEmployer = formBuild.group({
@@ -68,16 +70,17 @@ export class ModalEmployerComponent {
           password: employerData.pass,
           email: employerData.email,
           leaderZone: this.leaderZone,
-          specialZone: this.specialZones.filter(sp => sp.status)
+          specialZone: this.specialZones.filter((sp) => sp.status),
         })),
         switchMap((employerRequest) => this.employerService.saveEmployer(employerRequest)),
       )
       .subscribe(
         (employer) => {
-          this.afDb.object(`employerZoneSpecial/${employer.uid}`).set(this.specialZones);
           this.loading = false;
           this.dialogRef.close(employer);
-          this.messagesService.showToastMessage('Empleado creado exitosamente');
+          this.translate
+            .get('employer.modal.createSusses')
+            .subscribe((value) => this.messagesService.showToastMessage(value));
         },
         () => {
           this.loading = false;

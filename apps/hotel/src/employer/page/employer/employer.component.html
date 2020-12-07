@@ -7,36 +7,40 @@
 
   <mat-sidenav-content class="cnt-employer">
     <div class="cnt-employer__header">
-      <h1 class="cnt-title">Empleados</h1>
+      <h1 class="cnt-title">{{ 'global.EMPLOYER' | translate }}</h1>
       <mat-form-field appearance="fill" class="select">
         <mat-select [(ngModel)]="filter">
           <mat-option *ngFor="let option of filters" [value]="option.value">
-            {{ option.name }}
+            {{ option.name | translate }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-raised-button color="accent" (click)="openEmployerModal()">Crear empleados</button>
-      <button mat-raised-button routerLink="/home/statistics">ver calificaciones</button>
+      <button mat-raised-button color="accent" (click)="openEmployerModal()">
+        {{ 'employer.createBtn' | translate }}
+      </button>
+      <button mat-raised-button routerLink="/home/statistics">
+        {{ 'employer.viewRating' | translate }}
+      </button>
     </div>
 
     <table mat-table [dataSource]="dataSource" class="cnt-employer__table">
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Nombre empleado</th>
+        <th mat-header-cell *matHeaderCellDef>{{ 'employer.name' | translate }}</th>
         <td mat-cell *matCellDef="let element">{{ element.name }} {{ element.lastName }}</td>
       </ng-container>
 
       <ng-container matColumnDef="leader">
-        <th mat-header-cell *matHeaderCellDef>Líder</th>
+        <th mat-header-cell *matHeaderCellDef>{{ 'employer.leader' | translate }}</th>
         <td mat-cell *matCellDef="let element">{{ element.role === leader ? 'Sí' : 'No' }}</td>
       </ng-container>
 
       <ng-container matColumnDef="score">
-        <th mat-header-cell *matHeaderCellDef>Calificación</th>
+        <th mat-header-cell *matHeaderCellDef>{{ 'employer.rating' | translate }}</th>
         <td mat-cell *matCellDef="let element">{{ element.averageScore }}</td>
       </ng-container>
 
       <ng-container matColumnDef="request">
-        <th mat-header-cell *matHeaderCellDef>Solicitudes</th>
+        <th mat-header-cell *matHeaderCellDef>{{ 'employer.request' | translate }}</th>
         <td mat-cell *matCellDef="let element">{{ element.totalServices }}</td>
       </ng-container>
 

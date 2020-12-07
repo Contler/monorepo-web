@@ -13,6 +13,7 @@ import { ModalRemoveEmployerComponent } from './components/modal-remove-employer
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [EmployerComponent, ModalEmployerComponent, ModalRemoveEmployerComponent],
@@ -26,6 +27,7 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     CommonComponentsModule,
     RouterModule,
+    TranslateModule,
   ],
   providers: [EmployerService, ZoneService],
 })
