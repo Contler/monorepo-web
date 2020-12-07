@@ -89,6 +89,14 @@
     "name": "Nombre",
     "title": "Crear nuevo huesped"
   },
+  "rating": {
+    "average": "Calificación promedio",
+    "name": "Calificación",
+    "profile": "Perfil completo",
+    "services": "No de servicios",
+    "time": "Tiempo promedio",
+    "title": "Calificaciones"
+  },
   "room": {
     "createBtn": "CREAR HABITACIÓN",
     "endRoom": "Habitación Final",

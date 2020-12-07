@@ -89,6 +89,14 @@
     "name": "Name",
     "title": "Create new guest"
   },
+  "rating": {
+    "average": "Average rating",
+    "name": "Qualification",
+    "profile": "Full profile",
+    "services": "No. of services",
+    "time": "Average Time",
+    "title": "Ratings"
+  },
   "room": {
     "createBtn": "CREATE ROOM",
     "endRoom": "Final Room",
