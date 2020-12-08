@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { GUEST } from '@contler/const';
 import { GuestService } from 'guest/services/guest.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-login',
@@ -20,6 +21,7 @@ export class LoginComponent {
     private afAuth: AngularFireAuth,
     private router: Router,
     private guestService: GuestService,
+    private translate: TranslateService,
   ) {
     this.loginForm = formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -35,19 +37,22 @@ export class LoginComponent {
       const userCredential = await this.afAuth.signInWithEmailAndPassword(email, pass);
       const token = await userCredential.user!.getIdTokenResult();
       if (token.claims.role !== GUEST) {
-        this.error = 'No tiene permisos para acceder';
+        this.error = this.translate.instant(`login.youDoNotHavePermissionToAccess`);
       }
       this.guestService.checkAvailableUser().subscribe(({ checkIn, checkOut }) => {
         this.loader = false;
         if (new Date() < checkIn) {
           this.afAuth.signOut();
-          this.error =
-            'Tu fecha de ingreso es el ' +
-            checkIn.toLocaleDateString() +
-            '. Te invitamos a iniciar sesión en esta fecha';
+          this.error = `${this.translate.instant(
+            'login.yourEntryDateIs',
+          )} ${checkIn.toLocaleDateString()}. ${this.translate.instant(
+            'login.weInviteYouToLogInOnThisDate',
+          )}.`;
         } else if (new Date() > checkOut) {
           this.afAuth.signOut();
-          this.error = 'Tu fecha de salida fué el ' + checkOut.toLocaleDateString() + '.';
+          this.error = `${this.translate.instant(
+            'login.yourDepartureDateWas',
+          )} ${checkOut.toLocaleDateString()}.`;
         } else {
           this.router.navigate(['/home']);
         }
@@ -55,15 +60,8 @@ export class LoginComponent {
     } catch (error) {
       this.loader = false;
       const { code } = error;
-      switch (code) {
-        case 'auth/user-not-found':
-        case 'auth/wrong-password':
-          this.error = 'Correo o contraseña invalida';
-          break;
-        case 'auth/user-disabled':
-          this.error = 'La cuenta ya no esta activa';
-          break;
-      }
+
+      this.error = this.translate.instant(code);
     }
   }
 }
