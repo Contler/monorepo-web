@@ -9,20 +9,14 @@
     "yourEntryDateIs": "Tu fecha de ingreso es el",
     "weInviteYouToLogInOnThisDate": "Te invitamos a iniciar sesión en esta fecha",
     "yourDepartureDateWas": "Tu fecha de salida fué el",
-    "form": {
-      "fields": {
-        "user": {
-          "label": "Usuario",
-          "placeholder": "test@test.com",
-          "message-error": "Necesitamos una dirección de correo electrónico para iniciar sesión"
-        },
-        "password": {
-          "label": "Contraseña",
-          "placeholder": "********",
-          "message-error": "Necesitamos una contraseña para iniciar sesión"
-        }
-      },
-      "actions": { "submit": "INGRESAR" }
+    "actionsSubmit": "INGRESAR",
+    "user": {
+      "label": "Usuario",
+      "messageError": "Necesitamos una dirección de correo electrónico para iniciar sesión"
+    },
+    "password": {
+      "label": "Contraseña",
+      "messageError": "Necesitamos una contraseña para iniciar sesión"
     }
   }
 }

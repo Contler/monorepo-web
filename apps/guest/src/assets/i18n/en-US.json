@@ -9,20 +9,14 @@
     "yourEntryDateIs": "Your entry date is",
     "weInviteYouToLogInOnThisDate": "We invite you to log in on this date",
     "yourDepartureDateWas": "Your departure date was",
-    "form": {
-      "fields": {
-        "user": {
-          "label": "User",
-          "placeholder": "test@test.com",
-          "message-error": "We need an email address to log in"
-        },
-        "password": {
-          "label": "Password",
-          "placeholder": "********",
-          "message-error": "We need a password to log in"
-        }
-      },
-      "actions": { "submit": "ENTER" }
+    "actionsSubmit": "ENTER",
+    "user": {
+      "label": "User",
+      "messageError": "We need an email address to log in"
+    },
+    "password": {
+      "label": "Password",
+      "messageError": "We need a password to log in"
     }
   }
 }

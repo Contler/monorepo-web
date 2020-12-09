@@ -8,12 +8,12 @@
       <mat-form-field appearance="fill" class="input">
         <input matInput formControlName="email" />
         <mat-icon class="custom_icon" matSuffix>account_circle</mat-icon>
-        <mat-hint>{{ 'login.form.fields.user.label' | translate }}</mat-hint>
+        <mat-hint>{{ 'login.user.label' | translate }}</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill" class="input">
         <input type="password" matInput formControlName="pass" />
         <mat-icon class="custom_icon" matSuffix>check_circle</mat-icon>
-        <mat-hint>{{ 'login.form.fields.password.label' | translate }}</mat-hint>
+        <mat-hint>{{ 'login.password.label' | translate }}</mat-hint>
       </mat-form-field>
       <p class="cursor forgot_password">{{ 'login.didYouForgetYourPassword' | translate }}</p>
       <button
@@ -24,7 +24,7 @@
         [disabled]="loginForm.invalid || loader"
         color="accent"
       >
-        {{ 'login.form.actions.submit' | translate }}
+        {{ 'login.actionsSubmit' | translate }}
       </button>
       <p class="error">{{ error }}</p>
     </form>
