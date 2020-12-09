@@ -1,0 +1,23 @@
+{
+  "auth": {
+    "userNotFound": "Invalid email or password",
+    "userDisabled": "The account is no longer active"
+  },
+  "login": {
+    "title": "Enter with the username and password that will be provided to you when you check in at the hotel",
+    "didYouForgetYourPassword": "Did you forget your password?",
+    "youDoNotHavePermissionToAccess": "You do not have permission to access",
+    "yourEntryDateIs": "Your entry date is",
+    "weInviteYouToLogInOnThisDate": "We invite you to log in on this date",
+    "yourDepartureDateWas": "Your departure date was",
+    "actionsSubmit": "ENTER",
+    "user": {
+      "label": "User",
+      "messageError": "We need an email address to log in"
+    },
+    "password": {
+      "label": "Password",
+      "messageError": "We need a password to log in"
+    }
+  }
+}

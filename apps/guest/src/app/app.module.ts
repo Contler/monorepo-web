@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginComponent } from '../login/login.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
@@ -14,11 +15,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CoreModule, HotelService, UserService } from '@contler/core';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule } from 'ngx-mask';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { AvalibleUserGuard } from 'guest/common-components/guards/avalible-user.guard';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -39,6 +45,14 @@ import { AvalibleUserGuard } from 'guest/common-components/guards/avalible-user.
     StoreModule.forRoot({}, {}),
     StoreModule.forRoot(reducers, {
       metaReducers,
+    }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      defaultLanguage: window.localStorage.lan || 'es-CO',
     }),
   ],
   providers: [HotelService, UserService, AvalibleUserGuard],

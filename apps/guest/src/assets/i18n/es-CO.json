@@ -1,0 +1,23 @@
+{
+  "auth": {
+    "userNotFound": "Correo o contraseña invalida",
+    "userDisabled": "La cuenta ya no esta activa"
+  },
+  "login": {
+    "title": "Ingrese con el usuario y contraseña que le brindarán al momento del checkin en el hotel",
+    "didYouForgetYourPassword": "¿Olvidaste tu contraseña?",
+    "youDoNotHavePermissionToAccess": "No tiene permisos para acceder",
+    "yourEntryDateIs": "Tu fecha de ingreso es el",
+    "weInviteYouToLogInOnThisDate": "Te invitamos a iniciar sesión en esta fecha",
+    "yourDepartureDateWas": "Tu fecha de salida fué el",
+    "actionsSubmit": "INGRESAR",
+    "user": {
+      "label": "Usuario",
+      "messageError": "Necesitamos una dirección de correo electrónico para iniciar sesión"
+    },
+    "password": {
+      "label": "Contraseña",
+      "messageError": "Necesitamos una contraseña para iniciar sesión"
+    }
+  }
+}
