@@ -1,7 +1,8 @@
 {
-  "auth/user-not-found": "Correo o contraseña invalida",
-  "auth/wrong-password": "Correo o contraseña invalida",
-  "auth/user-disabled": "La cuenta ya no esta activa",
+  "auth": {
+    "userNotFound": "Correo o contraseña invalida",
+    "userDisabled": "La cuenta ya no esta activa"
+  },
   "login": {
     "title": "Ingrese con el usuario y contraseña que le brindarán al momento del checkin en el hotel",
     "didYouForgetYourPassword": "¿Olvidaste tu contraseña?",

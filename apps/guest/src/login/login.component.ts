@@ -61,7 +61,15 @@ export class LoginComponent {
       this.loader = false;
       const { code } = error;
 
-      this.error = this.translate.instant(code);
+      switch (code) {
+        case 'auth/user-not-found':
+        case 'auth/wrong-password':
+          this.error = this.translate.instant('auth.userNotFound');
+          break;
+        case 'auth/user-disabled':
+          this.error = this.translate.instant('auth.userDisabled');
+          break;
+      }
     }
   }
 }

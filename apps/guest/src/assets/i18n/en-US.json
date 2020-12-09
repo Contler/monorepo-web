@@ -1,7 +1,8 @@
 {
-  "auth/user-not-found": "Invalid email or password",
-  "auth/wrong-password": "Invalid email or password",
-  "auth/user-disabled": "The account is no longer active",
+  "auth": {
+    "userNotFound": "Invalid email or password",
+    "userDisabled": "The account is no longer active"
+  },
   "login": {
     "title": "Enter with the username and password that will be provided to you when you check in at the hotel",
     "didYouForgetYourPassword": "Did you forget your password?",
