@@ -19,5 +19,10 @@
       "label": "Contraseña",
       "messageError": "Necesitamos una contraseña para iniciar sesión"
     }
+  },
+  "modalBookingQualifyComponent": {
+    "title": "¿Cómo le pareció el servicio que le brindó nuestro equipo en su reserva en",
+    "thatDay": "ese día",
+    "qualify": "calificar"
   }
 }

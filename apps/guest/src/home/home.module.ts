@@ -21,6 +21,7 @@ import { ModalBookingQualifyComponent } from './components/modal-booking-qualify
 import { ModalOrdersQuialifyComponent } from './components/modal-orders-quialify/modal-orders-quialify.component';
 import { DrinkRequestComponent } from './pages/drink-request/drink-request.component';
 import { UiModule } from '@contler/ui';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -49,11 +50,8 @@ import { UiModule } from '@contler/ui';
     RatingModule,
     MessagesModule,
     UiModule,
+    TranslateModule,
   ],
-  entryComponents: [
-    ModalQualifyComponent,
-    ModalBookingQualifyComponent,
-    ModalOrdersQuialifyComponent,
-  ],
+  entryComponents: [ModalQualifyComponent, ModalBookingQualifyComponent, ModalOrdersQuialifyComponent],
 })
 export class HomeModule {}

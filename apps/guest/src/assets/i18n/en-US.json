@@ -19,5 +19,10 @@
       "label": "Password",
       "messageError": "We need a password to log in"
     }
+  },
+  "modalBookingQualifyComponent": {
+    "title": "How did you find the service our team provided in your reservation in",
+    "thatDay": "that day",
+    "qualify": "qualify"
   }
 }
