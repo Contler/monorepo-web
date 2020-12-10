@@ -29,5 +29,14 @@
     "fair": "Fair",
     "good": "Good",
     "excellent": "Excellent"
+  },
+  "modalOrdersQualifyComponent": {
+    "title": "How did you think about ordering our drinks and meals?",
+    "qualify": "qualify",
+    "veryBad": "Very bad",
+    "bad": "Bad",
+    "fair": "Fair",
+    "good": "Good",
+    "excellent": "Excellent"
   }
 }

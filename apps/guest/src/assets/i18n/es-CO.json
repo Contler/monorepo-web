@@ -29,5 +29,14 @@
     "fair": "Normal",
     "good": "Buena",
     "excellent": "Excelente"
+  },
+  "modalOrdersQualifyComponent": {
+    "title": "¿Cómo te pareció pedir nuestras bebidas y comidas?",
+    "qualify": "calificar",
+    "veryBad": "Muy mala",
+    "bad": "Mala",
+    "fair": "Normal",
+    "good": "Buena",
+    "excellent": "Excelente"
   }
 }
