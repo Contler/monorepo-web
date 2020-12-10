@@ -12,6 +12,10 @@
     "employerOption": "Employees",
     "leader": "leader",
     "leaderOption": "Area leader",
+    "name": "Employer Name",
+    "rating": "Qualification",
+    "request": "Request",
+    "viewRating": "See grades",
     "modal": {
       "averageTime": "Average Time",
       "create": "Create",
@@ -25,11 +29,7 @@
       "update": "Update",
       "updateSusses": "Employee created successfully",
       "yesOption": "Yes"
-    },
-    "name": "Employer Name",
-    "rating": "Qualification",
-    "request": "Request",
-    "viewRating": "See grades"
+    }
   },
   "global": {
     "CLOSE": "Close",
@@ -56,15 +56,10 @@
     "name": "Guest Name",
     "room": "Room",
     "search": "Search...",
-    "type": {
-      "cc": "Citizenship card",
-      "passport": "Passport"
-    },
-    "typeDocument": "Type"
+    "typeDocument": "Type",
+    "type": { "cc": "Citizenship card", "passport": "Passport" }
   },
-  "home": {
-    "desktop": "Desktop"
-  },
+  "home": { "desktop": "Desktop" },
   "menu": {
     "admin": "Administrator",
     "categories": "Menu Categories",
@@ -75,8 +70,8 @@
     "request": "Request",
     "reserveAreas": "Reserve areas",
     "restaurant": "Restaurant",
-    "roomService": "Room Service",
     "rooms": "Rooms",
+    "roomService": "Room Service",
     "space": "Spaces",
     "spaceReservations": "Space reservations",
     "team": "Team",
@@ -96,6 +91,37 @@
     "services": "No. of services",
     "time": "Average Time",
     "title": "Ratings"
+  },
+  "reservation": {
+    "createButton": "Create zone",
+    "labelCategory": "Zone name",
+    "labelIcon": "Select a icon",
+    "labelName": "Zone name",
+    "title": "Zone reservation",
+    "nameList": "Zone name",
+    "edit": {
+      "title": "Zone information",
+      "editBtn": "Update",
+      "subtitle": "Zone availability",
+      "addBtn": "Add range",
+      "deleteBtn": "Delete zone"
+    },
+    "range": {
+      "labelDay": "Day of the week",
+      "initTime": "Time init",
+      "endTime": "Time end",
+      "quotaLabel": "Quotas"
+    }
+  },
+  "DAYS": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "allDay": "All days"
   },
   "room": {
     "createBtn": "CREATE ROOM",
@@ -119,11 +145,6 @@
     "foodZone": "FOOD AREAS",
     "humidZone": "HUMID AREAS",
     "maxZoneError": "You already have the four main zones chosen, you must disable one in order to activate this one.",
-    "modal": {
-      "admitOrder": "Admit Orders",
-      "editName": "Edit Zone",
-      "update": "Update"
-    },
     "myRoom": "MY ROOM",
     "name": "Zone name",
     "order": "Orders",
@@ -132,6 +153,7 @@
     "principalZone": "Featured area (you can choose a maximum of 4 areas)",
     "selectIcon": "Select an Icon",
     "socialZone": "SOCIAL AREAS",
-    "updateSusses": "Zone updated successfully"
+    "updateSusses": "Zone updated successfully",
+    "modal": { "admitOrder": "Admit Orders", "editName": "Edit Zone", "update": "Update" }
   }
 }

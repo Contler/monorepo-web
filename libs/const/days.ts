@@ -1,12 +1,12 @@
 export const DAYS = [
-  'Domingo',
-  'Lunes',
-  'Martes',
-  'Miercoles',
-  'Jueves',
-  'Viernes',
-  'Sabado',
-  'Todos los días',
+  'DAYS.sunday',
+  'DAYS.monday',
+  'DAYS.tuesday',
+  'DAYS.wednesday',
+  'DAYS.thursday',
+  'DAYS.friday',
+  'DAYS.saturday',
+  'DAYS.allDay',
 ];
 
-export const AllDays = 'Todos los días';
+export const AllDays = 'DAYS.allDay';

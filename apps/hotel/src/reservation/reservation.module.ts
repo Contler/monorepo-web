@@ -13,8 +13,9 @@ import { NgxMaskModule } from 'ngx-mask';
 import { CoreModule } from '@contler/core';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { CalendarMonthModule } from 'angular-calendar';
-import { ZoneBookPipe, CalendarDatePipe } from './pipes';
-import { CalendarPreviuosViewDirective, CalendarNextViewDirective } from './directives';
+import { CalendarDatePipe, ZoneBookPipe } from './pipes';
+import { CalendarNextViewDirective, CalendarPreviuosViewDirective } from './directives';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CalendarPreviuosViewDirective, CalendarNextViewDirective } from './dire
     CoreModule,
     CalendarMonthModule,
     FormsModule,
+    TranslateModule,
   ],
 })
 export class ReservationModule {}
