@@ -23,6 +23,11 @@
   "modalBookingQualifyComponent": {
     "title": "How did you find the service our team provided in your reservation in",
     "thatDay": "that day",
-    "qualify": "qualify"
+    "qualify": "qualify",
+    "veryBad": "Very bad",
+    "bad": "Bad",
+    "fair": "Fair",
+    "good": "Good",
+    "excellent": "Excellent"
   }
 }

@@ -13,7 +13,9 @@
     size="24px"
     (rate)="selectStart($event)"
   ></contler-start>
-  <p class="cnt-qualify__info" *ngIf="value !== undefined">{{ textRate[value - 1] }} {{ value }}/5</p>
+  <p class="cnt-qualify__info" *ngIf="value !== undefined">
+    {{ 'modalBookingQualifyComponent.' + textRate[value - 1] | translate }} {{ value }}/5
+  </p>
   <button
     mat-raised-button
     color="accent"
