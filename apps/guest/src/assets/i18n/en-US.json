@@ -38,5 +38,16 @@
     "fair": "Fair",
     "good": "Good",
     "excellent": "Excellent"
+  },
+  "modalQualifyComponent": {
+    "title": "How did you find the service our team provided in your request",
+    "on": "on",
+    "day": "day",
+    "qualify": "qualify",
+    "veryBad": "Very bad",
+    "bad": "Bad",
+    "fair": "Fair",
+    "good": "Good",
+    "excellent": "Excellent"
   }
 }

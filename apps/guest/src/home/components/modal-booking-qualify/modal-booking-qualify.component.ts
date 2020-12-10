@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { BookingEntity } from '@contler/entity';
 import { ReservationService } from '@contler/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { TEXT_RATE } from '../const/qualify.const';
 
 @Component({
   selector: 'contler-modal-booking-qualify',
@@ -10,7 +11,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class ModalBookingQualifyComponent implements OnInit {
   value: number | undefined;
-  readonly textRate = ['veryBad', 'bad', 'fair', 'good', 'excellent'];
+  readonly textRate = TEXT_RATE;
   load = false;
 
   constructor(

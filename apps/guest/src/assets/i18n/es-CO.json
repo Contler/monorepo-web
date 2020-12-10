@@ -38,5 +38,16 @@
     "fair": "Normal",
     "good": "Buena",
     "excellent": "Excelente"
+  },
+  "modalQualifyComponent": {
+    "title": "¿Cómo encontró el servicio que nuestro equipo brindó en su solicitud",
+    "on": "en",
+    "day": "día",
+    "qualify": "calificar",
+    "veryBad": "Muy mala",
+    "bad": "Mala",
+    "fair": "Normal",
+    "good": "Buena",
+    "excellent": "Excelente"
   }
 }

@@ -1,8 +1,9 @@
 <div class="cnt-qualify" *ngIf="data">
   <img src="assets/img/rating.svg" alt="" class="cnt-qualify__img" />
   <p class="cnt-qualify__title">
-    How did you find the service our team provided in your request {{ data.message }} on
-    {{ data.zone.name }} day {{ data.createAt | date: 'dd/MM/yyyy' }}.
+    {{ 'modalQualifyComponent.title' | translate }} {{ data.message }}
+    {{ 'modalQualifyComponent.on' | translate }} {{ data.zone.name }}
+    {{ 'modalQualifyComponent.day' | translate }} {{ data.createAt | date: 'dd/MM/yyyy' }}?
   </p>
 
   <contler-start
@@ -15,7 +16,9 @@
     (rate)="selectStart($event)"
   ></contler-start>
 
-  <p class="cnt-qualify__info" *ngIf="value !== undefined">{{ textRate[value - 1] }} {{ value }}/5</p>
+  <p class="cnt-qualify__info" *ngIf="value !== undefined">
+    {{ 'modalQualifyComponent.' + textRate[value - 1] | translate }} {{ value }}/5
+  </p>
   <mat-form-field appearance="fill" class="full_width cnt-qualify__input">
     <input matInput [(ngModel)]="comment" />
     <mat-hint>tell us more</mat-hint>
@@ -30,6 +33,6 @@
     [disabled]="!!!value || load"
     (click)="close()"
   >
-    qualify
+    {{ 'modalQualifyComponent.qualify' | translate }}
   </button>
 </div>
