@@ -7,8 +7,15 @@
 
   <form [formGroup]="reservationForm" (ngSubmit)="save()" class="schedule">
     <div class="schedule__header">
-      <h1 class="cnt-title">Información de la zona</h1>
-      <button mat-raised-button type="button" [disabled]="loader || !reservation?.schedule.length" (click)="deleteReservation()">Eliminar zona</button>
+      <h1 class="cnt-title">{{ 'reservation.edit.title' | translate }}</h1>
+      <button
+        mat-raised-button
+        type="button"
+        [disabled]="loader || !reservation?.schedule.length"
+        (click)="deleteReservation()"
+      >
+        {{ 'reservation.edit.deleteBtn' | translate }}
+      </button>
       <button
         mat-raised-button
         color="accent"
@@ -16,23 +23,23 @@
         [loading]="loader"
         [disabled]="loader || reservationForm.invalid"
       >
-        Actualizar
+        {{ 'reservation.edit.editBtn' | translate }}
       </button>
     </div>
 
     <mat-card class="schedule__information">
       <mat-form-field appearance="fill">
         <input matInput formControlName="name" />
-        <mat-hint>Nombre de la zona</mat-hint>
+        <mat-hint>{{ 'reservation.labelName' | translate }}</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-select formControlName="category">
           <mat-option *ngFor="let category of categoryZone | async" [value]="category.id">
-            {{ category.name }}
+            {{ category.name | translate }}
           </mat-option>
         </mat-select>
-        <mat-hint>Categoría de esta zona</mat-hint>
+        <mat-hint>{{ 'reservation.labelCategory' | translate }}</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -42,11 +49,11 @@
             <mat-icon>{{ icon }}</mat-icon> {{ icon }}
           </mat-option>
         </mat-autocomplete>
-        <mat-hint>Selecciona un ícono</mat-hint>
+        <mat-hint>{{ 'reservation.labelIcon' | translate }}</mat-hint>
       </mat-form-field>
     </mat-card>
 
-    <h2 class="cnt-title" style="margin-top: 21px">Disponibilidad de la zona</h2>
+    <h2 class="cnt-title" style="margin-top: 21px">{{ 'reservation.edit.subtitle' | translate }}</h2>
 
     <mat-card class="schedule__availability">
       <div class="schedule__availability-option">
@@ -57,8 +64,13 @@
           (delete)="removeElement(schedule, i)"
         ></contler-range>
       </div>
-      <button mat-raised-button [class.schedule__btn]="schedules.length" type="button" (click)="addSchedule()">
-        Agregar rango
+      <button
+        mat-raised-button
+        [class.schedule__btn]="schedules.length"
+        type="button"
+        (click)="addSchedule()"
+      >
+        {{ 'reservation.edit.addBtn' | translate }}
       </button>
     </mat-card>
   </form>

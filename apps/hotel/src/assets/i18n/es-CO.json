@@ -133,5 +133,36 @@
     "selectIcon": "Selecciona un icono",
     "socialZone": "ZONAS SOCIALES",
     "updateSusses": "Zona actualizada exitosamente"
+  },
+  "reservation": {
+    "title": "Zona de reserva",
+    "labelName": "Nombre de la zona",
+    "labelCategory": "Categoría de esta zona",
+    "labelIcon": "Selecciona un icono",
+    "createButton": "Crear zona",
+    "nameList": "Nombre zona",
+    "edit": {
+      "title": "Información de la zona",
+      "editBtn": "Actualizar",
+      "subtitle": "Disponibilidad de la zona",
+      "addBtn": "Agregar rango",
+      "deleteBtn": "Eliminar zona"
+    },
+    "range": {
+      "labelDay": "Día de la semana",
+      "initTime": "Hora de inicio",
+      "endTime": "Hora final",
+      "quotaLabel": "Cupos"
+    }
+  },
+  "DAYS": {
+    "monday": "Lunes",
+    "tuesday": "Martes",
+    "wednesday": "Miercoles",
+    "thursday": "Jueves",
+    "friday": "Viernes",
+    "saturday": "Sabado",
+    "sunday": "Domingo",
+    "allDay": "Todos los días"
   }
 }
