@@ -62,5 +62,9 @@
     "guest": "Guest",
     "createGuest": "Create Guest",
     "yourWakeUpCallWasSuccessfullyCreated": "Your wake up call was successfully created"
+  },
+  "drinkRequest": {
+    "createRequest": "CREATE REQUEST",
+    "immediateRequestSuccessfullyCreated": "Immediate request successfully created"
   }
 }

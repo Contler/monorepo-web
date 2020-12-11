@@ -73,9 +73,7 @@ export class ProductComponent implements OnInit {
           .getCategoryRestaurant(uid)
           .pipe(
             map((categories) =>
-              categories.filter(
-                (category) => this.getProductsByCategory(products, category.uid).length,
-              ),
+              categories.filter((category) => this.getProductsByCategory(products, category.uid).length),
             ),
           )),
     );

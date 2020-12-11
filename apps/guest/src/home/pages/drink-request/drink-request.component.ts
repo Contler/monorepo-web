@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductListModel } from '@contler/models/product-list-model';
 import { RequestService } from 'guest/services/request.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-drink-request',
@@ -27,6 +28,7 @@ export class DrinkRequestComponent {
     productService: ProductService,
     guestService: GuestService,
     route: ActivatedRoute,
+    private translate: TranslateService,
   ) {
     route.params.subscribe((data) => (this.id = data.id));
 
@@ -55,7 +57,9 @@ export class DrinkRequestComponent {
       .map(({ product, quantity }) => `${product.name} : ${quantity}`)
       .join(', ');
     this.requestService.createRequest(this.id, msg).subscribe(() => {
-      this.messagesService.showToastMessage('Immediate request successfully created');
+      this.messagesService.showToastMessage(
+        this.translate.instant('drinkRequest.immediateRequestSuccessfullyCreated'),
+      );
       this.loading = false;
       this.router.navigate(['/home']);
     });
