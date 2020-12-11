@@ -91,5 +91,10 @@
     "send": "enviar",
     "immediateRequestSuccessfullyCreated": "Solicitud inmediata creada con éxito",
     "errorCreatingRequest": "Error al crear la solicitud"
+  },
+  "wakeUp": {
+    "title": "Mis llamadas para despertador",
+    "scheduleNewWakeUpCall": "PROGRAMAR NUEVA LLAMADA PARA DESPERTAR",
+    "youDontHaveAnyoneWakeUpCalls": "No tienes ningún despertador"
   }
 }

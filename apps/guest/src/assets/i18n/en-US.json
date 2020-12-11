@@ -91,5 +91,10 @@
     "send": "send",
     "immediateRequestSuccessfullyCreated": "Immediate request successfully created",
     "errorCreatingRequest": "Error creating request"
+  },
+  "wakeUp": {
+    "title": "My Wake up Calls",
+    "scheduleNewWakeUpCall": "SCHEDULE NEW WAKE UP CALL",
+    "youDontHaveAnyoneWakeUpCalls": "You don't have anyone Wake up Calls"
   }
 }
