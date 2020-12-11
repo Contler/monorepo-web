@@ -66,5 +66,17 @@
   "drinkRequest": {
     "createRequest": "CREAR SOLICITUD",
     "immediateRequestSuccessfullyCreated": "Solicitud inmediata creada con éxito"
+  },
+  "inmediateRequest": {
+    "immediateRequest": "Solicitud inmediata",
+    "dateOfRequest": "Fecha de la solicitud",
+    "hourOfRequest": "Hora de la solicitud",
+    "area": "Area",
+    "needing": "Solicitud",
+    "employeeInCharge": "Empleado a cargo",
+    "requestStatus": "Estado de la solicitud",
+    "pleaseTellUsMore": "Por favor, cuéntanos más",
+    "update": "ACTUALIZAR",
+    "requestModifiedSuccessfully": "Solicitud modificada correctamente"
   }
 }
