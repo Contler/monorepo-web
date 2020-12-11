@@ -1,6 +1,8 @@
 <contler-marco [backUrl]="'/home/my-inmediate-requests'">
   <div class="main-container" marcoBody>
-    <p class="p-title" [style]="getColorHotel()">{{ 'inmediateRequest.inmediateRequest' | translate }}</p>
+    <p class="p-title" [style]="getColorHotel()">
+      {{ 'inmediateRequest.inmediateRequestMessage' | translate }}
+    </p>
     <ng-container *ngIf="request">
       <form>
         <div class="two-inputs">

@@ -68,7 +68,7 @@
     "immediateRequestSuccessfullyCreated": "Solicitud inmediata creada con éxito"
   },
   "inmediateRequest": {
-    "immediateRequest": "Solicitud inmediata",
+    "inmediateRequestMessage": "Solicitud inmediata",
     "dateOfRequest": "Fecha de la solicitud",
     "hourOfRequest": "Hora de la solicitud",
     "area": "Area",
@@ -78,5 +78,11 @@
     "pleaseTellUsMore": "Por favor, cuéntanos más",
     "update": "ACTUALIZAR",
     "requestModifiedSuccessfully": "Solicitud modificada correctamente"
+  },
+  "myInmediateRequests": {
+    "myInmediatePendingRequest": "Mi solicitud pendiente inmediata",
+    "toDo": "QUE HACER",
+    "done": "TERMINADO",
+    "youHaveNoImmediateRequest": "No tienes una solicitud inmediata"
   }
 }

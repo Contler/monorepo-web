@@ -68,7 +68,7 @@
     "immediateRequestSuccessfullyCreated": "Immediate request successfully created"
   },
   "inmediateRequest": {
-    "immediateRequest": "Immediate request",
+    "inmediateRequestMessage": "Immediate request",
     "dateOfRequest": "Date of request",
     "hourOfRequest": "Hour of request",
     "area": "Area",
@@ -78,5 +78,11 @@
     "pleaseTellUsMore": "Please, tell us more",
     "update": "UPDATE",
     "requestModifiedSuccessfully": "Request modified successfully"
+  },
+  "myInmediateRequests": {
+    "myInmediatePendingRequest": "My inmediate pending request",
+    "toDo": "TO DO",
+    "done": "DONE",
+    "youHaveNoImmediateRequest": "You have no immediate request"
   }
 }
