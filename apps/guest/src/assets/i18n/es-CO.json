@@ -84,5 +84,12 @@
     "toDo": "QUE HACER",
     "done": "TERMINADO",
     "youHaveNoImmediateRequest": "No tienes una solicitud inmediata"
+  },
+  "specialRequest": {
+    "message": "Cuéntenos sobre su solicitud especial durante su estadía, estaremos encantados de complacerlo.",
+    "placeholder": "Escriba sus solicitudes...",
+    "send": "enviar",
+    "immediateRequestSuccessfullyCreated": "Solicitud inmediata creada con éxito",
+    "errorCreatingRequest": "Error al crear la solicitud"
   }
 }

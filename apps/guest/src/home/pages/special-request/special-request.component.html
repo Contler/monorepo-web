@@ -1,7 +1,7 @@
 <contler-marco>
   <div marcoBody>
     <p [style]="getColorHotel()" class="p-label">
-      Tell us about your special request during your staying, we will be happy to please you
+      {{ 'specialRequest.message' | translate }}
     </p>
     <form #specialRequestForm (ngSubmit)="saveRequest()">
       <mat-form-field appearance="fill" class="wd-area">
@@ -9,7 +9,7 @@
           matInput
           cdkAutosizeMinRows="15"
           cdkTextareaAutosize
-          placeholder="Write your requests…"
+          placeholder="{{ 'specialRequest.placeholder' | translate }}"
           [(ngModel)]="description"
           name="description"
           required
@@ -24,7 +24,7 @@
         [disabled]="loader || specialRequestForm.invalid"
         [style]="specialRequestForm.invalid ? '' : getButtonColorHotel()"
       >
-        send
+        {{ 'specialRequest.send' | translate }}
       </button>
     </form>
   </div>

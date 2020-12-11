@@ -84,5 +84,12 @@
     "toDo": "TO DO",
     "done": "DONE",
     "youHaveNoImmediateRequest": "You have no immediate request"
+  },
+  "specialRequest": {
+    "message": "Tell us about your special request during your saying, we will be happy to please you",
+    "placeholder": "Write your requests…",
+    "send": "send",
+    "immediateRequestSuccessfullyCreated": "Immediate request successfully created",
+    "errorCreatingRequest": "Error creating request"
   }
 }
