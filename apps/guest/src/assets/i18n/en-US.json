@@ -49,5 +49,10 @@
     "fair": "Fair",
     "good": "Good",
     "excellent": "Excellent"
+  },
+  "guestRequest": {
+    "hello": "Hello",
+    "whereDoYouNeedUs": "Where do you need us?",
+    "seeAllHotel": "SEE ALL HOTEL"
   }
 }
