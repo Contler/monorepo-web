@@ -54,5 +54,13 @@
     "hello": "Hello",
     "whereDoYouNeedUs": "Where do you need us?",
     "seeAllHotel": "SEE ALL HOTEL"
+  },
+  "createWake": {
+    "scheduleNewWakeUpCall": "Schedule new wake up call",
+    "date": "Date",
+    "hourOfTheCall": "Hour of the call",
+    "guest": "Guest",
+    "createGuest": "Create Guest",
+    "yourWakeUpCallWasSuccessfullyCreated": "Your wake up call was successfully created"
   }
 }

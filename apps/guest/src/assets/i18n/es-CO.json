@@ -54,5 +54,13 @@
     "hello": "Hola",
     "whereDoYouNeedUs": "Donde nos necesitas?",
     "seeAllHotel": "VER TODO EL HOTEL"
+  },
+  "createWake": {
+    "scheduleNewWakeUpCall": "Programar nueva llamada de despertador",
+    "date": "Fecha",
+    "hourOfTheCall": "Hora de la llamada",
+    "guest": "Invitado",
+    "createGuest": "Crear invitado",
+    "yourWakeUpCallWasSuccessfullyCreated": "Tu llamada para despertar se creó correctamente"
   }
 }
