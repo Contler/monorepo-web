@@ -155,5 +155,16 @@
     "socialZone": "SOCIAL AREAS",
     "updateSusses": "Zone updated successfully",
     "modal": { "admitOrder": "Admit Orders", "editName": "Edit Zone", "update": "Update" }
+  },
+  "immediateRequest": {
+    "active": "Available",
+    "all": "All",
+    "searchPlaceHolder": "Search..."
+  },
+  "typeRequest": {
+    "IMMEDIATE": "Immediate",
+    "RECEPTION": "Reception",
+    "CLEAN": "Clean",
+    "MAINTAIN": "Maintain"
   }
 }

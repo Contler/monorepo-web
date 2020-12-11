@@ -164,5 +164,16 @@
     "saturday": "Sabado",
     "sunday": "Domingo",
     "allDay": "Todos los días"
+  },
+  "immediateRequest": {
+    "active": "Activas",
+    "all": "Todas",
+    "searchPlaceHolder": "Busca..."
+  },
+  "typeRequest": {
+    "IMMEDIATE": "Inmediatas",
+    "RECEPTION": "Recepción",
+    "CLEAN": "Limpieza",
+    "MAINTAIN": "Mantenimiento"
   }
 }

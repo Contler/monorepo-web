@@ -13,6 +13,7 @@ import { ReceptionRequestComponent } from './components/reception-request/recept
 import { MatSortModule } from '@angular/material/sort';
 import { ModalReceptionComponent } from './components/modal-reception/modal-reception.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     RatingModule,
     MatSortModule,
     MatDialogModule,
+    TranslateModule,
   ],
   providers: [EmployerService],
 })

@@ -8,27 +8,29 @@
   <mat-sidenav-content class="cnt-zone">
     <div class="container">
       <div class="header">
-        <p class="header__title">Solicitudes inmediatas</p>
+        <p class="header__title">{{ 'global.IMMEDIATE_REQUEST' | translate }}</p>
         <div class="buttons-container">
           <mat-form-field appearance="fill">
             <mat-select [(ngModel)]="activeRequest">
               <mat-option *ngFor="let req of typeRequests | keyvalue" [value]="req.value.id">
-                {{ req.value.name }}
+                {{ req.value.name | translate }}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-select [(ngModel)]="filterByStatusSelected">
-              <mat-option [value]="requestStatus.ACTIVE"> Activas </mat-option>
-              <mat-option [value]="requestStatus.ALL"> Todas </mat-option>
+              <mat-option [value]="requestStatus.ACTIVE">
+                {{ 'immediateRequest.active' | translate }}
+              </mat-option>
+              <mat-option [value]="requestStatus.ALL"> {{ 'immediateRequest.all' | translate }} </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <input
               aria-label="search"
               matInput
-              placeholder="Busca..."
+              placeholder="{{ 'immediateRequest.searchPlaceHolder' | translate }}"
               (keyup)="textFilter = $event.target['value']"
             />
             <mat-icon matSuffix>search</mat-icon>
