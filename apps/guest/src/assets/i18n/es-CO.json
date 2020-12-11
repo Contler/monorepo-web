@@ -96,5 +96,14 @@
     "title": "Mis llamadas para despertador",
     "scheduleNewWakeUpCall": "PROGRAMAR NUEVA LLAMADA PARA DESPERTAR",
     "youDontHaveAnyoneWakeUpCalls": "No tienes ningún despertador"
+  },
+  "zoneRequest": {
+    "youAreIn": "Tú estás en",
+    "whatDoYouNeed": "¿Que necesitas?",
+    "writeWhatYouNeed": "Escribe lo que necesitas",
+    "createRequest": "CREAR SOLICITUD",
+    "immediateRequestSuccessfullyCreated": "Solicitud inmediata creada con éxito",
+    "thereIsAnImmediateRequestAt": "Hay una solicitud inmediata en",
+    "waitingToBeAttended.": "esperando ser atendido."
   }
 }
