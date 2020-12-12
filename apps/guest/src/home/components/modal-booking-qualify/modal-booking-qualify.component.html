@@ -14,7 +14,7 @@
     (rate)="selectStart($event)"
   ></contler-start>
   <p class="cnt-qualify__info" *ngIf="value !== undefined">
-    {{ 'modalBookingQualifyComponent.' + textRate[value - 1] | translate }} {{ value }}/5
+    {{ textRate[value - 1] | translate }} {{ value }}/5
   </p>
   <button
     mat-raised-button

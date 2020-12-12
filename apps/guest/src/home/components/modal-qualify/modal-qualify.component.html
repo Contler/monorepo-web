@@ -17,7 +17,7 @@
   ></contler-start>
 
   <p class="cnt-qualify__info" *ngIf="value !== undefined">
-    {{ 'modalQualifyComponent.' + textRate[value - 1] | translate }} {{ value }}/5
+    {{ textRate[value - 1] | translate }} {{ value }}/5
   </p>
   <mat-form-field appearance="fill" class="full_width cnt-qualify__input">
     <input matInput [(ngModel)]="comment" />

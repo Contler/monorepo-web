@@ -23,21 +23,11 @@
   "modalBookingQualifyComponent": {
     "title": "¿Cómo le pareció el servicio que le brindó nuestro equipo en su reserva en",
     "thatDay": "ese día",
-    "qualify": "calificar",
-    "veryBad": "Muy mala",
-    "bad": "Mala",
-    "fair": "Normal",
-    "good": "Buena",
-    "excellent": "Excelente"
+    "qualify": "calificar"
   },
   "modalOrdersQualifyComponent": {
     "title": "¿Cómo te pareció pedir nuestras bebidas y comidas?",
-    "qualify": "calificar",
-    "veryBad": "Muy mala",
-    "bad": "Mala",
-    "fair": "Normal",
-    "good": "Buena",
-    "excellent": "Excelente"
+    "qualify": "calificar"
   },
   "modalQualifyComponent": {
     "title": "¿Cómo encontró el servicio que nuestro equipo brindó en su solicitud",

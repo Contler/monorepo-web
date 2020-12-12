@@ -10,7 +10,7 @@
     (rate)="selectStart($event)"
   ></contler-start>
   <p class="order-qualify__info" *ngIf="value !== undefined">
-    {{ 'modalOrdersQualifyComponent.' + textRate[value - 1] | translate }} {{ value }}/5
+    {{ textRate[value - 1] | translate }} {{ value }}/5
   </p>
   <button
     mat-raised-button

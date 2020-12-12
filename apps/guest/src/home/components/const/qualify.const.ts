@@ -1,1 +1,7 @@
-export const TEXT_RATE = ['veryBad', 'bad', 'fair', 'good', 'excellent'];
+export const TEXT_RATE = [
+  'modalQualifyComponent.veryBad',
+  'modalQualifyComponent.bad',
+  'modalQualifyComponent.fair',
+  'modalQualifyComponent.good',
+  'modalQualifyComponent.excellent',
+];
