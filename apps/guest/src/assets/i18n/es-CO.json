@@ -19,5 +19,16 @@
       "label": "Contraseña",
       "messageError": "Necesitamos una contraseña para iniciar sesión"
     }
+  },
+  "sidebar": {
+    "logOut": "Cerrar sesión",
+    "immediateRequest": "Solicitud inmediata",
+    "myImmediateRequests": "Mis solicitudes inmediatas",
+    "reservations": "Reservaciones",
+    "myReservations": "Mis Reservas",
+    "orders": "Pedidos",
+    "specialRequests": "Solicitudes especiales",
+    "wakeUpCall": "Despertador",
+    "lateCheckOut": "Salida tarde"
   }
 }

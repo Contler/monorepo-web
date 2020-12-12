@@ -19,5 +19,16 @@
       "label": "Password",
       "messageError": "We need a password to log in"
     }
+  },
+  "sidebar": {
+    "logOut": "Log Out",
+    "immediateRequest": "Immediate Request",
+    "myImmediateRequests": "My immediate requests",
+    "reservations": "Reservations",
+    "myReservations": "My Reservations",
+    "orders": "Orders",
+    "specialRequests": "Special requests",
+    "wakeUpCall": "Wake up call",
+    "lateCheckOut": "Late Check-out"
   }
 }

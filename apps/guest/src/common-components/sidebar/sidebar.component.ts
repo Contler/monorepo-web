@@ -7,6 +7,13 @@ import { Subscription } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { GuestService } from 'guest/services/guest.service';
 import { HotelEntity } from '@contler/entity';
+import { TranslateService } from '@ngx-translate/core';
+
+interface Language {
+  name: string;
+  prefix: string;
+  unicode: string;
+}
 
 @Component({
   selector: 'contler-sidebar',
@@ -14,45 +21,60 @@ import { HotelEntity } from '@contler/entity';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit, OnDestroy {
+  languages: Language[] = [
+    {
+      name: 'Español',
+      prefix: 'es-CO',
+      unicode: '🇨🇴',
+    },
+    {
+      name: 'English',
+      prefix: 'en-US',
+      unicode: '🇬🇧',
+    },
+  ];
+
+  actualLanguage: Language;
+
   public readonly menuItems: MenuItem[] = [
     {
       icon: 'error',
-      name: 'Inmediate Request',
+      name: 'sidebar.immediateRequest',
       route: '/home/guest-requests',
     },
     {
       icon: 'error_outline',
-      name: 'My immediate requests',
+      name: 'sidebar.myImmediateRequests',
       route: '/home/my-inmediate-requests',
     },
     {
       icon: 'calendar_today',
-      name: 'Reservations',
+      name: 'sidebar.reservations',
       route: '/home/reservation',
     },
     {
       icon: 'calendar_today',
-      name: 'My Reservations',
+      name: 'sidebar.myReservations',
       route: '/home/reservation/my-reservation',
     },
     {
       icon: 'room_service',
-      name: 'Orders',
+      name: 'sidebar.orders',
       route: '/home/product',
     },
     {
       icon: 'sms_failed',
-      name: 'Special requests',
+      name: 'sidebar.specialRequests',
       route: '/home/special-requests',
     },
     {
       icon: 'alarm',
-      name: 'Wake up call',
+      name: 'sidebar.wakeUpCall',
       route: '/home/wake-up',
     },
     {
       icon: 'directions_walk',
-      name: 'Late Check-out',
+      name: 'sidebar.lateCheckOut',
       route: '/home/late',
     },
   ];
@@ -69,8 +91,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
     private usersService: UsersService,
     private auth: AngularFireAuth,
     private guestService: GuestService,
+    private translate: TranslateService,
   ) {
     this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
+    const { lan } = window.localStorage;
+    this.actualLanguage = this.languages.find((l) => l.prefix === lan) || this.languages[0];
   }
 
   async ngOnInit() {
@@ -115,6 +140,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
       .signOut()
       .then(() => this.router.navigate(['/login']))
       .catch(() => {});
+  }
+
+  changeLanguage() {
+    this.translate.use(this.actualLanguage.prefix);
+    window.localStorage.lan = this.actualLanguage.prefix;
   }
 }
 

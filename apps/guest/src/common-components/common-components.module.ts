@@ -15,6 +15,8 @@ import { ModalCompleteComponent } from './modal-complete/modal-complete.componen
 import { RouterModule } from '@angular/router';
 import { UserService } from '@contler/core';
 import { AvalibleUserGuard } from './guards/avalible-user.guard';
+import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,16 @@ import { AvalibleUserGuard } from './guards/avalible-user.guard';
     BtnMenuHotelDirective,
     ModalCompleteComponent,
   ],
-  imports: [CommonModule, MaterialModule, RatingModule, PipesModule, UiModule, RouterModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    RatingModule,
+    PipesModule,
+    UiModule,
+    RouterModule,
+    FormsModule,
+    TranslateModule,
+  ],
   exports: [
     ToolbarComponent,
     SidebarComponent,
