@@ -112,5 +112,11 @@
     "created": "Creada",
     "notAccepted": "No aceptada",
     "accepted": "Aceptada"
+  },
+  "createLate": {
+    "message": "Se recibió su solicitud de salida tardía. El área a cargo lo revisará y se pondrá en contacto contigo para confirmarlo.",
+    "departureTime": "Hora de salida",
+    "create": "Crear",
+    "close": "Cerrar"
   }
 }

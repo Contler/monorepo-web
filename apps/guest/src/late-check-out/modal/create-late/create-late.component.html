@@ -5,7 +5,7 @@
         {{ getHour(i) | date: 'shortTime' }}
       </mat-option>
     </mat-select>
-    <mat-hint>Departure time</mat-hint>
+    <mat-hint>{{ 'createLate.departureTime' | translate }}</mat-hint>
   </mat-form-field>
 
   <button
@@ -17,6 +17,6 @@
     [style]="getColorButtonHotel()"
     (click)="create()"
   >
-    Create
+    {{ 'createLate.create' | translate }}
   </button>
 </div>
