@@ -8,6 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MessagesService } from 'guest/services/messages/messages.service';
 import { HotelEntity, RequestEntity } from '@contler/entity';
 import { RequestService } from 'guest/services/request.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-inmediate-request',
@@ -31,6 +32,7 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
     private messagesService: MessagesService,
     private router: Router,
     private requestService: RequestService,
+    private translate: TranslateService,
   ) {
     this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
   }
@@ -67,7 +69,9 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
       .then(() => {
         this.loader = false;
         this.router.navigate(['/home']);
-        this.messagesService.showToastMessage('Request modified successfully');
+        this.messagesService.showToastMessage(
+          this.translate.instant('inmediateRequest.requestModifiedSuccessfully'),
+        );
       })
       .catch(() => {
         this.loader = false;

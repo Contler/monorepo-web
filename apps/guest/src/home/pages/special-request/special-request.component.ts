@@ -13,6 +13,7 @@ import { HotelEntity } from '@contler/entity';
 import { ZoneService } from 'guest/services/zone.service';
 import { RequestRequest } from '@contler/models/request-request';
 import { RequestService } from 'guest/services/request.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-special-request',
@@ -37,6 +38,7 @@ export class SpecialRequestComponent implements OnInit, OnDestroy {
     private router: Router,
     private guestService: GuestService,
     private messagesService: MessagesService,
+    private translate: TranslateService,
   ) {
     this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
   }
@@ -63,11 +65,15 @@ export class SpecialRequestComponent implements OnInit, OnDestroy {
         () => {
           this.loader = false;
           this.router.navigate(['/home']);
-          this.messagesService.showToastMessage('Immediate request successfully created');
+          this.messagesService.showToastMessage(
+            this.translate.instant('specialRequest.immediateRequestSuccessfullyCreated'),
+          );
         },
         (error) => {
           this.loader = false;
-          this.messagesService.showToastMessage('Error creating request');
+          this.messagesService.showToastMessage(
+            this.translate.instant('specialRequest.errorCreatingRequest'),
+          );
         },
       );
   }

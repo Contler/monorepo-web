@@ -19,5 +19,81 @@
       "label": "Password",
       "messageError": "We need a password to log in"
     }
+  },
+  "modalBookingQualifyComponent": {
+    "title": "How did you find the service our team provided in your reservation in",
+    "thatDay": "that day",
+    "qualify": "qualify"
+  },
+  "modalOrdersQualifyComponent": {
+    "title": "How did you think about ordering our drinks and meals?",
+    "qualify": "qualify"
+  },
+  "modalQualifyComponent": {
+    "title": "How did you find the service our team provided in your request",
+    "on": "on",
+    "day": "day",
+    "qualify": "qualify",
+    "veryBad": "Very bad",
+    "bad": "Bad",
+    "fair": "Fair",
+    "good": "Good",
+    "excellent": "Excellent"
+  },
+  "guestRequest": {
+    "hello": "Hello",
+    "whereDoYouNeedUs": "Where do you need us?",
+    "seeAllHotel": "SEE ALL HOTEL"
+  },
+  "createWake": {
+    "scheduleNewWakeUpCall": "Schedule new wake up call",
+    "date": "Date",
+    "hourOfTheCall": "Hour of the call",
+    "guest": "Guest",
+    "createGuest": "Create Guest",
+    "yourWakeUpCallWasSuccessfullyCreated": "Your wake up call was successfully created"
+  },
+  "drinkRequest": {
+    "createRequest": "CREATE REQUEST",
+    "immediateRequestSuccessfullyCreated": "Immediate request successfully created"
+  },
+  "inmediateRequest": {
+    "inmediateRequestMessage": "Immediate request",
+    "dateOfRequest": "Date of request",
+    "hourOfRequest": "Hour of request",
+    "area": "Area",
+    "needing": "Needing",
+    "employeeInCharge": "Employee in charge",
+    "requestStatus": "Request status",
+    "pleaseTellUsMore": "Please, tell us more",
+    "update": "UPDATE",
+    "requestModifiedSuccessfully": "Request modified successfully"
+  },
+  "myInmediateRequests": {
+    "myInmediatePendingRequest": "My inmediate pending request",
+    "toDo": "TO DO",
+    "done": "DONE",
+    "youHaveNoImmediateRequest": "You have no immediate request"
+  },
+  "specialRequest": {
+    "message": "Tell us about your special request during your saying, we will be happy to please you",
+    "placeholder": "Write your requests…",
+    "send": "send",
+    "immediateRequestSuccessfullyCreated": "Immediate request successfully created",
+    "errorCreatingRequest": "Error creating request"
+  },
+  "wakeUp": {
+    "title": "My Wake up Calls",
+    "scheduleNewWakeUpCall": "SCHEDULE NEW WAKE UP CALL",
+    "youDontHaveAnyoneWakeUpCalls": "You don't have anyone Wake up Calls"
+  },
+  "zoneRequest": {
+    "youAreIn": "You are in",
+    "whatDoYouNeed": "What do you need?",
+    "writeWhatYouNeed": "Write what you need",
+    "createRequest": "CREATE REQUEST",
+    "immediateRequestSuccessfullyCreated": "Immediate request successfully created",
+    "thereIsAnImmediateRequestAt": "There is an immediate request at",
+    "waitingToBeAttended.": "waiting to be attended."
   }
 }

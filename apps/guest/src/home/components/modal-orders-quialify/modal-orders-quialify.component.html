@@ -1,6 +1,6 @@
 <div class="order-qualify">
   <img src="assets/img/rating.svg" alt="" class="order-qualify__img" />
-  <p class="order-qualify__title">How did you think about ordering our drinks and meals</p>
+  <p class="order-qualify__title">{{ 'modalOrdersQualifyComponent.title' | translate }}</p>
   <contler-start
     value="0"
     totalstars="5"
@@ -9,7 +9,9 @@
     size="24px"
     (rate)="selectStart($event)"
   ></contler-start>
-  <p class="order-qualify__info" *ngIf="value !== undefined">{{ textRate[value! - 1] }} {{ value }}/5</p>
+  <p class="order-qualify__info" *ngIf="value !== undefined">
+    {{ textRate[value - 1] | translate }} {{ value }}/5
+  </p>
   <button
     mat-raised-button
     color="accent"
@@ -20,6 +22,6 @@
     [disabled]="!!!value || load"
     (click)="close()"
   >
-    qualify
+    {{ 'modalOrdersQualifyComponent.qualify' | translate }}
   </button>
 </div>

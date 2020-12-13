@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { OrderEntity } from '@contler/entity';
 import { ProductService, ReservationService } from '@contler/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { TEXT_RATE } from '../const/qualify.const';
 
 @Component({
   selector: 'contler-modal-orders-quialify',
@@ -10,7 +11,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class ModalOrdersQuialifyComponent implements OnInit {
   value: number | undefined;
-  readonly textRate = ['Very bad', 'Bad', 'Fair', 'Good', 'Excellent'];
+  readonly textRate = TEXT_RATE;
   load = false;
 
   constructor(

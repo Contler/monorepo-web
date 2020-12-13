@@ -1,11 +1,6 @@
 <contler-marco [backUrl]="'/home/zone-request/' + id">
   <div marcoBody>
-    <mat-spinner
-      color="primary"
-      style="margin: auto"
-      contlerColorHotel="primary"
-      *ngIf="load"
-    ></mat-spinner>
+    <mat-spinner color="primary" style="margin: auto" contlerColorHotel="primary" *ngIf="load"></mat-spinner>
 
     <contler-product-item
       *ngFor="let item of products"
@@ -24,7 +19,7 @@
       [disabled]="loading || checkQuantity === 0"
       (click)="createRequest()"
     >
-      CREAR SOLICITUD
+      {{ 'drinkRequet.createRequest' | translate }}
     </button>
   </div>
 </contler-marco>
