@@ -106,5 +106,11 @@
     "specialRequests": "Special requests",
     "wakeUpCall": "Wake up call",
     "lateCheckOut": "Late Check-out"
+  },
+  "lateCheckOut": {
+    "title": "Late check-out requests",
+    "created": "Created",
+    "notAccepted": "Not accepted",
+    "accepted": "Accepted"
   }
 }

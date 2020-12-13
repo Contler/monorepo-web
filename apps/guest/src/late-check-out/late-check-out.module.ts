@@ -9,6 +9,7 @@ import { CreateLateComponent } from './modal/create-late/create-late.component';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '@contler/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [LateCheckOutComponent, CreateLateComponent],
@@ -20,6 +21,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FormsModule,
     CoreModule,
     MatSnackBarModule,
+    TranslateModule,
   ],
   entryComponents: [CreateLateComponent],
 })

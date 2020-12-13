@@ -106,5 +106,11 @@
     "specialRequests": "Solicitudes especiales",
     "wakeUpCall": "Despertador",
     "lateCheckOut": "Salida tarde"
+  },
+  "lateCheckOut": {
+    "title": "Solicitudes de salida tardía",
+    "created": "Creada",
+    "notAccepted": "No aceptada",
+    "accepted": "Aceptada"
   }
 }
