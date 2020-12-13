@@ -1,8 +1,8 @@
 <contler-marco padding="0" [backUrl]="'/home/guest-requests'">
   <div class="my-room-container" marcoBody>
     <p class="my-room-container__label" contlerColorHotel="primary">
-      You are at your room. <br />
-      What do you need?
+      {{ 'myRoom.youAreAtYourRoom' | translate }} <br />
+      {{ 'myRoom.whatDoYouNeed' | translate }}
     </p>
 
     <div class="features-container">
@@ -36,7 +36,7 @@
       contlerColorBtnHotel="primary"
       mat-raised-button
     >
-      CREATE REQUEST
+      {{ 'myRoom.createRequest' | translate }}
     </button>
   </div>
 </contler-marco>

@@ -106,5 +106,12 @@
     "specialRequests": "Solicitudes especiales",
     "wakeUpCall": "Despertador",
     "lateCheckOut": "Salida tarde"
+  },
+  "myRoom": {
+    "youAreAtYourRoom": "Estás en tu habitación.",
+    "whatDoYouNeed": "¿Que necesitas?",
+    "createRequest": "CREAR SOLICITUD",
+    "text": "Su solicitud ha sido recibida con éxito.",
+    "close": "¡Entendido!"
   }
 }

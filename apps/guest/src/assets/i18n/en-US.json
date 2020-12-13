@@ -106,5 +106,12 @@
     "specialRequests": "Special requests",
     "wakeUpCall": "Wake up call",
     "lateCheckOut": "Late Check-out"
+  },
+  "myRoom": {
+    "youAreAtYourRoom": "You are at your room.",
+    "whatDoYouNeed": "What do you need?",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your request has been successfully received.",
+    "close": "Got it!"
   }
 }
