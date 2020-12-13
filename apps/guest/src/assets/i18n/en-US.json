@@ -113,5 +113,21 @@
     "createRequest": "CREATE REQUEST",
     "text": "Your request has been successfully received.",
     "close": "Got it!"
+  },
+  "cleaning": {
+    "title": "When do you want us to clean your room?",
+    "cleaningTime": "Cleaning time",
+    "specificCleaning": "Specific cleaning",
+    "what": "What?",
+    "anyRecommendation": "Any recommendation",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your room cleaning request has been successfully received.",
+    "close": "Got it!",
+    "cleaningOfSheets": "Cleaning of sheets",
+    "changeOfBlankets": "Change of blankets",
+    "bathroomCleaning": "Bathroom cleaning",
+    "towelChange": "Towel change",
+    "generalRoomCleaning": "General room cleaning",
+    "other": "Other"
   }
 }

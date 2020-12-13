@@ -1,8 +1,8 @@
 export const SPECIFIC_CLEANING = [
-  'Cleaning of sheets',
-  'Change of blankets',
-  'Bathroom cleaning',
-  'Towel change',
-  'General room cleaning',
-  'Other',
+  'cleaning.cleaningOfSheets',
+  'cleaning.changeOfBlankets',
+  'cleaning.bathroomCleaning',
+  'cleaning.towelChange',
+  'cleaning.generalRoomCleaning',
+  'cleaning.other',
 ];
