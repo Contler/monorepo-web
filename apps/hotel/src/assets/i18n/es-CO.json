@@ -176,7 +176,16 @@
     "timeTable": "Hora",
     "employerTable": "Empleado",
     "stateTable": "Estado",
-    "dateTable": "Fecha"
+    "dateTable": "Fecha",
+    "modalTitle": "Solicitud inmediata",
+    "timeDelivery": "Hora de entrega",
+    "request": "Solicitud",
+    "complete": "Cumplido",
+    "qualification": "Calificación",
+    "update": "ACTUALIZAR",
+    "updateSusses": "Solicitud actualizada exitosamente",
+    "requestOf": "Petición de",
+    "need": "Necesita"
   },
   "typeRequest": {
     "IMMEDIATE": "Inmediatas",

@@ -1,17 +1,17 @@
 <div mat-dialog-content>
   <div class="main-container">
-    <p class="main-container__title">Solicitud inmediata</p>
+    <p class="main-container__title">{{ 'immediateRequest.modalTitle' | translate }}</p>
 
     <div class="two-inputs main-container__first-row">
       <mat-form-field appearance="fill">
         <input matInput [ngModel]="request.guest.name" readonly />
         <mat-icon matSuffix class="material-icons-outlined">account_circle</mat-icon>
-        <mat-hint>Nombre huésped</mat-hint>
+        <mat-hint>{{ 'immediateRequest.nameTable' | translate }}</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <input matInput [ngModel]="request.zone.name" readonly />
         <mat-icon matSuffix>where_to_vote</mat-icon>
-        <mat-hint>Zona</mat-hint>
+        <mat-hint>{{ 'immediateRequest.zoneTable' | translate }}</mat-hint>
       </mat-form-field>
     </div>
 
@@ -20,12 +20,12 @@
         <mat-form-field appearance="fill">
           <input matInput [value]="request.createAt | date: 'HH:mm'" readonly />
           <mat-icon matSuffix class="material-icons-outlined">watch_later</mat-icon>
-          <mat-hint>Hora de solicitud</mat-hint>
+          <mat-hint>{{ 'immediateRequest.timeTable' | translate }}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <input matInput [value]="request.finishAt | date: 'HH:mm'" readonly />
           <mat-icon matSuffix class="material-icons-outlined">watch_later</mat-icon>
-          <mat-hint>Hora de entrega</mat-hint>
+          <mat-hint>{{ 'immediateRequest.timeDelivery' | translate }}</mat-hint>
         </mat-form-field>
       </div>
       <mat-form-field appearance="fill">
@@ -40,25 +40,25 @@
     <div class="two-inputs main-container__first-row">
       <mat-form-field appearance="fill">
         <input matInput [ngModel]="request.room.name" readonly />
-        <mat-hint>Habitación</mat-hint>
+        <mat-hint>{{ 'immediateRequest.roomTable' | translate }}</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <input matInput [ngModel]="request.message" readonly />
-        <mat-hint>Solicitud</mat-hint>
+        <mat-hint>{{ 'immediateRequest.request' | translate }}</mat-hint>
       </mat-form-field>
     </div>
 
     <div class="two-inputs main-container__fourth-row">
       <mat-form-field appearance="fill">
         <mat-select [(ngModel)]="isFinished" [disabled]="request.complete">
-          <mat-option [value]="false"> Activa </mat-option>
-          <mat-option [value]="true"> Cumplido </mat-option>
+          <mat-option [value]="false"> {{ 'immediateRequest.active' | translate }} </mat-option>
+          <mat-option [value]="true"> {{ 'immediateRequest.complete' | translate }} </mat-option>
         </mat-select>
-        <mat-hint>Estado</mat-hint>
+        <mat-hint>{{ 'immediateRequest.stateTable' | translate }}</mat-hint>
       </mat-form-field>
       <div class="ranking-container">
         <div class="score-info">
-          <p class="ranking-container__label">Calificación</p>
+          <p class="ranking-container__label">{{ 'immediateRequest.qualification' | translate }}</p>
           <contler-start
             [value]="request.score"
             totalstars="5"
@@ -79,7 +79,7 @@
       [disabled]="loading"
       (click)="save()"
     >
-      ACTUALIZAR
+      {{ 'immediateRequest.update' | translate }}
     </button>
   </div>
 </div>

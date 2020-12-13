@@ -7,6 +7,7 @@ import { MessagesService } from 'hotel/services/messages/messages.service';
 import { EmployerEntity, RequestEntity } from '@contler/entity';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from 'hotel/services/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-modal-inmediate-request',
@@ -31,6 +32,7 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
     @Inject(MAT_DIALOG_DATA)
     public data: RequestEntity,
     private authService: AuthService,
+    private translate: TranslateService,
   ) {
     this.idSelected = data.solved ? data.solved.uid : '';
   }
@@ -68,7 +70,8 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
         .subscribe(
           () => {
             this.loading = false;
-            this.messagesService.showToastMessage('Solicitud actualizada exitosamente');
+            const msg = this.translate.instant('immediateRequest.updateSusses');
+            this.messagesService.showToastMessage(msg);
             this.dialogRef.close();
           },
           (err) => {

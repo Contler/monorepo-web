@@ -114,7 +114,8 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
             default:
               this.receptionService.receptionRef.doc(nReq.uid).update({ active: nReq.active });
           }
-          this.messageService.showToastMessage('Solicitud actualizada');
+          const msg = this.translate.instant('immediateRequest.updateSusses');
+          this.messageService.showToastMessage(msg);
           this.dataSource.data = [...this.dataSource.data];
         } else {
           request.request.active = true;

@@ -167,7 +167,16 @@
     "timeTable": "Time",
     "employerTable": "Employer",
     "stateTable": "State",
-    "dateTable": "Date"
+    "dateTable": "Date",
+    "modalTitle": "Immediate request",
+    "timeDelivery": "Time delivery",
+    "request": "Request",
+    "complete": "Complete",
+    "qualification": "Qualification",
+    "update": "UPDATE",
+    "updateSusses": "Request updated successfully",
+    "requestOf": "Request of",
+    "need": "Need"
   },
   "typeRequest": {
     "IMMEDIATE": "Immediate",
