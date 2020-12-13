@@ -95,5 +95,16 @@
     "immediateRequestSuccessfullyCreated": "Solicitud inmediata creada con éxito",
     "thereIsAnImmediateRequestAt": "Hay una solicitud inmediata en",
     "waitingToBeAttended.": "esperando ser atendido."
+  },
+  "sidebar": {
+    "logOut": "Cerrar sesión",
+    "immediateRequest": "Solicitud inmediata",
+    "myImmediateRequests": "Mis solicitudes inmediatas",
+    "reservations": "Reservaciones",
+    "myReservations": "Mis Reservas",
+    "orders": "Pedidos",
+    "specialRequests": "Solicitudes especiales",
+    "wakeUpCall": "Despertador",
+    "lateCheckOut": "Salida tarde"
   }
 }

@@ -13,11 +13,22 @@
       [ngClass]="{ 'menu__item--selected': isSelectedRoute(item.route) }"
     >
       <mat-icon class="custom_icon">{{ item.icon }}</mat-icon>
-      <p class="label">{{ item.name }}</p>
+      <p class="label">{{ item.name | translate }}</p>
     </div>
     <div class="menu__item" (click)="logout()">
       <mat-icon class="custom_icon">exit_to_app</mat-icon>
-      <p class="label">Log Out</p>
+      <p class="label">{{ 'sidebar.logOut' | translate }}</p>
+    </div>
+
+    <div class="menu__item language">
+      <div class="custom_icon">
+        {{ actualLanguage.unicode }}
+      </div>
+      <mat-select required [(ngModel)]="actualLanguage" (selectionChange)="changeLanguage()">
+        <mat-option *ngFor="let language of languages" [value]="language">
+          <p class="label">{{ language.name }}</p>
+        </mat-option>
+      </mat-select>
     </div>
   </div>
 </div>

@@ -11,7 +11,7 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'guest/environments/environment';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule, HotelService, UserService } from '@contler/core';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -39,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    FormsModule,
     ReactiveFormsModule,
     CoreModule.forRoot({ urlBackend: environment.apiUrl }),
     NgxMaskModule.forRoot(),

@@ -95,5 +95,16 @@
     "immediateRequestSuccessfullyCreated": "Immediate request successfully created",
     "thereIsAnImmediateRequestAt": "There is an immediate request at",
     "waitingToBeAttended.": "waiting to be attended."
+  },
+  "sidebar": {
+    "logOut": "Log Out",
+    "immediateRequest": "Immediate Request",
+    "myImmediateRequests": "My immediate requests",
+    "reservations": "Reservations",
+    "myReservations": "My Reservations",
+    "orders": "Orders",
+    "specialRequests": "Special requests",
+    "wakeUpCall": "Wake up call",
+    "lateCheckOut": "Late Check-out"
   }
 }
