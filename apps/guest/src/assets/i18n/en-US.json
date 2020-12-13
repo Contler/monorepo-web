@@ -133,5 +133,13 @@
     "towelChange": "Towel change",
     "generalRoomCleaning": "General room cleaning",
     "other": "Other"
+  },
+  "maintenance": {
+    "title": "Confirm the time and reason for the maintenance of your room",
+    "whenDoYouNeedTheMaintenance": "When do you need the maintenance?",
+    "whatDoYouNeedTheMaintenanceFor": "What do you need the maintenance for?",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your maintenance request has been successfully received.",
+    "close": "Got it!"
   }
 }

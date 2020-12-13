@@ -133,5 +133,13 @@
     "towelChange": "Cambio de toallas",
     "generalRoomCleaning": "Limpieza general de habitaciones",
     "other": "Otro"
+  },
+  "maintenance": {
+    "title": "Confirma la hora y el motivo del mantenimiento de tu habitación.",
+    "whenDoYouNeedTheMaintenance": "¿Cuándo necesita el mantenimiento?",
+    "whatDoYouNeedTheMaintenanceFor": "¿Para qué necesita el mantenimiento?",
+    "createRequest": "CREAR SOLICITUD",
+    "text": "Su solicitud de mantenimiento se ha recibido correctamente.",
+    "close": "¡Entendido!"
   }
 }
