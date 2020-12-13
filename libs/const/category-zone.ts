@@ -52,13 +52,13 @@ export const SUB_CATEGORY = {
 };
 
 export const SUB_CATEGORY_ROOM = [
-  { name: 'Room Service', icon: 'fastfood', link: '/home/product/create', text: 'Room Service' },
-  { name: 'Request cleaning', icon: 'house', link: '/home/my-room/cleaning', text: 'Request cleaning' },
+  { name: 'Room Service', icon: 'fastfood', link: '/home/product/create', text: 'myRoom.roomService' },
+  { name: 'Request cleaning', icon: 'house', link: '/home/my-room/cleaning', text: 'myRoom.requestCleaning' },
   {
     name: 'Request maintenance',
     icon: 'build',
     link: '/home/my-room/maintenance',
-    text: 'Request maintenance',
+    text: 'myRoom.requestMaintenance',
   },
-  { name: 'Room keys', icon: 'lock_open', text: 'Room keys' },
+  { name: 'Room keys', icon: 'lock_open', text: 'myRoom.roomKeys' },
 ];

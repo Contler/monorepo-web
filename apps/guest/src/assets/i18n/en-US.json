@@ -112,7 +112,11 @@
     "whatDoYouNeed": "What do you need?",
     "createRequest": "CREATE REQUEST",
     "text": "Your request has been successfully received.",
-    "close": "Got it!"
+    "close": "Got it!",
+    "roomService": "Room Service",
+    "requestCleaning": "Request cleaning",
+    "requestMaintenance": "Request maintenance",
+    "roomKeys": "Room keys"
   },
   "cleaning": {
     "title": "When do you want us to clean your room?",

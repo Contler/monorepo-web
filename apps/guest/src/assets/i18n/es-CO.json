@@ -112,7 +112,11 @@
     "whatDoYouNeed": "¿Que necesitas?",
     "createRequest": "CREAR SOLICITUD",
     "text": "Su solicitud ha sido recibida con éxito.",
-    "close": "¡Entendido!"
+    "close": "¡Entendido!",
+    "roomService": "Servicio de habitacion",
+    "requestCleaning": "Solicitar limpieza",
+    "requestMaintenance": "Solicitar mantenimiento",
+    "roomKeys": "Llaves de habitación"
   },
   "cleaning": {
     "title": "¿Cuándo quieres que limpiemos tu habitación?",
