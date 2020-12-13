@@ -164,5 +164,33 @@
     "saturday": "Sabado",
     "sunday": "Domingo",
     "allDay": "Todos los días"
+  },
+  "immediateRequest": {
+    "active": "Activas",
+    "all": "Todas",
+    "searchPlaceHolder": "Busca...",
+    "nameTable": "Nombre huésped",
+    "zoneTable": "Zona",
+    "roomTable": "Cuarto",
+    "messageTable": "Mensaje",
+    "timeTable": "Hora",
+    "employerTable": "Empleado",
+    "stateTable": "Estado",
+    "dateTable": "Fecha",
+    "modalTitle": "Solicitud inmediata",
+    "timeDelivery": "Hora de entrega",
+    "request": "Solicitud",
+    "complete": "Cumplido",
+    "qualification": "Calificación",
+    "update": "ACTUALIZAR",
+    "updateSusses": "Solicitud actualizada exitosamente",
+    "requestOf": "Petición de",
+    "need": "Necesita"
+  },
+  "typeRequest": {
+    "IMMEDIATE": "Inmediatas",
+    "RECEPTION": "Recepción",
+    "CLEAN": "Limpieza",
+    "MAINTAIN": "Mantenimiento"
   }
 }
