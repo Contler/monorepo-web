@@ -168,7 +168,15 @@
   "immediateRequest": {
     "active": "Activas",
     "all": "Todas",
-    "searchPlaceHolder": "Busca..."
+    "searchPlaceHolder": "Busca...",
+    "nameTable": "Nombre huésped",
+    "zoneTable": "Zona",
+    "roomTable": "Cuarto",
+    "messageTable": "Mensaje",
+    "timeTable": "Hora",
+    "employerTable": "Empleado",
+    "stateTable": "Estado",
+    "dateTable": "Fecha"
   },
   "typeRequest": {
     "IMMEDIATE": "Inmediatas",

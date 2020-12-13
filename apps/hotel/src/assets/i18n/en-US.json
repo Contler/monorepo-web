@@ -159,7 +159,15 @@
   "immediateRequest": {
     "active": "Available",
     "all": "All",
-    "searchPlaceHolder": "Search..."
+    "searchPlaceHolder": "Search...",
+    "nameTable": "Guest name",
+    "zoneTable": "Zone",
+    "roomTable": "Room",
+    "messageTable": "Message",
+    "timeTable": "Time",
+    "employerTable": "Employer",
+    "stateTable": "State",
+    "dateTable": "Date"
   },
   "typeRequest": {
     "IMMEDIATE": "Immediate",

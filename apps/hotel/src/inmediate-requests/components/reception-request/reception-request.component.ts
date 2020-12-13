@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { ReceptionService, RoomService, UserService } from '@contler/core';
 import { ReceptionModel } from '@contler/models';
-import { filter, map, mergeMap, switchMap, take, toArray } from 'rxjs/operators';
+import { map, mergeMap, switchMap, take, toArray } from 'rxjs/operators';
 import { from, Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { GuestEntity } from '@contler/entity';
@@ -14,6 +14,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalReceptionComponent } from '../modal-reception/modal-reception.component';
 import { MessagesService } from 'hotel/services/messages/messages.service';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface ReqRecpetionGuest {
   request: ReceptionModel;
@@ -33,6 +34,7 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
+  localZone = localStorage.lan || 'es-CO';
   dataSource = new MatTableDataSource<ReqRecpetionGuest>([]);
   displayedColumns: string[] = [
     'userName',
@@ -54,7 +56,10 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
     private roomService: RoomService,
     private dialog: MatDialog,
     private messageService: MessagesService,
-  ) {}
+    private translate: TranslateService,
+  ) {
+    translate.onLangChange.subscribe(({ lang }) => (this.localZone = lang));
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['typeReq']) {
