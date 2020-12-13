@@ -155,5 +155,33 @@
     "socialZone": "SOCIAL AREAS",
     "updateSusses": "Zone updated successfully",
     "modal": { "admitOrder": "Admit Orders", "editName": "Edit Zone", "update": "Update" }
+  },
+  "immediateRequest": {
+    "active": "Available",
+    "all": "All",
+    "searchPlaceHolder": "Search...",
+    "nameTable": "Guest name",
+    "zoneTable": "Zone",
+    "roomTable": "Room",
+    "messageTable": "Message",
+    "timeTable": "Time",
+    "employerTable": "Employer",
+    "stateTable": "State",
+    "dateTable": "Date",
+    "modalTitle": "Immediate request",
+    "timeDelivery": "Time delivery",
+    "request": "Request",
+    "complete": "Complete",
+    "qualification": "Qualification",
+    "update": "UPDATE",
+    "updateSusses": "Request updated successfully",
+    "requestOf": "Request of",
+    "need": "Need"
+  },
+  "typeRequest": {
+    "IMMEDIATE": "Immediate",
+    "RECEPTION": "Reception",
+    "CLEAN": "Clean",
+    "MAINTAIN": "Maintain"
   }
 }

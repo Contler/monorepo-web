@@ -13,6 +13,7 @@ import { HotelEntity, ZoneEntity } from '@contler/entity';
 import { RequestRequest } from '@contler/models/request-request';
 import { RequestService } from 'guest/services/request.service';
 import { ROOM_SERVICE, SUB_CATEGORY_DRINKS, CATEGORY_ZONE_EN } from './const/zone-const';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-zone-request',
@@ -47,6 +48,7 @@ export class ZoneRequestComponent implements OnDestroy {
     private notificationsService: NotificationsService,
     private messagesService: MessagesService,
     private router: Router,
+    private translate: TranslateService,
   ) {
     this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
     this.zoneUid = this.route.snapshot.paramMap.get('id');
@@ -90,7 +92,9 @@ export class ZoneRequestComponent implements OnDestroy {
         switchMap((request) => this.requestService.saveRequest(request)),
         switchMap(() =>
           this.notificationsService.sendNotification(
-            `There is an immediate request at ${this.zone.name} waiting to be attended. `,
+            `${this.translate.instant('zoneRequest.thereIsAnImmediateRequestAt')} ${
+              this.zone.name
+            } ${this.translate.instant('zoneRequest.waitingToBeAttended')}`,
             chiefTokens,
           ),
         ),
@@ -100,7 +104,9 @@ export class ZoneRequestComponent implements OnDestroy {
           this.loader = false;
           this.requestController.reset();
           this.router.navigate(['/home']);
-          this.messagesService.showToastMessage('Immediate request successfully created');
+          this.messagesService.showToastMessage(
+            this.translate.instant('zoneRequest.immediateRequestSuccessfullyCreated'),
+          );
         },
         () => {
           this.loader = false;

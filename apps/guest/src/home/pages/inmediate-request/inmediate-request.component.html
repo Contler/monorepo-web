@@ -1,48 +1,35 @@
 <contler-marco [backUrl]="'/home/my-inmediate-requests'">
   <div class="main-container" marcoBody>
-    <p class="p-title" [style]="getColorHotel()">Immediate request</p>
+    <p class="p-title" [style]="getColorHotel()">
+      {{ 'inmediateRequest.inmediateRequestMessage' | translate }}
+    </p>
     <ng-container *ngIf="request">
       <form>
         <div class="two-inputs">
           <mat-form-field appearance="fill" class="full-field">
-            <input
-              matInput
-              [value]="request.createAt | date: 'dd/MM/yyyy'"
-              name="created_at_date"
-              readonly
-            />
-            <mat-hint>Date od request</mat-hint>
+            <input matInput [value]="request.createAt | date: 'dd/MM/yyyy'" name="created_at_date" readonly />
+            <mat-hint>{{ 'inmediateRequest.dateOfRequest' | translate }}</mat-hint>
           </mat-form-field>
           <mat-form-field appearance="fill" class="full-field">
-            <input
-              matInput
-              [value]="request.createAt | date: 'HH:mm'"
-              name="created_at_time"
-              readonly
-            />
-            <mat-hint>Hour of request</mat-hint>
+            <input matInput [value]="request.createAt | date: 'HH:mm'" name="created_at_time" readonly />
+            <mat-hint>{{ 'inmediateRequest.hourOfRequest' | translate }}</mat-hint>
           </mat-form-field>
         </div>
         <mat-form-field appearance="fill">
           <input matInput [value]="request.zone.name" name="zoneName" readonly />
-          <mat-hint>Area</mat-hint>
+          <mat-hint>{{ 'inmediateRequest.area' | translate }}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <input matInput [value]="request.message" name="message" readonly />
-          <mat-hint>Needing</mat-hint>
+          <mat-hint>{{ 'inmediateRequest.needing' | translate }}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <input matInput [value]="request.solved?.name" name="employerName" readonly />
-          <mat-hint>Employee in charge</mat-hint>
+          <mat-hint>{{ 'inmediateRequest.employeeInCharge' | translate }}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <input
-            matInput
-            [value]="request.complete ? 'Cumplida' : 'Pendiente'"
-            name="finished_at"
-            readonly
-          />
-          <mat-hint>Request status</mat-hint>
+          <input matInput [value]="request.complete ? 'Cumplida' : 'Pendiente'" name="finished_at" readonly />
+          <mat-hint>{{ 'inmediateRequest.requestStatus' | translate }}</mat-hint>
         </mat-form-field>
         <div class="score-container">
           <contler-score [score]="request.score" (value)="request.score = $event"></contler-score>
@@ -55,7 +42,7 @@
             name="scoreComments"
             required
           ></textarea>
-          <mat-hint>Please, tell us more</mat-hint>
+          <mat-hint>{{ 'inmediateRequest.pleaseTellUsMore' | translate }}</mat-hint>
         </mat-form-field>
         <button
           [loading]="loader"
@@ -67,7 +54,7 @@
           (click)="saveRequest()"
           [style]="getButtonColorHotel()"
         >
-          UPDATE
+          {{ 'inmediateRequest.update' | translate }}
         </button>
       </form>
     </ng-container>

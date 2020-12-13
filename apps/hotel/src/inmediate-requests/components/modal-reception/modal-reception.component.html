@@ -1,34 +1,38 @@
-<h1 mat-dialog-title style="text-align: center">Petición de {{ data?.request.type }}</h1>
+<h1 mat-dialog-title style="text-align: center">
+  {{ 'immediateRequest.requestOf' | translate }} {{ data?.request.type }}
+</h1>
 <div mat-dialog-content>
   <div class="container">
     <mat-form-field appearance="fill">
-      <mat-hint>Húesped</mat-hint>
+      <mat-hint>{{ 'immediateRequest.nameTable' | translate }}</mat-hint>
       <input matInput type="text" readonly [value]="data?.guest.name + ' ' + data?.guest.lastName" />
     </mat-form-field>
 
     <mat-form-field appearance="fill" *ngIf="data.request">
-      <mat-hint>Estado</mat-hint>
+      <mat-hint>{{ 'immediateRequest.stateTable' | translate }}</mat-hint>
       <mat-select [(ngModel)]="data.request.active" *ngIf="data.request.active">
-        <mat-option [value]="true">Activa</mat-option>
-        <mat-option [value]="false">Cumplida</mat-option>
+        <mat-option [value]="true">{{ 'immediateRequest.active' | translate }}</mat-option>
+        <mat-option [value]="false">{{ 'immediateRequest.complete' | translate }}</mat-option>
       </mat-select>
       <input type="text" readonly matInput value="Cumplida" *ngIf="!data.request.active" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-hint>Habitación</mat-hint>
+      <mat-hint>{{ 'immediateRequest.roomTable' | translate }}</mat-hint>
       <input matInput type="text" readonly [value]="data?.guest.room?.name" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-hint>Hora de solicitud</mat-hint>
+      <mat-hint>{{ 'immediateRequest.timeTable' | translate }}</mat-hint>
       <input matInput type="text" readonly [value]="data?.request.createAt | date: 'shortTime'" />
     </mat-form-field>
 
     <mat-form-field appearance="fill" style="grid-column: span 2">
-      <mat-hint>Necesita</mat-hint>
+      <mat-hint>{{ 'immediateRequest.need' | translate }}</mat-hint>
       <input matInput type="text" readonly [value]="data?.request.comment" />
     </mat-form-field>
   </div>
-  <button mat-raised-button color="accent" class="btn-update" (click)="update()">Actualizar</button>
+  <button mat-raised-button color="accent" class="btn-update" (click)="update()">
+    {{ 'immediateRequest.update' | translate }}
+  </button>
 </div>

@@ -1,8 +1,8 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
   <div class="container" marcoBody>
     <p class="container__label" contlerColorHotel="primary">
-      You are in {{ zone?.category.name }} <br />
-      What do you need?
+      {{ 'zoneRequest.youAreIn' | translate }} {{ zone?.category.name }} <br />
+      {{ 'zoneRequest.whatDoYouNeed' | translate }}
     </p>
 
     <div class="features-container" *ngIf="zone">
@@ -11,10 +11,7 @@
         *ngFor="let subcategory of categories[zone.category.id]"
         (click)="setQuickRequest(subcategory.name)"
       >
-        <mat-icon
-          class="features-container-item__icon"
-          *ngIf="subcategory.name != selectedSubcategory"
-        >
+        <mat-icon class="features-container-item__icon" *ngIf="subcategory.name != selectedSubcategory">
           {{ subcategory.icon }}
         </mat-icon>
         <mat-icon
@@ -31,7 +28,7 @@
     <div *ngIf="showRequestField">
       <mat-form-field appearance="fill" class="full_width container__input">
         <input matInput [formControl]="requestController" />
-        <mat-hint>Escribe lo que necesitas</mat-hint>
+        <mat-hint>{{ 'zoneRequest.writeWhatYouNeed' | translate }}</mat-hint>
       </mat-form-field>
     </div>
 
@@ -46,7 +43,7 @@
       contlerColorBtnHotel="primary"
       mat-raised-button
     >
-      CREATE REQUEST
+      {{ 'zoneRequest.createRequest' | translate }}
     </button>
   </div>
 </contler-marco>

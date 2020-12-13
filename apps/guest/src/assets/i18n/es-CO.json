@@ -20,6 +20,82 @@
       "messageError": "Necesitamos una contraseña para iniciar sesión"
     }
   },
+  "modalBookingQualifyComponent": {
+    "title": "¿Cómo le pareció el servicio que le brindó nuestro equipo en su reserva en",
+    "thatDay": "ese día",
+    "qualify": "calificar"
+  },
+  "modalOrdersQualifyComponent": {
+    "title": "¿Cómo te pareció pedir nuestras bebidas y comidas?",
+    "qualify": "calificar"
+  },
+  "modalQualifyComponent": {
+    "title": "¿Cómo encontró el servicio que nuestro equipo brindó en su solicitud",
+    "on": "en",
+    "day": "día",
+    "qualify": "calificar",
+    "veryBad": "Muy mala",
+    "bad": "Mala",
+    "fair": "Normal",
+    "good": "Buena",
+    "excellent": "Excelente"
+  },
+  "guestRequest": {
+    "hello": "Hola",
+    "whereDoYouNeedUs": "Donde nos necesitas?",
+    "seeAllHotel": "VER TODO EL HOTEL"
+  },
+  "createWake": {
+    "scheduleNewWakeUpCall": "Programar nueva llamada de despertador",
+    "date": "Fecha",
+    "hourOfTheCall": "Hora de la llamada",
+    "guest": "Invitado",
+    "createGuest": "Crear invitado",
+    "yourWakeUpCallWasSuccessfullyCreated": "Tu llamada para despertar se creó correctamente"
+  },
+  "drinkRequest": {
+    "createRequest": "CREAR SOLICITUD",
+    "immediateRequestSuccessfullyCreated": "Solicitud inmediata creada con éxito"
+  },
+  "inmediateRequest": {
+    "inmediateRequestMessage": "Solicitud inmediata",
+    "dateOfRequest": "Fecha de la solicitud",
+    "hourOfRequest": "Hora de la solicitud",
+    "area": "Area",
+    "needing": "Solicitud",
+    "employeeInCharge": "Empleado a cargo",
+    "requestStatus": "Estado de la solicitud",
+    "pleaseTellUsMore": "Por favor, cuéntanos más",
+    "update": "ACTUALIZAR",
+    "requestModifiedSuccessfully": "Solicitud modificada correctamente"
+  },
+  "myInmediateRequests": {
+    "myInmediatePendingRequest": "Mi solicitud pendiente inmediata",
+    "toDo": "QUE HACER",
+    "done": "TERMINADO",
+    "youHaveNoImmediateRequest": "No tienes una solicitud inmediata"
+  },
+  "specialRequest": {
+    "message": "Cuéntenos sobre su solicitud especial durante su estadía, estaremos encantados de complacerlo.",
+    "placeholder": "Escriba sus solicitudes...",
+    "send": "enviar",
+    "immediateRequestSuccessfullyCreated": "Solicitud inmediata creada con éxito",
+    "errorCreatingRequest": "Error al crear la solicitud"
+  },
+  "wakeUp": {
+    "title": "Mis llamadas para despertador",
+    "scheduleNewWakeUpCall": "PROGRAMAR NUEVA LLAMADA PARA DESPERTAR",
+    "youDontHaveAnyoneWakeUpCalls": "No tienes ningún despertador"
+  },
+  "zoneRequest": {
+    "youAreIn": "Tú estás en",
+    "whatDoYouNeed": "¿Que necesitas?",
+    "writeWhatYouNeed": "Escribe lo que necesitas",
+    "createRequest": "CREAR SOLICITUD",
+    "immediateRequestSuccessfullyCreated": "Solicitud inmediata creada con éxito",
+    "thereIsAnImmediateRequestAt": "Hay una solicitud inmediata en",
+    "waitingToBeAttended.": "esperando ser atendido."
+  },
   "sidebar": {
     "logOut": "Cerrar sesión",
     "immediateRequest": "Solicitud inmediata",

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { RequestService } from 'guest/services/request.service';
 import { RequestEntity } from '@contler/entity';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { TEXT_RATE } from '../const/qualify.const';
 
 @Component({
   selector: 'contler-modal-qualify',
@@ -12,7 +13,7 @@ export class ModalQualifyComponent implements OnInit {
   value: number | undefined;
   comment: string | undefined;
   load = false;
-  readonly textRate = ['Very bad', 'Bad', 'Fair', 'Good', 'Excellent'];
+  readonly textRate = TEXT_RATE;
 
   constructor(
     private dialogRef: MatDialogRef<ModalQualifyComponent>,

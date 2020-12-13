@@ -6,18 +6,18 @@ export const REQUEST_STATUS = {
 export const TYPE_REQUEST = {
   IMMEDIATE: {
     id: 0,
-    name: 'Inmediatas',
+    name: 'typeRequest.IMMEDIATE',
   },
   RECEPTION: {
     id: 1,
-    name: 'Recepción',
+    name: 'typeRequest.RECEPTION',
   },
   CLEAN: {
     id: 2,
-    name: 'Limpieza',
+    name: 'typeRequest.CLEAN',
   },
   MAINTAIN: {
     id: 3,
-    name: 'Mantenimiento',
+    name: 'typeRequest.MAINTAIN',
   },
 };

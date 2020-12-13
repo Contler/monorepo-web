@@ -1,9 +1,11 @@
 <contler-marco padding="0">
   <div marcoBody class="main-container">
     <p class="request__label request__user request__question" contlerColorHotel>
-      Hello {{ ($guest | async)?.name }}!
+      {{ 'guestRequest.hello' | translate }} {{ ($guest | async)?.name }}!
     </p>
-    <p class="request__label request__space request__question" contlerColorHotel>Where do you need us?</p>
+    <p class="request__label request__space request__question" contlerColorHotel>
+      {{ 'guestRequest.whereDoYouNeedUs' | translate }}
+    </p>
 
     <a class="request__zone" routerLink="/home/reception">
       <contler-icon class="request__zone-icon" key="fas fa-concierge-bell"></contler-icon>
@@ -21,7 +23,7 @@
     </a>
     <a (click)="showAllZones()" class="request__zone" *ngIf="!allZonesShowed">
       <mat-icon class="request__zone-icon request__zone-icon__add">add</mat-icon>
-      <p class="request__zone-text" contlerColorHotel>SEE ALL HOTEL</p>
+      <p class="request__zone-text" contlerColorHotel>{{ 'guestRequest.seeAllHotel' | translate }}</p>
       <mat-icon class="request__zone-icon">navigate_next</mat-icon>
     </a>
   </div>
