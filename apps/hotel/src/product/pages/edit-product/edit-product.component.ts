@@ -3,12 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService, RestaurantService } from '@contler/core';
 import { map, switchMap, take } from 'rxjs/operators';
 import { ProductEntity } from '@contler/entity';
-import { CATEGORY_PRODUCTS } from '@contler/const';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'hotel/services/auth.service';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { Observable } from 'rxjs';
 import { CategoryModels } from '@contler/models/category.models';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-edit-product',
@@ -32,6 +32,7 @@ export class EditProductComponent {
     private productService: ProductService,
     private auth: AuthService,
     private restaurantService: RestaurantService,
+    private translate: TranslateService,
   ) {
     this.route.params
       .pipe(
@@ -82,7 +83,7 @@ export class EditProductComponent {
       },
       () => {
         this.load = false;
-        this.error = 'No se puede borrar el producto';
+        this.error = this.translate.instant('product.errorDelete');
       },
     );
   }

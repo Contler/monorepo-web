@@ -153,7 +153,13 @@
     "all": "All",
     "category": "Category",
     "createBtn": "Create Product",
+    "deleteBtn": "Remove",
+    "deleteError": "Product cannot be deleted",
     "description": "Description",
+    "edit": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
     "inactive": "Inactive",
     "name": "Product name",
     "new": {
@@ -164,6 +170,7 @@
     "restaurant": "Restaurant",
     "state": "State",
     "title": "Products",
+    "updateBtn": "Update",
     "value": "Value"
   },
   "rating": {
