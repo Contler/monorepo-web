@@ -1,4 +1,14 @@
 {
+  "DAYS": {
+    "allDay": "Todos los días",
+    "friday": "Viernes",
+    "monday": "Lunes",
+    "saturday": "Sabado",
+    "sunday": "Domingo",
+    "thursday": "Jueves",
+    "tuesday": "Martes",
+    "wednesday": "Miercoles"
+  },
   "editGuest": {
     "noRequest": "No hay solicitudes",
     "order": "Pedido",
@@ -22,6 +32,7 @@
       "noOption": "No",
       "title": "Empleado",
       "totalAverage": "Número de servicios",
+      "totalServices": "Número de servicios",
       "update": "Actualizar",
       "updateSusses": "Empleado actualizado exitosamente",
       "yesOption": "Sí"
@@ -41,10 +52,10 @@
     "PASSWORD": "Contraseña",
     "RECEPTION": "Recepción",
     "RESTAURANT": "Restaurante",
+    "SEARCH": "Buscar",
     "SPACE_RESERVATION": "Reservas de espacios",
     "SPECIAL_REQUEST": "Solicitudes Especiales",
-    "ZONE": "Zonas",
-    "SEARCH": "Buscar"
+    "ZONE": "Zonas"
   },
   "guest": {
     "active": "Activos",
@@ -65,6 +76,38 @@
   },
   "home": {
     "desktop": "Escritorio"
+  },
+  "immediateRequest": {
+    "active": "Activas",
+    "all": "Todas",
+    "complete": "Cumplido",
+    "dateTable": "Fecha",
+    "employerTable": "Empleado",
+    "messageTable": "Mensaje",
+    "modalTitle": "Solicitud inmediata",
+    "nameTable": "Nombre huésped",
+    "need": "Necesita",
+    "qualification": "Calificación",
+    "request": "Solicitud",
+    "requestOf": "Petición de",
+    "roomTable": "Cuarto",
+    "searchPlaceHolder": "Busca...",
+    "stateTable": "Estado",
+    "timeDelivery": "Hora de entrega",
+    "timeTable": "Hora",
+    "update": "ACTUALIZAR",
+    "updateSusses": "Solicitud actualizada exitosamente",
+    "zoneTable": "Zona"
+  },
+  "lateCheckOut": {
+    "accepted": "Aceptada",
+    "checkOut": "Check Out",
+    "crate": "Creada",
+    "name": "Nombre",
+    "newDate": "Nueva hora de salida",
+    "notAccepted": "No acepatada",
+    "room": "Cuarto",
+    "state": "Estado"
   },
   "menu": {
     "admin": "Administrador",
@@ -98,6 +141,33 @@
     "time": "Tiempo promedio",
     "title": "Calificaciones"
   },
+  "reservation": {
+    "createButton": "Crear zona",
+    "edit": {
+      "addBtn": "Agregar rango",
+      "deleteBtn": "Eliminar zona",
+      "editBtn": "Actualizar",
+      "subtitle": "Disponibilidad de la zona",
+      "title": "Información de la zona"
+    },
+    "labelCategory": "Categoría de esta zona",
+    "labelIcon": "Selecciona un icono",
+    "labelName": "Nombre de la zona",
+    "nameList": "Nombre zona",
+    "range": {
+      "endTime": "Hora final",
+      "initTime": "Hora de inicio",
+      "labelDay": "Día de la semana",
+      "quotaLabel": "Cupos"
+    },
+    "title": "Zona de reserva"
+  },
+  "restaurant": {
+    "createBtn": "CREAR RESTAURANTE",
+    "deleteSusses": "Restaurante eliminado exitosamente",
+    "name": "Nombre de restaurante",
+    "title": "Restaurantes"
+  },
   "room": {
     "createBtn": "CREAR HABITACIÓN",
     "endRoom": "Habitación Final",
@@ -110,6 +180,27 @@
     "multiple": "Rango de habitaciones",
     "susses": "Habitación creada exitosamente",
     "unique": "Habitación única"
+  },
+  "specialRequest": {
+    "dateEnd": "Fecha salida",
+    "dateInit": "Fecha inicio",
+    "request": "Pedido",
+    "title": "Solicitudes especiales"
+  },
+  "typeRequest": {
+    "CLEAN": "Limpieza",
+    "IMMEDIATE": "Inmediatas",
+    "MAINTAIN": "Mantenimiento",
+    "RECEPTION": "Recepción"
+  },
+  "wakeUp": {
+    "callTo": "Llamar a",
+    "complete": "Completos",
+    "dateCall": "Fecha llamada",
+    "nameGuest": "Nombre huesped",
+    "pending": "Pendientes",
+    "room": "Habitación",
+    "timeCall": "Hora llamada"
   },
   "zone": {
     "category": "Categoría de esta zona",
@@ -134,89 +225,5 @@
     "selectIcon": "Selecciona un icono",
     "socialZone": "ZONAS SOCIALES",
     "updateSusses": "Zona actualizada exitosamente"
-  },
-  "reservation": {
-    "title": "Zona de reserva",
-    "labelName": "Nombre de la zona",
-    "labelCategory": "Categoría de esta zona",
-    "labelIcon": "Selecciona un icono",
-    "createButton": "Crear zona",
-    "nameList": "Nombre zona",
-    "edit": {
-      "title": "Información de la zona",
-      "editBtn": "Actualizar",
-      "subtitle": "Disponibilidad de la zona",
-      "addBtn": "Agregar rango",
-      "deleteBtn": "Eliminar zona"
-    },
-    "range": {
-      "labelDay": "Día de la semana",
-      "initTime": "Hora de inicio",
-      "endTime": "Hora final",
-      "quotaLabel": "Cupos"
-    }
-  },
-  "DAYS": {
-    "monday": "Lunes",
-    "tuesday": "Martes",
-    "wednesday": "Miercoles",
-    "thursday": "Jueves",
-    "friday": "Viernes",
-    "saturday": "Sabado",
-    "sunday": "Domingo",
-    "allDay": "Todos los días"
-  },
-  "immediateRequest": {
-    "active": "Activas",
-    "all": "Todas",
-    "searchPlaceHolder": "Busca...",
-    "nameTable": "Nombre huésped",
-    "zoneTable": "Zona",
-    "roomTable": "Cuarto",
-    "messageTable": "Mensaje",
-    "timeTable": "Hora",
-    "employerTable": "Empleado",
-    "stateTable": "Estado",
-    "dateTable": "Fecha",
-    "modalTitle": "Solicitud inmediata",
-    "timeDelivery": "Hora de entrega",
-    "request": "Solicitud",
-    "complete": "Cumplido",
-    "qualification": "Calificación",
-    "update": "ACTUALIZAR",
-    "updateSusses": "Solicitud actualizada exitosamente",
-    "requestOf": "Petición de",
-    "need": "Necesita"
-  },
-  "typeRequest": {
-    "IMMEDIATE": "Inmediatas",
-    "RECEPTION": "Recepción",
-    "CLEAN": "Limpieza",
-    "MAINTAIN": "Mantenimiento"
-  },
-  "specialRequest": {
-    "title": "Solicitudes especiales",
-    "request": "Pedido",
-    "dateInit": "Fecha inicio",
-    "dateEnd": "Fecha salida"
-  },
-  "wakeUp": {
-    "nameGuest": "Nombre huesped",
-    "callTo": "Llamar a",
-    "room": "Habitación",
-    "dateCall": "Fecha llamada",
-    "timeCall": "Hora llamada",
-    "pending": "Pendientes",
-    "complete": "Completos"
-  },
-  "lateCheckOut": {
-    "name": "Nombre",
-    "room": "Cuarto",
-    "newDate": "Nueva hora de salida",
-    "checkOut": "Check Out",
-    "state": "Estado",
-    "crate": "Creada",
-    "notAccepted": "No acepatada",
-    "accepted": "Aceptada"
   }
 }

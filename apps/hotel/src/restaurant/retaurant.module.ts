@@ -11,6 +11,7 @@ import { CommonComponentsModule } from 'hotel/common-components/common-component
 import { EditableComponent } from './components/editable/editable.component';
 import { EditModeDirective } from './components/directives/edit-mode.directive';
 import { ViewModeDirective } from './components/directives/view-mode.directive';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [RestaurantComponent, EditableComponent, EditModeDirective, ViewModeDirective],
@@ -22,8 +23,9 @@ import { ViewModeDirective } from './components/directives/view-mode.directive';
     CoreModule,
     ReactiveFormsModule,
     CommonComponentsModule,
+    TranslateModule,
   ],
   providers: [RestaurantService],
-  entryComponents: [EditableComponent, EditModeDirective, ViewModeDirective],
+  entryComponents: [EditableComponent],
 })
 export class RestaurantModule {}
