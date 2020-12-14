@@ -133,6 +133,18 @@
     "name": "Name",
     "title": "Create new guest"
   },
+  "product": {
+    "active": "Active",
+    "all": "All",
+    "createBtn": "Create Product",
+    "description": "Description",
+    "inactive": "Inactive",
+    "name": "Product name",
+    "restaurant": "Restaurant",
+    "state": "State",
+    "title": "Products",
+    "value": "Value"
+  },
   "rating": {
     "average": "Average rating",
     "name": "Qualification",

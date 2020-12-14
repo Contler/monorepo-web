@@ -133,6 +133,18 @@
     "name": "Nombre",
     "title": "Crear nuevo huesped"
   },
+  "product": {
+    "active": "Activos",
+    "all": "Todos",
+    "createBtn": "crear producto",
+    "description": "Descripción",
+    "inactive": "Inactivos",
+    "name": "Nombre Producto",
+    "restaurant": "Restaurante",
+    "state": "Estado",
+    "title": "Productos",
+    "value": "Valor"
+  },
   "rating": {
     "average": "Calificación promedio",
     "name": "Calificación",
