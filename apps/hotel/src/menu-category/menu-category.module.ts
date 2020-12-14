@@ -7,6 +7,7 @@ import { CoreModule, RestaurantService } from '@contler/core';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { MenuCategoryRoutingModule } from './menu-category-routing.module';
 import { ModalEditMenuCategoryComponent } from './components/modal/modal-edit-menu-category/modal-edit-menu-category.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [MenuCategoryComponent, ModalEditMenuCategoryComponent],
@@ -18,6 +19,7 @@ import { ModalEditMenuCategoryComponent } from './components/modal/modal-edit-me
     CoreModule,
     ReactiveFormsModule,
     CommonComponentsModule,
+    TranslateModule,
   ],
   providers: [RestaurantService],
   entryComponents: [ModalEditMenuCategoryComponent],

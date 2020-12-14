@@ -7,11 +7,11 @@
   <mat-sidenav-content class="cnt-menu-category">
     <div class="container">
       <div class="form_section">
-        <p class="title">Categorias de Menú</p>
+        <p class="title">{{ 'category.title' | translate }}</p>
         <form [formGroup]="menuCategoryForm" (ngSubmit)="save()">
           <mat-form-field appearance="fill">
             <input matInput formControlName="name" />
-            <mat-hint>Categoria</mat-hint>
+            <mat-hint>{{ 'category.name' | translate }}</mat-hint>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
@@ -20,7 +20,7 @@
                 {{ restaurant.name }}
               </mat-option>
             </mat-select>
-            <mat-hint>Restaurante</mat-hint>
+            <mat-hint>{{ 'category.restaurant' | translate }}</mat-hint>
           </mat-form-field>
 
           <button
@@ -31,7 +31,7 @@
             [disabled]="menuCategoryForm.invalid"
             [loading]="load"
           >
-            CREAR CATEGORIA
+            {{ 'category.createBtn' | translate }}
           </button>
         </form>
       </div>
@@ -40,7 +40,7 @@
         <mat-card class="menu-category-table">
           <div class="row_head">
             <div class="row_container header two_column">
-              <p class="header-p">Categorias</p>
+              <p class="header-p">{{ 'category.subTitle' | translate }}</p>
             </div>
           </div>
 
@@ -64,14 +64,10 @@
                   <p class="row_table_p">- {{ category.name }}</p>
                   <div class="actions">
                     <button mat-icon-button>
-                      <mat-icon class="custom_icon" (click)="editMenuCT(restaurant, category)"
-                        >edit</mat-icon
-                      >
+                      <mat-icon class="custom_icon" (click)="editMenuCT(restaurant, category)">edit</mat-icon>
                     </button>
                     <button mat-icon-button>
-                      <mat-icon
-                        class="custom_icon"
-                        (click)="deleteMenuCT(restaurant.uid, category.uid)"
+                      <mat-icon class="custom_icon" (click)="deleteMenuCT(restaurant.uid, category.uid)"
                         >delete</mat-icon
                       >
                     </button>

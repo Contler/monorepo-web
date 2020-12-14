@@ -9,6 +9,21 @@
     "tuesday": "Tuesday",
     "wednesday": "Wednesday"
   },
+  "category": {
+    "createBtn": "CREATE CATEGORY",
+    "createSusses": "Category created successfully",
+    "deleteSusses": "Category removed successfully",
+    "edit": {
+      "name": "Category name",
+      "title": "Edit Category",
+      "updateBtn": "update"
+    },
+    "name": "Category",
+    "restaurant": "Restaurant",
+    "subTitle": "Categories",
+    "title": "Menu Categories",
+    "updateSusses": "Category updated successfully"
+  },
   "editGuest": {
     "noRequest": "No requests",
     "order": "Order",
