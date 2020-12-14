@@ -1,4 +1,29 @@
 {
+  "DAYS": {
+    "allDay": "Todos los días",
+    "friday": "Viernes",
+    "monday": "Lunes",
+    "saturday": "Sabado",
+    "sunday": "Domingo",
+    "thursday": "Jueves",
+    "tuesday": "Martes",
+    "wednesday": "Miercoles"
+  },
+  "category": {
+    "createBtn": "CREAR CATEGORÍA",
+    "createSusses": "Categoría creado exitosamente",
+    "deleteSusses": "Categoría eliminada correctamente",
+    "edit": {
+      "name": "Nombre de la categoría",
+      "title": "Editar categoría",
+      "updateBtn": "actualizar"
+    },
+    "name": "Categoría",
+    "restaurant": "Restaurante",
+    "subTitle": "Categorías",
+    "title": "Categorías de Menú",
+    "updateSusses": "Categoría actualizada correctamente"
+  },
   "editGuest": {
     "noRequest": "No hay solicitudes",
     "order": "Pedido",
@@ -22,6 +47,7 @@
       "noOption": "No",
       "title": "Empleado",
       "totalAverage": "Número de servicios",
+      "totalServices": "Número de servicios",
       "update": "Actualizar",
       "updateSusses": "Empleado actualizado exitosamente",
       "yesOption": "Sí"
@@ -41,10 +67,10 @@
     "PASSWORD": "Contraseña",
     "RECEPTION": "Recepción",
     "RESTAURANT": "Restaurante",
+    "SEARCH": "Buscar",
     "SPACE_RESERVATION": "Reservas de espacios",
     "SPECIAL_REQUEST": "Solicitudes Especiales",
-    "ZONE": "Zonas",
-    "SEARCH": "Buscar"
+    "ZONE": "Zonas"
   },
   "guest": {
     "active": "Activos",
@@ -65,6 +91,38 @@
   },
   "home": {
     "desktop": "Escritorio"
+  },
+  "immediateRequest": {
+    "active": "Activas",
+    "all": "Todas",
+    "complete": "Cumplido",
+    "dateTable": "Fecha",
+    "employerTable": "Empleado",
+    "messageTable": "Mensaje",
+    "modalTitle": "Solicitud inmediata",
+    "nameTable": "Nombre huésped",
+    "need": "Necesita",
+    "qualification": "Calificación",
+    "request": "Solicitud",
+    "requestOf": "Petición de",
+    "roomTable": "Cuarto",
+    "searchPlaceHolder": "Busca...",
+    "stateTable": "Estado",
+    "timeDelivery": "Hora de entrega",
+    "timeTable": "Hora",
+    "update": "ACTUALIZAR",
+    "updateSusses": "Solicitud actualizada exitosamente",
+    "zoneTable": "Zona"
+  },
+  "lateCheckOut": {
+    "accepted": "Aceptada",
+    "checkOut": "Check Out",
+    "crate": "Creada",
+    "name": "Nombre",
+    "newDate": "Nueva hora de salida",
+    "notAccepted": "No acepatada",
+    "room": "Cuarto",
+    "state": "Estado"
   },
   "menu": {
     "admin": "Administrador",
@@ -90,6 +148,49 @@
     "name": "Nombre",
     "title": "Crear nuevo huesped"
   },
+  "order": {
+    "all": "Todos",
+    "complete": "Cumplidos",
+    "dataOrder": "Datos del pedido",
+    "delivery": "Entrega",
+    "guest": "Huésped",
+    "leader": "Líder que atendió la solicitud",
+    "observationOrder": "Observaciones del pedido",
+    "pending": "Pendientes",
+    "room": "Habitación",
+    "state": "Estado",
+    "teamHotel": "Equipo del hotel",
+    "timeDate": "Fecha y Hora",
+    "timeDelivery": "Hora de entrega",
+    "title": "Pedidos",
+    "updateBtn": "Actualizar",
+    "value": "Valor"
+  },
+  "product": {
+    "active": "Activos",
+    "all": "Todos",
+    "category": "Categoría",
+    "createBtn": "crear producto",
+    "deleteBtn": "Eliminar",
+    "deleteError": "No se puede borrar el producto",
+    "description": "Descripción",
+    "edit": {
+      "active": "Activo",
+      "inactive": "Inactivo"
+    },
+    "inactive": "Inactivos",
+    "name": "Nombre Producto",
+    "new": {
+      "create": "Crear",
+      "preview": "Previsualización",
+      "title": "Nuevo producto"
+    },
+    "restaurant": "Restaurante",
+    "state": "Estado",
+    "title": "Productos",
+    "updateBtn": "Actualizar",
+    "value": "Valor"
+  },
   "rating": {
     "average": "Calificación promedio",
     "name": "Calificación",
@@ -97,6 +198,35 @@
     "services": "No de servicios",
     "time": "Tiempo promedio",
     "title": "Calificaciones"
+  },
+  "reservation": {
+    "createButton": "Crear zona",
+    "edit": {
+      "addBtn": "Agregar rango",
+      "deleteBtn": "Eliminar zona",
+      "editBtn": "Actualizar",
+      "subtitle": "Disponibilidad de la zona",
+      "title": "Información de la zona"
+    },
+    "labelCategory": "Categoría de esta zona",
+    "labelIcon": "Selecciona un icono",
+    "labelName": "Nombre de la zona",
+    "nameList": "Nombre zona",
+    "range": {
+      "endTime": "Hora final",
+      "initTime": "Hora de inicio",
+      "labelDay": "Día de la semana",
+      "quotaLabel": "Cupos"
+    },
+    "title": "Zona de reserva"
+  },
+  "restaurant": {
+    "createBtn": "CREAR RESTAURANTE",
+    "createSusses": "Restaurante creado exitosamente",
+    "deleteSusses": "Restaurante eliminado exitosamente",
+    "name": "Nombre de restaurante",
+    "title": "Restaurantes",
+    "updateSusses": "Restaurante actualizado exitosamente"
   },
   "room": {
     "createBtn": "CREAR HABITACIÓN",
@@ -111,11 +241,33 @@
     "susses": "Habitación creada exitosamente",
     "unique": "Habitación única"
   },
+  "specialRequest": {
+    "dateEnd": "Fecha salida",
+    "dateInit": "Fecha inicio",
+    "request": "Pedido",
+    "title": "Solicitudes especiales"
+  },
+  "typeRequest": {
+    "CLEAN": "Limpieza",
+    "IMMEDIATE": "Inmediatas",
+    "MAINTAIN": "Mantenimiento",
+    "RECEPTION": "Recepción"
+  },
+  "wakeUp": {
+    "callTo": "Llamar a",
+    "complete": "Completos",
+    "dateCall": "Fecha llamada",
+    "nameGuest": "Nombre huesped",
+    "pending": "Pendientes",
+    "room": "Habitación",
+    "timeCall": "Hora llamada"
+  },
   "zone": {
     "category": "Categoría de esta zona",
     "create": "Crear",
     "createSusses": "Zona creada exitosamente",
     "deleteSusses": "Zona eliminada exitosamente",
+    "editName": "Editar zona",
     "errorUpdate": "La zona no se pudo actualizar, debes deshabilitar una zona principal para poder activar esta.",
     "foodZone": "ZONAS DE COMIDAS",
     "humidZone": "ZONAS HÚMEDAS",
@@ -134,89 +286,5 @@
     "selectIcon": "Selecciona un icono",
     "socialZone": "ZONAS SOCIALES",
     "updateSusses": "Zona actualizada exitosamente"
-  },
-  "reservation": {
-    "title": "Zona de reserva",
-    "labelName": "Nombre de la zona",
-    "labelCategory": "Categoría de esta zona",
-    "labelIcon": "Selecciona un icono",
-    "createButton": "Crear zona",
-    "nameList": "Nombre zona",
-    "edit": {
-      "title": "Información de la zona",
-      "editBtn": "Actualizar",
-      "subtitle": "Disponibilidad de la zona",
-      "addBtn": "Agregar rango",
-      "deleteBtn": "Eliminar zona"
-    },
-    "range": {
-      "labelDay": "Día de la semana",
-      "initTime": "Hora de inicio",
-      "endTime": "Hora final",
-      "quotaLabel": "Cupos"
-    }
-  },
-  "DAYS": {
-    "monday": "Lunes",
-    "tuesday": "Martes",
-    "wednesday": "Miercoles",
-    "thursday": "Jueves",
-    "friday": "Viernes",
-    "saturday": "Sabado",
-    "sunday": "Domingo",
-    "allDay": "Todos los días"
-  },
-  "immediateRequest": {
-    "active": "Activas",
-    "all": "Todas",
-    "searchPlaceHolder": "Busca...",
-    "nameTable": "Nombre huésped",
-    "zoneTable": "Zona",
-    "roomTable": "Cuarto",
-    "messageTable": "Mensaje",
-    "timeTable": "Hora",
-    "employerTable": "Empleado",
-    "stateTable": "Estado",
-    "dateTable": "Fecha",
-    "modalTitle": "Solicitud inmediata",
-    "timeDelivery": "Hora de entrega",
-    "request": "Solicitud",
-    "complete": "Cumplido",
-    "qualification": "Calificación",
-    "update": "ACTUALIZAR",
-    "updateSusses": "Solicitud actualizada exitosamente",
-    "requestOf": "Petición de",
-    "need": "Necesita"
-  },
-  "typeRequest": {
-    "IMMEDIATE": "Inmediatas",
-    "RECEPTION": "Recepción",
-    "CLEAN": "Limpieza",
-    "MAINTAIN": "Mantenimiento"
-  },
-  "specialRequest": {
-    "title": "Solicitudes especiales",
-    "request": "Pedido",
-    "dateInit": "Fecha inicio",
-    "dateEnd": "Fecha salida"
-  },
-  "wakeUp": {
-    "nameGuest": "Nombre huesped",
-    "callTo": "Llamar a",
-    "room": "Habitación",
-    "dateCall": "Fecha llamada",
-    "timeCall": "Hora llamada",
-    "pending": "Pendientes",
-    "complete": "Completos"
-  },
-  "lateCheckOut": {
-    "name": "Nombre",
-    "room": "Cuarto",
-    "newDate": "Nueva hora de salida",
-    "checkOut": "Check Out",
-    "state": "Estado",
-    "crate": "Creada",
-    "notAccepted": "No acepatada",
-    "accepted": "Aceptada"
   }
 }

@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RestaurantService } from '@contler/core';
 import { MessagesService } from 'hotel/services/messages/messages.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-modal-edit-menu-category',
@@ -20,6 +21,7 @@ export class ModalEditMenuCategoryComponent {
     public dialogRef: MatDialogRef<ModalEditMenuCategoryComponent>,
     private restaurantServ: RestaurantService,
     private messagesService: MessagesService,
+    private translate: TranslateService,
     formBuild: FormBuilder,
   ) {
     this.categoryGroup = formBuild.group({
@@ -38,7 +40,8 @@ export class ModalEditMenuCategoryComponent {
         .then(() => {
           this.load = false;
           this.dialogRef.close();
-          this.messagesService.showToastMessage('Categoria actualizada correctamente');
+          const msn = this.translate.instant('category.updateSusses');
+          this.messagesService.showToastMessage(msn);
         })
         .catch(() => this.messagesService.showServerError());
     }

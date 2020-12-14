@@ -1,4 +1,29 @@
 {
+  "DAYS": {
+    "allDay": "All days",
+    "friday": "Friday",
+    "monday": "Monday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "thursday": "thursday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday"
+  },
+  "category": {
+    "createBtn": "CREATE CATEGORY",
+    "createSusses": "Category created successfully",
+    "deleteSusses": "Category removed successfully",
+    "edit": {
+      "name": "Category name",
+      "title": "Edit Category",
+      "updateBtn": "update"
+    },
+    "name": "Category",
+    "restaurant": "Restaurant",
+    "subTitle": "Categories",
+    "title": "Menu Categories",
+    "updateSusses": "Category updated successfully"
+  },
   "editGuest": {
     "noRequest": "No requests",
     "order": "Order",
@@ -12,10 +37,6 @@
     "employerOption": "Employees",
     "leader": "leader",
     "leaderOption": "Area leader",
-    "name": "Employer Name",
-    "rating": "Qualification",
-    "request": "Request",
-    "viewRating": "See grades",
     "modal": {
       "averageTime": "Average Time",
       "create": "Create",
@@ -26,10 +47,15 @@
       "noOption": "Not",
       "title": "Employee",
       "totalAverage": "Total of services",
+      "totalServices": "Number of services",
       "update": "Update",
       "updateSusses": "Employee created successfully",
       "yesOption": "Yes"
-    }
+    },
+    "name": "Employer Name",
+    "rating": "Qualification",
+    "request": "Request",
+    "viewRating": "See grades"
   },
   "global": {
     "CLOSE": "Close",
@@ -41,10 +67,10 @@
     "PASSWORD": "Password",
     "RECEPTION": "Reception",
     "RESTAURANT": "Restaurant",
+    "SEARCH": "Search",
     "SPACE_RESERVATION": "Space reservations",
     "SPECIAL_REQUEST": "Special requests",
-    "ZONE": "Zones",
-    "SEARCH": "Search"
+    "ZONE": "Zones"
   },
   "guest": {
     "active": "Active",
@@ -57,10 +83,47 @@
     "name": "Guest Name",
     "room": "Room",
     "search": "Search...",
-    "typeDocument": "Type",
-    "type": { "cc": "Citizenship card", "passport": "Passport" }
+    "type": {
+      "cc": "Citizenship card",
+      "passport": "Passport"
+    },
+    "typeDocument": "Type"
   },
-  "home": { "desktop": "Desktop" },
+  "home": {
+    "desktop": "Desktop"
+  },
+  "immediateRequest": {
+    "active": "Available",
+    "all": "All",
+    "complete": "Complete",
+    "dateTable": "Date",
+    "employerTable": "Employer",
+    "messageTable": "Message",
+    "modalTitle": "Immediate request",
+    "nameTable": "Guest name",
+    "need": "Need",
+    "qualification": "Qualification",
+    "request": "Request",
+    "requestOf": "Request of",
+    "roomTable": "Room",
+    "searchPlaceHolder": "Search...",
+    "stateTable": "State",
+    "timeDelivery": "Time delivery",
+    "timeTable": "Time",
+    "update": "UPDATE",
+    "updateSusses": "Request updated successfully",
+    "zoneTable": "Zone"
+  },
+  "lateCheckOut": {
+    "accepted": "Accepted",
+    "checkOut": "Check Out",
+    "crate": "Create",
+    "name": "Name",
+    "newDate": "New date check out",
+    "notAccepted": "No accepted",
+    "room": "Room",
+    "state": "State"
+  },
   "menu": {
     "admin": "Administrator",
     "categories": "Menu Categories",
@@ -71,8 +134,8 @@
     "request": "Request",
     "reserveAreas": "Reserve areas",
     "restaurant": "Restaurant",
-    "rooms": "Rooms",
     "roomService": "Room Service",
+    "rooms": "Rooms",
     "space": "Spaces",
     "spaceReservations": "Space reservations",
     "team": "Team",
@@ -85,6 +148,49 @@
     "name": "Name",
     "title": "Create new guest"
   },
+  "order": {
+    "all": "All",
+    "complete": "Complete",
+    "dataOrder": "Order Data",
+    "delivery": "Delivery",
+    "guest": "Guest",
+    "leader": "Leader who answered the request",
+    "observationOrder": "Order Comments",
+    "pending": "Pending",
+    "room": "Room",
+    "state": "State",
+    "teamHotel": "Hotel team",
+    "timeDate": "Date and time",
+    "timeDelivery": "Delivery time",
+    "title": "Orders",
+    "updateBtn": "Update",
+    "value": "Value"
+  },
+  "product": {
+    "active": "Active",
+    "all": "All",
+    "category": "Category",
+    "createBtn": "Create Product",
+    "deleteBtn": "Remove",
+    "deleteError": "Product cannot be deleted",
+    "description": "Description",
+    "edit": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "inactive": "Inactive",
+    "name": "Product name",
+    "new": {
+      "create": "Create",
+      "preview": "Preview",
+      "title": "New product"
+    },
+    "restaurant": "Restaurant",
+    "state": "State",
+    "title": "Products",
+    "updateBtn": "Update",
+    "value": "Value"
+  },
   "rating": {
     "average": "Average rating",
     "name": "Qualification",
@@ -95,34 +201,32 @@
   },
   "reservation": {
     "createButton": "Create zone",
+    "edit": {
+      "addBtn": "Add range",
+      "deleteBtn": "Delete zone",
+      "editBtn": "Update",
+      "subtitle": "Zone availability",
+      "title": "Zone information"
+    },
     "labelCategory": "Zone name",
     "labelIcon": "Select a icon",
     "labelName": "Zone name",
-    "title": "Zone reservation",
     "nameList": "Zone name",
-    "edit": {
-      "title": "Zone information",
-      "editBtn": "Update",
-      "subtitle": "Zone availability",
-      "addBtn": "Add range",
-      "deleteBtn": "Delete zone"
-    },
     "range": {
-      "labelDay": "Day of the week",
-      "initTime": "Time init",
       "endTime": "Time end",
+      "initTime": "Time init",
+      "labelDay": "Day of the week",
       "quotaLabel": "Quotas"
-    }
+    },
+    "title": "Zone reservation"
   },
-  "DAYS": {
-    "monday": "Monday",
-    "tuesday": "Tuesday",
-    "wednesday": "Wednesday",
-    "thursday": "thursday",
-    "friday": "Friday",
-    "saturday": "Saturday",
-    "sunday": "Sunday",
-    "allDay": "All days"
+  "restaurant": {
+    "createBtn": "CREATE RESTAURANT",
+    "createSusses": "Successfully created restaurant",
+    "deleteSusses": "Restaurant removed successfully",
+    "name": "Restaurant Name",
+    "title": "Restaurants",
+    "updateSusses": "Successfully updated restaurant"
   },
   "room": {
     "createBtn": "CREATE ROOM",
@@ -137,15 +241,42 @@
     "susses": "Successfully created room",
     "unique": "Unique room"
   },
+  "specialRequest": {
+    "dateEnd": "End date",
+    "dateInit": "Init Date",
+    "request": "Petition",
+    "title": "Special request"
+  },
+  "typeRequest": {
+    "CLEAN": "Clean",
+    "IMMEDIATE": "Immediate",
+    "MAINTAIN": "Maintain",
+    "RECEPTION": "Reception"
+  },
+  "wakeUp": {
+    "callTo": "Call to",
+    "complete": "Complete",
+    "dateCall": "Call date",
+    "nameGuest": "Guest name",
+    "pending": "Pending",
+    "room": "Room",
+    "timeCall": "Call time"
+  },
   "zone": {
     "category": "Category of this area",
     "create": "Create",
     "createSusses": "Zone created successfully",
     "deleteSusses": "Zone removed successfully",
+    "editName": "Edit Zone",
     "errorUpdate": "The zone could not be updated, you must disable a main zone in order to activate it.",
     "foodZone": "FOOD AREAS",
     "humidZone": "HUMID AREAS",
     "maxZoneError": "You already have the four main zones chosen, you must disable one in order to activate this one.",
+    "modal": {
+      "admitOrder": "Admit Orders",
+      "editName": "Edit Zone",
+      "update": "Update"
+    },
     "myRoom": "MY ROOM",
     "name": "Zone name",
     "order": "Orders",
@@ -154,60 +285,6 @@
     "principalZone": "Featured area (you can choose a maximum of 4 areas)",
     "selectIcon": "Select an Icon",
     "socialZone": "SOCIAL AREAS",
-    "updateSusses": "Zone updated successfully",
-    "modal": { "admitOrder": "Admit Orders", "editName": "Edit Zone", "update": "Update" }
-  },
-  "immediateRequest": {
-    "active": "Available",
-    "all": "All",
-    "searchPlaceHolder": "Search...",
-    "nameTable": "Guest name",
-    "zoneTable": "Zone",
-    "roomTable": "Room",
-    "messageTable": "Message",
-    "timeTable": "Time",
-    "employerTable": "Employer",
-    "stateTable": "State",
-    "dateTable": "Date",
-    "modalTitle": "Immediate request",
-    "timeDelivery": "Time delivery",
-    "request": "Request",
-    "complete": "Complete",
-    "qualification": "Qualification",
-    "update": "UPDATE",
-    "updateSusses": "Request updated successfully",
-    "requestOf": "Request of",
-    "need": "Need"
-  },
-  "typeRequest": {
-    "IMMEDIATE": "Immediate",
-    "RECEPTION": "Reception",
-    "CLEAN": "Clean",
-    "MAINTAIN": "Maintain"
-  },
-  "specialRequest": {
-    "title": "Special request",
-    "request": "Petition",
-    "dateInit": "Init Date",
-    "dateEnd": "End date"
-  },
-  "wakeUp": {
-    "nameGuest": "Guest name",
-    "callTo": "Call to",
-    "room": "Room",
-    "dateCall": "Call date",
-    "timeCall": "Call time",
-    "pending": "Pending",
-    "complete": "Complete"
-  },
-  "lateCheckOut": {
-    "name": "Name",
-    "room": "Room",
-    "newDate": "New date check out",
-    "checkOut": "Check Out",
-    "state": "State",
-    "crate": "Create",
-    "notAccepted": "No accepted",
-    "accepted": "Accepted"
+    "updateSusses": "Zone updated successfully"
   }
 }

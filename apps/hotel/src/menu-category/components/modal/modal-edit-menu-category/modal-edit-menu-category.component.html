@@ -1,13 +1,9 @@
 <div class="contler-edit-category">
-  <p class="contler-edit-category__title">Editar categoria</p>
-  <form
-    class="contler-edit-category__form"
-    [formGroup]="categoryGroup"
-    (ngSubmit)="updateCategory()"
-  >
+  <p class="contler-edit-category__title">{{ 'category.edit.title' | translate }}</p>
+  <form class="contler-edit-category__form" [formGroup]="categoryGroup" (ngSubmit)="updateCategory()">
     <mat-form-field appearance="fill" class="content__2-columns">
       <input matInput formControlName="name" />
-      <mat-hint>Nombre de la categoria</mat-hint>
+      <mat-hint>{{ 'category.edit.name' | translate }}</mat-hint>
     </mat-form-field>
 
     <div>
@@ -18,7 +14,7 @@
         [loading]="load"
         [disabled]="load || categoryGroup.invalid"
       >
-        actualizar
+        {{ 'category.edit.updateBtn' | translate }}
       </button>
     </div>
   </form>

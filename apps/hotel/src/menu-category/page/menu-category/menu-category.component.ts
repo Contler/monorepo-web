@@ -9,6 +9,7 @@ import { RestaurantService } from '@contler/core';
 import { switchMap, take, tap } from 'rxjs/operators';
 import { CategoryModels } from '@contler/models/category.models';
 import { ModalEditMenuCategoryComponent } from '../../components/modal/modal-edit-menu-category/modal-edit-menu-category.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-menu-category',
@@ -29,6 +30,7 @@ export class MenuCategoryComponent implements OnInit {
     private messagesService: MessagesService,
     private authServ: AuthService,
     private restaurantServ: RestaurantService,
+    private translate: TranslateService,
   ) {
     this.menuCategoryForm = formBuild.group({
       name: [null, Validators.required],
@@ -52,7 +54,8 @@ export class MenuCategoryComponent implements OnInit {
         .createCategoryRestaurant(restaurant.uid, name)
         .then(() => {
           this.load = false;
-          this.messagesService.showToastMessage('Restaurante creado exitosamente');
+          const msn = this.translate.instant('category.createSusses');
+          this.messagesService.showToastMessage(msn);
           this.resetForm();
         })
         .catch(() => {
@@ -73,7 +76,8 @@ export class MenuCategoryComponent implements OnInit {
 
   deleteMenuCT(idRestaurant: string, idCategory: string) {
     this.restaurantServ.deleteRestaurantCategory(idRestaurant, idCategory).then(() => {
-      this.messagesService.showToastMessage('Categoria eliminada correctamente');
+      const msn = this.translate.instant('category.deleteSusses');
+      this.messagesService.showToastMessage(msn);
     });
   }
 
