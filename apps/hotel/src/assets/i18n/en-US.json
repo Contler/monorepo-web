@@ -164,9 +164,11 @@
   },
   "restaurant": {
     "createBtn": "CREATE RESTAURANT",
+    "createSusses": "Successfully created restaurant",
     "deleteSusses": "Restaurant removed successfully",
     "name": "Restaurant Name",
-    "title": "Restaurants"
+    "title": "Restaurants",
+    "updateSusses": "Successfully updated restaurant"
   },
   "room": {
     "createBtn": "CREATE ROOM",
@@ -207,6 +209,7 @@
     "create": "Create",
     "createSusses": "Zone created successfully",
     "deleteSusses": "Zone removed successfully",
+    "editName": "Edit Zone",
     "errorUpdate": "The zone could not be updated, you must disable a main zone in order to activate it.",
     "foodZone": "FOOD AREAS",
     "humidZone": "HUMID AREAS",
