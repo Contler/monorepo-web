@@ -192,5 +192,11 @@
     "RECEPTION": "Recepción",
     "CLEAN": "Limpieza",
     "MAINTAIN": "Mantenimiento"
+  },
+  "specialRequest": {
+    "title": "Solicitudes especiales",
+    "request": "Pedido",
+    "dateInit": "Fecha inicio",
+    "dateEnd": "Fecha salida"
   }
 }

@@ -183,5 +183,11 @@
     "RECEPTION": "Reception",
     "CLEAN": "Clean",
     "MAINTAIN": "Maintain"
+  },
+  "specialRequest": {
+    "title": "Special request",
+    "request": "Petition",
+    "dateInit": "Init Date",
+    "dateEnd": "End date"
   }
 }
