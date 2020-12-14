@@ -208,5 +208,15 @@
     "timeCall": "Hora llamada",
     "pending": "Pendientes",
     "complete": "Completos"
+  },
+  "lateCheckOut": {
+    "name": "Nombre",
+    "room": "Cuarto",
+    "newDate": "Nueva hora de salida",
+    "checkOut": "Check Out",
+    "state": "Estado",
+    "crate": "Creada",
+    "notAccepted": "No acepatada",
+    "accepted": "Aceptada"
   }
 }
