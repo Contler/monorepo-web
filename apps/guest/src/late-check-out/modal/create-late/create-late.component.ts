@@ -5,6 +5,7 @@ import { take } from 'rxjs/operators';
 import { GuestEntity, HotelEntity } from '@contler/entity';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-create-late',
@@ -23,6 +24,7 @@ export class CreateLateComponent implements OnInit {
     private guestService: GuestService,
     private afFirestore: AngularFirestore,
     private snackBar: MatSnackBar,
+    private translate: TranslateService,
   ) {
     this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => (this.hotel = hotel));
     this.guestService.$guest.subscribe((guest) => (this.guest = guest));
@@ -50,8 +52,8 @@ export class CreateLateComponent implements OnInit {
     this.load = true;
     const key = this.afFirestore.createId();
     this.snackBar.open(
-      'Your late checkout request was received. The area in charge will review it and contact you to confirm it.',
-      'close',
+      this.translate.instant('createLate.message'),
+      this.translate.instant('createLate.close'),
       {
         duration: 4000,
       },

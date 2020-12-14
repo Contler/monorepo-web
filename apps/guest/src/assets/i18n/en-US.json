@@ -141,5 +141,17 @@
     "createRequest": "CREATE REQUEST",
     "text": "Your maintenance request has been successfully received.",
     "close": "Got it!"
+  },
+  "lateCheckOut": {
+    "title": "Late check-out requests",
+    "created": "Created",
+    "notAccepted": "Not accepted",
+    "accepted": "Accepted"
+  },
+  "createLate": {
+    "message": "Your late checkout request was received. The area in charge will review it and contact you to confirm it.",
+    "departureTime": "Departure time",
+    "create": "Create",
+    "close": "Close"
   }
 }

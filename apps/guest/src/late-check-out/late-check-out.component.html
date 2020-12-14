@@ -1,13 +1,13 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
   <div marcoBody>
-    <p class="late__title" [style]="getColorHotel()">Late check-out requests</p>
+    <p class="late__title" [style]="getColorHotel()">{{ 'lateCheckOut.title' | translate }}</p>
 
     <div *ngFor="let item of lateList | async" class="late__item">
       <p class="late__p-label-date">{{ item.date | date: 'shortTime' }}</p>
       <p [ngSwitch]="item.status">
-        <span *ngSwitchCase="0">Created</span>
-        <span *ngSwitchCase="1">Not accepted</span>
-        <span *ngSwitchCase="2">Accepted</span>
+        <span *ngSwitchCase="0">{{ 'lateCheckOut.created' | translate }}</span>
+        <span *ngSwitchCase="1">{{ 'lateCheckOut.notAccepted' | translate }}</span>
+        <span *ngSwitchCase="2">{{ 'lateCheckOut.accepted' | translate }}Accepted</span>
       </p>
     </div>
   </div>
