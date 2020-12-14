@@ -1,4 +1,4 @@
-<h1 matDialogTitle class="cnt-title">Nuevo producto</h1>
+<h1 matDialogTitle class="cnt-title">{{ 'product.new.title' | translate }}</h1>
 <form matDialogContent class="modal-form" [formGroup]="productForm" (ngSubmit)="createProduct()">
   <mat-form-field appearance="fill">
     <input type="text" placeholder="Nombre" matInput formControlName="name" />
@@ -8,7 +8,7 @@
     <input
       type="text"
       matInput
-      placeholder="Valor"
+      placeholder="{{ 'product.value' | translate }}"
       currencyMask
       formControlName="value"
       [options]="{ precision: 0, thousands: '.', decimal: ',' }"
@@ -16,12 +16,17 @@
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="full">
-    <input type="text" matInput placeholder="Descripción" formControlName="description" />
+    <input
+      type="text"
+      matInput
+      placeholder="{{ 'product.description' | translate }}"
+      formControlName="description"
+    />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-select
-      placeholder="Restaurante"
+      placeholder="{{ 'product.restaurant' | translate }}"
       formControlName="restaurant"
       (valueChange)="updateCategories($event)"
     >
@@ -32,7 +37,7 @@
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-select placeholder="Categoría" formControlName="category">
+    <mat-select placeholder="{{ 'product.category' | translate }}" formControlName="category">
       <mat-option *ngFor="let category of categories$ | async" [value]="category.uid">
         {{ category.name }}
       </mat-option>
@@ -40,7 +45,7 @@
   </mat-form-field>
 
   <mat-card class="modal-preview">
-    <mat-card-title>Previsualización</mat-card-title>
+    <mat-card-title>{{ 'product.new.preview' | translate }}</mat-card-title>
     <mat-card-content>
       <contler-product-item [product]="product"></contler-product-item>
     </mat-card-content>
@@ -53,7 +58,7 @@
     contlerButton
     [loading]="loading"
   >
-    Crear
+    {{ 'product.new.create' | translate }}
   </button>
 </form>
 

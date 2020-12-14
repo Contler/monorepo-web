@@ -9,6 +9,7 @@ import { MyRoomRoutingModule } from './my-room.routing.module';
 import { UiModule } from '@contler/ui';
 import { CoreModule } from '@contler/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [MyRoomComponent, MaintenanceComponent, CleaningComponent],
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     UiModule,
     CoreModule,
     ReactiveFormsModule,
+    TranslateModule,
   ],
 })
 export class MyRoomModule {}

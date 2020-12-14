@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, ViewChild, ViewChildren } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { Component, OnDestroy, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RestaurantService } from '@contler/core';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { EditableComponent } from '../../components/editable/editable.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-restaurant',
@@ -37,6 +38,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     private restaurantServ: RestaurantService,
     private messagesService: MessagesService,
     private authServ: AuthService,
+    private translate: TranslateService,
   ) {
     this.restaurantGroup = formBuild.group({
       name: [null, Validators.required],
@@ -65,7 +67,8 @@ export class RestaurantComponent implements OnInit, OnDestroy {
           a.name.localeCompare(b.name),
         );
         this.load = false;
-        this.messagesService.showToastMessage('Restaurante creado exitosamente');
+        const msg = this.translate.instant('restaurant.createSusses');
+        this.messagesService.showToastMessage(msg);
         this.resetForm();
       },
       () => {
@@ -91,7 +94,8 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     if (control.valid) {
       this.restaurantServ.updateNameRestaurant(restId, control.value).subscribe(() => {
         this.getRestaurants();
-        this.messagesService.showToastMessage('Restaurante actualizado exitosamente');
+        const msg = this.translate.instant('restaurant.updateSusses');
+        this.messagesService.showToastMessage(msg);
       });
     }
   }
@@ -111,7 +115,8 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     this.restaurantServ.deleteRestaurant(restaurant.uid).subscribe(
       () => {
         this.getRestaurants();
-        this.messagesService.showToastMessage('Restaurante eliminado exitosamente');
+        const msg = this.translate.instant('restaurant.updateSusses');
+        this.messagesService.showToastMessage(msg);
       },
       (err) => {
         if (err.error.statusCode === 400) {

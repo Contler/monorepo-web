@@ -6,7 +6,7 @@ import { LateCheckOutComponent } from './late-check-out.component';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { MaterialModule } from 'hotel/material/material.module';
 import { CoreModule } from '@contler/core';
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [LateCheckOutComponent],
@@ -15,8 +15,9 @@ import { CoreModule } from '@contler/core';
     LateCheckOutRoutingModule,
     CommonComponentsModule,
     MaterialModule,
-    CoreModule
+    CoreModule,
+    TranslateModule,
   ],
-  providers: [DatePipe]
+  providers: [DatePipe],
 })
-export class LateCheckOutModule { }
+export class LateCheckOutModule {}

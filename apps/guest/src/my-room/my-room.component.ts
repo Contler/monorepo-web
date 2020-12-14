@@ -6,11 +6,12 @@ import { MessagesService } from 'guest/services/messages/messages.service';
 import { Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { ReceptionModel, RoomKeyModel } from '@contler/models';
+import { ReceptionModel } from '@contler/models';
 import { ReceptionService } from '@contler/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
 import { ModalCompleteComponent } from 'guest/common-components/modal-complete/modal-complete.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-my-room',
@@ -32,6 +33,7 @@ export class MyRoomComponent implements OnInit, OnDestroy {
     private messagesService: MessagesService,
     private receptionService: ReceptionService,
     private dialog: MatDialog,
+    private translate: TranslateService,
   ) {}
 
   ngOnInit() {
@@ -43,8 +45,8 @@ export class MyRoomComponent implements OnInit, OnDestroy {
     const msg = this.selectedSubcategory ? this.selectedSubcategory : '';
 
     const modalConfig: ModalConfigModel = {
-      text: 'Your request has been succesfully received.',
-      close: 'Got it!',
+      text: this.translate.instant('myRoom.text'),
+      close: this.translate.instant('myRoom.close'),
       icon: 'fas fa-check-circle',
     };
 

@@ -2,7 +2,7 @@ import { ProductOrderEntity } from './product-order.entity';
 import { HotelEntity } from './hotel.entity';
 import { GuestEntity } from './guest.entity';
 import { ZoneEntity } from './zone.entity';
-import { EmployerEntity } from '@contler/entity/employer.entity';
+import { EmployerEntity } from './employer.entity';
 
 export class OrderEntity {
   id!: number;
@@ -26,5 +26,4 @@ export class OrderEntity {
   qualification!: number;
 
   dateComplete!: Date;
-
 }

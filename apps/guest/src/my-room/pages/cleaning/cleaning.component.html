@@ -1,6 +1,8 @@
 <contler-marco padding="20px 50px" backUrl="/home/my-room">
   <ng-container marcoBody>
-    <h1 class="cleaning__title" contlerColorHotel="primary">When do you want us to clean your room?</h1>
+    <h1 class="cleaning__title" contlerColorHotel="primary">
+      {{ 'cleaning.title' | translate }}
+    </h1>
 
     <form class="cleaning__form" [formGroup]="cleaningForm">
       <mat-form-field appearance="fill">
@@ -10,26 +12,26 @@
           </mat-option>
         </mat-select>
         <mat-icon matSuffix>query_builder</mat-icon>
-        <mat-hint>Cleaning time</mat-hint>
+        <mat-hint>{{ 'cleaning.cleaningTime' | translate }}</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-select formControlName="cleaning" (ngModelChange)="changeCleaning($event)">
           <mat-option *ngFor="let option of specificCleanings" [value]="option">
-            {{ option }}
+            {{ option | translate }}
           </mat-option>
         </mat-select>
-        <mat-hint>Specific cleaning</mat-hint>
+        <mat-hint>{{ 'cleaning.specificCleaning' | translate }}</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill" *ngIf="!!whatControl">
         <input type="text" matInput aria-label="What?" formControlName="what" />
-        <mat-hint>What?</mat-hint>
+        <mat-hint>{{ 'cleaning.what' | translate }}</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <input matInput formControlName="recomendation" />
-        <mat-hint>Any recommendation</mat-hint>
+        <mat-hint>{{ 'cleaning.anyRecommendation' | translate }}</mat-hint>
       </mat-form-field>
     </form>
   </ng-container>
@@ -41,7 +43,7 @@
       [disabled]="load || cleaningForm.invalid"
       (click)="saveRequest()"
     >
-      CREATE REQUEST
+      {{ 'cleaning.createRequest' | translate }}
     </button>
   </div>
 </contler-marco>

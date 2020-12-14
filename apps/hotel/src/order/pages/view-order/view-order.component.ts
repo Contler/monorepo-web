@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '@contler/core';
 import { map, switchMap } from 'rxjs/operators';
-import { ProductEntity } from '@contler/entity';
-import { OrderEntity } from '@contler/entity';
+import { OrderEntity, ProductEntity } from '@contler/entity';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RestaurantProductsModel } from '@contler/models';
 
@@ -18,8 +17,8 @@ export class ViewOrderComponent {
   restaurantProds: RestaurantProductsModel;
 
   readonly states = [
-    { name: 'Pendiente', value: 0 },
-    { name: 'Cumplido', value: 1 },
+    { name: 'order.pending', value: 0 },
+    { name: 'order.complete', value: 1 },
   ];
   state = 0;
 

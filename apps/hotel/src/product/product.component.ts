@@ -17,9 +17,9 @@ export class ProductComponent implements OnInit {
   dataSource = new MatTableDataSource<ProductEntity>();
   displayedColumns: string[] = ['name', 'description', 'value', 'restaurant', 'state'];
   readonly filters = [
-    { name: 'Todos', value: 0 },
-    { name: 'Activo', value: 1 },
-    { name: 'Inactivo', value: 2 },
+    { name: 'product.all', value: 0 },
+    { name: 'product.active', value: 1 },
+    { name: 'product.inactive ', value: 2 },
   ];
   filter = 0;
   private products: ProductEntity[] = [];

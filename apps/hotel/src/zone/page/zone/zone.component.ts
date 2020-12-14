@@ -79,7 +79,9 @@ export class ZoneComponent {
     this.zoneService.deleteZone(zone).subscribe(
       () => {
         this.zones = this.zones.filter((actualZone) => actualZone.uid !== zone.uid);
-        this.translate.get('deleteSusses').subscribe((msg) => this.messagesService.showToastMessage(msg));
+        this.translate
+          .get('zone.deleteSusses')
+          .subscribe((msg) => this.messagesService.showToastMessage(msg));
       },
       (err) => {
         if (err.error.statusCode === 400) {

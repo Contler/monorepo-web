@@ -7,11 +7,11 @@
   <mat-sidenav-content class="cnt-restaurant">
     <div class="container">
       <div class="form_section">
-        <p class="title">Restaurantes</p>
+        <p class="title">{{ 'restaurant.title' | translate }}</p>
         <form [formGroup]="restaurantGroup" (ngSubmit)="save()">
           <mat-form-field appearance="fill">
             <input matInput formControlName="name" />
-            <mat-hint>Nombre de restaurante</mat-hint>
+            <mat-hint>{{ 'restaurant.name' | translate }}</mat-hint>
           </mat-form-field>
 
           <button
@@ -22,7 +22,7 @@
             [disabled]="restaurantGroup.invalid"
             [loading]="load"
           >
-            CREAR RESTAURANTE
+            {{ 'restaurant.createBtn' | translate }}
           </button>
         </form>
       </div>
@@ -31,7 +31,7 @@
         <mat-card class="crud_table">
           <div class="row">
             <div class="row_container header two_column">
-              <p>Nombre restaurante</p>
+              <p>{{ 'restaurant.name' | translate }}</p>
             </div>
           </div>
 
