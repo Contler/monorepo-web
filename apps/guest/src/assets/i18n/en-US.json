@@ -106,5 +106,40 @@
     "specialRequests": "Special requests",
     "wakeUpCall": "Wake up call",
     "lateCheckOut": "Late Check-out"
+  },
+  "myRoom": {
+    "youAreAtYourRoom": "You are at your room.",
+    "whatDoYouNeed": "What do you need?",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your request has been successfully received.",
+    "close": "Got it!",
+    "roomService": "Room Service",
+    "requestCleaning": "Request cleaning",
+    "requestMaintenance": "Request maintenance",
+    "roomKeys": "Room keys"
+  },
+  "cleaning": {
+    "title": "When do you want us to clean your room?",
+    "cleaningTime": "Cleaning time",
+    "specificCleaning": "Specific cleaning",
+    "what": "What?",
+    "anyRecommendation": "Any recommendation",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your room cleaning request has been successfully received.",
+    "close": "Got it!",
+    "cleaningOfSheets": "Cleaning of sheets",
+    "changeOfBlankets": "Change of blankets",
+    "bathroomCleaning": "Bathroom cleaning",
+    "towelChange": "Towel change",
+    "generalRoomCleaning": "General room cleaning",
+    "other": "Other"
+  },
+  "maintenance": {
+    "title": "Confirm the time and reason for the maintenance of your room",
+    "whenDoYouNeedTheMaintenance": "When do you need the maintenance?",
+    "whatDoYouNeedTheMaintenanceFor": "What do you need the maintenance for?",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your maintenance request has been successfully received.",
+    "close": "Got it!"
   }
 }

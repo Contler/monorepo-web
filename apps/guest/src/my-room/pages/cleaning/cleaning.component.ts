@@ -11,6 +11,7 @@ import { ReceptionModel } from '@contler/models';
 import { RoomService } from '@contler/core';
 import { SPECIFIC_CLEANING } from '../../const/cleaning.const';
 import { DatePipe } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-cleaning',
@@ -30,6 +31,7 @@ export class CleaningComponent {
     private router: Router,
     private datePipe: DatePipe,
     private roomService: RoomService,
+    private translate: TranslateService,
   ) {
     this.cleaningForm = fb.group({
       time: ['', Validators.required],
@@ -44,8 +46,8 @@ export class CleaningComponent {
     const { time, cleaning, recomendation, what } = this.cleaningForm.value;
 
     const modalConfig: ModalConfigModel = {
-      text: 'Your room cleaning request has been succesfully received.',
-      close: 'Got it!',
+      text: this.translate.instant('cleaning.text'),
+      close: this.translate.instant('cleaning.close'),
       icon: 'fas fa-check-circle',
     };
 

@@ -106,5 +106,40 @@
     "specialRequests": "Solicitudes especiales",
     "wakeUpCall": "Despertador",
     "lateCheckOut": "Salida tarde"
+  },
+  "myRoom": {
+    "youAreAtYourRoom": "Estás en tu habitación.",
+    "whatDoYouNeed": "¿Que necesitas?",
+    "createRequest": "CREAR SOLICITUD",
+    "text": "Su solicitud ha sido recibida con éxito.",
+    "close": "¡Entendido!",
+    "roomService": "Servicio de habitacion",
+    "requestCleaning": "Solicitar limpieza",
+    "requestMaintenance": "Solicitar mantenimiento",
+    "roomKeys": "Llaves de habitación"
+  },
+  "cleaning": {
+    "title": "¿Cuándo quieres que limpiemos tu habitación?",
+    "cleaningTime": "Hora de limpiar",
+    "specificCleaning": "Limpieza especifica",
+    "what": "¿Qué?",
+    "anyRecommendation": "Alguna recomendacion",
+    "createRequest": "CREAR SOLICITUD",
+    "text": "Su solicitud de limpieza de habitación se ha recibido correctamente.",
+    "close": "¡Entendido!",
+    "cleaningOfSheets": "Limpieza de sábanas",
+    "changeOfBlankets": "Cambio de mantas",
+    "bathroomCleaning": "Limpieza de baños",
+    "towelChange": "Cambio de toallas",
+    "generalRoomCleaning": "Limpieza general de habitaciones",
+    "other": "Otro"
+  },
+  "maintenance": {
+    "title": "Confirma la hora y el motivo del mantenimiento de tu habitación.",
+    "whenDoYouNeedTheMaintenance": "¿Cuándo necesita el mantenimiento?",
+    "whatDoYouNeedTheMaintenanceFor": "¿Para qué necesita el mantenimiento?",
+    "createRequest": "CREAR SOLICITUD",
+    "text": "Su solicitud de mantenimiento se ha recibido correctamente.",
+    "close": "¡Entendido!"
   }
 }

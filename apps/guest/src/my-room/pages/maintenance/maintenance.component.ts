@@ -10,6 +10,7 @@ import { ReceptionModel } from '@contler/models';
 import { RoomService } from '@contler/core';
 import { fullRangeDates } from 'guest/utils/generateTime';
 import { DatePipe } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-maintenance',
@@ -28,6 +29,7 @@ export class MaintenanceComponent {
     private dialog: MatDialog,
     private router: Router,
     private datePipe: DatePipe,
+    private translate: TranslateService,
   ) {
     this.maintenanceControl = fb.group({
       time: ['', Validators.required],
@@ -40,8 +42,8 @@ export class MaintenanceComponent {
     const { time, maintenance } = this.maintenanceControl.value;
 
     const modalConfig: ModalConfigModel = {
-      text: 'Your maintenance request has been succesfully received.',
-      close: 'Got it!',
+      text: this.translate.instant('maintenance.text'),
+      close: this.translate.instant('maintenance.close'),
       icon: 'fas fa-check-circle',
     };
 
