@@ -136,10 +136,16 @@
   "product": {
     "active": "Active",
     "all": "All",
+    "category": "Category",
     "createBtn": "Create Product",
     "description": "Description",
     "inactive": "Inactive",
     "name": "Product name",
+    "new": {
+      "create": "Create",
+      "preview": "Preview",
+      "title": "New product"
+    },
     "restaurant": "Restaurant",
     "state": "State",
     "title": "Products",
