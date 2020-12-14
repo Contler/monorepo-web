@@ -43,7 +43,8 @@
     "RESTAURANT": "Restaurant",
     "SPACE_RESERVATION": "Space reservations",
     "SPECIAL_REQUEST": "Special requests",
-    "ZONE": "Zones"
+    "ZONE": "Zones",
+    "SEARCH": "Search"
   },
   "guest": {
     "active": "Active",
@@ -189,5 +190,14 @@
     "request": "Petition",
     "dateInit": "Init Date",
     "dateEnd": "End date"
+  },
+  "wakeUp": {
+    "nameGuest": "Guest name",
+    "callTo": "Call to",
+    "room": "Room",
+    "dateCall": "Call date",
+    "timeCall": "Call time",
+    "pending": "Pending",
+    "complete": "Complete"
   }
 }

@@ -17,8 +17,8 @@ export class WakeUpComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
 
   readonly filters = [
-    { name: 'Pendientes', value: 0 },
-    { name: 'Completos', value: 1 },
+    { name: 'wakeUp.pending', value: 0 },
+    { name: 'wakeUp.complete', value: 1 },
   ];
 
   filter = 0;

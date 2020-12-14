@@ -43,7 +43,8 @@
     "RESTAURANT": "Restaurante",
     "SPACE_RESERVATION": "Reservas de espacios",
     "SPECIAL_REQUEST": "Solicitudes Especiales",
-    "ZONE": "Zonas"
+    "ZONE": "Zonas",
+    "SEARCH": "Buscar"
   },
   "guest": {
     "active": "Activos",
@@ -80,7 +81,7 @@
     "space": "Espacios",
     "spaceReservations": "Reservas de espacios",
     "team": "Equipo",
-    "wakeUpCalls": "Wake up calls"
+    "wakeUpCalls": "Servicio de despertador"
   },
   "newGuest": {
     "email": "Correo",
@@ -198,5 +199,14 @@
     "request": "Pedido",
     "dateInit": "Fecha inicio",
     "dateEnd": "Fecha salida"
+  },
+  "wakeUp": {
+    "nameGuest": "Nombre huesped",
+    "callTo": "Llamar a",
+    "room": "Habitación",
+    "dateCall": "Fecha llamada",
+    "timeCall": "Hora llamada",
+    "pending": "Pendientes",
+    "complete": "Completos"
   }
 }
