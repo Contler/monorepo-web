@@ -148,6 +148,24 @@
     "name": "Name",
     "title": "Create new guest"
   },
+  "order": {
+    "all": "All",
+    "complete": "Complete",
+    "dataOrder": "Order Data",
+    "delivery": "Delivery",
+    "guest": "Guest",
+    "leader": "Leader who answered the request",
+    "observationOrder": "Order Comments",
+    "pending": "Pending",
+    "room": "Room",
+    "state": "State",
+    "teamHotel": "Hotel team",
+    "timeDate": "Date and time",
+    "timeDelivery": "Delivery time",
+    "title": "Orders",
+    "updateBtn": "Update",
+    "value": "Value"
+  },
   "product": {
     "active": "Active",
     "all": "All",

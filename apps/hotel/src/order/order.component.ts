@@ -14,7 +14,11 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class OrderComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
-  readonly filters = [{ name: 'Todos', value: 0 }, { name: 'Cumplidos', value: 1 }, { name: 'Pendientes', value: 2 }];
+  readonly filters = [
+    { name: 'order.all', value: 0 },
+    { name: 'order.complete', value: 1 },
+    { name: 'order.pending', value: 2 },
+  ];
   filter = 0;
   dataSource = new MatTableDataSource<OrderEntity>();
   displayedColumns: string[] = ['id', 'guest', 'zone', 'value', 'time', 'state', 'actions'];
@@ -38,16 +42,19 @@ export class OrderComponent implements OnInit {
   }
 
   textFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase()
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   getAllOrders() {
     this.auth.$employer
-    .pipe(take(1), switchMap(user => this.productService.getOrdersByHotel(user.hotel.uid)))
-    .subscribe((orders) => {
-      this.orders = orders;
-      this.dataSource.data = orders;
-    });
+      .pipe(
+        take(1),
+        switchMap((user) => this.productService.getOrdersByHotel(user.hotel.uid)),
+      )
+      .subscribe((orders) => {
+        this.orders = orders;
+        this.dataSource.data = orders;
+      });
   }
 
   getCompleteOrder() {
@@ -58,20 +65,19 @@ export class OrderComponent implements OnInit {
 
   getInCompleteOrder() {
     this.dataSource.data = this.orders.filter((item) => {
-      return item.state !== 1
-      ;
+      return item.state !== 1;
     });
   }
 
-  orderProductsTotalValue(order : OrderEntity) {
+  orderProductsTotalValue(order: OrderEntity) {
     let totalOrder = 0;
-    order.productsOrder.forEach(elm => {
-      totalOrder += (elm.quantity * elm.product.value);
+    order.productsOrder.forEach((elm) => {
+      totalOrder += elm.quantity * elm.product.value;
     });
     return totalOrder;
   }
 
   goToOrder(order: OrderEntity) {
-    this.router.navigate(['home/order', order.id])
+    this.router.navigate(['home/order', order.id]);
   }
 }

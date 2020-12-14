@@ -148,6 +148,24 @@
     "name": "Nombre",
     "title": "Crear nuevo huesped"
   },
+  "order": {
+    "all": "Todos",
+    "complete": "Cumplidos",
+    "dataOrder": "Datos del pedido",
+    "delivery": "Entrega",
+    "guest": "Huésped",
+    "leader": "Líder que atendió la solicitud",
+    "observationOrder": "Observaciones del pedido",
+    "pending": "Pendientes",
+    "room": "Habitación",
+    "state": "Estado",
+    "teamHotel": "Equipo del hotel",
+    "timeDate": "Fecha y Hora",
+    "timeDelivery": "Hora de entrega",
+    "title": "Pedidos",
+    "updateBtn": "Actualizar",
+    "value": "Valor"
+  },
   "product": {
     "active": "Activos",
     "all": "Todos",
