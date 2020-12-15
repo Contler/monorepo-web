@@ -153,5 +153,14 @@
     "departureTime": "Departure time",
     "create": "Create",
     "close": "Close"
+  },
+  "product": {
+    "title": "Choose what you want to order",
+    "next": "NEXT",
+    "error": "You must select at least one product",
+    "weWorkForYou": "We work for you!",
+    "orderReceivedMessage": "Your order has been received. Our staff is working on it right now.",
+    "enjoyIt": "Enjoy it",
+    "gotIt": "Got it!"
   }
 }
