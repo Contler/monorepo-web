@@ -183,5 +183,15 @@
     "createRequest": "CREATE REQUEST",
     "text": "Your currency exchange request has been successfully received. Come to the reception to receive your money.",
     "close": "Got it!"
+  },
+  "transportation": {
+    "title": "We can help you with transportation from the hotel, please fill out this information",
+    "date": "Date",
+    "departureTime": "Departure time",
+    "destination": "Destination",
+    "whereAreYouGoing": "Where are you going?",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your transport has been requested, we´ll be waiting you at the reception at the departure time",
+    "close": "Got it!"
   }
 }
