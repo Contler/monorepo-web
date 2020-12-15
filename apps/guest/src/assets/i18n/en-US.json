@@ -174,5 +174,14 @@
     "createRequest": "CREATE REQUEST",
     "text": "Your concierge information request has been succesful. Our staff will be contacting you very soon.",
     "close": "Got it!"
+  },
+  "exchange": {
+    "title": "Do you need a currency exchange? Fill out this information.",
+    "currencyToChange": "Currency to change",
+    "quantityToChange": "Quantity to change",
+    "message": "*If you need to confirm the exchange rate value, you can do it by coming to the reception",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your currency exchange request has been successfully received. Come to the reception to receive your money.",
+    "close": "Got it!"
   }
 }
