@@ -167,5 +167,12 @@
     "createRequest": "CREATE REQUEST",
     "text": "Your cash loan request has been succesfully received. Come to the reception to receive your money.",
     "close": "Got it!"
+  },
+  "concierge": {
+    "title": "Tell us which tourist spot you would like to go to and when you want to visit it",
+    "dateForTheService": "Date for the service",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your concierge information request has been succesful. Our staff will be contacting you very soon.",
+    "close": "Got it!"
   }
 }
