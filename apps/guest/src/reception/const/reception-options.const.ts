@@ -6,22 +6,22 @@ interface Options {
 
 export const OPTIONS_RECEPTION: Options[] = [
   {
-    name: 'Transportation',
+    name: 'reception.transportation',
     icon: 'fas fa-taxi',
     link: '/home/reception/transportation',
   },
   {
-    name: 'Cash loan',
+    name: 'reception.cashLoan',
     icon: 'fas fa-dollar-sign',
     link: '/home/reception/cash',
   },
   {
-    name: 'Curency exchange',
+    name: 'reception.curencyExchange',
     icon: 'fas fa-globe',
     link: '/home/reception/exchange',
   },
   {
-    name: 'Concierge',
+    name: 'reception.concierge',
     icon: 'fas fa-map-marker-alt',
     link: '/home/reception/concierge',
   },

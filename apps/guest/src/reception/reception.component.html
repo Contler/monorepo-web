@@ -1,11 +1,11 @@
 <contler-marco padding="20px 0" backUrl="/home/guest-requests">
   <ng-container marcoBody>
     <h1 class="ctl-title reception__title" contlerColorHotel="primary">
-      You are in the reception. What do you need?
+      {{ 'reception.title' | translate }}
     </h1>
     <a class="reception__item" *ngFor="let opt of options" [routerLink]="opt.link">
       <contler-icon [key]="opt.icon" class="reception__icon"></contler-icon>
-      <span contlerColorHotel="primary" class="reception__item-text">{{ opt.name }}</span>
+      <span contlerColorHotel="primary" class="reception__item-text">{{ opt.name | translate }}</span>
       <contler-icon key="fas fa-chevron-right"></contler-icon>
     </a>
   </ng-container>

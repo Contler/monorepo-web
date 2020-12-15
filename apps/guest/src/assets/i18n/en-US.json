@@ -153,5 +153,12 @@
     "departureTime": "Departure time",
     "create": "Create",
     "close": "Close"
+  },
+  "reception": {
+    "title": "You are in the reception. What do you need?",
+    "transportation": "Transportation",
+    "cashLoan": "Cash loan",
+    "curencyExchange": "Curency exchange",
+    "concierge": "concierge"
   }
 }
