@@ -177,5 +177,11 @@
     "selectYourHourOfDelivery": "Select your hour of delivery",
     "whereDoYouWantToReceiveIt": "Where do you want to receive it",
     "total": "Total:"
+  },
+  "order": {
+    "title": "My orders",
+    "makeANewOrder": "Make a new order",
+    "inProcess": "In process",
+    "accomplished": "Accomplished"
   }
 }
