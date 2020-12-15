@@ -1,7 +1,7 @@
 <contler-marco padding="16px 30px 127px" backUrl="/home/product/create">
   <div marcoBody>
     <h1 class="ctl-title pto-title" contlerColorHotel="primary">
-      {{ 'product.confirmYourOrder' | translate }}
+      {{ 'confirmOrder.title' | translate }}
     </h1>
 
     <contler-product-item
@@ -14,7 +14,7 @@
 
     <div class="confirm-footer">
       <p contlerColorHotel="primary" class="confirm-total">
-        {{ 'product.total' | translate }} {{ total$ | async | currency: 'cop':'COP $':'1.0-0' }}
+        {{ 'confirmOrder.total' | translate }} {{ total$ | async | currency: 'cop':'COP $':'1.0-0' }}
       </p>
       <button
         style="margin-left: 5%"
@@ -24,7 +24,7 @@
         [disabled]="(total$ | async) == 0"
         (click)="nextStep()"
       >
-        {{ 'product.next' | translate }}
+        {{ 'confirmOrder.next' | translate }}
       </button>
     </div>
   </div>

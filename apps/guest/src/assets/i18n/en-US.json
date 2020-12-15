@@ -161,8 +161,21 @@
     "weWorkForYou": "We work for you!",
     "orderReceivedMessage": "Your order has been received. Our staff is working on it right now.",
     "enjoyIt": "Enjoy it",
-    "gotIt": "Got it!",
-    "confirmYourOrder": "Confirm your order",
+    "gotIt": "Got it!"
+  },
+  "confirmOrder": {
+    "title": "Confirm your order",
+    "total": "Total:",
+    "next": "NEXT"
+  },
+  "finishOrder": {
+    "title": "Confirm your order and hour of delivery",
+    "orderSummaryIn": "Order summary in:",
+    "order": "ORDER",
+    "orderRemarks": "Order remarks:",
+    "immediately": "Immediately",
+    "selectYourHourOfDelivery": "Select your hour of delivery",
+    "whereDoYouWantToReceiveIt": "Where do you want to receive it",
     "total": "Total:"
   }
 }
