@@ -161,6 +161,8 @@
     "weWorkForYou": "We work for you!",
     "orderReceivedMessage": "Your order has been received. Our staff is working on it right now.",
     "enjoyIt": "Enjoy it",
-    "gotIt": "Got it!"
+    "gotIt": "Got it!",
+    "confirmYourOrder": "Confirm your order",
+    "total": "Total:"
   }
 }
