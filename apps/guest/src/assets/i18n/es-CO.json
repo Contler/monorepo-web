@@ -153,5 +153,12 @@
     "departureTime": "Hora de salida",
     "create": "Crear",
     "close": "Cerrar"
+  },
+  "scoreLabel": {
+    "veryBad": "Muy mal 1/5",
+    "bad": "Mal 2/5",
+    "fair": "Medio 3/5",
+    "good": "Bien 4/5",
+    "excellent": "Excelente 5/5"
   }
 }
