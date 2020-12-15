@@ -8,6 +8,7 @@ import { ModalCompleteComponent } from 'guest/common-components/modal-complete/m
 import { GuestService } from 'guest/services/guest.service';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
 import { map, switchMap, take } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-cash-loan',
@@ -23,13 +24,13 @@ export class CashLoanComponent {
     private guestService: GuestService,
     private dialog: MatDialog,
     private router: Router,
+    private translate: TranslateService,
   ) {}
 
   savePetition() {
     const modalConf: ModalConfigModel = {
-      text:
-        'Your cash loan request has been succesfully received. Come to the reception to receive your money.',
-      close: 'Got it!',
+      text: this.translate.instant('cashLoan.text'),
+      close: this.translate.instant('cashLoan.close'),
       icon: 'fas fa-check-circle',
     };
 

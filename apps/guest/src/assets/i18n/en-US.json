@@ -160,5 +160,12 @@
     "cashLoan": "Cash loan",
     "curencyExchange": "Curency exchange",
     "concierge": "concierge"
+  },
+  "cashLoan": {
+    "title": "Do you need a cash loan? Fill out this information.",
+    "cashAmount": "Cash amount (COP)",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your cash loan request has been succesfully received. Come to the reception to receive your money.",
+    "close": "Got it!"
   }
 }
