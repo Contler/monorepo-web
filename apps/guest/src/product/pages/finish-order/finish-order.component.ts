@@ -45,9 +45,7 @@ export class FinishOrderComponent {
   ) {
     this.products$ = this.store.select((state) => OrderReducer.selectAll(state[orderFeatureKey]));
     this.totalPrice$ = this.store.select((state) => state[orderFeatureKey].totalPrice);
-    this.zones$ = this.zoneService.$zones.pipe(
-      map((zones) => zones.filter((zone) => zone.admitOrders)),
-    );
+    this.zones$ = this.zoneService.$zones.pipe(map((zones) => zones.filter((zone) => zone.admitOrders)));
     this.orderForm = this.formBuild.group({
       time: ['', Validators.required],
       zone: ['', Validators.required],

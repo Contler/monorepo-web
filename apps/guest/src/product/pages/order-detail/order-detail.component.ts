@@ -17,10 +17,10 @@ export class OrderDetailComponent implements OnInit {
   constructor(private productService: ProductService, route: ActivatedRoute) {
     route.params
       .pipe(
-        map(data => data['id']),
-        switchMap(id => this.productService.getOrder(id)),
+        map((data) => data['id']),
+        switchMap((id) => this.productService.getOrder(id)),
       )
-      .subscribe(order => {
+      .subscribe((order) => {
         this.order = order;
         this.total = this.calculateTotal(order.productsOrder);
       });

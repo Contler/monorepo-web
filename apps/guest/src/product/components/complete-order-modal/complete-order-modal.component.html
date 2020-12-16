@@ -1,13 +1,12 @@
 <div class="complete-modal">
   <img src="assets/img/cooking.svg" alt="cooking" />
   <p class="complete-modal__text">
-    We work for you!
+    {{ 'product.weWorkForYou' | translate }}<br /><br />
+    {{ 'product.orderReceivedMessage' | translate }}
     <br /><br />
-    Your order has been received. Our staff is working on it right now.
-    <br /><br />
-    Enjoy it
+    {{ 'product.enjoyIt' | translate }}
   </p>
   <button mat-raised-button contlerColorBtnHotel="primary" (click)="dialogRef.close()">
-    Got it!
+    {{ 'product.gotIt' | translate }}
   </button>
 </div>
