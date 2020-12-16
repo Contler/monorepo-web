@@ -237,5 +237,9 @@
     "createRequest": "CREATE REQUEST",
     "text": "Your transport has been requested, we´ll be waiting you at the reception at the departure time",
     "close": "Got it!"
+  },
+  "inputMessage": {
+    "save": "Save",
+    "cancel": "Cancel"
   }
 }
