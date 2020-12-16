@@ -8,6 +8,7 @@ import { BookingEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { convertMonthToString } from 'hotel/utils/returnMonth';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-calendar',
@@ -23,11 +24,13 @@ export class CalendarComponent {
 
   booking$: Observable<BookingEntity[]>;
   zones$: Observable<ZoneReserveEntity[]>;
+  lang = localStorage.lan || 'en-US';
 
   constructor(
     private reservation: ReservationService,
     private usrService: UserService,
     private reservationService: ReservationService,
+    private translate: TranslateService,
   ) {
     this.zones$ = this.usrService
       .getUser()
@@ -35,6 +38,7 @@ export class CalendarComponent {
     this.booking$ = this.usrService
       .getUser()
       .pipe(switchMap((usr) => this.reservation.getBookingByHotel(usr.hotel.uid)));
+    translate.onLangChange.subscribe(({ lang }) => (this.lang = lang));
   }
 
   dayClicked(event: { day: MonthViewDay<any>; sourceEvent: any }) {
@@ -69,7 +73,7 @@ export class CalendarComponent {
       title: `${book.schedule.reservation.name} - ${book.name} (${fns.format(start, 'H:mm')} - ${fns.format(
         end,
         'H:mm',
-      )}) - ${book.quote} Personas`,
+      )}) - ${book.quote} ${this.translate.instant('calendar.persons')}`,
       start,
       end,
     };
