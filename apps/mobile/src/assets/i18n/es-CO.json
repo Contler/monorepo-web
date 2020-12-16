@@ -26,6 +26,30 @@
     "wakeUp": "Wake up calls"
   },
   "booking": {
-    "pending": "PENDING"
+    "pending": "PENDIENTE",
+    "resolved": "RESUELTO"
+  },
+  "modalConfirm": {
+    "message": "¿Confirmas que quieres cancelar esta reserva?",
+    "no": "NO",
+    "yesDelete": "Sí, eliminar"
+  },
+  "pendingBooking": {
+    "search": "Buscar",
+    "pendingReservationRequests": "Solicitudes de reserva pendientes",
+    "noReservations": "Sin reservaciones",
+    "guest": "Huésped:",
+    "people": "personas",
+    "confirm": "CONFIRMAR",
+    "cancel": "CANCELAR"
+  },
+  "readyBooking": {
+    "search": "Buscar",
+    "resolvedReservationRequests": "Solicitudes de reserva resueltas",
+    "noReservations": "Sin reservaciones",
+    "guest": "Huésped:",
+    "people": "personas",
+    "cancelled": "Cancelado",
+    "confirmed": "Confirmado"
   }
 }
