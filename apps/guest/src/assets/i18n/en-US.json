@@ -218,5 +218,10 @@
     "yourReservationWasCreatedSuccessfully": "Your reservation was created successfully",
     "thereIsNoTimeSlotForTheSelectedDate.": "There is no time slot for the selected date.",
     "close.": "close"
+  },
+  "myReservations": {
+    "title": "My reservations",
+    "people": "people",
+    "youHaveNoReservationRequest": "You have no reservation request"
   }
 }
