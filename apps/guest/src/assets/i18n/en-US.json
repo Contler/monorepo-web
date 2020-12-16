@@ -197,5 +197,9 @@
     "fair": "Fair 3/5",
     "good": "Good 4/5",
     "excellent": "Excellent 5/5"
+  },
+  "inputMessage": {
+    "save": "Save",
+    "cancel": "Cancel"
   }
 }
