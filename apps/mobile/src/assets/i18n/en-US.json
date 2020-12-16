@@ -33,5 +33,14 @@
     "message": "Do you confirm that you want to cancel this reservation?",
     "no": "NO",
     "yesDelete": "Yes, Delete"
+  },
+  "pendingBooking": {
+    "search": "Search",
+    "pendingReservationRequests": "Pending reservation requests",
+    "noReservations": "No reservations",
+    "guest": "Guest:",
+    "people": "people",
+    "confirm": "CONFIRM",
+    "cancel": "CANCEL"
   }
 }
