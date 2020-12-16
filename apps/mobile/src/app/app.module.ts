@@ -14,9 +14,15 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { CoreModule } from '@contler/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +40,14 @@ import { CoreModule } from '@contler/core';
     HttpClientModule,
     AngularFireAuthGuardModule,
     CoreModule.forRoot({ urlBackend: environment.apiUrl }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      defaultLanguage: window.localStorage.lan || 'es-CO',
+    }),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, OneSignal],
   bootstrap: [AppComponent],

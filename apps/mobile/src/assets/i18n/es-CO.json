@@ -1,0 +1,28 @@
+{
+  "global": {
+    "CLOSE": "Cerrar",
+    "ERROR_SERVER": "Lo sentimos, hubo un error en el servidor"
+  },
+  "login": {
+    "enterBtn": "INGRESAR",
+    "forgot": "Olvidaste tu contraseña?",
+    "message": "Ingrese con el usuario y contraseña que le brindará el administrador del hotel",
+    "notPermit": "No tienes los permisos para ingresar",
+    "password": "Contraseña",
+    "user": "Usuario"
+  },
+  "menu": {
+    "booking": "Reservas",
+    "clean": "Limpieza",
+    "home": "Inicio",
+    "immediateRequest": "Solicitudes inmediatas",
+    "lateCheckout": "Late Checkout",
+    "leader": "Líder área",
+    "maintain": "Mantenimiento",
+    "order": "Pedidos",
+    "reception": "Recepción",
+    "specialRequest": "Solicitudes especiales",
+    "statistic": "Estadísticas",
+    "wakeUp": "Wake up calls"
+  }
+}
