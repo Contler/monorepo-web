@@ -1,9 +1,28 @@
 {
+  "global": {
+    "CLOSE": "Close",
+    "ERROR_SERVER": "Sorry, there was an error on the server"
+  },
   "login": {
     "enterBtn": "ENTER",
     "forgot": "Did you forget your password?",
     "message": "Login with the username and password that the hotel administrator will provide",
+    "notPermit": "You do not have the permissions to enter",
     "password": "Password",
     "user": "User"
+  },
+  "menu": {
+    "booking": "Reservations",
+    "clean": "Cleaning",
+    "home": "Home",
+    "immediateRequest": "Immediate requests",
+    "lateCheckout": "Late checkout",
+    "leader": "Area leader",
+    "maintain": "Maintenance",
+    "order": "Orders",
+    "reception": "Reception",
+    "specialRequest": "Special requests",
+    "statistic": "Statistics",
+    "wakeUp": "Wake up calls"
   }
 }

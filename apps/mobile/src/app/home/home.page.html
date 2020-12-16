@@ -9,7 +9,7 @@
         class="header-menu__hotel-logo"
       />
       <p class="header-menu__name">{{ user?.name }} {{ user?.lastName }}</p>
-      <p class="header-menu__zone-label">Lider área - {{chiefZonesLabel}}</p>
+      <p class="header-menu__zone-label">{{'menu.leader' | translate}} - {{chiefZonesLabel}}</p>
     </div>
     <div class="menu">
       <ng-container *ngFor="let item of menuItems">
@@ -25,6 +25,13 @@
       <div class="menu__item" (click)="logout()">
         <mat-icon class="custom_icon">exit_to_app</mat-icon>
         <p class="label">Cerrar Sesión</p>
+      </div>
+
+      <div class="menu__item">
+        <span class="custom_icon">{{lan?.unicode}}</span>
+        <mat-select [(ngModel)]="lan" (selectionChange)="changeLanguage()">
+          <mat-option *ngFor="let val of languages" [value]="val"> {{val.name}} </mat-option>
+        </mat-select>
       </div>
     </div>
   </div>

@@ -27,20 +27,20 @@ export class PrincipalComponent implements OnInit {
   listServices = [
     {
       icon: 'error',
-      name: 'Solicitudes inmediatas',
+      name: 'menu.immediateRequest',
       route: '/home/inmediate-requests',
       type: ServiceType.IMMEDIATE,
     },
 
     {
       icon: 'sms_failed',
-      name: 'Solicitudes especiales',
+      name: 'menu.specialRequest',
       route: '/home/special-requests',
       type: ServiceType.SPECIAL,
     },
     {
       icon: 'calendar_today',
-      name: 'Reservas',
+      name: 'menu.booking',
       route: '/home/booking',
       type: ServiceType.RESERVATION,
     },
@@ -49,50 +49,50 @@ export class PrincipalComponent implements OnInit {
   constructor(private auth: AuthService, public generalService: GeneralService, public menu: MenuController) {
     this.auth.$user.pipe(take(1)).subscribe((user) => {
       this.user = user;
-      if (this.user.leaderSpecialZone.find(sp => sp.zone.name === 'wakeZone')) {
+      if (this.user.leaderSpecialZone.find((sp) => sp.zone.name === 'wakeZone')) {
         this.listServices.push({
           icon: 'access_alarm',
-          name: 'Wake up calls',
+          name: 'menu.wakeUp',
           route: '/home/wake-up',
           type: ServiceType.WAKE_UP,
         });
       }
-      if (this.user.leaderSpecialZone.find(sp => sp.zone.name === 'deliveryZone')) {
+      if (this.user.leaderSpecialZone.find((sp) => sp.zone.name === 'deliveryZone')) {
         this.listServices.push({
           icon: 'room_service',
-          name: 'Pedidos',
+          name: 'menu.order',
           route: '/home/order',
           type: ServiceType.DELIVERY,
         });
       }
-      if (this.user.leaderSpecialZone.find(sp => sp.zone.name === 'receptionZone')) {
+      if (this.user.leaderSpecialZone.find((sp) => sp.zone.name === 'receptionZone')) {
         this.listServices.push({
           icon: 'room_service',
-          name: 'Recepción',
+          name: 'menu.reception',
           route: '/home/reception',
           type: ServiceType.RECEPTION,
         });
       }
-      if (this.user.leaderSpecialZone.find(sp => sp.zone.name === 'lateZone')) {
+      if (this.user.leaderSpecialZone.find((sp) => sp.zone.name === 'lateZone')) {
         this.listServices.push({
           icon: 'transfer_within_a_station',
-          name: 'Late Checkout',
+          name: 'menu.lateCheckout',
           route: '/home/late',
           type: ServiceType.CHECK_OUT,
         });
       }
-      if (this.user.leaderSpecialZone.find(sp => sp.zone.name === 'cleanZone')) {
+      if (this.user.leaderSpecialZone.find((sp) => sp.zone.name === 'cleanZone')) {
         this.listServices.push({
           icon: 'cleaning_services',
-          name: 'Limpieza',
+          name: 'menu.clean',
           route: '/home/clean',
           type: ServiceType.CLEAN,
         });
       }
-      if (this.user.leaderSpecialZone.find(sp => sp.zone.name === 'maintainZone')) {
+      if (this.user.leaderSpecialZone.find((sp) => sp.zone.name === 'maintainZone')) {
         this.listServices.push({
           icon: 'engineering',
-          name: 'Mantenimiento',
+          name: 'menu.maintain',
           route: '/home/maintain',
           type: ServiceType.MAINTAIN,
         });
