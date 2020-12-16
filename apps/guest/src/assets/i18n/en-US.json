@@ -190,5 +190,12 @@
     "comments": "Comments:",
     "orderStatus": "Order status",
     "delivery": "Delivery"
+  },
+  "scoreLabel": {
+    "veryBad": "Very bad 1/5",
+    "bad": "Bad 2/5",
+    "fair": "Fair 3/5",
+    "good": "Good 4/5",
+    "excellent": "Excellent 5/5"
   }
 }
