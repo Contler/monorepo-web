@@ -1,7 +1,7 @@
 <contler-marco [backUrl]="'/home/reservation'">
   <div marcoBody class="new-reservation">
     <h1 class="new-reservation__title" [style]="getColorHotel()">
-      You are about to make a reservation in: {{ zoneReservation?.name }}
+      {{ 'createReservation.title' | translate }} {{ zoneReservation?.name }}
       <mat-icon class="new-reservation__icon">{{ zoneReservation?.icon }}</mat-icon>
     </h1>
 
@@ -16,17 +16,17 @@
         />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-hint>Date</mat-hint>
+        <mat-hint>{{ 'createReservation.date' | translate }}</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-field">
         <input type="tel" matInput mask="90" formControlName="quota" />
-        <mat-hint>People</mat-hint>
+        <mat-hint>{{ 'createReservation.people' | translate }}</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="new-reservation__form-complete">
         <input matInput formControlName="name" />
-        <mat-hint>Reservation in behalf of</mat-hint>
+        <mat-hint>{{ 'createReservation.reservationInBehalfOf' | translate }}</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="new-reservation__form-complete">
@@ -35,7 +35,7 @@
             {{ item.timeInit | date: 'shortTime' }} - {{ item.timeFinish | date: 'shortTime' }}
           </mat-option>
         </mat-select>
-        <mat-hint>Time slot</mat-hint>
+        <mat-hint>{{ 'createReservation.timeSlot' | translate }}</mat-hint>
       </mat-form-field>
       <p class="new-reservation__err new-reservation__form-complete">{{ err }}</p>
       <button
@@ -48,7 +48,7 @@
         [loading]="loader"
         [disabled]="loader || reservationForm.invalid"
       >
-        CREATE RESERVATION
+        {{ 'createReservation.createReservation' | translate }}
       </button>
     </form>
   </div>

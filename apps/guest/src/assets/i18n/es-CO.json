@@ -237,5 +237,31 @@
     "createRequest": "CREAR SOLICITUD",
     "text": "Tu transporte ha sido solicitado, te estaremos esperando en la recepción a la hora de salida",
     "close": "¡Entendido!"
+  },
+  "reservation": {
+    "title": "¿Dónde quieres hacer tu reserva?"
+  },
+  "modalConfirm": {
+    "cancelMessage": "¿Estás seguro de que deseas cancelar esta reserva?",
+    "no": "NO",
+    "yesDeleteIt": "SI, BORRARLO"
+  },
+  "createReservation": {
+    "title": "Estás a punto de hacer una reserva en:",
+    "date": "Fecha",
+    "people": "Personas",
+    "reservationInBehalfOf": "Reserva a nombre de",
+    "timeSlot": "Franja horaria",
+    "createReservation": "CREAR RESERVA",
+    "noSpotsAvailable": "No hay plazas disponibles",
+    "iCantMakeTheReservation": "No puedo hacer la reserva",
+    "yourReservationWasCreatedSuccessfully": "Tu reserva fue creada con éxito",
+    "thereIsNoTimeSlotForTheSelectedDate.": "No hay franja horaria para la fecha seleccionada.",
+    "close.": "cerrar"
+  },
+  "myReservations": {
+    "title": "Mis reservas",
+    "people": "personas",
+    "youHaveNoReservationRequest": "No tienes solicitud de reserva"
   }
 }

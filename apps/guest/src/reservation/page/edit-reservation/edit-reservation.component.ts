@@ -59,9 +59,7 @@ export class EditReservationComponent implements OnInit {
   ngOnInit() {
     this.dateReservation.valueChanges.subscribe((date: Date) => {
       const day = this.days[date.getDay()];
-      this.schedule = this.booking!.schedule.reservation.schedule.filter(
-        (s) => s.day === day && s.active,
-      );
+      this.schedule = this.booking!.schedule.reservation.schedule.filter((s) => s.day === day && s.active);
     });
   }
 
@@ -73,9 +71,7 @@ export class EditReservationComponent implements OnInit {
 
   getColorButtonHotel() {
     return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color
-        ? `background: ${this.hotel.color};  color: #ffffff !important`
-        : '',
+      this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '',
     );
   }
 
