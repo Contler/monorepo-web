@@ -198,6 +198,46 @@
     "good": "Bien 4/5",
     "excellent": "Excelente 5/5"
   },
+  "reception": {
+    "title": "Estás en la recepción. ¿Que necesitas?",
+    "transportation": "Transporte",
+    "cashLoan": "Préstamo en efectivo",
+    "currencyExchange": "Cambio de divisas",
+    "concierge": "Conserje"
+  },
+  "cashLoan": {
+    "title": "¿Necesitas un préstamo en efectivo? Complete esta información.",
+    "cashAmount": "Monto en efectivo (COP)",
+    "createRequest": "CREAR SOLICITUD",
+    "text": "Su solicitud de préstamo en efectivo se ha recibido correctamente. Acércate a recepción para recibir tu dinero.",
+    "close": "¡Entendido!"
+  },
+  "concierge": {
+    "title": "Dinos a qué lugar turístico te gustaría ir y cuándo quieres visitarlo",
+    "dateForTheService": "Fecha del servicio",
+    "createRequest": "CREAR SOLICITUD",
+    "text": "Su solicitud de información de conserjería se ha realizado correctamente. Nuestro personal se comunicará con usted muy pronto.",
+    "close": "¡Entendido!"
+  },
+  "exchange": {
+    "title": "¿Necesitas un cambio de moneda? Complete esta información.",
+    "currencyToChange": "Moneda para cambiar",
+    "quantityToChange": "Cantidad a cambiar",
+    "message": "*Si necesitas confirmar el valor del tipo de cambio, puedes hacerlo acudiendo a recepción",
+    "createRequest": "CREAR SOLICITUD",
+    "text": "Su solicitud de cambio de moneda se ha recibido correctamente. Acércate a recepción para recibir tu dinero.",
+    "close": "¡Entendido!"
+  },
+  "transportation": {
+    "title": "Podemos ayudarlo con el transporte desde el hotel, complete esta información",
+    "date": "Fecha",
+    "departureTime": "Hora de salida",
+    "destination": "Destino",
+    "whereAreYouGoing": "¿A dónde vas?",
+    "createRequest": "CREAR SOLICITUD",
+    "text": "Tu transporte ha sido solicitado, te estaremos esperando en la recepción a la hora de salida",
+    "close": "¡Entendido!"
+  },
   "reservation": {
     "title": "¿Dónde quieres hacer tu reserva?"
   },

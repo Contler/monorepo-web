@@ -2,7 +2,7 @@
   <contler-marco padding="20px 50px" backUrl="/home/reception">
     <ng-container marcoBody>
       <h1 class="ctl-title" contlerColorHotel="primary">
-        Do you need a currency exchange? Fill out this information.
+        {{ 'exchange.title' | translate }}
       </h1>
 
       <div class="exchange__form">
@@ -12,7 +12,7 @@
               {{ money.name }}
             </mat-option>
           </mat-select>
-          <mat-hint>Currency to change</mat-hint>
+          <mat-hint>{{ 'exchange.currencyToChange' | translate }}</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -25,18 +25,18 @@
             mask="separator"
             thousandSeparator="."
           />
-          <mat-hint>Quantity to change</mat-hint>
+          <mat-hint>{{ 'exchange.quantityToChange' | translate }}</mat-hint>
         </mat-form-field>
 
         <p class="exchange__text">
-          *If you need to confirm the exchange rate value, you can do it by coming to the reception
+          {{ 'exchange.message' | translate }}
         </p>
       </div>
     </ng-container>
 
     <div marcoFooter class="exchange__footer">
       <button mat-raised-button contlerColorBtnHotel="primary" [disabled]="changeForm.invalid || load">
-        CREATE REQUEST
+        {{ 'exchange.createRequest' | translate }}
       </button>
     </div>
   </contler-marco>

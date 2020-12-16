@@ -4,10 +4,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'contler-spinner',
   templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.scss']
+  styleUrls: ['./spinner.component.scss'],
 })
 export class SpinnerComponent {
-
-  constructor(public dialogRef: MatDialogRef<SpinnerComponent>) { }
-
+  constructor(public dialogRef: MatDialogRef<SpinnerComponent>) {}
 }
