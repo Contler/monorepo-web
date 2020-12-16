@@ -6,20 +6,22 @@
 
   <div style="padding: 0 51px">
     <div class="calendar-menu">
-      <button mat-raised-button color="accent" routerLink="/home/reservation">Zonas</button>
+      <button mat-raised-button color="accent" routerLink="/home/reservation">
+        {{ 'calendar.zones' | translate }}
+      </button>
       <mat-form-field appearance="fill">
         <mat-select [(ngModel)]="zone">
-          <mat-option [value]="null">Todos</mat-option>
+          <mat-option [value]="null">{{ 'calendar.all' | translate }}</mat-option>
           <mat-option *ngFor="let zone of zones$ | async" [value]="zone">{{ zone.name }}</mat-option>
         </mat-select>
-        <mat-hint>Zona</mat-hint>
+        <mat-hint>{{ 'calendar.zone' | translate }}</mat-hint>
       </mat-form-field>
     </div>
 
     <div class="calendar">
       <div style="text-align: center">
         <h3 class="cnt-title">
-          {{ viewDate | calendarDate: view + 'ViewTitle':'Es' | titlecase }}
+          {{ viewDate | calendarDate: view + 'ViewTitle':lang | titlecase }}
         </h3>
 
         <button
@@ -43,7 +45,7 @@
       </div>
 
       <mwl-calendar-month-view
-        locale="es"
+        [locale]="lang"
         [viewDate]="viewDate"
         [events]="convertBooking(booking$ | async | zoneBook: zone)"
         [activeDayIsOpen]="activeDayIsOpen"

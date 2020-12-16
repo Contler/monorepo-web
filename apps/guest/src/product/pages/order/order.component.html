@@ -1,6 +1,6 @@
 <contler-marco padding="16px 40px">
   <ng-container marcoBody>
-    <h1 class="ctl-title" contlerColorHotel="primary">My orders</h1>
+    <h1 class="ctl-title" contlerColorHotel="primary">{{ 'order.title' | translate }}</h1>
 
     <contler-order-item
       *ngFor="let order of order$ | async | activeOrder: pending"
@@ -18,16 +18,16 @@
         routerLink="/home/product/create"
         style="width: 100%"
       >
-        Make a new order
+        {{ 'order.makeANewOrder' | translate }}
       </button>
     </div>
 
     <div class="order-footer__btn">
       <button mat-button disableRipple contlerBtnMenuHotel [select]="pending" (click)="pending = true">
-        In process
+        {{ 'order.inProcess' | translate }}
       </button>
       <button mat-button disableRipple contlerBtnMenuHotel [select]="!pending" (click)="pending = false">
-        Accomplished
+        {{ 'order.accomplished' | translate }}
       </button>
     </div>
   </div>

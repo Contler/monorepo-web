@@ -6,6 +6,7 @@ import { User } from '@contler/models';
 import { AuthService } from '../../services/auth.service';
 import { MessagesService } from '../../services/messages/messages.service';
 import { UsersService } from '../../services/users.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-login',
@@ -21,6 +22,7 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private messagesService: MessagesService,
     private usersService: UsersService,
+    private translate: TranslateService,
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -35,7 +37,7 @@ export class LoginPage implements OnInit {
     const { email, pass } = this.loginForm.value;
     this.authService
       .loginWithEmail(email, pass)
-      .then(async userCredential => {
+      .then(async (userCredential) => {
         const token = await userCredential.user!.getIdTokenResult();
         console.log(token.claims.role);
         if (token.claims.role === CHIEF || token.claims.role === ADMIN) {
@@ -45,10 +47,11 @@ export class LoginPage implements OnInit {
           this.messagesService.closeLoader(loader);
         } else {
           await this.authService.logout();
-          this.messagesService.closeLoader(loader, 'No tienes los permisos para ingresar');
+          const msn = this.translate.instant('login.notPermit');
+          this.messagesService.closeLoader(loader, msn);
         }
       })
-      .catch(err => {
+      .catch((err) => {
         this.messagesService.closeLoader(loader);
         this.messagesService.showServerError(err);
       });

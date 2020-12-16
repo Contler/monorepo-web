@@ -9,6 +9,7 @@ import { MaterialModule } from '../material/material.module';
 import { CommonComponentsModule } from '../common-components/common-components.module';
 import { PrincipalComponent } from './principal/principal.component';
 import { ItemHomeComponent } from './components/item-home/item-home.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -72,6 +73,7 @@ import { ItemHomeComponent } from './components/item-home/item-home.component';
       },
     ]),
     CommonComponentsModule,
+    TranslateModule,
   ],
   declarations: [HomePage, PrincipalComponent, ItemHomeComponent],
 })

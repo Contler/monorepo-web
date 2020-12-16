@@ -154,6 +154,50 @@
     "create": "Create",
     "close": "Close"
   },
+  "product": {
+    "title": "Choose what you want to order",
+    "next": "NEXT",
+    "error": "You must select at least one product",
+    "weWorkForYou": "We work for you!",
+    "orderReceivedMessage": "Your order has been received. Our staff is working on it right now.",
+    "enjoyIt": "Enjoy it",
+    "gotIt": "Got it!"
+  },
+  "confirmOrder": {
+    "title": "Confirm your order",
+    "total": "Total:",
+    "next": "NEXT"
+  },
+  "finishOrder": {
+    "title": "Confirm your order and hour of delivery",
+    "orderSummaryIn": "Order summary in:",
+    "order": "ORDER",
+    "orderRemarks": "Order remarks:",
+    "immediately": "Immediately",
+    "selectYourHourOfDelivery": "Select your hour of delivery",
+    "whereDoYouWantToReceiveIt": "Where do you want to receive it",
+    "total": "Total:"
+  },
+  "order": {
+    "title": "My orders",
+    "makeANewOrder": "Make a new order",
+    "inProcess": "In process",
+    "accomplished": "Accomplished"
+  },
+  "orderDetail": {
+    "idOrder": "ID Order:",
+    "total": "Total:",
+    "comments": "Comments:",
+    "orderStatus": "Order status",
+    "delivery": "Delivery"
+  },
+  "scoreLabel": {
+    "veryBad": "Very bad 1/5",
+    "bad": "Bad 2/5",
+    "fair": "Fair 3/5",
+    "good": "Good 4/5",
+    "excellent": "Excellent 5/5"
+  },
   "reception": {
     "title": "You are in the reception. What do you need?",
     "transportation": "Transportation",

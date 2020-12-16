@@ -7,15 +7,15 @@ export class ScoreLabelPipe implements PipeTransform {
   transform(value: number): string {
     switch (value) {
       case 1:
-        return 'Very bad 1/5';
+        return 'scoreLabel.veryBad';
       case 2:
-        return 'Bad 2/5';
+        return 'scoreLabel.bad';
       case 3:
-        return 'Fair 3/5';
+        return 'scoreLabelfair';
       case 4:
-        return 'Good 4/5';
+        return 'scoreLabel.good';
       case 5:
-        return 'Excellent 5/5';
+        return 'scoreLabel.excellent';
       default:
         return '-';
     }

@@ -12,6 +12,7 @@ import { ReceptionItemComponent } from './reception-item/reception-item.componen
 import { RequestReceptionComponent } from './request-reception/request-reception.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,6 @@ import { RouterModule } from '@angular/router';
     BtnHotelDirective,
     ReceptionItemComponent,
   ],
-  imports: [CommonModule, IonicModule, MaterialModule, FormsModule, RouterModule],
+  imports: [CommonModule, IonicModule, MaterialModule, FormsModule, RouterModule, TranslateModule],
 })
 export class CommonComponentsModule {}

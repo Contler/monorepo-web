@@ -6,6 +6,6 @@ import { OrderEntity } from '@contler/entity';
 })
 export class ActiveOrderPipe implements PipeTransform {
   transform(orders: OrderEntity[], active: boolean): any {
-    return orders ? orders.filter(order => active ? order.state !== 2 : order.state === 2) : orders;
+    return orders ? orders.filter((order) => (active ? order.state !== 2 : order.state === 2)) : orders;
   }
 }

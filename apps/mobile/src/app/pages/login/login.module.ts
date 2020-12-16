@@ -9,7 +9,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 import { LoginPage } from './login.page';
 import { MaterialModule } from '../../material/material.module';
 import { MessagesModule } from '../../services/messages/messages.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -19,8 +19,9 @@ import { MessagesModule } from '../../services/messages/messages.module';
     IonicModule,
     LoginPageRoutingModule,
     MaterialModule,
-    MessagesModule
+    MessagesModule,
+    TranslateModule,
   ],
-  declarations: [LoginPage]
+  declarations: [LoginPage],
 })
 export class LoginPageModule {}
