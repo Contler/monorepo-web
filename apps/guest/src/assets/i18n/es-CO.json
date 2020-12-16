@@ -197,5 +197,31 @@
     "fair": "Medio 3/5",
     "good": "Bien 4/5",
     "excellent": "Excelente 5/5"
+  },
+  "reservation": {
+    "title": "¿Dónde quieres hacer tu reserva?"
+  },
+  "modalConfirm": {
+    "cancelMessage": "¿Estás seguro de que deseas cancelar esta reserva?",
+    "no": "NO",
+    "yesDeleteIt": "SI, BORRARLO"
+  },
+  "createReservation": {
+    "title": "Estás a punto de hacer una reserva en:",
+    "date": "Fecha",
+    "people": "Personas",
+    "reservationInBehalfOf": "Reserva a nombre de",
+    "timeSlot": "Franja horaria",
+    "createReservation": "CREAR RESERVA",
+    "noSpotsAvailable": "No hay plazas disponibles",
+    "iCantMakeTheReservation": "No puedo hacer la reserva",
+    "yourReservationWasCreatedSuccessfully": "Tu reserva fue creada con éxito",
+    "thereIsNoTimeSlotForTheSelectedDate.": "No hay franja horaria para la fecha seleccionada.",
+    "close.": "cerrar"
+  },
+  "myReservations": {
+    "title": "Mis reservas",
+    "people": "personas",
+    "youHaveNoReservationRequest": "No tienes solicitud de reserva"
   }
 }
