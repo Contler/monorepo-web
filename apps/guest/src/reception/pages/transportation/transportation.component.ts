@@ -11,6 +11,7 @@ import { ReceptionModel } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
 import { map, switchMap, take } from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-transportation',
@@ -31,6 +32,7 @@ export class TransportationComponent {
     private router: Router,
     private dialog: MatDialog,
     private datePipe: DatePipe,
+    private translate: TranslateService,
   ) {
     this.transportForm = formBuild.group({
       date: ['', Validators.required],
@@ -57,8 +59,8 @@ export class TransportationComponent {
     const date: Date = this.transportForm.value.date;
     const departure: Date = this.transportForm.value.departure;
     const modalConfig: ModalConfigModel = {
-      text: 'Your transport has been requested, we´ll be waiting you at the reception at the departure time',
-      close: 'Got it!',
+      text: this.translate.instant('transportation.text'),
+      close: this.translate.instant('transportation.close'),
       icon: 'fas fa-check-circle',
     };
     date.setHours(departure.getHours());

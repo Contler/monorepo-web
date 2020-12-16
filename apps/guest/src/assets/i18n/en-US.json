@@ -197,5 +197,45 @@
     "fair": "Fair 3/5",
     "good": "Good 4/5",
     "excellent": "Excellent 5/5"
+  },
+  "reception": {
+    "title": "You are in the reception. What do you need?",
+    "transportation": "Transportation",
+    "cashLoan": "Cash loan",
+    "currencyExchange": "Currency exchange",
+    "concierge": "Concierge"
+  },
+  "cashLoan": {
+    "title": "Do you need a cash loan? Fill out this information.",
+    "cashAmount": "Cash amount (COP)",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your cash loan request has been successfully received. Come to the reception to receive your money.",
+    "close": "Got it!"
+  },
+  "concierge": {
+    "title": "Tell us which tourist spot you would like to go to and when you want to visit it",
+    "dateForTheService": "Date for the service",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your concierge information request has been successful. Our staff will be contacting you very soon.",
+    "close": "Got it!"
+  },
+  "exchange": {
+    "title": "Do you need a currency exchange? Fill out this information.",
+    "currencyToChange": "Currency to change",
+    "quantityToChange": "Quantity to change",
+    "message": "*If you need to confirm the exchange rate value, you can do it by coming to the reception",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your currency exchange request has been successfully received. Come to the reception to receive your money.",
+    "close": "Got it!"
+  },
+  "transportation": {
+    "title": "We can help you with transportation from the hotel, please fill out this information",
+    "date": "Date",
+    "departureTime": "Departure time",
+    "destination": "Destination",
+    "whereAreYouGoing": "Where are you going?",
+    "createRequest": "CREATE REQUEST",
+    "text": "Your transport has been requested, we´ll be waiting you at the reception at the departure time",
+    "close": "Got it!"
   }
 }

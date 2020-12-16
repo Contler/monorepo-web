@@ -1,7 +1,7 @@
 <contler-marco padding="20px 50px" backUrl="/home/reception">
   <ng-container marcoBody>
     <h1 class="ctl-title" contlerColorHotel="primary">
-      Do you need a cash loan? Fill out this information.
+      {{ 'cashLoan.title' | translate }}
     </h1>
     <mat-form-field appearance="fill" class="cash__field">
       <input
@@ -11,7 +11,7 @@
         [options]="{ precision: 0 }"
         [formControl]="cashControl"
       />
-      <mat-hint>Cash amount (COP)</mat-hint>
+      <mat-hint>{{ 'cashLoan.cashAmount' | translate }}</mat-hint>
     </mat-form-field>
   </ng-container>
 
@@ -22,7 +22,7 @@
       [disabled]="load || cashControl.invalid"
       (click)="savePetition()"
     >
-      CREATE REQUEST
+      {{ 'cashLoan.createRequest' | translate }}
     </button>
   </div>
 </contler-marco>
