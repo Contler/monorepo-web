@@ -24,5 +24,9 @@
     "specialRequest": "Special requests",
     "statistic": "Statistics",
     "wakeUp": "Wake up calls"
+  },
+  "booking": {
+    "pending": "PENDING",
+    "resolved": "RESOLVED"
   }
 }
