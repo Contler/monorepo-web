@@ -1,10 +1,20 @@
 <div mat-dialog-content class="dialog_container">
-  <p>{{data.placeholder}}</p>
+  <p>{{ data.placeholder }}</p>
   <mat-form-field>
-    <input matInput [type]="data.type" [(ngModel)]="value">
+    <input matInput [type]="data.type" [(ngModel)]="value" />
   </mat-form-field>
 </div>
 <div mat-dialog-actions class="dialog_footer">
-  <button mat-stroked-button color="warn" (click)="close()" class="cancel_button">Cancelar</button>
-  <button mat-stroked-button color="primary" (click)="save()" class="save_button" [disabled]="data.required && !value">Guardar</button>
+  <button mat-stroked-button color="warn" (click)="close()" class="cancel_button">
+    {{ 'inputMessage.cancel' | translate }}
+  </button>
+  <button
+    mat-stroked-button
+    color="primary"
+    (click)="save()"
+    class="save_button"
+    [disabled]="data.required && !value"
+  >
+    {{ 'inputMessage.save' | translate }}
+  </button>
 </div>

@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DAYS, TYPE_ERROR } from '@contler/const';
 import { BookingRequest } from '@contler/models/booking-request';
 import { MessagesService } from 'guest/services/messages/messages.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-create-reservation',
@@ -35,6 +36,7 @@ export class CreateReservationComponent implements OnInit {
     private reservationService: ReservationService,
     formBuild: FormBuilder,
     private messagesService: MessagesService,
+    private translate: TranslateService,
   ) {
     this.reservationForm = formBuild.group({
       date: ['', Validators.required],
@@ -71,8 +73,8 @@ export class CreateReservationComponent implements OnInit {
         // Check time slot
         if (this.schedule.length === 0) {
           this.messagesService.showToastMessage(
-            'There is no time slot for the selected date.',
-            'close',
+            this.translate.instant('createReservation.thereIsNoTimeSlotForTheSelectedDate'),
+            this.translate.instant('createReservation.close'),
             10000,
           );
         }
@@ -113,14 +115,16 @@ export class CreateReservationComponent implements OnInit {
       () => {
         this.loader = true;
         this.router.navigate(['/home', 'reservation']);
-        this.messagesService.showToastMessage('Your reservation was created successfully');
+        this.messagesService.showToastMessage(
+          this.translate.instant('createReservation.yourReservationWasCreatedSuccessfully'),
+        );
       },
       (error) => {
         this.loader = false;
         if (error.status === 400) {
-          this.err = error.error.message ? TYPE_ERROR.space_available : '';
+          this.err = error.error.message ? this.translate.instant(TYPE_ERROR.space_available) : '';
         } else {
-          this.err = "I can't make the reservation";
+          this.err = this.translate.instant('createReservation.iCantMakeTheReservation');
         }
       },
     );
