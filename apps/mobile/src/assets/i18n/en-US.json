@@ -1,0 +1,9 @@
+{
+  "login": {
+    "enterBtn": "ENTER",
+    "forgot": "Did you forget your password?",
+    "message": "Login with the username and password that the hotel administrator will provide",
+    "password": "Password",
+    "user": "User"
+  }
+}

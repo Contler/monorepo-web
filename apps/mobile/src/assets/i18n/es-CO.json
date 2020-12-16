@@ -1,0 +1,14 @@
+{
+  "login": {
+    "enterBtn": "INGRESAR",
+    "forgot": "Olvidaste tu contraseña?",
+    "message": "Ingrese con el usuario y contraseña que le brindará el administrador del hotel",
+    "password": "Contraseña",
+    "user": "Usuario",
+    "notPermit": "No tienes los permisos para ingresar"
+  },
+  "global": {
+    "CLOSE": "Cerrar",
+    "ERROR_SERVER": "Lo sentimos, hubo un error en el servidor"
+  }
+}
