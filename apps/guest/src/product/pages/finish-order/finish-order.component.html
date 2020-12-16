@@ -1,11 +1,13 @@
 <contler-marco padding="16px 30px" backUrl="/home/product/order">
   <div marcoBody>
     <h1 class="ctl-title pto-title" contlerColorHotel="primary">
-      Confirm your order and hour of delivery
+      {{ 'finishOrder.title' | translate }}
     </h1>
 
     <div class="finish-order__list">
-      <p class="finish-order__list-text" style="margin-bottom: 20px">Order summary in:</p>
+      <p class="finish-order__list-text" style="margin-bottom: 20px">
+        {{ 'finishOrder.orderSummaryIn' | translate }}
+      </p>
       <div class="finish-order__list-products">
         <ng-template ngFor let-item [ngForOf]="products$ | async">
           <p class="finish-order__list-text">{{ item.product.name }}</p>
@@ -17,32 +19,34 @@
     </div>
 
     <p contlerColorHotel="primary" class="finish-order__total">
-      Total: {{ totalPrice$ | async | currency: 'COP':'$':'1.0-0' }}
+      {{ 'finishOrder.total' | translate }} {{ totalPrice$ | async | currency: 'COP':'$':'1.0-0' }}
     </p>
 
     <form class="finish-order__form" [formGroup]="orderForm" (ngSubmit)="createOrder()">
       <mat-form-field appearance="fill">
         <mat-select formControlName="time">
-          <mat-option [value]="actualTime">Immediately</mat-option>
+          <mat-option [value]="actualTime">{{ 'finishOrder.immediately' | translate }}</mat-option>
           <mat-option *ngFor="let dat of time; let i = index" [value]="dat">
             {{ dat | date: 'shortTime' }}
           </mat-option>
         </mat-select>
-        <mat-hint>Select your hour of delivery</mat-hint>
+        <mat-hint>{{ 'finishOrder.selectYourHourOfDelivery' | translate }}</mat-hint>
         <mat-icon matSuffix>query_builder</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-select formControlName="zone">
-          <mat-option *ngFor="let zone of zones$ | async" [value]="zone">{{
-            zone.name
-          }}</mat-option>
+          <mat-option *ngFor="let zone of zones$ | async" [value]="zone">{{ zone.name }}</mat-option>
         </mat-select>
-        <mat-hint>Where do you want to receive it</mat-hint>
+        <mat-hint>{{ 'finishOrder.whereDoYouWantToReceiveIt' | translate }}</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <textarea formControlName="comment" matInput placeholder="Order remarks:"></textarea>
+        <textarea
+          formControlName="comment"
+          matInput
+          placeholder="{{ 'finishOrder.orderRemarks' | translate }}"
+        ></textarea>
       </mat-form-field>
 
       <button
@@ -52,7 +56,7 @@
         contlerButton
         [loading]="loading"
       >
-        ORDER
+        {{ 'finishOrder.order' | translate }}
       </button>
     </form>
   </div>

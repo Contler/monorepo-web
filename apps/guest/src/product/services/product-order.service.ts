@@ -10,7 +10,7 @@ export class ProductOrderService {
   }
 
   resetOrder() {
-    sessionStorage.clear()
+    sessionStorage.clear();
   }
 
   getOrder() {

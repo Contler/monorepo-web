@@ -154,6 +154,43 @@
     "create": "Crear",
     "close": "Cerrar"
   },
+  "product": {
+    "title": "Elige lo que quieres pedir",
+    "next": "SIGUIENTE",
+    "error": "Debes seleccionar al menos un producto",
+    "weWorkForYou": "¡Nosotras trabajamos para ti!",
+    "orderReceivedMessage": "Tu orden ha sido recibida. Nuestro personal está trabajando en ello ahora mismo.",
+    "enjoyIt": "Disfrútala",
+    "gotIt": "¡Entendido!"
+  },
+  "confirmOrder": {
+    "title": "Confirma tu orden",
+    "total": "Total:",
+    "next": "SIGUIENTE"
+  },
+  "finishOrder": {
+    "title": "Confirma tu pedido y hora de entrega",
+    "orderSummaryIn": "Resumen del pedido en:",
+    "order": "ORDEN",
+    "orderRemarks": "Observaciones del pedido:",
+    "immediately": "Inmediatamente",
+    "selectYourHourOfDelivery": "Seleccione su hora de entrega",
+    "whereDoYouWantToReceiveIt": "Donde quieres recibirlo",
+    "total": "Total:"
+  },
+  "order": {
+    "title": "Mis ordenes",
+    "makeANewOrder": "Hacer un nuevo pedido",
+    "inProcess": "En proceso",
+    "accomplished": "Terminado"
+  },
+  "orderDetail": {
+    "idOrder": "ID Orden:",
+    "total": "Total:",
+    "comments": "Comentarios:",
+    "orderStatus": "Estado de la orden",
+    "delivery": "Entrega"
+  },
   "scoreLabel": {
     "veryBad": "Muy mal 1/5",
     "bad": "Mal 2/5",

@@ -1,6 +1,8 @@
 <contler-marco padding="16px 0 0" backUrl="/home/product">
   <div marcoBody>
-    <h1 class="ctl-title pto-title" contlerColorHotel="primary">Choose what you want to order</h1>
+    <h1 class="ctl-title pto-title" contlerColorHotel="primary">
+      {{ 'product.title' | translate }}
+    </h1>
 
     <mat-accordion>
       <mat-expansion-panel *ngFor="let restaurant of restaurant$ | async">
@@ -22,7 +24,9 @@
   </div>
 
   <div marcoFooter class="product-footer">
-    <button contlerColorBtnHotel="primary" mat-raised-button color="accent" (click)="nextStep()">NEXT</button>
+    <button contlerColorBtnHotel="primary" mat-raised-button color="accent" (click)="nextStep()">
+      {{ 'product.next' | translate }}
+    </button>
     <mat-error class="product-error">{{ error }}</mat-error>
   </div>
 </contler-marco>

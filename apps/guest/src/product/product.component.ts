@@ -13,6 +13,7 @@ import { Store } from '@ngrx/store';
 import { State } from 'guest/app/reducers';
 import * as OrderAction from 'guest/app/reducers/order/order.actions';
 import * as OrderReduce from 'guest/app/reducers/order/order.reducer';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-product',
@@ -34,6 +35,7 @@ export class ProductComponent implements OnInit {
     private productOrderService: ProductOrderService,
     private router: Router,
     private store: Store<State>,
+    private translate: TranslateService,
   ) {
     this.totalProd$ = this.store.select(({ order }) => OrderReduce.selectTotal(order));
   }
@@ -57,7 +59,7 @@ export class ProductComponent implements OnInit {
       if (total) {
         this.router.navigate(['/home/product/order']);
       } else {
-        this.error = 'Debes seleccionar al menos un producto';
+        this.error = this.translate.instant('product.error');
       }
     });
   }
