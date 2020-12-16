@@ -1,7 +1,8 @@
 {
   "global": {
     "CLOSE": "Close",
-    "ERROR_SERVER": "Sorry, there was an error on the server"
+    "ERROR_SERVER": "Sorry, there was an error on the server",
+    "SEARCH": "Search"
   },
   "login": {
     "enterBtn": "ENTER",
@@ -35,7 +36,6 @@
     "yesDelete": "Yes, Delete"
   },
   "pendingBooking": {
-    "search": "Search",
     "pendingReservationRequests": "Pending reservation requests",
     "noReservations": "No reservations",
     "guest": "Guest:",
@@ -44,7 +44,6 @@
     "cancel": "CANCEL"
   },
   "readyBooking": {
-    "search": "Search",
     "resolvedReservationRequests": "Resolved reservation requests",
     "noReservations": "No reservations",
     "guest": "Guest:",
