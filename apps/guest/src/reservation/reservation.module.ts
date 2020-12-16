@@ -12,6 +12,7 @@ import { CoreModule } from '@contler/core';
 import { MyReservationsComponent } from './page/my-reservations/my-reservations.component';
 import { EditReservationComponent } from './page/edit-reservation/edit-reservation.component';
 import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,8 @@ import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.
     NgxMaskModule,
     ReactiveFormsModule,
     CoreModule,
+    TranslateModule,
   ],
-  entryComponents: [
-    ModalConfirmComponent
-  ]
+  entryComponents: [ModalConfirmComponent],
 })
 export class ReservationModule {}

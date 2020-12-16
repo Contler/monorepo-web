@@ -1,6 +1,10 @@
 <mat-icon class="icon" [style]="getColorSecondHotel()">check_circle</mat-icon>
-<p class="text">Are you sure you want to cancel this reservation</p>
-<button class="btn__not" mat-raised-button (click)="dialogRef.close()">NO</button>
+<p class="text">
+  {{ 'modalConfirm.cancelMessage' | translate }}
+</p>
+<button class="btn__not" mat-raised-button (click)="dialogRef.close()">
+  {{ 'modalConfirm.no' | translate }}
+</button>
 <button
   class="btn__delete"
   mat-raised-button
@@ -9,5 +13,5 @@
   (click)="dialogRef.close(true)"
   [style]="getColorButtonHotel()"
 >
-  YES, DELETE IT
+  {{ 'modalConfirm.yesDeleteIt' | translate }}
 </button>

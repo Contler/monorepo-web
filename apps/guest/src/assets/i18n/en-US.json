@@ -197,5 +197,13 @@
     "fair": "Fair 3/5",
     "good": "Good 4/5",
     "excellent": "Excellent 5/5"
+  },
+  "reservation": {
+    "title": "Where do you want to make your reservation?"
+  },
+  "modalConfirm": {
+    "cancelMessage": "Are you sure you want to cancel this reservation",
+    "no": "NO",
+    "yesDeleteIt": "YES, DELETE IT"
   }
 }
