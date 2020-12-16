@@ -1,3 +1,3 @@
 export const TYPE_ERROR = {
-  space_available: 'No spots available',
+  space_available: 'createReservation.noSpotsAvailable',
 };

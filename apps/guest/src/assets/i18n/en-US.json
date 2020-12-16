@@ -205,5 +205,18 @@
     "cancelMessage": "Are you sure you want to cancel this reservation",
     "no": "NO",
     "yesDeleteIt": "YES, DELETE IT"
+  },
+  "createReservation": {
+    "title": "You are about to make a reservation in:",
+    "date": "Date",
+    "people": "People",
+    "reservationInBehalfOf": "Reservation in behalf of",
+    "timeSlot": "Time slot",
+    "createReservation": "CREATE RESERVATION",
+    "noSpotsAvailable": "No spots available",
+    "iCantMakeTheReservation": "I can't make the reservation",
+    "yourReservationWasCreatedSuccessfully": "Your reservation was created successfully",
+    "thereIsNoTimeSlotForTheSelectedDate.": "There is no time slot for the selected date.",
+    "close.": "close"
   }
 }
