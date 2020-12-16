@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CashLoanComponent } from './pages/cash-loan/cash-loan.component';
 import { ExchangeComponent } from './pages/exchange/exchange.component';
 import { ConciergeComponent } from './pages/concierge/concierge.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ConciergeComponent } from './pages/concierge/concierge.component';
     MatDialogModule,
     NgxCurrencyModule,
     NgxMaskModule,
+    TranslateModule,
   ],
 })
 export class ReceptionModule {}
