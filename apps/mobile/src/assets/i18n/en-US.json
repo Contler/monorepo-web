@@ -42,5 +42,14 @@
     "people": "people",
     "confirm": "CONFIRM",
     "cancel": "CANCEL"
+  },
+  "readyBooking": {
+    "search": "Search",
+    "resolvedReservationRequests": "Resolved reservation requests",
+    "noReservations": "No reservations",
+    "guest": "Guest:",
+    "people": "people",
+    "cancelled": "Cancelled",
+    "confirmed": "Confirmed"
   }
 }
