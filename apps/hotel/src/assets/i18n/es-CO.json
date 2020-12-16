@@ -9,6 +9,12 @@
     "tuesday": "Martes",
     "wednesday": "Miercoles"
   },
+  "calendar": {
+    "all": "Todos",
+    "persons": "Personas",
+    "zone": "Zona",
+    "zones": "Zonas"
+  },
   "category": {
     "createBtn": "CREAR CATEGORÍA",
     "createSusses": "Categoría creado exitosamente",
