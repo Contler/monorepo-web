@@ -5,6 +5,13 @@ import { NotificationsService } from '../services/notifications.service';
 import { AuthService } from '../services/auth.service';
 import { MenuController, Platform } from '@ionic/angular';
 import { EmployerEntity } from '@contler/entity';
+import { TranslateService } from '@ngx-translate/core';
+
+interface Language {
+  name: string;
+  prefix: string;
+  unicode: string;
+}
 
 @Component({
   selector: 'contler-home',
@@ -14,70 +21,85 @@ import { EmployerEntity } from '@contler/entity';
 export class HomePage implements OnInit {
   user: EmployerEntity | null = null;
 
+  languages: Language[] = [
+    {
+      name: 'Español',
+      prefix: 'es-CO',
+      unicode: '🇨🇴',
+    },
+    {
+      name: 'English',
+      prefix: 'en-US',
+      unicode: '🇬🇧',
+    },
+  ];
+
+  lan: Language;
+
   public readonly menuItems: MenuItem[] = [
     {
       icon: 'home',
-      name: 'Inicio',
+      name: 'menu.home',
       route: '/home',
       show: true,
     },
     {
       icon: 'error',
-      name: 'Solicitudes inmediatas',
+      name: 'menu.immediateRequest',
       route: '/home/inmediate-requests',
       show: true,
     },
     {
       icon: 'access_alarm',
-      name: 'Wake up calls',
+      name: 'menu.wakeUp',
       route: '/home/wake-up',
       show: false,
     },
     {
       icon: 'sms_failed',
-      name: 'Solicitudes especiales',
+      name: 'menu.specialRequest',
       route: '/home/special-requests',
       show: true,
     },
     {
       icon: 'calendar_today',
-      name: 'Reservas',
+      name: 'menu.booking',
       route: '/home/booking',
       show: true,
     },
     {
       icon: 'room_service',
-      name: 'Pedidos remotos',
+      name: 'menu.order',
       route: '/home/order',
       show: true,
     },
     {
       icon: 'room_service',
-      name: 'Recepción',
+      name: 'menu.reception',
       route: '/home/reception',
       show: false,
     },
     {
       icon: 'bar_chart',
-      name: 'Estadisticas',
+      name: 'menu.statistic',
       route: '/home/statistic',
       show: true,
     },
     {
       icon: 'transfer_within_a_station',
-      name: 'Late Checkout',
+      name: 'menu.lateCheckout',
       route: '/home/late',
       show: false,
     },
     {
       icon: 'cleaning_services',
-      name: 'Limpieza',
+      name: 'menu.clean',
       route: '/home/clean',
       show: false,
     },
     {
       icon: 'engineering',
-      name: 'Mantenimiento',
+      name: 'menu.maintain',
       route: '/home/maintain',
       show: false,
     },
@@ -91,7 +113,9 @@ export class HomePage implements OnInit {
     public auth: AuthService,
     private platform: Platform,
     private menuController: MenuController,
+    private translate: TranslateService,
   ) {
+    this.lan = this.languages.find((lan) => lan.prefix === localStorage.lan) || this.languages[0];
     this.auth.$user.subscribe((user) => {
       this.user = user;
       const chiefZones: string[] = [];
@@ -147,6 +171,12 @@ export class HomePage implements OnInit {
       .catch(() => {
         console.error('Hubo un error');
       });
+  }
+
+  changeLanguage() {
+    localStorage.lan = this.lan.prefix;
+    this.translate.use(this.lan.prefix);
+    this.menuController.toggle();
   }
 }
 

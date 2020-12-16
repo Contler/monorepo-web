@@ -7,29 +7,37 @@ import { AlertMessageComponent } from './alert-message/alert-message.component';
 import { InputMessageComponent } from './input-message/input-message.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessagesService {
-  constructor(private snackBar: MatSnackBar, private dialog: MatDialog) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog,
+    private translate: TranslateService,
+  ) {}
 
-  showToastMessage(message: string, closeMessage: string = 'Cerrar', duration: number = 2000) {
-    this.snackBar.open(message, closeMessage, {
+  showToastMessage(message: string, closeMessage: string = null, duration: number = 2000) {
+    const msn = closeMessage || this.translate.instant('global.CLOSE');
+    this.snackBar.open(message, msn, {
       duration: duration,
     });
   }
 
   showServerError(
     error = null,
-    message: string = 'Lo sentimos, hubo un error en el servidor',
-    closeMessage: string = 'Cerrar',
+    message: string = null,
+    closeMessage: string = null,
     duration: number = 3000,
   ) {
     if (error) {
       console.error(error);
     }
-    this.snackBar.open(message, closeMessage, {
+    const msnClose = closeMessage || this.translate.instant('global.CLOSE');
+    const msnMessage = message || this.translate.instant('global.ERROR_SERVER');
+    this.snackBar.open(msnMessage, msnClose, {
       duration: duration,
     });
   }
@@ -38,7 +46,6 @@ export class MessagesService {
     return this.dialog.open(SpinnerComponent, {
       disableClose: true,
     });
-
   }
 
   closeLoader(loader: any, message: string | null = null) {
