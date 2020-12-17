@@ -12,7 +12,7 @@ import { CommonComponentsModule } from '../../../common-components/common-compon
 import { MaterialModule } from '../../../material/material.module';
 import { PipesModule } from '../../../pipes/pipes.module';
 import { RatingModule } from 'ng-starrating';
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -24,9 +24,10 @@ import { RatingModule } from 'ng-starrating';
     MaterialModule,
     PipesModule,
     ModalsModule,
-    RatingModule
+    RatingModule,
+    TranslateModule,
   ],
   declarations: [ReadyInmediateRequestsPage],
-  entryComponents: []
+  entryComponents: [],
 })
 export class ReadyInmediateRequestsPageModule {}

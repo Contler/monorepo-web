@@ -4,9 +4,29 @@
     "resolved": "RESUELTO"
   },
   "global": {
+    "ACTIVE": "Activa",
     "CLOSE": "Cerrar",
+    "COMPLETE": "Cumplida",
     "ERROR_SERVER": "Lo sentimos, hubo un error en el servidor",
-    "SEARCH": "Buscar"
+    "GUEST": "Huésped",
+    "ROOM": "Habitación",
+    "SEARCH": "Buscar",
+    "STATE": "Estado",
+    "UPDATE_BTN": "ACTUALIZAR",
+    "ZONE": "Zona"
+  },
+  "immediateRequest": {
+    "empty": "No tienes ninguna solicitud inmediata de los huéspedes",
+    "modal": {
+      "employer": "Empleado",
+      "need": "Necesita",
+      "timeRequest": "Hora solicitud",
+      "title": "Solicitud inmediata"
+    },
+    "resultError": "Esta solicitud fue resuelta",
+    "title": "Solicitudes inmediatas pendientes",
+    "titleComplete": "Solicitudes inmediatas resueltas",
+    "updateMsg": "Solicitud modificada exitosamente"
   },
   "login": {
     "enterBtn": "INGRESAR",

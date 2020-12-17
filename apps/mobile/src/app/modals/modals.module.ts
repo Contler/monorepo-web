@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ModalSpecialRequestPage } from './modal-special-request/modal-special-request.page';
 import { RatingModule } from 'ng-starrating';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [ModalInmediateRequestPage, ModalSpecialRequestPage],
@@ -18,6 +19,7 @@ import { RatingModule } from 'ng-starrating';
     FormsModule,
     IonicModule,
     RatingModule,
+    TranslateModule,
   ],
 })
 export class ModalsModule {}

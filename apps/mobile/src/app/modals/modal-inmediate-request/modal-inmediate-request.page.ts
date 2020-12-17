@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
 import { MessagesService } from '../../services/messages/messages.service';
 import { GeneralService } from '../../services/general.service';
 import { EmployerService } from '../../services/employer.service';
@@ -8,6 +7,7 @@ import { EmployerEntity, RequestEntity } from '@contler/entity';
 import { AuthService } from '../../services/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-modal-inmediate-request',
@@ -28,6 +28,7 @@ export class ModalInmediateRequestPage implements OnInit {
     private messagesService: MessagesService,
     private authService: AuthService,
     public dialogRef: MatDialogRef<ModalInmediateRequestPage>,
+    private translate: TranslateService,
     @Inject(MAT_DIALOG_DATA) public data: RequestEntity,
   ) {
     this.request = data;
@@ -53,7 +54,8 @@ export class ModalInmediateRequestPage implements OnInit {
       .subscribe(
         () => {
           this.messagesService.closeLoader(loader);
-          this.messagesService.showToastMessage('Solicitud modificada exitosamente');
+          const msg = this.translate.instant('immediateRequest.updateMsg');
+          this.messagesService.showToastMessage(msg);
           this.dialogRef.close();
         },
         (err) => {

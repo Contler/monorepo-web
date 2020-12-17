@@ -4,9 +4,29 @@
     "resolved": "RESOLVED"
   },
   "global": {
+    "ACTIVE": "Active",
     "CLOSE": "Close",
+    "COMPLETE": "Complete",
     "ERROR_SERVER": "Sorry, there was an error on the server",
-    "SEARCH": "Search"
+    "GUEST": "Guest",
+    "ROOM": "Room",
+    "SEARCH": "Search",
+    "STATE": "State",
+    "UPDATE_BTN": "UPDATE",
+    "ZONE": "Zone"
+  },
+  "immediateRequest": {
+    "empty": "You don't have any immediate guest requests pending",
+    "modal": {
+      "employer": "Employee",
+      "need": "Need",
+      "timeRequest": "Request time",
+      "title": "Immediate request"
+    },
+    "resultError": "This request was resolved",
+    "title": "Immediate requests pending",
+    "titleComplete": "Immediate requests resolved",
+    "updateMsg": "Request modified successfully"
   },
   "login": {
     "enterBtn": "ENTER",
