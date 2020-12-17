@@ -54,5 +54,9 @@
   "order": {
     "pending": "Pending",
     "resolved": "Resolved"
+  },
+  "orderComplete": {
+    "resolvedOrders": "Resolved orders",
+    "noOrders": "No orders"
   }
 }

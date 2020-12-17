@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Subject } from "rxjs";
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class CheckOrdersService {
-  private sub = new Subject<void>()
-  $completeOrder = this.sub.asObservable()
+  private sub = new Subject<void>();
+  $completeOrder = this.sub.asObservable();
 
-  constructor() { }
+  constructor() {}
 
   complete() {
-    this.sub.next()
+    this.sub.next();
   }
 }
