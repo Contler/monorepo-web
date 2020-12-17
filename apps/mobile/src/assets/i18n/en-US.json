@@ -1,4 +1,8 @@
 {
+  "booking": {
+    "pending": "PENDING",
+    "resolved": "RESOLVED"
+  },
   "global": {
     "CLOSE": "Close",
     "ERROR_SERVER": "Sorry, there was an error on the server",
@@ -26,30 +30,26 @@
     "statistic": "Statistics",
     "wakeUp": "Wake up calls"
   },
-  "booking": {
-    "pending": "PENDING",
-    "resolved": "RESOLVED"
-  },
   "modalConfirm": {
     "message": "Do you confirm that you want to cancel this reservation?",
     "no": "NO",
     "yesDelete": "Yes, Delete"
   },
   "pendingBooking": {
-    "pendingReservationRequests": "Pending reservation requests",
-    "noReservations": "No reservations",
-    "guest": "Guest:",
-    "people": "people",
+    "cancel": "CANCEL",
     "confirm": "CONFIRM",
-    "cancel": "CANCEL"
+    "guest": "Guest:",
+    "noReservations": "No reservations",
+    "pendingReservationRequests": "Pending reservation requests",
+    "people": "people"
   },
   "readyBooking": {
-    "resolvedReservationRequests": "Resolved reservation requests",
-    "noReservations": "No reservations",
-    "guest": "Guest:",
-    "people": "people",
     "cancelled": "Cancelled",
-    "confirmed": "Confirmed"
+    "confirmed": "Confirmed",
+    "guest": "Guest:",
+    "noReservations": "No reservations",
+    "people": "people",
+    "resolvedReservationRequests": "Resolved reservation requests"
   },
   "order": {
     "pending": "Pending",
