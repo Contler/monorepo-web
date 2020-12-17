@@ -67,5 +67,9 @@
     "delivery": "Delivery",
     "update": "Update",
     "delivered": "Delivered"
+  },
+  "orderPending": {
+    "pendingOrders": "Pending orders",
+    "noOrders": "No orders"
   }
 }
