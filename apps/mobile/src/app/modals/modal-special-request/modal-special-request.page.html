@@ -13,23 +13,25 @@
       ></contler-logo>
     </div>
     <div class="main-container">
-      <div class="main-container__title" [style.color]="generalService.hotelColor">Solicitud especial</div>
+      <div class="main-container__title" [style.color]="generalService.hotelColor">
+        {{'specialRequest.title' | translate}}
+      </div>
       <form (ngSubmit)="save()">
         <!-- USER -->
         <mat-form-field appearance="fill">
           <input matInput [ngModel]="request.guest.name" name="userName" readonly />
-          <mat-hint>Huésped</mat-hint>
+          <mat-hint>{{'global.GUEST' | translate}}</mat-hint>
         </mat-form-field>
 
         <!-- ROOM - CREATED_AT -->
         <div class="two-inputs">
           <mat-form-field appearance="fill">
             <input matInput [ngModel]="request.room.name" name="roomName" readonly />
-            <mat-hint>Habitación</mat-hint>
+            <mat-hint>{{'global.ROOM' | translate}}</mat-hint>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <input matInput [value]="request.createAt|date:'HH:mm'" name="created_at" readonly />
-            <mat-hint>Hora solicitud</mat-hint>
+            <mat-hint>{{'global.TIME_REQUEST' | translate}}</mat-hint>
           </mat-form-field>
         </div>
 
@@ -42,18 +44,18 @@
             name="description"
             readonly
           ></textarea>
-          <mat-hint>Necesita</mat-hint>
+          <mat-hint>{{"global.NEED" | translate}}</mat-hint>
         </mat-form-field>
 
         <!-- CHECK IN - CHECKOUT -->
         <div class="two-inputs">
           <mat-form-field appearance="fill">
             <input matInput [value]="request.guest.checkIn|date:'dd/MM/yyyy'" name="checkIn" readonly />
-            <mat-hint>Fecha ingreso</mat-hint>
+            <mat-hint>{{'specialRequest.dateInit' | translate}}</mat-hint>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <input matInput [value]="request.guest.checkOut|date:'dd/MM/yyyy'" name="checkOut" readonly />
-            <mat-hint>Fecha salida</mat-hint>
+            <mat-hint>{{'specialRequest.dateEnd' | translate }}</mat-hint>
           </mat-form-field>
         </div>
 
@@ -69,10 +71,10 @@
         <!-- STATUS -->
         <mat-form-field appearance="fill">
           <mat-select [(ngModel)]="request.complete" name="isFinished">
-            <mat-option [value]="false"> Pendiente </mat-option>
-            <mat-option [value]="true"> Cumplida </mat-option>
+            <mat-option [value]="false"> {{'global.PENDING' | translate}} </mat-option>
+            <mat-option [value]="true"> {{'global.COMPLETE' | translate}} </mat-option>
           </mat-select>
-          <mat-hint>Estado</mat-hint>
+          <mat-hint>{{'global.STATE' | translate}}</mat-hint>
         </mat-form-field>
 
         <button
@@ -81,7 +83,7 @@
           mat-raised-button
           [style.background-color]="generalService.hotelColor"
         >
-          ACTUALIZAR
+          {{'global.UPDATE_BTN' | translate}}
         </button>
       </form>
     </div>

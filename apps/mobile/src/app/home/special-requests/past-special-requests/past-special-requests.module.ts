@@ -10,7 +10,7 @@ import { PastSpecialRequestsPage } from './past-special-requests.page';
 import { ModalsModule } from '../../../modals/modals.module';
 import { MaterialModule } from '../../../material/material.module';
 import { CommonComponentsModule } from '../../../common-components/common-components.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -20,8 +20,9 @@ import { CommonComponentsModule } from '../../../common-components/common-compon
     PastSpecialRequestsPageRoutingModule,
     MaterialModule,
     CommonComponentsModule,
-    ModalsModule
+    ModalsModule,
+    TranslateModule,
   ],
-  declarations: [PastSpecialRequestsPage]
+  declarations: [PastSpecialRequestsPage],
 })
 export class PastSpecialRequestsPageModule {}

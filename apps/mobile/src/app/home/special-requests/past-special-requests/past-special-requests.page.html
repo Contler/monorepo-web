@@ -28,12 +28,12 @@
         </div>
       </ng-container>
       <ng-template #emptyResults>
-        <p class="empty-label" *ngIf="requestsResults.length == 0">No hay resultados para esta búsqueda</p>
+        <p class="empty-label" *ngIf="requestsResults.length == 0">{{'global.NO_RESULT' | translate}}</p>
       </ng-template>
     </div>
     <ng-container *ngIf="!searchRequestsEnabled">
       <p class="main-container__title" [style.color]="generalService.hotelColor">
-        Solicitudes especiales pasadas
+        {{'specialRequest.completeTitle' | translate}}
       </p>
       <div class="list-container">
         <ng-container *ngIf="requests.length else empty">
@@ -54,7 +54,7 @@
           <div class="empty-container">
             <mat-icon class="custom_icon empty-container__icon">check_circle</mat-icon>
             <p class="empty-container__label" [style.color]="generalService.hotelColor">
-              No tienes ninguna solicitud especial de los huéspedes
+              {{'specialRequest.empty' | translate}}
             </p>
           </div>
         </ng-template>

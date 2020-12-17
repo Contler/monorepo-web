@@ -9,13 +9,18 @@
     "COMPLETE": "Cumplida",
     "ERROR_SERVER": "Lo sentimos, hubo un error en el servidor",
     "GUEST": "Huésped",
+    "NEED": "Necesita",
+    "NO_RESULT": "No hay resultados para esta búsqueda",
+    "PENDING": "Pendiente",
     "ROOM": "Habitación",
     "SEARCH": "Buscar",
     "STATE": "Estado",
+    "TIME_REQUEST": "Hora solicitud",
     "UPDATE_BTN": "ACTUALIZAR",
     "ZONE": "Zona"
   },
   "immediateRequest": {
+    "active": "ACTIVAS",
     "empty": "No tienes ninguna solicitud inmediata de los huéspedes",
     "modal": {
       "employer": "Empleado",
@@ -23,6 +28,9 @@
       "timeRequest": "Hora solicitud",
       "title": "Solicitud inmediata"
     },
+    "past": "PASADAS",
+    "pending": "PENDIENTES",
+    "result": "RESUELTAS",
     "resultError": "Esta solicitud fue resuelta",
     "title": "Solicitudes inmediatas pendientes",
     "titleComplete": "Solicitudes inmediatas resueltas",
@@ -70,5 +78,14 @@
     "noReservations": "Sin reservaciones",
     "people": "personas",
     "resolvedReservationRequests": "Solicitudes de reserva resueltas"
+  },
+  "specialRequest": {
+    "activeTitle": "Solicitudes especiales activas",
+    "completeTitle": "Solicitudes especiales pasadas",
+    "dateEnd": "Fecha salida",
+    "dateInit": "Fecha ingreso",
+    "empty": "No tienes ninguna solicitud especial de los huéspedes",
+    "title": "Solicitud especial",
+    "updateSusses": "Solicitud modificada exitosamente"
   }
 }
