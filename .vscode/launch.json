@@ -10,6 +10,13 @@
       "name": "Launch Chrome against localhost - guest",
       "url": "http://localhost:4201",
       "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost - mobile",
+      "url": "http://localhost:8100",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }

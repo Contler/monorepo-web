@@ -7,6 +7,7 @@ import { PendingBokkingRoutingModule } from './pending-bookin-routing.module';
 import { MaterialModule } from '../../../material/material.module';
 import { CommonComponentsModule } from '../../../common-components/common-components.module';
 import { PipesModule } from '../../../pipes/pipes.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { PipesModule } from '../../../pipes/pipes.module';
     PendingBokkingRoutingModule,
     CommonComponentsModule,
     PipesModule,
+    TranslateModule,
   ],
   declarations: [PendingBookingComponent],
 })

@@ -1,7 +1,8 @@
 {
   "global": {
     "CLOSE": "Close",
-    "ERROR_SERVER": "Sorry, there was an error on the server"
+    "ERROR_SERVER": "Sorry, there was an error on the server",
+    "SEARCH": "Search"
   },
   "login": {
     "enterBtn": "ENTER",
@@ -24,5 +25,30 @@
     "specialRequest": "Special requests",
     "statistic": "Statistics",
     "wakeUp": "Wake up calls"
+  },
+  "booking": {
+    "pending": "PENDING",
+    "resolved": "RESOLVED"
+  },
+  "modalConfirm": {
+    "message": "Do you confirm that you want to cancel this reservation?",
+    "no": "NO",
+    "yesDelete": "Yes, Delete"
+  },
+  "pendingBooking": {
+    "pendingReservationRequests": "Pending reservation requests",
+    "noReservations": "No reservations",
+    "guest": "Guest:",
+    "people": "people",
+    "confirm": "CONFIRM",
+    "cancel": "CANCEL"
+  },
+  "readyBooking": {
+    "resolvedReservationRequests": "Resolved reservation requests",
+    "noReservations": "No reservations",
+    "guest": "Guest:",
+    "people": "people",
+    "cancelled": "Cancelled",
+    "confirmed": "Confirmed"
   }
 }
