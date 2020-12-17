@@ -8,24 +8,29 @@
     </button>
   </div>
   <mat-form-field class="booking__search">
-    <input matInput [(ngModel)]="search" placeholder="Buscar" />
+    <input matInput [(ngModel)]="search" placeholder="{{ 'global.SEARCH' | translate }}" />
     <mat-icon matSuffix contlerColorHotel>search</mat-icon>
   </mat-form-field>
 </ion-header>
 <ion-content padding>
-  <div class="booking__title center" contlerColorHotel>Solicitudes de reservas pendientes</div>
+  <div class="booking__title center" contlerColorHotel>
+    {{ 'pendingBooking.pendingReservationRequests' | translate }}
+  </div>
 
-  <div *ngIf="booking && booking.length === 0" class="center">No hay reservas</div>
+  <div *ngIf="booking && booking.length === 0" class="center">
+    {{ 'pendingBooking.noReservations' | translate }}
+  </div>
 
   <mat-card *ngFor="let item of booking | bookingList: search" class="booking__table">
     <div class="booking__table-content">
       <div>
         <p class="booking__table-title">{{ item.schedule.reservation.name }}</p>
         <p *ngIf="item.guest" class="booking__table-text">
-          Huésped: {{ item.guest?.name + ' ' + item.guest?.lastName }}
+          {{ 'pendingBooking.guest' | translate }} {{ item.guest?.name + ' ' + item.guest?.lastName }}
         </p>
         <p class="booking__table-text">
-          {{ item.schedule.timeInit | date: 'shortTime' }} - {{ item.quote }} personas
+          {{ item.schedule.timeInit | date: 'shortTime' }} - {{ item.quote }}
+          {{ 'pendingBooking.people' | translate }}
         </p>
       </div>
       <p class="booking__table-text">{{ item.date | date: 'dd/MM/yyyy' }}</p>
@@ -39,9 +44,9 @@
         contlerColorHotel="primary"
         (click)="complete(item)"
       >
-        CONFIRMAR
+        {{ 'pendingBooking.confirm' | translate }}
       </button>
-      <button mat-button (click)="cancel(item)">CANCELAR</button>
+      <button mat-button (click)="cancel(item)">{{ 'pendingBooking.cancel' | translate }}</button>
     </mat-card-actions>
   </mat-card>
 </ion-content>

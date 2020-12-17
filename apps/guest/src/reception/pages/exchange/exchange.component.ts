@@ -13,6 +13,7 @@ import { map, switchMap, take } from 'rxjs/operators';
 import { MONEY_OPTIONS } from '../../const/exchange.const';
 import { GuestService } from '../../../services/guest.service';
 import { ModalCompleteComponent } from '../../../common-components/modal-complete/modal-complete.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-exchange',
@@ -32,6 +33,7 @@ export class ExchangeComponent {
     private guestService: GuestService,
     private dialog: MatDialog,
     private router: Router,
+    private translate: TranslateService,
   ) {
     this.changeForm = formBuild.group({
       money: ['', Validators.required],
@@ -43,9 +45,8 @@ export class ExchangeComponent {
     this.load = true;
     const { money, value } = this.changeForm.value;
     const modalConf: ModalConfigModel = {
-      text:
-        'Your currency exchange request has been successfully received. Come to the reception to receive your money.',
-      close: 'Got it!',
+      text: this.translate.instant('exchange.text'),
+      close: this.translate.instant('exchange.close'),
       icon: 'fas fa-check-circle',
     };
     this.guestService.$guest

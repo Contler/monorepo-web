@@ -10,6 +10,7 @@ import { GuestService } from '../../../services/guest.service';
 import { map, switchMap, take } from 'rxjs/operators';
 import { ModalCompleteComponent } from '../../../common-components/modal-complete/modal-complete.component';
 import { DatePipe } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-concierge',
@@ -27,6 +28,7 @@ export class ConciergeComponent {
     private dialog: MatDialog,
     private router: Router,
     private datePipe: DatePipe,
+    private translate: TranslateService,
   ) {
     this.formGroup = formBuild.group({
       date: ['', Validators.required],
@@ -37,9 +39,8 @@ export class ConciergeComponent {
   save() {
     const { date, comment } = this.formGroup.value;
     const modalConf: ModalConfigModel = {
-      text:
-        'Your concierge information request has been succesful. Our staff will be contacting you very soon.',
-      close: 'Got it!',
+      text: this.translate.instant('concierge.text'),
+      close: this.translate.instant('concierge.close'),
       icon: 'fas fa-check-circle',
     };
     this.load = true;

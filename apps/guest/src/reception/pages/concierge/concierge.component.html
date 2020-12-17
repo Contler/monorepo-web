@@ -2,7 +2,7 @@
   <contler-marco padding="20px 50px 10px" backUrl="/home/reception">
     <ng-container marcoBody>
       <h1 class="ctl-title" contlerColorHotel="primary">
-        Tell us which tourist spot you would like to go to and when you want to visit it
+        {{ 'concierge.title' | translate }}
       </h1>
 
       <div class="concierge__form">
@@ -17,7 +17,7 @@
           />
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
-          <mat-hint>Date for the service</mat-hint>
+          <mat-hint>{{ 'concierge.dateForTheService' | translate }}</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -35,7 +35,7 @@
 
     <div marcoFooter class="concierge__footer">
       <button mat-raised-button contlerColorBtnHotel="primary" [disabled]="formGroup.invalid || load">
-        CREATE REQUEST
+        {{ 'concierge.createRequest' | translate }}
       </button>
     </div>
   </contler-marco>

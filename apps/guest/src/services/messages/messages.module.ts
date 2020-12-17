@@ -7,6 +7,7 @@ import { AlertMessageComponent } from './alert-message/alert-message.component';
 import { InputMessageComponent } from './input-message/input-message.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from 'guest/material/material.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { MaterialModule } from 'guest/material/material.module';
     AlertMessageComponent,
     InputMessageComponent,
   ],
-  imports: [CommonModule, MaterialModule, FormsModule],
+  imports: [CommonModule, MaterialModule, FormsModule, TranslateModule],
   entryComponents: [
     SpinnerComponent,
     ConfirmComponent,

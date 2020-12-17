@@ -1,6 +1,6 @@
 <mat-icon class="icon" contlerColorHotel>check_circle</mat-icon>
-<p class="text">Confirmas que quieres cancelar esta reserva</p>
-<button mat-raised-button (click)="dialogRef.close()">NO</button>
+<p class="text">{{ 'modalConfirm.message' | translate }}</p>
+<button mat-raised-button (click)="dialogRef.close()">{{ 'modalConfirm.no' | translate }}</button>
 <button
   mat-raised-button
   color="accent"
@@ -8,5 +8,5 @@
   contlerColorHotel="primary"
   (click)="dialogRef.close(true)"
 >
-  Sí, eliminar
+  {{ 'modalConfirm.yesDelete' | translate }}
 </button>

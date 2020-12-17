@@ -17,16 +17,20 @@ export class ModalConfirmComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private guestService: GuestService,
   ) {
-    this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
+    this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
   }
 
   ngOnInit() {}
 
   getColorButtonHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '',
+    );
   }
 
   getColorSecondHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.colorSecond}` : '');
+    return this.sanitizer.bypassSecurityTrustStyle(
+      this.hotel && this.hotel.color ? `color: ${this.hotel.colorSecond}` : '',
+    );
   }
 }
