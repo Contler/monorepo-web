@@ -50,5 +50,26 @@
     "people": "personas",
     "cancelled": "Cancelado",
     "confirmed": "Confirmado"
+  },
+  "order": {
+    "pending": "Pendiente",
+    "resolved": "Resuelto"
+  },
+  "orderComplete": {
+    "resolvedOrders": "Órdenes resueltas",
+    "noOrders": "Sin Ordenes"
+  },
+  "orderDetail": {
+    "orderId": "ID de la Orden:",
+    "total": "Total:",
+    "comments": "Comentarios:",
+    "employeeInCharge": "Empleado a Cargo",
+    "delivery": "Entrega",
+    "update": "Actualizar",
+    "delivered": "Actualizado"
+  },
+  "orderPending": {
+    "pendingOrders": "Ordenes pendientes",
+    "noOrders": "Sin Ordenes"
   }
 }
