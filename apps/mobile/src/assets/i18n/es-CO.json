@@ -1,4 +1,8 @@
 {
+  "booking": {
+    "pending": "PENDIENTE",
+    "resolved": "RESUELTO"
+  },
   "global": {
     "CLOSE": "Cerrar",
     "ERROR_SERVER": "Lo sentimos, hubo un error en el servidor",
@@ -26,29 +30,25 @@
     "statistic": "Estadísticas",
     "wakeUp": "Wake up calls"
   },
-  "booking": {
-    "pending": "PENDIENTE",
-    "resolved": "RESUELTO"
-  },
   "modalConfirm": {
     "message": "¿Confirmas que quieres cancelar esta reserva?",
     "no": "NO",
     "yesDelete": "Sí, eliminar"
   },
   "pendingBooking": {
-    "pendingReservationRequests": "Solicitudes de reserva pendientes",
-    "noReservations": "Sin reservaciones",
-    "guest": "Huésped:",
-    "people": "personas",
+    "cancel": "CANCELAR",
     "confirm": "CONFIRMAR",
-    "cancel": "CANCELAR"
+    "guest": "Huésped:",
+    "noReservations": "Sin reservaciones",
+    "pendingReservationRequests": "Solicitudes de reserva pendientes",
+    "people": "personas"
   },
   "readyBooking": {
-    "resolvedReservationRequests": "Solicitudes de reserva resueltas",
-    "noReservations": "Sin reservaciones",
-    "guest": "Huésped:",
-    "people": "personas",
     "cancelled": "Cancelado",
-    "confirmed": "Confirmado"
+    "confirmed": "Confirmado",
+    "guest": "Huésped:",
+    "noReservations": "Sin reservaciones",
+    "people": "personas",
+    "resolvedReservationRequests": "Solicitudes de reserva resueltas"
   }
 }
