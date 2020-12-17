@@ -58,5 +58,14 @@
   "orderComplete": {
     "resolvedOrders": "Resolved orders",
     "noOrders": "No orders"
+  },
+  "orderDetail": {
+    "orderId": "Order ID:",
+    "total": "Total:",
+    "comments": "Comments:",
+    "employeeInCharge": "Employee in charge",
+    "delivery": "Delivery",
+    "update": "Update",
+    "delivered": "Delivered"
   }
 }
