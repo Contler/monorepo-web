@@ -50,5 +50,9 @@
     "people": "people",
     "cancelled": "Cancelled",
     "confirmed": "Confirmed"
+  },
+  "order": {
+    "pending": "Pending",
+    "resolved": "Resolved"
   }
 }

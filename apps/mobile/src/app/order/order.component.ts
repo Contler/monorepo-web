@@ -13,7 +13,7 @@ export class OrderComponent implements OnInit {
   user: EmployerEntity | null = null;
 
   constructor(private auth: AuthService, public generalService: GeneralService) {
-    this.auth.$user.pipe(take(1)).subscribe(user => (this.user = user));
+    this.auth.$user.pipe(take(1)).subscribe((user) => (this.user = user));
   }
 
   ngOnInit() {}
