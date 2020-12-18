@@ -4,9 +4,37 @@
     "resolved": "RESOLVED"
   },
   "global": {
+    "ACTIVE": "Active",
     "CLOSE": "Close",
+    "COMPLETE": "Complete",
     "ERROR_SERVER": "Sorry, there was an error on the server",
-    "SEARCH": "Search"
+    "GUEST": "Guest",
+    "NEED": "Need",
+    "NO_RESULT": "There are no results for this search",
+    "PENDING": "Pending",
+    "ROOM": "Room",
+    "SEARCH": "Search",
+    "STATE": "State",
+    "TIME_REQUEST": "Request time",
+    "UPDATE_BTN": "UPDATE",
+    "ZONE": "Zone"
+  },
+  "immediateRequest": {
+    "active": "ACTIVE",
+    "empty": "You don't have any immediate guest requests pending",
+    "modal": {
+      "employer": "Employee",
+      "need": "Need",
+      "timeRequest": "Request time",
+      "title": "Immediate request"
+    },
+    "past": "PASSED",
+    "pending": "SLOPES",
+    "result": "RESOLVED",
+    "resultError": "This request was resolved",
+    "title": "Immediate requests pending",
+    "titleComplete": "Immediate requests resolved",
+    "updateMsg": "Request modified successfully"
   },
   "login": {
     "enterBtn": "ENTER",
@@ -71,5 +99,14 @@
   "orderPending": {
     "pendingOrders": "Pending orders",
     "noOrders": "No orders"
+  },
+  "specialRequest": {
+    "activeTitle": "Active special requests",
+    "completeTitle": "Past special requests",
+    "dateEnd": "Departure date",
+    "dateInit": "Admission Date",
+    "empty": "You don't have any special requests from guests",
+    "title": "Special request",
+    "updateSusses": "Request modified successfully"
   }
 }

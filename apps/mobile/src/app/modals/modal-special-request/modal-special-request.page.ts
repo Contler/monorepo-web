@@ -7,6 +7,7 @@ import { EmployerService } from '../../services/employer.service';
 import { SpecialRequestsService } from '../../services/special-requests.service';
 import { EmployerEntity, RequestEntity } from '@contler/entity';
 import { AuthService } from '../../services/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-modal-special-request',
@@ -29,6 +30,7 @@ export class ModalSpecialRequestPage implements OnInit, OnDestroy {
     private messagesService: MessagesService,
     public modalController: ModalController,
     private auth: AuthService,
+    private translate: TranslateService,
   ) {
     this.auth.$user.subscribe((employer) => (this.employer = employer!));
   }
@@ -54,7 +56,8 @@ export class ModalSpecialRequestPage implements OnInit, OnDestroy {
     this.specialRequestsService.updateRequest(this.request!).subscribe(
       () => {
         this.messagesService.closeLoader(loader);
-        this.messagesService.showToastMessage('Solicitud modificada exitosamente');
+        const msn = this.translate.instant('specialRequest.updateSusses');
+        this.messagesService.showToastMessage(msn);
         this.modalController.dismiss();
       },
       (err) => {

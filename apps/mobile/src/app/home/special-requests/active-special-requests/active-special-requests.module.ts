@@ -11,7 +11,7 @@ import { ModalsModule } from '../../../modals/modals.module';
 import { MaterialModule } from '../../../material/material.module';
 import { CommonComponentsModule } from '../../../common-components/common-components.module';
 import { PipesModule } from '../../../pipes/pipes.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -22,8 +22,9 @@ import { PipesModule } from '../../../pipes/pipes.module';
     MaterialModule,
     CommonComponentsModule,
     PipesModule,
-    ModalsModule
+    ModalsModule,
+    TranslateModule,
   ],
-  declarations: [ActiveSpecialRequestsPage]
+  declarations: [ActiveSpecialRequestsPage],
 })
 export class ActiveSpecialRequestsPageModule {}

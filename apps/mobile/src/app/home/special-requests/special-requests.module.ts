@@ -7,14 +7,10 @@ import { IonicModule } from '@ionic/angular';
 import { SpecialRequestsPageRoutingModule } from './special-requests-routing.module';
 
 import { SpecialRequestsPage } from './special-requests.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SpecialRequestsPageRoutingModule
-  ],
-  declarations: [SpecialRequestsPage]
+  imports: [CommonModule, FormsModule, IonicModule, SpecialRequestsPageRoutingModule, TranslateModule],
+  declarations: [SpecialRequestsPage],
 })
 export class SpecialRequestsPageModule {}

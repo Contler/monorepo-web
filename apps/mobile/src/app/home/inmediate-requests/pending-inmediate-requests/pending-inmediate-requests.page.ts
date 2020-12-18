@@ -7,6 +7,7 @@ import { EmployerEntity, RequestEntity } from '@contler/entity';
 import { AuthService } from '../../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-pending-inmediate-requests',
@@ -26,6 +27,7 @@ export class PendingInmediateRequestsPage implements OnInit {
     private dialog: MatDialog,
     public menu: MenuController,
     private snackBar: MatSnackBar,
+    private translate: TranslateService,
   ) {
     this.auth.$user.subscribe((user) => (this.user = user));
   }
@@ -59,7 +61,9 @@ export class PendingInmediateRequestsPage implements OnInit {
   completeRequest(request: RequestEntity) {
     request.complete = true;
     this.inmediateRequestsService.updateRequest(request).subscribe(() => {
-      this.snackBar.open('Esta solicitud fue resuelta', 'cerrar', {
+      const msn = this.translate.instant('immediateRequest.resultError');
+      const close = this.translate.instant('global.CLOSE');
+      this.snackBar.open(msn, close, {
         duration: 5000,
       });
       this.requests = this.requests.filter((req) => req.id !== request.id);

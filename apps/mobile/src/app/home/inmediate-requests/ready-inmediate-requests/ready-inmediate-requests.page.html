@@ -12,7 +12,7 @@
 <ion-content>
   <div class="main-container">
     <p class="main-container__title" [style.color]="generalService.hotelColor">
-      Solicitudes inmediatas resueltas
+      {{'immediateRequest.titleComplete' | translate}}
     </p>
     <div class="list-container">
       <ng-container *ngIf="requests.length else empty">
@@ -33,7 +33,7 @@
         <div class="empty-container">
           <mat-icon class="custom_icon empty-container__icon">check_circle</mat-icon>
           <p class="empty-container__label" [style.color]="generalService.hotelColor">
-            No tienes ninguna solicitud inmediata de los huéspedes
+            {{'immediateRequest.empty' | translate}}
           </p>
         </div>
       </ng-template>

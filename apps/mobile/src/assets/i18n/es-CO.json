@@ -4,9 +4,37 @@
     "resolved": "RESUELTO"
   },
   "global": {
+    "ACTIVE": "Activa",
     "CLOSE": "Cerrar",
+    "COMPLETE": "Cumplida",
     "ERROR_SERVER": "Lo sentimos, hubo un error en el servidor",
-    "SEARCH": "Buscar"
+    "GUEST": "Huésped",
+    "NEED": "Necesita",
+    "NO_RESULT": "No hay resultados para esta búsqueda",
+    "PENDING": "Pendiente",
+    "ROOM": "Habitación",
+    "SEARCH": "Buscar",
+    "STATE": "Estado",
+    "TIME_REQUEST": "Hora solicitud",
+    "UPDATE_BTN": "ACTUALIZAR",
+    "ZONE": "Zona"
+  },
+  "immediateRequest": {
+    "active": "ACTIVAS",
+    "empty": "No tienes ninguna solicitud inmediata de los huéspedes",
+    "modal": {
+      "employer": "Empleado",
+      "need": "Necesita",
+      "timeRequest": "Hora solicitud",
+      "title": "Solicitud inmediata"
+    },
+    "past": "PASADAS",
+    "pending": "PENDIENTES",
+    "result": "RESUELTAS",
+    "resultError": "Esta solicitud fue resuelta",
+    "title": "Solicitudes inmediatas pendientes",
+    "titleComplete": "Solicitudes inmediatas resueltas",
+    "updateMsg": "Solicitud modificada exitosamente"
   },
   "login": {
     "enterBtn": "INGRESAR",
@@ -71,5 +99,14 @@
   "orderPending": {
     "pendingOrders": "Ordenes pendientes",
     "noOrders": "Sin Ordenes"
+  },
+  "specialRequest": {
+    "activeTitle": "Solicitudes especiales activas",
+    "completeTitle": "Solicitudes especiales pasadas",
+    "dateEnd": "Fecha salida",
+    "dateInit": "Fecha ingreso",
+    "empty": "No tienes ninguna solicitud especial de los huéspedes",
+    "title": "Solicitud especial",
+    "updateSusses": "Solicitud modificada exitosamente"
   }
 }

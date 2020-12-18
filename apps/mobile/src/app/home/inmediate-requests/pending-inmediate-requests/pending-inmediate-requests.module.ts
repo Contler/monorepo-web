@@ -10,6 +10,7 @@ import { PendingInmediateRequestsPage } from './pending-inmediate-requests.page'
 import { ModalsModule } from '../../../modals/modals.module';
 import { CommonComponentsModule } from '../../../common-components/common-components.module';
 import { MaterialModule } from '../../../material/material.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -19,9 +20,10 @@ import { MaterialModule } from '../../../material/material.module';
     PendingInmediateRequestsPageRoutingModule,
     CommonComponentsModule,
     MaterialModule,
-    ModalsModule
+    ModalsModule,
+    TranslateModule,
   ],
   declarations: [PendingInmediateRequestsPage],
-  entryComponents: []
+  entryComponents: [],
 })
 export class PendingInmediateRequestsPageModule {}

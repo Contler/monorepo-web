@@ -2,7 +2,9 @@
 
 <div class="section">
   <div class="main-container">
-    <div class="main-container__title" [style.color]="generalService.hotelColor">Solicitud inmediata</div>
+    <div class="main-container__title" [style.color]="generalService.hotelColor">
+      {{'immediateRequest.modal.title' | translate}}
+    </div>
     <form (ngSubmit)="save()">
       <mat-form-field appearance="fill">
         <mat-select [(ngModel)]="idSelected" name="employer">
@@ -10,36 +12,36 @@
             {{ employer.name }} {{ employer.lastName }}
           </mat-option>
         </mat-select>
-        <mat-hint>Empleado</mat-hint>
+        <mat-hint>{{'immediateRequest.modal.employer' | translate}}</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-select [(ngModel)]="isFinished" name="isFinished" [disabled]="request.complete">
-          <mat-option [value]="false"> Activa </mat-option>
-          <mat-option [value]="true"> Cumplida </mat-option>
+          <mat-option [value]="false"> {{'global.ACTIVE' | translate}} </mat-option>
+          <mat-option [value]="true"> {{'global.COMPLETE' | translate}} </mat-option>
         </mat-select>
-        <mat-hint>Estado</mat-hint>
+        <mat-hint>{{'global.STATE' | translate}}</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <input matInput [ngModel]="request.guest.name" name="userName" readonly />
-        <mat-hint>Huésped</mat-hint>
+        <mat-hint>{{'global.GUEST' | translate}}</mat-hint>
       </mat-form-field>
       <div class="two-inputs">
         <mat-form-field appearance="fill">
           <input matInput [ngModel]="request.room.name" name="roomName" readonly />
-          <mat-hint>Habitación</mat-hint>
+          <mat-hint>{{'global.ROOM' | translate}}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <input matInput [value]="request.createAt |date:'HH:mm'" name="created_at" readonly />
-          <mat-hint>Hora solicitud</mat-hint>
+          <mat-hint>{{'immediateRequest.modal.timeRequest' | translate}}</mat-hint>
         </mat-form-field>
       </div>
       <mat-form-field appearance="fill">
         <input matInput [ngModel]="request.zone?.name" name="zoneName" readonly />
-        <mat-hint>Zona</mat-hint>
+        <mat-hint>{{'global.ZONE' | translate}}</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <input matInput [ngModel]="request.message" name="message" readonly />
-        <mat-hint>Necesita</mat-hint>
+        <mat-hint>{{'immediateRequest.modal.need' | translate}}</mat-hint>
       </mat-form-field>
 
       <star-rating
@@ -59,7 +61,7 @@
         mat-raised-button
         [style.background-color]="generalService.hotelColor"
       >
-        ACTUALIZAR
+        {{'global.UPDATE_BTN' | translate}}
       </button>
     </form>
   </div>

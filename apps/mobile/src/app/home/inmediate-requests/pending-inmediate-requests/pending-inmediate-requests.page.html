@@ -16,7 +16,7 @@
 
   <div class="main-container">
     <p class="main-container__title" [style.color]="generalService.hotelColor">
-      Solicitudes inmediatas pendientes
+      {{'immediateRequest.title' | translate}}
     </p>
     <div class="list-container">
       <mat-spinner style="margin: auto" *ngIf="loadData"></mat-spinner>
@@ -49,7 +49,7 @@
           <div class="empty-container">
             <mat-icon class="custom_icon empty-container__icon">check_circle</mat-icon>
             <p class="empty-container__label" [style.color]="generalService.hotelColor">
-              No tienes ninguna solicitud inmediata de los huéspedes pendiente
+              {{'immediateRequest.empty' | translate}}
             </p>
           </div>
         </ng-template>
