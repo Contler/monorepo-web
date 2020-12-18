@@ -144,8 +144,6 @@
   },
   "readyMaintain": {
     "title": "Maintenance requests resolved",
-    "noRequests": "No requests",
-    "message": "Updated request",
-    "close": "close"
+    "noRequests": "No requests"
   }
 }
