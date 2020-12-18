@@ -136,7 +136,7 @@
     "pendings": "PENDINGS",
     "resolved": "RESOLVED"
   },
-  "pending": {
+  "pendingReception": {
     "title": "Pending receipt requests",
     "noRequests": "No requests",
     "message": "No requests",

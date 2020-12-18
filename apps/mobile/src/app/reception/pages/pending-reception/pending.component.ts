@@ -39,8 +39,12 @@ export class PendingComponent implements OnInit {
 
   async modalClose(complete: boolean, uid: string) {
     await this.receptionService.receptionRef.doc(uid).update({ active: complete });
-    this.snackBar.open(this.translate.instant('pending.message'), this.translate.instant('pending.close'), {
-      duration: 3000,
-    });
+    this.snackBar.open(
+      this.translate.instant('pendingReception.message'),
+      this.translate.instant('pendingReception.close'),
+      {
+        duration: 3000,
+      },
+    );
   }
 }

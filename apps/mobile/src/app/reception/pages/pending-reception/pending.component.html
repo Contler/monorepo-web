@@ -12,11 +12,11 @@
 <ion-content>
   <div class="reception">
     <div class="reception__title center" contlerColorHotel>
-      {{ 'pending.title' | translate }}
+      {{ 'pendingReception.title' | translate }}
     </div>
 
     <div *ngIf="totalReception && totalReception === 0" class="center">
-      {{ 'pending.noRequests' | translate }}
+      {{ 'pendingReception.noRequests' | translate }}
     </div>
 
     <contler-reception-item
@@ -27,5 +27,5 @@
     ></contler-reception-item>
   </div>
 
-  <p *ngIf="!totalReception" class="reception__text">{{ 'pending.noRequests' | translate }}</p>
+  <p *ngIf="!totalReception" class="reception__text">{{ 'pendingReception.noRequests' | translate }}</p>
 </ion-content>
