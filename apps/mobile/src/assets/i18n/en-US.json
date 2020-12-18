@@ -135,5 +135,11 @@
   "maintain": {
     "pendings": "PENDINGS",
     "resolved": "RESOLVED"
+  },
+  "pendingMaintain": {
+    "title": "Pending maintenance requests",
+    "noRequests": "No requests",
+    "message": "Updated request",
+    "close": "close"
   }
 }
