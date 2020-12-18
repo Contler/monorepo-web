@@ -13,6 +13,7 @@ import { OrderDetailComponent } from './pages/order-detail/order-detail.componen
 import { FormsModule } from '@angular/forms';
 import { CheckOrdersService } from './services/check-orders.service';
 import { CommonComponentsModule } from '../common-components/common-components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CommonComponentsModule } from '../common-components/common-components.m
     IonicModule,
     FormsModule,
     CommonComponentsModule,
+    TranslateModule,
   ],
   providers: [CheckOrdersService],
 })

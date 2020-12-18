@@ -79,6 +79,27 @@
     "people": "people",
     "resolvedReservationRequests": "Resolved reservation requests"
   },
+  "order": {
+    "pending": "Pending",
+    "resolved": "Resolved"
+  },
+  "orderComplete": {
+    "resolvedOrders": "Resolved orders",
+    "noOrders": "No orders"
+  },
+  "orderDetail": {
+    "orderId": "Order ID:",
+    "total": "Total:",
+    "comments": "Comments:",
+    "employeeInCharge": "Employee in charge",
+    "delivery": "Delivery",
+    "update": "Update",
+    "delivered": "Delivered"
+  },
+  "orderPending": {
+    "pendingOrders": "Pending orders",
+    "noOrders": "No orders"
+  },
   "specialRequest": {
     "activeTitle": "Active special requests",
     "completeTitle": "Past special requests",
