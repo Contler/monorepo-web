@@ -9,6 +9,7 @@ import { ReceptionLocalService } from '../../../services/reception/reception-loc
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GeneralService } from '../../../services/general.service';
 import { MenuController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-reception-pending',
@@ -26,6 +27,7 @@ export class PendingComponent implements OnInit {
     private snackBar: MatSnackBar,
     public generalService: GeneralService,
     public menu: MenuController,
+    private translate: TranslateService,
   ) {}
 
   ngOnInit() {
@@ -37,6 +39,8 @@ export class PendingComponent implements OnInit {
 
   async modalClose(complete: boolean, uid: string) {
     await this.receptionService.receptionRef.doc(uid).update({ active: complete });
-    this.snackBar.open('Petición actualizada', 'cerrar', { duration: 3000 });
+    this.snackBar.open(this.translate.instant('pending.message'), this.translate.instant('pending.close'), {
+      duration: 3000,
+    });
   }
 }

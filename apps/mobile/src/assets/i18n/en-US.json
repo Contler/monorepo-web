@@ -135,5 +135,11 @@
   "reception": {
     "pendings": "PENDINGS",
     "resolved": "RESOLVED"
+  },
+  "pending": {
+    "title": "Pending receipt requests",
+    "noRequests": "No requests",
+    "message": "No requests",
+    "close": "close"
   }
 }
