@@ -17,7 +17,8 @@
     "STATE": "Estado",
     "TIME_REQUEST": "Hora solicitud",
     "UPDATE_BTN": "ACTUALIZAR",
-    "ZONE": "Zona"
+    "ZONE": "Zona",
+    "RESULT": "RESUELTAS"
   },
   "immediateRequest": {
     "active": "ACTIVAS",
@@ -108,5 +109,9 @@
     "empty": "No tienes ninguna solicitud especial de los huéspedes",
     "title": "Solicitud especial",
     "updateSusses": "Solicitud modificada exitosamente"
+  },
+  "clean": {
+    "pendingTitle": "Solicitudes de limpieza pendientes",
+    "empty": "No hay solicitudes"
   }
 }
