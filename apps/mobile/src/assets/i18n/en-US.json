@@ -141,5 +141,9 @@
     "noRequests": "No requests",
     "message": "No requests",
     "close": "close"
+  },
+  "readyReception": {
+    "title": "Reception requests resolved",
+    "noRequests": "No requests"
   }
 }
