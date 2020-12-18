@@ -99,5 +99,8 @@
   },
   "wakeComplete": {
     "wakeUpCallsResolved": "Wake up calls resolved"
+  },
+  "wakePending": {
+    "wakeUpCallsPending": "Wake up calls pending"
   }
 }
