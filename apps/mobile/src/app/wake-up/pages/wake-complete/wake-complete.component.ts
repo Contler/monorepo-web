@@ -23,12 +23,12 @@ export class WakeCompleteComponent implements OnInit {
     wakeService: WakeService,
     public menu: MenuController,
     public dialog: MatDialog,
-    public generalService: GeneralService
+    public generalService: GeneralService,
   ) {
     this.auth.$user
-      .pipe(tap(user => wakeService.getWakeComplete(user!.hotel.uid).subscribe()))
-      .subscribe(user => (this.user = user));
-    this.wakes = wakeService.$wakeComplete
+      .pipe(tap((user) => wakeService.getWakeComplete(user!.hotel.uid).subscribe()))
+      .subscribe((user) => (this.user = user));
+    this.wakes = wakeService.$wakeComplete;
   }
 
   ngOnInit() {}

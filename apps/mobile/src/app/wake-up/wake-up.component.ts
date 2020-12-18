@@ -11,8 +11,8 @@ import { GeneralService } from '../services/general.service';
 export class WakeUpComponent implements OnInit {
   user: EmployerEntity | null = null;
 
-  constructor(private auth: AuthService, public generalService: GeneralService,) {
-    this.auth.$user.subscribe(user => (this.user = user));
+  constructor(private auth: AuthService, public generalService: GeneralService) {
+    this.auth.$user.subscribe((user) => (this.user = user));
   }
 
   ngOnInit() {}

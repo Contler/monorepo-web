@@ -109,6 +109,21 @@
     "title": "Special request",
     "updateSusses": "Request modified successfully"
   },
+  "wakeUp": {
+    "pending": "Pending",
+    "resolved": "Resolved"
+  },
+  "modalConfirmWake": {
+    "text": "Do you confirm that you have made the call to the guest?",
+    "notDone": "Not done",
+    "yesItWasDone": "Yes it was done"
+  },
+  "wakeComplete": {
+    "wakeUpCallsResolved": "Wake up calls resolved"
+  },
+  "wakePending": {
+    "wakeUpCallsPending": "Wake up calls pending"
+  },
   "statistic": {
     "ratingsPerEmployee": "Ratings per employee"
   },

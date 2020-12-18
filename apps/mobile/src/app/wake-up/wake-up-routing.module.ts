@@ -21,8 +21,8 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: '/home/wake-up/pending',
-        pathMatch: 'full'
-      }
+        pathMatch: 'full',
+      },
     ],
   },
 ];

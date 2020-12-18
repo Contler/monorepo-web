@@ -109,6 +109,21 @@
     "title": "Solicitud especial",
     "updateSusses": "Solicitud modificada exitosamente"
   },
+  "wakeUp": {
+    "pending": "Pendiente",
+    "resolved": "Resuelto"
+  },
+  "modalConfirmWake": {
+    "text": "¿Confirmas que has realizado la llamada al huésped?",
+    "notDone": "No se ha hecho",
+    "yesItWasDone": "Sí ya se hizo"
+  },
+  "wakeComplete": {
+    "wakeUpCallsResolved": "Llamdas de Wake up resueltas"
+  },
+  "wakePending": {
+    "wakeUpCallsPending": "Llamdas de Wake up pendientes"
+  },
   "statistic": {
     "ratingsPerEmployee": "Calificaciones por empleado"
   },
