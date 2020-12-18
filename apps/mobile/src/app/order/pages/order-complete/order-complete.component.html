@@ -10,9 +10,11 @@
 </ion-header>
 
 <ion-content padding="16px">
-  <h1 class="order__title" [style.color]="generalService.hotelColor">Pedidos resueltos</h1>
+  <h1 class="order__title" [style.color]="generalService.hotelColor">
+    {{ 'orderComplete.resolvedOrders' | translate }}
+  </h1>
 
-  <div *ngIf="orders && orders.length === 0" class="center">No hay pedidos</div>
+  <div *ngIf="orders && orders.length === 0" class="center">{{ 'orderComplete.noOrders' | translate }}</div>
 
   <contler-item *ngFor="let item of orders" [order]="item"></contler-item>
 </ion-content>

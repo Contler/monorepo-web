@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content padding="16px">
-  <p class="detail__id-text">ID Pedido: {{ order?.id }}</p>
+  <p class="detail__id-text">{{ 'orderDetail.orderId' | translate }} {{ order?.id }}</p>
 
   <h1 class="detail__title" [style.color]="generalService.hotelColor">
     {{ order?.guest.name }} {{ order?.guest.lastName }} <br />
@@ -35,9 +35,9 @@
   </ng-container>
 
   <p class="detail__total" [style.color]="generalService.hotelColor">
-    Total: {{ total | currency: 'cop':'COP $':'1.0-0' }}
+    {{ 'orderDetail.total' | translate }} {{ total | currency: 'cop':'COP $':'1.0-0' }}
   </p>
-  <p class="detail__comments">Comentarios: {{ order?.comment }}</p>
+  <p class="detail__comments">{{ 'orderDetail.comments' | translate }} {{ order?.comment }}</p>
 
   <div class="detail__data">
     <mat-form-field appearance="fill" *ngIf="order">
@@ -46,16 +46,16 @@
           >{{ item.name }} {{ item.lastName }}</mat-option
         >
       </mat-select>
-      <mat-hint>Empleado encargado</mat-hint>
+      <mat-hint>{{ 'orderDetail.employeeInCharge' | translate }}</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <input matInput type="text" readonly [value]="order?.zone.name" aria-label="name" />
-      <mat-hint>Entrega</mat-hint>
+      <mat-hint>{{ 'orderDetail.delivery' | translate }}</mat-hint>
     </mat-form-field>
 
     <button mat-raised-button contlerButton [loading]="load" (click)="update()" [disabled]="load2">
-      Actualizar
+      {{ 'orderDetail.update' | translate }}
     </button>
     <button
       mat-raised-button
@@ -67,7 +67,7 @@
       [loading]="load2"
       (click)="complete()"
     >
-      Entregado
+      {{ 'orderDetail.delivered' | translate }}
     </button>
   </div>
 </ion-content>

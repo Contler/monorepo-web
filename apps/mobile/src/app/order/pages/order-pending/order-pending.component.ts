@@ -1,12 +1,12 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EmployerEntity, OrderEntity } from '@contler/entity';
 import { AuthService } from '../../../services/auth.service';
 import { MenuController } from '@ionic/angular';
 import { GeneralService } from '../../../services/general.service';
 import { map, take, tap } from 'rxjs/operators';
 import { ProductService } from '@contler/core';
-import { CheckOrdersService } from "../../services/check-orders.service";
-import { Subscription } from "rxjs";
+import { CheckOrdersService } from '../../services/check-orders.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'contler-order-pending',
@@ -33,19 +33,19 @@ export class OrderPendingComponent implements OnInit, OnDestroy {
     this.auth.$user
       .pipe(
         take(1),
-        tap(user =>
+        tap((user) =>
           this.productService
             .getOrdersByHotel(user!.hotel.uid)
-            .pipe(map(orders => orders.filter(order => order.state < 2)))
-            .subscribe(orders => (this.orders = orders)),
+            .pipe(map((orders) => orders.filter((order) => order.state < 2)))
+            .subscribe((orders) => (this.orders = orders)),
         ),
       )
-      .subscribe(user => (this.user = user));
+      .subscribe((user) => (this.user = user));
   }
 
   ngOnInit() {}
 
   ngOnDestroy(): void {
-    this.uns.unsubscribe()
+    this.uns.unsubscribe();
   }
 }
