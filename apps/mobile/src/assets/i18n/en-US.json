@@ -3,6 +3,21 @@
     "pending": "PENDING",
     "resolved": "RESOLVED"
   },
+  "clean": {
+    "empty": "No requests",
+    "pending": "PENDING",
+    "pendingTitle": "Pending cleaning requests",
+    "petitionUpdate": "Updated request",
+    "resultTitle": "Clearance requests resolved"
+  },
+  "cleaning": {
+    "bathroomCleaning": "Bathroom cleaning",
+    "changeOfBlankets": "Change of blankets",
+    "cleaningOfSheets": "Cleaning of sheets",
+    "generalRoomCleaning": "General room cleaning",
+    "other": "Other",
+    "towelChange": "Towel change"
+  },
   "global": {
     "ACTIVE": "Active",
     "CLOSE": "Close",
@@ -12,6 +27,7 @@
     "NEED": "Need",
     "NO_RESULT": "There are no results for this search",
     "PENDING": "Pending",
+    "RESULT": "RESOLVED",
     "ROOM": "Room",
     "SEARCH": "Search",
     "STATE": "State",
@@ -63,6 +79,32 @@
     "no": "NO",
     "yesDelete": "Yes, Delete"
   },
+  "modalRequest": {
+    "dateRequest": "Request Date",
+    "need": "Need",
+    "updateBtn": "Update"
+  },
+  "order": {
+    "pending": "Pending",
+    "resolved": "Resolved"
+  },
+  "orderComplete": {
+    "noOrders": "No orders",
+    "resolvedOrders": "Resolved orders"
+  },
+  "orderDetail": {
+    "comments": "Comments:",
+    "delivered": "Delivered",
+    "delivery": "Delivery",
+    "employeeInCharge": "Employee in charge",
+    "orderId": "Order ID:",
+    "total": "Total:",
+    "update": "Update"
+  },
+  "orderPending": {
+    "noOrders": "No orders",
+    "pendingOrders": "Pending orders"
+  },
   "pendingBooking": {
     "cancel": "CANCEL",
     "confirm": "CONFIRM",
@@ -78,27 +120,6 @@
     "noReservations": "No reservations",
     "people": "people",
     "resolvedReservationRequests": "Resolved reservation requests"
-  },
-  "order": {
-    "pending": "Pending",
-    "resolved": "Resolved"
-  },
-  "orderComplete": {
-    "resolvedOrders": "Resolved orders",
-    "noOrders": "No orders"
-  },
-  "orderDetail": {
-    "orderId": "Order ID:",
-    "total": "Total:",
-    "comments": "Comments:",
-    "employeeInCharge": "Employee in charge",
-    "delivery": "Delivery",
-    "update": "Update",
-    "delivered": "Delivered"
-  },
-  "orderPending": {
-    "pendingOrders": "Pending orders",
-    "noOrders": "No orders"
   },
   "specialRequest": {
     "activeTitle": "Active special requests",

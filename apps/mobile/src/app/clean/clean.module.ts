@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonComponentsModule } from '../common-components/common-components.module';
 import { CleanRoutingModule } from './clean-routing.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [{ path: '', component: CleanComponent }];
 
@@ -21,6 +22,7 @@ const routes: Routes = [{ path: '', component: CleanComponent }];
     MatButtonModule,
     CommonComponentsModule,
     CleanRoutingModule,
+    TranslateModule,
   ],
 })
 export class CleanModule {}

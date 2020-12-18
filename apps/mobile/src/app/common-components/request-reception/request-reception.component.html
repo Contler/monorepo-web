@@ -2,39 +2,41 @@
 
 <div class="modal__form">
   <mat-form-field appearance="fill" class="double">
-    <input matInput readonly [value]="data.comment" />
-    <mat-hint>Necesita</mat-hint>
+    <input matInput readonly [value]="comment" />
+    <mat-hint>{{ 'modalRequest.need' | translate }}</mat-hint>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="double">
     <mat-select [(ngModel)]="data.active">
-      <mat-option [value]="false">Cumplida</mat-option>
-      <mat-option [value]="true">Activa</mat-option>
+      <mat-option [value]="false">{{ 'global.COMPLETE' | translate }}</mat-option>
+      <mat-option [value]="true">{{ 'global.ACTIVE' | translate }}</mat-option>
     </mat-select>
-    <mat-hint>Estado</mat-hint>
+    <mat-hint>{{ 'global.STATE' | translate }}</mat-hint>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="double">
     <input type="text" matInput [value]="data.guest.name + ' ' + data.guest.lastName" readonly />
-    <mat-hint>Huésped</mat-hint>
+    <mat-hint>{{ 'global.GUEST' | translate }}</mat-hint>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="double">
     <input type="text" matInput [value]="data.createAt | date: 'dd/MM/yyyy'" readonly />
-    <mat-hint>Fecha de solicitud</mat-hint>
+    <mat-hint>{{ 'modalRequest.dateRequest' | translate }}</mat-hint>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="full-width">
     <input type="text" matInput [value]="data.guest.room?.name" readonly />
-    <mat-hint>Habitación</mat-hint>
+    <mat-hint>{{ 'global.ROOM' | translate }}</mat-hint>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="full-width">
     <input type="text" matInput [value]="data.createAt | date: 'shortTime'" readonly />
-    <mat-hint>Hora de solicitud</mat-hint>
+    <mat-hint>{{ 'global.TIME_REQUEST' | translate }}</mat-hint>
   </mat-form-field>
 
-  <button mat-raised-button contlerBtnHotel class="double" (click)="update()">Actualizar</button>
+  <button mat-raised-button contlerBtnHotel class="double" (click)="update()">
+    {{ 'modalRequest.updateBtn' | translate }}
+  </button>
 </div>
 
 <button mat-icon-button class="modal__close" (click)="dialogRef.close()">

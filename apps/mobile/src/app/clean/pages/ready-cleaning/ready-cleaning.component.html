@@ -11,13 +11,17 @@
 
 <ion-content>
   <div class="cleaning">
-    <div class="cleaning__title center" contlerColorHotel>Solicitudes de limpieza resueltas</div>
+    <div class="cleaning__title center" contlerColorHotel>
+      {{ 'clean.resultTitle' | translate }}
+    </div>
 
-    <div *ngIf="totalReception && totalReception === 0" class="center">No hay solicitudes</div>
+    <div *ngIf="totalReception && totalReception === 0" class="center">
+      {{ 'clean.empty' | translate }}
+    </div>
 
     <contler-reception-item *ngFor="let item of $receptionReq | async" [reception]="item" [isReady]="false">
     </contler-reception-item>
   </div>
 
-  <p *ngIf="!totalReception" class="reception__text">No hay solicitudes</p>
+  <p *ngIf="!totalReception" class="reception__text">{{ 'clean.empty' | translate }}</p>
 </ion-content>
