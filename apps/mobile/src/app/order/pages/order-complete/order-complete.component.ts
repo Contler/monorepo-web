@@ -24,14 +24,14 @@ export class OrderCompleteComponent implements OnInit {
     this.auth.$user
       .pipe(
         take(1),
-        tap(user =>
+        tap((user) =>
           productService
             .getOrdersByHotel(user!.hotel.uid)
-            .pipe(map(orders => orders.filter(order => order.state === 2)))
-            .subscribe(orders => (this.orders = orders)),
+            .pipe(map((orders) => orders.filter((order) => order.state === 2)))
+            .subscribe((orders) => (this.orders = orders)),
         ),
       )
-      .subscribe(user => (this.user = user));
+      .subscribe((user) => (this.user = user));
   }
 
   ngOnInit() {}
