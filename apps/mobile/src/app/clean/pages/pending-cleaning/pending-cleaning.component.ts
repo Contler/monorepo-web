@@ -4,6 +4,7 @@ import { RoomService } from '@contler/core';
 import { EmployerEntity } from '@contler/entity';
 import { ReceptionModel } from '@contler/models';
 import { MenuController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
@@ -27,6 +28,7 @@ export class PendingCleaningComponent implements OnInit {
     public generalService: GeneralService,
     public menu: MenuController,
     private roomService: RoomService,
+    private translate: TranslateService,
   ) {}
 
   ngOnInit() {
@@ -38,6 +40,8 @@ export class PendingCleaningComponent implements OnInit {
 
   async modalClose(complete: boolean, uid: string) {
     await this.roomService.cleanRef.doc(uid).update({ active: complete });
-    this.snackBar.open('Petición actualizada', 'cerrar', { duration: 3000 });
+    const msn = this.translate.instant('clean.petitionUpdate');
+    const err = this.translate.instant('global.CLOSE');
+    this.snackBar.open(msn, err, { duration: 3000 });
   }
 }

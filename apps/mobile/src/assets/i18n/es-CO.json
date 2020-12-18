@@ -3,6 +3,21 @@
     "pending": "PENDIENTE",
     "resolved": "RESUELTO"
   },
+  "clean": {
+    "empty": "No hay solicitudes",
+    "pending": "PENDIENTE",
+    "pendingTitle": "Solicitudes de limpieza pendientes",
+    "petitionUpdate": "Petición actualizada",
+    "resultTitle": "Solicitudes de limpieza resueltas"
+  },
+  "cleaning": {
+    "bathroomCleaning": "Limpieza de baños",
+    "changeOfBlankets": "Cambio de mantas",
+    "cleaningOfSheets": "Limpieza de sábanas",
+    "generalRoomCleaning": "Limpieza general de habitaciones",
+    "other": "Otro",
+    "towelChange": "Cambio de toallas"
+  },
   "global": {
     "ACTIVE": "Activa",
     "CLOSE": "Cerrar",
@@ -12,6 +27,7 @@
     "NEED": "Necesita",
     "NO_RESULT": "No hay resultados para esta búsqueda",
     "PENDING": "Pendiente",
+    "RESULT": "RESUELTAS",
     "ROOM": "Habitación",
     "SEARCH": "Buscar",
     "STATE": "Estado",
@@ -63,6 +79,32 @@
     "no": "NO",
     "yesDelete": "Sí, eliminar"
   },
+  "modalRequest": {
+    "dateRequest": "Fecha de solicitud",
+    "need": "Necesita",
+    "updateBtn": "Actualizar"
+  },
+  "order": {
+    "pending": "Pendiente",
+    "resolved": "Resuelto"
+  },
+  "orderComplete": {
+    "noOrders": "Sin Ordenes",
+    "resolvedOrders": "Órdenes resueltas"
+  },
+  "orderDetail": {
+    "comments": "Comentarios:",
+    "delivered": "Actualizado",
+    "delivery": "Entrega",
+    "employeeInCharge": "Empleado a Cargo",
+    "orderId": "ID de la Orden:",
+    "total": "Total:",
+    "update": "Actualizar"
+  },
+  "orderPending": {
+    "noOrders": "Sin Ordenes",
+    "pendingOrders": "Ordenes pendientes"
+  },
   "pendingBooking": {
     "cancel": "CANCELAR",
     "confirm": "CONFIRMAR",
@@ -78,27 +120,6 @@
     "noReservations": "Sin reservaciones",
     "people": "personas",
     "resolvedReservationRequests": "Solicitudes de reserva resueltas"
-  },
-  "order": {
-    "pending": "Pendiente",
-    "resolved": "Resuelto"
-  },
-  "orderComplete": {
-    "resolvedOrders": "Órdenes resueltas",
-    "noOrders": "Sin Ordenes"
-  },
-  "orderDetail": {
-    "orderId": "ID de la Orden:",
-    "total": "Total:",
-    "comments": "Comentarios:",
-    "employeeInCharge": "Empleado a Cargo",
-    "delivery": "Entrega",
-    "update": "Actualizar",
-    "delivered": "Actualizado"
-  },
-  "orderPending": {
-    "pendingOrders": "Ordenes pendientes",
-    "noOrders": "Sin Ordenes"
   },
   "specialRequest": {
     "activeTitle": "Solicitudes especiales activas",
