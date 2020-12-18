@@ -139,7 +139,7 @@
   "pendingReception": {
     "title": "Pending receipt requests",
     "noRequests": "No requests",
-    "message": "No requests",
+    "message": "Updated request",
     "close": "close"
   },
   "readyReception": {
