@@ -89,6 +89,9 @@
     "updateSusses": "Request modified successfully"
   },
   "statistic": {
-    "ratingsPerEmployee": "Ratings per employee"
+    "ratingsPerEmployee": "Ratings per employee:",
+    "averageTime": "Average time:",
+    "numberOfServices": "Number of Services:",
+    "qualification": "Qualification:"
   }
 }

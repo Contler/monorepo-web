@@ -5,15 +5,14 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'contler-card-employees',
   templateUrl: './card-employees.component.html',
-  styleUrls: ['./card-employees.component.scss']
+  styleUrls: ['./card-employees.component.scss'],
 })
 export class CardEmployeesComponent implements OnInit {
   @Input() employer: EmployerEntity | undefined;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   openEmployerEditModal(employer: EmployerEntity) {
     // this.dialog.open(ModalEditEmployerComponent, {
@@ -21,5 +20,4 @@ export class CardEmployeesComponent implements OnInit {
     //   data: employer,
     // });
   }
-
 }
