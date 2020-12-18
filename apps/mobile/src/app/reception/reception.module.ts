@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { ReceptionRoutingModule } from './reception-routing.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [{ path: '', component: ReceptionComponent }];
 
@@ -26,6 +27,7 @@ const routes: Routes = [{ path: '', component: ReceptionComponent }];
     MatSelectModule,
     FormsModule,
     ReceptionRoutingModule,
+    TranslateModule,
   ],
 })
 export class ReceptionModule {}
