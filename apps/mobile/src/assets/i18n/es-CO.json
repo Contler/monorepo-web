@@ -87,5 +87,13 @@
     "empty": "No tienes ninguna solicitud especial de los huéspedes",
     "title": "Solicitud especial",
     "updateSusses": "Solicitud modificada exitosamente"
+  },
+  "statistic": {
+    "ratingsPerEmployee": "Calificaciones por empleado:"
+  },
+  "cardEmployees": {
+    "averageTime": "Tiempo promedio:",
+    "numberOfServices": "Numero de servicios:",
+    "qualification": "Calificación:"
   }
 }
