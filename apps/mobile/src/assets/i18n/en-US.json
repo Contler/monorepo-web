@@ -89,7 +89,7 @@
     "updateSusses": "Request modified successfully"
   },
   "statistic": {
-    "ratingsPerEmployee": "Ratings per employee:"
+    "ratingsPerEmployee": "Ratings per employee"
   },
   "cardEmployees": {
     "averageTime": "Average time:",
