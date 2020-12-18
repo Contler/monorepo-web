@@ -1,8 +1,10 @@
 <div class="modal-confirm">
   <mat-icon class="modal-confirm__check" contlerColorHotel>check_circle</mat-icon>
-  <p class="modal-confirm__text">Confirmas haber hecho el llamado al huésped</p>
+  <p class="modal-confirm__text">
+    {{ 'modalConfirmWake.text' | translate }}
+  </p>
   <button mat-stroked-button class="modal-confirm__btn" (click)="dialogRef.close()" [disabled]="load">
-    No se ha hecho
+    {{ 'modalConfirmWake.notDone' | translate }}
   </button>
   <button
     mat-flat-button
@@ -13,6 +15,6 @@
     [disabled]="load"
     (click)="complete()"
   >
-    Sí ya se hizo
+    {{ 'modalConfirmWake.yesItWasDone' | translate }}
   </button>
 </div>

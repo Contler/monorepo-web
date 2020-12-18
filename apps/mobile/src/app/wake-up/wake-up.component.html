@@ -5,9 +5,9 @@
       tab="pending"
       class="footer__btn"
       [style.color]="t1.selected ? generalService.hotelColor : ''"
-      [style.background-color]="t1.selected ? generalService.backgroundHotelColor: ''"
+      [style.background-color]="t1.selected ? generalService.backgroundHotelColor : ''"
     >
-      <ion-label>Pendientes</ion-label>
+      <ion-label>{{ 'wakeUp.pending' | translate }}</ion-label>
     </ion-tab-button>
 
     <ion-tab-button
@@ -15,9 +15,9 @@
       #t2
       class="footer__btn"
       [style.color]="t2.selected ? generalService.hotelColor : ''"
-      [style.background-color]="t2.selected ? generalService.backgroundHotelColor: ''"
+      [style.background-color]="t2.selected ? generalService.backgroundHotelColor : ''"
     >
-      <ion-label>Resueltas</ion-label>
+      <ion-label>{{ 'wakeUp.resolved' | translate }}</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

@@ -9,6 +9,7 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
 import { CardEmployeesComponent } from './components/card-employees/card-employees.component';
 import { CommonComponentsModule } from '../common-components/common-components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [{ path: '', component: StatisticComponent }];
 
@@ -22,6 +23,7 @@ const routes: Routes = [{ path: '', component: StatisticComponent }];
     MaterialModule,
     FormsModule,
     CommonComponentsModule,
+    TranslateModule,
   ],
 })
 export class StatisticModule {}

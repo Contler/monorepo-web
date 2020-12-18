@@ -28,8 +28,8 @@ export class WakePendingComponent implements OnInit {
     public generalService: GeneralService,
   ) {
     this.auth.$user
-      .pipe(tap(user => wakeService.getWakeIncomplete(user!.hotel.uid).subscribe()))
-      .subscribe(user => (this.user = user));
+      .pipe(tap((user) => wakeService.getWakeIncomplete(user!.hotel.uid).subscribe()))
+      .subscribe((user) => (this.user = user));
     this.wakes = wakeService.$wakeIncomplete;
   }
 

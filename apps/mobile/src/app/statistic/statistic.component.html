@@ -10,7 +10,9 @@
 </ion-header>
 
 <ion-content class="">
-  <h1 class="statistics__title" [style.color]="generalService.hotelColor">Calificaciones por empleado</h1>
+  <h1 class="statistics__title" [style.color]="generalService.hotelColor">
+    {{ 'statistic.ratingsPerEmployee' | translate }}
+  </h1>
   <div class="statistics content">
     <contler-card-employees *ngFor="let employer of employees" [employer]="employer"></contler-card-employees>
   </div>

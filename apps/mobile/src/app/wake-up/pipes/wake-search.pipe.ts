@@ -9,7 +9,7 @@ export class WakeSearchPipe implements PipeTransform {
   constructor(private datePipe: DatePipe) {}
   transform(value: WakeUpEntity[], text: string): any {
     if (value && value.length > 0) {
-      return value.filter(wake => {
+      return value.filter((wake) => {
         const textLow = text.toLowerCase();
         const nameGuest = `${wake.name}`.toLowerCase();
         const nameRome = wake.room.name.toLowerCase();
