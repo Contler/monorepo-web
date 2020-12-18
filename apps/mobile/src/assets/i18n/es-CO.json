@@ -96,5 +96,8 @@
     "text": "¿Confirmas que has realizado la llamada al huésped?",
     "notDone": "No se ha hecho",
     "yesItWasDone": "Sí ya se hizo"
+  },
+  "wakeComplete": {
+    "wakeUpCallsResolved": "Llamdas de Wake up resueltas"
   }
 }
