@@ -6,6 +6,7 @@ import { MaterialModule } from '../../../material/material.module';
 import { CommonComponentsModule } from '../../../common-components/common-components.module';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { IonicModule } from '@ionic/angular';
     ReadyRoutingModule,
     MaterialModule,
     CommonComponentsModule,
+    TranslateModule,
   ],
   declarations: [ReadyComponent],
 })

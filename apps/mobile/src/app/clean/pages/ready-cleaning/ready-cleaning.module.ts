@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { CommonComponentsModule } from '../../../common-components/common-components.module';
 import { MaterialModule } from '../../../material/material.module';
 import { ReadyCleaningRoutingModule } from './ready-routing.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { ReadyCleaningRoutingModule } from './ready-routing.module';
     CommonComponentsModule,
     MaterialModule,
     ReadyCleaningRoutingModule,
+    TranslateModule,
   ],
   declarations: [ReadyCleaningComponent],
 })
