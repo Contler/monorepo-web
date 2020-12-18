@@ -108,5 +108,13 @@
     "empty": "You don't have any special requests from guests",
     "title": "Special request",
     "updateSusses": "Request modified successfully"
+  },
+  "statistic": {
+    "ratingsPerEmployee": "Ratings per employee"
+  },
+  "cardEmployees": {
+    "averageTime": "Average time:",
+    "numberOfServices": "Number of Services:",
+    "qualification": "Qualification:"
   }
 }
