@@ -153,6 +153,16 @@
     "numberOfServices": "Number of Services:",
     "qualification": "Qualification:"
   },
+  "maintain": {
+    "pendings": "PENDINGS",
+    "resolved": "RESOLVED"
+  },
+  "pendingMaintain": {
+    "title": "Pending maintenance requests",
+    "noRequests": "No requests",
+    "message": "Updated request",
+    "close": "close"
+  },
   "reception": {
     "pendings": "PENDINGS",
     "resolved": "RESOLVED"
@@ -165,6 +175,10 @@
   },
   "readyReception": {
     "title": "Reception requests resolved",
+    "noRequests": "No requests"
+  },
+  "readyMaintain": {
+    "title": "Maintenance requests resolved",
     "noRequests": "No requests"
   }
 }

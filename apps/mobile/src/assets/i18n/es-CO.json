@@ -153,6 +153,20 @@
     "numberOfServices": "Numero de servicios:",
     "qualification": "Calificación:"
   },
+  "maintain": {
+    "pendings": "PENDIENTES",
+    "resolved": "RESUELTOS"
+  },
+  "pendingMaintain": {
+    "title": "Solicitudes de mantenimiento pendientes",
+    "noRequests": "No hay solicitudes",
+    "message": "Petición actualizada",
+    "close": "cerrar"
+  },
+  "readyMaintain": {
+    "title": "Solicitudes de mantenimiento resueltas",
+    "noRequests": "No hay solicitudes"
+  },
   "reception": {
     "pendings": "PENDIENTES",
     "resolved": "RESUELTOS"

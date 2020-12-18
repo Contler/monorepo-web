@@ -9,6 +9,7 @@ import { AuthService } from '../../../services/auth.service';
 import { GeneralService } from '../../../services/general.service';
 import { ReceptionLocalService } from '../../../services/reception/reception-local.service';
 import { RoomService } from '@contler/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-pending-maintain',
@@ -27,6 +28,7 @@ export class PendingMaintainComponent implements OnInit {
     public generalService: GeneralService,
     public menu: MenuController,
     public roomService: RoomService,
+    private translate: TranslateService,
   ) {}
 
   ngOnInit() {
@@ -38,6 +40,10 @@ export class PendingMaintainComponent implements OnInit {
 
   async modalClose(complete: boolean, uid: string) {
     await this.roomService.maintainRef.doc(uid).update({ active: complete });
-    this.snackBar.open('Petición actualizada', 'cerrar', { duration: 3000 });
+    this.snackBar.open(
+      this.translate.instant('pendingMaintain.message'),
+      this.translate.instant('pendingMaintain.close'),
+      { duration: 3000 },
+    );
   }
 }
