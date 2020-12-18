@@ -87,5 +87,14 @@
     "empty": "No tienes ninguna solicitud especial de los huéspedes",
     "title": "Solicitud especial",
     "updateSusses": "Solicitud modificada exitosamente"
+  },
+  "wakeUp": {
+    "pending": "Pendiente",
+    "resolved": "Resuelto"
+  },
+  "modalConfirmWake": {
+    "text": "¿Confirmas que has realizado la llamada al huésped?",
+    "notDone": "No se ha hecho",
+    "yesItWasDone": "Sí ya se hizo"
   }
 }
