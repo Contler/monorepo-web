@@ -1,14 +1,16 @@
 <div *ngIf="wake" class="wake">
   <div>
-    <p class="wake--no-margin wake__guest">{{wake.name}}</p>
-    <p class="wake--no-margin">{{wake.room.name}}</p>
+    <p class="wake--no-margin wake__guest">{{ wake.name }}</p>
+    <p class="wake--no-margin">{{ wake.room.name }}</p>
   </div>
   <p class="wake--no-margin wake__time">
-    <span style="display: block">{{wake.competeDate | date : 'dd/MM/yyyy'}}</span>
-    {{wake.competeDate | date : 'shortTime' }}
+    <span style="display: block">{{ wake.competeDate | date: 'dd/MM/yyyy' }}</span>
+    {{ wake.competeDate | date: 'shortTime' }}
   </p>
   <button class="wake__btn" mat-icon-button *ngIf="!wake.complete" (click)="clickSlide.emit($event)">
     <mat-icon>check_circle</mat-icon>
   </button>
-  <mat-icon *ngIf="wake.complete" class="wake__complete" [style.color]="generalService.hotelSecondColor">check_circle</mat-icon>
+  <mat-icon *ngIf="wake.complete" class="wake__complete" [style.color]="generalService.hotelSecondColor"
+    >check_circle</mat-icon
+  >
 </div>
