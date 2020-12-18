@@ -87,5 +87,9 @@
     "empty": "You don't have any special requests from guests",
     "title": "Special request",
     "updateSusses": "Request modified successfully"
+  },
+  "wakeUp": {
+    "pending": "Pending",
+    "resolved": "Resolved"
   }
 }

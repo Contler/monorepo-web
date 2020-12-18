@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ModalConfirmWakeComponent } from './components/modal-confirm-wake/modal-confirm-wake.component';
 import { WakeCompleteComponent } from './pages/wake-complete/wake-complete.component';
 import { CommonComponentsModule } from '../common-components/common-components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [{ path: '', component: WakeUpComponent }];
 
@@ -33,6 +34,7 @@ const routes: Routes = [{ path: '', component: WakeUpComponent }];
     MaterialModule,
     FormsModule,
     CommonComponentsModule,
+    TranslateModule,
   ],
   providers: [DatePipe],
   entryComponents: [ModalConfirmWakeComponent],
