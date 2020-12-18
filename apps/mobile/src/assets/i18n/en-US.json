@@ -152,5 +152,19 @@
     "averageTime": "Average time:",
     "numberOfServices": "Number of Services:",
     "qualification": "Qualification:"
+  },
+  "reception": {
+    "pendings": "PENDINGS",
+    "resolved": "RESOLVED"
+  },
+  "pendingReception": {
+    "title": "Pending receipt requests",
+    "noRequests": "No requests",
+    "message": "Updated request",
+    "close": "close"
+  },
+  "readyReception": {
+    "title": "Reception requests resolved",
+    "noRequests": "No requests"
   }
 }

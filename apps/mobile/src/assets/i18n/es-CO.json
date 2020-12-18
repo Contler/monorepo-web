@@ -152,5 +152,19 @@
     "averageTime": "Tiempo promedio:",
     "numberOfServices": "Numero de servicios:",
     "qualification": "Calificación:"
+  },
+  "reception": {
+    "pendings": "PENDIENTES",
+    "resolved": "RESUELTOS"
+  },
+  "pendingReception": {
+    "title": "Solicitudes de recepción pendientes",
+    "noRequests": "No hay solicitudes",
+    "message": "Petición actualizada",
+    "close": "cerrar"
+  },
+  "readyReception": {
+    "title": "Solicitudes de recepción resueltas",
+    "noRequests": "No hay solicitudes"
   }
 }
