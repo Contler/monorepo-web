@@ -5,6 +5,7 @@ import { switchMap, take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'hotel/environments/environment';
 import { RoomEntity } from '@contler/entity';
+import { getLan } from '@contler/const';
 
 @Injectable()
 export class RoomService {
@@ -26,21 +27,31 @@ export class RoomService {
     return this.http.delete(environment.apiUrl + `room/${roomUid}`);
   }
 
-  saveRoom(name: string) {
+  saveRoom(name: number) {
+    const [actualLan, languages] = getLan();
+
     return this.userService.getUser().pipe(
       take(1),
       switchMap((user) =>
-        this.http.post<RoomEntity>(environment.apiUrl + `hotel/${user.hotel.uid}/room`, { name }),
+        this.http.post<RoomEntity>(environment.apiUrl + `hotel/${user.hotel.uid}/room`, {
+          name,
+          actualLan,
+          languages,
+        }),
       ),
     );
   }
 
   saveRooms(names: string[]) {
+    const [actualLan, languages] = getLan();
+
     return this.userService.getUser().pipe(
       take(1),
       switchMap((user) =>
         this.http.post<RoomEntity[]>(environment.apiUrl + `hotel/${user.hotel.uid}/rooms`, {
           names,
+          actualLan,
+          languages,
         }),
       ),
     );

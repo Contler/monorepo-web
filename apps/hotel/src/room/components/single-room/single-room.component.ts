@@ -32,7 +32,7 @@ export class SingleRoomComponent {
     this.load = true;
     const { name } = this.roomGroup.value;
     this.roomService
-      .saveRoom('Habitación ' + name)
+      .saveRoom(Number(name))
       .pipe(take(1))
       .subscribe(
         (room) => {

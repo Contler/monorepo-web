@@ -9,3 +9,4 @@ export * from './lib/services/restaurant/restaurant.service';
 export * from './lib/services/reception/reception.service';
 export * from './lib/services/room-service/room.service';
 export * from './lib/services/special-zone/special-zone.service';
+export * from './lib/services/translate/translate.service';

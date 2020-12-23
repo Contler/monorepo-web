@@ -22,4 +22,6 @@ export * from './room-key.model';
 export * from './cleaning.model';
 export * from './reception.model';
 export * from './restaurant-products.model';
-export * from './special-zones.model'
+export * from './special-zones.model';
+export * from './language.model';
+export * from './translate-request';
