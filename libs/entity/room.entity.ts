@@ -8,6 +8,8 @@ export class RoomEntity {
 
   name!: string;
 
+  number!: number;
+
   hotel!: HotelEntity;
 
   guest!: GuestEntity;

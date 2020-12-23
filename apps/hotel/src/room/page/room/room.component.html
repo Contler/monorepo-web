@@ -33,7 +33,7 @@
           </div>
           <div class="row" *ngFor="let room of rooms">
             <div class="row_container two_column">
-              <p>{{ room.name }}</p>
+              <p>{{ room.name | ctrTranslate | async }}</p>
               <div class="actions">
                 <button mat-icon-button>
                   <mat-icon class="custom_icon">edit</mat-icon>

@@ -47,7 +47,7 @@ export class MultiRoomComponent {
     const { init, end } = this.roomGroup.value;
     const names = [];
     for (let i = Number(init); i <= Number(end); i++) {
-      names.push('Habitación ' + i);
+      names.push(i);
     }
     this.roomService.saveRooms(names).subscribe(
       (rooms) => {
@@ -61,7 +61,7 @@ export class MultiRoomComponent {
       (e) => {
         this.load = false;
         if (e.status === 400) {
-          const rooms = e.error.map((room) => room.name).join(', ');
+          const rooms = e.error.map((room) => room.number).join(', ');
           this.translate.get(['room.hasExistRooms', 'global.CLOSE'], { value: rooms }).subscribe((value) => {
             this.messagesService.showToastMessage(value['room.hasExistRooms'], value['global.CLOSE'], 5000);
           });

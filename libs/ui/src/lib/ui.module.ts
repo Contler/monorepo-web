@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
+import { TranslatePipe } from './pipe/translate.pipe';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -20,9 +22,10 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatSidenavModule,
     MatCardModule,
+    TranslateModule,
   ],
   providers: [IconsService],
-  declarations: [IconComponent, StartComponent, LayoutComponent],
-  exports: [IconComponent, StartComponent, LayoutComponent],
+  declarations: [IconComponent, StartComponent, LayoutComponent, TranslatePipe],
+  exports: [IconComponent, StartComponent, LayoutComponent, TranslatePipe],
 })
 export class UiModule {}
