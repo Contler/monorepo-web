@@ -8,12 +8,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { GuestService } from 'guest/services/guest.service';
 import { HotelEntity } from '@contler/entity';
 import { TranslateService } from '@ngx-translate/core';
-
-interface Language {
-  name: string;
-  prefix: string;
-  unicode: string;
-}
+import { Language } from '@contler/models/language.model';
+import { LANGUAGES } from '@contler/const';
 
 @Component({
   selector: 'contler-sidebar',
@@ -21,19 +17,7 @@ interface Language {
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit, OnDestroy {
-  languages: Language[] = [
-    {
-      name: 'Español',
-      prefix: 'es-CO',
-      unicode: '🇨🇴',
-    },
-    {
-      name: 'English',
-      prefix: 'en-US',
-      unicode: '🇬🇧',
-    },
-  ];
-
+  readonly languages = LANGUAGES;
   actualLanguage: Language;
 
   public readonly menuItems: MenuItem[] = [
@@ -95,7 +79,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   ) {
     this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
     const { lan } = window.localStorage;
-    this.actualLanguage = this.languages.find((l) => l.prefix === lan) || this.languages[0];
+    this.actualLanguage = LANGUAGES.find((l) => l.prefix === lan) || LANGUAGES[0];
   }
 
   async ngOnInit() {

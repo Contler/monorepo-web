@@ -28,8 +28,8 @@
       </div>
 
       <div class="menu__item">
-        <span class="custom_icon">{{lan?.unicode}}</span>
-        <mat-select [(ngModel)]="lan" (selectionChange)="changeLanguage()">
+        <span class="custom_icon">{{actualLanguage?.unicode}}</span>
+        <mat-select [(ngModel)]="actualLanguage" (selectionChange)="changeLanguage()">
           <mat-option *ngFor="let val of languages" [value]="val"> {{val.name}} </mat-option>
         </mat-select>
       </div>
