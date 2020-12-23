@@ -5,11 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { ModalInmediateRequestComponent } from 'hotel/common-components/modal-inmediate-request/modal-inmediate-request.component';
 import { TranslateService } from '@ngx-translate/core';
-
-interface Language {
-  name: string;
-  prefix: string;
-}
+import { Language } from '@contler/models/language.model';
+import { LANGUAGES } from '@contler/const';
 
 @Component({
   selector: 'contler-toolbar',
@@ -20,17 +17,7 @@ export class ToolbarComponent implements OnInit {
   @Output() toggle: EventEmitter<void> = new EventEmitter();
   notificationList: any[] = [];
 
-  language: Language[] = [
-    {
-      name: 'Español',
-      prefix: 'es-CO',
-    },
-    {
-      name: 'English',
-      prefix: 'en-US',
-    },
-  ];
-
+  readonly languages = LANGUAGES;
   actualLanguage: Language;
 
   constructor(
@@ -46,7 +33,7 @@ export class ToolbarComponent implements OnInit {
         this.notificationList = data;
       });
     const { lan } = window.localStorage;
-    this.actualLanguage = this.language.find((l) => l.prefix === lan) || this.language[0];
+    this.actualLanguage = LANGUAGES.find((l) => l.prefix === lan) || LANGUAGES[0];
   }
 
   ngOnInit() {}

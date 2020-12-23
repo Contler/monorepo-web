@@ -6,12 +6,8 @@ import { AuthService } from '../services/auth.service';
 import { MenuController, Platform } from '@ionic/angular';
 import { EmployerEntity } from '@contler/entity';
 import { TranslateService } from '@ngx-translate/core';
-
-interface Language {
-  name: string;
-  prefix: string;
-  unicode: string;
-}
+import { Language } from '@contler/models/language.model';
+import { LANGUAGES } from '@contler/const';
 
 @Component({
   selector: 'contler-home',
@@ -21,20 +17,8 @@ interface Language {
 export class HomePage implements OnInit {
   user: EmployerEntity | null = null;
 
-  languages: Language[] = [
-    {
-      name: 'Español',
-      prefix: 'es-CO',
-      unicode: '🇨🇴',
-    },
-    {
-      name: 'English',
-      prefix: 'en-US',
-      unicode: '🇬🇧',
-    },
-  ];
-
-  lan: Language;
+  readonly languages = LANGUAGES;
+  actualLanguage: Language;
 
   public readonly menuItems: MenuItem[] = [
     {
@@ -115,7 +99,7 @@ export class HomePage implements OnInit {
     private menuController: MenuController,
     private translate: TranslateService,
   ) {
-    this.lan = this.languages.find((lan) => lan.prefix === localStorage.lan) || this.languages[0];
+    this.actualLanguage = LANGUAGES.find((lan) => lan.prefix === localStorage.lan) || LANGUAGES[0];
     this.auth.$user.subscribe((user) => {
       this.user = user;
       const chiefZones: string[] = [];
@@ -174,8 +158,8 @@ export class HomePage implements OnInit {
   }
 
   changeLanguage() {
-    localStorage.lan = this.lan.prefix;
-    this.translate.use(this.lan.prefix);
+    localStorage.lan = this.actualLanguage.prefix;
+    this.translate.use(this.actualLanguage.prefix);
     this.menuController.toggle();
   }
 }
