@@ -63,4 +63,15 @@ export class TranslateService {
     const dicLan = getDicValue(this.dic, keys);
     return !!dicLan ? dicLan[this.lan] || key : key;
   }
+
+  updateTranslate(key: string, msg: string, hotelUid: string) {
+    const [to, from] = getLan();
+    return this.http.put(`${this.url}translate`, {
+      key,
+      msg,
+      to,
+      from,
+      hotel: hotelUid
+    })
+  }
 }

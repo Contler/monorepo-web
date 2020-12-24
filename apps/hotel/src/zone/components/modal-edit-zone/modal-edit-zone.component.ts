@@ -9,6 +9,7 @@ import { IconModel } from '@contler/models/icon.model';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateService as DynamicService } from '@contler/dynamic-translate';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'contler-modal-edit-zone',
@@ -55,10 +56,9 @@ export class ModalEditZoneComponent implements OnInit {
     });
   }
 
-  save() {
+  async save() {
     this.load = true;
     const { name, icon, admitOrder, principal } = this.zoneGroup.value;
-    this.data.name = name;
     this.data.icon = icon;
     this.data.admitOrders = admitOrder;
 
@@ -72,21 +72,25 @@ export class ModalEditZoneComponent implements OnInit {
       this.dialogRef.close();
     } else {
       this.data.principal = principal;
-      this.zoneService.updateZone(this.data).subscribe(
-        () => {
-          this.load = false;
-          this.dialogRef.close();
-          this.translate
-            .get(['zone.updateSuccess', 'global.CLOSE'])
-            .subscribe((msg) =>
-              this.messagesService.showToastMessage(msg['zone.updateSuccess'], msg['global.CLOSE']),
-            );
-        },
-        () => {
-          this.load = false;
-          this.messagesService.showServerError();
-        },
-      );
+
+      this.dynamicTrs
+        .updateTranslate(this.data.name, name, this.data.hotel.uid)
+        .pipe(switchMap(() => this.zoneService.updateZone(this.data)))
+        .subscribe(
+          () => {
+            this.load = false;
+            this.dialogRef.close();
+            this.translate
+              .get(['zone.updateSuccess', 'global.CLOSE'])
+              .subscribe((msg) =>
+                this.messagesService.showToastMessage(msg['zone.updateSuccess'], msg['global.CLOSE']),
+              );
+          },
+          () => {
+            this.load = false;
+            this.messagesService.showServerError();
+          },
+        );
     }
   }
 
