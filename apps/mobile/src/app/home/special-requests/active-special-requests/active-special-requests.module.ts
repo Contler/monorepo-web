@@ -12,7 +12,7 @@ import { MaterialModule } from '../../../material/material.module';
 import { CommonComponentsModule } from '../../../common-components/common-components.module';
 import { PipesModule } from '../../../pipes/pipes.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { UiModule } from '@contler/ui';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ import { UiModule } from '@contler/ui';
     PipesModule,
     ModalsModule,
     TranslateModule,
-    UiModule,
+    DynamicTranslateModule,
   ],
   declarations: [ActiveSpecialRequestsPage],
 })

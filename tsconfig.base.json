@@ -28,7 +28,8 @@
       "api/*": ["apps/api/src/*"],
       "hotel/*": ["apps/hotel/src/*"],
       "guest/*": ["apps/guest/src/*"],
-      "lib/*": ["libs/core/src/*"]
+      "lib/*": ["libs/core/src/*"],
+      "@contler/dynamic-translate": ["libs/dynamic-translate/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

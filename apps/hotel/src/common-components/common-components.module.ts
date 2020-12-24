@@ -10,8 +10,8 @@ import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inme
 import { ModalInmediateRequestComponent } from 'hotel/common-components/modal-inmediate-request/modal-inmediate-request.component';
 import { RatingModule } from 'ng-starrating';
 import { MarcoAdminComponent } from './marco-admin/marco-admin.component';
-import { UiModule } from '@contler/ui';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   declarations: [
@@ -30,8 +30,8 @@ import { TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     CoreModule,
     RatingModule,
-    UiModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
   providers: [InmediateRequestsService],
 })

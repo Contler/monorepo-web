@@ -64,7 +64,7 @@
           </div>
           <div class="row" *ngFor="let zone of zones">
             <div class="row_container two_column">
-              <p>{{ zone.name | ctrTranslate | async }}</p>
+              <p>{{ zone.name | ctrTranslate }}</p>
               <div class="actions">
                 <button mat-icon-button>
                   <mat-icon class="custom_icon" (click)="editZone(zone)">edit</mat-icon>

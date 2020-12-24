@@ -20,7 +20,7 @@
             <p class="zone">{{request.message}}</p>
           </div>
           <div class="item__data-container">
-            <p class="time">{{request.room.name | ctrTranslate | async}}</p>
+            <p class="time">{{request.room.name | ctrTranslate}}</p>
             <button mat-icon-button>
               <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
             </button>
@@ -43,7 +43,7 @@
               <p class="zone">{{request.message}}</p>
             </div>
             <div class="item__data-container">
-              <p class="time">{{request.room.name | ctrTranslate | async}}</p>
+              <p class="time">{{request.room.name | ctrTranslate}}</p>
               <button mat-icon-button (click)="goToRequest(request)">
                 <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
               </button>

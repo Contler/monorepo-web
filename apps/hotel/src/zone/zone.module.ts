@@ -8,8 +8,9 @@ import { ZoneService } from 'hotel/zone/services/zone.service';
 import { CoreModule } from '@contler/core';
 import { ModalEditZoneComponent } from './components/modal-edit-zone/modal-edit-zone.component';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
-import { UiModule } from '@contler/ui';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { UiModule } from '@contler/ui';
 
 @NgModule({
   declarations: [ZoneComponent, ModalEditZoneComponent],
@@ -21,8 +22,9 @@ import { TranslateModule } from '@ngx-translate/core';
     CoreModule,
     ReactiveFormsModule,
     CommonComponentsModule,
-    UiModule,
+    DynamicTranslateModule,
     TranslateModule,
+    UiModule,
   ],
   providers: [ZoneService],
   entryComponents: [ModalEditZoneComponent],
