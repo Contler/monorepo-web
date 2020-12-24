@@ -12,6 +12,7 @@ import { GuestService } from 'hotel/guest/services/guest.service';
 import { ModalEditGuestComponent } from './components/modal-edit-guest/modal-edit-guest.component';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { UiModule } from '@contler/ui';
 
 @NgModule({
   declarations: [GuestComponent, ModelNewGuestComponent, ModalEditGuestComponent],
@@ -25,6 +26,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonComponentsModule,
     FormsModule,
     TranslateModule,
+    UiModule,
   ],
   providers: [RoomService, GuestService, UserService],
 })

@@ -37,7 +37,9 @@
   <div class="cnt-modal-guest__form_hotel">
     <mat-form-field appearance="fill">
       <mat-select formControlName="room">
-        <mat-option *ngFor="let room of rooms" [value]="room">{{ room.name }}</mat-option>
+        <mat-option *ngFor="let room of rooms" [value]="room">{{
+          room.name | ctrTranslate | async
+        }}</mat-option>
       </mat-select>
       <mat-hint>{{ 'guest.room' | translate }}</mat-hint>
     </mat-form-field>
