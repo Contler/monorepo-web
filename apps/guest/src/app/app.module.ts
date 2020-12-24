@@ -68,6 +68,7 @@ export function LoadHotel(auth: GuestService) {
         useFactory: LoadHotel,
         deps: [GuestService],
       },
+      url: environment.apiUrl,
     }),
   ],
   providers: [HotelService, UserService, AvalibleUserGuard],
