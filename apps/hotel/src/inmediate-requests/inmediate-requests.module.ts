@@ -14,6 +14,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { ModalReceptionComponent } from './components/modal-reception/modal-reception.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
+import { UiModule } from '@contler/ui';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatSortModule,
     MatDialogModule,
     TranslateModule,
+    UiModule,
   ],
   providers: [EmployerService],
 })

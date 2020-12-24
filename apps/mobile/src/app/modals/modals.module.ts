@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { ModalSpecialRequestPage } from './modal-special-request/modal-special-request.page';
 import { RatingModule } from 'ng-starrating';
 import { TranslateModule } from '@ngx-translate/core';
+import { UiModule } from '@contler/ui';
 
 @NgModule({
   declarations: [ModalInmediateRequestPage, ModalSpecialRequestPage],
@@ -20,6 +21,7 @@ import { TranslateModule } from '@ngx-translate/core';
     IonicModule,
     RatingModule,
     TranslateModule,
+    UiModule,
   ],
 })
 export class ModalsModule {}

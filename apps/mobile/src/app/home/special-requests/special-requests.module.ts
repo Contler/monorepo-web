@@ -8,9 +8,17 @@ import { SpecialRequestsPageRoutingModule } from './special-requests-routing.mod
 
 import { SpecialRequestsPage } from './special-requests.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { UiModule } from '@contler/ui';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, SpecialRequestsPageRoutingModule, TranslateModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    SpecialRequestsPageRoutingModule,
+    TranslateModule,
+    UiModule,
+  ],
   declarations: [SpecialRequestsPage],
 })
 export class SpecialRequestsPageModule {}
