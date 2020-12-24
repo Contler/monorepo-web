@@ -16,6 +16,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { CompleteOrderModalComponent } from './components/complete-order-modal/complete-order-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatExpansionModule,
     MatDialogModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
 })
 export class ProductModule {}

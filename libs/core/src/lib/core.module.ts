@@ -34,6 +34,7 @@ import { HotelService } from './services/hotel.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SpecialZoneService } from './services/special-zone/special-zone.service';
 import { TranslateService } from './services/translate/translate.service';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 const materialModules = [
   MatFormFieldModule,
@@ -62,6 +63,7 @@ const materialModules = [
     FormsModule,
     AngularFireDatabaseModule,
     HttpClientModule,
+    DynamicTranslateModule,
   ],
   declarations: [
     ButtonDirective,

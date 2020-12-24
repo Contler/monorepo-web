@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { Observable } from "rxjs";
-import { MatCheckboxChange } from "@angular/material/checkbox";
-import { SpecialZoneHotelEntity, ZoneEntity } from "@contler/entity";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { SpecialZoneHotelEntity, ZoneEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-zone-list',
@@ -9,9 +9,6 @@ import { SpecialZoneHotelEntity, ZoneEntity } from "@contler/entity";
   styleUrls: ['./zone-list.component.scss'],
 })
 export class ZoneListComponent {
-
-
-
   @Input() $zones: Observable<ZoneEntity[]> | undefined;
   @Input() zonesSelected: { [key: string]: boolean } = {};
 

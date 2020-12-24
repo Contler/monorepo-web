@@ -128,7 +128,7 @@
     "dateInit": "Admission Date",
     "empty": "You don't have any special requests from guests",
     "title": "Special request",
-    "updateSusses": "Request modified successfully"
+    "updateSuccess": "Request modified successfully"
   },
   "wakeUp": {
     "pending": "Pending",

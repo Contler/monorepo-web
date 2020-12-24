@@ -30,14 +30,14 @@ export class ScheduleComponent implements OnInit {
   private removeSchedule: ScheduleEntity[] = [];
 
   constructor(
-    private zoneServices: ZoneService,
+    private zoneService: ZoneService,
     private reservationService: ReservationService,
     private router: Router,
     route: ActivatedRoute,
     formBuild: FormBuilder,
     private cdRef: ChangeDetectorRef,
   ) {
-    this.categoryZone = this.zoneServices.getCategories().pipe(tap((cat) => (this.categories = cat)));
+    this.categoryZone = this.zoneService.getCategories().pipe(tap((cat) => (this.categories = cat)));
 
     this.reservationForm = formBuild.group({
       name: ['', Validators.required],

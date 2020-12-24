@@ -17,6 +17,13 @@
       "name": "Launch Chrome against localhost - mobile",
       "url": "http://localhost:8100",
       "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost - hotel",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }
