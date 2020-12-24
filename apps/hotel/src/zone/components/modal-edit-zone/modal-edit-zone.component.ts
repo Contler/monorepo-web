@@ -8,6 +8,7 @@ import { IconsService } from '@contler/ui';
 import { IconModel } from '@contler/models/icon.model';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { TranslateService as DynamicService } from '@contler/dynamic-translate';
 
 @Component({
   selector: 'contler-modal-edit-zone',
@@ -28,11 +29,12 @@ export class ModalEditZoneComponent implements OnInit {
     private zoneService: ZoneService,
     private messagesService: MessagesService,
     private translate: TranslateService,
+    private dynamicTrs: DynamicService,
     formBuild: FormBuilder,
     iconService: IconsService,
   ) {
     this.zoneGroup = formBuild.group({
-      name: [data.name, Validators.required],
+      name: [this.dynamicTrs.getInstant(data.name), Validators.required],
       icon: [data.icon],
       admitOrder: [data.admitOrders],
       principal: [data.principal],

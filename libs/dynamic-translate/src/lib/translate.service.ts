@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { filter, map, mergeMap, startWith, switchMap, tap } from 'rxjs/operators';
+import { filter, map, mergeMap, startWith, switchMap, take, tap } from 'rxjs/operators';
 import { LangChangeEvent, TranslateService as TrService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { getLan } from '@contler/const';
 import { LoaderDynamicTranslate } from './loader';
+import { getDicValue } from './utils/getDicValue';
 
 @Injectable()
 export class TranslateService {
   private sub = new BehaviorSubject<{ lan: LangChangeEvent; dic: any }>(null);
+  private dic: any;
+  private lan: string;
+
   changeDic = this.sub.asObservable().pipe(filter((data) => !!data));
 
   constructor(
@@ -26,8 +30,28 @@ export class TranslateService {
             map((lan) => ({ lan, dic })),
           ),
         ),
-        tap((data) => console.log(data)),
+        tap((data) => {
+          this.dic = data.dic;
+          this.lan = data.lan.lang;
+        }),
       )
       .subscribe((data) => this.sub.next(data));
+  }
+
+  getTranslate(key: string) {
+    return this.changeDic.pipe(
+      map(({ dic, lan }) => {
+        const keys = key.split('/');
+        const dicLan = getDicValue(dic, keys);
+        return !!dicLan ? dicLan[lan.lang] || key : key;
+      }),
+      take(1),
+    );
+  }
+
+  getInstant(key: string) {
+    const keys = key.split('/');
+    const dicLan = getDicValue(this.dic, keys);
+    return !!dicLan ? dicLan[this.lan] || key : key;
   }
 }
