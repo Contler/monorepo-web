@@ -1,14 +1,14 @@
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 import { LangChangeEvent, TranslateService as TrService } from '@ngx-translate/core';
 import { filter, map, mergeMap, startWith, switchMap, take, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { getLan } from '@contler/const';
 import { LoaderDynamicTranslate } from './loader';
 import { getDicValue } from './utils/getDicValue';
-import { TranslateConfig } from "./interface/config.interface";
-import { TRANSLATE_CONFIG } from "./app.config";
+import { TranslateConfig } from './interface/config.interface';
+import { TRANSLATE_CONFIG } from './app.config';
 
 @Injectable()
 export class TranslateService {
@@ -25,10 +25,10 @@ export class TranslateService {
     externalTranslate: TrService,
     @Inject(TRANSLATE_CONFIG) config: TranslateConfig,
     private afDb: AngularFireDatabase,
-    private http: HttpClient
+    private http: HttpClient,
   ) {
     const [actual] = getLan();
-    this.url = config.url
+    this.url = config.url;
 
     loader.obs
       .pipe(
@@ -71,7 +71,7 @@ export class TranslateService {
       msg,
       to,
       from,
-      hotel: hotelUid
-    })
+      hotel: hotelUid,
+    });
   }
 }

@@ -1,13 +1,12 @@
-import { ModuleWithProviders, NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { TranslatePipe } from "./translate.pipe";
-import { Config, TranslateConfig } from "./interface/config.interface";
-import { AngularFireModule } from "@angular/fire";
-import { TranslateService } from "./translate.service";
-import { TranslateModule } from "@ngx-translate/core";
-import { HttpClientModule } from "@angular/common/http";
-import { TRANSLATE_CONFIG } from "./app.config";
-
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TranslatePipe } from './translate.pipe';
+import { Config, TranslateConfig } from './interface/config.interface';
+import { AngularFireModule } from '@angular/fire';
+import { TranslateService } from './translate.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientModule } from '@angular/common/http';
+import { TRANSLATE_CONFIG } from './app.config';
 
 @NgModule({
   imports: [CommonModule, AngularFireModule, TranslateModule, HttpClientModule],
