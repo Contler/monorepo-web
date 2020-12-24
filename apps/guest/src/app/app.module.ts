@@ -21,9 +21,16 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { AvalibleUserGuard } from 'guest/common-components/guards/avalible-user.guard';
+import { DynamicTranslateModule, Loader, LoaderDynamicTranslate } from '@contler/dynamic-translate';
+import { map } from 'rxjs/operators';
+import { GuestService } from 'guest/services/guest.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+export function LoadHotel(auth: GuestService) {
+  return new Loader(auth.$guest.pipe(map((emp) => emp.hotel.uid)));
 }
 
 @NgModule({
@@ -54,6 +61,13 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
       defaultLanguage: window.localStorage.lan || 'es-CO',
+    }),
+    DynamicTranslateModule.forRoot({
+      loader: {
+        provide: LoaderDynamicTranslate,
+        useFactory: LoadHotel,
+        deps: [GuestService],
+      },
     }),
   ],
   providers: [HotelService, UserService, AvalibleUserGuard],
