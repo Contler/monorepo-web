@@ -20,8 +20,8 @@ export class ReservationFormComponent {
   icons = ICONS;
   zoneForm: FormGroup;
 
-  constructor(private zoneServices: ZoneService, formBuild: FormBuilder) {
-    this.categoryZone = this.zoneServices.getCategories();
+  constructor(private zoneService: ZoneService, formBuild: FormBuilder) {
+    this.categoryZone = this.zoneService.getCategories();
     this.zoneForm = formBuild.group({
       name: ['', Validators.required],
       category: ['', Validators.required],

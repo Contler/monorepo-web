@@ -84,7 +84,7 @@ export class ModalEditEmployerComponent implements OnInit {
           this.loading = false;
           this.dialogRef.close();
           this.translate
-            .get('employer.modal.updateSusses')
+            .get('employer.modal.updateSuccess')
             .subscribe((msg) => this.messagesService.showToastMessage(msg));
         },
         () => {

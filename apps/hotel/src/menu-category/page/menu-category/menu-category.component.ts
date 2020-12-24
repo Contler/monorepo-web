@@ -54,7 +54,7 @@ export class MenuCategoryComponent implements OnInit {
         .createCategoryRestaurant(restaurant.uid, name)
         .then(() => {
           this.load = false;
-          const msn = this.translate.instant('category.createSusses');
+          const msn = this.translate.instant('category.createSuccess');
           this.messagesService.showToastMessage(msn);
           this.resetForm();
         })
@@ -76,7 +76,7 @@ export class MenuCategoryComponent implements OnInit {
 
   deleteMenuCT(idRestaurant: string, idCategory: string) {
     this.restaurantServ.deleteRestaurantCategory(idRestaurant, idCategory).then(() => {
-      const msn = this.translate.instant('category.deleteSusses');
+      const msn = this.translate.instant('category.deleteSuccess');
       this.messagesService.showToastMessage(msn);
     });
   }

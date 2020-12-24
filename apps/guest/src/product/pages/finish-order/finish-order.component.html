@@ -36,7 +36,9 @@
 
       <mat-form-field appearance="fill">
         <mat-select formControlName="zone">
-          <mat-option *ngFor="let zone of zones$ | async" [value]="zone">{{ zone.name }}</mat-option>
+          <mat-option *ngFor="let zone of zones$ | async" [value]="zone">{{
+            zone.name | ctrTranslate
+          }}</mat-option>
         </mat-select>
         <mat-hint>{{ 'finishOrder.whereDoYouWantToReceiveIt' | translate }}</mat-hint>
       </mat-form-field>

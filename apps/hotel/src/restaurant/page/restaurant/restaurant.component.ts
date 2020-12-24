@@ -67,7 +67,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
           a.name.localeCompare(b.name),
         );
         this.load = false;
-        const msg = this.translate.instant('restaurant.createSusses');
+        const msg = this.translate.instant('restaurant.createSuccess');
         this.messagesService.showToastMessage(msg);
         this.resetForm();
       },
@@ -94,7 +94,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     if (control.valid) {
       this.restaurantServ.updateNameRestaurant(restId, control.value).subscribe(() => {
         this.getRestaurants();
-        const msg = this.translate.instant('restaurant.updateSusses');
+        const msg = this.translate.instant('restaurant.updateSuccess');
         this.messagesService.showToastMessage(msg);
       });
     }
@@ -115,7 +115,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     this.restaurantServ.deleteRestaurant(restaurant.uid).subscribe(
       () => {
         this.getRestaurants();
-        const msg = this.translate.instant('restaurant.updateSusses');
+        const msg = this.translate.instant('restaurant.updateSuccess');
         this.messagesService.showToastMessage(msg);
       },
       (err) => {

@@ -56,7 +56,7 @@ export class ModalSpecialRequestPage implements OnInit, OnDestroy {
     this.specialRequestsService.updateRequest(this.request!).subscribe(
       () => {
         this.messagesService.closeLoader(loader);
-        const msn = this.translate.instant('specialRequest.updateSusses');
+        const msn = this.translate.instant('specialRequest.updateSuccess');
         this.messagesService.showToastMessage(msn);
         this.modalController.dismiss();
       },

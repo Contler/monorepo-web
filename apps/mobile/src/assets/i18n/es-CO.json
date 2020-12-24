@@ -128,7 +128,7 @@
     "dateInit": "Fecha ingreso",
     "empty": "No tienes ninguna solicitud especial de los huéspedes",
     "title": "Solicitud especial",
-    "updateSusses": "Solicitud modificada exitosamente"
+    "updateSuccess": "Solicitud modificada exitosamente"
   },
   "wakeUp": {
     "pending": "Pendiente",

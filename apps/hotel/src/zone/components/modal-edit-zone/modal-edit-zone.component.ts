@@ -77,9 +77,9 @@ export class ModalEditZoneComponent implements OnInit {
           this.load = false;
           this.dialogRef.close();
           this.translate
-            .get(['zone.updateSusses', 'global.CLOSE'])
+            .get(['zone.updateSuccess', 'global.CLOSE'])
             .subscribe((msg) =>
-              this.messagesService.showToastMessage(msg['zone.updateSusses'], msg['global.CLOSE']),
+              this.messagesService.showToastMessage(msg['zone.updateSuccess'], msg['global.CLOSE']),
             );
         },
         () => {

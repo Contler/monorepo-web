@@ -1,5 +1,4 @@
 <div class="contler-zone">
-
   <ng-container *ngFor="let specialZone of specialZones">
     <mat-checkbox
       [(ngModel)]="specialZone.status"
@@ -7,11 +6,9 @@
       class="contler-zone__check"
       (ngModelChange)="specialZonesChange.emit(specialZones)"
     >
-      {{specialZone.zone.text}}
+      {{ specialZone.zone.text }}
     </mat-checkbox>
   </ng-container>
-
-
 
   <ng-container *ngFor="let zone of $zones | async">
     <mat-checkbox
@@ -20,7 +17,7 @@
       color="primary"
       class="contler-zone__check"
     >
-      {{ zone.name }}
+      {{ zone.name | ctrTranslate | async }}
     </mat-checkbox>
   </ng-container>
 </div>

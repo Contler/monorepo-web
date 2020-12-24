@@ -10,7 +10,6 @@ import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MessagesService } from 'guest/services/messages/messages.service';
 import { HotelEntity } from '@contler/entity';
-import { ZoneService } from 'guest/services/zone.service';
 import { RequestRequest } from '@contler/models/request-request';
 import { RequestService } from 'guest/services/request.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -30,7 +29,6 @@ export class SpecialRequestComponent implements OnInit, OnDestroy {
   constructor(
     private requestService: RequestService,
     private sanitizer: DomSanitizer,
-    private zoneService: ZoneService,
     private usersService: UsersService,
     private auth: AngularFireAuth,
     private realtime: AngularFireDatabase,
