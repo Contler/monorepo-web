@@ -19,9 +19,16 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { CoreModule } from '@contler/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule, Loader, LoaderDynamicTranslate } from '@contler/dynamic-translate';
+import { map } from 'rxjs/operators';
+import { AuthService } from './services/auth.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+export function LoadHotel(auth: AuthService) {
+  return new Loader(auth.$user.pipe(map((emp) => emp.hotel.uid)));
 }
 
 @NgModule({
@@ -47,6 +54,13 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
       defaultLanguage: window.localStorage.lan || 'es-CO',
+    }),
+    DynamicTranslateModule.forRoot({
+      loader: {
+        provide: LoaderDynamicTranslate,
+        useFactory: LoadHotel,
+        deps: [AuthService],
+      },
     }),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, OneSignal],

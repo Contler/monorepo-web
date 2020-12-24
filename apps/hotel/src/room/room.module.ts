@@ -12,7 +12,7 @@ import { SingleRoomComponent } from './components/single-room/single-room.compon
 import { MultiRoomComponent } from './components/multi-room/multi-room.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { TranslateModule } from '@ngx-translate/core';
-import { UiModule } from '@contler/ui';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   declarations: [RoomComponent, SingleRoomComponent, MultiRoomComponent],
@@ -26,7 +26,7 @@ import { UiModule } from '@contler/ui';
     CommonComponentsModule,
     NgxMaskModule,
     TranslateModule,
-    UiModule,
+    DynamicTranslateModule,
   ],
   providers: [ZoneService, RoomService],
   entryComponents: [],

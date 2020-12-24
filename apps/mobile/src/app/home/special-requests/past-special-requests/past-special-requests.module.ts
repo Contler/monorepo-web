@@ -11,7 +11,7 @@ import { ModalsModule } from '../../../modals/modals.module';
 import { MaterialModule } from '../../../material/material.module';
 import { CommonComponentsModule } from '../../../common-components/common-components.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { UiModule } from '@contler/ui';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   imports: [
@@ -23,7 +23,7 @@ import { UiModule } from '@contler/ui';
     CommonComponentsModule,
     ModalsModule,
     TranslateModule,
-    UiModule,
+    DynamicTranslateModule,
   ],
   declarations: [PastSpecialRequestsPage],
 })

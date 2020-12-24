@@ -6,7 +6,7 @@ import { MaterialModule } from 'hotel/material/material.module';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { UiModule } from '@contler/ui';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   declarations: [SpecialRequestsComponent],
@@ -16,7 +16,7 @@ import { UiModule } from '@contler/ui';
     MaterialModule,
     CommonComponentsModule,
     FormsModule,
-    UiModule,
+    DynamicTranslateModule,
     TranslateModule,
   ],
 })

@@ -56,7 +56,7 @@
 
       <ng-container matColumnDef="room">
         <th mat-header-cell *matHeaderCellDef>{{ 'guest.room' | translate }}</th>
-        <td mat-cell *matCellDef="let element">{{ element.room?.name | ctrTranslate | async }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.room?.name | ctrTranslate }}</td>
       </ng-container>
 
       <ng-container matColumnDef="checkIn">

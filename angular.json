@@ -708,6 +708,38 @@
           }
         }
       }
+    },
+    "dynamic-translate": {
+      "projectType": "library",
+      "root": "libs/dynamic-translate",
+      "sourceRoot": "libs/dynamic-translate/src",
+      "prefix": "contler",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/dynamic-translate/tsconfig.lib.json",
+              "libs/dynamic-translate/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/dynamic-translate/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/dynamic-translate/jest.config.js",
+            "tsConfig": "libs/dynamic-translate/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/dynamic-translate/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
