@@ -76,6 +76,7 @@ export function LoadHotel(auth: AuthService) {
         useFactory: LoadHotel,
         deps: [AuthService],
       },
+      url: environment.apiUrl
     }),
   ],
   providers: [UserService, HotelService],

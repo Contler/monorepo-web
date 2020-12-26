@@ -61,6 +61,7 @@ export function LoadHotel(auth: AuthService) {
         useFactory: LoadHotel,
         deps: [AuthService],
       },
+      url: environment.apiUrl,
     }),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, OneSignal],
