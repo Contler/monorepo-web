@@ -5,16 +5,20 @@ import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { BookingEntity, ScheduleEntity } from '@contler/entity';
 import { BookingRequest } from '@contler/models/booking-request';
 import { map } from 'rxjs/operators';
+import { getLan } from '@contler/const';
 
 @Injectable()
 export class ReservationService {
-  private url: string;
+  private readonly url: string;
 
   constructor(@Optional() private config: CoreConfig, private http: HttpClient) {
     this.url = config.urlBackend;
   }
 
   createReservation(reservationRequest: ReservationRequest) {
+    const [to, from] = getLan();
+    reservationRequest.to = to;
+    reservationRequest.from = from;
     return this.http.post<ZoneReserveEntity>(this.url + 'reservation', { ...reservationRequest });
   }
 

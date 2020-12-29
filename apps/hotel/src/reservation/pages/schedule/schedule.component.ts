@@ -1,7 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { CategoryEntity, ScheduleEntity } from '@contler/entity';
-import { ICONS } from '@contler/const';
+import { AllDays, DAYS, ICONS } from '@contler/const';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { ReservationService } from '@contler/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { filter, map, startWith, switchMap, tap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { plainToClass } from 'class-transformer';
-import { DAYS, AllDays } from '@contler/const';
+import { TranslateService } from '@contler/dynamic-translate';
 
 @Component({
   selector: 'contler-schedule',
@@ -36,6 +36,7 @@ export class ScheduleComponent implements OnInit {
     route: ActivatedRoute,
     formBuild: FormBuilder,
     private cdRef: ChangeDetectorRef,
+    private translate: TranslateService,
   ) {
     this.categoryZone = this.zoneService.getCategories().pipe(tap((cat) => (this.categories = cat)));
 
@@ -61,7 +62,9 @@ export class ScheduleComponent implements OnInit {
           plainToClass(ScheduleEntity, schedule),
         );
         this.schedules = this.reservation.schedule;
-        this.reservationForm.get('name')!.setValue(this.reservation.name);
+        this.translate.getTranslate(this.reservation.name).subscribe((value) => {
+          this.reservationForm.get('name')!.setValue(value);
+        });
         this.reservationForm.get('category')!.setValue(this.reservation.category.id);
         this.reservationForm.get('icon')!.setValue(this.reservation.icon);
       });
@@ -112,7 +115,7 @@ export class ScheduleComponent implements OnInit {
   save() {
     this.loader = true;
     const { name, category, icon } = this.reservationForm.value;
-    this.reservation!.name = name;
+    this.translate.updateTranslate(this.reservation.name, name, this.reservation.hotel.uid).subscribe();
     this.reservation!.category = this.categories.find((cat) => cat.id === category)!;
     this.reservation!.icon = icon;
 

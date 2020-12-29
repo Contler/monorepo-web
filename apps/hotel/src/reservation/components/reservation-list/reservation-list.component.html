@@ -1,7 +1,7 @@
 <mat-card>
   <p class="title">{{ 'reservation.nameList' | translate }}</p>
   <div class="list" *ngFor="let item of zoneReservations">
-    <p class="list__text">{{ item.name }}</p>
+    <p class="list__text">{{ item.name | ctrTranslate }}</p>
     <button mat-icon-button [routerLink]="['/home', 'reservation', item.id]">
       <mat-icon>edit</mat-icon>
     </button>

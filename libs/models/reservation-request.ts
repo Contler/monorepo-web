@@ -1,5 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
 import { CategoryEntity, HotelEntity } from '@contler/entity';
+import { Language } from './language.model';
 
 export class ReservationRequest {
   @IsNotEmpty()
@@ -12,4 +13,10 @@ export class ReservationRequest {
 
   @IsNotEmpty()
   hotel!: HotelEntity;
+
+  @IsNotEmpty()
+  to: Language;
+
+  @IsNotEmpty()
+  from: Language[];
 }
