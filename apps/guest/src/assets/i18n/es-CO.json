@@ -94,7 +94,7 @@
     "createRequest": "CREAR SOLICITUD",
     "immediateRequestSuccessfullyCreated": "Solicitud inmediata creada con éxito",
     "thereIsAnImmediateRequestAt": "Hay una solicitud inmediata en",
-    "waitingToBeAttended.": "esperando ser atendido."
+    "waitingToBeAttended": "esperando ser atendido."
   },
   "sidebar": {
     "logOut": "Cerrar sesión",
@@ -263,5 +263,8 @@
     "title": "Mis reservas",
     "people": "personas",
     "youHaveNoReservationRequest": "No tienes solicitud de reserva"
+  },
+  "notification": {
+    "newRequest": "Hay una solicitud inmediata en {{zoneName}} esperando a ser atendida."
   }
 }

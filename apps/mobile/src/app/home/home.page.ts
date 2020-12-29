@@ -8,6 +8,8 @@ import { EmployerEntity } from '@contler/entity';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '@contler/models/language.model';
 import { LANGUAGES } from '@contler/const';
+import { TranslateService as DynamicTranslate } from "@contler/dynamic-translate";
+
 
 @Component({
   selector: 'contler-home',
@@ -98,13 +100,17 @@ export class HomePage implements OnInit {
     private platform: Platform,
     private menuController: MenuController,
     private translate: TranslateService,
+    private dynamic: DynamicTranslate,
+
   ) {
     this.actualLanguage = LANGUAGES.find((lan) => lan.prefix === localStorage.lan) || LANGUAGES[0];
     this.auth.$user.subscribe((user) => {
       this.user = user;
       const chiefZones: string[] = [];
-      this.user!.leaderZones.forEach((zone) => chiefZones.push(zone.name));
-      this.chiefZonesLabel = chiefZones.join('-');
+      setTimeout(() => {
+        this.user!.leaderZones.forEach((zone) => chiefZones.push(this.dynamic.getInstant(zone.name)));
+        this.chiefZonesLabel = chiefZones.join(' - ');
+      }, 1000)
       this.menuItems[2].show = this.user!.wakeZone;
       this.menuItems[5].show = this.user!.deliveryZone;
       this.menuItems[6].show = this.user.receptionZone;
