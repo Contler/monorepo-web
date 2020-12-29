@@ -8,7 +8,9 @@
       </mat-select>
       <mat-hint>{{ 'order.state' | translate }}</mat-hint>
     </mat-form-field>
-    <button mat-raised-button (click)="deleteOrder()" contlerButton [loading]="load">Eliminar</button>
+    <button mat-raised-button (click)="deleteOrder()" contlerButton [loading]="load">
+      {{'order.deleteBtn' | translate}}
+    </button>
     <button
       mat-raised-button
       color="accent"
@@ -38,7 +40,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="fill">
-            <input type="text" matInput [value]="'Habitación ' + order.guest.room.name" readonly />
+            <input type="text" matInput [value]="order.guest.room.name | ctrTranslate" readonly />
             <mat-icon matSuffix>location_on</mat-icon>
             <mat-hint>{{ 'order.room' | translate }}</mat-hint>
           </mat-form-field>
@@ -52,8 +54,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="fill">
-            <input type="text" matInput [value]="order.zone.name" readonly />
-            <mat-icon matSuffix>{{ order.zone.icon }}</mat-icon>
+            <input type="text" matInput [value]="order.zone.name | ctrTranslate" readonly />
             <mat-hint>{{ 'order.delivery' | translate }}</mat-hint>
           </mat-form-field>
         </div>
@@ -104,7 +105,7 @@
       <p class="title">{{ 'order.title' | translate }}</p>
       <ng-container *ngFor="let item of restaurantProds | keyvalue; let i = index">
         <span class="view-order__restaurant" [style.marginTop]="i == 0 ? 0 : '50px'">
-          {{ item.key }}
+          {{ item.key | ctrTranslate }}
         </span>
 
         <contler-product-item

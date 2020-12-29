@@ -8,11 +8,11 @@
       <mat-expansion-panel *ngFor="let restaurant of restaurant$ | async">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <span class="product__panel-title" contlerColorHotel="primary">{{ restaurant.name }}</span>
+            <span class="product__panel-title" contlerColorHotel="primary">{{ restaurant.name | ctrTranslate }}</span>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-container *ngFor="let category of categories[restaurant.uid] | async">
-          <h2 contlerColorHotel="primary" class="product__item">{{ category.name }}</h2>
+          <h2 contlerColorHotel="primary" class="product__item">{{ category.name | ctrTranslate }}</h2>
           <contler-product-item
             *ngFor="let prod of getProductsByCategory(restaurant.products, category.uid)"
             [product]="prod"

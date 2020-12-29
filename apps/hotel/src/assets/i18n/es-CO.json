@@ -170,7 +170,8 @@
     "timeDelivery": "Hora de entrega",
     "title": "Pedidos",
     "updateBtn": "Actualizar",
-    "value": "Valor"
+    "value": "Valor",
+    "deleteBtn": "Eliminar"
   },
   "product": {
     "active": "Activos",
