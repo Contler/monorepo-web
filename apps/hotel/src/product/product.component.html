@@ -34,12 +34,12 @@
       <table mat-table [dataSource]="dataSource" style="width: 100%">
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>{{ 'product.name' | translate }}</th>
-          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.name | ctrTranslate }}</td>
         </ng-container>
 
         <ng-container matColumnDef="description">
           <th mat-header-cell *matHeaderCellDef>{{ 'product.description' | translate }}</th>
-          <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.description | ctrTranslate }}</td>
         </ng-container>
 
         <ng-container matColumnDef="value">
@@ -51,7 +51,7 @@
 
         <ng-container matColumnDef="restaurant">
           <th mat-header-cell *matHeaderCellDef>{{ 'product.restaurant' | translate }}</th>
-          <td mat-cell *matCellDef="let element">{{ element.restaurant?.name }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.restaurant?.name | ctrTranslate }}</td>
         </ng-container>
 
         <ng-container matColumnDef="state">

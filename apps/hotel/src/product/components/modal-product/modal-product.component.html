@@ -31,7 +31,7 @@
       (valueChange)="updateCategories($event)"
     >
       <mat-option *ngFor="let restaurant of restaurants$ | async" [value]="restaurant">
-        {{ restaurant.name }}
+        {{ restaurant.name | ctrTranslate }}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -39,7 +39,7 @@
   <mat-form-field appearance="fill">
     <mat-select placeholder="{{ 'product.category' | translate }}" formControlName="category">
       <mat-option *ngFor="let category of categories$ | async" [value]="category.uid">
-        {{ category.name }}
+        {{ category.name | ctrTranslate }}
       </mat-option>
     </mat-select>
   </mat-form-field>

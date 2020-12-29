@@ -50,17 +50,17 @@ export class MenuCategoryComponent implements OnInit {
     if (this.menuCategoryForm.valid) {
       this.load = true;
       const { name, restaurant } = this.menuCategoryForm.value;
+      console.log(restaurant);
       this.restaurantServ
-        .createCategoryRestaurant(restaurant.uid, name)
-        .then(() => {
+        .createCategoryRestaurant(restaurant.uid, restaurant.hotel.uid, name)
+        .subscribe(() => {
           this.load = false;
           const msn = this.translate.instant('category.createSuccess');
           this.messagesService.showToastMessage(msn);
           this.resetForm();
-        })
-        .catch(() => {
+        }, () => {
           this.messagesService.showServerError();
-        });
+        })
     }
   }
 

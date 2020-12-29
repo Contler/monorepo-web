@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '@contler/core';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   declarations: [ProductComponent, ModalProductComponent, EditProductComponent],
@@ -25,6 +26,7 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     CoreModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
 })
 export class ProductModule {}

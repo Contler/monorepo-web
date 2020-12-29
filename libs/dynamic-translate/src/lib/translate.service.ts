@@ -1,14 +1,15 @@
-import { Inject, Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { HttpClient } from '@angular/common/http';
-import { LangChangeEvent, TranslateService as TrService } from '@ngx-translate/core';
-import { filter, map, mergeMap, startWith, switchMap, take, tap } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
-import { getLan } from '@contler/const';
-import { LoaderDynamicTranslate } from './loader';
-import { getDicValue } from './utils/getDicValue';
-import { TranslateConfig } from './interface/config.interface';
-import { TRANSLATE_CONFIG } from './app.config';
+import { Inject, Injectable } from "@angular/core";
+import { AngularFireDatabase } from "@angular/fire/database";
+import { HttpClient } from "@angular/common/http";
+import { LangChangeEvent, TranslateService as TrService } from "@ngx-translate/core";
+import { filter, map, mergeMap, startWith, switchMap, take, tap } from "rxjs/operators";
+import { BehaviorSubject } from "rxjs";
+import { getLan } from "@contler/const";
+import { LoaderDynamicTranslate } from "./loader";
+import { getDicValue } from "./utils/getDicValue";
+import { TranslateConfig } from "./interface/config.interface";
+import { TRANSLATE_CONFIG } from "./app.config";
+import { TranslateRequest } from "@contler/models";
 
 @Injectable()
 export class TranslateService {
@@ -47,14 +48,24 @@ export class TranslateService {
       .subscribe((data) => this.sub.next(data));
   }
 
-  getTranslate(key: string) {
+  getTranslate(key: string | Array<string>) {
     return this.changeDic.pipe(
-      map(({ dic, lan }) => {
-        const keys = key.split('/');
-        const dicLan = getDicValue(dic, keys);
-        return !!dicLan ? dicLan[lan.lang] || key : key;
-      }),
       take(1),
+      map(({ dic, lan }) => {
+        if (typeof key === 'string') {
+          const keys = key.split('/');
+          const dicLan = getDicValue(dic, keys);
+          return !!dicLan ? dicLan[lan.lang] || key : key;
+        } else {
+          const trns = {};
+          key.forEach((keyData) => {
+            const keys = keyData.split('/');
+            const dicLan = getDicValue(dic, keys);
+            trns[keyData] = !!dicLan ? dicLan[lan.lang] || keyData : keyData;
+          });
+          return trns;
+        }
+      }),
     );
   }
 
@@ -73,5 +84,9 @@ export class TranslateService {
       from,
       hotel: hotelUid,
     });
+  }
+
+  generateUrl(request: TranslateRequest) {
+    return this.http.post<{ key: string }>(`${this.url}translate`, request);
   }
 }
