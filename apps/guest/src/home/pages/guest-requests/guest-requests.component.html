@@ -18,7 +18,7 @@
       [routerLink]="zone.category?.id === 3 ? '/home/my-room' : '/home/zone-request/' + zone.uid"
     >
       <contler-icon class="request__zone-icon" [key]="zone.icon"></contler-icon>
-      <p class="request__zone-text" contlerColorHotel>{{ zone.name | uppercase }}</p>
+      <p class="request__zone-text" contlerColorHotel>{{ zone.name | ctrTranslate | uppercase }}</p>
       <mat-icon class="request__zone-icon">navigate_next</mat-icon>
     </a>
     <a (click)="showAllZones()" class="request__zone" *ngIf="!allZonesShowed">

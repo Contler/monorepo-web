@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { CategoryModels } from '@contler/models/category.models';
+import { getLan } from '@contler/const';
 
 @Injectable()
 export class RestaurantService {
@@ -18,9 +19,12 @@ export class RestaurantService {
   }
 
   createRestaurant(nameRestaurant: string, hotelId: string) {
+    const [to, from] = getLan();
     return this.http.post<RestaurantEntity>(`${this.url}restaurant`, {
       name: nameRestaurant,
       hotelId,
+      to,
+      from,
     });
   }
 
@@ -54,18 +58,12 @@ export class RestaurantService {
   }
 
   updateCategoryRestaurant(restaurantId: string, categoryId: string, name: string) {
-    const ref = this.afDb.database
-      .ref('restaurantCategories')
-      .child(restaurantId)
-      .child(categoryId);
+    const ref = this.afDb.database.ref('restaurantCategories').child(restaurantId).child(categoryId);
     return ref.update({ name });
   }
 
   deleteRestaurantCategory(restaurantId: string, categoryId: string) {
-    const ref = this.afDb.database
-      .ref('restaurantCategories')
-      .child(restaurantId)
-      .child(categoryId);
+    const ref = this.afDb.database.ref('restaurantCategories').child(restaurantId).child(categoryId);
     return this.afDb.object(ref).remove();
   }
 }

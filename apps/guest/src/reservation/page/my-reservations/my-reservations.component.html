@@ -9,7 +9,9 @@
         routerLink="/home/reservation/my-reservation/{{ item.id }}"
       >
         <div>
-          <p class="my-reservation__item-name">{{ item.schedule.reservation.name }}</p>
+          <p class="my-reservation__item-name">
+            {{ item.schedule.reservation.name | ctrTranslate }}
+          </p>
           <p class="my-reservation__item-text">
             {{ item.schedule.timeInit | date: 'shortTime' }} - {{ item.quote }}
             {{ 'myReservations.people' | translate }}

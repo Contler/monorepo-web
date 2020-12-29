@@ -14,7 +14,7 @@ export class TranslatePipe implements PipeTransform, OnDestroy {
   constructor(private translate: TranslateService, private _ref: ChangeDetectorRef) {}
 
   transform(key: string) {
-    if (!this.subscription) {
+    if (!this.subscription && key) {
       this.subscription = this.translate.changeDic.subscribe(({ dic, lan }) => {
         const keys = key.split('/');
         const dicLan = getDicValue(dic, keys);

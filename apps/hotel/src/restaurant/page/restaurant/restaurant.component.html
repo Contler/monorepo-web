@@ -38,13 +38,9 @@
           <div *ngIf="dataSource">
             <div class="row" *ngFor="let restaurant of dataSource.data; let index = index">
               <div class="row_container two_column">
-                <contler-editable
-                  #contlerEdit
-                  class="cursor"
-                  (update)="updateField(index, 'name', restaurant.uid)"
-                >
+                <contler-editable class="cursor" (update)="updateField(index, 'name', restaurant.uid)">
                   <ng-template contlerViewMode>
-                    {{ restaurant.name }}
+                    {{ restaurant.name | ctrTranslate }}
                   </ng-template>
                   <ng-template contlerEditMode>
                     <mat-form-field appearance="fill">

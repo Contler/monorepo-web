@@ -17,7 +17,7 @@
           <mat-form-field appearance="fill">
             <mat-select formControlName="restaurant">
               <mat-option *ngFor="let restaurant of restaurants$ | async" [value]="restaurant">
-                {{ restaurant.name }}
+                {{ restaurant.name | ctrTranslate }}
               </mat-option>
             </mat-select>
             <mat-hint>{{ 'category.restaurant' | translate }}</mat-hint>
@@ -52,7 +52,7 @@
             >
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  <p class="color-p">{{ restaurant.name }}</p>
+                  <p class="color-p">{{ restaurant.name | ctrTranslate }}</p>
                 </mat-panel-title>
               </mat-expansion-panel-header>
 

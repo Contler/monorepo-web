@@ -10,7 +10,9 @@
       routerLink="/home/reservation/{{ item.id }}"
     >
       <mat-icon class="reservation__zone-icon">{{ item.icon || 'room_service' }}</mat-icon>
-      <p class="reservation__zone-text" [style]="getColorHotel()">{{ item.name | uppercase }}</p>
+      <p class="reservation__zone-text" [style]="getColorHotel()">
+        {{ item.name | ctrTranslate | uppercase }}
+      </p>
       <mat-icon class="reservation__zone-icon">navigate_next</mat-icon>
     </a>
   </div>

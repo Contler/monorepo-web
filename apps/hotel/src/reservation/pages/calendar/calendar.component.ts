@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { convertMonthToString } from 'hotel/utils/returnMonth';
 import { TranslateService } from '@ngx-translate/core';
+import { TranslateService as DynamicService } from '@contler/dynamic-translate';
 
 @Component({
   selector: 'contler-calendar',
@@ -31,6 +32,7 @@ export class CalendarComponent {
     private usrService: UserService,
     private reservationService: ReservationService,
     private translate: TranslateService,
+    private dynamic: DynamicService,
   ) {
     this.zones$ = this.usrService
       .getUser()
@@ -55,7 +57,7 @@ export class CalendarComponent {
   }
 
   convertBooking(booking: BookingEntity[]) {
-    return booking ? booking.map(this.bookingToCalendar) : [];
+    return booking ? booking.map(this.bookingToCalendar.bind(this)) : [];
   }
 
   private bookingToCalendar(book: BookingEntity): CalendarEvent {
@@ -70,10 +72,10 @@ export class CalendarComponent {
     end.setFullYear(new Date(book.date).getFullYear());
 
     return {
-      title: `${book.schedule.reservation.name} - ${book.name} (${fns.format(start, 'H:mm')} - ${fns.format(
-        end,
+      title: `${this.dynamic.getInstant(book.schedule.reservation.name)} - ${book.name} (${fns.format(
+        start,
         'H:mm',
-      )}) - ${book.quote} ${this.translate.instant('calendar.persons')}`,
+      )} - ${fns.format(end, 'H:mm')}) - ${book.quote} ${this.translate.instant('calendar.persons')}`,
       start,
       end,
     };

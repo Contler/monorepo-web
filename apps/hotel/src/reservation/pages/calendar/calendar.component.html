@@ -12,7 +12,9 @@
       <mat-form-field appearance="fill">
         <mat-select [(ngModel)]="zone">
           <mat-option [value]="null">{{ 'calendar.all' | translate }}</mat-option>
-          <mat-option *ngFor="let zone of zones$ | async" [value]="zone">{{ zone.name }}</mat-option>
+          <mat-option *ngFor="let zone of zones$ | async" [value]="zone">
+            {{ zone.name | ctrTranslate }}
+          </mat-option>
         </mat-select>
         <mat-hint>{{ 'calendar.zone' | translate }}</mat-hint>
       </mat-form-field>

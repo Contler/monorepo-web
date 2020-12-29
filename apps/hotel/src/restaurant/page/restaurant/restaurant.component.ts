@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { EditableComponent } from '../../components/editable/editable.component';
 import { TranslateService } from '@ngx-translate/core';
+import { TranslateService as DynamicService } from '@contler/dynamic-translate';
 
 @Component({
   selector: 'contler-restaurant',
@@ -39,6 +40,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
     private messagesService: MessagesService,
     private authServ: AuthService,
     private translate: TranslateService,
+    private dynamic: DynamicService,
   ) {
     this.restaurantGroup = formBuild.group({
       name: [null, Validators.required],
@@ -92,7 +94,8 @@ export class RestaurantComponent implements OnInit, OnDestroy {
   updateField(index: number, field: string, restId: string) {
     const control = this.getControl(index, field);
     if (control.valid) {
-      this.restaurantServ.updateNameRestaurant(restId, control.value).subscribe(() => {
+      const val = this.dataSource.data[index];
+      this.dynamic.updateTranslate(val.name, control.value, val.hotel.uid).subscribe(() => {
         this.getRestaurants();
         const msg = this.translate.instant('restaurant.updateSuccess');
         this.messagesService.showToastMessage(msg);
@@ -137,7 +140,7 @@ export class RestaurantComponent implements OnInit, OnDestroy {
         const groupRestaurant = restaurants.map((rest: any) => {
           return new FormGroup(
             {
-              name: new FormControl(rest.name, Validators.required),
+              name: new FormControl(this.dynamic.getInstant(rest.name), Validators.required),
               uid: new FormControl(rest.uid),
             },
             { updateOn: 'blur' },

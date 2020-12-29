@@ -12,6 +12,7 @@ import { EditableComponent } from './components/editable/editable.component';
 import { EditModeDirective } from './components/directives/edit-mode.directive';
 import { ViewModeDirective } from './components/directives/view-mode.directive';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   declarations: [RestaurantComponent, EditableComponent, EditModeDirective, ViewModeDirective],
@@ -24,6 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     CommonComponentsModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
   providers: [RestaurantService],
   entryComponents: [EditableComponent],

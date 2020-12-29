@@ -22,6 +22,7 @@ import { ModalOrdersQuialifyComponent } from './components/modal-orders-quialify
 import { DrinkRequestComponent } from './pages/drink-request/drink-request.component';
 import { UiModule } from '@contler/ui';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MessagesModule,
     UiModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
   entryComponents: [ModalQualifyComponent, ModalBookingQualifyComponent, ModalOrdersQuialifyComponent],
 })

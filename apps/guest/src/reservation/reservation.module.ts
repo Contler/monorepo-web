@@ -13,6 +13,7 @@ import { MyReservationsComponent } from './page/my-reservations/my-reservations.
 import { EditReservationComponent } from './page/edit-reservation/edit-reservation.component';
 import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     CoreModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
   entryComponents: [ModalConfirmComponent],
 })
