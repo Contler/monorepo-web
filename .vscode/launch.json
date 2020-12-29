@@ -7,22 +7,29 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "Launch Chrome against localhost - guest",
+      "name": "Launch Chrome - guest",
       "url": "http://localhost:4201",
       "webRoot": "${workspaceFolder}"
     },
     {
       "type": "chrome",
       "request": "launch",
-      "name": "Launch Chrome against localhost - mobile",
+      "name": "Launch Chrome - mobile",
       "url": "http://localhost:8100",
       "webRoot": "${workspaceFolder}"
     },
     {
       "type": "chrome",
       "request": "launch",
-      "name": "Launch Chrome against localhost - hotel",
+      "name": "Launch Chrome - hotel",
       "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome - admin",
+      "url": "http://localhost:4202",
       "webRoot": "${workspaceFolder}"
     }
   ]
