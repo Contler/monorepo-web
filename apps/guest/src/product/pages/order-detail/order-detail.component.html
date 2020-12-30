@@ -4,7 +4,7 @@
 
     <h1 class="ctl-title" contlerColorHotel="primary">
       {{ order?.guest.name }} <br />
-      {{ order?.guest.room.name }} - {{ order?.time | date: 'shortTime' }}
+      {{ order?.guest.room.name | ctrTranslate }} - {{ order?.time | date: 'shortTime' }}
     </h1>
 
     <contler-product-item
@@ -29,7 +29,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <input type="text" readonly matInput [value]="order?.zone.name" />
+        <input type="text" readonly matInput [value]="order?.zone.name | ctrTranslate" />
         <mat-hint>{{ 'orderDetail.delivery' | translate }}</mat-hint>
       </mat-form-field>
     </div>

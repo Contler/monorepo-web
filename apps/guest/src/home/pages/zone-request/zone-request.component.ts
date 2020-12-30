@@ -12,8 +12,9 @@ import { MessagesService } from 'guest/services/messages/messages.service';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
 import { RequestRequest } from '@contler/models/request-request';
 import { RequestService } from 'guest/services/request.service';
-import { ROOM_SERVICE, SUB_CATEGORY_DRINKS, CATEGORY_ZONE_EN } from './const/zone-const';
+import { CATEGORY_ZONE_EN, ROOM_SERVICE, SUB_CATEGORY_DRINKS } from './const/zone-const';
 import { TranslateService } from '@ngx-translate/core';
+import { TranslateService as DynamicService } from '@contler/dynamic-translate';
 
 @Component({
   selector: 'contler-zone-request',
@@ -49,6 +50,7 @@ export class ZoneRequestComponent implements OnDestroy {
     private messagesService: MessagesService,
     private router: Router,
     private translate: TranslateService,
+    private dynamicService: DynamicService,
   ) {
     this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
     this.zoneUid = this.route.snapshot.paramMap.get('id');
@@ -92,9 +94,11 @@ export class ZoneRequestComponent implements OnDestroy {
         switchMap((request) => this.requestService.saveRequest(request)),
         switchMap(() =>
           this.notificationsService.sendNotification(
-            `${this.translate.instant('zoneRequest.thereIsAnImmediateRequestAt')} ${
-              this.zone.name
-            } ${this.translate.instant('zoneRequest.waitingToBeAttended')}`,
+            `${this.translate.instant(
+              'zoneRequest.thereIsAnImmediateRequestAt',
+            )} ${this.dynamicService.getInstant(this.zone.name)} ${this.translate.instant(
+              'zoneRequest.waitingToBeAttended',
+            )}`,
             chiefTokens,
           ),
         ),

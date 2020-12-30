@@ -18,12 +18,12 @@
 
   <h1 class="detail__title" [style.color]="generalService.hotelColor">
     {{ order?.guest.name }} {{ order?.guest.lastName }} <br />
-    {{ order?.guest.room.name }} - {{ order?.time | date: 'shortTime' }}
+    {{ order?.guest.room.name | ctrTranslate }} - {{ order?.time | date: 'shortTime' }}
   </h1>
 
   <ng-container *ngFor="let item of productsRestaurant | keyvalue; let i = index">
     <span class="detail__restaurant" [style.marginTop]="i == 0 ? 0 : '50px'">
-      {{ item.key }}
+      {{ item.key | ctrTranslate }}
     </span>
 
     <contler-product-item
@@ -50,7 +50,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <input matInput type="text" readonly [value]="order?.zone.name" aria-label="name" />
+      <input matInput type="text" readonly [value]="order?.zone.name | ctrTranslate" aria-label="name" />
       <mat-hint>{{ 'orderDetail.delivery' | translate }}</mat-hint>
     </mat-form-field>
 

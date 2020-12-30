@@ -94,7 +94,7 @@
     "createRequest": "CREATE REQUEST",
     "immediateRequestSuccessfullyCreated": "Immediate request successfully created",
     "thereIsAnImmediateRequestAt": "There is an immediate request at",
-    "waitingToBeAttended.": "waiting to be attended."
+    "waitingToBeAttended": "waiting to be attended."
   },
   "sidebar": {
     "logOut": "Log Out",
@@ -267,5 +267,8 @@
     "title": "My reservations",
     "people": "people",
     "youHaveNoReservationRequest": "You have no reservation request"
+  },
+  "notification": {
+    "newRequest": "There is an immediate request at {{zoneName}} waiting to be served."
   }
 }

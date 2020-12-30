@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { CheckOrdersService } from './services/check-orders.service';
 import { CommonComponentsModule } from '../common-components/common-components.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     CommonComponentsModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
   providers: [CheckOrdersService],
 })

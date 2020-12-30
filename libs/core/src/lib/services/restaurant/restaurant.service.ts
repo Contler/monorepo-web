@@ -5,6 +5,9 @@ import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { CategoryModels } from '@contler/models/category.models';
 import { getLan } from '@contler/const';
+import { TranslateService } from '@contler/dynamic-translate';
+import { switchMap } from 'rxjs/operators';
+import { from } from 'rxjs';
 
 @Injectable()
 export class RestaurantService {
@@ -14,17 +17,18 @@ export class RestaurantService {
     @Optional() private config: CoreConfig,
     private http: HttpClient,
     private afDb: AngularFireDatabase,
+    private translate: TranslateService,
   ) {
     this.url = this.config.urlBackend;
   }
 
   createRestaurant(nameRestaurant: string, hotelId: string) {
-    const [to, from] = getLan();
+    const [to, languages] = getLan();
     return this.http.post<RestaurantEntity>(`${this.url}restaurant`, {
       name: nameRestaurant,
       hotelId,
       to,
-      from,
+      from: languages,
     });
   }
 
@@ -42,14 +46,23 @@ export class RestaurantService {
     });
   }
 
-  createCategoryRestaurant(restaurantId: string, name: string) {
+  createCategoryRestaurant(restaurantId: string, hotelId: string, name: string) {
+    const [actualLan, languages] = getLan();
     const ref = this.afDb.database.ref('restaurantCategories').child(restaurantId);
     const pushRef = ref.push();
-    return pushRef.set({
-      restaurant: restaurantId,
-      name,
-      uid: pushRef.key,
-    });
+    return this.translate
+      .generateUrl({ actualLan, languages, hotel: hotelId, url: 'category', mgs: name })
+      .pipe(
+        switchMap(({ key }) =>
+          from(
+            pushRef.set({
+              restaurant: restaurantId,
+              name: key,
+              uid: pushRef.key,
+            }),
+          ),
+        ),
+      );
   }
 
   getCategoryRestaurant(restaurantId: string) {

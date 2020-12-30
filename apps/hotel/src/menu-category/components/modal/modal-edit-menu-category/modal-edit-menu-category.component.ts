@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RestaurantService } from '@contler/core';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { TranslateService } from '@ngx-translate/core';
+import { TranslateService as DynamicService } from '@contler/dynamic-translate';
+import { AuthService } from 'hotel/services/auth.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'contler-modal-edit-menu-category',
@@ -22,10 +25,12 @@ export class ModalEditMenuCategoryComponent {
     private restaurantServ: RestaurantService,
     private messagesService: MessagesService,
     private translate: TranslateService,
+    private dynamic: DynamicService,
+    private auth: AuthService,
     formBuild: FormBuilder,
   ) {
     this.categoryGroup = formBuild.group({
-      name: [data.category.name, Validators.required],
+      name: [this.dynamic.getInstant(data.category.name), Validators.required],
     });
     this.restaurantId = data.restaurant.uid;
     this.categoryId = data.category.uid;
@@ -35,15 +40,21 @@ export class ModalEditMenuCategoryComponent {
     if (this.categoryGroup.valid) {
       this.load = true;
       const { name } = this.categoryGroup.value;
-      this.restaurantServ
-        .updateCategoryRestaurant(this.restaurantId, this.categoryId, name)
-        .then(() => {
-          this.load = false;
-          this.dialogRef.close();
-          const msn = this.translate.instant('category.updateSuccess');
-          this.messagesService.showToastMessage(msn);
-        })
-        .catch(() => this.messagesService.showServerError());
+      this.auth.$employer
+        .pipe(
+          switchMap((employer) =>
+            this.dynamic.updateTranslate(this.data.category.name, name, employer.hotel.uid),
+          ),
+        )
+        .subscribe(
+          () => {
+            this.load = false;
+            this.dialogRef.close();
+            const msn = this.translate.instant('category.updateSuccess');
+            this.messagesService.showToastMessage(msn);
+          },
+          () => this.messagesService.showServerError(),
+        );
     }
   }
 }

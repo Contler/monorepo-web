@@ -9,6 +9,7 @@ import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { Observable } from 'rxjs';
 import { CategoryModels } from '@contler/models/category.models';
 import { TranslateService } from '@ngx-translate/core';
+import { TranslateService as DynamicService } from '@contler/dynamic-translate';
 
 @Component({
   selector: 'contler-edit-product',
@@ -33,6 +34,7 @@ export class EditProductComponent {
     private auth: AuthService,
     private restaurantService: RestaurantService,
     private translate: TranslateService,
+    private dynamicTranslate: DynamicService,
   ) {
     this.route.params
       .pipe(
@@ -42,12 +44,16 @@ export class EditProductComponent {
       .subscribe((product) => {
         this.product = product;
         this.productForm = formBuild.group({
-          name: [product.name, Validators.required],
+          name: [dynamicTranslate.getInstant(product.name), Validators.required],
           value: [product.value, Validators.required],
           state: [product.state, Validators.required],
-          description: [product.description, Validators.required],
+          description: [dynamicTranslate.getInstant(product.description), Validators.required],
           category: [product.category, Validators.required],
           restaurant: [product.restaurant, Validators.required],
+        });
+        this.dynamicTranslate.getTranslate([product.name, product.description]).subscribe((nTran) => {
+          this.productForm.get('name').setValue(nTran[product.name]);
+          this.productForm.get('description').setValue(nTran[product.description]);
         });
         if (product.restaurant) {
           this.categories$ = this.restaurantService.getCategoryRestaurant(product.restaurant.uid);
@@ -68,6 +74,11 @@ export class EditProductComponent {
   updateProduct() {
     this.error = '';
     this.load = true;
+    const { name, description } = this.productForm.value;
+    this.dynamicTranslate.updateTranslate(this.product.name, name, this.product.hotel.uid).subscribe();
+    this.dynamicTranslate
+      .updateTranslate(this.product.description, description, this.product.hotel.uid)
+      .subscribe();
     this.productService.updateProduct(this.product).subscribe(() => {
       this.load = false;
       this.router.navigate(['home/product']);

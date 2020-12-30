@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '@contler/core';
 import { ViewOrderComponent } from './pages/view-order/view-order.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   declarations: [OrderComponent, ViewOrderComponent],
@@ -24,6 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     CoreModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
 })
 export class OrderModule {}

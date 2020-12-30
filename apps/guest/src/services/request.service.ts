@@ -9,6 +9,8 @@ import { RequestEntity } from '@contler/entity';
 import { ZoneService } from 'guest/services/zone.service';
 import { combineLatest } from 'rxjs';
 import { NotificationsService } from 'guest/services/notifications.service';
+import { TranslateService as DynamicService } from '@contler/dynamic-translate';
+import { TranslateService } from '@ngx-translate/core';
 import { getLan } from '@contler/const';
 
 @Injectable({
@@ -21,6 +23,8 @@ export class RequestService {
     private http: HttpClient,
     private zoneService: ZoneService,
     private ntfService: NotificationsService,
+    private dynamicService: DynamicService,
+    private translate: TranslateService,
   ) {}
 
   createRequest(zoneId: string, msg: string, isSpecial = false) {
@@ -29,9 +33,10 @@ export class RequestService {
     return combineLatest([zone$, this.guestService.$guest]).pipe(
       tap(([zone]) => {
         const tokens = zone!.leaders.filter((leader) => !!leader.pushToken).map((leader) => leader.pushToken);
-        this.ntfService
-          .sendNotification(`Hay una solicitud inmediata en ${zone.name} esperando a ser atendida. `, tokens)
-          .subscribe();
+        const msn = this.translate.instant('notification.newRequest', {
+          zoneName: this.dynamicService.getInstant(zone.name),
+        });
+        this.ntfService.sendNotification(msn, tokens).subscribe();
       }),
       map(([zone, guest]) => {
         return {

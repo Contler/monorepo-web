@@ -170,7 +170,8 @@
     "timeDelivery": "Delivery time",
     "title": "Orders",
     "updateBtn": "Update",
-    "value": "Value"
+    "value": "Value",
+    "deleteBtn": "Delete"
   },
   "product": {
     "active": "Active",

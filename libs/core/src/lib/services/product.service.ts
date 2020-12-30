@@ -3,6 +3,7 @@ import { CoreConfig, ProductRequest, RestaurantProductsModel } from '@contler/mo
 import { HttpClient } from '@angular/common/http';
 import { OrderEntity, ProductEntity, ProductOrderEntity } from '@contler/entity';
 import { OrderRequest } from '@contler/models/order-request';
+import { getLan } from '@contler/const';
 
 @Injectable()
 export class ProductService {
@@ -23,7 +24,8 @@ export class ProductService {
   }
 
   createProduct(request: ProductRequest) {
-    return this.http.post(`${this.url}product`, request);
+    const [to, from] = getLan();
+    return this.http.post(`${this.url}product`, { ...request, to, from });
   }
 
   getAllProducts(hotelId: string) {

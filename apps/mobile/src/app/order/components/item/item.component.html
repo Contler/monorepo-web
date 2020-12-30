@@ -1,6 +1,8 @@
 <div>
   <p class="order__title">{{ order?.guest.name }} {{ order?.guest.lastName }}</p>
-  <p class="order__text">{{ order?.guest.room.name }} - {{ total | currency: 'COP':'$':'1.0-0' }}</p>
+  <p class="order__text">
+    {{ order?.guest.room.name | ctrTranslate }} - {{ total | currency: 'COP':'$':'1.0-0' }}
+  </p>
 </div>
 
 <div style="text-align: right">
