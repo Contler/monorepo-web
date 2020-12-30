@@ -1,5 +1,6 @@
 import { GuestEntity, HotelEntity, RoomEntity, ZoneEntity } from '../entity';
 import { IsNotEmpty } from 'class-validator';
+import { Language } from './language.model';
 
 export class RequestRequest {
   @IsNotEmpty()
@@ -19,4 +20,8 @@ export class RequestRequest {
 
   @IsNotEmpty()
   hotel!: HotelEntity;
+
+  to: Language;
+
+  from: Language[];
 }

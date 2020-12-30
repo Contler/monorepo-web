@@ -17,7 +17,7 @@
         <div class="item" *ngFor="let request of requestsResults" (click)="goToRequest(request)">
           <div class="item__info-container">
             <p class="username">{{request.guest.name}}</p>
-            <p class="zone">{{request.message}}</p>
+            <p class="zone">{{request.message | ctrTranslate}}</p>
           </div>
           <div class="item__data-container">
             <p class="time">{{request.room.name | ctrTranslate }}</p>
@@ -40,7 +40,7 @@
           <div class="item" *ngFor="let request of requests">
             <div class="item__info-container">
               <p class="username">{{request.guest.name}}</p>
-              <p class="zone">{{request.message}}</p>
+              <p class="zone">{{request.message | ctrTranslate}}</p>
             </div>
             <div class="item__data-container">
               <p class="time">{{request.room.name | ctrTranslate }}</p>

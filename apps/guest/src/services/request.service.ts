@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { GuestService } from 'guest/services/guest.service';
-import { combineAll, map, mergeAll, switchMap, take, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { RequestRequest } from '@contler/models/request-request';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'guest/environments/environment';
@@ -9,6 +9,7 @@ import { RequestEntity } from '@contler/entity';
 import { ZoneService } from 'guest/services/zone.service';
 import { combineLatest } from 'rxjs';
 import { NotificationsService } from 'guest/services/notifications.service';
+import { getLan } from '@contler/const';
 
 @Injectable({
   providedIn: 'root',
@@ -23,20 +24,13 @@ export class RequestService {
   ) {}
 
   createRequest(zoneId: string, msg: string, isSpecial = false) {
-    const zone$ = this.zoneService.$zones.pipe(
-      map((zones) => zones.find((zone) => zone.uid === zoneId)),
-    );
+    const zone$ = this.zoneService.$zones.pipe(map((zones) => zones.find((zone) => zone.uid === zoneId)));
 
     return combineLatest([zone$, this.guestService.$guest]).pipe(
       tap(([zone]) => {
-        const tokens = zone!.leaders
-          .filter((leader) => !!leader.pushToken)
-          .map((leader) => leader.pushToken);
+        const tokens = zone!.leaders.filter((leader) => !!leader.pushToken).map((leader) => leader.pushToken);
         this.ntfService
-          .sendNotification(
-            `Hay una solicitud inmediata en ${zone.name} esperando a ser atendida. `,
-            tokens,
-          )
+          .sendNotification(`Hay una solicitud inmediata en ${zone.name} esperando a ser atendida. `, tokens)
           .subscribe();
       }),
       map(([zone, guest]) => {
@@ -54,6 +48,9 @@ export class RequestService {
   }
 
   saveRequest(request: RequestRequest) {
+    const [to, from] = getLan();
+    request.to = to;
+    request.from = from;
     return this.http.post(environment.apiUrl + 'request', request);
   }
 
