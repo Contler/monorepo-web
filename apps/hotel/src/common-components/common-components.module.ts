@@ -12,6 +12,7 @@ import { RatingModule } from 'ng-starrating';
 import { MarcoAdminComponent } from './marco-admin/marco-admin.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { UiModule } from '@contler/ui';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     RatingModule,
     TranslateModule,
     DynamicTranslateModule,
+    UiModule,
   ],
   providers: [InmediateRequestsService],
 })

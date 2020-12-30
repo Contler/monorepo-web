@@ -13,6 +13,7 @@ import { MaterialModule } from '../../../material/material.module';
 import { PipesModule } from '../../../pipes/pipes.module';
 import { RatingModule } from 'ng-starrating';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ModalsModule,
     RatingModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
   declarations: [ReadyInmediateRequestsPage],
   entryComponents: [],

@@ -19,7 +19,7 @@
         <div class="item" *ngFor="let request of requests" (click)="goToRequest(request)">
           <div class="item__info-container">
             <p class="username">{{request.guest?.name}} {{request.guest?.lastName}}</p>
-            <p class="zone">{{request.zone?.name}}</p>
+            <p class="zone">{{request.zone?.name | ctrTranslate}}</p>
           </div>
           <div class="item__data-container">
             <p class="time">{{request |requestTime}}</p>

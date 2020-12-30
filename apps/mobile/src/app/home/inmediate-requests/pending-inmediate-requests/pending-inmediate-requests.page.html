@@ -26,7 +26,7 @@
           <div class="item" *ngFor="let request of requests">
             <div class="item__info-container" (click)="goToRequest(request)">
               <p class="username">{{request.guest?.name}} {{request.guest?.lastName}}</p>
-              <p class="zone">{{request.zone?.name}}</p>
+              <p class="zone">{{request.zone?.name | ctrTranslate}}</p>
             </div>
             <div class="item__data-container">
               <p class="time" (click)="goToRequest(request)">{{request.createAt|date:'HH:mm'}}</p>

@@ -40,7 +40,7 @@
           <textarea
             matInput
             cdkTextareaAutosize
-            [ngModel]="request.message"
+            [value]="request.message | ctrTranslate"
             name="description"
             readonly
           ></textarea>

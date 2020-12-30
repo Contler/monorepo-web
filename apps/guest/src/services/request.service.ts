@@ -74,6 +74,7 @@ export class RequestService {
   }
 
   updateRequest(request: RequestEntity) {
-    return this.http.put(environment.apiUrl + 'request/qualify', request);
+    const [to, from] = getLan();
+    return this.http.put(environment.apiUrl + 'request/qualify', { ...request, to, from });
   }
 }
