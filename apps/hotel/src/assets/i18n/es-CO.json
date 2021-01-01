@@ -246,7 +246,8 @@
     "initRoom": "Habitación Inicial",
     "multiple": "Rango de habitaciones",
     "success": "Habitación creada exitosamente",
-    "unique": "Habitación única"
+    "unique": "Habitación única",
+    "name": "Habitación"
   },
   "specialRequest": {
     "dateEnd": "Fecha salida",

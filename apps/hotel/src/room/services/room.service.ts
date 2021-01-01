@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'hotel/environments/environment';
 import { RoomEntity } from '@contler/entity';
 import { getLan } from '@contler/const';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class RoomService {
@@ -13,6 +14,7 @@ export class RoomService {
     private userService: UserService,
     private afDb: AngularFireDatabase,
     private http: HttpClient,
+    private translate: TranslateService,
   ) {}
 
   getRoom() {
@@ -28,30 +30,35 @@ export class RoomService {
   }
 
   saveRoom(name: number) {
-    const [actualLan, languages] = getLan();
+    const [to, from] = getLan();
 
     return this.userService.getUser().pipe(
       take(1),
       switchMap((user) =>
         this.http.post<RoomEntity>(environment.apiUrl + `hotel/${user.hotel.uid}/room`, {
-          name,
-          actualLan,
-          languages,
+          name: this.translate.instant('room.name'),
+          number: Number(name),
+          to,
+          from,
         }),
       ),
     );
   }
 
   saveRooms(names: string[]) {
-    const [actualLan, languages] = getLan();
+    const [to, from] = getLan();
+    const roomNames = names.map((name) => ({
+      name: this.translate.instant('room.name'),
+      number: Number(name),
+    }));
 
     return this.userService.getUser().pipe(
       take(1),
       switchMap((user) =>
         this.http.post<RoomEntity[]>(environment.apiUrl + `hotel/${user.hotel.uid}/rooms`, {
-          names,
-          actualLan,
-          languages,
+          rooms: roomNames,
+          to,
+          from,
         }),
       ),
     );
