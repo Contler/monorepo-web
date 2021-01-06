@@ -38,7 +38,7 @@ export class SingleRoomComponent {
         (room) => {
           this.load = false;
           this.translate
-            .get('room.success')
+            .get('room.susses')
             .subscribe((value) => this.messagesService.showToastMessage(value));
           this.roomGroup.reset({ name: '', zone: '' });
           this.completeRoomCreation.emit(room);

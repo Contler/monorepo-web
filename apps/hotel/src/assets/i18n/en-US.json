@@ -17,8 +17,8 @@
   },
   "category": {
     "createBtn": "CREATE CATEGORY",
-    "createSuccess": "Category created successfully",
-    "deleteSuccess": "Category removed successfully",
+    "createSusses": "Category created successfully",
+    "deleteSusses": "Category removed successfully",
     "edit": {
       "name": "Category name",
       "title": "Edit Category",
@@ -28,7 +28,7 @@
     "restaurant": "Restaurant",
     "subTitle": "Categories",
     "title": "Menu Categories",
-    "updateSuccess": "Category updated successfully"
+    "updateSusses": "Category updated successfully"
   },
   "editGuest": {
     "noRequest": "No requests",
@@ -46,7 +46,7 @@
     "modal": {
       "averageTime": "Average Time",
       "create": "Create",
-      "createSuccess": "Employee created successfully",
+      "createSusses": "Employee created successfully",
       "lastName": "Last Name",
       "leaderZone": "Area where it is leader:",
       "name": "First Name",
@@ -55,7 +55,7 @@
       "totalAverage": "Total of services",
       "totalServices": "Number of services",
       "update": "Update",
-      "updateSuccess": "Employee created successfully",
+      "updateSusses": "Employee created successfully",
       "yesOption": "Yes"
     },
     "name": "Employer Name",
@@ -117,7 +117,7 @@
     "timeDelivery": "Time delivery",
     "timeTable": "Time",
     "update": "UPDATE",
-    "updateSuccess": "Request updated successfully",
+    "updateSusses": "Request updated successfully",
     "zoneTable": "Zone"
   },
   "lateCheckOut": {
@@ -158,6 +158,7 @@
     "all": "All",
     "complete": "Complete",
     "dataOrder": "Order Data",
+    "deleteBtn": "Remove",
     "delivery": "Delivery",
     "guest": "Guest",
     "leader": "Leader who answered the request",
@@ -170,8 +171,7 @@
     "timeDelivery": "Delivery time",
     "title": "Orders",
     "updateBtn": "Update",
-    "value": "Value",
-    "deleteBtn": "Delete"
+    "value": "Value"
   },
   "product": {
     "active": "Active",
@@ -229,11 +229,11 @@
   },
   "restaurant": {
     "createBtn": "CREATE RESTAURANT",
-    "createSuccess": "Successfully created restaurant",
-    "deleteSuccess": "Restaurant removed successfully",
+    "createSusses": "Successfully created restaurant",
+    "deleteSusses": "Restaurant removed successfully",
     "name": "Restaurant Name",
     "title": "Restaurants",
-    "updateSuccess": "Successfully updated restaurant"
+    "updateSusses": "Successfully updated restaurant"
   },
   "room": {
     "createBtn": "CREATE ROOM",
@@ -245,9 +245,9 @@
     "hasExistRooms": "The rooms {{value}} already exist",
     "initRoom": "Initial Room",
     "multiple": "Room range",
-    "success": "Successfully created room",
-    "unique": "Unique room",
-    "name": "Room"
+    "name": "Room",
+    "susses": "Successfully created room",
+    "unique": "Unique room"
   },
   "specialRequest": {
     "dateEnd": "End date",
@@ -273,8 +273,8 @@
   "zone": {
     "category": "Category of this area",
     "create": "Create",
-    "createSuccess": "Zone created successfully",
-    "deleteSuccess": "Zone removed successfully",
+    "createSusses": "Zone created successfully",
+    "deleteSusses": "Zone removed successfully",
     "editName": "Edit Zone",
     "errorUpdate": "The zone could not be updated, you must disable a main zone in order to activate it.",
     "foodZone": "FOOD AREAS",
@@ -293,6 +293,6 @@
     "principalZone": "Featured area (you can choose a maximum of 4 areas)",
     "selectIcon": "Select an Icon",
     "socialZone": "SOCIAL AREAS",
-    "updateSuccess": "Zone updated successfully"
+    "updateSusses": "Zone updated successfully"
   }
 }

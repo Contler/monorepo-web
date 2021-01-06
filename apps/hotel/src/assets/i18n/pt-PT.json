@@ -1,0 +1,298 @@
+{
+  "DAYS": {
+    "allDay": "Todos os dias",
+    "friday": "Sexta-feira",
+    "monday": "segunda-feira",
+    "saturday": "Sábado",
+    "sunday": "Domingo",
+    "thursday": "Quinta-feira",
+    "tuesday": "Terça",
+    "wednesday": "Quarta-feira"
+  },
+  "calendar": {
+    "all": "Todos",
+    "persons": "pessoas",
+    "zone": "Zona",
+    "zones": "Zonas"
+  },
+  "category": {
+    "createBtn": "Criar categoria",
+    "createSusses": "Categoria criada com sucesso",
+    "deleteSusses": "Categoria removida com sucesso",
+    "edit": {
+      "name": "Nome da categoria",
+      "title": "Editar categoria",
+      "updateBtn": "Atualizar"
+    },
+    "name": "Categoria",
+    "restaurant": "restaurante",
+    "subTitle": "Categorias",
+    "title": "Categorias de Menu",
+    "updateSusses": "Categoria atualizada com sucesso"
+  },
+  "editGuest": {
+    "noRequest": "Sem pedidos",
+    "order": "Ordem",
+    "status": "Status",
+    "title": "Editar Convidado",
+    "update": "Atualizar"
+  },
+  "employer": {
+    "allOption": "Todos",
+    "createBtn": "Criar funcionários",
+    "employerOption": "Funcionários",
+    "leader": "Líder",
+    "leaderOption": "Líder de área",
+    "modal": {
+      "averageTime": "tempo médio",
+      "create": "Crio",
+      "createSusses": "Funcionário criado com sucesso",
+      "lastName": "Último nome",
+      "leaderZone": "Área onde é líder:",
+      "name": "Primeiro nome",
+      "noOption": "Não",
+      "title": "Empregado",
+      "totalAverage": "Total de serviços",
+      "totalServices": "Número de serviços",
+      "update": "Atualizar",
+      "updateSusses": "Funcionário criado com sucesso",
+      "yesOption": "sim"
+    },
+    "name": "Nome do Empregador",
+    "rating": "QUALIFICAÇÃO",
+    "request": "Pedido",
+    "viewRating": "Ver notas"
+  },
+  "global": {
+    "CLOSE": "Perto",
+    "EMAIL": "O email",
+    "EMPLOYER": "Funcionários",
+    "GUEST": "Convidados",
+    "IMMEDIATE_REQUEST": "Pedidos imediatos",
+    "LATE_CHECKOUT": "Check-outs tardios",
+    "PASSWORD": "Senha",
+    "RECEPTION": "recepção",
+    "RESTAURANT": "restaurante",
+    "SEARCH": "Procurar",
+    "SPACE_RESERVATION": "Reservas de espaço",
+    "SPECIAL_REQUEST": "requerimentos especiais",
+    "ZONE": "Zonas"
+  },
+  "guest": {
+    "active": "Ativo",
+    "checkIn": "Data de admissão",
+    "checkOut": "Data de partida",
+    "create": "Criar Convidado",
+    "document": "Documento",
+    "inactive": "Inativo",
+    "load": "Carga múltipla",
+    "name": "Nome do convidado",
+    "room": "sala",
+    "search": "Procurar...",
+    "type": {
+      "cc": "Cartão de cidadania",
+      "passport": "Passaporte"
+    },
+    "typeDocument": "Tipo"
+  },
+  "home": {
+    "desktop": "Área de Trabalho"
+  },
+  "immediateRequest": {
+    "active": "acessível",
+    "all": "Todos",
+    "complete": "Completo",
+    "dateTable": "Encontro",
+    "employerTable": "empregador",
+    "messageTable": "mensagem",
+    "modalTitle": "Pedido imediato",
+    "nameTable": "Nome do convidado",
+    "need": "Precisar",
+    "qualification": "QUALIFICAÇÃO",
+    "request": "Pedido",
+    "requestOf": "Pedido de",
+    "roomTable": "sala",
+    "searchPlaceHolder": "Procurar...",
+    "stateTable": "Estado",
+    "timeDelivery": "Entrega de tempo",
+    "timeTable": "tempo",
+    "update": "Atualizar",
+    "updateSusses": "Pedido atualizado com sucesso",
+    "zoneTable": "Zona"
+  },
+  "lateCheckOut": {
+    "accepted": "Aceitaram",
+    "checkOut": "Confira",
+    "crate": "Crio",
+    "name": "Nome",
+    "newDate": "Nova data de check-out",
+    "notAccepted": "Não aceito",
+    "room": "sala",
+    "state": "Estado"
+  },
+  "menu": {
+    "admin": "Administrador",
+    "categories": "Categorias de Menu",
+    "logout": "Sair",
+    "products": "produtos",
+    "qualification": "Avaliações",
+    "remoteOrders": "Pedidos remotos",
+    "request": "Pedido",
+    "reserveAreas": "Áreas de reserva",
+    "restaurant": "restaurante",
+    "roomService": "Serviço de quarto",
+    "rooms": "Quartos",
+    "space": "ESPAÇOS",
+    "spaceReservations": "Reservas de espaço",
+    "team": "Equipe",
+    "wakeUpCalls": "Chamadas de despertar"
+  },
+  "newGuest": {
+    "email": "O email",
+    "lastName": "Último nome",
+    "message": "Lembre ao convidado que para entrar no aplicativo <br> seu nome de usuário será seu e-mail e sua senha seu documento",
+    "name": "Nome",
+    "title": "Criar novo convidado"
+  },
+  "order": {
+    "all": "Todos",
+    "complete": "Completo",
+    "dataOrder": "Dados do pedido",
+    "deleteBtn": "Excluir",
+    "delivery": "entrega",
+    "guest": "Convidado",
+    "leader": "Líder que respondeu ao pedido",
+    "observationOrder": "Encomendar comentários",
+    "pending": "Pendente",
+    "room": "sala",
+    "state": "Estado",
+    "teamHotel": "Equipe do hotel",
+    "timeDate": "Data e hora",
+    "timeDelivery": "Tempo de entrega",
+    "title": "Encomendas",
+    "updateBtn": "Atualizar",
+    "value": "Valor"
+  },
+  "product": {
+    "active": "Ativo",
+    "all": "Todos",
+    "category": "Categoria",
+    "createBtn": "Criar produto",
+    "deleteBtn": "Remover",
+    "deleteError": "O produto não pode ser excluído",
+    "description": "Descrição",
+    "edit": {
+      "active": "Ativo",
+      "inactive": "Inativo"
+    },
+    "inactive": "Inativo",
+    "name": "Nome do Produto",
+    "new": {
+      "create": "Crio",
+      "preview": "Visualizar",
+      "title": "Novo Produto"
+    },
+    "restaurant": "restaurante",
+    "state": "Estado",
+    "title": "produtos",
+    "updateBtn": "Atualizar",
+    "value": "Valor"
+  },
+  "rating": {
+    "average": "Classificação média",
+    "name": "QUALIFICAÇÃO",
+    "profile": "Perfil completo",
+    "services": "Nº de serviços",
+    "time": "tempo médio",
+    "title": "Avaliações"
+  },
+  "reservation": {
+    "createButton": "CRIAR ZONA",
+    "edit": {
+      "addBtn": "Adicionar intervalo",
+      "deleteBtn": "Apagar zona",
+      "editBtn": "Atualizar",
+      "subtitle": "Disponibilidade de zona",
+      "title": "Informação de zona"
+    },
+    "labelCategory": "Nome da zona",
+    "labelIcon": "Selecione um ícone",
+    "labelName": "Nome da zona",
+    "nameList": "Nome da zona",
+    "range": {
+      "endTime": "Fim do tempo",
+      "initTime": "Tempo init",
+      "labelDay": "Dia da semana",
+      "quotaLabel": "Cotas"
+    },
+    "title": "Reserva de zona"
+  },
+  "restaurant": {
+    "createBtn": "Criar restaurante",
+    "createSusses": "Restaurante criado com sucesso",
+    "deleteSusses": "Restaurante removido com sucesso",
+    "name": "Nome do restaurante",
+    "title": "Restaurantes",
+    "updateSusses": "Restaurante atualizado com sucesso"
+  },
+  "room": {
+    "createBtn": "Criar quarto",
+    "endRoom": "Quarto Final",
+    "errorEnd": "A sala final deve ser maior que {{ value }}",
+    "errorInit": "Quarto inicial deve ser menor que {{ value }}",
+    "errorMax": "Não é possível criar mais de 20 salas por vez",
+    "exist": "A sala já existe",
+    "hasExistRooms": "As salas {{value}} já existem",
+    "initRoom": "Sala Inicial",
+    "multiple": "Alcance da sala",
+    "name": "Quarto",
+    "susses": "Sala criada com sucesso",
+    "unique": "Quarto único"
+  },
+  "specialRequest": {
+    "dateEnd": "Data final",
+    "dateInit": "Data Inicial",
+    "request": "Petição",
+    "title": "Pedido especial"
+  },
+  "typeRequest": {
+    "CLEAN": "Limpar \\ limpo",
+    "IMMEDIATE": "imediato",
+    "MAINTAIN": "Manter",
+    "RECEPTION": "recepção"
+  },
+  "wakeUp": {
+    "callTo": "Ligar para",
+    "complete": "Completo",
+    "dateCall": "Data da ligação",
+    "nameGuest": "Nome do convidado",
+    "pending": "Pendente",
+    "room": "sala",
+    "timeCall": "duração da chamada"
+  },
+  "zone": {
+    "category": "Categoria desta área",
+    "create": "Crio",
+    "createSusses": "Zona criada com sucesso",
+    "deleteSusses": "Zona removida com sucesso",
+    "editName": "Editar zona",
+    "errorUpdate": "A zona não pôde ser atualizada, você deve desabilitar uma zona principal para ativá-la.",
+    "foodZone": "ÁREAS DE ALIMENTOS",
+    "humidZone": "ÁREAS HÚMIDAS",
+    "maxZoneError": "Você já tem as quatro zonas principais escolhidas, você deve desabilitar uma para ativar esta.",
+    "modal": {
+      "admitOrder": "Admitir pedidos",
+      "editName": "Editar zona",
+      "update": "Atualizar"
+    },
+    "myRoom": "MEU QUARTO",
+    "name": "Nome da zona",
+    "order": "Encomendas",
+    "outsideHotel": "FORA DO HOTEL",
+    "principal": "Zona Principal",
+    "principalZone": "Área em destaque (você pode escolher no máximo 4 áreas)",
+    "selectIcon": "Selecione um ícone",
+    "socialZone": "ÁREAS SOCIAIS",
+    "updateSusses": "Zona atualizada com sucesso"
+  }
+}

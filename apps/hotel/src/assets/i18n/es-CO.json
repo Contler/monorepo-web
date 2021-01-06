@@ -17,8 +17,8 @@
   },
   "category": {
     "createBtn": "CREAR CATEGORÍA",
-    "createSuccess": "Categoría creado exitosamente",
-    "deleteSuccess": "Categoría eliminada correctamente",
+    "createSusses": "Categoría creado exitosamente",
+    "deleteSusses": "Categoría eliminada correctamente",
     "edit": {
       "name": "Nombre de la categoría",
       "title": "Editar categoría",
@@ -28,7 +28,7 @@
     "restaurant": "Restaurante",
     "subTitle": "Categorías",
     "title": "Categorías de Menú",
-    "updateSuccess": "Categoría actualizada correctamente"
+    "updateSusses": "Categoría actualizada correctamente"
   },
   "editGuest": {
     "noRequest": "No hay solicitudes",
@@ -46,7 +46,7 @@
     "modal": {
       "averageTime": "Tiempo promedio",
       "create": "Crear",
-      "createSuccess": "Empleado creado exitosamente",
+      "createSusses": "Empleado creado exitosamente",
       "lastName": "Apellidos",
       "leaderZone": "Zona donde es líder:",
       "name": "Nombre",
@@ -55,7 +55,7 @@
       "totalAverage": "Número de servicios",
       "totalServices": "Número de servicios",
       "update": "Actualizar",
-      "updateSuccess": "Empleado actualizado exitosamente",
+      "updateSusses": "Empleado actualizado exitosamente",
       "yesOption": "Sí"
     },
     "name": "Nombre empleado",
@@ -117,7 +117,7 @@
     "timeDelivery": "Hora de entrega",
     "timeTable": "Hora",
     "update": "ACTUALIZAR",
-    "updateSuccess": "Solicitud actualizada exitosamente",
+    "updateSusses": "Solicitud actualizada exitosamente",
     "zoneTable": "Zona"
   },
   "lateCheckOut": {
@@ -158,6 +158,7 @@
     "all": "Todos",
     "complete": "Cumplidos",
     "dataOrder": "Datos del pedido",
+    "deleteBtn": "Eliminar",
     "delivery": "Entrega",
     "guest": "Huésped",
     "leader": "Líder que atendió la solicitud",
@@ -170,8 +171,7 @@
     "timeDelivery": "Hora de entrega",
     "title": "Pedidos",
     "updateBtn": "Actualizar",
-    "value": "Valor",
-    "deleteBtn": "Eliminar"
+    "value": "Valor"
   },
   "product": {
     "active": "Activos",
@@ -229,11 +229,11 @@
   },
   "restaurant": {
     "createBtn": "CREAR RESTAURANTE",
-    "createSuccess": "Restaurante creado exitosamente",
-    "deleteSuccess": "Restaurante eliminado exitosamente",
+    "createSusses": "Restaurante creado exitosamente",
+    "deleteSusses": "Restaurante eliminado exitosamente",
     "name": "Nombre de restaurante",
     "title": "Restaurantes",
-    "updateSuccess": "Restaurante actualizado exitosamente"
+    "updateSusses": "Restaurante actualizado exitosamente"
   },
   "room": {
     "createBtn": "CREAR HABITACIÓN",
@@ -245,9 +245,9 @@
     "hasExistRooms": "Las habitaciones {{value}} ya existen",
     "initRoom": "Habitación Inicial",
     "multiple": "Rango de habitaciones",
-    "success": "Habitación creada exitosamente",
-    "unique": "Habitación única",
-    "name": "Habitación"
+    "name": "Habitación",
+    "susses": "Habitación creada exitosamente",
+    "unique": "Habitación única"
   },
   "specialRequest": {
     "dateEnd": "Fecha salida",
@@ -273,8 +273,8 @@
   "zone": {
     "category": "Categoría de esta zona",
     "create": "Crear",
-    "createSuccess": "Zona creada exitosamente",
-    "deleteSuccess": "Zona eliminada exitosamente",
+    "createSusses": "Zona creada exitosamente",
+    "deleteSusses": "Zona eliminada exitosamente",
     "editName": "Editar zona",
     "errorUpdate": "La zona no se pudo actualizar, debes deshabilitar una zona principal para poder activar esta.",
     "foodZone": "ZONAS DE COMIDAS",
@@ -293,6 +293,6 @@
     "principalZone": "Zona destacada(podrás elegir máximo 4 zonas)",
     "selectIcon": "Selecciona un icono",
     "socialZone": "ZONAS SOCIALES",
-    "updateSuccess": "Zona actualizada exitosamente"
+    "updateSusses": "Zona actualizada exitosamente"
   }
 }

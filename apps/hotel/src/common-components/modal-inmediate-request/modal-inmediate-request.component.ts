@@ -70,11 +70,11 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
         .subscribe(
           () => {
             this.loading = false;
-            const msg = this.translate.instant('immediateRequest.updateSuccess');
+            const msg = this.translate.instant('immediateRequest.updateSusses');
             this.messagesService.showToastMessage(msg);
             this.dialogRef.close();
           },
-          (err) => {
+          () => {
             this.loading = false;
             this.messagesService.showServerError();
             console.error('Hubo un error');

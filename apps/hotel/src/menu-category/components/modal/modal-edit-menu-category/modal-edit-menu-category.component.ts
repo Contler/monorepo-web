@@ -50,7 +50,7 @@ export class ModalEditMenuCategoryComponent {
           () => {
             this.load = false;
             this.dialogRef.close();
-            const msn = this.translate.instant('category.updateSuccess');
+            const msn = this.translate.instant('category.updateSusses');
             this.messagesService.showToastMessage(msn);
           },
           () => this.messagesService.showServerError(),

@@ -52,9 +52,7 @@ export class ZoneComponent {
       (zone) => {
         this.zones = [...this.zones, zone];
         this.load = false;
-        this.translate
-          .get('zone.createSuccess')
-          .subscribe((msg) => this.messagesService.showToastMessage(msg));
+        this.translate.get('zone.').subscribe((msg) => this.messagesService.showToastMessage(msg));
         this.zoneGroup.reset({ name: '', category: '', icon: '', principal: false });
       },
       () => {
@@ -80,7 +78,7 @@ export class ZoneComponent {
       () => {
         this.zones = this.zones.filter((actualZone) => actualZone.uid !== zone.uid);
         this.translate
-          .get('zone.deleteSuccess')
+          .get('zone.deleteSusses')
           .subscribe((msg) => this.messagesService.showToastMessage(msg));
       },
       (err) => {

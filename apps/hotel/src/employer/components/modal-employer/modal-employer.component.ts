@@ -79,7 +79,7 @@ export class ModalEmployerComponent {
           this.loading = false;
           this.dialogRef.close(employer);
           this.translate
-            .get('employer.modal.createSuccess')
+            .get('employer.modal.createSusses')
             .subscribe((value) => this.messagesService.showToastMessage(value));
         },
         () => {

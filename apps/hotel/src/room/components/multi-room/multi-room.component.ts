@@ -51,7 +51,7 @@ export class MultiRoomComponent {
     }
     this.roomService.saveRooms(names).subscribe(
       (rooms) => {
-        this.translate.get('room.success').subscribe((value) => {
+        this.translate.get('room.susses').subscribe((value) => {
           this.load = false;
           this.messagesService.showToastMessage(value);
           this.roomGroup.reset({ init: '', end: '' });
