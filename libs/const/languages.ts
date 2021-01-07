@@ -13,6 +13,30 @@ export const LANGUAGES: Language[] = [
     prefix: 'en-US',
     unicode: '🇬🇧',
   },
+  {
+    name: 'Deutsche',
+    englishName: 'German',
+    prefix: 'de-DE',
+    unicode: '🇩🇪',
+  },
+  {
+    name: 'Français',
+    englishName: 'French',
+    prefix: 'fr-FR',
+    unicode: '🇫🇷',
+  },
+  {
+    name: 'Italiano',
+    englishName: 'Italian',
+    prefix: 'it-IT',
+    unicode: '🇮🇹',
+  },
+  {
+    name: 'Português',
+    englishName: 'Portuguese',
+    prefix: 'pt-PT',
+    unicode: '🇵🇹',
+  },
 ];
 
 export const getLan = (): [Language, Language[]] => {
