@@ -1,0 +1,271 @@
+{
+  "auth": {
+    "userDisabled": "Il conto non è più attivo",
+    "userNotFound": "Email o password non valida"
+  },
+  "cashLoan": {
+    "cashAmount": "Importo in contanti (COP)",
+    "close": "Ce l'ho!",
+    "createRequest": "Crea richiesta",
+    "text": "La tua richiesta di prestito in contanti è stata ricevuta con successo. Vieni alla reception per ricevere i tuoi soldi.",
+    "title": "Hai bisogno di un prestito in contanti? Compila queste informazioni."
+  },
+  "cleaning": {
+    "anyRecommendation": "Qualsiasi raccomandazione",
+    "bathroomCleaning": "Pulizia del bagno",
+    "changeOfBlankets": "Cambio di coperte",
+    "cleaningOfSheets": "Pulizia delle lenzuola",
+    "cleaningTime": "Tempo di pulizie",
+    "close": "Fatto!",
+    "createRequest": "Crea richiesta",
+    "generalRoomCleaning": "Pulizia generale della camera",
+    "other": "altro",
+    "specificCleaning": "Pulizia specifica",
+    "text": "La tua richiesta di pulizia della camera è stata ricevuta con successo.",
+    "title": "Quando vuoi che puliamo la tua stanza?",
+    "towelChange": "Cambio asciugamani",
+    "what": "Che cosa?"
+  },
+  "concierge": {
+    "close": "Fatto!",
+    "createRequest": "Crea richiesta",
+    "dateForTheService": "Data per il servizio",
+    "text": "La tua richiesta di informazioni concierge è andata a buon fine. Il nostro staff ti contatterà al più presto.",
+    "title": "Dicci in quale località turistica vorresti andare e quando vuoi visitarla"
+  },
+  "confirmOrder": {
+    "next": "Il prossimo",
+    "title": "Conferma il tuo ordine",
+    "total": "totale:"
+  },
+  "createLate": {
+    "close": "Vicino",
+    "create": "Creare",
+    "departureTime": "orario di partenza",
+    "message": "La tua richiesta di check-out posticipato è stata ricevuta. L'area incaricata lo esaminerà e ti contatterà per confermarlo."
+  },
+  "createReservation": {
+    "close.": "Vicino",
+    "createReservation": "Crea prenotazione",
+    "date": "Data",
+    "iCantMakeTheReservation": "Non riesco a fare la prenotazione",
+    "noSpotsAvailable": "Nessun posto disponibile",
+    "people": "persone",
+    "reservationInBehalfOf": "Prenotazione a nome di",
+    "thereIsNoTimeSlotForTheSelectedDate.": "Non esiste una fascia oraria per la data selezionata.",
+    "timeSlot": "fascia oraria",
+    "title": "Stai per effettuare una prenotazione in:",
+    "yourReservationWasCreatedSuccessfully": "La tua prenotazione è stata creata con successo"
+  },
+  "createWake": {
+    "createGuest": "Crea ospite",
+    "date": "Data",
+    "guest": "ospite",
+    "hourOfTheCall": "Ora della chiamata",
+    "scheduleNewWakeUpCall": "Pianifica una nuova sveglia",
+    "yourWakeUpCallWasSuccessfullyCreated": "La tua sveglia è stata creata con successo"
+  },
+  "drinkRequest": {
+    "createRequest": "Crea richiesta",
+    "immediateRequestSuccessfullyCreated": "Richiesta immediata creata con successo"
+  },
+  "exchange": {
+    "close": "Fatto!",
+    "createRequest": "Crea richiesta",
+    "currencyToChange": "Valuta da cambiare",
+    "message": "* Se hai bisogno di confermare il valore del cambio, puoi farlo presentandoti alla reception",
+    "quantityToChange": "Quantità da cambiare",
+    "text": "La tua richiesta di cambio valuta è stata ricevuta con successo. Vieni alla reception per ricevere i tuoi soldi.",
+    "title": "Hai bisogno di un cambio valuta? Compila queste informazioni."
+  },
+  "finishOrder": {
+    "immediately": "Subito",
+    "order": "ordine",
+    "orderRemarks": "Osservazioni sull'ordine:",
+    "orderSummaryIn": "Riepilogo dell'ordine in:",
+    "selectYourHourOfDelivery": "Seleziona la tua ora di consegna",
+    "title": "Conferma il tuo ordine e l'ora di consegna",
+    "total": "totale:",
+    "whereDoYouWantToReceiveIt": "Dove vuoi riceverlo"
+  },
+  "guestRequest": {
+    "hello": "Ciao",
+    "seeAllHotel": "VEDI TUTTI GLI HOTEL",
+    "whereDoYouNeedUs": "Dove hai bisogno di noi?"
+  },
+  "inmediateRequest": {
+    "area": "La zona",
+    "dateOfRequest": "Data della richiesta",
+    "employeeInCharge": "Dipendente incaricato",
+    "hourOfRequest": "Ora della richiesta",
+    "inmediateRequestMessage": "Richiesta immediata",
+    "needing": "Avendo bisogno",
+    "pleaseTellUsMore": "Per favore, dicci di più",
+    "requestModifiedSuccessfully": "Richiesta modificata con successo",
+    "requestStatus": "Richiedi stato",
+    "update": "Aggiornare"
+  },
+  "inputMessage": {
+    "cancel": "Annulla",
+    "save": "Salvare"
+  },
+  "lateCheckOut": {
+    "accepted": "Accettato",
+    "created": "Creato",
+    "notAccepted": "Non accettato",
+    "title": "Richieste di late check-out"
+  },
+  "login": {
+    "actionsSubmit": "accedere",
+    "didYouForgetYourPassword": "Hai dimenticato la tua password?",
+    "password": {
+      "label": "Parola d'ordine",
+      "messageError": "Abbiamo bisogno di una password per accedere"
+    },
+    "title": "Entra con il nome utente e la password che ti verranno forniti al momento del check-in in hotel",
+    "user": {
+      "label": "Utente",
+      "messageError": "Abbiamo bisogno di un indirizzo e-mail per accedere"
+    },
+    "weInviteYouToLogInOnThisDate": "Ti invitiamo ad accedere in questa data",
+    "youDoNotHavePermissionToAccess": "Non hai il permesso di accedere",
+    "yourDepartureDateWas": "La tua data di partenza era",
+    "yourEntryDateIs": "La tua data di ingresso è"
+  },
+  "maintenance": {
+    "close": "Fatto!",
+    "createRequest": "Crea richiesta",
+    "text": "La tua richiesta di manutenzione è stata ricevuta con successo.",
+    "title": "Conferma l'ora e il motivo della manutenzione della tua camera",
+    "whatDoYouNeedTheMaintenanceFor": "A cosa serve la manutenzione?",
+    "whenDoYouNeedTheMaintenance": "Quando hai bisogno della manutenzione?"
+  },
+  "modalBookingQualifyComponent": {
+    "qualify": "qualificarsi",
+    "thatDay": "quel giorno",
+    "title": "Come hai trovato il servizio fornito dal nostro team nella tua prenotazione in"
+  },
+  "modalConfirm": {
+    "cancelMessage": "Sei sicuro di voler cancellare questa prenotazione?",
+    "no": "No",
+    "yesDeleteIt": "Sì, cancellalo"
+  },
+  "modalOrdersQualifyComponent": {
+    "qualify": "qualificarsi",
+    "title": "Come hai pensato di ordinare le nostre bevande e i nostri pasti?"
+  },
+  "modalQualifyComponent": {
+    "bad": "cattivo",
+    "day": "Giorno",
+    "excellent": "eccellente",
+    "fair": "GIUSTO",
+    "good": "buono",
+    "on": "sopra",
+    "qualify": "qualificarsi",
+    "title": "Come hai trovato il servizio fornito dal nostro team nella tua richiesta",
+    "veryBad": "molto brutto"
+  },
+  "myInmediateRequests": {
+    "done": "Fatto",
+    "myInmediatePendingRequest": "La mia richiesta intermedia in sospeso",
+    "toDo": "fare",
+    "youHaveNoImmediateRequest": "Non hai una richiesta immediata"
+  },
+  "myReservations": {
+    "people": "persone",
+    "title": "Le mie prenotazioni",
+    "youHaveNoReservationRequest": "Non hai richiesta di prenotazione"
+  },
+  "myRoom": {
+    "close": "Fatto!",
+    "createRequest": "Crea richiesta",
+    "requestCleaning": "Richiedi la pulizia",
+    "requestMaintenance": "Richiedi manutenzione",
+    "roomKeys": "Chiavi della camera",
+    "roomService": "Servizio in camera",
+    "text": "La tua richiesta è stata ricevuta con successo.",
+    "whatDoYouNeed": "Di che cosa hai bisogno?",
+    "youAreAtYourRoom": "Sei nella tua stanza."
+  },
+  "order": {
+    "accomplished": "compiuto",
+    "inProcess": "In corso",
+    "makeANewOrder": "Fai un nuovo ordine",
+    "title": "I miei ordini"
+  },
+  "orderDetail": {
+    "comments": "Commenti:",
+    "delivery": "consegna",
+    "idOrder": "Ordine ID:",
+    "orderStatus": "Lo stato dell'ordine",
+    "total": "totale:"
+  },
+  "product": {
+    "enjoyIt": "Divertirsi",
+    "error": "Devi selezionare almeno un prodotto",
+    "gotIt": "Fatto!",
+    "next": "Il prossimo",
+    "orderReceivedMessage": "Il suo ordine è stato ricevuto. Il nostro staff ci sta lavorando proprio adesso.",
+    "title": "Scegli quello che vuoi ordinare",
+    "weWorkForYou": "Lavoriamo per te!"
+  },
+  "reception": {
+    "cashLoan": "Prestito in contanti",
+    "concierge": "Concierge",
+    "currencyExchange": "Cambio di valuta",
+    "title": "Sei alla reception. Di che cosa hai bisogno?",
+    "transportation": "Trasporti"
+  },
+  "reservation": {
+    "title": "Dove vuoi effettuare la tua prenotazione?"
+  },
+  "scoreLabel": {
+    "bad": "Cattivo 2/5",
+    "excellent": "Eccellente 5/5",
+    "fair": "Fiera 3/5",
+    "good": "Buono 4/5",
+    "veryBad": "1/5 pessimo"
+  },
+  "sidebar": {
+    "immediateRequest": "Richiesta immediata",
+    "lateCheckOut": "Late Check-out",
+    "logOut": "Disconnettersi",
+    "myImmediateRequests": "Le mie richieste immediate",
+    "myReservations": "Le mie prenotazioni",
+    "orders": "ordini",
+    "reservations": "prenotazioni",
+    "specialRequests": "RICHIESTE SPECIALI",
+    "wakeUpCall": "Sveglia"
+  },
+  "specialRequest": {
+    "errorCreatingRequest": "Errore durante la creazione della richiesta",
+    "immediateRequestSuccessfullyCreated": "Richiesta immediata creata con successo",
+    "message": "Parlaci della tua richiesta speciale durante il tuo detto, saremo felici di accontentarti",
+    "placeholder": "Scrivi le tue richieste ...",
+    "send": "inviare"
+  },
+  "transportation": {
+    "close": "Fatto!",
+    "createRequest": "Crea richiesta",
+    "date": "Data",
+    "departureTime": "orario di partenza",
+    "destination": "Destinazione",
+    "text": "Il tuo trasporto è stato richiesto, ti aspettiamo alla reception alla partenza",
+    "title": "Possiamo aiutarti con il trasporto dall'hotel, compila queste informazioni",
+    "whereAreYouGoing": "Dove stai andando?"
+  },
+  "wakeUp": {
+    "scheduleNewWakeUpCall": "Pianifica una nuova sveglia",
+    "title": "Le mie chiamate di sveglia",
+    "youDontHaveAnyoneWakeUpCalls": "Non hai nessuno Wake up Calls"
+  },
+  "zoneRequest": {
+    "createRequest": "Crea richiesta",
+    "immediateRequestSuccessfullyCreated": "Richiesta immediata creata con successo",
+    "thereIsAnImmediateRequestAt": "C'è una richiesta immediata a",
+    "waitingToBeAttended.": "in attesa di essere assistito.",
+    "whatDoYouNeed": "Di che cosa hai bisogno?",
+    "writeWhatYouNeed": "Scrivi quello che ti serve",
+    "youAreIn": "Sei dentro"
+  }
+}

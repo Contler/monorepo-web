@@ -1,0 +1,271 @@
+{
+  "auth": {
+    "userDisabled": "Das Konto ist nicht mehr aktiv",
+    "userNotFound": "Ungültige E-Mail oder Passwort"
+  },
+  "cashLoan": {
+    "cashAmount": "Bargeldbetrag (COP)",
+    "close": "Ich habs!",
+    "createRequest": "Anfrage erstellen",
+    "text": "Ihre Gelddarlehensanfrage wurde erfolgreich empfangen. Kommen Sie zur Rezeption, um Ihr Geld zu erhalten.",
+    "title": "Benötigen Sie einen Geldkredit? Füllen Sie diese Informationen aus."
+  },
+  "cleaning": {
+    "anyRecommendation": "Irgendeine Empfehlung",
+    "bathroomCleaning": "Badezimmerreinigung",
+    "changeOfBlankets": "Deckenwechsel",
+    "cleaningOfSheets": "Reinigung von Blättern",
+    "cleaningTime": "Reinigungszeit",
+    "close": "Ich habs!",
+    "createRequest": "Anfrage erstellen",
+    "generalRoomCleaning": "Allgemeine Raumreinigung",
+    "other": "andere",
+    "specificCleaning": "Spezifische Reinigung",
+    "text": "Ihre Zimmerreinigungsanfrage wurde erfolgreich empfangen.",
+    "title": "Wann sollen wir Ihr Zimmer reinigen?",
+    "towelChange": "Handtuchwechsel",
+    "what": "Was?"
+  },
+  "concierge": {
+    "close": "Ich habs!",
+    "createRequest": "Anfrage erstellen",
+    "dateForTheService": "Datum für den Service",
+    "text": "Ihre Concierge-Informationsanfrage war erfolgreich. Unsere Mitarbeiter werden sich in Kürze mit Ihnen in Verbindung setzen.",
+    "title": "Sagen Sie uns, zu welchem Touristenort Sie gehen möchten und wann Sie ihn besuchen möchten"
+  },
+  "confirmOrder": {
+    "next": "Nächster",
+    "title": "Bestätige deine Bestellung",
+    "total": "Gesamt:"
+  },
+  "createLate": {
+    "close": "Schließen",
+    "create": "Erstellen",
+    "departureTime": "Abfahrtszeit",
+    "message": "Ihre Anfrage zum späten Check-out wurde empfangen. Der zuständige Bereich wird dies überprüfen und Sie kontaktieren, um dies zu bestätigen."
+  },
+  "createReservation": {
+    "close.": "Schließen",
+    "createReservation": "RESERVIERUNG ERSTELLEN",
+    "date": "Datum",
+    "iCantMakeTheReservation": "Ich kann die Reservierung nicht vornehmen",
+    "noSpotsAvailable": "Keine Plätze verfügbar",
+    "people": "Menschen",
+    "reservationInBehalfOf": "Reservierung im Namen von",
+    "thereIsNoTimeSlotForTheSelectedDate.": "Für das ausgewählte Datum gibt es kein Zeitfenster.",
+    "timeSlot": "Zeitfenster",
+    "title": "Sie sind im Begriff, eine Reservierung vorzunehmen in:",
+    "yourReservationWasCreatedSuccessfully": "Ihre Reservierung wurde erfolgreich erstellt"
+  },
+  "createWake": {
+    "createGuest": "Gast erstellen",
+    "date": "Datum",
+    "guest": "Gast",
+    "hourOfTheCall": "Stunde des Anrufs",
+    "scheduleNewWakeUpCall": "Planen Sie einen neuen Weckruf",
+    "yourWakeUpCallWasSuccessfullyCreated": "Ihr Weckruf wurde erfolgreich erstellt"
+  },
+  "drinkRequest": {
+    "createRequest": "Anfrage erstellen",
+    "immediateRequestSuccessfullyCreated": "Sofortige Anfrage erfolgreich erstellt"
+  },
+  "exchange": {
+    "close": "Ich habs!",
+    "createRequest": "Anfrage erstellen",
+    "currencyToChange": "Währung zu ändern",
+    "message": "* Wenn Sie den Wechselkurswert bestätigen müssen, können Sie dies tun, indem Sie an die Rezeption kommen",
+    "quantityToChange": "Menge zu ändern",
+    "text": "Ihre Geldwechselanfrage wurde erfolgreich empfangen. Kommen Sie zur Rezeption, um Ihr Geld zu erhalten.",
+    "title": "Benötigen Sie einen Geldwechsel? Füllen Sie diese Informationen aus."
+  },
+  "finishOrder": {
+    "immediately": "Sofort",
+    "order": "Auftrag",
+    "orderRemarks": "Bestellhinweise:",
+    "orderSummaryIn": "Bestellübersicht in:",
+    "selectYourHourOfDelivery": "Wählen Sie Ihre Lieferzeit",
+    "title": "Bestätigen Sie Ihre Bestellung und Lieferzeit",
+    "total": "Gesamt:",
+    "whereDoYouWantToReceiveIt": "Wo möchten Sie es erhalten?"
+  },
+  "guestRequest": {
+    "hello": "Hallo",
+    "seeAllHotel": "SEHEN SIE ALLE HOTEL",
+    "whereDoYouNeedUs": "Wo brauchen Sie uns?"
+  },
+  "inmediateRequest": {
+    "area": "Bereich",
+    "dateOfRequest": "Datum der Anfrage",
+    "employeeInCharge": "Verantwortlicher Mitarbeiter",
+    "hourOfRequest": "Stunde der Anfrage",
+    "inmediateRequestMessage": "Sofortige Anfrage",
+    "needing": "Benötigen",
+    "pleaseTellUsMore": "Bitte erzählen Sie uns mehr",
+    "requestModifiedSuccessfully": "Anfrage erfolgreich geändert",
+    "requestStatus": "Anforderungsstatus",
+    "update": "Aktualisieren"
+  },
+  "inputMessage": {
+    "cancel": "Stornieren",
+    "save": "sparen"
+  },
+  "lateCheckOut": {
+    "accepted": "Akzeptiert",
+    "created": "Erstellt",
+    "notAccepted": "Nicht akzeptiert",
+    "title": "Späte Check-out-Anfragen"
+  },
+  "login": {
+    "actionsSubmit": "Eingeben",
+    "didYouForgetYourPassword": "Haben Sie Ihr Passwort vergessen?",
+    "password": {
+      "label": "Passwort",
+      "messageError": "Wir benötigen ein Passwort, um uns anzumelden"
+    },
+    "title": "Geben Sie den Benutzernamen und das Passwort ein, die Sie beim Einchecken im Hotel erhalten",
+    "user": {
+      "label": "Nutzer",
+      "messageError": "Wir benötigen eine E-Mail-Adresse, um uns anzumelden"
+    },
+    "weInviteYouToLogInOnThisDate": "Wir laden Sie ein, sich an diesem Datum anzumelden",
+    "youDoNotHavePermissionToAccess": "Du hast nicht die Erlaubnis einzutreten",
+    "yourDepartureDateWas": "Ihr Abreisedatum war",
+    "yourEntryDateIs": "Ihr Eintrittsdatum ist"
+  },
+  "maintenance": {
+    "close": "Ich habs!",
+    "createRequest": "Anfrage erstellen",
+    "text": "Ihre Wartungsanfrage wurde erfolgreich empfangen.",
+    "title": "Bestätigen Sie die Zeit und den Grund für die Wartung Ihres Zimmers",
+    "whatDoYouNeedTheMaintenanceFor": "Wofür benötigen Sie die Wartung?",
+    "whenDoYouNeedTheMaintenance": "Wann brauchen Sie die Wartung?"
+  },
+  "modalBookingQualifyComponent": {
+    "qualify": "qualifizieren",
+    "thatDay": "dieser Tag",
+    "title": "Wie haben Sie den Service gefunden, den unser Team bei Ihrer Reservierung in erbracht hat?"
+  },
+  "modalConfirm": {
+    "cancelMessage": "Sind Sie sicher, dass Sie diese Reservierung stornieren möchten?",
+    "no": "Nein",
+    "yesDeleteIt": "Ja, löschen Sie es"
+  },
+  "modalOrdersQualifyComponent": {
+    "qualify": "qualifizieren",
+    "title": "Wie haben Sie über die Bestellung unserer Getränke und Mahlzeiten nachgedacht?"
+  },
+  "modalQualifyComponent": {
+    "bad": "schlecht",
+    "day": "Tag",
+    "excellent": "ausgezeichnet",
+    "fair": "Messe",
+    "good": "gut",
+    "on": "auf",
+    "qualify": "qualifizieren",
+    "title": "Wie haben Sie den Service gefunden, den unser Team in Ihrer Anfrage erbracht hat?",
+    "veryBad": "sehr schlecht"
+  },
+  "myInmediateRequests": {
+    "done": "Erledigt",
+    "myInmediatePendingRequest": "Meine sofortige ausstehende Anfrage",
+    "toDo": "Machen",
+    "youHaveNoImmediateRequest": "Sie haben keine sofortige Anfrage"
+  },
+  "myReservations": {
+    "people": "Menschen",
+    "title": "Meine Reservierungen",
+    "youHaveNoReservationRequest": "Sie haben keine Reservierungsanfrage"
+  },
+  "myRoom": {
+    "close": "Ich habs!",
+    "createRequest": "Anfrage erstellen",
+    "requestCleaning": "Reinigung anfordern",
+    "requestMaintenance": "Wartung anfordern",
+    "roomKeys": "Zimmerschlüssel",
+    "roomService": "Zimmerservice",
+    "text": "Ihre Anfrage wurde erfolgreich empfangen.",
+    "whatDoYouNeed": "Was brauchst du?",
+    "youAreAtYourRoom": "Du bist in deinem Zimmer."
+  },
+  "order": {
+    "accomplished": "Vollbracht",
+    "inProcess": "In Bearbeitung",
+    "makeANewOrder": "Machen Sie eine neue Bestellung",
+    "title": "Meine Bestellungen"
+  },
+  "orderDetail": {
+    "comments": "Bemerkungen:",
+    "delivery": "Lieferung",
+    "idOrder": "ID-Reihenfolge:",
+    "orderStatus": "Bestellstatus",
+    "total": "Gesamt:"
+  },
+  "product": {
+    "enjoyIt": "Genieß es",
+    "error": "Sie müssen mindestens ein Produkt auswählen",
+    "gotIt": "Ich habs!",
+    "next": "Nächster",
+    "orderReceivedMessage": "Ihre Bestellung ist eingegangen. Unsere Mitarbeiter arbeiten gerade daran.",
+    "title": "Wählen Sie aus, was Sie bestellen möchten",
+    "weWorkForYou": "Wir arbeiten für Sie!"
+  },
+  "reception": {
+    "cashLoan": "Darlehen",
+    "concierge": "Portier",
+    "currencyExchange": "Geldwechsel",
+    "title": "Sie sind an der Rezeption. Was brauchst du?",
+    "transportation": "Transport"
+  },
+  "reservation": {
+    "title": "Wo möchten Sie reservieren?"
+  },
+  "scoreLabel": {
+    "bad": "Schlecht 2/5",
+    "excellent": "Ausgezeichnet 5/5",
+    "fair": "Messe 3/5",
+    "good": "Gut 4/5",
+    "veryBad": "Sehr schlecht 1/5"
+  },
+  "sidebar": {
+    "immediateRequest": "Sofortige Anfrage",
+    "lateCheckOut": "Später check out",
+    "logOut": "Ausloggen",
+    "myImmediateRequests": "Meine sofortigen Anfragen",
+    "myReservations": "Meine Reservierungen",
+    "orders": "Aufträge",
+    "reservations": "Reservierungen",
+    "specialRequests": "Spezialwünsche",
+    "wakeUpCall": "Weckruf"
+  },
+  "specialRequest": {
+    "errorCreatingRequest": "Fehler beim Erstellen der Anforderung",
+    "immediateRequestSuccessfullyCreated": "Sofortige Anfrage erfolgreich erstellt",
+    "message": "Erzählen Sie uns von Ihrer speziellen Anfrage während Ihres Spruchs, wir werden uns freuen, Ihnen zu gefallen",
+    "placeholder": "Schreiben Sie Ihre Anfragen ...",
+    "send": "Senden"
+  },
+  "transportation": {
+    "close": "Ich habs!",
+    "createRequest": "Anfrage erstellen",
+    "date": "Datum",
+    "departureTime": "Abfahrtszeit",
+    "destination": "Ziel",
+    "text": "Ihr Transport wurde angefordert, wir warten Sie zur Abfahrtszeit an der Rezeption",
+    "title": "Wir können Ihnen beim Transport vom Hotel helfen. Bitte füllen Sie diese Informationen aus",
+    "whereAreYouGoing": "Wohin gehst du?"
+  },
+  "wakeUp": {
+    "scheduleNewWakeUpCall": "Planen Sie einen neuen Weckruf",
+    "title": "Meine Weckrufe",
+    "youDontHaveAnyoneWakeUpCalls": "Sie haben niemanden Weckrufe"
+  },
+  "zoneRequest": {
+    "createRequest": "Anfrage erstellen",
+    "immediateRequestSuccessfullyCreated": "Sofortige Anfrage erfolgreich erstellt",
+    "thereIsAnImmediateRequestAt": "Es gibt eine sofortige Anfrage an",
+    "waitingToBeAttended.": "darauf warten, besucht zu werden.",
+    "whatDoYouNeed": "Was brauchst du?",
+    "writeWhatYouNeed": "Schreiben Sie, was Sie brauchen",
+    "youAreIn": "Sie sind in"
+  }
+}
