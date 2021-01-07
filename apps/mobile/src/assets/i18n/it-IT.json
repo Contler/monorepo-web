@@ -1,0 +1,184 @@
+{
+  "booking": {
+    "pending": "in attesa di",
+    "resolved": "risoluto"
+  },
+  "cardEmployees": {
+    "averageTime": "Tempo medio:",
+    "numberOfServices": "Numero di servizi:",
+    "qualification": "Qualificazione:"
+  },
+  "clean": {
+    "empty": "Nessuna richiesta",
+    "pending": "in attesa di",
+    "pendingTitle": "In attesa di richieste di pulizia",
+    "petitionUpdate": "Richiesta aggiornata",
+    "resultTitle": "Richieste di autorizzazione risolte"
+  },
+  "cleaning": {
+    "bathroomCleaning": "Pulizia del bagno",
+    "changeOfBlankets": "Cambio di coperte",
+    "cleaningOfSheets": "Pulizia delle lenzuola",
+    "generalRoomCleaning": "Pulizia generale della camera",
+    "other": "altro",
+    "towelChange": "Cambio asciugamani"
+  },
+  "global": {
+    "ACTIVE": "Attivo",
+    "CLOSE": "Vicino",
+    "COMPLETE": "Completare",
+    "ERROR_SERVER": "Spiacenti, si è verificato un errore sul server",
+    "GUEST": "ospite",
+    "NEED": "Bisogno",
+    "NO_RESULT": "Non ci sono risultati per questa ricerca",
+    "PENDING": "in attesa di",
+    "RESULT": "risoluto",
+    "ROOM": "Camera",
+    "SEARCH": "ricerca",
+    "STATE": "stato",
+    "TIME_REQUEST": "Richiedi tempo",
+    "UPDATE_BTN": "Aggiornare",
+    "ZONE": "Zona"
+  },
+  "immediateRequest": {
+    "active": "Attivo",
+    "empty": "Non hai richieste di ospiti immediati in sospeso",
+    "modal": {
+      "employer": "dipendente",
+      "need": "Bisogno",
+      "timeRequest": "Richiedi tempo",
+      "title": "Richiesta immediata"
+    },
+    "past": "passato",
+    "pending": "PISTE",
+    "result": "risoluto",
+    "resultError": "Questa richiesta è stata risolta",
+    "title": "Richieste immediate in sospeso",
+    "titleComplete": "Richieste immediate risolte",
+    "updateMsg": "Richiesta modificata con successo"
+  },
+  "login": {
+    "enterBtn": "accedere",
+    "forgot": "Hai dimenticato la tua password?",
+    "message": "Accedi con il nome utente e la password forniti dall'amministratore dell'hotel",
+    "notPermit": "Non hai i permessi per entrare",
+    "password": "Parola d'ordine",
+    "user": "Utente"
+  },
+  "maintain": {
+    "pendings": "In attesa",
+    "resolved": "risoluto"
+  },
+  "menu": {
+    "booking": "prenotazioni",
+    "clean": "pulizia",
+    "home": "Casa",
+    "immediateRequest": "Richieste immediate",
+    "lateCheckout": "Check-out posticipato",
+    "leader": "Leader di area",
+    "maintain": "Manutenzione",
+    "order": "ordini",
+    "reception": "Ricezione",
+    "specialRequest": "RICHIESTE SPECIALI",
+    "statistic": "statistica",
+    "wakeUp": "Sveglia le chiamate"
+  },
+  "modalConfirm": {
+    "message": "Confermi di voler cancellare questa prenotazione?",
+    "no": "No",
+    "yesDelete": "Sì, cancella"
+  },
+  "modalConfirmWake": {
+    "notDone": "non fatto",
+    "text": "Confermi di aver effettuato la chiamata all'ospite?",
+    "yesItWasDone": "Sì, è stato fatto"
+  },
+  "modalRequest": {
+    "dateRequest": "Data richiesta",
+    "need": "Bisogno",
+    "updateBtn": "Aggiornare"
+  },
+  "order": {
+    "pending": "in attesa di",
+    "resolved": "risoluto"
+  },
+  "orderComplete": {
+    "noOrders": "Nessun ordine",
+    "resolvedOrders": "Ordini risolti"
+  },
+  "orderDetail": {
+    "comments": "Commenti:",
+    "delivered": "consegnato",
+    "delivery": "consegna",
+    "employeeInCharge": "Dipendente incaricato",
+    "orderId": "ID ordine:",
+    "total": "totale:",
+    "update": "Aggiornare"
+  },
+  "orderPending": {
+    "noOrders": "Nessun ordine",
+    "pendingOrders": "Ordini in attesa"
+  },
+  "pendingBooking": {
+    "cancel": "Annulla",
+    "confirm": "Confermare",
+    "guest": "Ospite:",
+    "noReservations": "Senza riserve",
+    "pendingReservationRequests": "Richieste di prenotazione in sospeso",
+    "people": "persone"
+  },
+  "pendingMaintain": {
+    "close": "Vicino",
+    "message": "Richiesta aggiornata",
+    "noRequests": "Nessuna richiesta",
+    "title": "In attesa di richieste di manutenzione"
+  },
+  "pendingReception": {
+    "close": "Vicino",
+    "message": "Richiesta aggiornata",
+    "noRequests": "Nessuna richiesta",
+    "title": "Richieste di ricezione in attesa"
+  },
+  "readyBooking": {
+    "cancelled": "Annullato",
+    "confirmed": "Confermato",
+    "guest": "Ospite:",
+    "noReservations": "Senza riserve",
+    "people": "persone",
+    "resolvedReservationRequests": "Richieste di prenotazione risolte"
+  },
+  "readyMaintain": {
+    "noRequests": "Nessuna richiesta",
+    "title": "Richieste di manutenzione risolte"
+  },
+  "readyReception": {
+    "noRequests": "Nessuna richiesta",
+    "title": "Richieste di ricezione risolte"
+  },
+  "reception": {
+    "pendings": "In attesa",
+    "resolved": "risoluto"
+  },
+  "specialRequest": {
+    "activeTitle": "Richieste speciali attive",
+    "completeTitle": "Richieste speciali passate",
+    "dateEnd": "Data di partenza",
+    "dateInit": "Data di ammissione",
+    "empty": "Non hai richieste speciali da parte degli ospiti",
+    "title": "Richiesta speciale",
+    "updateSusses": "Richiesta modificata con successo"
+  },
+  "statistic": {
+    "ratingsPerEmployee": "Valutazioni per dipendente"
+  },
+  "wakeComplete": {
+    "wakeUpCallsResolved": "Chiamate sveglia risolte"
+  },
+  "wakePending": {
+    "wakeUpCallsPending": "Sveglia chiamate in sospeso"
+  },
+  "wakeUp": {
+    "pending": "in attesa di",
+    "resolved": "risoluto"
+  }
+}

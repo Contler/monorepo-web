@@ -1,0 +1,184 @@
+{
+  "booking": {
+    "pending": "Pendente",
+    "resolved": "resolvido"
+  },
+  "cardEmployees": {
+    "averageTime": "Tempo médio:",
+    "numberOfServices": "Número de serviços:",
+    "qualification": "Qualificação:"
+  },
+  "clean": {
+    "empty": "Sem pedidos",
+    "pending": "Pendente",
+    "pendingTitle": "Pedidos de limpeza pendentes",
+    "petitionUpdate": "Solicitação atualizada",
+    "resultTitle": "Pedidos de liberação resolvidos"
+  },
+  "cleaning": {
+    "bathroomCleaning": "Limpeza de banheiro",
+    "changeOfBlankets": "Mudança de cobertores",
+    "cleaningOfSheets": "Limpeza de lençóis",
+    "generalRoomCleaning": "Limpeza geral do quarto",
+    "other": "De outros",
+    "towelChange": "Troca de toalhas"
+  },
+  "global": {
+    "ACTIVE": "Ativo",
+    "CLOSE": "Perto",
+    "COMPLETE": "Completo",
+    "ERROR_SERVER": "Desculpe, ocorreu um erro no servidor",
+    "GUEST": "Convidado",
+    "NEED": "Precisar",
+    "NO_RESULT": "Não há resultados para esta pesquisa",
+    "PENDING": "Pendente",
+    "RESULT": "resolvido",
+    "ROOM": "sala",
+    "SEARCH": "Procurar",
+    "STATE": "Estado",
+    "TIME_REQUEST": "Tempo de solicitação",
+    "UPDATE_BTN": "Atualizar",
+    "ZONE": "Zona"
+  },
+  "immediateRequest": {
+    "active": "Ativo",
+    "empty": "Você não tem solicitações de convidados imediatas pendentes",
+    "modal": {
+      "employer": "Empregado",
+      "need": "Precisar",
+      "timeRequest": "Tempo de solicitação",
+      "title": "Pedido imediato"
+    },
+    "past": "Passado",
+    "pending": "SLOPES",
+    "result": "resolvido",
+    "resultError": "Este pedido foi resolvido",
+    "title": "Pedidos imediatos pendentes",
+    "titleComplete": "Solicitações imediatas resolvidas",
+    "updateMsg": "Pedido modificado com sucesso"
+  },
+  "login": {
+    "enterBtn": "Entrar",
+    "forgot": "Você esqueceu sua senha?",
+    "message": "Faça login com o nome de usuário e senha que o administrador do hotel fornecerá",
+    "notPermit": "Você não tem permissão para entrar",
+    "password": "Senha",
+    "user": "Do utilizador"
+  },
+  "maintain": {
+    "pendings": "Pendings",
+    "resolved": "resolvido"
+  },
+  "menu": {
+    "booking": "Reservas",
+    "clean": "limpeza",
+    "home": "Casa",
+    "immediateRequest": "Pedidos imediatos",
+    "lateCheckout": "Checkout tardio",
+    "leader": "Líder de área",
+    "maintain": "Manutenção",
+    "order": "Encomendas",
+    "reception": "recepção",
+    "specialRequest": "requerimentos especiais",
+    "statistic": "Estatisticas",
+    "wakeUp": "Chamadas de despertar"
+  },
+  "modalConfirm": {
+    "message": "Confirma que deseja cancelar esta reserva?",
+    "no": "Não",
+    "yesDelete": "Sim, apague"
+  },
+  "modalConfirmWake": {
+    "notDone": "Não realizado",
+    "text": "Confirma que fez a chamada para o convidado?",
+    "yesItWasDone": "Sim foi feito"
+  },
+  "modalRequest": {
+    "dateRequest": "Data do pedido",
+    "need": "Precisar",
+    "updateBtn": "Atualizar"
+  },
+  "order": {
+    "pending": "Pendente",
+    "resolved": "resolvido"
+  },
+  "orderComplete": {
+    "noOrders": "Sem pedidos",
+    "resolvedOrders": "Pedidos resolvidos"
+  },
+  "orderDetail": {
+    "comments": "Comentários:",
+    "delivered": "Entregue",
+    "delivery": "entrega",
+    "employeeInCharge": "Funcionário responsável",
+    "orderId": "ID do pedido:",
+    "total": "Total:",
+    "update": "Atualizar"
+  },
+  "orderPending": {
+    "noOrders": "Sem pedidos",
+    "pendingOrders": "Ordens pendentes"
+  },
+  "pendingBooking": {
+    "cancel": "Cancelar",
+    "confirm": "confirme",
+    "guest": "Convidado:",
+    "noReservations": "Sem reservas",
+    "pendingReservationRequests": "Pedidos de reserva pendentes",
+    "people": "pessoas"
+  },
+  "pendingMaintain": {
+    "close": "Perto",
+    "message": "Solicitação atualizada",
+    "noRequests": "Sem pedidos",
+    "title": "Pedidos de manutenção pendentes"
+  },
+  "pendingReception": {
+    "close": "Perto",
+    "message": "Solicitação atualizada",
+    "noRequests": "Sem pedidos",
+    "title": "Pedidos de recibo pendentes"
+  },
+  "readyBooking": {
+    "cancelled": "Cancelado",
+    "confirmed": "Confirmado",
+    "guest": "Convidado:",
+    "noReservations": "Sem reservas",
+    "people": "pessoas",
+    "resolvedReservationRequests": "Pedidos de reserva resolvidos"
+  },
+  "readyMaintain": {
+    "noRequests": "Sem pedidos",
+    "title": "Pedidos de manutenção resolvidos"
+  },
+  "readyReception": {
+    "noRequests": "Sem pedidos",
+    "title": "Pedidos de recepção resolvidos"
+  },
+  "reception": {
+    "pendings": "Pendings",
+    "resolved": "resolvido"
+  },
+  "specialRequest": {
+    "activeTitle": "Pedidos especiais ativos",
+    "completeTitle": "Pedidos especiais anteriores",
+    "dateEnd": "Data de partida",
+    "dateInit": "Data de admissão",
+    "empty": "Você não tem nenhum pedido especial de convidados",
+    "title": "Pedido especial",
+    "updateSusses": "Pedido modificado com sucesso"
+  },
+  "statistic": {
+    "ratingsPerEmployee": "Classificações por funcionário"
+  },
+  "wakeComplete": {
+    "wakeUpCallsResolved": "Chamadas de despertar resolvidas"
+  },
+  "wakePending": {
+    "wakeUpCallsPending": "Despertar chamadas pendentes"
+  },
+  "wakeUp": {
+    "pending": "Pendente",
+    "resolved": "resolvido"
+  }
+}

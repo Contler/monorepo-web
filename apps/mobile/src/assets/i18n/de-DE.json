@@ -1,0 +1,184 @@
+{
+  "booking": {
+    "pending": "steht aus",
+    "resolved": "Aufgelöst"
+  },
+  "cardEmployees": {
+    "averageTime": "Durchschnittliche Zeit:",
+    "numberOfServices": "Anzahl der Dienste:",
+    "qualification": "Qualifikation:"
+  },
+  "clean": {
+    "empty": "Keine Anfragen",
+    "pending": "steht aus",
+    "pendingTitle": "Ausstehende Reinigungsanfragen",
+    "petitionUpdate": "Aktualisierte Anfrage",
+    "resultTitle": "Freigabeanfragen gelöst"
+  },
+  "cleaning": {
+    "bathroomCleaning": "Badezimmerreinigung",
+    "changeOfBlankets": "Deckenwechsel",
+    "cleaningOfSheets": "Reinigung von Blättern",
+    "generalRoomCleaning": "Allgemeine Raumreinigung",
+    "other": "andere",
+    "towelChange": "Handtuchwechsel"
+  },
+  "global": {
+    "ACTIVE": "Aktiv",
+    "CLOSE": "Schließen",
+    "COMPLETE": "Komplett",
+    "ERROR_SERVER": "Entschuldigung, es ist ein Fehler auf dem Server aufgetreten",
+    "GUEST": "Gast",
+    "NEED": "brauchen",
+    "NO_RESULT": "Es gibt keine Ergebnisse für diese Suche",
+    "PENDING": "steht aus",
+    "RESULT": "Aufgelöst",
+    "ROOM": "Zimmer",
+    "SEARCH": "Suche",
+    "STATE": "Zustand",
+    "TIME_REQUEST": "Zeit anfordern",
+    "UPDATE_BTN": "Aktualisieren",
+    "ZONE": "Zone"
+  },
+  "immediateRequest": {
+    "active": "Aktiv",
+    "empty": "Sie haben keine unmittelbaren Gastanfragen ausstehend",
+    "modal": {
+      "employer": "Mitarbeiter",
+      "need": "brauchen",
+      "timeRequest": "Zeit anfordern",
+      "title": "Sofortige Anfrage"
+    },
+    "past": "BESTANDEN",
+    "pending": "Pisten",
+    "result": "Aufgelöst",
+    "resultError": "Diese Anfrage wurde gelöst",
+    "title": "Sofortige Anfragen ausstehend",
+    "titleComplete": "Sofortige Anfragen gelöst",
+    "updateMsg": "Anfrage erfolgreich geändert"
+  },
+  "login": {
+    "enterBtn": "Eingeben",
+    "forgot": "Haben Sie Ihr Passwort vergessen?",
+    "message": "Melden Sie sich mit dem vom Hoteladministrator angegebenen Benutzernamen und Passwort an",
+    "notPermit": "Sie haben nicht die Berechtigung zur Eingabe",
+    "password": "Passwort",
+    "user": "Nutzer"
+  },
+  "maintain": {
+    "pendings": "Anhänge",
+    "resolved": "Aufgelöst"
+  },
+  "menu": {
+    "booking": "Reservierungen",
+    "clean": "Reinigung",
+    "home": "Zuhause",
+    "immediateRequest": "Sofortige Anfragen",
+    "lateCheckout": "Später check out",
+    "leader": "Gebietsleiter",
+    "maintain": "Instandhaltung",
+    "order": "Aufträge",
+    "reception": "Rezeption",
+    "specialRequest": "Spezialwünsche",
+    "statistic": "Statistiken",
+    "wakeUp": "Aufweck-Anruf"
+  },
+  "modalConfirm": {
+    "message": "Bestätigen Sie, dass Sie diese Reservierung stornieren möchten?",
+    "no": "Nein",
+    "yesDelete": "Ja, löschen"
+  },
+  "modalConfirmWake": {
+    "notDone": "Nicht durchgeführt",
+    "text": "Bestätigen Sie, dass Sie den Gast angerufen haben?",
+    "yesItWasDone": "Ja, es wurde getan"
+  },
+  "modalRequest": {
+    "dateRequest": "Anforderungsdatum",
+    "need": "brauchen",
+    "updateBtn": "Aktualisieren"
+  },
+  "order": {
+    "pending": "steht aus",
+    "resolved": "Aufgelöst"
+  },
+  "orderComplete": {
+    "noOrders": "Keine Bestellungen",
+    "resolvedOrders": "Gelöste Bestellungen"
+  },
+  "orderDetail": {
+    "comments": "Bemerkungen:",
+    "delivered": "Geliefert",
+    "delivery": "Lieferung",
+    "employeeInCharge": "Verantwortlicher Mitarbeiter",
+    "orderId": "Auftragsnummer:",
+    "total": "Gesamt:",
+    "update": "Aktualisieren"
+  },
+  "orderPending": {
+    "noOrders": "Keine Bestellungen",
+    "pendingOrders": "Ausstehende Bestellungen"
+  },
+  "pendingBooking": {
+    "cancel": "Stornieren",
+    "confirm": "Bestätigen",
+    "guest": "Gast:",
+    "noReservations": "Keine Reservierungen",
+    "pendingReservationRequests": "Ausstehende Reservierungsanfragen",
+    "people": "Menschen"
+  },
+  "pendingMaintain": {
+    "close": "Schließen",
+    "message": "Aktualisierte Anfrage",
+    "noRequests": "Keine Anfragen",
+    "title": "Ausstehende Wartungsanfragen"
+  },
+  "pendingReception": {
+    "close": "Schließen",
+    "message": "Aktualisierte Anfrage",
+    "noRequests": "Keine Anfragen",
+    "title": "Ausstehende Quittungsanfragen"
+  },
+  "readyBooking": {
+    "cancelled": "Abgebrochen",
+    "confirmed": "Bestätigt",
+    "guest": "Gast:",
+    "noReservations": "Keine Reservierungen",
+    "people": "Menschen",
+    "resolvedReservationRequests": "Behobene Reservierungsanfragen"
+  },
+  "readyMaintain": {
+    "noRequests": "Keine Anfragen",
+    "title": "Wartungsanfragen gelöst"
+  },
+  "readyReception": {
+    "noRequests": "Keine Anfragen",
+    "title": "Empfangsanfragen gelöst"
+  },
+  "reception": {
+    "pendings": "Anhänge",
+    "resolved": "Aufgelöst"
+  },
+  "specialRequest": {
+    "activeTitle": "Aktive Sonderwünsche",
+    "completeTitle": "Frühere Sonderwünsche",
+    "dateEnd": "Abreisedatum",
+    "dateInit": "Aufnahmedatum",
+    "empty": "Sie haben keine besonderen Wünsche von Gästen",
+    "title": "Besondere Bitte",
+    "updateSusses": "Anfrage erfolgreich geändert"
+  },
+  "statistic": {
+    "ratingsPerEmployee": "Bewertungen pro Mitarbeiter"
+  },
+  "wakeComplete": {
+    "wakeUpCallsResolved": "Weckrufe gelöst"
+  },
+  "wakePending": {
+    "wakeUpCallsPending": "Weckrufe ausstehend"
+  },
+  "wakeUp": {
+    "pending": "steht aus",
+    "resolved": "Aufgelöst"
+  }
+}

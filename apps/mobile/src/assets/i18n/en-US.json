@@ -3,6 +3,11 @@
     "pending": "PENDING",
     "resolved": "RESOLVED"
   },
+  "cardEmployees": {
+    "averageTime": "Average time:",
+    "numberOfServices": "Number of Services:",
+    "qualification": "Qualification:"
+  },
   "clean": {
     "empty": "No requests",
     "pending": "PENDING",
@@ -60,6 +65,10 @@
     "password": "Password",
     "user": "User"
   },
+  "maintain": {
+    "pendings": "PENDINGS",
+    "resolved": "RESOLVED"
+  },
   "menu": {
     "booking": "Reservations",
     "clean": "Cleaning",
@@ -78,6 +87,11 @@
     "message": "Do you confirm that you want to cancel this reservation?",
     "no": "NO",
     "yesDelete": "Yes, Delete"
+  },
+  "modalConfirmWake": {
+    "notDone": "Not done",
+    "text": "Do you confirm that you have made the call to the guest?",
+    "yesItWasDone": "Yes it was done"
   },
   "modalRequest": {
     "dateRequest": "Request Date",
@@ -113,6 +127,18 @@
     "pendingReservationRequests": "Pending reservation requests",
     "people": "people"
   },
+  "pendingMaintain": {
+    "close": "close",
+    "message": "Updated request",
+    "noRequests": "No requests",
+    "title": "Pending maintenance requests"
+  },
+  "pendingReception": {
+    "close": "close",
+    "message": "Updated request",
+    "noRequests": "No requests",
+    "title": "Pending receipt requests"
+  },
   "readyBooking": {
     "cancelled": "Cancelled",
     "confirmed": "Confirmed",
@@ -121,6 +147,18 @@
     "people": "people",
     "resolvedReservationRequests": "Resolved reservation requests"
   },
+  "readyMaintain": {
+    "noRequests": "No requests",
+    "title": "Maintenance requests resolved"
+  },
+  "readyReception": {
+    "noRequests": "No requests",
+    "title": "Reception requests resolved"
+  },
+  "reception": {
+    "pendings": "PENDINGS",
+    "resolved": "RESOLVED"
+  },
   "specialRequest": {
     "activeTitle": "Active special requests",
     "completeTitle": "Past special requests",
@@ -128,16 +166,10 @@
     "dateInit": "Admission Date",
     "empty": "You don't have any special requests from guests",
     "title": "Special request",
-    "updateSuccess": "Request modified successfully"
+    "updateSusses": "Request modified successfully"
   },
-  "wakeUp": {
-    "pending": "Pending",
-    "resolved": "Resolved"
-  },
-  "modalConfirmWake": {
-    "text": "Do you confirm that you have made the call to the guest?",
-    "notDone": "Not done",
-    "yesItWasDone": "Yes it was done"
+  "statistic": {
+    "ratingsPerEmployee": "Ratings per employee"
   },
   "wakeComplete": {
     "wakeUpCallsResolved": "Wake up calls resolved"
@@ -145,40 +177,8 @@
   "wakePending": {
     "wakeUpCallsPending": "Wake up calls pending"
   },
-  "statistic": {
-    "ratingsPerEmployee": "Ratings per employee"
-  },
-  "cardEmployees": {
-    "averageTime": "Average time:",
-    "numberOfServices": "Number of Services:",
-    "qualification": "Qualification:"
-  },
-  "maintain": {
-    "pendings": "PENDINGS",
-    "resolved": "RESOLVED"
-  },
-  "pendingMaintain": {
-    "title": "Pending maintenance requests",
-    "noRequests": "No requests",
-    "message": "Updated request",
-    "close": "close"
-  },
-  "reception": {
-    "pendings": "PENDINGS",
-    "resolved": "RESOLVED"
-  },
-  "pendingReception": {
-    "title": "Pending receipt requests",
-    "noRequests": "No requests",
-    "message": "Updated request",
-    "close": "close"
-  },
-  "readyReception": {
-    "title": "Reception requests resolved",
-    "noRequests": "No requests"
-  },
-  "readyMaintain": {
-    "title": "Maintenance requests resolved",
-    "noRequests": "No requests"
+  "wakeUp": {
+    "pending": "Pending",
+    "resolved": "Resolved"
   }
 }

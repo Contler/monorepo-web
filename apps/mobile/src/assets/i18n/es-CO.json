@@ -3,6 +3,11 @@
     "pending": "PENDIENTE",
     "resolved": "RESUELTO"
   },
+  "cardEmployees": {
+    "averageTime": "Tiempo promedio:",
+    "numberOfServices": "Numero de servicios:",
+    "qualification": "Calificación:"
+  },
   "clean": {
     "empty": "No hay solicitudes",
     "pending": "PENDIENTE",
@@ -60,6 +65,10 @@
     "password": "Contraseña",
     "user": "Usuario"
   },
+  "maintain": {
+    "pendings": "PENDIENTES",
+    "resolved": "RESUELTOS"
+  },
   "menu": {
     "booking": "Reservas",
     "clean": "Limpieza",
@@ -78,6 +87,11 @@
     "message": "¿Confirmas que quieres cancelar esta reserva?",
     "no": "NO",
     "yesDelete": "Sí, eliminar"
+  },
+  "modalConfirmWake": {
+    "notDone": "No se ha hecho",
+    "text": "¿Confirmas que has realizado la llamada al huésped?",
+    "yesItWasDone": "Sí ya se hizo"
   },
   "modalRequest": {
     "dateRequest": "Fecha de solicitud",
@@ -113,6 +127,18 @@
     "pendingReservationRequests": "Solicitudes de reserva pendientes",
     "people": "personas"
   },
+  "pendingMaintain": {
+    "close": "cerrar",
+    "message": "Petición actualizada",
+    "noRequests": "No hay solicitudes",
+    "title": "Solicitudes de mantenimiento pendientes"
+  },
+  "pendingReception": {
+    "close": "cerrar",
+    "message": "Petición actualizada",
+    "noRequests": "No hay solicitudes",
+    "title": "Solicitudes de recepción pendientes"
+  },
   "readyBooking": {
     "cancelled": "Cancelado",
     "confirmed": "Confirmado",
@@ -121,6 +147,18 @@
     "people": "personas",
     "resolvedReservationRequests": "Solicitudes de reserva resueltas"
   },
+  "readyMaintain": {
+    "noRequests": "No hay solicitudes",
+    "title": "Solicitudes de mantenimiento resueltas"
+  },
+  "readyReception": {
+    "noRequests": "No hay solicitudes",
+    "title": "Solicitudes de recepción resueltas"
+  },
+  "reception": {
+    "pendings": "PENDIENTES",
+    "resolved": "RESUELTOS"
+  },
   "specialRequest": {
     "activeTitle": "Solicitudes especiales activas",
     "completeTitle": "Solicitudes especiales pasadas",
@@ -128,16 +166,10 @@
     "dateInit": "Fecha ingreso",
     "empty": "No tienes ninguna solicitud especial de los huéspedes",
     "title": "Solicitud especial",
-    "updateSuccess": "Solicitud modificada exitosamente"
+    "updateSusses": "Solicitud modificada exitosamente"
   },
-  "wakeUp": {
-    "pending": "Pendiente",
-    "resolved": "Resuelto"
-  },
-  "modalConfirmWake": {
-    "text": "¿Confirmas que has realizado la llamada al huésped?",
-    "notDone": "No se ha hecho",
-    "yesItWasDone": "Sí ya se hizo"
+  "statistic": {
+    "ratingsPerEmployee": "Calificaciones por empleado"
   },
   "wakeComplete": {
     "wakeUpCallsResolved": "Llamdas de Wake up resueltas"
@@ -145,40 +177,8 @@
   "wakePending": {
     "wakeUpCallsPending": "Llamdas de Wake up pendientes"
   },
-  "statistic": {
-    "ratingsPerEmployee": "Calificaciones por empleado"
-  },
-  "cardEmployees": {
-    "averageTime": "Tiempo promedio:",
-    "numberOfServices": "Numero de servicios:",
-    "qualification": "Calificación:"
-  },
-  "maintain": {
-    "pendings": "PENDIENTES",
-    "resolved": "RESUELTOS"
-  },
-  "pendingMaintain": {
-    "title": "Solicitudes de mantenimiento pendientes",
-    "noRequests": "No hay solicitudes",
-    "message": "Petición actualizada",
-    "close": "cerrar"
-  },
-  "readyMaintain": {
-    "title": "Solicitudes de mantenimiento resueltas",
-    "noRequests": "No hay solicitudes"
-  },
-  "reception": {
-    "pendings": "PENDIENTES",
-    "resolved": "RESUELTOS"
-  },
-  "pendingReception": {
-    "title": "Solicitudes de recepción pendientes",
-    "noRequests": "No hay solicitudes",
-    "message": "Petición actualizada",
-    "close": "cerrar"
-  },
-  "readyReception": {
-    "title": "Solicitudes de recepción resueltas",
-    "noRequests": "No hay solicitudes"
+  "wakeUp": {
+    "pending": "Pendiente",
+    "resolved": "Resuelto"
   }
 }
