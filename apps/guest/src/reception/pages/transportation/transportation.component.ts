@@ -34,9 +34,16 @@ export class TransportationComponent {
     private datePipe: DatePipe,
     private translate: TranslateService,
   ) {
+    const timeActual = new Date();
+    timeActual.setMinutes(0);
+    timeActual.setSeconds(0);
+    timeActual.setMilliseconds(0);
+
+    const selectValue = this.hoursOptions.find((d) => d.getTime() === timeActual.getTime());
+
     this.transportForm = formBuild.group({
       date: ['', Validators.required],
-      departure: ['', Validators.required],
+      departure: [selectValue, Validators.required],
       destination: ['', Validators.required],
     });
   }
@@ -78,7 +85,7 @@ export class TransportationComponent {
             createAt: new Date(),
             guest: uid,
             type: 'Transport',
-            comment: `${temp} - ${this.datePipe.transform(date, 'longDate')}`,
+            comment: `${temp} - ${this.datePipe.transform(date, 'medium')}`,
           };
           return req;
         }),

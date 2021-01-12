@@ -74,7 +74,7 @@ export class ZoneRequestComponent implements OnDestroy {
 
   async saveRequest() {
     this.loader = true;
-    const msg = this.selectedSubcategory || this.requestController.value;
+    const msg = this.requestController.value || this.selectedSubcategory;
     const chiefTokens: string[] = this.zone!.leaders.filter((leader) => !!leader.pushToken).map(
       (leader) => leader.pushToken,
     );
