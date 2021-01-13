@@ -3,7 +3,12 @@
     <span class="item__text-name"> {{ guest.name }} {{ guest.lastName }} </span>
     <span class="small"> {{ reception.type }} </span>
     <span class="small"> {{ reception.createAt | date: 'dd/MM/yyyy' }} </span>
+    <span class="small"> {{ reception.comment | ctrTranslate }} </span>
   </div>
-  <div class="small">{{ reception.createAt | date: 'shortTime' }}</div>
+  <div class="small">
+    {{ reception.createAt | date: 'shortTime' }}
+    <p class="time">{{ reception.room?.name | ctrTranslate }}</p>
+  </div>
+
   <mat-icon *ngIf="isReady">keyboard_arrow_right</mat-icon>
 </div>
