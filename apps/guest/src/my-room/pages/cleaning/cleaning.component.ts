@@ -69,6 +69,7 @@ export class CleaningComponent {
             comment: comm,
             createAt: new Date(),
             active: true,
+            room: guest.room,
           };
           return req;
         }),
