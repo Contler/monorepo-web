@@ -213,6 +213,7 @@
     "cashLoan": "Prestito in contanti",
     "concierge": "Concierge",
     "currencyExchange": "Cambio di valuta",
+    "name": "Ricezione",
     "title": "Sei alla reception. Di che cosa hai bisogno?",
     "transportation": "Trasporti"
   },
@@ -260,8 +261,30 @@
     "youDontHaveAnyoneWakeUpCalls": "Non hai nessuno Wake up Calls"
   },
   "zoneRequest": {
+    "categories": {
+      "callHotel": "Chiama il personale dell'hotel",
+      "checkOut": "Richiedi late check-out",
+      "clean": "Richiedi la pulizia della camera",
+      "drink": "Un drink",
+      "food": "Preordina il cibo",
+      "maintain": "Richiedi manutenzione",
+      "other": "altro",
+      "requestClean": "Richiedi la pulizia",
+      "roomKeys": "Chiavi della camera",
+      "roomService": "Servizio in camera",
+      "spaceReserve": "Prenota uno spazio",
+      "specialRequest": "RICHIESTE SPECIALI",
+      "towels": "Asciugamani",
+      "waiter": "Cameriere",
+      "wakeUp": "Programma sveglia telefonica"
+    },
     "createRequest": "Crea richiesta",
+    "foodAreas": "Aree alimentari",
+    "humidAreas": "ZONE UMIDE",
     "immediateRequestSuccessfullyCreated": "Richiesta immediata creata con successo",
+    "myRoom": "LA MIA STANZA",
+    "outsideHotel": "FUORI DALL'HOTEL",
+    "socialArea": "AREE SOCIALI",
     "thereIsAnImmediateRequestAt": "C'è una richiesta immediata a",
     "waitingToBeAttended.": "in attesa di essere assistito.",
     "whatDoYouNeed": "Di che cosa hai bisogno?",

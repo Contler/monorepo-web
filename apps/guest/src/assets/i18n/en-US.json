@@ -213,6 +213,7 @@
     "cashLoan": "Cash loan",
     "concierge": "Concierge",
     "currencyExchange": "Currency exchange",
+    "name": "Reception",
     "title": "You are in the reception. What do you need?",
     "transportation": "Transportation"
   },
@@ -260,8 +261,30 @@
     "youDontHaveAnyoneWakeUpCalls": "You don't have anyone Wake up Calls"
   },
   "zoneRequest": {
+    "categories": {
+      "callHotel": "Call the hotel staff",
+      "checkOut": "Request late check-out",
+      "clean": "Request room cleaning",
+      "drink": "A drink",
+      "food": "Pre-order food",
+      "maintain": "Request maintenance",
+      "other": "Other",
+      "requestClean": "Request cleaning",
+      "roomKeys": "Room keys",
+      "roomService": "Room Service",
+      "spaceReserve": "Reserve a space",
+      "specialRequest": "Special requests",
+      "towels": "Towels",
+      "waiter": "Waiter",
+      "wakeUp": "Program wake up call"
+    },
     "createRequest": "CREATE REQUEST",
+    "foodAreas": "FOOD AREAS",
+    "humidAreas": "Wet areas",
     "immediateRequestSuccessfullyCreated": "Immediate request successfully created",
+    "myRoom": "MY ROOM",
+    "outsideHotel": "OUTSIDE THE HOTEL",
+    "socialArea": "SOCIAL AREAS",
     "thereIsAnImmediateRequestAt": "There is an immediate request at",
     "waitingToBeAttended.": "waiting to be attended.",
     "whatDoYouNeed": "What do you need?",
