@@ -1,4 +1,23 @@
 {
+  "zoneRequest": {
+    "categories": {
+      "callHotel": "Rufen Sie das Hotelpersonal an",
+      "checkOut": "Bitte um späten Check-out",
+      "clean": "Zimmerreinigung anfordern",
+      "drink": "Ein Drink",
+      "food": "Essen vorbestellen",
+      "maintain": "Wartung anfordern",
+      "other": "andere",
+      "requestClean": "Reinigung anfordern",
+      "roomKeys": "Zimmerschlüssel",
+      "roomService": "Zimmerservice",
+      "spaceReserve": "Reservieren Sie einen Platz",
+      "specialRequest": "Spezialwünsche",
+      "towels": "Handtücher",
+      "waiter": "Bedienung",
+      "wakeUp": "Programm Weckruf"
+    }
+  },
   "booking": {
     "pending": "steht aus",
     "resolved": "Aufgelöst"

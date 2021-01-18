@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { OrderEntity, ProductOrderEntity } from '@contler/entity';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-order-item',
@@ -11,7 +12,7 @@ export class OrderItemComponent implements OnChanges {
   total = 0;
   textProducts = '';
 
-  constructor() {}
+  constructor(private translate: TranslateService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.order && this.order) {
@@ -27,6 +28,11 @@ export class OrderItemComponent implements OnChanges {
   }
 
   convertProductToString(products: ProductOrderEntity[]) {
-    return products.map(product => product.product.name).join(', ');
+    return products
+      .map((product) => {
+        const name = this.translate.instant(product.product.name);
+        return name;
+      })
+      .join(', ');
   }
 }

@@ -1,4 +1,4 @@
-export const SUB_CATEGORY_DRINKS = 'Bebidas';
+export const SUB_CATEGORY_DRINKS = 'zoneRequest.categories.drink';
 export const ROOM_SERVICE = 'Room Service';
 export const CATEGORY_ZONE_EN = {
   1: { id: 1, name: 'zoneRequest.socialArea' },

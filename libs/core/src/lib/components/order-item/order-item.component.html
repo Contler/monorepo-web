@@ -1,6 +1,8 @@
 <div>
   <p class="order__title">{{ total | currency: 'COP':'$':'1.0-0' }}</p>
-  <p class="order__text">{{ textProducts }}</p>
+  <p class="order__text">
+    <span *ngFor="let prod of order.productsOrder">{{ prod.product.name | ctrTranslate }} </span>
+  </p>
 </div>
 
 <div style="text-align: right">

@@ -1,4 +1,4 @@
-import { RoomEntity } from '@contler/entity/room.entity';
+import { RoomEntity } from '../entity';
 import * as firebase from 'firebase';
 import FirestoreDataConverter = firebase.firestore.FirestoreDataConverter;
 

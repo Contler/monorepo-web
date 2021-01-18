@@ -3,7 +3,7 @@
     <span class="item__text-name"> {{ guest.name }} {{ guest.lastName }} </span>
     <span class="small"> {{ reception.type }} </span>
     <span class="small"> {{ reception.createAt | date: 'dd/MM/yyyy' }} </span>
-    <span class="small"> {{ reception.comment | ctrTranslate }} </span>
+    <span class="small"> {{ reception.comment | ctrTranslate | translate }} </span>
   </div>
   <div class="small">
     {{ reception.createAt | date: 'shortTime' }}

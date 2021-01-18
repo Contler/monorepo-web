@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { GuestService } from 'guest/services/guest.service';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, take, tap } from 'rxjs/operators';
 import { RequestRequest } from '@contler/models/request-request';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'guest/environments/environment';
-import { RequestEntity } from '@contler/entity';
+import { RequestEntity, ZoneEntity } from '@contler/entity';
 import { ZoneService } from 'guest/services/zone.service';
 import { combineLatest } from 'rxjs';
 import { NotificationsService } from 'guest/services/notifications.service';
@@ -25,7 +25,37 @@ export class RequestService {
     private ntfService: NotificationsService,
     private dynamicService: DynamicService,
     private translate: TranslateService,
+    private notificationsService: NotificationsService,
   ) {}
+
+  newRequest(zone: ZoneEntity, msg: string) {
+    const chiefTokens = zone.leaders.filter((leader) => !!leader.pushToken).map((leader) => leader.pushToken);
+    return this.guestService.$guest.pipe(
+      take(1),
+      map((guest) => {
+        const request = new RequestRequest();
+        request.hotel = guest!.hotel;
+        request.guest = guest!;
+        request.room = guest!.room;
+        request.zone = zone!;
+        request.special = false;
+        request.message = msg;
+        return request;
+      }),
+      switchMap((request) => this.saveRequest(request)),
+      switchMap(() => this.translate.getTranslation('en-US')),
+      switchMap((dic) => {
+        const waiting = dic['zoneRequest']['waitingToBeAttended'];
+        const immediateRequest = dic['zoneRequest']['thereIsAnImmediateRequestAt'];
+        const zoneName = this.dynamicService.getInstantWithLan('en-US', zone.name);
+
+        return this.notificationsService.sendNotification(
+          `${immediateRequest} ${zoneName} ${waiting}`,
+          chiefTokens,
+        );
+      }),
+    );
+  }
 
   createRequest(zoneId: string, msg: string, isSpecial = false) {
     const zone$ = this.zoneService.$zones.pipe(map((zones) => zones.find((zone) => zone.uid === zoneId)));

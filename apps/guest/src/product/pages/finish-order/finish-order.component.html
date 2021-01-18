@@ -10,7 +10,7 @@
       </p>
       <div class="finish-order__list-products">
         <ng-template ngFor let-item [ngForOf]="products$ | async">
-          <p class="finish-order__list-text">{{ item.product.name }}</p>
+          <p class="finish-order__list-text">{{ item.product.name | ctrTranslate }}</p>
           <p class="finish-order__list-text">
             {{ item.quantity * item.product.value | currency: 'COP':'$':'1.0-0' }}
           </p>

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CommonComponentsModule } from '../../../common-components/common-components.module';
 import { MaterialModule } from '../../../material/material.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
     PendingRoutingModule,
     MaterialModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
   declarations: [PendingComponent],
 })

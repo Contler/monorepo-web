@@ -8,6 +8,7 @@ import { CommonComponentsModule } from '../../../common-components/common-compon
 import { PipesModule } from '../../../pipes/pipes.module';
 import { MaterialModule } from '../../../material/material.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { TranslateModule } from '@ngx-translate/core';
     PipesModule,
     MaterialModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
   declarations: [ReadyBookingComponent],
 })

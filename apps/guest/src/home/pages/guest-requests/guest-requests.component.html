@@ -15,7 +15,7 @@
     <a
       class="request__zone striped"
       *ngFor="let zone of showedZones"
-      [routerLink]="zone.category?.id === 3 ? '/home/my-room' : '/home/zone-request/' + zone.uid"
+      [routerLink]="zone.category?.id === 3 ? '/home/my-room/' + zone.uid : '/home/zone-request/' + zone.uid"
     >
       <contler-icon class="request__zone-icon" [key]="zone.icon"></contler-icon>
       <p class="request__zone-text" contlerColorHotel>{{ zone.name | ctrTranslate | uppercase }}</p>

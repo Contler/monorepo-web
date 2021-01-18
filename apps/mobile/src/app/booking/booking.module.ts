@@ -11,6 +11,7 @@ import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.
 import { PipesModule } from '../pipes/pipes.module';
 import { CommonComponentsModule } from '../common-components/common-components.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 const routes: Routes = [{ path: '', component: BookingComponent }];
 
@@ -26,6 +27,7 @@ const routes: Routes = [{ path: '', component: BookingComponent }];
     PipesModule,
     CommonComponentsModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
   entryComponents: [ModalConfirmComponent],
 })

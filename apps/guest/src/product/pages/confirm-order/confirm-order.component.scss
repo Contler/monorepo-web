@@ -2,6 +2,8 @@
 @import 'styles/material';
 
 .confirm {
+  padding-bottom: 127px;
+
   &-total {
     font-family: $family;
     font-size: 20.2px;
@@ -19,6 +21,7 @@
     left: 0;
     width: 100%;
     padding: 0 30px 30px;
+    background: white;
   }
 }
 

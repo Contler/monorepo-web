@@ -5,12 +5,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'guest/services/zone.service';
-import { map, switchMap, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { SUB_CATEGORY } from '@contler/const';
 import { NotificationsService } from 'guest/services/notifications.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
-import { RequestRequest } from '@contler/models/request-request';
 import { RequestService } from 'guest/services/request.service';
 import { CATEGORY_ZONE_EN, ROOM_SERVICE, SUB_CATEGORY_DRINKS } from './const/zone-const';
 import { TranslateService } from '@ngx-translate/core';
@@ -50,7 +49,6 @@ export class ZoneRequestComponent implements OnDestroy {
     private messagesService: MessagesService,
     private router: Router,
     private translate: TranslateService,
-    private dynamicService: DynamicService,
   ) {
     this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
     this.zoneUid = this.route.snapshot.paramMap.get('id');
@@ -75,59 +73,30 @@ export class ZoneRequestComponent implements OnDestroy {
   async saveRequest() {
     this.loader = true;
     const msg = this.requestController.value || this.selectedSubcategory;
-    const chiefTokens: string[] = this.zone!.leaders.filter((leader) => !!leader.pushToken).map(
-      (leader) => leader.pushToken,
+    this.requestService.newRequest(this.zone, msg).subscribe(
+      () => {
+        this.loader = false;
+        this.requestController.reset();
+        this.router.navigate(['/home']);
+        this.messagesService.showToastMessage(
+          this.translate.instant('zoneRequest.immediateRequestSuccessfullyCreated'),
+        );
+      },
+      () => {
+        this.loader = false;
+        this.messagesService.showServerError();
+      },
     );
-    this.guestService.$guest
-      .pipe(
-        take(1),
-        map((guest) => {
-          const request = new RequestRequest();
-          request.hotel = guest!.hotel;
-          request.guest = guest!;
-          request.room = guest!.room;
-          request.zone = this.zone!;
-          request.special = false;
-          request.message = msg;
-          return request;
-        }),
-        switchMap((request) => this.requestService.saveRequest(request)),
-        switchMap(() => this.translate.getTranslation('en-US')),
-        switchMap((dic) => {
-          const waiting = dic['zoneRequest']['waitingToBeAttended'];
-          const immediateRequest = dic['zoneRequest']['thereIsAnImmediateRequestAt'];
-          const zoneName = this.dynamicService.getInstantWithLan('en-US', this.zone.name);
-
-          return this.notificationsService.sendNotification(
-            `${immediateRequest} ${zoneName} ${waiting}`,
-            chiefTokens,
-          );
-        }),
-      )
-      .subscribe(
-        () => {
-          this.loader = false;
-          this.requestController.reset();
-          this.router.navigate(['/home']);
-          this.messagesService.showToastMessage(
-            this.translate.instant('zoneRequest.immediateRequestSuccessfullyCreated'),
-          );
-        },
-        () => {
-          this.loader = false;
-          this.messagesService.showServerError();
-        },
-      );
   }
 
   setQuickRequest(value: string) {
     this.selectedSubcategory = value;
-    if (value === SUB_CATEGORY_DRINKS || value === ROOM_SERVICE || value === 'A drink') {
+    if (value === SUB_CATEGORY_DRINKS || value === ROOM_SERVICE || value === 'zoneRequest.categories.drink') {
       this.router.navigate(['/home/product/create']);
-    } else if (value === 'Reserve a space') {
+    } else if (value === 'zoneRequest.categories.spaceReserve') {
       this.router.navigate(['/home/reservation']);
     } else {
-      this.showRequestField = value === 'Other';
+      this.showRequestField = value === 'zoneRequest.categories.other';
     }
   }
 
