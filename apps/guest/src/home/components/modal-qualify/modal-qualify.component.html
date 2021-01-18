@@ -1,7 +1,7 @@
 <div class="cnt-qualify" *ngIf="data">
   <img src="assets/img/rating.svg" alt="" class="cnt-qualify__img" />
   <p class="cnt-qualify__title">
-    {{ 'modalQualifyComponent.title' | translate }} {{ data.message }}
+    {{ 'modalQualifyComponent.title' | translate }} {{ data.message | translate }}
     {{ 'modalQualifyComponent.on' | translate }} {{ data.zone.name | ctrTranslate }}
     {{ 'modalQualifyComponent.day' | translate }} {{ data.createAt | date: 'dd/MM/yyyy' }}?
   </p>
