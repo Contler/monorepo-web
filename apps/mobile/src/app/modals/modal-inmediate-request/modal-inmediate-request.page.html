@@ -40,7 +40,7 @@
         <mat-hint>{{'global.ZONE' | translate}}</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <input matInput [ngModel]="request.message" name="message" readonly />
+        <input matInput [value]="request.message | translate" name="message" readonly />
         <mat-hint>{{'immediateRequest.modal.need' | translate}}</mat-hint>
       </mat-form-field>
 
