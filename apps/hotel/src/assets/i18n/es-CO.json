@@ -223,7 +223,7 @@
       "endTime": "Hora final",
       "initTime": "Hora de inicio",
       "labelDay": "Día de la semana",
-      "quotaLabel": "Cupos"
+      "quotaLabel": "No. Capacidad de personas"
     },
     "title": "Zona de reserva"
   },

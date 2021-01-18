@@ -213,6 +213,7 @@
     "cashLoan": "Darlehen",
     "concierge": "Portier",
     "currencyExchange": "Geldwechsel",
+    "name": "Rezeption",
     "title": "Sie sind an der Rezeption. Was brauchst du?",
     "transportation": "Transport"
   },
@@ -260,10 +261,32 @@
     "youDontHaveAnyoneWakeUpCalls": "Sie haben niemanden Weckrufe"
   },
   "zoneRequest": {
+    "categories": {
+      "callHotel": "Rufen Sie das Hotelpersonal an",
+      "checkOut": "Bitte um späten Check-out",
+      "clean": "Zimmerreinigung anfordern",
+      "drink": "Ein Drink",
+      "food": "Essen vorbestellen",
+      "maintain": "Wartung anfordern",
+      "other": "andere",
+      "requestClean": "Reinigung anfordern",
+      "roomKeys": "Zimmerschlüssel",
+      "roomService": "Zimmerservice",
+      "spaceReserve": "Reservieren Sie einen Platz",
+      "specialRequest": "Spezialwünsche",
+      "towels": "Handtücher",
+      "waiter": "Bedienung",
+      "wakeUp": "Programm Weckruf"
+    },
     "createRequest": "Anfrage erstellen",
+    "foodAreas": "LEBENSMITTELBEREICHE",
+    "humidAreas": "Nasse Bereiche",
     "immediateRequestSuccessfullyCreated": "Sofortige Anfrage erfolgreich erstellt",
+    "myRoom": "MEIN ZIMMER",
+    "outsideHotel": "AUSSERHALB DES HOTELS",
+    "socialArea": "Soziale Bereiche",
     "thereIsAnImmediateRequestAt": "Es gibt eine sofortige Anfrage an",
-    "waitingToBeAttended.": "darauf warten, besucht zu werden.",
+    "waitingToBeAttended": "darauf warten, besucht zu werden.",
     "whatDoYouNeed": "Was brauchst du?",
     "writeWhatYouNeed": "Schreiben Sie, was Sie brauchen",
     "youAreIn": "Sie sind in"

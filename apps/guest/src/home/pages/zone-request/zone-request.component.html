@@ -1,7 +1,7 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
   <div class="container" marcoBody>
     <p class="container__label" contlerColorHotel="primary">
-      {{ 'zoneRequest.youAreIn' | translate }} {{ zone?.category.name }} <br />
+      {{ 'zoneRequest.youAreIn' | translate }} {{ zone?.category.name | translate }} <br />
       {{ 'zoneRequest.whatDoYouNeed' | translate }}
     </p>
 
@@ -21,7 +21,7 @@
         >
           {{ subcategory.icon }}
         </mat-icon>
-        <p class="features-container-item__name">{{ subcategory.name }}</p>
+        <p class="features-container-item__name">{{ subcategory.name | translate }}</p>
       </div>
     </div>
 

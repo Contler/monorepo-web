@@ -92,16 +92,17 @@ export class ZoneRequestComponent implements OnDestroy {
           return request;
         }),
         switchMap((request) => this.requestService.saveRequest(request)),
-        switchMap(() =>
-          this.notificationsService.sendNotification(
-            `${this.translate.instant(
-              'zoneRequest.thereIsAnImmediateRequestAt',
-            )} ${this.dynamicService.getInstant(this.zone.name)} ${this.translate.instant(
-              'zoneRequest.waitingToBeAttended',
-            )}`,
+        switchMap(() => this.translate.getTranslation('en-US')),
+        switchMap((dic) => {
+          const waiting = dic['zoneRequest']['waitingToBeAttended'];
+          const immediateRequest = dic['zoneRequest']['thereIsAnImmediateRequestAt'];
+          const zoneName = this.dynamicService.getInstantWithLan('en-US', this.zone.name);
+
+          return this.notificationsService.sendNotification(
+            `${immediateRequest} ${zoneName} ${waiting}`,
             chiefTokens,
-          ),
-        ),
+          );
+        }),
       )
       .subscribe(
         () => {

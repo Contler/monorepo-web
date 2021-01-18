@@ -1,3 +1,4 @@
+import { RoomEntity } from '@contler/entity/room.entity';
 import * as firebase from 'firebase';
 import FirestoreDataConverter = firebase.firestore.FirestoreDataConverter;
 
@@ -9,6 +10,7 @@ export interface ReceptionModel {
   createAt: Date;
   active: boolean;
   type: string;
+  room?: RoomEntity;
 }
 
 export const receptionConverter: FirestoreDataConverter<ReceptionModel> = {

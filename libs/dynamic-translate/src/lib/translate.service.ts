@@ -75,6 +75,12 @@ export class TranslateService {
     return !!dicLan ? dicLan[this.lan] || key : key;
   }
 
+  getInstantWithLan(lang: string, key: string) {
+    const keys = key.split('/');
+    const dicLan = getDicValue(this.dic, keys);
+    return !!dicLan ? dicLan[lang] || key : key;
+  }
+
   updateTranslate(key: string, msg: string, hotelUid: string) {
     const [to, from] = getLan();
     return this.http.put(`${this.url}translate`, {
