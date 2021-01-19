@@ -12,6 +12,8 @@ import { RoomService } from '@contler/core';
 import { SPECIFIC_CLEANING } from '../../const/cleaning.const';
 import { DatePipe } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+import { TranslateService as DynamicService } from '@contler/dynamic-translate';
+import { getLan } from '@contler/const';
 
 @Component({
   selector: 'contler-cleaning',
@@ -32,6 +34,7 @@ export class CleaningComponent {
     private datePipe: DatePipe,
     private roomService: RoomService,
     private translate: TranslateService,
+    private dynamic: DynamicService,
   ) {
     this.cleaningForm = fb.group({
       time: ['', Validators.required],
@@ -41,9 +44,39 @@ export class CleaningComponent {
     });
   }
 
-  saveRequest() {
-    this.load = true;
+  async generateTranslateClean() {
+    const dataComment = [];
+    const [actualLan, languages] = getLan();
+    const { hotel } = await this.guestService.$guest.pipe(take(1)).toPromise();
     const { time, cleaning, recomendation, what } = this.cleaningForm.value;
+    if (cleaning === 'cleaning.other') {
+      const otherKey = await this.dynamic
+        .generateUrl({ mgs: what, hotel: hotel.uid, url: 'cleanMessage/other', languages, actualLan })
+        .toPromise();
+      dataComment.push(otherKey.key);
+    } else {
+      dataComment.push(cleaning);
+    }
+    const timeMsj = this.datePipe.transform(time, 'shortTime');
+    dataComment.push(timeMsj);
+    if (!!recomendation) {
+      const recommendationKey = await this.dynamic
+        .generateUrl({
+          mgs: recomendation,
+          hotel: hotel.uid,
+          url: 'cleanMessage/recommendation',
+          languages,
+          actualLan,
+        })
+        .toPromise();
+      dataComment.push(recommendationKey.key);
+    }
+    return dataComment.join(' - ');
+  }
+
+  async saveRequest() {
+    this.load = true;
+    const comment = await this.generateTranslateClean();
 
     const modalConfig: ModalConfigModel = {
       text: this.translate.instant('cleaning.text'),
@@ -54,25 +87,15 @@ export class CleaningComponent {
     this.guestService.$guest
       .pipe(
         take(1),
-        map((guest) => {
-          const clean = cleaning === 'Other' ? what : cleaning;
-          const timeMsj = this.datePipe.transform(time, 'shortTime');
-          const dataComment = [clean, timeMsj];
-          if (!!recomendation) {
-            dataComment.push(recomendation);
-          }
-          const comm = dataComment.join(' - ');
-          const req: ReceptionModel = {
-            guest: guest.uid,
-            hotel: guest.hotel.uid,
-            type: 'Cleaning',
-            comment: comm,
-            createAt: new Date(),
-            active: true,
-            room: guest.room,
-          };
-          return req;
-        }),
+        map((guest) => ({
+          guest: guest.uid,
+          hotel: guest.hotel.uid,
+          type: 'Cleaning',
+          comment: comment,
+          createAt: new Date(),
+          active: true,
+          room: guest.room,
+        })),
         switchMap((cleanings) => this.roomService.createClean(cleanings)),
         switchMap(() =>
           this.dialog

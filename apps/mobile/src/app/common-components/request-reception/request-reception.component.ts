@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { GuestEntity } from '@contler/entity';
 import { TranslateService } from '@ngx-translate/core';
+import { TranslateService as Dynamic } from '@contler/dynamic-translate';
 
 @Component({
   selector: 'contler-request-reception',
@@ -15,11 +16,15 @@ export class RequestReceptionComponent {
     public dialogRef: MatDialogRef<RequestReceptionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ReqModalData,
     private translate: TranslateService,
+    private dynamic: Dynamic,
   ) {
     switch (data.typePetition) {
       case 'Cleaning':
         const splitMsn = data.comment.split(' - ');
-        splitMsn[0] = this.translate.instant(splitMsn[0]);
+        splitMsn.forEach((key, i) => {
+          const staticTranslate = this.translate.instant(key);
+          splitMsn[i] = this.dynamic.getInstant(staticTranslate);
+        });
         this.comment = splitMsn.join(' - ');
         break;
       default:

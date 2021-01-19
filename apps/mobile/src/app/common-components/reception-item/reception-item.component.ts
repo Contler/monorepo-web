@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { filter, switchMap, take } from 'rxjs/operators';
 import { ReqModalData, RequestReceptionComponent } from '../request-reception/request-reception.component';
 import { TranslateService } from '@ngx-translate/core';
+import { TranslateService as Dynamic } from '@contler/dynamic-translate';
 
 @Component({
   selector: 'contler-reception-item',
@@ -19,19 +20,30 @@ export class ReceptionItemComponent implements AfterViewInit {
   @Output() closeModal = new EventEmitter<boolean>();
 
   $guest: Observable<GuestEntity>;
-  comment: string;
+  comment: string[] = [];
 
   constructor(
     private authService: AuthService,
     private dialog: MatDialog,
     private translate: TranslateService,
+    private dynamic: Dynamic,
   ) {}
 
   ngAfterViewInit(): void {
     this.$guest = this.authService.getUserById(this.reception.guest).pipe(take(1));
+    this.translateComment();
+  }
+
+  translateComment() {
     const commentSplit = this.reception.comment.split(' - ');
-    commentSplit[0] = this.translate.instant(commentSplit[0]);
-    this.comment = commentSplit.join(' - ');
+    commentSplit.forEach(async (data, i) => {
+      const staticTranslate = this.translate.instant(data);
+      this.comment[i] = await this.dynamic.getTranslate(staticTranslate).toPromise();
+    });
+  }
+
+  get commentData() {
+    return this.comment.join(' - ');
   }
 
   goToModal() {
