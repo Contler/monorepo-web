@@ -8,8 +8,8 @@
         <ng-container *ngIf="pendingRequests.length; else empty">
           <div class="item" *ngFor="let request of pendingRequests" (click)="goToRequest(request)">
             <div class="item__info-container">
-              <p class="username">{{ request.message }}</p>
-              <p class="zone">{{ request.zone.name }}</p>
+              <p class="username">{{ request.message | translate | ctrTranslate }}</p>
+              <p class="zone">{{ request.zone.name | ctrTranslate }}</p>
             </div>
             <div class="item__data-container">
               <p class="time">{{ request.createAt | date: 'dd/MM/yyyy' }}</p>
@@ -24,8 +24,8 @@
         <ng-container *ngIf="readyRequests.length; else empty">
           <div class="item" *ngFor="let request of readyRequests" (click)="goToRequest(request)">
             <div class="item__info-container">
-              <p class="username">{{ request.message }}</p>
-              <p class="zone">{{ request.zone.name }}</p>
+              <p class="username">{{ request.message | translate | ctrTranslate }}</p>
+              <p class="zone">{{ request.zone.name | ctrTranslate }}</p>
             </div>
             <div class="item__data-container">
               <p class="time">{{ request | requestTime }}</p>
@@ -58,9 +58,9 @@
 
 <ng-template #empty>
   <div class="empty-container">
-    <mat-icon class="custom_icon empty-container__icon" [style]="getColorSecondHotel()"
-      >check_circle</mat-icon
-    >
+    <mat-icon class="custom_icon empty-container__icon" [style]="getColorSecondHotel()">
+      check_circle
+    </mat-icon>
     <p class="empty-container__label" [style]="getColorHotel()">
       {{ 'myInmediateRequests.youHaveNoImmediateRequest' | translate }}
     </p>

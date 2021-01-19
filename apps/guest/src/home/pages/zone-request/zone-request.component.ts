@@ -73,7 +73,7 @@ export class ZoneRequestComponent implements OnDestroy {
   async saveRequest() {
     this.loader = true;
     const msg = this.requestController.value || this.selectedSubcategory;
-    this.requestService.newRequest(this.zone, msg).subscribe(
+    this.requestService.newRequest(this.zone, msg, !!this.requestController.value).subscribe(
       () => {
         this.loader = false;
         this.requestController.reset();

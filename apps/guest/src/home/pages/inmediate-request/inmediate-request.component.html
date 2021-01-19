@@ -16,11 +16,11 @@
           </mat-form-field>
         </div>
         <mat-form-field appearance="fill">
-          <input matInput [value]="request.zone.name" name="zoneName" readonly />
+          <input matInput [value]="request.zone.name | ctrTranslate" name="zoneName" readonly />
           <mat-hint>{{ 'inmediateRequest.area' | translate }}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <input matInput [value]="request.message" name="message" readonly />
+          <input matInput [value]="request.message | translate | ctrTranslate" name="message" readonly />
           <mat-hint>{{ 'inmediateRequest.needing' | translate }}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">

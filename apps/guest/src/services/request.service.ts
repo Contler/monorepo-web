@@ -28,7 +28,7 @@ export class RequestService {
     private notificationsService: NotificationsService,
   ) {}
 
-  newRequest(zone: ZoneEntity, msg: string) {
+  newRequest(zone: ZoneEntity, msg: string, isOther?: boolean) {
     const chiefTokens = zone.leaders.filter((leader) => !!leader.pushToken).map((leader) => leader.pushToken);
     return this.guestService.$guest.pipe(
       take(1),
@@ -40,6 +40,7 @@ export class RequestService {
         request.zone = zone!;
         request.special = false;
         request.message = msg;
+        request.isOther = isOther;
         return request;
       }),
       switchMap((request) => this.saveRequest(request)),

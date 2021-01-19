@@ -21,6 +21,8 @@ export class RequestRequest {
   @IsNotEmpty()
   hotel!: HotelEntity;
 
+  isOther: boolean;
+
   to: Language;
 
   from: Language[];
