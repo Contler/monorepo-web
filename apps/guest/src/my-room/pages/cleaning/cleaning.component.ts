@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { GuestService } from 'guest/services/guest.service';
 import { fullRangeDates } from 'guest/utils/generateTime';
 import { map, switchMap, take } from 'rxjs/operators';
-import { ReceptionModel } from '@contler/models';
+import { ReceptionModel, ReceptionStatus } from '@contler/models';
 import { RoomService } from '@contler/core';
 import { SPECIFIC_CLEANING } from '../../const/cleaning.const';
 import { DatePipe } from '@angular/common';
@@ -87,15 +87,19 @@ export class CleaningComponent {
     this.guestService.$guest
       .pipe(
         take(1),
-        map((guest) => ({
-          guest: guest.uid,
-          hotel: guest.hotel.uid,
-          type: 'Cleaning',
-          comment: comment,
-          createAt: new Date(),
-          active: true,
-          room: guest.room,
-        })),
+        map(
+          (guest) =>
+            ({
+              guest: guest.uid,
+              hotel: guest.hotel.uid,
+              type: 'Cleaning',
+              comment: comment,
+              createAt: new Date(),
+              active: true,
+              room: guest.room,
+              status: ReceptionStatus.PROGRAMING,
+            } as ReceptionModel),
+        ),
         switchMap((cleanings) => this.roomService.createClean(cleanings)),
         switchMap(() =>
           this.dialog

@@ -6,7 +6,7 @@ import { ModalCompleteComponent } from 'guest/common-components/modal-complete/m
 import { Router } from '@angular/router';
 import { map, switchMap, take } from 'rxjs/operators';
 import { GuestService } from 'guest/services/guest.service';
-import { ReceptionModel } from '@contler/models';
+import { ReceptionModel, ReceptionStatus } from '@contler/models';
 import { RoomService } from '@contler/core';
 import { fullRangeDates } from 'guest/utils/generateTime';
 import { DatePipe } from '@angular/common';
@@ -59,6 +59,7 @@ export class MaintenanceComponent {
             active: true,
             comment,
             type: 'Maintenance',
+            status: ReceptionStatus.PROGRAMING,
           };
           return req;
         }),
