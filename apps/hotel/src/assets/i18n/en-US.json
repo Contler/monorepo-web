@@ -255,6 +255,11 @@
     "request": "Petition",
     "title": "Special request"
   },
+  "transportation": {
+    "attended": "Attended",
+    "complete": "Accomplished",
+    "programing": "Scheduled"
+  },
   "typeRequest": {
     "CLEAN": "Clean",
     "IMMEDIATE": "Immediate",

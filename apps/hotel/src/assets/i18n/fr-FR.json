@@ -255,6 +255,11 @@
     "request": "Pétition",
     "title": "Demande spéciale"
   },
+  "transportation": {
+    "attended": "Assisté",
+    "complete": "Accompli",
+    "programing": "Programme"
+  },
   "typeRequest": {
     "CLEAN": "Nettoyer",
     "IMMEDIATE": "Immédiat",

@@ -1,9 +1,4 @@
 {
-  "transportation": {
-    "programing": "Programada",
-    "attended": "Atendida",
-    "complete": "Cumplida"
-  },
   "DAYS": {
     "allDay": "Todos los días",
     "friday": "Viernes",
@@ -259,6 +254,11 @@
     "dateInit": "Fecha inicio",
     "request": "Pedido",
     "title": "Solicitudes especiales"
+  },
+  "transportation": {
+    "attended": "Atendida",
+    "complete": "Cumplida",
+    "programing": "Programada"
   },
   "typeRequest": {
     "CLEAN": "Limpieza",

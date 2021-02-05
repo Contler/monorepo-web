@@ -255,6 +255,11 @@
     "request": "Petition",
     "title": "Besondere Bitte"
   },
+  "transportation": {
+    "attended": "Besucht",
+    "complete": "Erreicht",
+    "programing": "Geplant"
+  },
   "typeRequest": {
     "CLEAN": "Sauber",
     "IMMEDIATE": "Sofortig",

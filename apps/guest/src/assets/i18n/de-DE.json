@@ -246,11 +246,14 @@
     "send": "Senden"
   },
   "transportation": {
+    "attended": "Besucht",
     "close": "Ich habs!",
+    "complete": "Erreicht",
     "createRequest": "Anfrage erstellen",
     "date": "Datum",
     "departureTime": "Abfahrtszeit",
     "destination": "Ziel",
+    "programing": "Geplant",
     "text": "Ihr Transport wurde angefordert, wir warten Sie zur Abfahrtszeit an der Rezeption",
     "title": "Wir können Ihnen beim Transport vom Hotel helfen. Bitte füllen Sie diese Informationen aus",
     "whereAreYouGoing": "Wohin gehst du?"

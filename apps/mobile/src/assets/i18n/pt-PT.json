@@ -1,23 +1,4 @@
 {
-  "zoneRequest": {
-    "categories": {
-      "callHotel": "Ligue para o pessoal do hotel",
-      "checkOut": "Solicitar check-out tardio",
-      "clean": "Solicitar limpeza do quarto",
-      "drink": "Uma bebida",
-      "food": "Pré-encomendar comida",
-      "maintain": "Solicitar manutenção",
-      "other": "De outros",
-      "requestClean": "Solicitar limpeza",
-      "roomKeys": "Chaves do quarto",
-      "roomService": "Serviço de quarto",
-      "spaceReserve": "Reserve um espaço",
-      "specialRequest": "requerimentos especiais",
-      "towels": "Toalhas",
-      "waiter": "Garçom",
-      "wakeUp": "Chamada de despertar do programa"
-    }
-  },
   "booking": {
     "pending": "Pendente",
     "resolved": "resolvido"
@@ -190,6 +171,11 @@
   "statistic": {
     "ratingsPerEmployee": "Classificações por funcionário"
   },
+  "transportation": {
+    "attended": "Participaram",
+    "complete": "Realizado",
+    "programing": "Programado"
+  },
   "wakeComplete": {
     "wakeUpCallsResolved": "Chamadas de despertar resolvidas"
   },
@@ -199,5 +185,24 @@
   "wakeUp": {
     "pending": "Pendente",
     "resolved": "resolvido"
+  },
+  "zoneRequest": {
+    "categories": {
+      "callHotel": "Ligue para o pessoal do hotel",
+      "checkOut": "Solicitar check-out tardio",
+      "clean": "Solicitar limpeza do quarto",
+      "drink": "Uma bebida",
+      "food": "Pré-encomendar comida",
+      "maintain": "Solicitar manutenção",
+      "other": "De outros",
+      "requestClean": "Solicitar limpeza",
+      "roomKeys": "Chaves do quarto",
+      "roomService": "Serviço de quarto",
+      "spaceReserve": "Reserve um espaço",
+      "specialRequest": "requerimentos especiais",
+      "towels": "Toalhas",
+      "waiter": "Garçom",
+      "wakeUp": "Chamada de despertar do programa"
+    }
   }
 }
