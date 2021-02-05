@@ -1,4 +1,9 @@
 {
+  "transportation": {
+    "programing": "Programada",
+    "attended": "Atendida",
+    "complete": "Cumplida"
+  },
   "DAYS": {
     "allDay": "Todos los días",
     "friday": "Viernes",

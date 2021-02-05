@@ -7,9 +7,10 @@
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="double">
-    <mat-select [(ngModel)]="data.active">
-      <mat-option [value]="false">{{ 'global.COMPLETE' | translate }}</mat-option>
-      <mat-option [value]="true">{{ 'global.ACTIVE' | translate }}</mat-option>
+    <mat-select [(ngModel)]="data.status">
+      <mat-option *ngFor="let status of receptionStatus" [value]="status">{{
+        status | translate
+      }}</mat-option>
     </mat-select>
     <mat-hint>{{ 'global.STATE' | translate }}</mat-hint>
   </mat-form-field>

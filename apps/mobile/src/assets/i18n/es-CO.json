@@ -1,4 +1,9 @@
 {
+  "transportation": {
+    "programing": "Programada",
+    "attended": "Atendida",
+    "complete": "Cumplida"
+  },
   "zoneRequest": {
     "categories": {
       "callHotel": "Llamar al personal del hotel",

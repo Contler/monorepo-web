@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
-import { ReceptionModel } from '@contler/models';
+import { ReceptionModel, ReceptionStatus } from '@contler/models';
 import { Observable } from 'rxjs';
 import { GuestEntity } from '@contler/entity';
 import { AuthService } from '../../services/auth.service';
@@ -17,7 +17,7 @@ import { TranslateService as Dynamic } from '@contler/dynamic-translate';
 export class ReceptionItemComponent implements AfterViewInit {
   @Input() reception: ReceptionModel;
   @Input() isReady: boolean;
-  @Output() closeModal = new EventEmitter<boolean>();
+  @Output() closeModal = new EventEmitter<ReceptionStatus>();
 
   $guest: Observable<GuestEntity>;
   comment: string[] = [];
@@ -48,29 +48,40 @@ export class ReceptionItemComponent implements AfterViewInit {
 
   goToModal() {
     if (this.isReady) {
-      const { active, comment, createAt, uid, type } = this.reception;
-      this.openModal(active, comment, type, uid, createAt).subscribe(async ({ complete }) => {
-        this.closeModal.emit(complete);
+      const { active, comment, createAt, uid, type, status } = this.reception;
+      this.openModal(active, comment, type, uid, createAt, status).subscribe((update) => {
+        this.closeModal.emit(update.status);
       });
     }
   }
 
-  private openModal(active: boolean, comment: string, typePetition: string, uid: string, createAt: Date) {
+  private openModal(
+    active: boolean,
+    comment: string,
+    typePetition: string,
+    uid: string,
+    createAt: Date,
+    status: ReceptionStatus,
+  ) {
     return this.$guest.pipe(
       switchMap((guest) =>
         this.dialog
-          .open<RequestReceptionComponent, ReqModalData, { complete: boolean }>(RequestReceptionComponent, {
-            data: {
-              active,
-              comment,
-              typePetition,
-              uid,
-              guest,
-              createAt,
+          .open<RequestReceptionComponent, ReqModalData, { status: ReceptionStatus }>(
+            RequestReceptionComponent,
+            {
+              data: {
+                active,
+                comment,
+                typePetition,
+                uid,
+                guest,
+                createAt,
+                status,
+              },
+              minWidth: '100%',
+              minHeight: `${window.innerHeight}px`,
             },
-            minWidth: '100%',
-            minHeight: `${window.innerHeight}px`,
-          })
+          )
           .afterClosed(),
       ),
       filter((data) => !!data),

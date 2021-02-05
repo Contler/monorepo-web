@@ -10,9 +10,10 @@
 
     <mat-form-field appearance="fill" *ngIf="data.request">
       <mat-hint>{{ 'immediateRequest.stateTable' | translate }}</mat-hint>
-      <mat-select [(ngModel)]="data.request.active" *ngIf="data.request.active">
-        <mat-option [value]="true">{{ 'immediateRequest.active' | translate }}</mat-option>
-        <mat-option [value]="false">{{ 'immediateRequest.complete' | translate }}</mat-option>
+      <mat-select [(ngModel)]="data.request.status" *ngIf="data.request.active">
+        <mat-option *ngFor="let status of receptionStatus" [value]="status">{{
+          status | translate
+        }}</mat-option>
       </mat-select>
       <input type="text" readonly matInput value="Cumplida" *ngIf="!data.request.active" />
     </mat-form-field>

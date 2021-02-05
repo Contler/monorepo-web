@@ -2,6 +2,12 @@ import { RoomEntity } from '../entity';
 import * as firebase from 'firebase';
 import FirestoreDataConverter = firebase.firestore.FirestoreDataConverter;
 
+export enum ReceptionStatus {
+  PROGRAMING = 'transportation.programing',
+  ATTENDED = 'transportation.attended',
+  COMPLETED = 'transportation.complete',
+}
+
 export interface ReceptionModel {
   uid?: string;
   hotel: string;
@@ -11,6 +17,7 @@ export interface ReceptionModel {
   active: boolean;
   type: string;
   room?: RoomEntity;
+  status: ReceptionStatus;
 }
 
 export const receptionConverter: FirestoreDataConverter<ReceptionModel> = {

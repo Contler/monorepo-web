@@ -253,7 +253,10 @@
     "destination": "Destino",
     "text": "Tu transporte ha sido solicitado, te estaremos esperando en la recepción a la hora de salida",
     "title": "Podemos ayudarlo con el transporte desde el hotel, complete esta información",
-    "whereAreYouGoing": "¿A dónde vas?"
+    "whereAreYouGoing": "¿A dónde vas?",
+    "programing": "Programada",
+    "attended": "Atendida",
+    "complete": "Cumplida"
   },
   "wakeUp": {
     "scheduleNewWakeUpCall": "PROGRAMAR NUEVA LLAMADA PARA DESPERTAR",

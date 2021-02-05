@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReceptionService } from '@contler/core';
 import { EmployerEntity } from '@contler/entity';
-import { ReceptionModel } from '@contler/models';
+import { ReceptionModel, ReceptionStatus } from '@contler/models';
 import { Observable } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
@@ -37,8 +37,10 @@ export class PendingComponent implements OnInit {
       .pipe(tap(({ length }) => (this.totalReception = length)));
   }
 
-  async modalClose(complete: boolean, uid: string) {
-    await this.receptionService.receptionRef.doc(uid).update({ active: complete });
+  async modalClose(status: ReceptionStatus, uid: string) {
+    await this.receptionService.receptionRef
+      .doc(uid)
+      .update({ status, active: status !== ReceptionStatus.COMPLETED });
     this.snackBar.open(
       this.translate.instant('pendingReception.message'),
       this.translate.instant('pendingReception.close'),

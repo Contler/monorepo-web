@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ReceptionService } from '@contler/core';
 import { GuestEntity } from '@contler/entity';
-import { ReceptionModel } from '@contler/models';
+import { ReceptionModel, ReceptionStatus } from '@contler/models';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
 
 import { map, switchMap, take } from 'rxjs/operators';
@@ -81,6 +81,7 @@ export class ExchangeComponent {
       createAt: new Date(),
       active: true,
       type: 'Exchange',
+      status: ReceptionStatus.PROGRAMING,
     };
   }
 }

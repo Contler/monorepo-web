@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChil
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { ReceptionService, RoomService, UserService } from '@contler/core';
-import { ReceptionModel } from '@contler/models';
+import { ReceptionModel, ReceptionStatus } from '@contler/models';
 import { map, mergeMap, switchMap, take, toArray } from 'rxjs/operators';
 import { from, Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
@@ -103,16 +103,23 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
       .pipe()
       .subscribe((d) => {
         if (d) {
+          console.log(d);
           const nReq = request.request;
           switch (this.typeReq) {
             case TYPE_REQUEST.CLEAN.id:
-              this.roomService.cleanRef.doc(nReq.uid).update({ active: nReq.active });
+              this.roomService.cleanRef
+                .doc(nReq.uid)
+                .update({ status: d, active: d !== ReceptionStatus.COMPLETED });
               break;
             case TYPE_REQUEST.MAINTAIN.id:
-              this.roomService.maintainRef.doc(nReq.uid).update({ active: nReq.active });
+              this.roomService.maintainRef
+                .doc(nReq.uid)
+                .update({ status: d, active: d !== ReceptionStatus.COMPLETED });
               break;
             default:
-              this.receptionService.receptionRef.doc(nReq.uid).update({ active: nReq.active });
+              this.receptionService.receptionRef
+                .doc(nReq.uid)
+                .update({ status: d, active: d !== ReceptionStatus.COMPLETED });
           }
           const msg = this.translate.instant('immediateRequest.updateSusses');
           this.messageService.showToastMessage(msg);

@@ -3,6 +3,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { GuestEntity } from '@contler/entity';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateService as Dynamic } from '@contler/dynamic-translate';
+import { RECEPTION_STATUS } from '@contler/const';
+import { ReceptionStatus } from '../../../../../../libs/models';
 
 @Component({
   selector: 'contler-request-reception',
@@ -10,6 +12,7 @@ import { TranslateService as Dynamic } from '@contler/dynamic-translate';
   styleUrls: ['./request-reception.component.scss'],
 })
 export class RequestReceptionComponent {
+  readonly receptionStatus = RECEPTION_STATUS;
   comment: string;
 
   constructor(
@@ -33,7 +36,7 @@ export class RequestReceptionComponent {
   }
 
   update() {
-    this.dialogRef.close({ complete: this.data.active });
+    this.dialogRef.close({ status: this.data.status });
   }
 }
 
@@ -44,4 +47,5 @@ export interface ReqModalData {
   typePetition: string;
   uid: string;
   createAt: Date;
+  status: ReceptionStatus;
 }

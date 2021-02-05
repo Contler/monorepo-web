@@ -7,7 +7,7 @@ import { ReceptionService } from '@contler/core';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
 import { DESTINATION_OPTIONS } from '../../const/transportation.const';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ReceptionModel } from '@contler/models';
+import { ReceptionModel, ReceptionStatus } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
 import { map, switchMap, take } from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
@@ -86,6 +86,7 @@ export class TransportationComponent {
             guest: uid,
             type: 'Transport',
             comment: `${temp} - ${this.datePipe.transform(date, 'medium')}`,
+            status: ReceptionStatus.PROGRAMING,
           };
           return req;
         }),

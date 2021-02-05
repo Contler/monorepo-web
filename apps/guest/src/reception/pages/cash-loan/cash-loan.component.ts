@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ReceptionService } from '@contler/core';
-import { ReceptionModel } from '@contler/models';
+import { ReceptionModel, ReceptionStatus } from '@contler/models';
 import { ModalCompleteComponent } from 'guest/common-components/modal-complete/modal-complete.component';
 import { GuestService } from 'guest/services/guest.service';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
@@ -47,6 +47,7 @@ export class CashLoanComponent {
               active: true,
               createAt: new Date(),
               type: 'Cash loan',
+              status: ReceptionStatus.PROGRAMING,
             } as ReceptionModel),
         ),
         switchMap((req) => this.receptionService.createReception(req)),

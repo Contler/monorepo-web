@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { MatDialog } from '@angular/material/dialog';
 import { GuestEntity } from '@contler/entity';
-import { ModalConfigModel, ReceptionModel } from '@contler/models';
+import { ModalConfigModel, ReceptionModel, ReceptionStatus } from '@contler/models';
 import { GuestService } from '../../../services/guest.service';
 import { map, switchMap, take } from 'rxjs/operators';
 import { ModalCompleteComponent } from '../../../common-components/modal-complete/modal-complete.component';
@@ -65,6 +65,7 @@ export class ConciergeComponent {
       active: true,
       createAt: new Date(),
       type: 'Concierge',
+      status: ReceptionStatus.PROGRAMING,
     };
   }
 }

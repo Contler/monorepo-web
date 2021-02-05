@@ -7,3 +7,4 @@ export * from './category-products';
 export * from './order-status';
 export * from './type-errors';
 export * from './languages';
+export * from './reception-status';
