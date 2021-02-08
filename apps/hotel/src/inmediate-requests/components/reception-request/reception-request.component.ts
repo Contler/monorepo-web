@@ -135,13 +135,27 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
       .getUser()
       .pipe(
         take(1),
-        switchMap((usr) =>
-          this.afs
+        switchMap((usr) => {
+          const requests$ = this.afs
             .collection<ReceptionModel>(req, (ref) =>
               ref.where('hotel', '==', usr.hotel.uid).orderBy('createAt', 'desc'),
             )
-            .valueChanges(),
-        ),
+            .valueChanges();
+          // Filtro el observable antes de llegar al mergeMap, para no hacer N peticiones por el método
+          // this.auth.getGuestById
+          // que no cumplen con el filtro
+          if (this.typeReq === TYPE_REQUEST.TRANSPORTATION.id) {
+            return requests$.pipe(map((requests) => this.filterRequestByType(requests, 'Transport')));
+          } else if (this.typeReq === TYPE_REQUEST.CASH_LOAN.id) {
+            return requests$.pipe(map((requests) => this.filterRequestByType(requests, 'Cash loan')));
+          } else if (this.typeReq === TYPE_REQUEST.CONCIERGE.id) {
+            return requests$.pipe(map((requests) => this.filterRequestByType(requests, 'Concierge')));
+          } else if (this.typeReq === TYPE_REQUEST.CURRENCY_EXCHANGE.id) {
+            return requests$.pipe(map((requests) => this.filterRequestByType(requests, 'Exchange')));
+          } else {
+            return requests$;
+          }
+        }),
         take(1),
         switchMap((data) => from(data)),
         mergeMap((request) =>
@@ -194,5 +208,12 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
 
   private compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
+  filterRequestByType(
+    requests: ReceptionModel[],
+    type: 'Transport' | 'Cash loan' | 'Concierge' | 'Exchange',
+  ): ReceptionModel[] {
+    return requests.filter((request) => request.type === type);
   }
 }
