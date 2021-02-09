@@ -2,7 +2,6 @@ import { Directive, ElementRef, Input, OnChanges, OnDestroy } from '@angular/cor
 import { HotelEntity } from '@contler/entity';
 import { AuthService } from '../services/auth.service';
 import { take } from 'rxjs/operators';
-import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Directive({
@@ -15,51 +14,27 @@ export class BtnHotelDirective implements OnChanges, OnDestroy {
    * del formulario al que pertenecen, pasar el formulario y la directiva define el color correspondiente
    * dependiente del estado
    */
-  @Input() formValidation: FormGroup = null;
+  @Input() disabled = false;
   private hotel!: HotelEntity | null;
   private formValidationSubscription$: Subscription;
 
   constructor(private auth: AuthService, private elemRef: ElementRef) {
     this.auth.$employer.pipe(take(1)).subscribe(({ hotel }) => {
       this.hotel = hotel;
-      if (this.formValidation) {
-        this.formValidationSubscription$ = this.formValidation.statusChanges.subscribe((status) => {
-          if (status === 'VALID') {
-            this.setColor();
-          } else {
-            this.setDisabledColor();
-          }
-        });
-      } else {
+      if (!this.disabled) {
         this.setColor();
+      } else {
+        this.setDisabledColor();
       }
     });
   }
 
   ngOnChanges(): void {
     if (this.hotel) {
-      if (this.formValidation) {
-        if (this.formValidationSubscription$) {
-          this.formValidationSubscription$.add(
-            this.formValidation.statusChanges.subscribe((status) => {
-              if (status === 'VALID') {
-                this.setColor();
-              } else {
-                this.setDisabledColor();
-              }
-            }),
-          );
-        } else {
-          this.formValidationSubscription$ = this.formValidation.statusChanges.subscribe((status) => {
-            if (status === 'VALID') {
-              this.setColor();
-            } else {
-              this.setDisabledColor();
-            }
-          });
-        }
-      } else {
+      if (!this.disabled) {
         this.setColor();
+      } else {
+        this.setDisabledColor();
       }
     }
   }

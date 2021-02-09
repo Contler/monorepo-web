@@ -101,9 +101,6 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.authService.$employer.subscribe((user) => {
-      console.log({ user });
-    });
     this.inmediateRequestsSubscription = this.inmediateRequestsService
       .listenInmediateRequestByHotel()
       .pipe(

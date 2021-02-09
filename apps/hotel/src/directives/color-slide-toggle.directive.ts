@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Input, OnChanges, Renderer2 } from '@angular/core';
 import { HotelEntity } from '@contler/entity';
 import { AuthService } from 'hotel/services/auth.service';
 import { take } from 'rxjs/operators';
@@ -6,11 +6,13 @@ import { take } from 'rxjs/operators';
 @Directive({
   selector: '[contlerColorSlideToggle]',
 })
-export class ColorSlideToggleDirective implements OnChanges {
+export class ColorSlideToggleDirective implements OnChanges, AfterViewInit {
   @Input() contlerColorHotel: 'primary' | 'second' | '' = 'primary';
   private hotel!: HotelEntity | null;
 
-  constructor(private auth: AuthService, private elemRef: ElementRef, private renderer2: Renderer2) {
+  constructor(private auth: AuthService, private elemRef: ElementRef, private renderer2: Renderer2) {}
+
+  public ngAfterViewInit(): void {
     this.auth.$employer.pipe(take(1)).subscribe(({ hotel }) => {
       this.hotel = hotel;
       this.setColor();
@@ -42,10 +44,6 @@ export class ColorSlideToggleDirective implements OnChanges {
   }
 
   private setColor() {
-    /**
-     * Change Color with Renderer2, ElementRef have security risk
-     * https://angular.io/api/core/ElementRef#security-risk
-     */
     this.renderer2.setAttribute(
       this.elemRef.nativeElement!.children[0]!.children[0]!,
       'style',
