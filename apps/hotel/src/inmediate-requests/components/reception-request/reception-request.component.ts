@@ -141,9 +141,6 @@ export class ReceptionRequestComponent implements OnInit, OnDestroy, OnChanges {
               ref.where('hotel', '==', usr.hotel.uid).orderBy('createAt', 'desc'),
             )
             .valueChanges();
-          // Filtro el observable antes de llegar al mergeMap, para no hacer N peticiones por el método
-          // this.auth.getGuestById
-          // que no cumplen con el filtro
           if (this.typeReq === TYPE_REQUEST.TRANSPORTATION.id) {
             return requests$.pipe(map((requests) => this.filterRequestByType(requests, 'Transport')));
           } else if (this.typeReq === TYPE_REQUEST.CASH_LOAN.id) {
