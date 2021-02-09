@@ -223,7 +223,8 @@
       "endTime": "Fim do tempo",
       "initTime": "Tempo init",
       "labelDay": "Dia da semana",
-      "quotaLabel": "Cotas"
+      "quotaLabel": "Cotas",
+      "rooms": "Quartos"
     },
     "title": "Reserva de zona"
   },
@@ -254,6 +255,11 @@
     "dateInit": "Data Inicial",
     "request": "Petição",
     "title": "Pedido especial"
+  },
+  "transportation": {
+    "attended": "Participaram",
+    "complete": "Realizado",
+    "programing": "Programado"
   },
   "typeRequest": {
     "CLEAN": "Limpar \\ limpo",

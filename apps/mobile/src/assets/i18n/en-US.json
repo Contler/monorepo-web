@@ -1,23 +1,4 @@
 {
-  "zoneRequest": {
-    "categories": {
-      "callHotel": "Call the hotel staff",
-      "checkOut": "Request late check-out",
-      "clean": "Request room cleaning",
-      "drink": "A drink",
-      "food": "Pre-order food",
-      "maintain": "Request maintenance",
-      "other": "Other",
-      "requestClean": "Request cleaning",
-      "roomKeys": "Room keys",
-      "roomService": "Room Service",
-      "spaceReserve": "Reserve a space",
-      "specialRequest": "Special requests",
-      "towels": "Towels",
-      "waiter": "Waiter",
-      "wakeUp": "Program wake up call"
-    }
-  },
   "booking": {
     "pending": "PENDING",
     "resolved": "RESOLVED"
@@ -190,6 +171,11 @@
   "statistic": {
     "ratingsPerEmployee": "Ratings per employee"
   },
+  "transportation": {
+    "attended": "Attended",
+    "complete": "Accomplished",
+    "programing": "Scheduled"
+  },
   "wakeComplete": {
     "wakeUpCallsResolved": "Wake up calls resolved"
   },
@@ -199,5 +185,24 @@
   "wakeUp": {
     "pending": "Pending",
     "resolved": "Resolved"
+  },
+  "zoneRequest": {
+    "categories": {
+      "callHotel": "Call the hotel staff",
+      "checkOut": "Request late check-out",
+      "clean": "Request room cleaning",
+      "drink": "A drink",
+      "food": "Pre-order food",
+      "maintain": "Request maintenance",
+      "other": "Other",
+      "requestClean": "Request cleaning",
+      "roomKeys": "Room keys",
+      "roomService": "Room Service",
+      "spaceReserve": "Reserve a space",
+      "specialRequest": "Special requests",
+      "towels": "Towels",
+      "waiter": "Waiter",
+      "wakeUp": "Program wake up call"
+    }
   }
 }

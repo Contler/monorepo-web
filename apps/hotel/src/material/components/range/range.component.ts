@@ -19,35 +19,31 @@ export class RangeComponent implements OnInit {
   private id: string;
 
   constructor(private formBuild: FormBuilder) {
-    this.id =
-      Math.random()
-        .toString(36)
-        .substring(2, 15) +
-      Math.random()
-        .toString(36)
-        .substring(2, 15);
+    this.id = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     this.rangeForm = this.formBuild.group({
       day: ['', Validators.required],
       init: ['', Validators.required],
       end: ['', Validators.required],
       quota: ['', Validators.required],
       active: [false, Validators.required],
+      rooms: ['', Validators.required],
     });
   }
 
   ngOnInit() {
     this.formGroup.addControl(this.id, this.rangeForm);
+    this.rangeForm.get('rooms').setValue(this.schedule.rooms);
     this.dayForm.setValue(this.schedule!.day);
     this.initForm.setValue(this.schedule!.timeInit);
     this.endForm.setValue(this.schedule!.timeFinish);
     this.quotaForm.setValue(this.schedule!.quota);
     this.activeForm.setValue(this.schedule!.active);
 
-    this.dayForm.valueChanges.subscribe(data => (this.schedule!.day = data));
-    this.initForm.valueChanges.subscribe(data => (this.schedule!.timeInit = data));
-    this.endForm.valueChanges.subscribe(data => (this.schedule!.timeFinish = data));
-    this.quotaForm.valueChanges.subscribe(data => (this.schedule!.quota = data));
-    this.activeForm.valueChanges.subscribe(data => (this.schedule!.active = data));
+    this.dayForm.valueChanges.subscribe((data) => (this.schedule!.day = data));
+    this.initForm.valueChanges.subscribe((data) => (this.schedule!.timeInit = data));
+    this.endForm.valueChanges.subscribe((data) => (this.schedule!.timeFinish = data));
+    this.quotaForm.valueChanges.subscribe((data) => (this.schedule!.quota = data));
+    this.activeForm.valueChanges.subscribe((data) => (this.schedule!.active = data));
   }
 
   getHour(index: number) {
@@ -66,7 +62,7 @@ export class RangeComponent implements OnInit {
   }
 
   compareWith(o1: Date, o2: Date) {
-    return !!o1 && !!o2 && o1.getHours() === o2.getHours() && o1.getMinutes() === o2.getMinutes()
+    return !!o1 && !!o2 && o1.getHours() === o2.getHours() && o1.getMinutes() === o2.getMinutes();
   }
 
   get dayForm() {

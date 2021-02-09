@@ -246,11 +246,14 @@
     "send": "inviare"
   },
   "transportation": {
+    "attended": "Frequentato",
     "close": "Fatto!",
+    "complete": "Compiuto",
     "createRequest": "Crea richiesta",
     "date": "Data",
     "departureTime": "orario di partenza",
     "destination": "Destinazione",
+    "programing": "Programmato",
     "text": "Il tuo trasporto è stato richiesto, ti aspettiamo alla reception alla partenza",
     "title": "Possiamo aiutarti con il trasporto dall'hotel, compila queste informazioni",
     "whereAreYouGoing": "Dove stai andando?"
