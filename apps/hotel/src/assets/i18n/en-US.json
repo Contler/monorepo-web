@@ -223,7 +223,8 @@
       "endTime": "Time end",
       "initTime": "Time init",
       "labelDay": "Day of the week",
-      "quotaLabel": "Quotas"
+      "quotaLabel": "Quotas",
+      "rooms": "Rooms"
     },
     "title": "Zone reservation"
   },
@@ -254,6 +255,11 @@
     "dateInit": "Init Date",
     "request": "Petition",
     "title": "Special request"
+  },
+  "transportation": {
+    "attended": "Attended",
+    "complete": "Accomplished",
+    "programing": "Scheduled"
   },
   "typeRequest": {
     "CLEAN": "Clean",

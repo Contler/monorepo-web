@@ -1,23 +1,4 @@
 {
-  "zoneRequest": {
-    "categories": {
-      "callHotel": "Chiama il personale dell'hotel",
-      "checkOut": "Richiedi late check-out",
-      "clean": "Richiedi la pulizia della camera",
-      "drink": "Un drink",
-      "food": "Preordina il cibo",
-      "maintain": "Richiedi manutenzione",
-      "other": "altro",
-      "requestClean": "Richiedi la pulizia",
-      "roomKeys": "Chiavi della camera",
-      "roomService": "Servizio in camera",
-      "spaceReserve": "Prenota uno spazio",
-      "specialRequest": "RICHIESTE SPECIALI",
-      "towels": "Asciugamani",
-      "waiter": "Cameriere",
-      "wakeUp": "Programma sveglia telefonica"
-    }
-  },
   "booking": {
     "pending": "in attesa di",
     "resolved": "risoluto"
@@ -190,6 +171,11 @@
   "statistic": {
     "ratingsPerEmployee": "Valutazioni per dipendente"
   },
+  "transportation": {
+    "attended": "Frequentato",
+    "complete": "Compiuto",
+    "programing": "Programmato"
+  },
   "wakeComplete": {
     "wakeUpCallsResolved": "Chiamate sveglia risolte"
   },
@@ -199,5 +185,24 @@
   "wakeUp": {
     "pending": "in attesa di",
     "resolved": "risoluto"
+  },
+  "zoneRequest": {
+    "categories": {
+      "callHotel": "Chiama il personale dell'hotel",
+      "checkOut": "Richiedi late check-out",
+      "clean": "Richiedi la pulizia della camera",
+      "drink": "Un drink",
+      "food": "Preordina il cibo",
+      "maintain": "Richiedi manutenzione",
+      "other": "altro",
+      "requestClean": "Richiedi la pulizia",
+      "roomKeys": "Chiavi della camera",
+      "roomService": "Servizio in camera",
+      "spaceReserve": "Prenota uno spazio",
+      "specialRequest": "RICHIESTE SPECIALI",
+      "towels": "Asciugamani",
+      "waiter": "Cameriere",
+      "wakeUp": "Programma sveglia telefonica"
+    }
   }
 }

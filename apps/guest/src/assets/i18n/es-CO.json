@@ -246,17 +246,17 @@
     "send": "enviar"
   },
   "transportation": {
+    "attended": "Atendida",
     "close": "¡Entendido!",
+    "complete": "Cumplida",
     "createRequest": "CREAR SOLICITUD",
     "date": "Fecha",
     "departureTime": "Hora de salida",
     "destination": "Destino",
+    "programing": "Programada",
     "text": "Tu transporte ha sido solicitado, te estaremos esperando en la recepción a la hora de salida",
     "title": "Podemos ayudarlo con el transporte desde el hotel, complete esta información",
-    "whereAreYouGoing": "¿A dónde vas?",
-    "programing": "Programada",
-    "attended": "Atendida",
-    "complete": "Cumplida"
+    "whereAreYouGoing": "¿A dónde vas?"
   },
   "wakeUp": {
     "scheduleNewWakeUpCall": "PROGRAMAR NUEVA LLAMADA PARA DESPERTAR",

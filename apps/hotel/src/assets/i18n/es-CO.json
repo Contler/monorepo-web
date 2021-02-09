@@ -1,9 +1,4 @@
 {
-  "transportation": {
-    "programing": "Programada",
-    "attended": "Atendida",
-    "complete": "Cumplida"
-  },
   "DAYS": {
     "allDay": "Todos los días",
     "friday": "Viernes",
@@ -228,7 +223,8 @@
       "endTime": "Hora final",
       "initTime": "Hora de inicio",
       "labelDay": "Día de la semana",
-      "quotaLabel": "No. Capacidad de personas"
+      "quotaLabel": "No. Capacidad de personas",
+      "rooms": "Habitaciones"
     },
     "title": "Zona de reserva"
   },
@@ -259,6 +255,11 @@
     "dateInit": "Fecha inicio",
     "request": "Pedido",
     "title": "Solicitudes especiales"
+  },
+  "transportation": {
+    "attended": "Atendida",
+    "complete": "Cumplida",
+    "programing": "Programada"
   },
   "typeRequest": {
     "CLEAN": "Limpieza",

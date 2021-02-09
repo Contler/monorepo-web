@@ -223,7 +223,8 @@
       "endTime": "Fin du temps",
       "initTime": "Heure init",
       "labelDay": "Jour de la semaine",
-      "quotaLabel": "quotas"
+      "quotaLabel": "quotas",
+      "rooms": "Les chambres"
     },
     "title": "Réservation de zone"
   },
@@ -254,6 +255,11 @@
     "dateInit": "Date de début",
     "request": "Pétition",
     "title": "Demande spéciale"
+  },
+  "transportation": {
+    "attended": "Assisté",
+    "complete": "Accompli",
+    "programing": "Programme"
   },
   "typeRequest": {
     "CLEAN": "Nettoyer",

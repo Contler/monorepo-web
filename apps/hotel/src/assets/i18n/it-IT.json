@@ -223,7 +223,8 @@
       "endTime": "Fine del tempo",
       "initTime": "Time init",
       "labelDay": "Giorno della settimana",
-      "quotaLabel": "Quote"
+      "quotaLabel": "Quote",
+      "rooms": "Camere"
     },
     "title": "Prenotazione di zona"
   },
@@ -254,6 +255,11 @@
     "dateInit": "Data iniziale",
     "request": "petizione",
     "title": "Richiesta speciale"
+  },
+  "transportation": {
+    "attended": "Frequentato",
+    "complete": "Compiuto",
+    "programing": "Programmato"
   },
   "typeRequest": {
     "CLEAN": "Pulito",

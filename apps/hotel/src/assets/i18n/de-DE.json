@@ -223,7 +223,8 @@
       "endTime": "Zeitende",
       "initTime": "Zeit init",
       "labelDay": "Wochentag",
-      "quotaLabel": "Quoten"
+      "quotaLabel": "Quoten",
+      "rooms": "Zimmer"
     },
     "title": "Zonenreservierung"
   },
@@ -254,6 +255,11 @@
     "dateInit": "Anfangsdatum",
     "request": "Petition",
     "title": "Besondere Bitte"
+  },
+  "transportation": {
+    "attended": "Besucht",
+    "complete": "Erreicht",
+    "programing": "Geplant"
   },
   "typeRequest": {
     "CLEAN": "Sauber",

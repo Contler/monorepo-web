@@ -246,11 +246,14 @@
     "send": "Envoyer"
   },
   "transportation": {
+    "attended": "Assisté",
     "close": "Je l'ai!",
+    "complete": "Accompli",
     "createRequest": "Créer une demande",
     "date": "Rendez-vous amoureux",
     "departureTime": "Heure de départ",
     "destination": "Destination",
+    "programing": "Programme",
     "text": "Votre transport a été demandé, nous vous attendons à la réception à l'heure de départ",
     "title": "Nous pouvons vous aider avec le transport depuis l'hôtel, veuillez remplir ces informations",
     "whereAreYouGoing": "Où allez-vous?"
