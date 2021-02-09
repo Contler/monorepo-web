@@ -7,11 +7,10 @@ import { Subscription } from 'rxjs';
 @Directive({
   selector: '[contlerBtnHotel]',
 })
-export class BtnHotelDirective implements OnChanges, OnDestroy {
+export class BtnHotelDirective implements OnChanges {
   @Input() contlerBtnHotel: 'primary' | 'second' | '' = 'primary';
   @Input() disabled = false;
   private hotel!: HotelEntity | null;
-  private formValidationSubscription$: Subscription;
 
   constructor(private auth: AuthService, private elemRef: ElementRef) {
     this.auth.$employer.pipe(take(1)).subscribe(({ hotel }) => {
@@ -31,12 +30,6 @@ export class BtnHotelDirective implements OnChanges, OnDestroy {
       } else {
         this.setDisabledColor();
       }
-    }
-  }
-
-  public ngOnDestroy(): void {
-    if (this.formValidationSubscription$) {
-      this.formValidationSubscription$.unsubscribe();
     }
   }
 
