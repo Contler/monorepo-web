@@ -9,11 +9,6 @@ import { Subscription } from 'rxjs';
 })
 export class BtnHotelDirective implements OnChanges, OnDestroy {
   @Input() contlerBtnHotel: 'primary' | 'second' | '' = 'primary';
-  /**
-   * Hay botones que no siempre llevaran el color definido por el sistema, si no que están condicionados al estado
-   * del formulario al que pertenecen, pasar el formulario y la directiva define el color correspondiente
-   * dependiente del estado
-   */
   @Input() disabled = false;
   private hotel!: HotelEntity | null;
   private formValidationSubscription$: Subscription;
