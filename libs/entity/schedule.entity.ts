@@ -7,13 +7,15 @@ export class ScheduleEntity {
 
   day!: string;
 
-  @Transform(value => new Date(value), { toClassOnly: true })
+  @Transform((value) => new Date(value), { toClassOnly: true })
   timeInit!: Date;
 
-  @Transform(value => new Date(value), { toClassOnly: true })
+  @Transform((value) => new Date(value), { toClassOnly: true })
   timeFinish!: Date;
 
   quota!: number;
+
+  rooms: number;
 
   active!: boolean;
 

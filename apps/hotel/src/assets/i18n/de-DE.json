@@ -223,7 +223,8 @@
       "endTime": "Zeitende",
       "initTime": "Zeit init",
       "labelDay": "Wochentag",
-      "quotaLabel": "Quoten"
+      "quotaLabel": "Quoten",
+      "rooms": "Zimmer"
     },
     "title": "Zonenreservierung"
   },

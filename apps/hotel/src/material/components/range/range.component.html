@@ -29,6 +29,11 @@
     <mat-hint>{{ 'reservation.range.quotaLabel' | translate }}</mat-hint>
   </mat-form-field>
 
+  <mat-form-field appearance="fill" class="full-field">
+    <input matInput mask="90" formControlName="rooms" (ngModelChange)="schedule.rooms = $event" />
+    <mat-hint>{{ 'reservation.range.rooms' | translate }}</mat-hint>
+  </mat-form-field>
+
   <mat-slide-toggle class="range__opt" formControlName="active"></mat-slide-toggle>
 
   <button mat-icon-button class="range__opt" (click)="deleteRange()" type="button">

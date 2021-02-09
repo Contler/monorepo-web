@@ -223,7 +223,8 @@
       "endTime": "Hora final",
       "initTime": "Hora de inicio",
       "labelDay": "Día de la semana",
-      "quotaLabel": "No. Capacidad de personas"
+      "quotaLabel": "No. Capacidad de personas",
+      "rooms": "Habitaciones"
     },
     "title": "Zona de reserva"
   },

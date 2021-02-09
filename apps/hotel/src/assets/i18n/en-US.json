@@ -223,7 +223,8 @@
       "endTime": "Time end",
       "initTime": "Time init",
       "labelDay": "Day of the week",
-      "quotaLabel": "Quotas"
+      "quotaLabel": "Quotas",
+      "rooms": "Rooms"
     },
     "title": "Zone reservation"
   },

@@ -223,7 +223,8 @@
       "endTime": "Fine del tempo",
       "initTime": "Time init",
       "labelDay": "Giorno della settimana",
-      "quotaLabel": "Quote"
+      "quotaLabel": "Quote",
+      "rooms": "Camere"
     },
     "title": "Prenotazione di zona"
   },
