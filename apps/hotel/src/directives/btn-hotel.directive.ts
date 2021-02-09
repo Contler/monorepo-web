@@ -1,8 +1,7 @@
-import { Directive, ElementRef, Input, OnChanges, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
 import { HotelEntity } from '@contler/entity';
 import { AuthService } from '../services/auth.service';
 import { take } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
 
 @Directive({
   selector: '[contlerBtnHotel]',
