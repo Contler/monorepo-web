@@ -8,9 +8,14 @@
   <mat-sidenav-content class="cnt-room">
     <div class="container">
       <div class="form_section">
-        <p class="title">{{ 'menu.rooms' | translate }}</p>
+        <p class="title" contlerColorHotel="">{{ 'menu.rooms' | translate }}</p>
 
-        <mat-slide-toggle color="accent" [(ngModel)]="isFullRooms" class="toggle">
+        <mat-slide-toggle
+          color="accent"
+          [(ngModel)]="isFullRooms"
+          class="toggle"
+          contlerColorSlideToggle="primary"
+        >
           {{ (isFullRooms ? 'room.multiple' : 'room.unique') | translate }}
         </mat-slide-toggle>
 

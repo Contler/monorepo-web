@@ -29,7 +29,11 @@
     <mat-hint>{{ 'reservation.range.quotaLabel' | translate }}</mat-hint>
   </mat-form-field>
 
-  <mat-slide-toggle class="range__opt" formControlName="active"></mat-slide-toggle>
+  <mat-slide-toggle
+    class="range__opt"
+    formControlName="active"
+    contlerColorSlideToggle="primary"
+  ></mat-slide-toggle>
 
   <button mat-icon-button class="range__opt" (click)="deleteRange()" type="button">
     <mat-icon style="color: #757575">delete</mat-icon>

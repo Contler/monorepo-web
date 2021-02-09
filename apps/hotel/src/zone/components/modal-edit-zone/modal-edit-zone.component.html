@@ -16,7 +16,7 @@
       <mat-hint>{{ 'zone.selectIcon' | translate }}</mat-hint>
     </mat-form-field>
 
-    <mat-slide-toggle color="accent" formControlName="admitOrder">{{
+    <mat-slide-toggle color="accent" formControlName="admitOrder" contlerColorSlideToggle="primary">{{
       'zone.modal.admitOrder' | translate
     }}</mat-slide-toggle>
 
@@ -24,6 +24,7 @@
       color="accent"
       matTooltip="{{ (maxPrincipalZone >= 4 ? 'zone.maxZoneError' : '') | translate }}"
       matTooltipHideDelay="1000"
+      contlerColorSlideToggle="primary"
       formControlName="principal"
     >
       {{ 'zone.principal' | translate }}
@@ -33,6 +34,8 @@
       <button
         mat-raised-button
         contlerButton
+        contlerBtnHotel="primary"
+        [formValidation]="zoneGroup"
         color="accent"
         [loading]="load"
         [disabled]="load || zoneGroup.invalid"

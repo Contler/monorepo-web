@@ -62,10 +62,25 @@
   <p class="cnt-modal-guest__label" [innerHTML]="'newGuest.message' | translate"></p>
 
   <button
+    *ngIf="guestGroup.invalid"
     mat-raised-button
     color="accent"
     style="width: 217px"
     contlerButton
+    contlerBtnHotel="primary"
+    [formValidation]="guestGroup"
+    [loading]="load"
+    [disabled]="guestGroup.invalid || load"
+  >
+    Crear
+  </button>
+  <button
+    *ngIf="guestGroup.valid"
+    mat-raised-button
+    color="accent"
+    style="width: 217px"
+    contlerButton
+    contlerBtnHotel="primary"
     [loading]="load"
     [disabled]="guestGroup.invalid || load"
   >

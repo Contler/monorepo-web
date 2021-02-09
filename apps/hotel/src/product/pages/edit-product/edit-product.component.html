@@ -1,6 +1,12 @@
 <contler-marco-admin title="Producto">
   <ng-container marcoHeader>
-    <button mat-raised-button (click)="deleteProduct()" contlerButton [loading]="load">
+    <button
+      mat-raised-button
+      (click)="deleteProduct()"
+      contlerButton
+      [loading]="load"
+      contlerBtnHotel="second"
+    >
       {{ 'product.deleteBtn' | translate }}
     </button>
     <button
@@ -8,6 +14,8 @@
       color="accent"
       [disabled]="productForm?.invalid || load"
       contlerButton
+      contlerBtnHotel="primary"
+      [formValidation]="productForm"
       [loading]="load"
       (click)="updateProduct()"
     >

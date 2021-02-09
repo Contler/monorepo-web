@@ -7,6 +7,7 @@ import { CommonComponentsModule } from 'hotel/common-components/common-component
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [SpecialRequestsComponent],
@@ -18,6 +19,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     FormsModule,
     DynamicTranslateModule,
     TranslateModule,
+    DirectivesModule,
   ],
 })
 export class SpecialRequestsModule {}

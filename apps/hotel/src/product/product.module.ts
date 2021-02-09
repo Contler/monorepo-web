@@ -12,6 +12,7 @@ import { CoreModule } from '@contler/core';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [ProductComponent, ModalProductComponent, EditProductComponent],
@@ -27,6 +28,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     CoreModule,
     TranslateModule,
     DynamicTranslateModule,
+    DirectivesModule,
   ],
 })
 export class ProductModule {}

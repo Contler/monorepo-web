@@ -7,9 +7,17 @@ import { CommonComponentsModule } from 'hotel/common-components/common-component
 import { MaterialModule } from 'hotel/material/material.module';
 import { CardEmployeesComponent } from './components/card-employees/card-employees.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [StatisticsComponent, CardEmployeesComponent],
-  imports: [CommonModule, StatisticsRoutingModule, CommonComponentsModule, MaterialModule, TranslateModule],
+  imports: [
+    CommonModule,
+    StatisticsRoutingModule,
+    CommonComponentsModule,
+    MaterialModule,
+    TranslateModule,
+    DirectivesModule,
+  ],
 })
 export class StatisticsModule {}

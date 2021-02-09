@@ -8,7 +8,7 @@
   <mat-sidenav-content class="cnt-zone">
     <div class="container">
       <div class="form_section">
-        <p class="title">{{ 'global.ZONE' | translate }}</p>
+        <p class="title" contlerColorHotel="primary">{{ 'global.ZONE' | translate }}</p>
         <form [formGroup]="zoneGroup" (ngSubmit)="saveZone()">
           <mat-form-field appearance="fill">
             <input matInput formControlName="name" />
@@ -47,6 +47,8 @@
             mat-raised-button
             color="accent"
             contlerButton
+            contlerBtnHotel="primary"
+            [formValidation]="zoneGroup"
             [loading]="load"
             [disabled]="load || zoneGroup.invalid"
           >

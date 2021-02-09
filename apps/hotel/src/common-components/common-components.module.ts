@@ -13,6 +13,7 @@ import { MarcoAdminComponent } from './marco-admin/marco-admin.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { UiModule } from '@contler/ui';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { UiModule } from '@contler/ui';
     TranslateModule,
     DynamicTranslateModule,
     UiModule,
+    DirectivesModule,
   ],
   providers: [InmediateRequestsService],
 })

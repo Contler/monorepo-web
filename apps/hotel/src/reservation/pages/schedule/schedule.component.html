@@ -10,6 +10,7 @@
       <h1 class="cnt-title">{{ 'reservation.edit.title' | translate }}</h1>
       <button
         mat-raised-button
+        contlerBtnHotel="second"
         type="button"
         [disabled]="loader || !reservation?.schedule.length"
         (click)="deleteReservation()"
@@ -20,6 +21,8 @@
         mat-raised-button
         color="accent"
         contlerButton
+        contlerBtnHotel="primary"
+        [formValidation]="reservationForm"
         [loading]="loader"
         [disabled]="loader || reservationForm.invalid"
       >

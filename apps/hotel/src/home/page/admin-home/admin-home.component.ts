@@ -5,6 +5,8 @@ import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { SpecialRequestsService } from 'hotel/special-requests/services/special-requests.service';
 import { RequestEntity } from '@contler/entity';
+import { HotelService } from '@contler/core';
+import { AuthService } from 'hotel/services/auth.service';
 
 @Component({
   selector: 'contler-admin-home',
@@ -87,6 +89,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     private router: Router,
     private inmediateRequestsService: InmediateRequestsService,
     private specialRequestsService: SpecialRequestsService,
+    private authService: AuthService,
   ) {}
 
   goToPage(router: any[], isReception: boolean) {
@@ -98,6 +101,9 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.authService.$employer.subscribe((user) => {
+      console.log({ user });
+    });
     this.inmediateRequestsSubscription = this.inmediateRequestsService
       .listenInmediateRequestByHotel()
       .pipe(

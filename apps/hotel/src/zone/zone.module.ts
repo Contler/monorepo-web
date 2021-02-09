@@ -11,6 +11,7 @@ import { CommonComponentsModule } from 'hotel/common-components/common-component
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { UiModule } from '@contler/ui';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [ZoneComponent, ModalEditZoneComponent],
@@ -25,6 +26,7 @@ import { UiModule } from '@contler/ui';
     DynamicTranslateModule,
     TranslateModule,
     UiModule,
+    DirectivesModule,
   ],
   providers: [ZoneService],
   entryComponents: [ModalEditZoneComponent],
