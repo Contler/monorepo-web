@@ -265,7 +265,11 @@
     "CLEAN": "Limpar \\ limpo",
     "IMMEDIATE": "imediato",
     "MAINTAIN": "Manter",
-    "RECEPTION": "recepção"
+    "RECEPTION": "recepção",
+    "TRANSPORTATION": "Transporte",
+    "CASH_LOAN": "Empréstimo de dinheiro",
+    "CURRENCY_EXCHANGE": "Câmbio monetário",
+    "CONCIERGE": "Porteiro"
   },
   "wakeUp": {
     "callTo": "Ligar para",

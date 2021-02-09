@@ -265,7 +265,11 @@
     "CLEAN": "Sauber",
     "IMMEDIATE": "Sofortig",
     "MAINTAIN": "pflegen",
-    "RECEPTION": "Rezeption"
+    "RECEPTION": "Rezeption",
+    "TRANSPORTATION": "Transport",
+    "CASH_LOAN": "Darlehen",
+    "CURRENCY_EXCHANGE": "Geldwechsel",
+    "CONCIERGE": "Portier"
   },
   "wakeUp": {
     "callTo": "Aufruf",

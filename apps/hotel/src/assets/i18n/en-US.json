@@ -265,7 +265,11 @@
     "CLEAN": "Clean",
     "IMMEDIATE": "Immediate",
     "MAINTAIN": "Maintain",
-    "RECEPTION": "Reception"
+    "RECEPTION": "Reception",
+    "TRANSPORTATION": "Transport",
+    "CASH_LOAN": "Cash loan",
+    "CURRENCY_EXCHANGE": "Currency exchanges",
+    "CONCIERGE": "Concierge"
   },
   "wakeUp": {
     "callTo": "Call to",
