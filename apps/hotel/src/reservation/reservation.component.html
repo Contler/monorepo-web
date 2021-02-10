@@ -7,10 +7,24 @@
 
   <div class="reservation">
     <div class="reservation__form">
-      <contler-reservation-form
-        [load]="load"
-        (reservationRequest)="createReservation($event)"
-      ></contler-reservation-form>
+      <ng-container *ngIf="!showSubZoneForm; else subZoneForm">
+        <contler-reservation-form
+          [load]="load"
+          [subZoneForm]="showSubZoneForm"
+          (reservationRequest)="createReservation($event)"
+          (showSubZoneForm)="showSubZoneForm = $event"
+        ></contler-reservation-form>
+      </ng-container>
+      <ng-template #subZoneForm>
+        <contler-sub-zone-reservation-form
+          [load]="load"
+          [subZoneFormValue]="showSubZoneForm"
+          [zoneReservations]="zoneReservations"
+          (reservationRequest)="createSubZoneReservation($event)"
+          (hiddenSubZoneForm)="showSubZoneForm = $event"
+        >
+        </contler-sub-zone-reservation-form>
+      </ng-template>
     </div>
     <div class="reservation__list">
       <contler-reservation-list [zoneReservations]="zoneReservations"></contler-reservation-list>

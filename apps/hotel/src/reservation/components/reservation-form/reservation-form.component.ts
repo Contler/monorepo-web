@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core
 import { Observable } from 'rxjs';
 import { CategoryEntity } from '@contler/entity';
 import { ICONS } from '@contler/const';
-import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { ReservationRequest } from '@contler/models';
 
@@ -13,15 +13,19 @@ import { ReservationRequest } from '@contler/models';
 })
 export class ReservationFormComponent {
   @Input() load = false;
+  @Input() subZoneForm = false;
   @Output() reservationRequest = new EventEmitter<ReservationRequest>();
+  @Output() showSubZoneForm = new EventEmitter<boolean>();
   @ViewChild(FormGroupDirective, { static: true }) myForm!: FormGroupDirective;
 
   categoryZone: Observable<CategoryEntity[]>;
   icons = ICONS;
   zoneForm: FormGroup;
+  isSubZoneForm: FormControl;
 
   constructor(private zoneService: ZoneService, formBuild: FormBuilder) {
     this.categoryZone = this.zoneService.getCategories();
+    this.isSubZoneForm = new FormControl('', Validators.nullValidator);
     this.zoneForm = formBuild.group({
       name: ['', Validators.required],
       category: ['', Validators.required],

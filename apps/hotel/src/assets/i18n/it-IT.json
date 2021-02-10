@@ -228,6 +228,28 @@
     },
     "title": "Prenotazione di zona"
   },
+  "subZone": {
+    "createButton": "Creare un servizio di zona",
+    "edit": {
+      "addBtn": "Aggiungi intervallo",
+      "deleteBtn": "Rimuovere il servizio dalla zona",
+      "editBtn": "Aggiornare",
+      "subtitle": "Disponibilità del servizio di zona",
+      "title": "Informazioni sul servizio di zona"
+    },
+    "labelZone": "Zona",
+    "labelIcon": "Seleziona un'icona",
+    "labelName": "Nome del servizio di zona",
+    "nameList": "Nome del servizio di zona",
+    "range": {
+      "endTime": "Fine del tempo",
+      "initTime": "Time init",
+      "labelDay": "Giorno della settimana",
+      "quotaLabel": "Quote",
+      "rooms": "Camere"
+    },
+    "title": "Servizio di zona"
+  },
   "restaurant": {
     "createBtn": "Crea Ristorante",
     "createSusses": "Ristorante creato con successo",

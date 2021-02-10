@@ -14,5 +14,20 @@
     >
       <mat-icon>delete</mat-icon>
     </button>
+    <div *ngFor="let zone of item.zone" class="sub-list">
+      <p class="list__text">{{ zone.name | ctrTranslate }}</p>
+      <button mat-icon-button [routerLink]="['/home', 'reservation', item.id, 'sub-zone', zone.id]">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        [disabled]="load || zone.schedule?.length > 0"
+        (click)="deleteSubZoneReservation(zone)"
+        contlerButton
+        [loading]="load"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
   </div>
 </mat-card>

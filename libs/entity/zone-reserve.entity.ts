@@ -1,6 +1,7 @@
 import { HotelEntity } from './hotel.entity';
 import { CategoryEntity } from './category.entity';
 import { ScheduleEntity } from '@contler/entity/schedule.entity';
+import { SubZoneReserveEntity } from './sub-zone-reserve.entity';
 
 export class ZoneReserveEntity {
   id!: number;
@@ -14,4 +15,6 @@ export class ZoneReserveEntity {
   category!: CategoryEntity;
 
   schedule!: ScheduleEntity[];
+
+  zone: SubZoneReserveEntity[];
 }

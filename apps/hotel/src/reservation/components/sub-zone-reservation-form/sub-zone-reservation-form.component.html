@@ -1,29 +1,28 @@
-<h1 class="cnt-title title">{{ 'reservation.title' | translate }}</h1>
-<form class="reservation-form" [formGroup]="zoneForm" (ngSubmit)="complete()">
+<h1 class="cnt-title title">{{ 'subZone.title' | translate }}</h1>
+<form class="reservation-form" [formGroup]="subZoneForm" (ngSubmit)="complete()">
   <div class="reservation-form__is-service">
     <p class="reservation-form__is-service__label">¿Es un servicio de la zona?</p>
     <div class="reservation-form__is-service__toggle">
       <span>No</span>
       <mat-slide-toggle
-        (change)="showSubZoneForm.emit($event.checked)"
-        [checked]="subZoneForm"
+        (change)="hiddenSubZoneForm.emit($event.checked)"
+        [checked]="subZoneFormValue"
       ></mat-slide-toggle>
       <span>Si</span>
     </div>
   </div>
   <mat-form-field appearance="fill">
     <input matInput formControlName="name" />
-    <mat-hint>{{ 'reservation.labelName' | translate }}</mat-hint>
+    <mat-hint>{{ 'subZone.labelName' | translate }}</mat-hint>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-select formControlName="category">
-      <mat-option *ngFor="let category of categoryZone | async" [value]="category">
-        {{ category.name | translate }}
+    <mat-select formControlName="zoneParent">
+      <mat-option *ngFor="let zone of zoneReservations" [value]="zone">
+        {{ zone.name | ctrTranslate }}
       </mat-option>
     </mat-select>
-    <mat-hint>{{ 'reservation.labelCategory' | translate }}</mat-hint>
+    <mat-hint>{{ 'subZone.labelZone' | translate }}</mat-hint>
   </mat-form-field>
-
   <mat-form-field appearance="fill">
     <mat-select formControlName="icon">
       <mat-option *ngFor="let icon of icons" [value]="icon">
@@ -37,10 +36,10 @@
     mat-raised-button
     color="accent"
     contlerButton
-    style="width: 217px"
+    style="width: 220px"
     [loading]="load"
-    [disabled]="load || zoneForm.invalid"
+    [disabled]="load || subZoneForm.invalid"
   >
-    {{ 'reservation.createButton' | translate }}
+    {{ 'subZone.createButton' | translate }}
   </button>
 </form>

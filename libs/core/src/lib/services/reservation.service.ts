@@ -6,6 +6,9 @@ import { BookingEntity, ScheduleEntity } from '@contler/entity';
 import { BookingRequest } from '@contler/models/booking-request';
 import { map } from 'rxjs/operators';
 import { getLan } from '@contler/const';
+import { SubZoneReservationRequest } from '@contler/models/sub-zone-reservation-request';
+import { SubZoneReserveEntity } from '@contler/entity/sub-zone-reserve.entity';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ReservationService {
@@ -82,5 +85,34 @@ export class ReservationService {
 
   qualifyBooking(bookingId: number, qualify: number) {
     return this.http.post(this.url + `reservation/booking/${bookingId}/qualify`, { qualify });
+  }
+
+  createSubZoneReservation(
+    subZoneReservationRequest: SubZoneReservationRequest,
+  ): Observable<SubZoneReserveEntity> {
+    const [to, from] = getLan();
+    subZoneReservationRequest.to = to;
+    subZoneReservationRequest.from = from;
+    return this.http.post<SubZoneReserveEntity>(this.url + 'sub-zone-reservation', {
+      ...subZoneReservationRequest,
+    });
+  }
+  deleteSubZoneReservation(id: number) {
+    return this.http.delete(this.url + `sub-zone-reservation/${id}`);
+  }
+  getSubZoneReservation(id: number) {
+    return this.http.get<SubZoneReserveEntity>(this.url + `sub-zone-reservation/${id}`);
+  }
+  updateSubZoneReservation(reservation: SubZoneReserveEntity) {
+    return this.http.post(this.url + `sub-zone-reservation/${reservation.id}`, reservation);
+  }
+  createSubZoneSchedule(id: number, schedule: ScheduleEntity) {
+    return this.http.post(this.url + `sub-zone-reservation/${id}/schedule`, schedule);
+  }
+  deleteSubZoneSchedule(id: number) {
+    return this.http.delete(this.url + `sub-zone-reservation/schedule/${id}`);
+  }
+  updateSubZoneSchedule(schedule: ScheduleEntity) {
+    return this.http.put(this.url + `sub-zone-reservation/schedule/${schedule.id}`, schedule);
   }
 }

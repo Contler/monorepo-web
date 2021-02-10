@@ -17,6 +17,8 @@ import { CalendarDatePipe, ZoneBookPipe } from './pipes';
 import { CalendarNextViewDirective, CalendarPreviuosViewDirective } from './directives';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { SubZoneReservationFormComponent } from './components/sub-zone-reservation-form/sub-zone-reservation-form.component';
+import { ScheduleSubZoneComponent } from './pages/schedule-sub-zone/schedule-sub-zone.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     CalendarDatePipe,
     CalendarPreviuosViewDirective,
     CalendarNextViewDirective,
+    SubZoneReservationFormComponent,
+    ScheduleSubZoneComponent,
   ],
   imports: [
     CommonModule,
