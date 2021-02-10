@@ -1,28 +1,31 @@
-import { AfterViewInit, Directive, ElementRef, Input, OnChanges, Renderer2 } from '@angular/core';
+import { AfterViewChecked, Directive, Input, Renderer2 } from '@angular/core';
 import { HotelEntity } from '@contler/entity';
 import { AuthService } from 'hotel/services/auth.service';
 import { take } from 'rxjs/operators';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { Subscription } from 'rxjs';
 
 @Directive({
   selector: '[contlerColorSlideToggle]',
 })
-export class ColorSlideToggleDirective implements OnChanges, AfterViewInit {
+export class ColorSlideToggleDirective implements AfterViewChecked {
   @Input() contlerColorHotel: 'primary' | 'second' | '' = 'primary';
   private hotel!: HotelEntity | null;
+  private slideValueChangeSubscription$: Subscription;
+  constructor(private auth: AuthService, private elemRef: MatSlideToggle, private renderer2: Renderer2) {}
 
-  constructor(private auth: AuthService, private elemRef: ElementRef, private renderer2: Renderer2) {}
-
-  public ngAfterViewInit(): void {
+  ngAfterViewChecked(): void {
     this.auth.$employer.pipe(take(1)).subscribe(({ hotel }) => {
       this.hotel = hotel;
-      this.setColor();
+      this.slideValueChangeSubscription$ = this.elemRef.change.asObservable().subscribe((change) => {
+        if (change.checked) {
+          this.setColor();
+        } else {
+          this.setUnChecked();
+        }
+      });
     });
-  }
-
-  ngOnChanges(): void {
-    if (this.hotel) {
-      this.setColor();
-    }
+    this.elemRef.checked === true ? this.setColor() : this.setUnChecked();
   }
 
   /**
@@ -45,7 +48,7 @@ export class ColorSlideToggleDirective implements OnChanges, AfterViewInit {
 
   private setColor() {
     this.renderer2.setAttribute(
-      this.elemRef.nativeElement!.children[0]!.children[0]!,
+      this.elemRef._thumbBarEl.nativeElement,
       'style',
       `background-color: ${this.hexToRGB(
         this.contlerColorHotel === 'primary' || this.contlerColorHotel === ''
@@ -54,15 +57,28 @@ export class ColorSlideToggleDirective implements OnChanges, AfterViewInit {
         0.7,
       )}`,
     );
-
     this.renderer2.setAttribute(
-      this.elemRef.nativeElement!.children[0]!.children[0]!.children[1]!.children[0],
+      this.elemRef._thumbEl.nativeElement.children[0]!,
       'style',
       `background-color: ${
         this.contlerColorHotel === 'primary' || this.contlerColorHotel === ''
           ? this.hotel!.color
           : this.hotel!.colorSecond
       }`,
+    );
+  }
+
+  private setUnChecked(): void {
+    this.renderer2.setAttribute(
+      this.elemRef._thumbBarEl.nativeElement,
+      'style',
+      `background-color: rgba(0, 0, 0, 0.38)`,
+    );
+
+    this.renderer2.setAttribute(
+      this.elemRef._thumbEl.nativeElement.children[0]!,
+      'style',
+      `background-color: rgba(255, 255, 255, 1)`,
     );
   }
 }
