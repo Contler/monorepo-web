@@ -32,6 +32,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
+import { DirectivesModule } from 'hotel/directives/directives.module';
 
 const materialModules = [
   MatFormFieldModule,
@@ -69,6 +70,7 @@ const materialModules = [
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
+    DirectivesModule,
   ],
   exports: [...materialModules, MenuComponent, MenuListItemComponent, LoaderComponent, RangeComponent],
   entryComponents: [LoaderComponent],

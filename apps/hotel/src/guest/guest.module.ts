@@ -13,6 +13,7 @@ import { ModalEditGuestComponent } from './components/modal-edit-guest/modal-edi
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [GuestComponent, ModelNewGuestComponent, ModalEditGuestComponent],
@@ -27,6 +28,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     FormsModule,
     TranslateModule,
     DynamicTranslateModule,
+    DirectivesModule,
   ],
   providers: [RoomService, GuestService, UserService],
 })

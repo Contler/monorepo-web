@@ -6,7 +6,7 @@
 
   <div style="padding: 0 51px">
     <div class="calendar-menu">
-      <button mat-raised-button color="accent" routerLink="/home/reservation">
+      <button mat-raised-button color="accent" routerLink="/home/reservation" contlerBtnHotel="primary">
         {{ 'calendar.zones' | translate }}
       </button>
       <mat-form-field appearance="fill">
@@ -22,7 +22,7 @@
 
     <div class="calendar">
       <div style="text-align: center">
-        <h3 class="cnt-title">
+        <h3 class="cnt-title" contlerColorHotel="primary">
           {{ viewDate | calendarDate: view + 'ViewTitle':lang | titlecase }}
         </h3>
 

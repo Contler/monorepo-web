@@ -8,8 +8,8 @@
   <mat-sidenav-content>
     <div class="product">
       <div class="product__menu">
-        <h1 class="cnt-title">{{ 'product.title' | translate }}</h1>
-        <button mat-raised-button color="accent" (click)="openCreateProductModel()">
+        <h1 class="cnt-title" contlerColorHotel="primary">{{ 'product.title' | translate }}</h1>
+        <button mat-raised-button color="accent" (click)="openCreateProductModel()" contlerBtnHotel="primary">
           {{ 'product.createBtn' | translate }}
         </button>
         <mat-form-field appearance="fill" class="select">
@@ -57,7 +57,11 @@
         <ng-container matColumnDef="state">
           <th mat-header-cell *matHeaderCellDef>{{ 'product.state' | translate }}</th>
           <td mat-cell *matCellDef="let element">
-            <mat-slide-toggle [checked]="element.state" disabled></mat-slide-toggle>
+            <mat-slide-toggle
+              [checked]="element.state"
+              disabled
+              contlerColorSlideToggle="primary"
+            ></mat-slide-toggle>
             <button mat-icon-button (click)="goToProduct(element)">
               <mat-icon>edit</mat-icon>
             </button>

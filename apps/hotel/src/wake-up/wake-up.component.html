@@ -7,7 +7,7 @@
 
   <mat-sidenav-content class="cnt-wake">
     <div class="cnt-wake__header">
-      <h1 class="cnt-title">{{ 'menu.wakeUpCalls' | translate }}</h1>
+      <h1 class="cnt-title" contlerColorHotel="primary">{{ 'menu.wakeUpCalls' | translate }}</h1>
       <mat-form-field appearance="fill" class="select">
         <mat-select [(ngModel)]="filter" (ngModelChange)="changeWakeView($event)">
           <mat-option *ngFor="let option of filters" [value]="option.value">

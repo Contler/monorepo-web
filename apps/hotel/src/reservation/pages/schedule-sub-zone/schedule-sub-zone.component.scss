@@ -5,7 +5,7 @@
   box-sizing: border-box;
   &__header {
     display: grid;
-    grid-template-columns: auto repeat(2, 240px);
+    grid-template-columns: auto repeat(2, 250px);
     column-gap: 20px;
     align-items: center;
   }

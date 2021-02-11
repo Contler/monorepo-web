@@ -7,6 +7,7 @@ import { CommonComponentsModule } from 'hotel/common-components/common-component
 import { MaterialModule } from 'hotel/material/material.module';
 import { CoreModule } from '@contler/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [LateCheckOutComponent],
@@ -17,6 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MaterialModule,
     CoreModule,
     TranslateModule,
+    DirectivesModule,
   ],
   providers: [DatePipe],
 })

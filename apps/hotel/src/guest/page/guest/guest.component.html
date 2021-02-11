@@ -7,7 +7,7 @@
 
   <mat-sidenav-content class="cnt-guest">
     <div class="cnt-guest__header">
-      <h1 class="cnt-title">{{ 'global.GUEST' | translate }}</h1>
+      <h1 class="cnt-title" contlerColorHotel="primary">{{ 'global.GUEST' | translate }}</h1>
       <mat-form-field appearance="fill">
         <mat-select [(ngModel)]="filterByStatusSelected" (ngModelChange)="filterByStatus()">
           <mat-option [value]="requestStatus.ACTIVE">{{ 'guest.active' | translate }}</mat-option>
@@ -28,12 +28,13 @@
         mat-raised-button
         color="accent"
         contlerButton
+        contlerBtnHotel="primary"
         [loading]="loadCreateGuest"
         (click)="openModalNewGuest()"
       >
         {{ 'guest.create' | translate }}
       </button>
-      <button mat-raised-button>{{ 'guest.load' | translate }}</button>
+      <button mat-raised-button contlerBtnHotel="second">{{ 'guest.load' | translate }}</button>
     </div>
 
     <table mat-table [dataSource]="dataSource" class="cnt-guest__table">

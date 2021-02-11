@@ -1,10 +1,11 @@
-<h1 class="cnt-title title">{{ 'subZone.title' | translate }}</h1>
+<h1 class="cnt-title title" contlerColorHotel="primary">{{ 'subZone.title' | translate }}</h1>
 <form class="reservation-form" [formGroup]="subZoneForm" (ngSubmit)="complete()">
   <div class="reservation-form__is-service">
     <p class="reservation-form__is-service__label">{{ 'subZone.questionLabel' | translate }}</p>
     <div class="reservation-form__is-service__toggle">
       <span>{{ 'subZone.answerNot' | translate }}</span>
       <mat-slide-toggle
+        contlerColorSlideToggle="primary"
         (change)="hiddenSubZoneForm.emit($event.checked)"
         [checked]="subZoneFormValue"
       ></mat-slide-toggle>
@@ -36,7 +37,8 @@
     mat-raised-button
     color="accent"
     contlerButton
-    style="width: 220px"
+    contlerBtnHotel="primary"
+    style="width: 230px"
     [loading]="load"
     [disabled]="load || subZoneForm.invalid"
   >

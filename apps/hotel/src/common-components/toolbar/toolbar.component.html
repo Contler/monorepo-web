@@ -1,11 +1,16 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" contlerBtnHotel="primary">
   <button mat-icon-button (click)="emitToggle()">
     <mat-icon>menu</mat-icon>
   </button>
   <img class="cursor" src="assets/img/logo-white.svg" (click)="goToHome()" alt="contler" />
   <div style="flex-grow: 1"></div>
 
-  <button mat-icon-button *ngIf="!notificationList.length" [matMenuTriggerFor]="menu">
+  <button
+    mat-icon-button
+    *ngIf="!notificationList.length"
+    [matMenuTriggerFor]="menu"
+    contlerBtnHotel="primary"
+  >
     <mat-icon>notifications_active</mat-icon>
   </button>
 
@@ -16,11 +21,12 @@
     matBadgePosition="after"
     matBadgeColor="accent"
     [matMenuTriggerFor]="menu"
+    contlerBtnHotel="primary"
   >
     <mat-icon>notifications_active</mat-icon>
   </button>
 
-  <button mat-button [matMenuTriggerFor]="menuLanguage">
+  <button mat-button [matMenuTriggerFor]="menuLanguage" contlerBtnHotel="primary">
     {{ actualLanguage.name }}
   </button>
 

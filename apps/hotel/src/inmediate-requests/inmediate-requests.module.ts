@@ -15,6 +15,7 @@ import { ModalReceptionComponent } from './components/modal-reception/modal-rece
 import { MatDialogModule } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     MatDialogModule,
     TranslateModule,
     DynamicTranslateModule,
+    DirectivesModule,
   ],
   providers: [EmployerService],
 })

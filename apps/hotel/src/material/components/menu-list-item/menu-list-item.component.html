@@ -1,19 +1,27 @@
 <div class="menu__option" (click)="onItemSelected(item)" [routerLink]="item.link">
   <mat-icon
     *ngIf="item.outlined"
+    contlerColorHotel="primary"
     [class.menu__primary]="item.primary"
     fontSet="material-icons-outlined"
     class="menu__option-icon"
   >
     {{ item.icon }}
   </mat-icon>
-  <mat-icon *ngIf="!item.outlined" class="menu__option-icon" [class.menu__primary]="item.primary">
+  <mat-icon
+    *ngIf="!item.outlined"
+    class="menu__option-icon"
+    [class.menu__primary]="item.primary"
+    contlerColorHotel="primary"
+  >
     {{ item.icon }}
   </mat-icon>
   <p class="menu__option-text">{{ item.name | translate }}</p>
   <span class="spacer"></span>
   <span *ngIf="item.children && item.children.length">
-    <mat-icon [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'"> expand_more </mat-icon>
+    <mat-icon [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'" contlerColorHotel="primary">
+      expand_more
+    </mat-icon>
   </span>
 </div>
 <div *ngIf="expanded">

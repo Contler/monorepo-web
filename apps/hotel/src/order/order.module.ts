@@ -11,6 +11,7 @@ import { CoreModule } from '@contler/core';
 import { ViewOrderComponent } from './pages/view-order/view-order.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [OrderComponent, ViewOrderComponent],
@@ -26,6 +27,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     CoreModule,
     TranslateModule,
     DynamicTranslateModule,
+    DirectivesModule,
   ],
 })
 export class OrderModule {}

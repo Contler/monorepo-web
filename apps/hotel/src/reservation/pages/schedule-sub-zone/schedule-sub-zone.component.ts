@@ -74,7 +74,6 @@ export class ScheduleSubZoneComponent implements OnInit {
         this.translate.getTranslate(this.subZoneReserveEntity.name).subscribe((value) => {
           this.reservationForm.get('name')!.setValue(value);
         });
-        console.log(this.subZoneReserveEntity);
         this.reservationForm.get('zoneParent')!.setValue(this.subZoneReserveEntity.zoneParent.id);
         this.reservationForm.get('icon')!.setValue(this.subZoneReserveEntity.icon);
       });

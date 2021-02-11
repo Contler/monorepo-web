@@ -1,16 +1,14 @@
 <contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
 
-
 <mat-sidenav-container>
   <mat-sidenav mode="over" #sidenav>
     <contler-menu></contler-menu>
   </mat-sidenav>
 
   <mat-sidenav-content>
-
     <div class="marco">
       <div class="marco__menu">
-        <h1 class="cnt-title">{{title}}</h1>
+        <h1 class="cnt-title" contlerColorHotel="primary">{{ title }}</h1>
         <ng-content select="[marcoHeader]"></ng-content>
       </div>
 
@@ -18,9 +16,5 @@
         <ng-content select="[marcoBody]"></ng-content>
       </mat-card>
     </div>
-
-
-
   </mat-sidenav-content>
-
 </mat-sidenav-container>

@@ -14,6 +14,7 @@ import { ZoneService } from 'hotel/zone/services/zone.service';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [EmployerComponent, ModalEmployerComponent, ModalRemoveEmployerComponent],
@@ -28,6 +29,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonComponentsModule,
     RouterModule,
     TranslateModule,
+    DirectivesModule,
   ],
   providers: [EmployerService, ZoneService],
 })

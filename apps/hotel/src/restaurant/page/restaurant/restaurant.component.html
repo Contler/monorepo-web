@@ -7,7 +7,7 @@
   <mat-sidenav-content class="cnt-restaurant">
     <div class="container">
       <div class="form_section">
-        <p class="title">{{ 'restaurant.title' | translate }}</p>
+        <p class="title" contlerColorHotel="primary">{{ 'restaurant.title' | translate }}</p>
         <form [formGroup]="restaurantGroup" (ngSubmit)="save()">
           <mat-form-field appearance="fill">
             <input matInput formControlName="name" />
@@ -20,6 +20,7 @@
             color="accent"
             contlerButton
             [disabled]="restaurantGroup.invalid"
+            contlerBtnHotel="primary"
             [loading]="load"
           >
             {{ 'restaurant.createBtn' | translate }}
