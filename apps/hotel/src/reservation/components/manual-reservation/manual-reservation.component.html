@@ -1,0 +1,74 @@
+<h1 contlerColorHotel="primary" class="cnt-title title">
+  {{ 'reservation.manual.title' | translate }}
+</h1>
+
+<form [formGroup]="reservationForm" class="form">
+  <mat-form-field appearance="fill" class="columns3">
+    <input type="text" matInput formControlName="name" aria-label="name" [matAutocomplete]="auto" />
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="getNameGuest">
+      <mat-option *ngFor="let guest of $guestList | async" [value]="guest">
+        {{ guest.name }} {{ guest.lastName }}
+      </mat-option>
+    </mat-autocomplete>
+    <mat-hint>{{ 'reservation.manual.name' | translate }}</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="">
+    <input type="text" matInput readonly [value]="room?.name | ctrTranslate" />
+    <mat-hint>{{ 'reservation.manual.room' | translate }}</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="columns2">
+    <input
+      type="text"
+      matInput
+      formControlName="person"
+      mask="90"
+      [suffix]="' ' + ('reservation.manual.people' | translate)"
+    />
+    <mat-hint>{{ 'reservation.manual.service' | translate }}</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="columns2">
+    <mat-select formControlName="zone">
+      <mat-option *ngFor="let zone of $zone | async" [value]="zone">
+        {{ zone.name | ctrTranslate }}
+      </mat-option>
+    </mat-select>
+    <mat-hint>{{ 'reservation.manual.zone' | translate }}</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="columns2">
+    <input
+      matInput
+      type="text"
+      formControlName="date"
+      (click)="picker.open()"
+      [matDatepicker]="picker"
+      [matDatepickerFilter]="filterDate"
+      [min]="actualDay"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-hint>{{ 'reservation.manual.date' | translate }}</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="columns2">
+    <mat-select formControlName="hour">
+      <mat-option *ngFor="let item of schedule" [value]="item">
+        {{ item.timeInit | date: 'shortTime' }} - {{ item.timeFinish | date: 'shortTime' }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+<p class="err">{{ err | translate }}</p>
+<div class="footer">
+  <button
+    mat-raised-button
+    contlerBtnHotel="primary"
+    [disabled]="reservationForm.invalid || load"
+    (click)="createReservation()"
+  >
+    {{ 'reservation.manual.create' | translate }}
+  </button>
+</div>

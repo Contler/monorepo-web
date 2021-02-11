@@ -18,6 +18,7 @@ import { CalendarNextViewDirective, CalendarPreviuosViewDirective } from './dire
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { DirectivesModule } from '../directives/directives.module';
+import { ManualReservationComponent } from './components/manual-reservation/manual-reservation.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { DirectivesModule } from '../directives/directives.module';
     CalendarDatePipe,
     CalendarPreviuosViewDirective,
     CalendarNextViewDirective,
+    ManualReservationComponent,
   ],
   imports: [
     CommonModule,
