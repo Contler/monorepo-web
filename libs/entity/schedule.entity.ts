@@ -1,6 +1,7 @@
 import { ZoneReserveEntity } from './zone-reserve.entity';
 import { Transform } from 'class-transformer';
 import { BookingEntity } from './booking.entity';
+import { SubZoneReserveEntity } from './sub-zone-reserve.entity';
 
 export class ScheduleEntity {
   id!: number;
@@ -22,4 +23,6 @@ export class ScheduleEntity {
   reservation!: ZoneReserveEntity;
 
   booking!: BookingEntity[];
+
+  subZone!: SubZoneReserveEntity;
 }

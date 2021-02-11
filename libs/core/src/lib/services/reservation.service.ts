@@ -97,22 +97,32 @@ export class ReservationService {
       ...subZoneReservationRequest,
     });
   }
+
   deleteSubZoneReservation(id: number) {
     return this.http.delete(this.url + `sub-zone-reservation/${id}`);
   }
+
   getSubZoneReservation(id: number) {
     return this.http.get<SubZoneReserveEntity>(this.url + `sub-zone-reservation/${id}`);
   }
+
   updateSubZoneReservation(reservation: SubZoneReserveEntity) {
     return this.http.post(this.url + `sub-zone-reservation/${reservation.id}`, reservation);
   }
+
   createSubZoneSchedule(id: number, schedule: ScheduleEntity) {
     return this.http.post(this.url + `sub-zone-reservation/${id}/schedule`, schedule);
   }
+
   deleteSubZoneSchedule(id: number) {
     return this.http.delete(this.url + `sub-zone-reservation/schedule/${id}`);
   }
+
   updateSubZoneSchedule(schedule: ScheduleEntity) {
     return this.http.put(this.url + `sub-zone-reservation/schedule/${schedule.id}`, schedule);
+  }
+
+  saveSubZoneBooking(id: number, request: BookingRequest) {
+    return this.http.post(this.url + `sub-zone-reservation/schedule/${id}/booking`, request);
   }
 }

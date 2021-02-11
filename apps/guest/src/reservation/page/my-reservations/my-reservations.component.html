@@ -10,7 +10,11 @@
       >
         <div>
           <p class="my-reservation__item-name">
-            {{ item.schedule.reservation.name | ctrTranslate }}
+            {{
+              item.schedule.reservation
+                ? item.schedule.reservation.name
+                : (item.schedule.subZone.name | ctrTranslate)
+            }}
           </p>
           <p class="my-reservation__item-text">
             {{ item.schedule.timeInit | date: 'shortTime' }} - {{ item.quote }}

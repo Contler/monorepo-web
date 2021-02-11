@@ -230,6 +230,9 @@
   },
   "subZone": {
     "createButton": "Crear servicio de la zona",
+    "questionLabel": "¿Es un servicio de la zona?",
+    "answerNot": "No",
+    "answerYes": "Si",
     "edit": {
       "addBtn": "Agregar rango",
       "deleteBtn": "Eliminar servicio de la zona",

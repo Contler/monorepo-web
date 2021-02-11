@@ -230,6 +230,9 @@
   },
   "subZone": {
     "createButton": "Bereichsservice anlegen",
+    "questionLabel": "Is het een lokale dienst?",
+    "answerNot": "Geen",
+    "answerYes": "Ja",
     "edit": {
       "addBtn": "Bereich hinzufügen",
       "deleteBtn": "Dienst aus der Zone entfernen",

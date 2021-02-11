@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ReservationRequest } from '@contler/models';
 import { ReservationService } from '@contler/core';
 import { ReservationFormComponent } from 'hotel/reservation/components/reservation-form/reservation-form.component';

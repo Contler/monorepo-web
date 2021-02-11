@@ -1,14 +1,14 @@
 <h1 class="cnt-title title">{{ 'reservation.title' | translate }}</h1>
 <form class="reservation-form" [formGroup]="zoneForm" (ngSubmit)="complete()">
   <div class="reservation-form__is-service">
-    <p class="reservation-form__is-service__label">¿Es un servicio de la zona?</p>
+    <p class="reservation-form__is-service__label">{{ 'subZone.questionLabel' | translate }}</p>
     <div class="reservation-form__is-service__toggle">
-      <span>No</span>
+      <span>{{ 'subZone.answerNot' | translate }}</span>
       <mat-slide-toggle
         (change)="showSubZoneForm.emit($event.checked)"
         [checked]="subZoneForm"
       ></mat-slide-toggle>
-      <span>Si</span>
+      <span>{{ 'subZone.answerYes' | translate }}</span>
     </div>
   </div>
   <mat-form-field appearance="fill">

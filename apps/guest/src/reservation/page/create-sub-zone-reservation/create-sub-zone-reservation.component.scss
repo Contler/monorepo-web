@@ -1,0 +1,50 @@
+@import 'styles/variables';
+@import 'styles/material';
+
+.new-reservation {
+  padding: 24px 24px 80px;
+  &__logo {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+  }
+
+  &__icon {
+    position: relative;
+    top: 7px;
+  }
+
+  &__title {
+    font-family: $family;
+    font-size: 16.2px;
+    letter-spacing: 0.15px;
+    margin: 38px 0 48px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.48;
+    text-align: center;
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 20px;
+
+    &-complete {
+      grid-column: span 2;
+    }
+  }
+
+  &__err {
+    font-size: 14px;
+    color: red;
+    font-family: $family;
+    margin: 0;
+  }
+}
+
+.btn {
+  width: 100%;
+}

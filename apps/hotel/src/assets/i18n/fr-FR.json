@@ -230,6 +230,9 @@
   },
   "subZone": {
     "createButton": "Créer un service de zone",
+    "questionLabel": "s'agit-il d'un service local ?",
+    "answerNot": "Non",
+    "answerYes": "Oui",
     "edit": {
       "addBtn": "Ajouter une plage",
       "deleteBtn": "Supprimer le service de la zone",
