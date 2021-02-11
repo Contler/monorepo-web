@@ -17,6 +17,7 @@ import { CalendarDatePipe, ZoneBookPipe } from './pipes';
 import { CalendarNextViewDirective, CalendarPreviuosViewDirective } from './directives';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     FormsModule,
     TranslateModule,
     DynamicTranslateModule,
+    DirectivesModule,
   ],
 })
 export class ReservationModule {}

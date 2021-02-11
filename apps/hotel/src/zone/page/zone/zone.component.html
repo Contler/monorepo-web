@@ -8,7 +8,7 @@
   <mat-sidenav-content class="cnt-zone">
     <div class="container">
       <div class="form_section">
-        <p class="title">{{ 'global.ZONE' | translate }}</p>
+        <p class="title" contlerColorHotel="primary">{{ 'global.ZONE' | translate }}</p>
         <form [formGroup]="zoneGroup" (ngSubmit)="saveZone()">
           <mat-form-field appearance="fill">
             <input matInput formControlName="name" />
@@ -47,6 +47,7 @@
             mat-raised-button
             color="accent"
             contlerButton
+            contlerBtnHotel="primary"
             [loading]="load"
             [disabled]="load || zoneGroup.invalid"
           >
@@ -75,10 +76,20 @@
               </div>
               <div class="spacer"></div>
               <div class="group-inline-toogle">
-                <mat-slide-toggle color="accent" [(ngModel)]="zone.admitOrders" disabled>
+                <mat-slide-toggle
+                  color="accent"
+                  [(ngModel)]="zone.admitOrders"
+                  disabled
+                  contlerColorSlideToggle="primary"
+                >
                   {{ 'zone.order' | translate }}
                 </mat-slide-toggle>
-                <mat-slide-toggle color="accent" [(ngModel)]="zone.principal" disabled>
+                <mat-slide-toggle
+                  color="accent"
+                  [(ngModel)]="zone.principal"
+                  disabled
+                  contlerColorSlideToggle="primary"
+                >
                   {{ 'zone.principal' | translate }}
                 </mat-slide-toggle>
               </div>

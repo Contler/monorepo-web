@@ -13,6 +13,7 @@ import { EditModeDirective } from './components/directives/edit-mode.directive';
 import { ViewModeDirective } from './components/directives/view-mode.directive';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [RestaurantComponent, EditableComponent, EditModeDirective, ViewModeDirective],
@@ -26,6 +27,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     CommonComponentsModule,
     TranslateModule,
     DynamicTranslateModule,
+    DirectivesModule,
   ],
   providers: [RestaurantService],
   entryComponents: [EditableComponent],

@@ -1,4 +1,4 @@
-<h1 class="cnt-title title">{{ 'reservation.title' | translate }}</h1>
+<h1 class="cnt-title title" contlerColorHotel="primary">{{ 'reservation.title' | translate }}</h1>
 <form class="reservation-form" [formGroup]="zoneForm" (ngSubmit)="complete()">
   <mat-form-field appearance="fill">
     <input matInput formControlName="name" />
@@ -27,6 +27,7 @@
     mat-raised-button
     color="accent"
     contlerButton
+    contlerBtnHotel="primary"
     style="width: 217px"
     [loading]="load"
     [disabled]="load || zoneForm.invalid"

@@ -6,9 +6,17 @@ import { AdminHomeComponent } from 'hotel/home/page/admin-home/admin-home.compon
 import { MaterialModule } from 'hotel/material/material.module';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [AdminHomeComponent],
-  imports: [CommonModule, HomeRoutingModule, MaterialModule, CommonComponentsModule, TranslateModule],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    MaterialModule,
+    CommonComponentsModule,
+    TranslateModule,
+    DirectivesModule,
+  ],
 })
 export class HomeModule {}

@@ -64,7 +64,9 @@ export class RangeComponent implements OnInit {
   compareWith(o1: Date, o2: Date) {
     return !!o1 && !!o2 && o1.getHours() === o2.getHours() && o1.getMinutes() === o2.getMinutes();
   }
-
+  get activeToggle() {
+    return this.rangeForm.get('active')!;
+  }
   get dayForm() {
     return this.rangeForm.get('day')!;
   }

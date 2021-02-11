@@ -6,7 +6,7 @@
   </mat-sidenav>
 
   <div class="statistics__header">
-    <h1 class="cnt-title">{{ 'rating.title' | translate }}</h1>
+    <h1 class="cnt-title" contlerColorHotel="primary">{{ 'rating.title' | translate }}</h1>
   </div>
 
   <div class="statistics__general">
@@ -16,6 +16,7 @@
         class="ldBar label-center score-progress"
         style="width: 110px; height: 110px; margin: auto"
         data-preset="circle"
+        #scoreProgress
       ></div>
       <p class="statistics__general-txt statistics__general-label">{{ 'rating.average' | translate }}</p>
       <p class="statistics__general-data">{{ timeAvg }}</p>

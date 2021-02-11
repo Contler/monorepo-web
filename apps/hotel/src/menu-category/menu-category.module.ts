@@ -9,6 +9,7 @@ import { MenuCategoryRoutingModule } from './menu-category-routing.module';
 import { ModalEditMenuCategoryComponent } from './components/modal/modal-edit-menu-category/modal-edit-menu-category.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [MenuCategoryComponent, ModalEditMenuCategoryComponent],
@@ -22,6 +23,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     CommonComponentsModule,
     TranslateModule,
     DynamicTranslateModule,
+    DirectivesModule,
   ],
   providers: [RestaurantService],
   entryComponents: [ModalEditMenuCategoryComponent],

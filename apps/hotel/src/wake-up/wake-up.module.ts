@@ -7,6 +7,7 @@ import { CommonComponentsModule } from 'hotel/common-components/common-component
 import { MaterialModule } from 'hotel/material/material.module';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [WakeUpComponent],
@@ -17,6 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MaterialModule,
     FormsModule,
     TranslateModule,
+    DirectivesModule,
   ],
   providers: [DatePipe],
 })

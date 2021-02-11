@@ -13,6 +13,7 @@ import { MultiRoomComponent } from './components/multi-room/multi-room.component
 import { NgxMaskModule } from 'ngx-mask';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { DirectivesModule } from 'hotel/directives/directives.module';
 
 @NgModule({
   declarations: [RoomComponent, SingleRoomComponent, MultiRoomComponent],
@@ -27,6 +28,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     NgxMaskModule,
     TranslateModule,
     DynamicTranslateModule,
+    DirectivesModule,
   ],
   providers: [ZoneService, RoomService],
   entryComponents: [],

@@ -1,4 +1,4 @@
-<h1 matDialogTitle class="cnt-title">{{ 'product.new.title' | translate }}</h1>
+<h1 matDialogTitle class="cnt-title" contlerColorHotel="primary">{{ 'product.new.title' | translate }}</h1>
 <form matDialogContent class="modal-form" [formGroup]="productForm" (ngSubmit)="createProduct()">
   <mat-form-field appearance="fill">
     <input type="text" placeholder="Nombre" matInput formControlName="name" />
@@ -57,6 +57,7 @@
     [disabled]="productForm.invalid || loading"
     contlerButton
     [loading]="loading"
+    contlerBtnHotel="primary"
   >
     {{ 'product.new.create' | translate }}
   </button>

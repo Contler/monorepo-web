@@ -7,7 +7,7 @@
 
   <mat-sidenav-content class="cnt-employer">
     <div class="cnt-employer__header">
-      <h1 class="cnt-title">{{ 'global.EMPLOYER' | translate }}</h1>
+      <h1 class="cnt-title" contlerColorHotel="primary">{{ 'global.EMPLOYER' | translate }}</h1>
       <mat-form-field appearance="fill" class="select">
         <mat-select [(ngModel)]="filter">
           <mat-option *ngFor="let option of filters" [value]="option.value">
@@ -15,10 +15,10 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-raised-button color="accent" (click)="openEmployerModal()">
+      <button mat-raised-button color="accent" (click)="openEmployerModal()" contlerBtnHotel="primary">
         {{ 'employer.createBtn' | translate }}
       </button>
-      <button mat-raised-button routerLink="/home/statistics">
+      <button mat-raised-button routerLink="/home/statistics" contlerBtnHotel="second">
         {{ 'employer.viewRating' | translate }}
       </button>
     </div>
