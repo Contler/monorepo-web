@@ -30,6 +30,9 @@
     "title": "Catégories de menu",
     "updateSusses": "Catégorie mise à jour avec succès"
   },
+  "createReservation": {
+    "noSpotsAvailable": "Aucune place disponible"
+  },
   "editGuest": {
     "noRequest": "Aucune demande",
     "order": "ordre",
@@ -218,6 +221,17 @@
     "labelCategory": "Nom de la zone",
     "labelIcon": "Sélectionnez une icône",
     "labelName": "Nom de la zone",
+    "manual": {
+      "create": "Créer une réservation",
+      "date": "Date",
+      "name": "Nom de l'invité",
+      "people": "Les gens",
+      "room": "Chambre",
+      "service": "Service",
+      "title": "Réservation",
+      "zone": "Zone"
+    },
+    "manualCreation": "Créer une réservation",
     "nameList": "Nom de la zone",
     "range": {
       "endTime": "Fin du temps",
@@ -262,14 +276,14 @@
     "programing": "Programme"
   },
   "typeRequest": {
+    "CASH_LOAN": "Prêt d'argent",
     "CLEAN": "Nettoyer",
+    "CONCIERGE": "La conciergerie",
+    "CURRENCY_EXCHANGE": "Échange de devises",
     "IMMEDIATE": "Immédiat",
     "MAINTAIN": "Maintenir",
     "RECEPTION": "Accueil",
-    "TRANSPORTATION": "Transport",
-    "CASH_LOAN": "Prêt d'argent",
-    "CURRENCY_EXCHANGE": "Échange de devises",
-    "CONCIERGE": "La conciergerie"
+    "TRANSPORTATION": "Transport"
   },
   "wakeUp": {
     "callTo": "Appeler pour",

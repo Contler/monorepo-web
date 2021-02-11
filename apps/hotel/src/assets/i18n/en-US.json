@@ -30,6 +30,9 @@
     "title": "Menu Categories",
     "updateSusses": "Category updated successfully"
   },
+  "createReservation": {
+    "noSpotsAvailable": "No places available"
+  },
   "editGuest": {
     "noRequest": "No requests",
     "order": "Order",
@@ -218,6 +221,17 @@
     "labelCategory": "Zone name",
     "labelIcon": "Select a icon",
     "labelName": "Zone name",
+    "manual": {
+      "create": "Create reservation",
+      "date": "Date",
+      "name": "Guest Name",
+      "people": "People",
+      "room": "Room",
+      "service": "Service",
+      "title": "Reservation",
+      "zone": "Zone"
+    },
+    "manualCreation": "Create reservation",
     "nameList": "Zone name",
     "range": {
       "endTime": "Time end",
@@ -262,14 +276,14 @@
     "programing": "Scheduled"
   },
   "typeRequest": {
+    "CASH_LOAN": "Cash loan",
     "CLEAN": "Clean",
+    "CONCIERGE": "Concierge",
+    "CURRENCY_EXCHANGE": "Currency exchanges",
     "IMMEDIATE": "Immediate",
     "MAINTAIN": "Maintain",
     "RECEPTION": "Reception",
-    "TRANSPORTATION": "Transport",
-    "CASH_LOAN": "Cash loan",
-    "CURRENCY_EXCHANGE": "Currency exchanges",
-    "CONCIERGE": "Concierge"
+    "TRANSPORTATION": "Transport"
   },
   "wakeUp": {
     "callTo": "Call to",
