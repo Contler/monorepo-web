@@ -10,6 +10,8 @@ import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { convertMonthToString } from 'hotel/utils/returnMonth';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateService as DynamicService } from '@contler/dynamic-translate';
+import { MatDialog } from '@angular/material/dialog';
+import { ManualReservationComponent } from 'hotel/reservation/components/manual-reservation/manual-reservation.component';
 
 @Component({
   selector: 'contler-calendar',
@@ -33,6 +35,7 @@ export class CalendarComponent {
     private reservationService: ReservationService,
     private translate: TranslateService,
     private dynamic: DynamicService,
+    private dialog: MatDialog,
   ) {
     this.zones$ = this.usrService
       .getUser()
@@ -58,6 +61,10 @@ export class CalendarComponent {
 
   convertBooking(booking: BookingEntity[]) {
     return booking ? booking.map(this.bookingToCalendar.bind(this)) : [];
+  }
+
+  createManualReservation() {
+    this.dialog.open(ManualReservationComponent);
   }
 
   private bookingToCalendar(book: BookingEntity): CalendarEvent {

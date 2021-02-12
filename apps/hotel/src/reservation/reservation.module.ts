@@ -20,6 +20,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { SubZoneReservationFormComponent } from './components/sub-zone-reservation-form/sub-zone-reservation-form.component';
 import { ScheduleSubZoneComponent } from './pages/schedule-sub-zone/schedule-sub-zone.component';
 import { DirectivesModule } from '../directives/directives.module';
+import { ManualReservationComponent } from './components/manual-reservation/manual-reservation.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DirectivesModule } from '../directives/directives.module';
     CalendarNextViewDirective,
     SubZoneReservationFormComponent,
     ScheduleSubZoneComponent,
+    ManualReservationComponent,
   ],
   imports: [
     CommonModule,

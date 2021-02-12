@@ -30,6 +30,9 @@
     "title": "Menükategorien",
     "updateSusses": "Kategorie erfolgreich aktualisiert"
   },
+  "createReservation": {
+    "noSpotsAvailable": "Keine Plätze verfügbar"
+  },
   "editGuest": {
     "noRequest": "Keine Anfragen",
     "order": "Auftrag",
@@ -218,6 +221,17 @@
     "labelCategory": "Zonenname",
     "labelIcon": "Wählen Sie ein Symbol",
     "labelName": "Zonenname",
+    "manual": {
+      "create": "Maak een reservering",
+      "date": "Datum",
+      "name": "Gastname",
+      "people": "Leute",
+      "room": "Zimmer",
+      "service": "Service",
+      "title": "Reservierung",
+      "zone": "Zone"
+    },
+    "manualCreation": "Maak een reservering",
     "nameList": "Zonenname",
     "range": {
       "endTime": "Zeitende",
@@ -287,14 +301,14 @@
     "programing": "Geplant"
   },
   "typeRequest": {
+    "CASH_LOAN": "Darlehen",
     "CLEAN": "Sauber",
+    "CONCIERGE": "Portier",
+    "CURRENCY_EXCHANGE": "Geldwechsel",
     "IMMEDIATE": "Sofortig",
     "MAINTAIN": "pflegen",
     "RECEPTION": "Rezeption",
-    "TRANSPORTATION": "Transport",
-    "CASH_LOAN": "Darlehen",
-    "CURRENCY_EXCHANGE": "Geldwechsel",
-    "CONCIERGE": "Portier"
+    "TRANSPORTATION": "Transport"
   },
   "wakeUp": {
     "callTo": "Aufruf",

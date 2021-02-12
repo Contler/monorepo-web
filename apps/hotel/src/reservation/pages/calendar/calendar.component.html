@@ -18,6 +18,9 @@
         </mat-select>
         <mat-hint>{{ 'calendar.zone' | translate }}</mat-hint>
       </mat-form-field>
+      <button mat-raised-button contlerBtnHotel="primary" (click)="createManualReservation()">
+        {{ 'reservation.manualCreation' | translate }}
+      </button>
     </div>
 
     <div class="calendar">
