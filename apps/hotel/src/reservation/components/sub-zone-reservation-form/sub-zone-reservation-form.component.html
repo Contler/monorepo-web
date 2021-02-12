@@ -1,30 +1,29 @@
-<h1 class="cnt-title title" contlerColorHotel="primary">{{ 'reservation.title' | translate }}</h1>
-<form class="reservation-form" [formGroup]="zoneForm" (ngSubmit)="complete()">
+<h1 class="cnt-title title" contlerColorHotel="primary">{{ 'subZone.title' | translate }}</h1>
+<form class="reservation-form" [formGroup]="subZoneForm" (ngSubmit)="complete()">
   <div class="reservation-form__is-service">
     <p class="reservation-form__is-service__label">{{ 'subZone.questionLabel' | translate }}</p>
     <div class="reservation-form__is-service__toggle">
       <span>{{ 'subZone.answerNot' | translate }}</span>
       <mat-slide-toggle
         contlerColorSlideToggle="primary"
-        (change)="showSubZoneForm.emit($event.checked)"
-        [checked]="subZoneForm"
+        (change)="hiddenSubZoneForm.emit($event.checked)"
+        [checked]="subZoneFormValue"
       ></mat-slide-toggle>
       <span>{{ 'subZone.answerYes' | translate }}</span>
     </div>
   </div>
   <mat-form-field appearance="fill">
     <input matInput formControlName="name" />
-    <mat-hint>{{ 'reservation.labelName' | translate }}</mat-hint>
+    <mat-hint>{{ 'subZone.labelName' | translate }}</mat-hint>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-select formControlName="category">
-      <mat-option *ngFor="let category of categoryZone | async" [value]="category">
-        {{ category.name | translate }}
+    <mat-select formControlName="zoneParent">
+      <mat-option *ngFor="let zone of zoneReservations" [value]="zone">
+        {{ zone.name | ctrTranslate }}
       </mat-option>
     </mat-select>
-    <mat-hint>{{ 'reservation.labelCategory' | translate }}</mat-hint>
+    <mat-hint>{{ 'subZone.labelZone' | translate }}</mat-hint>
   </mat-form-field>
-
   <mat-form-field appearance="fill">
     <mat-select formControlName="icon">
       <mat-option *ngFor="let icon of icons" [value]="icon">
@@ -39,10 +38,10 @@
     color="accent"
     contlerButton
     contlerBtnHotel="primary"
-    style="width: 217px"
+    style="width: 230px"
     [loading]="load"
-    [disabled]="load || zoneForm.invalid"
+    [disabled]="load || subZoneForm.invalid"
   >
-    {{ 'reservation.createButton' | translate }}
+    {{ 'subZone.createButton' | translate }}
   </button>
 </form>

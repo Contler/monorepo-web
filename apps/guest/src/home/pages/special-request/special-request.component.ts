@@ -76,12 +76,6 @@ export class SpecialRequestComponent implements OnInit, OnDestroy {
       );
   }
 
-  getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
-    );
-  }
-
   getButtonColorHotel() {
     return this.sanitizer.bypassSecurityTrustStyle(
       this.hotel && this.hotel.color

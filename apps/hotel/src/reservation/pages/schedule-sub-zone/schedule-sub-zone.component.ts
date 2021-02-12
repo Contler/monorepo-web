@@ -1,23 +1,23 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
-import { CategoryEntity, ScheduleEntity } from '@contler/entity';
+import { CategoryEntity, HotelEntity, ScheduleEntity } from '@contler/entity';
 import { AllDays, DAYS, ICONS } from '@contler/const';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { ReservationService } from '@contler/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, first, map, startWith, switchMap, tap } from 'rxjs/operators';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
-import { plainToClass } from 'class-transformer';
 import { TranslateService } from '@contler/dynamic-translate';
+import { filter, first, map, startWith, switchMap, tap } from 'rxjs/operators';
+import { plainToClass } from 'class-transformer';
+import { AuthService } from 'hotel/services/auth.service';
 
 @Component({
-  selector: 'contler-schedule',
-  templateUrl: './schedule.component.html',
-  styleUrls: ['./schedule.component.scss'],
+  selector: 'contler-schedule-sub-zone',
+  templateUrl: './schedule-sub-zone.component.html',
+  styleUrls: ['./schedule-sub-zone.component.scss'],
 })
-export class ScheduleComponent implements OnInit {
-  categoryZone: Observable<CategoryEntity[]>;
+export class ScheduleSubZoneComponent implements OnInit {
   icons = ICONS;
   days = DAYS;
   reservationForm: FormGroup;
@@ -25,9 +25,12 @@ export class ScheduleComponent implements OnInit {
   filterIcon: Observable<String[]>;
   loader = false;
 
-  reservation: ZoneReserveEntity | undefined;
+  subZoneReserveEntity: ZoneReserveEntity;
   categories: CategoryEntity[] = [];
+  zoneReservations$: Observable<ZoneReserveEntity[]>;
   private removeSchedule: ScheduleEntity[] = [];
+  private hotel: HotelEntity;
+  private id: number;
 
   constructor(
     private zoneService: ZoneService,
@@ -37,12 +40,15 @@ export class ScheduleComponent implements OnInit {
     formBuild: FormBuilder,
     private cdRef: ChangeDetectorRef,
     private translate: TranslateService,
+    private auth: AuthService,
   ) {
-    this.categoryZone = this.zoneService.getCategories().pipe(tap((cat) => (this.categories = cat)));
-
+    this.zoneReservations$ = this.auth.$employer.pipe(
+      tap((user) => (this.hotel = user.hotel)),
+      switchMap((employer) => reservationService.getHotelReservation(employer.hotel.uid)),
+    );
     this.reservationForm = formBuild.group({
       name: ['', Validators.required],
-      category: ['', Validators.required],
+      zoneParent: ['', Validators.required],
       icon: [],
     });
     this.filterIcon = this.icon.valueChanges.pipe(
@@ -54,19 +60,21 @@ export class ScheduleComponent implements OnInit {
       .pipe(
         filter((data) => !!data['id']),
         map((data) => data['id'] as number),
+        tap((id) => (this.id = id)),
         switchMap((id) => reservationService.getReservation(id)),
+        switchMap(() => reservationService.getReservation(this.id)),
       )
-      .subscribe((reservation) => {
-        this.reservation = reservation;
-        this.reservation.schedule = this.reservation.schedule.map((schedule) =>
+      .subscribe((subZoneReservation) => {
+        this.subZoneReserveEntity = subZoneReservation;
+        this.subZoneReserveEntity.schedule = this.subZoneReserveEntity.schedule.map((schedule) =>
           plainToClass(ScheduleEntity, schedule),
         );
-        this.schedules = this.reservation.schedule;
-        this.translate.getTranslate(this.reservation.name).subscribe((value) => {
+        this.schedules = this.subZoneReserveEntity.schedule;
+        this.translate.getTranslate(this.subZoneReserveEntity.name).subscribe((value) => {
           this.reservationForm.get('name')!.setValue(value);
         });
-        this.reservationForm.get('category')!.setValue(this.reservation.category.id);
-        this.reservationForm.get('icon')!.setValue(this.reservation.icon);
+        this.reservationForm.get('zoneParent')!.setValue(this.subZoneReserveEntity.zoneParent.id);
+        this.reservationForm.get('icon')!.setValue(this.subZoneReserveEntity.icon);
       });
   }
 
@@ -114,10 +122,12 @@ export class ScheduleComponent implements OnInit {
 
   save() {
     this.loader = true;
-    const { name, category, icon } = this.reservationForm.value;
-    this.translate.updateTranslate(this.reservation.name, name, this.reservation.hotel.uid).subscribe();
-    this.reservation!.category = this.categories.find((cat) => cat.id === category)!;
-    this.reservation!.icon = icon;
+    const { name, zoneParent, icon } = this.reservationForm.value;
+    this.translate
+      .updateTranslate(this.subZoneReserveEntity.name, name, this.subZoneReserveEntity.hotel.uid)
+      .subscribe();
+    this.subZoneReserveEntity!.zoneParent = zoneParent;
+    this.subZoneReserveEntity!.icon = icon;
 
     // Create schedules all days
     const finderSchedule = this.schedules.find((el) => el.day === AllDays);
@@ -128,7 +138,7 @@ export class ScheduleComponent implements OnInit {
     // new schedule
     const newScheduleObs = this.schedules
       .filter((schedule) => !schedule.id)
-      .map((schedule) => this.reservationService.createSchedule(this.reservation!.id, schedule));
+      .map((schedule) => this.reservationService.createSchedule(this.subZoneReserveEntity!.id, schedule));
 
     //delete schedule
     const deleteSchedule = this.removeSchedule.map((schedule) =>
@@ -137,13 +147,13 @@ export class ScheduleComponent implements OnInit {
     deleteSchedule.forEach((item) => item.subscribe());
 
     //update schedule
-    const updateSchedule = this.reservation!.schedule.map((schedule) =>
+    const updateSchedule = this.subZoneReserveEntity!.schedule.map((schedule) =>
       this.reservationService.updateSchedule(schedule),
     );
     updateSchedule.forEach((item) => item.subscribe());
 
     // update reservation
-    this.reservationService.updateReservation(this.reservation!).subscribe(() => {
+    this.reservationService.updateReservation(this.subZoneReserveEntity!).subscribe(() => {
       setTimeout(() => {
         forkJoin([...newScheduleObs]).subscribe();
       }, 100);
@@ -156,11 +166,13 @@ export class ScheduleComponent implements OnInit {
     this.loader = true;
     const deleteSchedule = [
       ...this.removeSchedule.map((schedule) => this.reservationService.deleteSchedule(schedule.id)),
-      ...this.reservation!.schedule.map((schedule) => this.reservationService.deleteSchedule(schedule.id)),
+      ...this.subZoneReserveEntity!.schedule.map((schedule) =>
+        this.reservationService.deleteSchedule(schedule.id),
+      ),
     ];
 
     forkJoin(deleteSchedule)
-      .pipe(switchMap(() => this.reservationService.deleteReservation(this.reservation!.id)))
+      .pipe(switchMap(() => this.reservationService.deleteReservation(this.subZoneReserveEntity!.id)))
       .subscribe(() => {
         this.loader = false;
         this.router.navigate(['/home', 'reservation']);
@@ -170,11 +182,10 @@ export class ScheduleComponent implements OnInit {
   get icon() {
     return this.reservationForm.get('icon')!;
   }
-
   changeLanguage(): void {
     if (this.reservationForm) {
       this.translate
-        .getTranslate(this.reservation.name)
+        .getTranslate(this.subZoneReserveEntity.name)
         .pipe(first())
         .subscribe((value) => {
           this.reservationForm.get('name')!.setValue(value);

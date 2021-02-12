@@ -1,4 +1,4 @@
-<mat-icon class="icon" [style]="getColorSecondHotel()">check_circle</mat-icon>
+<mat-icon class="icon" contlerColorHotel="second">check_circle</mat-icon>
 <p class="text">
   {{ 'modalConfirm.cancelMessage' | translate }}
 </p>
@@ -11,7 +11,6 @@
   contlerColorBtnHotel="primary"
   color="accent"
   (click)="dialogRef.close(true)"
-  [style]="getColorButtonHotel()"
 >
   {{ 'modalConfirm.yesDeleteIt' | translate }}
 </button>

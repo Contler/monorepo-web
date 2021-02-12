@@ -242,6 +242,31 @@
     },
     "title": "Reserva de zona"
   },
+  "subZone": {
+    "createButton": "Criar serviço de zona",
+    "questionLabel": "é um serviço local?",
+    "answerNot": "Não",
+    "answerYes": "Sim",
+    "edit": {
+      "addBtn": "Adicionar intervalo",
+      "deleteBtn": "Retirar serviço da zona",
+      "editBtn": "Atualizar",
+      "subtitle": "Disponibilidade do Serviço de Zona",
+      "title": "Informação de serviço por zona"
+    },
+    "labelZone": "Zona",
+    "labelIcon": "Selecione um ícone",
+    "labelName": "Nome do Serviço da Zona",
+    "nameList": "Nome do Serviço da Zona",
+    "range": {
+      "endTime": "Fim do tempo",
+      "initTime": "Tempo init",
+      "labelDay": "Dia da semana",
+      "quotaLabel": "Cotas",
+      "rooms": "Quartos"
+    },
+    "title": "Serviço de Zona"
+  },
   "restaurant": {
     "createBtn": "Criar restaurante",
     "createSusses": "Restaurante criado com sucesso",

@@ -1,10 +1,10 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
   <div marcoBody class="wake-up">
-    <p class="wake-up__title" [style]="getColorHotel()">{{ 'wakeUp.title' | translate }}</p>
+    <p class="wake-up__title" contlerColorHotel="primary">{{ 'wakeUp.title' | translate }}</p>
     <mat-spinner color="accent" style="margin: auto" *ngIf="!wakes"></mat-spinner>
     <div *ngIf="wakes && wakes.length == 0" class="wake-up__null">
-      <mat-icon class="wake-up__null-icon" [style]="getColorSecondHotel()">check_circle</mat-icon>
-      <p class="wake-up__null-text" [style]="getColorHotel()">
+      <mat-icon class="wake-up__null-icon" contlerColorHotel="second">check_circle</mat-icon>
+      <p class="wake-up__null-text" contlerColorHotel="primary">
         {{ 'wakeUp.youDontHaveAnyoneWakeUpCalls' | translate }}
       </p>
     </div>
@@ -32,7 +32,6 @@
         contlerButton
         contlerColorBtnHotel="primary"
         routerLink="/home/wake-up-create"
-        [style]="getColorButtonHotel()"
       >
         {{ 'wakeUp.scheduleNewWakeUpCall' | translate }}
       </button>

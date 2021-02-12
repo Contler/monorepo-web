@@ -1,6 +1,6 @@
 <contler-marco [backUrl]="'/home/my-inmediate-requests'">
   <div class="main-container" marcoBody>
-    <p class="p-title" [style]="getColorHotel()">
+    <p class="p-title" contlerColorHotel="primary">
       {{ 'inmediateRequest.inmediateRequestMessage' | translate }}
     </p>
     <ng-container *ngIf="request">
@@ -52,7 +52,6 @@
           style="margin-left: 5%"
           contlerColorBtnHotel="primary"
           (click)="saveRequest()"
-          [style]="getButtonColorHotel()"
         >
           {{ 'inmediateRequest.update' | translate }}
         </button>

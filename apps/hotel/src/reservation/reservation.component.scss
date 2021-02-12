@@ -1,12 +1,11 @@
-@import "styles/variables";
+@import 'styles/variables';
 
 .reservation {
   width: 1280px;
   margin: auto;
-  padding: 55px 52px;
+  padding: 55px 40px;
   display: flex;
   justify-content: space-between;
-
 
   &__form {
     width: 458px;

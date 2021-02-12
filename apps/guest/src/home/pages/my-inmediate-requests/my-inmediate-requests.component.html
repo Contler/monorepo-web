@@ -1,6 +1,6 @@
 <contler-marco [padding]="'16px 0px 0px 0px'">
   <div class="main-container" marcoBody>
-    <p class="p-title" [style]="getColorHotel()">
+    <p class="p-title" contlerColorHotel="primary">
       {{ 'myInmediateRequests.myInmediatePendingRequest' | translate }}
     </p>
     <div class="page-container" [ngSwitch]="currentPage">
@@ -58,10 +58,8 @@
 
 <ng-template #empty>
   <div class="empty-container">
-    <mat-icon class="custom_icon empty-container__icon" [style]="getColorSecondHotel()">
-      check_circle
-    </mat-icon>
-    <p class="empty-container__label" [style]="getColorHotel()">
+    <mat-icon class="custom_icon empty-container__icon" contlerColorHotel="second"> check_circle </mat-icon>
+    <p class="empty-container__label" contlerColorHotel="primary">
       {{ 'myInmediateRequests.youHaveNoImmediateRequest' | translate }}
     </p>
   </div>

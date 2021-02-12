@@ -11,6 +11,7 @@ import { DAYS, TYPE_ERROR } from '@contler/const';
 import { BookingRequest } from '@contler/models/booking-request';
 import { MessagesService } from 'guest/services/messages/messages.service';
 import { TranslateService } from '@ngx-translate/core';
+import { forkJoin, of } from 'rxjs';
 
 @Component({
   selector: 'contler-create-reservation',
@@ -50,11 +51,27 @@ export class CreateReservationComponent implements OnInit {
       .subscribe((guest) => (this.guest = guest));
     this.route.params
       .pipe(
-        map((data) => data['id']),
-        switchMap((id) => this.reservationService.getReservation(id)),
+        map((data) => {
+          const idSubZone = data['id'] ? data['id'] : data['idSubZone'];
+          return data['idZone']
+            ? {
+                idZone: data['idZone'],
+                idSubZone,
+              }
+            : {
+                idZone: null,
+                idSubZone,
+              };
+        }),
+        switchMap((data) =>
+          forkJoin({
+            zoneReservationEntity: data.idZone ? this.reservationService.getReservation(data.idZone) : of({}),
+            subZoneReservationEntity: this.reservationService.getReservation(data.idSubZone),
+          }),
+        ),
       )
-      .subscribe((data) => {
-        this.zoneReservation = data;
+      .subscribe(({ subZoneReservationEntity }) => {
+        this.zoneReservation = subZoneReservationEntity;
       });
 
     this.filterDate = (d: Date | null): boolean => {
@@ -80,12 +97,6 @@ export class CreateReservationComponent implements OnInit {
         }
       }
     });
-  }
-
-  getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
-    );
   }
 
   getColorButtonHotel() {

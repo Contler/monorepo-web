@@ -37,10 +37,4 @@ export class MyReservationsComponent implements OnInit {
       this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
     );
   }
-
-  getColorSecondHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.colorSecond ? `color: ${this.hotel.colorSecond}` : '',
-    );
-  }
 }

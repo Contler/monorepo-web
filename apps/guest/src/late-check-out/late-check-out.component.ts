@@ -51,10 +51,4 @@ export class LateCheckOutComponent implements OnInit {
       this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '',
     );
   }
-
-  getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
-    );
-  }
 }

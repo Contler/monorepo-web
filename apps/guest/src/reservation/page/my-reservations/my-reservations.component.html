@@ -1,6 +1,8 @@
 <contler-marco [backUrl]="'/home/reservation'">
   <div marcoBody class="my-reservation">
-    <h1 class="my-reservation__title" [style]="getColorHotel()">{{ 'myReservations.title' | translate }}</h1>
+    <h1 class="my-reservation__title" contlerColorHotel="primary">
+      {{ 'myReservations.title' | translate }}
+    </h1>
 
     <ng-container *ngIf="bookings.length; else empty">
       <div
@@ -28,10 +30,8 @@
 
 <ng-template #empty>
   <div class="empty-container">
-    <mat-icon class="custom_icon empty-container__icon" [style]="getColorSecondHotel()"
-      >check_circle</mat-icon
-    >
-    <p class="empty-container__label" [style]="getColorHotel()">
+    <mat-icon class="custom_icon empty-container__icon" contlerColorHotel="second">check_circle</mat-icon>
+    <p class="empty-container__label" contlerColorHotel="primary">
       {{ 'myReservations.youHaveNoReservationRequest' | translate }}
     </p>
   </div>

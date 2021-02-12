@@ -31,24 +31,6 @@ export class WakeUpComponent implements OnInit {
 
   ngOnInit() {}
 
-  getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
-    );
-  }
-
-  getColorSecondHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `color: ${this.hotel.colorSecond}` : '',
-    );
-  }
-
-  getColorButtonHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '',
-    );
-  }
-
   delete(wake: WakeUpEntity, index: number) {
     this.indexLoad = index;
     this.wakeService.deleteWake(wake.id).subscribe(() => (this.indexLoad = null));

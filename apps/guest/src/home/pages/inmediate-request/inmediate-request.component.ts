@@ -78,18 +78,4 @@ export class InmediateRequestComponent implements OnInit, OnDestroy {
         this.messagesService.showServerError();
       });
   }
-
-  getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
-    );
-  }
-
-  getButtonColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color
-        ? `background-color: ${this.hotel.color}; color: #ffffff !important`
-        : '',
-    );
-  }
 }

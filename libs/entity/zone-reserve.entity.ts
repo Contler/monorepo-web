@@ -14,4 +14,8 @@ export class ZoneReserveEntity {
   category!: CategoryEntity;
 
   schedule!: ScheduleEntity[];
+
+  subZone: ZoneReserveEntity[];
+
+  zoneParent: ZoneReserveEntity;
 }

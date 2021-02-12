@@ -242,6 +242,31 @@
     },
     "title": "Zone reservation"
   },
+  "subZone": {
+    "createButton": "Create zone service",
+    "questionLabel": "Is it a zone service?",
+    "answerNot": "No",
+    "answerYes": "Yes",
+    "edit": {
+      "addBtn": "Add range",
+      "deleteBtn": "Remove service from zone",
+      "editBtn": "Update",
+      "subtitle": "Zone service availability",
+      "title": "Zone service information"
+    },
+    "labelZone": "Zone",
+    "labelIcon": "Select a icon",
+    "labelName": "Zone service name",
+    "nameList": "Zone service name",
+    "range": {
+      "endTime": "Time end",
+      "initTime": "Time init",
+      "labelDay": "Day of the week",
+      "quotaLabel": "Quotas",
+      "rooms": "Rooms"
+    },
+    "title": "Zone service"
+  },
   "restaurant": {
     "createBtn": "CREATE RESTAURANT",
     "createSusses": "Successfully created restaurant",

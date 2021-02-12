@@ -2,8 +2,8 @@
   <img src="assets/img/rating.svg" alt="" class="cnt-qualify__img" />
   <p class="cnt-qualify__title">
     {{ 'modalBookingQualifyComponent.title' | translate }}
-    {{ data.schedule.reservation.name }} {{ 'modalBookingQualifyComponent.thatDay' | translate }}
-    {{ data.date | date: 'dd/MM/yyyy' }}?
+    {{ data.schedule.reservation.name | ctrTranslate }}
+    {{ 'modalBookingQualifyComponent.thatDay' | translate }} {{ data.date | date: 'dd/MM/yyyy' }}?
   </p>
   <contler-start
     value="0"

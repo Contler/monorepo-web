@@ -63,12 +63,6 @@ export class EditReservationComponent implements OnInit {
     });
   }
 
-  getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
-    );
-  }
-
   getColorButtonHotel() {
     return this.sanitizer.bypassSecurityTrustStyle(
       this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '',
