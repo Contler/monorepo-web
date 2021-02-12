@@ -25,11 +25,7 @@
     <div class="booking__table-content">
       <div>
         <p class="booking__table-title">
-          {{
-            item.schedule.reservation
-              ? item.schedule.reservation.name
-              : (item.schedule.subZone.name | ctrTranslate)
-          }}
+          {{ item.schedule.reservation.name | ctrTranslate }}
         </p>
         <p *ngIf="item.guest" class="booking__table-text">
           {{ 'readyBooking.guest' | translate }} {{ item.guest?.name + ' ' + item.guest?.lastName }}
