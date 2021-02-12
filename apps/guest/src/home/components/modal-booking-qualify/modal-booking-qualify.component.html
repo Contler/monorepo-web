@@ -2,9 +2,7 @@
   <img src="assets/img/rating.svg" alt="" class="cnt-qualify__img" />
   <p class="cnt-qualify__title">
     {{ 'modalBookingQualifyComponent.title' | translate }}
-    {{
-      data.schedule.reservation ? data.schedule.reservation.name : (data.schedule.subZone.name | ctrTranslate)
-    }}
+    {{ data.schedule.reservation.name | ctrTranslate }}
     {{ 'modalBookingQualifyComponent.thatDay' | translate }} {{ data.date | date: 'dd/MM/yyyy' }}?
   </p>
   <contler-start

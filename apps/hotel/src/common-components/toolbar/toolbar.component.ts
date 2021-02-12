@@ -15,6 +15,7 @@ import { LANGUAGES } from '@contler/const';
 })
 export class ToolbarComponent implements OnInit {
   @Output() toggle: EventEmitter<void> = new EventEmitter();
+  @Output() changeCurrentLanguage: EventEmitter<Language> = new EventEmitter();
   notificationList: any[] = [];
 
   readonly languages = LANGUAGES;
@@ -59,5 +60,6 @@ export class ToolbarComponent implements OnInit {
     this.actualLanguage = lan;
     this.translate.use(lan.prefix);
     window.localStorage.lan = lan.prefix;
+    this.changeCurrentLanguage.emit(lan);
   }
 }

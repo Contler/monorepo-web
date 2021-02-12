@@ -1,6 +1,6 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
   <div marcoBody>
-    <p class="late__title" [style]="getColorHotel()">{{ 'lateCheckOut.title' | translate }}</p>
+    <p class="late__title" contlerColorHotel="primary">{{ 'lateCheckOut.title' | translate }}</p>
 
     <div *ngFor="let item of lateList | async" class="late__item">
       <p class="late__p-label-date">{{ item.date | date: 'shortTime' }}</p>

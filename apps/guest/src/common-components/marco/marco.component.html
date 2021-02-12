@@ -8,7 +8,7 @@
   <img *ngIf="logo" [src]="logo" routerLink="/home" class="logo-general" alt="logo" />
 
   <div class="marco__menu">
-    <button mat-icon-button type="button" (click)="sidenav.toggle()" [style]="generalService.getColorHotel()">
+    <button mat-icon-button type="button" (click)="sidenav.toggle()" contlerColorHotel="primary">
       <mat-icon>menu</mat-icon>
     </button>
   </div>

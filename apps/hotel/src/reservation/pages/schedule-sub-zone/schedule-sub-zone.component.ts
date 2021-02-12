@@ -8,7 +8,7 @@ import { ZoneService } from 'hotel/zone/services/zone.service';
 import { ReservationService } from '@contler/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@contler/dynamic-translate';
-import { filter, map, startWith, switchMap, tap } from 'rxjs/operators';
+import { filter, first, map, startWith, switchMap, tap } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
 import { AuthService } from 'hotel/services/auth.service';
 
@@ -181,5 +181,15 @@ export class ScheduleSubZoneComponent implements OnInit {
 
   get icon() {
     return this.reservationForm.get('icon')!;
+  }
+  changeLanguage(): void {
+    if (this.reservationForm) {
+      this.translate
+        .getTranslate(this.subZoneReserveEntity.name)
+        .pipe(first())
+        .subscribe((value) => {
+          this.reservationForm.get('name')!.setValue(value);
+        });
+    }
   }
 }

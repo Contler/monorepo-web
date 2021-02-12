@@ -21,16 +21,4 @@ export class ModalConfirmComponent implements OnInit {
   }
 
   ngOnInit() {}
-
-  getColorButtonHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `background: ${this.hotel.color};  color: #ffffff !important` : '',
-    );
-  }
-
-  getColorSecondHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `color: ${this.hotel.colorSecond}` : '',
-    );
-  }
 }

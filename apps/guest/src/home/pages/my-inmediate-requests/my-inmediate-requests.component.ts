@@ -35,12 +35,12 @@ export class MyInmediateRequestsComponent implements OnInit, OnDestroy {
     private router: Router,
     private sanitizer: DomSanitizer,
   ) {
-    this.guestSubscribe = this.guestService.$hotel.subscribe(hotel => (this.hotel = hotel));
+    this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
   }
 
   ngOnInit() {
-    this.requestService.getRequests(false).subscribe(req => (this.pendingRequests = req));
-    this.requestService.getRequests(true).subscribe(req => (this.readyRequests = req));
+    this.requestService.getRequests(false).subscribe((req) => (this.pendingRequests = req));
+    this.requestService.getRequests(true).subscribe((req) => (this.readyRequests = req));
   }
 
   ngOnDestroy() {
@@ -54,16 +54,6 @@ export class MyInmediateRequestsComponent implements OnInit, OnDestroy {
 
   goToRequest(request: RequestEntity) {
     this.router.navigate(['/home', 'inmediate-request', request.id]);
-  }
-
-  getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '');
-  }
-
-  getColorSecondHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.colorSecond ? `color: ${this.hotel.colorSecond}` : '',
-    );
   }
 
   getSelectedTabStyle() {

@@ -1,6 +1,6 @@
 <contler-marco padding="0" [backUrl]="'/home/reservation'">
   <div marcoBody class="reservation">
-    <h1 class="reservation__title" [style]="getColorHotel()">
+    <h1 class="reservation__title" contlerColorHotel="primary">
       {{ 'reservation.title' | translate }}
     </h1>
 
@@ -10,7 +10,7 @@
       routerLink="/home/reservation/{{ item.zoneParent.id }}/sub-zone/{{ item.id }}"
     >
       <mat-icon class="reservation__zone-icon">{{ item.icon || 'room_service' }}</mat-icon>
-      <p class="reservation__zone-text" [style]="getColorHotel()">
+      <p class="reservation__zone-text" contlerColorHotel="primary">
         {{ item.name | ctrTranslate | uppercase }}
       </p>
       <mat-icon class="reservation__zone-icon">navigate_next</mat-icon>

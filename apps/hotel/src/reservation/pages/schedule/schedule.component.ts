@@ -5,7 +5,7 @@ import { AllDays, DAYS, ICONS } from '@contler/const';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { ReservationService } from '@contler/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, map, startWith, switchMap, tap } from 'rxjs/operators';
+import { filter, first, map, startWith, switchMap, tap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { plainToClass } from 'class-transformer';
@@ -169,5 +169,16 @@ export class ScheduleComponent implements OnInit {
 
   get icon() {
     return this.reservationForm.get('icon')!;
+  }
+
+  changeLanguage(): void {
+    if (this.reservationForm) {
+      this.translate
+        .getTranslate(this.reservation.name)
+        .pipe(first())
+        .subscribe((value) => {
+          this.reservationForm.get('name')!.setValue(value);
+        });
+    }
   }
 }

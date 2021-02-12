@@ -11,7 +11,7 @@ import { DAYS, TYPE_ERROR } from '@contler/const';
 import { BookingRequest } from '@contler/models/booking-request';
 import { MessagesService } from 'guest/services/messages/messages.service';
 import { TranslateService } from '@ngx-translate/core';
-import { EMPTY, forkJoin, of } from 'rxjs';
+import { forkJoin, of } from 'rxjs';
 
 @Component({
   selector: 'contler-create-reservation',
@@ -97,12 +97,6 @@ export class CreateReservationComponent implements OnInit {
         }
       }
     });
-  }
-
-  getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
-    );
   }
 
   getColorButtonHotel() {

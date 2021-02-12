@@ -1,6 +1,6 @@
 <contler-marco [backUrl]="'/home/reservation'">
   <div marcoBody class="new-reservation">
-    <h1 class="new-reservation__title" [style]="getColorHotel()">
+    <h1 class="new-reservation__title" contlerColorHotel="primary">
       {{ 'createReservation.title' | translate }} {{ zoneReservation?.name | ctrTranslate }}
       <mat-icon class="new-reservation__icon">{{ zoneReservation?.icon }}</mat-icon>
     </h1>

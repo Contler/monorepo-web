@@ -30,12 +30,6 @@ export class ReservationComponent implements OnInit {
     });
   }
 
-  getColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color ? `color: ${this.hotel.color}` : '',
-    );
-  }
-
   ngOnInit() {}
 
   public goToPage(item: ZoneReserveEntity): void {

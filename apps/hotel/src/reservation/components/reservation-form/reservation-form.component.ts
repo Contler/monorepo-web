@@ -5,6 +5,7 @@ import { ICONS } from '@contler/const';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { ReservationRequest } from '@contler/models';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-reservation-form',
