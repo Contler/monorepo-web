@@ -59,13 +59,7 @@ export class EditReservationComponent implements OnInit {
   ngOnInit() {
     this.dateReservation.valueChanges.subscribe((date: Date) => {
       const day = this.days[date.getDay()];
-      if (this.booking!.schedule.reservation) {
-        this.schedule = this.booking!.schedule.reservation.schedule.filter((s) => s.day === day && s.active);
-      } else if (this.booking!.schedule.subZone) {
-        this.schedule = this.booking!.schedule.subZone.schedule.filter((s) => s.day === day && s.active);
-      } else {
-        this.schedule = [];
-      }
+      this.schedule = this.booking!.schedule.reservation.schedule.filter((s) => s.day === day && s.active);
     });
   }
 

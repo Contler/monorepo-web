@@ -39,7 +39,7 @@ export class ReservationComponent implements OnInit {
   ngOnInit() {}
 
   public goToPage(item: ZoneReserveEntity): void {
-    if (!item.zone.length) {
+    if (!item.subZone.length) {
       this.router.navigate(['home', 'reservation', item.id]);
       return;
     }

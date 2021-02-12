@@ -15,7 +15,6 @@ import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { SubZoneReservationComponent } from './page/sub-zone-reservation/sub-zone-reservation.component';
-import { CreateSubZoneReservationComponent } from './page/create-sub-zone-reservation/create-sub-zone-reservation.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { CreateSubZoneReservationComponent } from './page/create-sub-zone-reserv
     EditReservationComponent,
     ModalConfirmComponent,
     SubZoneReservationComponent,
-    CreateSubZoneReservationComponent,
   ],
   imports: [
     CommonModule,

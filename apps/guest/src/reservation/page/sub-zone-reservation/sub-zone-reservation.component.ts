@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ReservationService } from '@contler/core';
 import { filter, first, map, switchMap } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SubZoneReserveEntity } from '@contler/entity/sub-zone-reserve.entity';
+import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 
 @Component({
   selector: 'contler-sub-zone-reservation',
@@ -14,7 +14,7 @@ import { SubZoneReserveEntity } from '@contler/entity/sub-zone-reserve.entity';
 })
 export class SubZoneReservationComponent implements OnInit {
   hotel: HotelEntity | null | undefined;
-  subZoneReservation: SubZoneReserveEntity[] = [];
+  subZoneReservation: ZoneReserveEntity[] = [];
 
   constructor(
     private guestService: GuestService,
@@ -35,7 +35,7 @@ export class SubZoneReservationComponent implements OnInit {
       )
       .subscribe(
         (reservation) => {
-          this.subZoneReservation = reservation.zone;
+          this.subZoneReservation = reservation.subZone;
         },
         (err) => {
           this.router.navigate(['home']);

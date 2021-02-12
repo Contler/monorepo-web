@@ -6,7 +6,6 @@ import { CreateReservationComponent } from 'guest/reservation/page/create-reserv
 import { MyReservationsComponent } from 'guest/reservation/page/my-reservations/my-reservations.component';
 import { EditReservationComponent } from 'guest/reservation/page/edit-reservation/edit-reservation.component';
 import { SubZoneReservationComponent } from './page/sub-zone-reservation/sub-zone-reservation.component';
-import { CreateSubZoneReservationComponent } from './page/create-sub-zone-reservation/create-sub-zone-reservation.component';
 
 const routes: Routes = [
   { path: '', component: ReservationComponent },
@@ -14,7 +13,7 @@ const routes: Routes = [
   { path: 'my-reservation/:id', component: EditReservationComponent },
   { path: ':id', component: CreateReservationComponent },
   { path: ':idZone/sub-zone', component: SubZoneReservationComponent },
-  { path: ':idZone/sub-zone/:idSubZone', component: CreateSubZoneReservationComponent },
+  { path: ':idZone/sub-zone/:idSubZone', component: CreateReservationComponent },
 ];
 
 @NgModule({

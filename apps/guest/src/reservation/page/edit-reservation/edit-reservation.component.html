@@ -6,11 +6,7 @@
   <div marcoBody class="reservation">
     <h1 class="reservation__title" [style]="getColorHotel()">
       Your reservation in:<br />
-      {{
-        booking?.schedule.reservation
-          ? booking?.schedule.reservation.name
-          : (booking?.schedule.subZone.name | ctrTranslate)
-      }}
+      {{ booking?.schedule.reservation.name | ctrTranslate }}
     </h1>
 
     <form class="reservation__form" [formGroup]="bookingGroup">
