@@ -1,6 +1,7 @@
 import { IsNotEmpty } from 'class-validator';
 import { CategoryEntity, HotelEntity } from '@contler/entity';
 import { Language } from './language.model';
+import { ZoneReserveEntity } from '../entity/zone-reserve.entity';
 
 export class ReservationRequest {
   @IsNotEmpty()
@@ -8,7 +9,6 @@ export class ReservationRequest {
 
   icon!: string;
 
-  @IsNotEmpty()
   category!: CategoryEntity;
 
   @IsNotEmpty()
@@ -19,4 +19,6 @@ export class ReservationRequest {
 
   @IsNotEmpty()
   from: Language[];
+
+  zoneParent?: ZoneReserveEntity;
 }

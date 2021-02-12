@@ -11,7 +11,6 @@ import { TranslateService } from '@contler/dynamic-translate';
 import { filter, map, startWith, switchMap, tap } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
 import { AuthService } from 'hotel/services/auth.service';
-import { SubZoneReserveEntity } from '@contler/entity/sub-zone-reserve.entity';
 
 @Component({
   selector: 'contler-schedule-sub-zone',
@@ -26,7 +25,7 @@ export class ScheduleSubZoneComponent implements OnInit {
   filterIcon: Observable<String[]>;
   loader = false;
 
-  subZoneReserveEntity: SubZoneReserveEntity;
+  subZoneReserveEntity: ZoneReserveEntity;
   categories: CategoryEntity[] = [];
   zoneReservations$: Observable<ZoneReserveEntity[]>;
   private removeSchedule: ScheduleEntity[] = [];
@@ -63,7 +62,7 @@ export class ScheduleSubZoneComponent implements OnInit {
         map((data) => data['id'] as number),
         tap((id) => (this.id = id)),
         switchMap((id) => reservationService.getReservation(id)),
-        switchMap(() => reservationService.getSubZoneReservation(this.id)),
+        switchMap(() => reservationService.getReservation(this.id)),
       )
       .subscribe((subZoneReservation) => {
         this.subZoneReserveEntity = subZoneReservation;
@@ -139,24 +138,22 @@ export class ScheduleSubZoneComponent implements OnInit {
     // new schedule
     const newScheduleObs = this.schedules
       .filter((schedule) => !schedule.id)
-      .map((schedule) =>
-        this.reservationService.createSubZoneSchedule(this.subZoneReserveEntity!.id, schedule),
-      );
+      .map((schedule) => this.reservationService.createSchedule(this.subZoneReserveEntity!.id, schedule));
 
     //delete schedule
     const deleteSchedule = this.removeSchedule.map((schedule) =>
-      this.reservationService.deleteSubZoneSchedule(schedule.id),
+      this.reservationService.deleteSchedule(schedule.id),
     );
     deleteSchedule.forEach((item) => item.subscribe());
 
     //update schedule
     const updateSchedule = this.subZoneReserveEntity!.schedule.map((schedule) =>
-      this.reservationService.updateSubZoneSchedule(schedule),
+      this.reservationService.updateSchedule(schedule),
     );
     updateSchedule.forEach((item) => item.subscribe());
 
     // update reservation
-    this.reservationService.updateSubZoneReservation(this.subZoneReserveEntity!).subscribe(() => {
+    this.reservationService.updateReservation(this.subZoneReserveEntity!).subscribe(() => {
       setTimeout(() => {
         forkJoin([...newScheduleObs]).subscribe();
       }, 100);
@@ -168,14 +165,14 @@ export class ScheduleSubZoneComponent implements OnInit {
   deleteReservation() {
     this.loader = true;
     const deleteSchedule = [
-      ...this.removeSchedule.map((schedule) => this.reservationService.deleteSubZoneSchedule(schedule.id)),
+      ...this.removeSchedule.map((schedule) => this.reservationService.deleteSchedule(schedule.id)),
       ...this.subZoneReserveEntity!.schedule.map((schedule) =>
-        this.reservationService.deleteSubZoneSchedule(schedule.id),
+        this.reservationService.deleteSchedule(schedule.id),
       ),
     ];
 
     forkJoin(deleteSchedule)
-      .pipe(switchMap(() => this.reservationService.deleteSubZoneReservation(this.subZoneReserveEntity!.id)))
+      .pipe(switchMap(() => this.reservationService.deleteReservation(this.subZoneReserveEntity!.id)))
       .subscribe(() => {
         this.loader = false;
         this.router.navigate(['/home', 'reservation']);

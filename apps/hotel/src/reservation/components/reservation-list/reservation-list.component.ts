@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { ReservationService } from '@contler/core';
-import { SubZoneReserveEntity } from '@contler/entity/sub-zone-reserve.entity';
 
 @Component({
   selector: 'contler-reservation-list',
@@ -24,12 +23,12 @@ export class ReservationListComponent implements OnInit {
     });
   }
 
-  public deleteSubZoneReservation(subZoneReserveEntity: SubZoneReserveEntity): void {
+  public deleteSubZoneReservation(subZoneReserveEntity: ZoneReserveEntity): void {
     this.load = true;
-    this.reservationService.deleteSubZoneReservation(subZoneReserveEntity.id).subscribe(() => {
+    this.reservationService.deleteReservation(subZoneReserveEntity.id).subscribe(() => {
       this.zoneReservations = this.zoneReservations.map((zoneReserve) => {
         if (zoneReserve.id === subZoneReserveEntity.zoneParent.id) {
-          zoneReserve.zone = zoneReserve.zone.filter((z) => z.id !== subZoneReserveEntity.id);
+          zoneReserve.subZone = zoneReserve.subZone.filter((z) => z.id !== subZoneReserveEntity.id);
           return zoneReserve;
         }
         return zoneReserve;

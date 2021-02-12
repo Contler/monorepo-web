@@ -5,7 +5,7 @@
     <contler-menu></contler-menu>
   </mat-sidenav>
 
-  <form [formGroup]="reservationForm" (ngSubmit)="save()" class="schedule">
+  <form [formGroup]="reservationForm" (ngSubmit)="save()" class="schedule" *ngIf="reservation">
     <div class="schedule__header">
       <h1 class="cnt-title" contlerColorHotel="primary">{{ 'reservation.edit.title' | translate }}</h1>
       <button
@@ -54,29 +54,34 @@
         <mat-hint>{{ 'reservation.labelIcon' | translate }}</mat-hint>
       </mat-form-field>
     </mat-card>
-
-    <h2 class="cnt-title" style="margin-top: 21px" contlerColorHotel="primary">
-      {{ 'reservation.edit.subtitle' | translate }}
-    </h2>
-
-    <mat-card class="schedule__availability">
-      <div class="schedule__availability-option">
-        <contler-range
-          *ngFor="let schedule of schedules; let i = index"
-          [schedule]="schedule"
-          [formGroup]="reservationForm"
-          (delete)="removeElement(schedule, i)"
-        ></contler-range>
-      </div>
-      <button
-        mat-raised-button
-        contlerBtnHotel="primary"
-        [class.schedule__btn]="schedules.length"
-        type="button"
-        (click)="addSchedule()"
+    <ng-container *ngIf="reservation">
+      <h2
+        class="cnt-title"
+        style="margin-top: 21px"
+        contlerColorHotel="primary"
+        *ngIf="!reservation.subZone.length"
       >
-        {{ 'reservation.edit.addBtn' | translate }}
-      </button>
-    </mat-card>
+        {{ 'reservation.edit.subtitle' | translate }}
+      </h2>
+      <mat-card class="schedule__availability" *ngIf="!reservation.subZone.length">
+        <div class="schedule__availability-option">
+          <contler-range
+            *ngFor="let schedule of schedules; let i = index"
+            [schedule]="schedule"
+            [formGroup]="reservationForm"
+            (delete)="removeElement(schedule, i)"
+          ></contler-range>
+        </div>
+        <button
+          mat-raised-button
+          contlerBtnHotel="primary"
+          [class.schedule__btn]="schedules.length"
+          type="button"
+          (click)="addSchedule()"
+        >
+          {{ 'reservation.edit.addBtn' | translate }}
+        </button>
+      </mat-card>
+    </ng-container>
   </form>
 </mat-sidenav-container>

@@ -6,7 +6,6 @@ import { AuthService } from 'hotel/services/auth.service';
 import { switchMap, tap } from 'rxjs/operators';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { HotelEntity } from '@contler/entity';
-import { SubZoneReservationRequest } from '@contler/models/sub-zone-reservation-request';
 import { SubZoneReservationFormComponent } from 'hotel/reservation/components/sub-zone-reservation-form/sub-zone-reservation-form.component';
 
 @Component({
@@ -46,16 +45,16 @@ export class ReservationComponent implements OnInit {
 
   ngOnInit() {}
 
-  createSubZoneReservation(request: SubZoneReservationRequest): void {
+  createSubZoneReservation(request: ReservationRequest): void {
     this.load = true;
     request.hotel = this.hotel!;
-    this.reservationService.createSubZoneReservation(request).subscribe((data) => {
+    this.reservationService.createReservation(request).subscribe((data) => {
       data.schedule = [];
       this.subZoneReservationForm.reset();
       this.load = false;
       this.zoneReservations = this.zoneReservations.map((z) => {
         if (z.id === data.zoneParent.id) {
-          z.zone = [...z.zone, data];
+          z.subZone = [...z.subZone, data];
           return z;
         }
         return z;

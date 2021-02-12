@@ -5,7 +5,7 @@ import { CategoryEntity } from '@contler/entity';
 import { ICONS } from '@contler/const';
 import { ZoneService } from 'hotel/zone/services/zone.service';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
-import { SubZoneReservationRequest } from '@contler/models/sub-zone-reservation-request';
+import { ReservationRequest } from '@contler/models';
 
 @Component({
   selector: 'contler-sub-zone-reservation-form',
@@ -16,7 +16,7 @@ export class SubZoneReservationFormComponent {
   @Input() load = false;
   @Input() subZoneFormValue = false;
   @Input() zoneReservations: ZoneReserveEntity[] = [];
-  @Output() reservationRequest = new EventEmitter<SubZoneReservationRequest>();
+  @Output() reservationRequest = new EventEmitter<ReservationRequest>();
   @Output() hiddenSubZoneForm = new EventEmitter<boolean>();
   @ViewChild(FormGroupDirective, { static: true }) myForm!: FormGroupDirective;
   categoryZone: Observable<CategoryEntity[]>;
@@ -33,7 +33,7 @@ export class SubZoneReservationFormComponent {
   }
 
   complete() {
-    const reservationRequest = new SubZoneReservationRequest();
+    const reservationRequest = new ReservationRequest();
     reservationRequest.name = this.subZoneForm.value.name;
     reservationRequest.zoneParent = this.subZoneForm.value.zoneParent;
     reservationRequest.icon = this.subZoneForm.value.icon;
