@@ -222,8 +222,10 @@
     "labelIcon": "Selecione um ícone",
     "labelName": "Nome da zona",
     "manual": {
+      "category": "Categoria",
       "create": "Criar reserva",
       "date": "Data",
+      "hour": "Hora",
       "name": "Nome do convidado",
       "people": "Pessoas",
       "room": "Quarto",
@@ -241,31 +243,6 @@
       "rooms": "Quartos"
     },
     "title": "Reserva de zona"
-  },
-  "subZone": {
-    "createButton": "Criar serviço de zona",
-    "questionLabel": "é um serviço local?",
-    "answerNot": "Não",
-    "answerYes": "Sim",
-    "edit": {
-      "addBtn": "Adicionar intervalo",
-      "deleteBtn": "Retirar serviço da zona",
-      "editBtn": "Atualizar",
-      "subtitle": "Disponibilidade do Serviço de Zona",
-      "title": "Informação de serviço por zona"
-    },
-    "labelZone": "Zona",
-    "labelIcon": "Selecione um ícone",
-    "labelName": "Nome do Serviço da Zona",
-    "nameList": "Nome do Serviço da Zona",
-    "range": {
-      "endTime": "Fim do tempo",
-      "initTime": "Tempo init",
-      "labelDay": "Dia da semana",
-      "quotaLabel": "Cotas",
-      "rooms": "Quartos"
-    },
-    "title": "Serviço de Zona"
   },
   "restaurant": {
     "createBtn": "Criar restaurante",
@@ -294,6 +271,31 @@
     "dateInit": "Data Inicial",
     "request": "Petição",
     "title": "Pedido especial"
+  },
+  "subZone": {
+    "answerNot": "Não",
+    "answerYes": "Sim",
+    "createButton": "Criar serviço de zona",
+    "edit": {
+      "addBtn": "Adicionar intervalo",
+      "deleteBtn": "Retirar serviço da zona",
+      "editBtn": "Atualizar",
+      "subtitle": "Disponibilidade do Serviço de Zona",
+      "title": "Informação de serviço por zona"
+    },
+    "labelIcon": "Selecione um ícone",
+    "labelName": "Nome do Serviço da Zona",
+    "labelZone": "Zona",
+    "nameList": "Nome do Serviço da Zona",
+    "questionLabel": "é um serviço local?",
+    "range": {
+      "endTime": "Fim do tempo",
+      "initTime": "Tempo init",
+      "labelDay": "Dia da semana",
+      "quotaLabel": "Cotas",
+      "rooms": "Quartos"
+    },
+    "title": "Serviço de Zona"
   },
   "transportation": {
     "attended": "Participaram",

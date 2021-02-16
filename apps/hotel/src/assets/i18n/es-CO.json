@@ -222,8 +222,10 @@
     "labelIcon": "Selecciona un icono",
     "labelName": "Nombre de la zona",
     "manual": {
+      "category": "Categoría",
       "create": "Crear reserva",
       "date": "Fecha",
+      "hour": "Hora",
       "name": "Nombre huésped",
       "people": "Personas",
       "room": "Habitación",
@@ -241,31 +243,6 @@
       "rooms": "Habitaciones"
     },
     "title": "Zona de reserva"
-  },
-  "subZone": {
-    "createButton": "Crear servicio de la zona",
-    "questionLabel": "¿Es un servicio de la zona?",
-    "answerNot": "No",
-    "answerYes": "Si",
-    "edit": {
-      "addBtn": "Agregar rango",
-      "deleteBtn": "Eliminar servicio de la zona",
-      "editBtn": "Actualizar",
-      "subtitle": "Disponibilidad del servicio de la zona",
-      "title": "Información del servicio de la zona"
-    },
-    "labelZone": "Zona",
-    "labelIcon": "Selecciona un icono",
-    "labelName": "Nombre del servicio de la zona",
-    "nameList": "Nombre servicio de la zona",
-    "range": {
-      "endTime": "Hora final",
-      "initTime": "Hora de inicio",
-      "labelDay": "Día de la semana",
-      "quotaLabel": "No. Capacidad de personas",
-      "rooms": "Habitaciones"
-    },
-    "title": "Servicio de la zona"
   },
   "restaurant": {
     "createBtn": "CREAR RESTAURANTE",
@@ -294,6 +271,31 @@
     "dateInit": "Fecha inicio",
     "request": "Pedido",
     "title": "Solicitudes especiales"
+  },
+  "subZone": {
+    "answerNot": "No",
+    "answerYes": "Si",
+    "createButton": "Crear servicio de la zona",
+    "edit": {
+      "addBtn": "Agregar rango",
+      "deleteBtn": "Eliminar servicio de la zona",
+      "editBtn": "Actualizar",
+      "subtitle": "Disponibilidad del servicio de la zona",
+      "title": "Información del servicio de la zona"
+    },
+    "labelIcon": "Selecciona un icono",
+    "labelName": "Nombre del servicio de la zona",
+    "labelZone": "Zona",
+    "nameList": "Nombre servicio de la zona",
+    "questionLabel": "¿Es un servicio de la zona?",
+    "range": {
+      "endTime": "Hora final",
+      "initTime": "Hora de inicio",
+      "labelDay": "Día de la semana",
+      "quotaLabel": "No. Capacidad de personas",
+      "rooms": "Habitaciones"
+    },
+    "title": "Servicio de la zona"
   },
   "transportation": {
     "attended": "Atendida",

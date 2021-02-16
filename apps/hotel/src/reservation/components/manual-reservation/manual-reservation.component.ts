@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GuestService } from 'hotel/guest/services/guest.service';
-import { filter, map, startWith, switchMap, take } from 'rxjs/operators';
+import { map, startWith, switchMap } from 'rxjs/operators';
 import { GuestEntity, RoomEntity, ScheduleEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
 import { ReservationService } from '@contler/core';
@@ -28,6 +28,7 @@ export class ManualReservationComponent implements OnInit {
   actualDay = new Date();
   load = false;
   err: string;
+  selectZone: ZoneReserveEntity;
 
   constructor(
     formBuild: FormBuilder,
@@ -49,9 +50,7 @@ export class ManualReservationComponent implements OnInit {
     this.hourControl.disable();
 
     this.filterDate = (date: Date) => {
-      const blockDates = (this.zoneControl?.value as ZoneReserveEntity).schedule.map((sc) =>
-        sc.day.valueOf(),
-      );
+      const blockDates = this.selectZone?.schedule.map((sc) => sc.day.valueOf());
       const currentDay = this.days[date.getDay()];
       return blockDates.includes(currentDay);
     };
@@ -67,16 +66,30 @@ export class ManualReservationComponent implements OnInit {
       map((value) => (typeof value === 'string' ? value : this.getNameGuest(value))),
       map((value) => this.guests.filter((guest) => this.guestFilter(guest, value))),
     );
+  }
 
-    this.zoneControl.valueChanges
-      .pipe(
-        filter((value) => !!value),
-        take(1),
-      )
-      .subscribe(() => {
-        this.dateControl.enable();
-        this.hourControl.enable();
-      });
+  zoneChange(zone: ZoneReserveEntity) {
+    if (zone.subZone.length > 0) {
+      this.reservationForm.addControl('subZone', new FormControl('', Validators.required));
+      this.dateControl.disable();
+      this.hourControl.disable();
+      this.selectZone = null;
+    } else {
+      this.reservationForm.removeControl('subZone');
+      this.dateControl.enable();
+      this.hourControl.enable();
+      this.dateControl.setValue(null);
+      this.hourControl.setValue(null);
+      this.selectZone = zone;
+    }
+  }
+
+  subZoneChange(zone: ZoneReserveEntity) {
+    this.selectZone = zone;
+    this.dateControl.enable();
+    this.hourControl.enable();
+    this.dateControl.setValue(null);
+    this.hourControl.setValue(null);
   }
 
   getNameGuest(guest: GuestEntity) {
@@ -118,16 +131,30 @@ export class ManualReservationComponent implements OnInit {
     return this.reservationForm.get('zone');
   }
 
+  get subZoneControl() {
+    return this.reservationForm.get('subZone');
+  }
+
+  get zone(): ZoneReserveEntity {
+    return this.zoneControl.value;
+  }
+
   get room(): RoomEntity {
     return this.nameControl ? (this.nameControl.value as GuestEntity)?.room : null;
   }
 
   get schedule(): ScheduleEntity[] {
-    return this.zoneControl ? (this.zoneControl.value as ZoneReserveEntity)?.schedule : [];
+    return this.selectZone && this.dateSelect
+      ? this.selectZone.schedule.filter((sc) => sc.day === this.days[this.dateSelect.getDay()])
+      : [];
   }
 
   get dateControl() {
     return this.reservationForm.get('date');
+  }
+
+  get dateSelect(): Date {
+    return this.dateControl.value;
   }
 
   get hourControl() {

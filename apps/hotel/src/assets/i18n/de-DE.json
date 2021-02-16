@@ -222,8 +222,10 @@
     "labelIcon": "Wählen Sie ein Symbol",
     "labelName": "Zonenname",
     "manual": {
+      "category": "Kategorie",
       "create": "Maak een reservering",
       "date": "Datum",
+      "hour": "Stunde",
       "name": "Gastname",
       "people": "Leute",
       "room": "Zimmer",
@@ -241,31 +243,6 @@
       "rooms": "Zimmer"
     },
     "title": "Zonenreservierung"
-  },
-  "subZone": {
-    "createButton": "Bereichsservice anlegen",
-    "questionLabel": "Is het een lokale dienst?",
-    "answerNot": "Geen",
-    "answerYes": "Ja",
-    "edit": {
-      "addBtn": "Bereich hinzufügen",
-      "deleteBtn": "Dienst aus der Zone entfernen",
-      "editBtn": "Aktualisieren",
-      "subtitle": "Zone Serviceverfügbarkeit",
-      "title": "Informationen zum Zonendienst"
-    },
-    "labelZone": "Zone",
-    "labelIcon": "Wählen Sie ein Symbol",
-    "labelName": "Zone Dienstname",
-    "nameList": "Zone Dienstname",
-    "range": {
-      "endTime": "Zeitende",
-      "initTime": "Zeit init",
-      "labelDay": "Wochentag",
-      "quotaLabel": "Quoten",
-      "rooms": "Zimmer"
-    },
-    "title": "Service des Bereichs"
   },
   "restaurant": {
     "createBtn": "Restaurant erstellen",
@@ -294,6 +271,31 @@
     "dateInit": "Anfangsdatum",
     "request": "Petition",
     "title": "Besondere Bitte"
+  },
+  "subZone": {
+    "answerNot": "Geen",
+    "answerYes": "Ja",
+    "createButton": "Bereichsservice anlegen",
+    "edit": {
+      "addBtn": "Bereich hinzufügen",
+      "deleteBtn": "Dienst aus der Zone entfernen",
+      "editBtn": "Aktualisieren",
+      "subtitle": "Zone Serviceverfügbarkeit",
+      "title": "Informationen zum Zonendienst"
+    },
+    "labelIcon": "Wählen Sie ein Symbol",
+    "labelName": "Zone Dienstname",
+    "labelZone": "Zone",
+    "nameList": "Zone Dienstname",
+    "questionLabel": "Is het een lokale dienst?",
+    "range": {
+      "endTime": "Zeitende",
+      "initTime": "Zeit init",
+      "labelDay": "Wochentag",
+      "quotaLabel": "Quoten",
+      "rooms": "Zimmer"
+    },
+    "title": "Service des Bereichs"
   },
   "transportation": {
     "attended": "Besucht",

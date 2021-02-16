@@ -29,13 +29,22 @@
     <mat-hint>{{ 'reservation.manual.service' | translate }}</mat-hint>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="columns2">
-    <mat-select formControlName="zone">
+  <mat-form-field appearance="fill" [ngClass]="{ columns3: !!subZoneControl, columns2: !subZoneControl }">
+    <mat-select formControlName="zone" (ngModelChange)="zoneChange($event)">
       <mat-option *ngFor="let zone of $zone | async" [value]="zone">
         {{ zone.name | ctrTranslate }}
       </mat-option>
     </mat-select>
     <mat-hint>{{ 'reservation.manual.zone' | translate }}</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="!!subZoneControl">
+    <mat-select formControlName="subZone" (ngModelChange)="subZoneChange($event)">
+      <mat-option *ngFor="let zone of zone?.subZone" [value]="zone">
+        {{ zone.name | ctrTranslate }}
+      </mat-option>
+    </mat-select>
+    <mat-hint>{{ 'reservation.manual.category' | translate }}</mat-hint>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="columns2">
@@ -59,6 +68,7 @@
         {{ item.timeInit | date: 'shortTime' }} - {{ item.timeFinish | date: 'shortTime' }}
       </mat-option>
     </mat-select>
+    <mat-hint>{{ 'reservation.manual.hour' | translate }}</mat-hint>
   </mat-form-field>
 </form>
 <p class="err">{{ err | translate }}</p>

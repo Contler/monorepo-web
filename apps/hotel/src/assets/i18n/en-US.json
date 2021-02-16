@@ -222,8 +222,10 @@
     "labelIcon": "Select a icon",
     "labelName": "Zone name",
     "manual": {
+      "category": "Category",
       "create": "Create reservation",
       "date": "Date",
+      "hour": "Hour",
       "name": "Guest Name",
       "people": "People",
       "room": "Room",
@@ -241,31 +243,6 @@
       "rooms": "Rooms"
     },
     "title": "Zone reservation"
-  },
-  "subZone": {
-    "createButton": "Create zone service",
-    "questionLabel": "Is it a zone service?",
-    "answerNot": "No",
-    "answerYes": "Yes",
-    "edit": {
-      "addBtn": "Add range",
-      "deleteBtn": "Remove service from zone",
-      "editBtn": "Update",
-      "subtitle": "Zone service availability",
-      "title": "Zone service information"
-    },
-    "labelZone": "Zone",
-    "labelIcon": "Select a icon",
-    "labelName": "Zone service name",
-    "nameList": "Zone service name",
-    "range": {
-      "endTime": "Time end",
-      "initTime": "Time init",
-      "labelDay": "Day of the week",
-      "quotaLabel": "Quotas",
-      "rooms": "Rooms"
-    },
-    "title": "Zone service"
   },
   "restaurant": {
     "createBtn": "CREATE RESTAURANT",
@@ -294,6 +271,31 @@
     "dateInit": "Init Date",
     "request": "Petition",
     "title": "Special request"
+  },
+  "subZone": {
+    "answerNot": "No",
+    "answerYes": "Yes",
+    "createButton": "Create zone service",
+    "edit": {
+      "addBtn": "Add range",
+      "deleteBtn": "Remove service from zone",
+      "editBtn": "Update",
+      "subtitle": "Zone service availability",
+      "title": "Zone service information"
+    },
+    "labelIcon": "Select a icon",
+    "labelName": "Zone service name",
+    "labelZone": "Zone",
+    "nameList": "Zone service name",
+    "questionLabel": "Is it a zone service?",
+    "range": {
+      "endTime": "Time end",
+      "initTime": "Time init",
+      "labelDay": "Day of the week",
+      "quotaLabel": "Quotas",
+      "rooms": "Rooms"
+    },
+    "title": "Zone service"
   },
   "transportation": {
     "attended": "Attended",
