@@ -6,36 +6,42 @@ export const LANGUAGES: Language[] = [
     englishName: 'Spanish',
     prefix: 'es-CO',
     unicode: '🇨🇴',
+    code: 'es',
   },
   {
     name: 'English',
     englishName: 'English',
     prefix: 'en-US',
     unicode: '🇬🇧',
+    code: 'en',
   },
   {
     name: 'Deutsche',
     englishName: 'German',
     prefix: 'de-DE',
     unicode: '🇩🇪',
+    code: 'de',
   },
   {
     name: 'Français',
     englishName: 'French',
     prefix: 'fr-FR',
     unicode: '🇫🇷',
+    code: 'fr',
   },
   {
     name: 'Italiano',
     englishName: 'Italian',
     prefix: 'it-IT',
     unicode: '🇮🇹',
+    code: 'it',
   },
   {
     name: 'Português',
     englishName: 'Portuguese',
     prefix: 'pt-PT',
     unicode: '🇵🇹',
+    code: 'pt',
   },
 ];
 

@@ -3,4 +3,5 @@ export interface Language {
   englishName: string;
   prefix: string;
   unicode: string;
+  code: string;
 }
