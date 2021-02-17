@@ -176,6 +176,14 @@
     "updateBtn": "Mettre à jour",
     "value": "Valeur"
   },
+  "preferences": {
+    "hotel": "Hôtel {{value}}",
+    "immediate": {
+      "description": "Les demandes générales immédiates permettent aux utilisateurs de demander rapidement ce dont ils ont besoin dans les zones de votre hôtel. Choisissez les options à afficher dans chaque type de zone:",
+      "name": "Demandes immédiates",
+      "subDescription": "Les demandes immédiates permettent au client de demander quelque chose de ponctuel rapidement, à servir en priorité.\n<br/><br/>exemple: une serviette dans la piscine"
+    }
+  },
   "product": {
     "active": "actif",
     "all": "Tout",
