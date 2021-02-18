@@ -101,13 +101,6 @@
   "home": {
     "desktop": "Escritorio"
   },
-  "preferences": {
-    "welcome": {
-      "title": "¡Bienvenido a tu administrador en Contler!",
-      "subtitle": "Te guiaremos en este paso a paso para que puedas organizar las opciones que ofrecerás a tus huéspedes",
-      "button": "iniciar"
-    }
-  },
   "immediateRequest": {
     "active": "Activas",
     "all": "Todas",
@@ -185,6 +178,11 @@
   },
   "preferences": {
     "hotel": "Hotel {{value}}",
+    "welcome": {
+      "title": "¡Bienvenido a tu administrador en Contler!",
+      "subtitle": "Te guiaremos en este paso a paso para que puedas organizar las opciones que ofrecerás a tus huéspedes",
+      "button": "iniciar"
+    },
     "immediate": {
       "description": "Las solicitudes inmediatas Generales, permiten a los usuarios de forma rápida solicitar lo que necesitan en las zonas de tu Hotel. Elige las opciones a desplegar en cada tipo de zona:",
       "name": "Solicitudes inmediatas",

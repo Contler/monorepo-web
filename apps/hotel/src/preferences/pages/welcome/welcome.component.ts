@@ -3,7 +3,6 @@ import { AuthService } from 'hotel/services/auth.service';
 import { Observable } from 'rxjs';
 import { HotelEntity } from '@contler/entity';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'contler-welcome',
@@ -12,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class WelcomeComponent implements OnInit {
   public hotel$: Observable<HotelEntity> = null;
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.hotel$ = this.authService.$employer.pipe(map((employer) => employer.hotel));
