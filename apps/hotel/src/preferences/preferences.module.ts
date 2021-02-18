@@ -13,9 +13,18 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MaterialModule } from '../material/material.module';
 import { DynamicServicesModule } from '@contler/dynamic-services';
+import { ImmediateCategoryComponent } from './components/immediate-category/immediate-category.component';
+import { UiModule } from '@contler/ui';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [PreferencesComponent, ImmediateRequestComponent, ModuleLayoutComponent],
+  declarations: [
+    PreferencesComponent,
+    ImmediateRequestComponent,
+    ModuleLayoutComponent,
+    ImmediateCategoryComponent,
+  ],
   imports: [
     CommonModule,
     PreferencesRoutingModule,
@@ -27,6 +36,9 @@ import { DynamicServicesModule } from '@contler/dynamic-services';
     MatIconModule,
     MaterialModule,
     DynamicServicesModule,
+    UiModule,
+    DynamicTranslateModule,
+    FormsModule,
   ],
 })
 export class PreferencesModule {}

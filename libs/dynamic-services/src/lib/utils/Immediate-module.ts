@@ -4,16 +4,16 @@ export class ImmediateModule {
   private data: ImmediateRequestModule;
 
   constructor() {
-    this.data = { categories: [] };
+    this.data = { categories: {} };
   }
 
   addCategory(id: string, name: string) {
-    this.data.categories.push({ id, name, options: [] });
+    this.data.categories[id] = { id, name, options: [] };
     return this;
   }
 
   addOption(categoryId: string, option: OptionModule) {
-    this.data.categories.find((ct) => ct.id === categoryId)?.options.push(option);
+    this.data.categories[categoryId]?.options.push(option);
     return this;
   }
 

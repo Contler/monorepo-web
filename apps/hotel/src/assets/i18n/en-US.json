@@ -181,7 +181,10 @@
     "immediate": {
       "description": "General immediate requests allow users to quickly request what they need in the areas of your Hotel. Choose the options to display in each type of zone:",
       "name": "Immediate requests",
-      "subDescription": "Immediate requests allow the guest to request something punctual quickly, to be served with priority.\n<br/><br/>example: a towel in the pool"
+      "other": "Other",
+      "selectIcon": "Select the icon",
+      "subDescription": "Immediate requests allow the guest to request something punctual quickly, to be served with priority.\n<br/><br/>example: a towel in the pool",
+      "which": "Which?"
     }
   },
   "product": {

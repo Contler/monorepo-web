@@ -181,7 +181,10 @@
     "immediate": {
       "description": "As solicitações gerais imediatas permitem que os usuários solicitem rapidamente o que precisam nas áreas do seu Hotel. Escolha as opções a serem exibidas em cada tipo de zona:",
       "name": "Pedidos imediatos",
-      "subDescription": "As solicitações imediatas permitem que o hóspede solicite algo pontual com rapidez, para ser atendido com prioridade.\n<br/><br/>exemplo: uma toalha na piscina"
+      "other": "Outros",
+      "selectIcon": "Selecione o ícone",
+      "subDescription": "As solicitações imediatas permitem que o hóspede solicite algo pontual com rapidez, para ser atendido com prioridade.\n<br/><br/>exemplo: uma toalha na piscina",
+      "which": "Qual?"
     }
   },
   "product": {

@@ -8,17 +8,10 @@
 >
   <mat-spinner class="load" *ngIf="load"></mat-spinner>
   <mat-accordion *ngIf="modules | async; let mod">
-    <mat-expansion-panel *ngFor="let category of mod.categories">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{ category.name | translate }}
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="section">
-        <mat-checkbox *ngFor="let option of category.options" [checked]="option.active">
-          {{ option.text | translate }}
-        </mat-checkbox>
-      </div>
-    </mat-expansion-panel>
+    <contler-immediate-category
+      *ngFor="let cat of mod.categories | keyvalue"
+      [category]="cat.value"
+      [hotel]="hotel"
+    ></contler-immediate-category>
   </mat-accordion>
 </contler-module-layout>

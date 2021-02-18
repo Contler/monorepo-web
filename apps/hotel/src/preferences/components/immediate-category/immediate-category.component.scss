@@ -1,0 +1,9 @@
+.section {
+  display: grid;
+}
+
+.form {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, max-content);
+}

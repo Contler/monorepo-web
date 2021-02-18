@@ -1,5 +1,5 @@
 export interface ImmediateRequestModule {
-  categories: ImmediateCategory[];
+  categories: { [key: string]: ImmediateCategory };
 }
 
 export interface ImmediateCategory {

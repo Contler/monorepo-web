@@ -181,7 +181,10 @@
     "immediate": {
       "description": "Le richieste generali immediate consentono agli utenti di richiedere rapidamente ciò di cui hanno bisogno nelle aree del tuo Hotel. Scegli le opzioni da visualizzare in ogni tipo di zona:",
       "name": "Richieste immediate",
-      "subDescription": "Le richieste immediate consentono all'ospite di richiedere rapidamente qualcosa di puntuale, da servire con priorità.\n<br/><br/>esempio: un telo in piscina"
+      "other": "Altro",
+      "selectIcon": "Seleziona l'icona",
+      "subDescription": "Le richieste immediate consentono all'ospite di richiedere rapidamente qualcosa di puntuale, da servire con priorità.\n<br/><br/>esempio: un telo in piscina",
+      "which": "Quale?"
     }
   },
   "product": {

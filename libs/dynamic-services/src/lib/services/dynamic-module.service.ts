@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { MODULES } from '../constants/modules-references';
-import { tap } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 import {
   ImmediateOptionLink,
   ImmediateOptionText,
   ImmediateRequestModule,
+  OptionModule,
   OptionType,
 } from '@contler/models';
 import { ImmediateModule } from '../utils/Immediate-module';
@@ -25,6 +26,13 @@ export class DynamicModuleService {
           }
         }),
       );
+  }
+
+  async addOptionToImmediate(hotelId: string, categoryId: string, option: OptionModule) {
+    const url = `${MODULES.root}/${hotelId}/${MODULES.immediate}/categories/${categoryId}/options`;
+    const list = await this.db.list(url).valueChanges().pipe(take(1)).toPromise();
+    list.push(option);
+    return this.db.object(url).set(list);
   }
 
   private setUpImmediateModule(hotelId) {
