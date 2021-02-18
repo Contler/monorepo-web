@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,6 +14,7 @@ import { LANGUAGES } from '@contler/const';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
+  @Input() tittle: string;
   @Output() toggle: EventEmitter<void> = new EventEmitter();
   @Output() changeCurrentLanguage: EventEmitter<Language> = new EventEmitter();
   notificationList: any[] = [];

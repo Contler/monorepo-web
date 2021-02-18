@@ -740,6 +740,38 @@
           "style": "scss"
         }
       }
+    },
+    "dynamic-services": {
+      "projectType": "library",
+      "root": "libs/dynamic-services",
+      "sourceRoot": "libs/dynamic-services/src",
+      "prefix": "contler",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/dynamic-services/tsconfig.lib.json",
+              "libs/dynamic-services/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/dynamic-services/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/dynamic-services/jest.config.js",
+            "tsConfig": "libs/dynamic-services/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/dynamic-services/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

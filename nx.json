@@ -41,6 +41,9 @@
     },
     "dynamic-translate": {
       "tags": []
+    },
+    "dynamic-services": {
+      "tags": []
     }
   }
 }

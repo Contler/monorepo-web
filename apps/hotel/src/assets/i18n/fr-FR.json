@@ -183,6 +183,17 @@
     "updateBtn": "Mettre à jour",
     "value": "Valeur"
   },
+  "preferences": {
+    "hotel": "Hôtel {{value}}",
+    "immediate": {
+      "description": "Les demandes générales immédiates permettent aux utilisateurs de demander rapidement ce dont ils ont besoin dans les zones de votre hôtel. Choisissez les options à afficher dans chaque type de zone:",
+      "name": "Demandes immédiates",
+      "other": "Autre",
+      "selectIcon": "Sélectionnez l'icône",
+      "subDescription": "Les demandes immédiates permettent au client de demander quelque chose de ponctuel rapidement, à servir en priorité.\n<br/><br/>exemple: une serviette dans la piscine",
+      "which": "Qui?"
+    }
+  },
   "product": {
     "active": "actif",
     "all": "Tout",
@@ -352,5 +363,24 @@
     "selectIcon": "Sélectionnez une icône",
     "socialZone": "ZONES SOCIALES",
     "updateSusses": "Zone mise à jour avec succès"
+  },
+  "zoneRequest": {
+    "categories": {
+      "callHotel": "Appelez le personnel de l'hôtel",
+      "checkOut": "Demander un départ tardif",
+      "clean": "Demander le nettoyage de la chambre",
+      "drink": "Une boisson",
+      "food": "Commandez de la nourriture à l'avance",
+      "maintain": "Demande de maintenance",
+      "other": "Autre",
+      "requestClean": "Demande de nettoyage",
+      "roomKeys": "Clés de la chambre",
+      "roomService": "Service de chambre",
+      "spaceReserve": "Réserver une place",
+      "specialRequest": "Demandes spéciales",
+      "towels": "Les serviettes",
+      "waiter": "Garçon",
+      "wakeUp": "Programme de réveil"
+    }
   }
 }

@@ -2,7 +2,8 @@
   <button mat-icon-button (click)="emitToggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <img class="cursor" src="assets/img/logo-white.svg" (click)="goToHome()" alt="contler" />
+  <p *ngIf="!!tittle">{{ tittle }}</p>
+  <img *ngIf="!tittle" class="cursor" src="assets/img/logo-white.svg" (click)="goToHome()" alt="contler" />
   <div style="flex-grow: 1"></div>
 
   <button

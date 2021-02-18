@@ -1,0 +1,42 @@
+<mat-expansion-panel *ngIf="category">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ category.name | translate }}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="section">
+    <mat-checkbox
+      *ngFor="let option of category.options; let i = index"
+      [checked]="option.active"
+      (change)="changeStatus($event, i)"
+    >
+      {{ option.text | translate | ctrTranslate }}
+    </mat-checkbox>
+    <div *ngIf="!isOpen">
+      <button mat-icon-button (click)="isOpen = true">
+        <mat-icon>add</mat-icon>
+      </button>
+      <span>{{ 'preferences.immediate.other' | translate }}</span>
+    </div>
+    <div class="form" *ngIf="isOpen">
+      <mat-form-field>
+        <input
+          type="text"
+          [(ngModel)]="name"
+          matInput
+          placeholder="{{ 'preferences.immediate.which' | translate }}"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="{{ 'preferences.immediate.selectIcon' | translate }}" [(ngModel)]="icon">
+          <mat-option *ngFor="let icon of icons | async" [value]="icon.key">
+            <contler-icon [key]="icon.key"></contler-icon> {{ icon.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-icon-button (click)="addOption()">
+        <mat-icon>add_circle_outline</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-expansion-panel>

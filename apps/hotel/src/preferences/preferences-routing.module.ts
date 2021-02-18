@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { PreferencesComponent } from './preferences.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { ImmediateRequestComponent } from './pages/inmediate-request/immediate-request.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
     component: PreferencesComponent,
     children: [{ path: '', component: WelcomeComponent }],
   },
+  { path: 'immediate-request', component: ImmediateRequestComponent },
 ];
 
 @NgModule({
