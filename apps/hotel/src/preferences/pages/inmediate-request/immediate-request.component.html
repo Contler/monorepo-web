@@ -7,7 +7,18 @@
   }"
 >
   <mat-spinner class="load" *ngIf="load"></mat-spinner>
-  <ng-container *ngIf="modules | async; let mod">
-    <h1 *ngFor="let cat of mod.categories">{{ cat.name }}</h1>
-  </ng-container>
+  <mat-accordion *ngIf="modules | async; let mod">
+    <mat-expansion-panel *ngFor="let category of mod.categories">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ category.name | translate }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="section">
+        <mat-checkbox *ngFor="let option of category.options" [checked]="option.active">
+          {{ option.text | translate }}
+        </mat-checkbox>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 </contler-module-layout>

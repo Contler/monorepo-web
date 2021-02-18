@@ -39,77 +39,90 @@ export class DynamicModuleService {
         icon: 'fas fa-key',
         text: 'zoneRequest.categories.roomKeys',
         value: 'zoneRequest.categories.roomKeys',
+        active: true,
       } as ImmediateOptionText)
       .addOption('1', {
         type: OptionType.LINK,
         icon: 'far fa-calendar',
         text: 'zoneRequest.categories.spaceReserve',
         link: '/home/reservation',
+        active: true,
       } as ImmediateOptionLink)
       .addOption('1', {
         type: OptionType.LINK,
         icon: 'fas fa-glass-martini-alt',
         text: 'zoneRequest.categories.drink',
         link: '/home/product/create',
+        active: true,
       } as ImmediateOptionLink)
       .addOption('1', {
         type: OptionType.TEXT,
         icon: 'fas fa-user-friends',
         text: 'zoneRequest.categories.callHotel',
         value: 'zoneRequest.categories.callHotel',
+        active: true,
       } as ImmediateOptionText)
       .addOption('2', {
         type: OptionType.TEXT,
         icon: 'fas fa-shower',
         text: 'zoneRequest.categories.towels',
         value: 'zoneRequest.categories.towels',
+        active: true,
       } as ImmediateOptionText)
       .addOption('2', {
         type: OptionType.LINK,
         icon: 'fas fa-glass-martini-alt',
         text: 'zoneRequest.categories.drink',
         link: '/home/product/create',
+        active: true,
       } as ImmediateOptionLink)
       .addOption('2', {
         type: OptionType.LINK,
         icon: 'far fa-calendar',
         text: 'zoneRequest.categories.spaceReserve',
         link: '/home/reservation',
+        active: true,
       } as ImmediateOptionLink)
       .addOption('2', {
         type: OptionType.OTHER,
         icon: 'fas fa-plus',
         text: 'zoneRequest.categories.other',
+        active: true,
       })
       .addOption('4', {
         type: OptionType.LINK,
         icon: 'fas fa-glass-martini-alt',
         text: 'zoneRequest.categories.food',
         link: '/home/product/create',
+        active: true,
       } as ImmediateOptionLink)
       .addOption('4', {
         type: OptionType.TEXT,
         icon: 'fas fa-clock',
         text: 'zoneRequest.categories.clean',
         value: 'zoneRequest.categories.clean',
+        active: true,
       } as ImmediateOptionText)
       .addOption('4', {
         type: OptionType.LINK,
         icon: 'fas fa-umbrella-beach',
         text: 'zoneRequest.categories.specialRequest',
         link: '/home/special-requests',
+        active: true,
       } as ImmediateOptionLink)
       .addOption('5', {
         type: OptionType.TEXT,
         icon: 'fas fa-user',
         text: 'zoneRequest.categories.waiter',
         value: 'zoneRequest.categories.waiter',
+        active: true,
       } as ImmediateOptionText)
       .addOption('5', {
         type: OptionType.TEXT,
         icon: 'fas fa-user',
         text: 'zoneRequest.categories.roomKeys',
         value: 'zoneRequest.categories.roomKeys',
+        active: true,
       } as ImmediateOptionText);
     this.db
       .object<ImmediateRequestModule>(`${MODULES.root}/${hotelId}/${MODULES.immediate}`)

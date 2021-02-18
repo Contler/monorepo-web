@@ -12,6 +12,7 @@ export interface OptionModule {
   type: OptionType;
   text: string;
   icon: string;
+  active: boolean;
 }
 
 export enum OptionType {

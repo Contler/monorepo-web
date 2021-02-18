@@ -353,5 +353,24 @@
     "selectIcon": "Seleziona un'icona",
     "socialZone": "AREE SOCIALI",
     "updateSusses": "Zona aggiornata con successo"
+  },
+  "zoneRequest": {
+    "categories": {
+      "callHotel": "Chiama il personale dell'hotel",
+      "checkOut": "Richiedi il check-out posticipato",
+      "clean": "Richiedi la pulizia della camera",
+      "drink": "Un drink",
+      "food": "Ordina il cibo in anticipo",
+      "maintain": "Richiedi manutenzione",
+      "other": "un altro",
+      "requestClean": "Richiedi la pulizia",
+      "roomKeys": "Chiavi della camera",
+      "roomService": "Servizio in camera",
+      "spaceReserve": "Prenota uno spazio",
+      "specialRequest": "RICHIESTE SPECIALI",
+      "towels": "Asciugamani",
+      "waiter": "Cameriere",
+      "wakeUp": "Programma di sveglia"
+    }
   }
 }
