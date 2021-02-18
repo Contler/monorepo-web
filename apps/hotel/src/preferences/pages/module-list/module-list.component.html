@@ -1,0 +1,13 @@
+<div class="modules">
+  <contler-preferences-header
+    title="Primero confirma los servicios que quieres ofrecer"
+  ></contler-preferences-header>
+  <div class="modules__list">
+    <contler-module-card *ngFor="let module of modules" [module]="module"></contler-module-card>
+  </div>
+  <div class="modules__buttons">
+    <button mat-raised-button color="accent" contlerBtnHotel="primary" (click)="goToModuleList()">
+      Iniciar
+    </button>
+  </div>
+</div>

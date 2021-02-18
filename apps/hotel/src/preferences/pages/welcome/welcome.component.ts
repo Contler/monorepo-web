@@ -17,4 +17,7 @@ export class WelcomeComponent implements OnInit {
   ngOnInit(): void {
     this.hotel$ = this.authService.$employer.pipe(map((employer) => employer.hotel));
   }
+  public goToModuleList(): void {
+    this.router.navigate(['preferences', 'modules']);
+  }
 }

@@ -174,6 +174,7 @@ export class HotelComponent implements OnInit {
 
   private loadHotelData(hotel: HotelEntity, admin: EmployerEntity) {
     this.hotel = hotel;
+    console.log(hotel);
     this.specialZones = hotel.specialZones.length > 0 ? hotel.specialZones : this.specialZones;
     this.edit = true;
     this.hotelForm.removeControl('email');

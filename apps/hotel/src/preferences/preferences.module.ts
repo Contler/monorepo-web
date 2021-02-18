@@ -9,9 +9,17 @@ import { DirectivesModule } from '../directives/directives.module';
 import { PreferencesHeaderComponent } from './components/preferences-header/preferences-header.component';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { ModuleListComponent } from './pages/module-list/module-list.component';
+import { ModuleCardComponent } from './components/module-card/module-card.component';
 
 @NgModule({
-  declarations: [PreferencesComponent, WelcomeComponent, PreferencesHeaderComponent],
+  declarations: [
+    PreferencesComponent,
+    WelcomeComponent,
+    ModuleListComponent,
+    PreferencesHeaderComponent,
+    ModuleCardComponent,
+  ],
   imports: [
     CommonModule,
     PreferencesRoutingModule,
