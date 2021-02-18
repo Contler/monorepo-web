@@ -7,9 +7,8 @@ import { Observable } from 'rxjs';
 import { TranslateService } from '@contler/dynamic-translate';
 import { getLan } from '@contler/const';
 import { HotelEntity } from '@contler/entity';
-import { DynamicModuleService } from '@contler/dynamic-services';
+import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { MODULES } from '../../../../../../libs/dynamic-services/src/lib/constants/modules-references';
 
 @Component({
   selector: 'contler-immediate-category',
