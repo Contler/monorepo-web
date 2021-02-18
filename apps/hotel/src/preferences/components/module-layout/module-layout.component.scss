@@ -1,0 +1,87 @@
+.logo {
+  width: 132px;
+  height: 132px;
+  margin: 36px auto 15px;
+  object-fit: contain;
+  display: block;
+}
+
+.title {
+  font-size: 20.2px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  text-align: center;
+  color: #55413a;
+  margin: 0 0 39px;
+}
+
+.marco {
+  display: grid;
+  margin: auto;
+  grid-template-columns: 187px 722px;
+  column-gap: 100px;
+  width: fit-content;
+
+  &__box {
+    width: 187px;
+    margin-bottom: 11px;
+    padding: 8px 13px 15px 13px;
+    border-radius: 21px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.19);
+    background-color: #f0f0f0;
+    position: relative;
+
+    .icon {
+      opacity: 0.42;
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 9px;
+      right: 9px;
+    }
+
+    .big-icon {
+      font-size: 40px;
+      width: 40px;
+      height: 40px;
+      color: #757575;
+      display: block;
+      margin: auto;
+    }
+
+    .text {
+      margin: 12px 0;
+      font-size: 15.2px;
+      line-height: 1.58;
+      letter-spacing: 0.1px;
+      text-align: center;
+      color: rgba(0, 0, 0, 0.87);
+    }
+  }
+
+  &__description {
+    font-size: 11px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: italic;
+    line-height: 1.64;
+    letter-spacing: 0.07px;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 38px 0 0;
+  }
+
+  &__container {
+    .description {
+      font-size: 15.2px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.58;
+      letter-spacing: 0.1px;
+      color: rgba(0, 0, 0, 0.87);
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+  }
+}

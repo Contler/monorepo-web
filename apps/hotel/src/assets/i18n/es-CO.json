@@ -101,13 +101,6 @@
   "home": {
     "desktop": "Escritorio"
   },
-  "preferences": {
-    "welcome": {
-      "title": "¡Bienvenido a tu administrador en Contler!",
-      "subtitle": "Te guiaremos en este paso a paso para que puedas organizar las opciones que ofrecerás a tus huéspedes",
-      "button": "iniciar"
-    }
-  },
   "immediateRequest": {
     "active": "Activas",
     "all": "Todas",
@@ -182,6 +175,22 @@
     "title": "Pedidos",
     "updateBtn": "Actualizar",
     "value": "Valor"
+  },
+  "preferences": {
+    "hotel": "Hotel {{value}}",
+    "welcome": {
+      "title": "¡Bienvenido a tu administrador en Contler!",
+      "subtitle": "Te guiaremos en este paso a paso para que puedas organizar las opciones que ofrecerás a tus huéspedes",
+      "button": "iniciar"
+    },
+    "immediate": {
+      "description": "Las solicitudes inmediatas Generales, permiten a los usuarios de forma rápida solicitar lo que necesitan en las zonas de tu Hotel. Elige las opciones a desplegar en cada tipo de zona:",
+      "name": "Solicitudes inmediatas",
+      "other": "Otro",
+      "selectIcon": "Selecciona el ícono",
+      "subDescription": "Las solicitudes inmediatas permiten al huésped solicitar algo puntual de forma rápida, para ser atendido con prioridad. \n<br/><br/>\nejemplo: una toalla en la piscina",
+      "which": "¿Cual?"
+    }
   },
   "product": {
     "active": "Activos",
@@ -352,5 +361,24 @@
     "selectIcon": "Selecciona un icono",
     "socialZone": "ZONAS SOCIALES",
     "updateSusses": "Zona actualizada exitosamente"
+  },
+  "zoneRequest": {
+    "categories": {
+      "callHotel": "Llamar al personal del hotel",
+      "checkOut": "Solicitar salida tardía",
+      "clean": "Solicitar limpieza de habitación",
+      "drink": "Una bebida",
+      "food": "Pedir comida por adelantado",
+      "maintain": "Solicitar Mantenimiento",
+      "other": "otro",
+      "requestClean": "Solicitar limpieza",
+      "roomKeys": "Llaves de habitación",
+      "roomService": "Servicio de habitaciones",
+      "spaceReserve": "Reserva un espacio",
+      "specialRequest": "Solicitudes especiales",
+      "towels": "Toallas",
+      "waiter": "Camarero",
+      "wakeUp": "Programa despertador"
+    }
   }
 }

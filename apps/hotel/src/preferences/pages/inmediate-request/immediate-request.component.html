@@ -1,0 +1,17 @@
+<contler-module-layout
+  [data]="{
+    title: 'preferences.immediate.name' | translate,
+    icon: 'error',
+    description: 'preferences.immediate.description' | translate,
+    description2: 'preferences.immediate.subDescription' | translate
+  }"
+>
+  <mat-spinner class="load" *ngIf="load"></mat-spinner>
+  <mat-accordion *ngIf="modules | async; let mod">
+    <contler-immediate-category
+      *ngFor="let cat of mod.categories | keyvalue"
+      [category]="cat.value"
+      [hotel]="hotel"
+    ></contler-immediate-category>
+  </mat-accordion>
+</contler-module-layout>
