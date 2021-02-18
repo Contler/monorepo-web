@@ -7,9 +7,12 @@ import { ImmediateRequestComponent } from './pages/inmediate-request/immediate-r
 import { ModuleLayoutComponent } from './components/module-layout/module-layout.component';
 import { CommonComponentsModule } from '../common-components/common-components.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MaterialModule } from '../material/material.module';
 import { DirectivesModule } from '../directives/directives.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
+import { MaterialModule } from '../material/material.module';
+import { DynamicServicesModule } from '@contler/dynamic-services';
 
 @NgModule({
   declarations: [PreferencesComponent, ImmediateRequestComponent, ModuleLayoutComponent],
@@ -18,9 +21,12 @@ import { TranslateModule } from '@ngx-translate/core';
     PreferencesRoutingModule,
     CommonComponentsModule,
     MatSidenavModule,
-    MaterialModule,
     DirectivesModule,
     TranslateModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MaterialModule,
+    DynamicServicesModule,
   ],
 })
 export class PreferencesModule {}

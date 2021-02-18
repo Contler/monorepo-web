@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { ModuleData } from '../../interfaces/module-data';
+import { DynamicModuleService } from '@contler/dynamic-services';
+import { AuthService } from '../../../services/auth.service';
+import { switchMap, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { ImmediateRequestModule } from '@contler/models';
 
 @Component({
   selector: 'contler-immediate-request',
@@ -15,11 +19,15 @@ export class ImmediateRequestComponent implements OnInit {
     description2: '',
   };
 
-  constructor(private translate: TranslateService) {}
+  modules: Observable<ImmediateRequestModule | null>;
+  load = true;
+
+  constructor(private dynamicModule: DynamicModuleService, private auth: AuthService) {}
 
   ngOnInit(): void {
-    this.translate.get('preferences.immediate.name').subscribe((dataTranslate) => {
-      this.data.title = dataTranslate;
-    });
+    this.modules = this.auth.$employer.pipe(
+      switchMap((user) => this.dynamicModule.getImmediateRequestModule(user.hotel.uid)),
+      tap((data) => (this.load = !data)),
+    );
   }
 }

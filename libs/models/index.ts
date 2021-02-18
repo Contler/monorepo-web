@@ -25,3 +25,4 @@ export * from './restaurant-products.model';
 export * from './special-zones.model';
 export * from './language.model';
 export * from './translate-request';
+export * from './immediate-request-module';

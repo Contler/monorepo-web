@@ -5,4 +5,9 @@
     description: 'preferences.immediate.description' | translate,
     description2: 'preferences.immediate.subDescription' | translate
   }"
-></contler-module-layout>
+>
+  <mat-spinner class="load" *ngIf="load"></mat-spinner>
+  <ng-container *ngIf="modules | async; let mod">
+    <h1 *ngFor="let cat of mod.categories">{{ cat.name }}</h1>
+  </ng-container>
+</contler-module-layout>
