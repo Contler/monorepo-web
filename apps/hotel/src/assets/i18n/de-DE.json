@@ -176,6 +176,17 @@
     "updateBtn": "Aktualisieren",
     "value": "Wert"
   },
+  "preferences": {
+    "hotel": "Hotel {{value}}",
+    "immediate": {
+      "description": "Mit allgemeinen Sofortanfragen können Benutzer schnell anfordern, was sie in den Bereichen Ihres Hotels benötigen. Wählen Sie die Optionen aus, die in jedem Zonentyp angezeigt werden sollen:",
+      "name": "Sofortige Anfragen",
+      "other": "Andere",
+      "selectIcon": "Wählen Sie das Symbol",
+      "subDescription": "Sofortige Anfragen ermöglichen es dem Gast, schnell etwas Pünktliches anzufordern, das vorrangig bedient werden soll.\n<br/><br/>Beispiel: ein Handtuch im Pool",
+      "which": "Welche?"
+    }
+  },
   "product": {
     "active": "Aktiv",
     "all": "Alles",
@@ -345,5 +356,24 @@
     "selectIcon": "Wählen Sie ein Symbol",
     "socialZone": "SOZIALGEBIETE",
     "updateSusses": "Zone erfolgreich aktualisiert"
+  },
+  "zoneRequest": {
+    "categories": {
+      "callHotel": "Rufen Sie das Hotelpersonal an",
+      "checkOut": "Spätes Auschecken anfordern",
+      "clean": "Zimmerreinigung anfordern",
+      "drink": "Ein Drink",
+      "food": "Essen im Voraus bestellen",
+      "maintain": "Wartung anfordern",
+      "other": "andere",
+      "requestClean": "Reinigung anfordern",
+      "roomKeys": "Zimmerschlüssel",
+      "roomService": "Zimmerservice",
+      "spaceReserve": "Reservieren Sie einen Platz",
+      "specialRequest": "Spezialwünsche",
+      "towels": "Handtücher",
+      "waiter": "Bedienung",
+      "wakeUp": "Weckprogramm"
+    }
   }
 }

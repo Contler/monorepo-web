@@ -176,6 +176,17 @@
     "updateBtn": "Aggiornare",
     "value": "Valore"
   },
+  "preferences": {
+    "hotel": "Hotel {{value}}",
+    "immediate": {
+      "description": "Le richieste generali immediate consentono agli utenti di richiedere rapidamente ciò di cui hanno bisogno nelle aree del tuo Hotel. Scegli le opzioni da visualizzare in ogni tipo di zona:",
+      "name": "Richieste immediate",
+      "other": "Altro",
+      "selectIcon": "Seleziona l'icona",
+      "subDescription": "Le richieste immediate consentono all'ospite di richiedere rapidamente qualcosa di puntuale, da servire con priorità.\n<br/><br/>esempio: un telo in piscina",
+      "which": "Quale?"
+    }
+  },
   "product": {
     "active": "Attivo",
     "all": "Tutti",
@@ -345,5 +356,24 @@
     "selectIcon": "Seleziona un'icona",
     "socialZone": "AREE SOCIALI",
     "updateSusses": "Zona aggiornata con successo"
+  },
+  "zoneRequest": {
+    "categories": {
+      "callHotel": "Chiama il personale dell'hotel",
+      "checkOut": "Richiedi il check-out posticipato",
+      "clean": "Richiedi la pulizia della camera",
+      "drink": "Un drink",
+      "food": "Ordina il cibo in anticipo",
+      "maintain": "Richiedi manutenzione",
+      "other": "un altro",
+      "requestClean": "Richiedi la pulizia",
+      "roomKeys": "Chiavi della camera",
+      "roomService": "Servizio in camera",
+      "spaceReserve": "Prenota uno spazio",
+      "specialRequest": "RICHIESTE SPECIALI",
+      "towels": "Asciugamani",
+      "waiter": "Cameriere",
+      "wakeUp": "Programma di sveglia"
+    }
   }
 }

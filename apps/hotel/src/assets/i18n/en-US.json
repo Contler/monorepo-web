@@ -176,6 +176,17 @@
     "updateBtn": "Update",
     "value": "Value"
   },
+  "preferences": {
+    "hotel": "Hotel {{value}}",
+    "immediate": {
+      "description": "General immediate requests allow users to quickly request what they need in the areas of your Hotel. Choose the options to display in each type of zone:",
+      "name": "Immediate requests",
+      "other": "Other",
+      "selectIcon": "Select the icon",
+      "subDescription": "Immediate requests allow the guest to request something punctual quickly, to be served with priority.\n<br/><br/>example: a towel in the pool",
+      "which": "Which?"
+    }
+  },
   "product": {
     "active": "Active",
     "all": "All",
@@ -345,5 +356,24 @@
     "selectIcon": "Select an Icon",
     "socialZone": "SOCIAL AREAS",
     "updateSusses": "Zone updated successfully"
+  },
+  "zoneRequest": {
+    "categories": {
+      "callHotel": "Call the hotel staff",
+      "checkOut": "Request late checkout",
+      "clean": "Request room cleaning",
+      "drink": "A drink",
+      "food": "Order food in advance",
+      "maintain": "Request Maintenance",
+      "other": "Other",
+      "requestClean": "Request cleaning",
+      "roomKeys": "Room keys",
+      "roomService": "Room service",
+      "spaceReserve": "Reserve a space",
+      "specialRequest": "Special requests",
+      "towels": "Towels",
+      "waiter": "Waiter",
+      "wakeUp": "Wake-up program"
+    }
   }
 }
