@@ -1,0 +1,11 @@
+<div class="welcome">
+  <contler-preferences-header
+    [title]="'preferences.welcome.title' | translate"
+    [subtitle]="'preferences.welcome.subtitle' | translate"
+  ></contler-preferences-header>
+  <div class="welcome__buttons">
+    <button mat-raised-button color="accent" contlerBtnHotel="primary" (click)="goToModuleList()">
+      {{ 'preferences.welcome.button' | translate }}
+    </button>
+  </div>
+</div>

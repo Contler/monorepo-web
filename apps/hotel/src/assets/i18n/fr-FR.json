@@ -101,6 +101,13 @@
   "home": {
     "desktop": "bureau"
   },
+  "preferences": {
+    "welcome": {
+      "title": "Bienvenue à votre administrateur Contler !",
+      "subtitle": "Nous vous guiderons pas à pas afin que vous puissiez organiser les options que vous proposerez à vos invités.",
+      "button": "Démarrer"
+    }
+  },
   "immediateRequest": {
     "active": "Disponible",
     "all": "Tout",

@@ -1,0 +1,43 @@
+.welcome {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: 1fr auto auto;
+  &__logo {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    &__img {
+      max-width: 100%;
+      object-fit: contain;
+      height: 132px;
+      width: 132px;
+    }
+  }
+  &__caption {
+    font-size: 15.2px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.58;
+    letter-spacing: 0.1px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.87);
+    width: 420px;
+    margin: 0 auto;
+  }
+  &__caption:nth-of-type(1) {
+    margin-bottom: 20px;
+  }
+  &__caption:nth-of-type(2) {
+    margin-bottom: 80px;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    button {
+      width: 400px;
+    }
+  }
+}

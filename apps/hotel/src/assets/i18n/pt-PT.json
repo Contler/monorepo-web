@@ -101,6 +101,13 @@
   "home": {
     "desktop": "Área de Trabalho"
   },
+  "preferences": {
+    "welcome": {
+      "title": "Bem-vindo ao seu administrador Contler!",
+      "subtitle": "Guiá-lo-emos passo a passo para que possa organizar as opções que irá oferecer aos seus convidados.",
+      "button": "iniciar"
+    }
+  },
   "immediateRequest": {
     "active": "acessível",
     "all": "Todos",

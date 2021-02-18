@@ -1,1 +1,9 @@
-<p>preferences works!</p>
+<contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav>
+    <contler-menu></contler-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
