@@ -1,16 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Module } from 'hotel/preferences/pages/module-list/models/module';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { SpecialZoneHotelEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-module-card',
   templateUrl: './module-card.component.html',
   styleUrls: ['./module-card.component.scss'],
 })
-export class ModuleCardComponent implements OnInit {
+export class ModuleCardComponent {
   public check = true;
-  @Input() module: Module;
+  @Input() module: SpecialZoneHotelEntity;
+  @Output() enableModule: EventEmitter<SpecialZoneHotelEntity> = new EventEmitter<SpecialZoneHotelEntity>(
+    null,
+  );
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  public onUpdateModule(status: boolean): void {
+    this.module.status = status;
+    this.enableModule.emit(this.module);
+  }
 }

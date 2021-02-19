@@ -101,13 +101,6 @@
   "home": {
     "desktop": "bureau"
   },
-  "preferences": {
-    "welcome": {
-      "title": "Bienvenue à votre administrateur Contler !",
-      "subtitle": "Nous vous guiderons pas à pas afin que vous puissiez organiser les options que vous proposerez à vos invités.",
-      "button": "Démarrer"
-    }
-  },
   "immediateRequest": {
     "active": "Disponible",
     "all": "Tout",
@@ -185,6 +178,11 @@
   },
   "preferences": {
     "hotel": "Hôtel {{value}}",
+    "welcome": {
+      "title": "Bienvenue à votre administrateur Contler !",
+      "subtitle": "Nous vous guiderons pas à pas afin que vous puissiez organiser les options que vous proposerez à vos invités.",
+      "button": "Démarrer"
+    },
     "immediate": {
       "description": "Les demandes générales immédiates permettent aux utilisateurs de demander rapidement ce dont ils ont besoin dans les zones de votre hôtel. Choisissez les options à afficher dans chaque type de zone:",
       "name": "Demandes immédiates",
@@ -192,7 +190,8 @@
       "selectIcon": "Sélectionnez l'icône",
       "subDescription": "Les demandes immédiates permettent au client de demander quelque chose de ponctuel rapidement, à servir en priorité.\n<br/><br/>exemple: une serviette dans la piscine",
       "which": "Qui?"
-    }
+    },
+    "continue": "Continuer à "
   },
   "product": {
     "active": "actif",

@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Module } from 'hotel/preferences/pages/module-list/models/module';
+import { AuthService } from 'hotel/services/auth.service';
+import { first, map } from 'rxjs/operators';
+import { SpecialZoneHotelEntity } from '@contler/entity/SpecialZoneHotel.entity';
+import { HotelService } from '@contler/core';
+import { HotelEntity } from '@contler/entity';
+import { MessagesService } from 'hotel/services/messages/messages.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'contler-module-list',
@@ -7,70 +13,49 @@ import { Module } from 'hotel/preferences/pages/module-list/models/module';
   styleUrls: ['./module-list.component.scss'],
 })
 export class ModuleListComponent implements OnInit {
-  public modules: Module[] = [];
+  public hotel: HotelEntity = null;
+  constructor(
+    private authService: AuthService,
+    private hotelService: HotelService,
+    private messageService: MessagesService,
+    private router: Router,
+  ) {}
 
-  public ngOnInit(): void {
-    this.loadInitialData();
+  public async ngOnInit(): Promise<void> {
+    const loader = this.messageService.showLoader();
+    try {
+      await this.loadInitialData();
+      this.messageService.closeLoader(loader);
+    } catch (err) {
+      this.messageService.closeLoader(loader);
+      this.messageService.showServerError();
+      console.log('Error loading initial data', err);
+    }
   }
 
-  private loadInitialData(): void {
-    this.modules = [
-      {
-        name: 'global.IMMEDIATE_REQUEST',
-        icon: 'info',
-        link: '',
-        status: false,
-      },
-      {
-        name: 'global.SPECIAL_REQUEST',
-        icon: 'sms_failed',
-        link: '',
-        status: false,
-      },
-      {
-        name: 'global.SPACE_RESERVATION',
-        icon: 'insert_invitation',
-        link: '',
-        status: false,
-      },
-      {
-        name: 'menu.remoteOrders',
-        icon: 'room_service',
-        link: '',
-        status: false,
-      },
-      {
-        name: 'wakeUp.room',
-        icon: 'sensor_door',
-        link: '',
-        status: false,
-      },
-      {
-        name: 'global.LATE_CHECKOUT',
-        icon: 'transfer_within_a_station',
-        link: '',
-        status: false,
-      },
-      {
-        name: 'typeRequest.CLEAN',
-        icon: 'account_circle',
-        link: '',
-        status: false,
-      },
-      {
-        name: 'typeRequest.RECEPTION',
-        icon: 'room_service',
-        link: '',
-        status: false,
-      },
-      {
-        name: 'typeRequest.MAINTAIN',
-        icon: 'engineering',
-        link: '',
-        status: false,
-      },
-    ];
+  private async loadInitialData(): Promise<void> {
+    this.hotel = await this.authService.$employer
+      .pipe(
+        map((employer) => employer.hotel),
+        first(),
+      )
+      .toPromise();
   }
 
-  public goToModuleList(): void {}
+  public async updateModule(module: SpecialZoneHotelEntity): Promise<void> {
+    const loader = this.messageService.showLoader();
+    this.hotel.specialZones = this.hotel.specialZones.map((m) => (m.id === module.id ? module : m));
+    try {
+      await this.hotelService.updateHotel(this.hotel).toPromise();
+      this.messageService.closeLoader(loader);
+    } catch (err) {
+      this.messageService.closeLoader(loader);
+      this.messageService.showServerError();
+      console.error('Error updating hotel: ', err);
+    }
+  }
+
+  public goToImmediateRequestPage(): void {
+    this.router.navigate(['preferences', 'immediate-request']);
+  }
 }

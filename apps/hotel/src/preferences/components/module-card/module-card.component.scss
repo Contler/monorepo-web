@@ -37,4 +37,10 @@
   margin: 7px 8px 0 auto;
   display: block;
   color: #b9b9b9;
+  cursor: pointer;
+}
+.disabled_module {
+  background-color: white;
+  box-shadow: initial;
+  border: solid 1px #d4d4d4;
 }

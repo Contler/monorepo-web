@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoaderComponent } from 'hotel/material/components/loader/loader.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessagesService {
-  constructor(private snackBar: MatSnackBar, private translate: TranslateService) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private translate: TranslateService,
+    private matDialog: MatDialog,
+  ) {}
 
   showToastMessage(message: string, closeMessage: string = null, duration: number = 2000) {
     const msg = this.translate.instant('global.CLOSE');
@@ -28,5 +34,21 @@ export class MessagesService {
     this.snackBar.open(message, closeMessage, {
       duration: duration,
     });
+  }
+
+  showLoader() {
+    return this.matDialog.open(LoaderComponent, {
+      disableClose: true,
+      panelClass: 'dark_modal',
+    });
+  }
+
+  closeLoader(loader, message: string = null, duration: number = 2000) {
+    setTimeout(() => {
+      loader.close();
+    }, 1000);
+    if (message) {
+      this.showToastMessage(message, 'Cerrar', duration);
+    }
   }
 }
