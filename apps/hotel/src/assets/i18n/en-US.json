@@ -101,13 +101,6 @@
   "home": {
     "desktop": "Desktop"
   },
-  "preferences": {
-    "welcome": {
-      "title": "Welcome to your Contler administrator!",
-      "subtitle": "We will guide you through this step by step so you can organize the options you will offer to your guests.",
-      "button": "start"
-    }
-  },
   "immediateRequest": {
     "active": "Available",
     "all": "All",
@@ -185,6 +178,11 @@
   },
   "preferences": {
     "hotel": "Hotel {{value}}",
+    "welcome": {
+      "title": "Welcome to your Contler administrator!",
+      "subtitle": "We will guide you through this step by step so you can organize the options you will offer to your guests.",
+      "button": "start"
+    },
     "immediate": {
       "description": "General immediate requests allow users to quickly request what they need in the areas of your Hotel. Choose the options to display in each type of zone:",
       "name": "Immediate requests",
@@ -192,7 +190,8 @@
       "selectIcon": "Select the icon",
       "subDescription": "Immediate requests allow the guest to request something punctual quickly, to be served with priority.\n<br/><br/>example: a towel in the pool",
       "which": "Which?"
-    }
+    },
+    "continue": "Continue"
   },
   "product": {
     "active": "Active",

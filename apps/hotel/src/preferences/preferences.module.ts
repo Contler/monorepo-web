@@ -10,6 +10,8 @@ import { CommonComponentsModule } from '../common-components/common-components.m
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DirectivesModule } from '../directives/directives.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { ModuleListComponent } from './pages/module-list/module-list.component';
+import { ModuleCardComponent } from './components/module-card/module-card.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MaterialModule } from '../material/material.module';
@@ -23,6 +25,9 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     PreferencesComponent,
     WelcomeComponent,
+    ModuleListComponent,
+    PreferencesHeaderComponent,
+    ModuleCardComponent,
     PreferencesHeaderComponent,
     PreferencesComponent,
     ImmediateRequestComponent,

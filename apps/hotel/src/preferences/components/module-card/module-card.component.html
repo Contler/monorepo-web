@@ -1,0 +1,10 @@
+<div class="module" [ngClass]="{ disabled_module: module.status }">
+  <mat-icon class="icon-check" *ngIf="!module.status" (click)="onUpdateModule(true)"
+    >check_circle_outline</mat-icon
+  >
+  <mat-icon class="icon-check" *ngIf="module.status" (click)="onUpdateModule(false)">do_disturb_on</mat-icon>
+  <div class="module__icon_container">
+    <mat-icon class="module__icon_container__icon">{{ module.icon }}</mat-icon>
+  </div>
+  <h3 class="module__caption">{{ module.zone.text }}</h3>
+</div>

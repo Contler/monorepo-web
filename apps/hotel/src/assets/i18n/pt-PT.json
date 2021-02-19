@@ -101,13 +101,6 @@
   "home": {
     "desktop": "Área de Trabalho"
   },
-  "preferences": {
-    "welcome": {
-      "title": "Bem-vindo ao seu administrador Contler!",
-      "subtitle": "Guiá-lo-emos passo a passo para que possa organizar as opções que irá oferecer aos seus convidados.",
-      "button": "iniciar"
-    }
-  },
   "immediateRequest": {
     "active": "acessível",
     "all": "Todos",
@@ -185,6 +178,11 @@
   },
   "preferences": {
     "hotel": "Hotel {{value}}",
+    "welcome": {
+      "title": "Bem-vindo ao seu administrador Contler!",
+      "subtitle": "Guiá-lo-emos passo a passo para que possa organizar as opções que irá oferecer aos seus convidados.",
+      "button": "iniciar"
+    },
     "immediate": {
       "description": "As solicitações gerais imediatas permitem que os usuários solicitem rapidamente o que precisam nas áreas do seu Hotel. Escolha as opções a serem exibidas em cada tipo de zona:",
       "name": "Pedidos imediatos",
@@ -192,7 +190,8 @@
       "selectIcon": "Selecione o ícone",
       "subDescription": "As solicitações imediatas permitem que o hóspede solicite algo pontual com rapidez, para ser atendido com prioridade.\n<br/><br/>exemplo: uma toalha na piscina",
       "which": "Qual?"
-    }
+    },
+    "continue": "Continuar a "
   },
   "product": {
     "active": "Ativo",

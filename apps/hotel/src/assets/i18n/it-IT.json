@@ -101,13 +101,6 @@
   "home": {
     "desktop": "Desktop"
   },
-  "preferences": {
-    "welcome": {
-      "title": "Benvenuto nel tuo amministratore Contler!",
-      "subtitle": "Ti guideremo passo dopo passo in modo che tu possa organizzare le opzioni che offrirai ai tuoi ospiti.",
-      "button": "avvia"
-    }
-  },
   "immediateRequest": {
     "active": "A disposizione",
     "all": "Tutti",
@@ -185,6 +178,11 @@
   },
   "preferences": {
     "hotel": "Hotel {{value}}",
+    "welcome": {
+      "title": "Benvenuto nel tuo amministratore Contler!",
+      "subtitle": "Ti guideremo passo dopo passo in modo che tu possa organizzare le opzioni che offrirai ai tuoi ospiti.",
+      "button": "avvia"
+    },
     "immediate": {
       "description": "Le richieste generali immediate consentono agli utenti di richiedere rapidamente ciò di cui hanno bisogno nelle aree del tuo Hotel. Scegli le opzioni da visualizzare in ogni tipo di zona:",
       "name": "Richieste immediate",
@@ -192,7 +190,8 @@
       "selectIcon": "Seleziona l'icona",
       "subDescription": "Le richieste immediate consentono all'ospite di richiedere rapidamente qualcosa di puntuale, da servire con priorità.\n<br/><br/>esempio: un telo in piscina",
       "which": "Quale?"
-    }
+    },
+    "continue": "Continuare a "
   },
   "product": {
     "active": "Attivo",
