@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PreferencesRoutingModule } from './preferences-routing.module';
 import { PreferencesComponent } from './preferences.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { PreferencesHeaderComponent } from './components/preferences-header/preferences-header.component';
 import { ImmediateRequestComponent } from './pages/inmediate-request/immediate-request.component';
 import { ModuleLayoutComponent } from './components/module-layout/module-layout.component';
 import { CommonComponentsModule } from '../common-components/common-components.module';
@@ -21,11 +22,21 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     PreferencesComponent,
+    WelcomeComponent,
+    PreferencesHeaderComponent,
+    PreferencesComponent,
     ImmediateRequestComponent,
     ModuleLayoutComponent,
     ImmediateCategoryComponent,
   ],
   imports: [
+    CommonModule,
+    PreferencesRoutingModule,
+    MaterialModule,
+    DirectivesModule,
+    CommonComponentsModule,
+    CommonComponentsModule,
+    TranslateModule,
     CommonModule,
     PreferencesRoutingModule,
     CommonComponentsModule,

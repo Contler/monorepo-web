@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
-import { map } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { SpecialRequestsService } from 'hotel/special-requests/services/special-requests.service';
 import { RequestEntity } from '@contler/entity';
+import { AuthService } from 'hotel/services/auth.service';
 
 @Component({
   selector: 'contler-admin-home',
@@ -87,6 +88,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     private router: Router,
     private inmediateRequestsService: InmediateRequestsService,
     private specialRequestsService: SpecialRequestsService,
+    private authService: AuthService,
   ) {}
 
   goToPage(router: any[], isReception: boolean) {
@@ -97,7 +99,16 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    const initialConfiguration = await this.authService.$employer
+      .pipe(
+        first(),
+        map((employer) => employer.hotel.initialConfiguration),
+      )
+      .toPromise();
+    if (!initialConfiguration) {
+      this.router.navigate(['preferences']);
+    }
     this.inmediateRequestsSubscription = this.inmediateRequestsService
       .listenInmediateRequestByHotel()
       .pipe(

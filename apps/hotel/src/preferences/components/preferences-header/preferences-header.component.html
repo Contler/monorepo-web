@@ -1,0 +1,7 @@
+<div class="preference" *ngIf="hotel$ | async as hotel">
+  <figure class="preference__logo">
+    <img [src]="hotel.logo" [alt]="hotel.name" class="preference__logo__img" />
+  </figure>
+  <h5 class="preference__caption" *ngIf="title">{{ title }}</h5>
+  <h5 class="preference__caption" *ngIf="subtitle">{{ subtitle }}</h5>
+</div>

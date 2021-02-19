@@ -101,6 +101,13 @@
   "home": {
     "desktop": "Desktop"
   },
+  "preferences": {
+    "welcome": {
+      "title": "Benvenuto nel tuo amministratore Contler!",
+      "subtitle": "Ti guideremo passo dopo passo in modo che tu possa organizzare le opzioni che offrirai ai tuoi ospiti.",
+      "button": "avvia"
+    }
+  },
   "immediateRequest": {
     "active": "A disposizione",
     "all": "Tutti",

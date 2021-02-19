@@ -101,6 +101,13 @@
   "home": {
     "desktop": "Desktop"
   },
+  "preferences": {
+    "welcome": {
+      "title": "Welkom bij uw Contler beheerder!",
+      "subtitle": "Wij zullen u stap voor stap begeleiden, zodat u de mogelijkheden die u uw gasten zult aanbieden, kunt organiseren.",
+      "button": "start"
+    }
+  },
   "immediateRequest": {
     "active": "Verfügbar",
     "all": "Alles",
