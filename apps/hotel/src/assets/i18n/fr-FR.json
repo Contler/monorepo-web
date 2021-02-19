@@ -191,7 +191,12 @@
       "subDescription": "Les demandes immédiates permettent au client de demander quelque chose de ponctuel rapidement, à servir en priorité.\n<br/><br/>exemple: une serviette dans la piscine",
       "which": "Qui?"
     },
-    "continue": "Continuer à "
+    "continue": "Continuer à ",
+    "reception": {
+      "description": "Choisissez les options à garder activées dans la section Réception. Vous pouvez créer de nouvelles options.",
+      "name": "Réception",
+      "subDescription": "Les demandes à la réception permettent à l'utilisateur d'obtenir des services de première main qui l'aident dans son séjour."
+    }
   },
   "product": {
     "active": "actif",

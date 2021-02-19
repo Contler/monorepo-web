@@ -191,7 +191,12 @@
       "subDescription": "Sofortige Anfragen ermöglichen es dem Gast, schnell etwas Pünktliches anzufordern, das vorrangig bedient werden soll.\n<br/><br/>Beispiel: ein Handtuch im Pool",
       "which": "Welche?"
     },
-    "continue": "Ga verder naar "
+    "continue": "Ga verder naar ",
+    "reception": {
+      "description": "Wählen Sie im Bereich Empfang aus, welche Optionen aktiviert bleiben sollen. Sie können neue Optionen erstellen.",
+      "name": "Rezeption",
+      "subDescription": "Anfragen an der Rezeption ermöglichen es dem Benutzer, Dienste aus erster Hand zu erhalten, die ihm bei seinem Aufenthalt helfen."
+    }
   },
   "product": {
     "active": "Aktiv",

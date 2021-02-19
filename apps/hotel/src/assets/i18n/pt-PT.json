@@ -191,7 +191,12 @@
       "subDescription": "As solicitações imediatas permitem que o hóspede solicite algo pontual com rapidez, para ser atendido com prioridade.\n<br/><br/>exemplo: uma toalha na piscina",
       "which": "Qual?"
     },
-    "continue": "Continuar a "
+    "continue": "Continuar a ",
+    "reception": {
+      "description": "Escolha quais opções manter ativadas na seção Recepção. Você pode criar novas opções.",
+      "name": "Recepção",
+      "subDescription": "As solicitações na recepção permitem que o usuário obtenha serviços de primeira mão que auxiliam em sua estadia."
+    }
   },
   "product": {
     "active": "Ativo",

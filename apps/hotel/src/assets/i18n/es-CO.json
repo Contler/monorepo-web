@@ -191,7 +191,12 @@
       "subDescription": "Las solicitudes inmediatas permiten al huésped solicitar algo puntual de forma rápida, para ser atendido con prioridad. \n<br/><br/>\nejemplo: una toalla en la piscina",
       "which": "¿Cual?"
     },
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "reception": {
+      "description": "Elige qué opciones mantener habilitadas en la sección de Recepción. Podrás crear nuevas opciones.",
+      "name": "Recepción",
+      "subDescription": "Las solicitudes en recepción permiten al usuario obtener los servicios de primera mano que ayuden en su estadía."
+    }
   },
   "product": {
     "active": "Activos",

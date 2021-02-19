@@ -20,6 +20,7 @@ import { ImmediateCategoryComponent } from './components/immediate-category/imme
 import { UiModule } from '@contler/ui';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { FormsModule } from '@angular/forms';
+import { ReceptionComponent } from './pages/reception/reception.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     ImmediateRequestComponent,
     ModuleLayoutComponent,
     ImmediateCategoryComponent,
+    ReceptionComponent,
   ],
   imports: [
     CommonModule,

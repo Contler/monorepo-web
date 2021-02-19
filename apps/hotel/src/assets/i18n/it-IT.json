@@ -191,7 +191,12 @@
       "subDescription": "Le richieste immediate consentono all'ospite di richiedere rapidamente qualcosa di puntuale, da servire con priorità.\n<br/><br/>esempio: un telo in piscina",
       "which": "Quale?"
     },
-    "continue": "Continuare a "
+    "continue": "Continuare a ",
+    "reception": {
+      "description": "Scegli quali opzioni mantenere abilitate nella sezione Reception. Puoi creare nuove opzioni.",
+      "name": "Ricezione",
+      "subDescription": "Le richieste alla reception consentono all'utente di ottenere servizi di prima mano che aiutano nel suo soggiorno."
+    }
   },
   "product": {
     "active": "Attivo",

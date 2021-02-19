@@ -191,7 +191,12 @@
       "subDescription": "Immediate requests allow the guest to request something punctual quickly, to be served with priority.\n<br/><br/>example: a towel in the pool",
       "which": "Which?"
     },
-    "continue": "Continue"
+    "continue": "Continue",
+    "reception": {
+      "description": "Choose which options to keep enabled in the Reception section. You can create new options.",
+      "name": "Reception",
+      "subDescription": "Requests at the reception allow the user to obtain first-hand services that help in their stay."
+    }
   },
   "product": {
     "active": "Active",
