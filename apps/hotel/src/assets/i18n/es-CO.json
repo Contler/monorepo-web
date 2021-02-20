@@ -177,12 +177,9 @@
     "value": "Valor"
   },
   "preferences": {
+    "back": "Regresar",
+    "continue": "Continuar",
     "hotel": "Hotel {{value}}",
-    "welcome": {
-      "title": "¡Bienvenido a tu administrador en Contler!",
-      "subtitle": "Te guiaremos en este paso a paso para que puedas organizar las opciones que ofrecerás a tus huéspedes",
-      "button": "iniciar"
-    },
     "immediate": {
       "description": "Las solicitudes inmediatas Generales, permiten a los usuarios de forma rápida solicitar lo que necesitan en las zonas de tu Hotel. Elige las opciones a desplegar en cada tipo de zona:",
       "name": "Solicitudes inmediatas",
@@ -191,11 +188,18 @@
       "subDescription": "Las solicitudes inmediatas permiten al huésped solicitar algo puntual de forma rápida, para ser atendido con prioridad. \n<br/><br/>\nejemplo: una toalla en la piscina",
       "which": "¿Cual?"
     },
-    "continue": "Continuar",
+    "newOption": "AGREGAR NUEVA OPCIÓN",
     "reception": {
       "description": "Elige qué opciones mantener habilitadas en la sección de Recepción. Podrás crear nuevas opciones.",
+      "disableText": "No, dejar deshabilitado",
+      "enableText": "Sí, habilitar servicio",
       "name": "Recepción",
       "subDescription": "Las solicitudes en recepción permiten al usuario obtener los servicios de primera mano que ayuden en su estadía."
+    },
+    "welcome": {
+      "button": "iniciar",
+      "subtitle": "Te guiaremos en este paso a paso para que puedas organizar las opciones que ofrecerás a tus huéspedes",
+      "title": "¡Bienvenido a tu administrador en Contler!"
     }
   },
   "product": {
@@ -230,6 +234,12 @@
     "services": "No de servicios",
     "time": "Tiempo promedio",
     "title": "Calificaciones"
+  },
+  "reception": {
+    "cashLoan": "Préstamo en efectivo",
+    "concierge": "Conserje",
+    "currencyExchange": "Cambio de divisas",
+    "transportation": "Transporte"
   },
   "reservation": {
     "createButton": "Crear zona",

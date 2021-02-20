@@ -177,12 +177,9 @@
     "value": "Valore"
   },
   "preferences": {
+    "back": "Ritornare",
+    "continue": "Continuare a ",
     "hotel": "Hotel {{value}}",
-    "welcome": {
-      "title": "Benvenuto nel tuo amministratore Contler!",
-      "subtitle": "Ti guideremo passo dopo passo in modo che tu possa organizzare le opzioni che offrirai ai tuoi ospiti.",
-      "button": "avvia"
-    },
     "immediate": {
       "description": "Le richieste generali immediate consentono agli utenti di richiedere rapidamente ciò di cui hanno bisogno nelle aree del tuo Hotel. Scegli le opzioni da visualizzare in ogni tipo di zona:",
       "name": "Richieste immediate",
@@ -191,11 +188,18 @@
       "subDescription": "Le richieste immediate consentono all'ospite di richiedere rapidamente qualcosa di puntuale, da servire con priorità.\n<br/><br/>esempio: un telo in piscina",
       "which": "Quale?"
     },
-    "continue": "Continuare a ",
+    "newOption": "Aggiungi nuova opzione",
     "reception": {
       "description": "Scegli quali opzioni mantenere abilitate nella sezione Reception. Puoi creare nuove opzioni.",
+      "disableText": "No, lascia disabilitato",
+      "enableText": "Sì, abilita il servizio",
       "name": "Ricezione",
       "subDescription": "Le richieste alla reception consentono all'utente di ottenere servizi di prima mano che aiutano nel suo soggiorno."
+    },
+    "welcome": {
+      "button": "avvia",
+      "subtitle": "Ti guideremo passo dopo passo in modo che tu possa organizzare le opzioni che offrirai ai tuoi ospiti.",
+      "title": "Benvenuto nel tuo amministratore Contler!"
     }
   },
   "product": {
@@ -230,6 +234,12 @@
     "services": "No. di servizi",
     "time": "Tempo medio",
     "title": "Giudizi"
+  },
+  "reception": {
+    "cashLoan": "Prestito in contanti",
+    "concierge": "Concierge",
+    "currencyExchange": "Cambio di valuta",
+    "transportation": "Trasporto"
   },
   "reservation": {
     "createButton": "Crea zona",

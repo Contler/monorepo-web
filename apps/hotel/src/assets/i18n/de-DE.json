@@ -177,12 +177,9 @@
     "value": "Wert"
   },
   "preferences": {
+    "back": "Rückkehr",
+    "continue": "Ga verder naar ",
     "hotel": "Hotel {{value}}",
-    "welcome": {
-      "title": "Welkom bij uw Contler beheerder!",
-      "subtitle": "Wij zullen u stap voor stap begeleiden, zodat u de mogelijkheden die u uw gasten zult aanbieden, kunt organiseren.",
-      "button": "start"
-    },
     "immediate": {
       "description": "Mit allgemeinen Sofortanfragen können Benutzer schnell anfordern, was sie in den Bereichen Ihres Hotels benötigen. Wählen Sie die Optionen aus, die in jedem Zonentyp angezeigt werden sollen:",
       "name": "Sofortige Anfragen",
@@ -191,11 +188,18 @@
       "subDescription": "Sofortige Anfragen ermöglichen es dem Gast, schnell etwas Pünktliches anzufordern, das vorrangig bedient werden soll.\n<br/><br/>Beispiel: ein Handtuch im Pool",
       "which": "Welche?"
     },
-    "continue": "Ga verder naar ",
+    "newOption": "Neue Option hinzufügen",
     "reception": {
       "description": "Wählen Sie im Bereich Empfang aus, welche Optionen aktiviert bleiben sollen. Sie können neue Optionen erstellen.",
+      "disableText": "Nein, deaktiviert lassen",
+      "enableText": "Ja, Dienst aktivieren",
       "name": "Rezeption",
       "subDescription": "Anfragen an der Rezeption ermöglichen es dem Benutzer, Dienste aus erster Hand zu erhalten, die ihm bei seinem Aufenthalt helfen."
+    },
+    "welcome": {
+      "button": "start",
+      "subtitle": "Wij zullen u stap voor stap begeleiden, zodat u de mogelijkheden die u uw gasten zult aanbieden, kunt organiseren.",
+      "title": "Welkom bij uw Contler beheerder!"
     }
   },
   "product": {
@@ -230,6 +234,12 @@
     "services": "Anzahl der Dienstleistungen",
     "time": "Durchschnittliche Zeit",
     "title": "Bewertungen"
+  },
+  "reception": {
+    "cashLoan": "Darlehen",
+    "concierge": "Portier",
+    "currencyExchange": "Geldwechsel",
+    "transportation": "Transport"
   },
   "reservation": {
     "createButton": "ZONE ERSTELLEN",

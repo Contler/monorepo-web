@@ -177,12 +177,9 @@
     "value": "Valeur"
   },
   "preferences": {
+    "back": "Retour",
+    "continue": "Continuer à ",
     "hotel": "Hôtel {{value}}",
-    "welcome": {
-      "title": "Bienvenue à votre administrateur Contler !",
-      "subtitle": "Nous vous guiderons pas à pas afin que vous puissiez organiser les options que vous proposerez à vos invités.",
-      "button": "Démarrer"
-    },
     "immediate": {
       "description": "Les demandes générales immédiates permettent aux utilisateurs de demander rapidement ce dont ils ont besoin dans les zones de votre hôtel. Choisissez les options à afficher dans chaque type de zone:",
       "name": "Demandes immédiates",
@@ -191,11 +188,18 @@
       "subDescription": "Les demandes immédiates permettent au client de demander quelque chose de ponctuel rapidement, à servir en priorité.\n<br/><br/>exemple: une serviette dans la piscine",
       "which": "Qui?"
     },
-    "continue": "Continuer à ",
+    "newOption": "Ajouter une nouvelle option",
     "reception": {
       "description": "Choisissez les options à garder activées dans la section Réception. Vous pouvez créer de nouvelles options.",
+      "disableText": "Non, laissez désactivé",
+      "enableText": "Oui, activer le service",
       "name": "Réception",
       "subDescription": "Les demandes à la réception permettent à l'utilisateur d'obtenir des services de première main qui l'aident dans son séjour."
+    },
+    "welcome": {
+      "button": "Démarrer",
+      "subtitle": "Nous vous guiderons pas à pas afin que vous puissiez organiser les options que vous proposerez à vos invités.",
+      "title": "Bienvenue à votre administrateur Contler !"
     }
   },
   "product": {
@@ -230,6 +234,12 @@
     "services": "Nbre de services",
     "time": "Temps moyen",
     "title": "Évaluations"
+  },
+  "reception": {
+    "cashLoan": "Prêt d'argent",
+    "concierge": "La conciergerie",
+    "currencyExchange": "Échange de devises",
+    "transportation": "Transport"
   },
   "reservation": {
     "createButton": "Créer une zone",

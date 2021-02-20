@@ -10,6 +10,7 @@ import {
   OptionType,
 } from '@contler/models';
 import { ImmediateModule } from '../utils/Immediate-module';
+import { ReceptionModule } from '@contler/models/reception-module';
 
 @Injectable()
 export class DynamicModuleService {
@@ -28,11 +29,60 @@ export class DynamicModuleService {
       );
   }
 
+  getReceptionModule(hotelId: string) {
+    const url = `${MODULES.root}/${hotelId}/${MODULES.reception}`;
+    return this.db
+      .object<ReceptionModule>(url)
+      .valueChanges()
+      .pipe(
+        tap((data) => {
+          if (!data) {
+            this.setUpReception(url);
+          }
+        }),
+      );
+  }
+
   async addOptionToImmediate(hotelId: string, categoryId: string, option: OptionModule) {
     const url = `${MODULES.root}/${hotelId}/${MODULES.immediate}/categories/${categoryId}/options`;
     const list = await this.db.list(url).valueChanges().pipe(take(1)).toPromise();
     list.push(option);
     return this.db.object(url).set(list);
+  }
+
+  private setUpReception(url: string) {
+    const receptionModule: ReceptionModule = {
+      options: [],
+    };
+    receptionModule.options.push({
+      active: true,
+      type: OptionType.LINK,
+      text: 'reception.transportation',
+      link: '/home/reception/transportation',
+      icon: 'fas fa-taxi',
+    } as ImmediateOptionLink);
+    receptionModule.options.push({
+      active: true,
+      type: OptionType.LINK,
+      text: 'reception.cashLoan',
+      link: '/home/reception/cash',
+      icon: 'fas fa-dollar-sign',
+    } as ImmediateOptionLink);
+    receptionModule.options.push({
+      active: true,
+      type: OptionType.LINK,
+      text: 'reception.currencyExchange',
+      link: '/home/reception/exchange',
+      icon: 'fas fa-globe',
+    } as ImmediateOptionLink);
+    receptionModule.options.push({
+      active: true,
+      type: OptionType.LINK,
+      text: 'reception.concierge',
+      link: '/home/reception/concierge',
+      icon: 'fas fa-map-marker-alt',
+    } as ImmediateOptionLink);
+    this.db.object(url).set(receptionModule);
   }
 
   private setUpImmediateModule(hotelId) {

@@ -45,7 +45,6 @@ import { ReceptionComponent } from './pages/reception/reception.component';
     CommonComponentsModule,
     TranslateModule,
     CommonModule,
-    PreferencesRoutingModule,
     CommonComponentsModule,
     MatSidenavModule,
     DirectivesModule,

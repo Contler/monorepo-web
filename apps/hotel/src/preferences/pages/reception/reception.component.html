@@ -6,4 +6,27 @@
     description2: 'preferences.reception.subDescription' | translate
   }"
 >
+  <mat-spinner class="load" *ngIf="load"></mat-spinner>
+  <mat-accordion *ngIf="modules | async; let mod">
+    <mat-expansion-panel *ngFor="let option of mod.options; let i = index">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ option.text | translate }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="service">
+        <span>{{ 'preferences.reception.disableText' | translate }}</span>
+        <mat-slide-toggle
+          contlerColorSlideToggle
+          [checked]="option.active"
+          (change)="changeStatus($event, i)"
+        ></mat-slide-toggle>
+        <span>{{ 'preferences.reception.enableText' | translate }}</span>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <span class="divider"></span>
+  <button mat-raised-button contlerBtnHotel="primary" class="newOption">
+    {{ 'preferences.newOption' | translate }}
+  </button>
 </contler-module-layout>
