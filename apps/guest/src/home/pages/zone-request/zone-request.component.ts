@@ -12,7 +12,7 @@ import { HotelEntity, ZoneEntity } from '@contler/entity';
 import { RequestService } from 'guest/services/request.service';
 import { ROOM_SERVICE, SUB_CATEGORY_DRINKS } from './const/zone-const';
 import { TranslateService } from '@ngx-translate/core';
-import { ImmediateCategory, ImmediateOptionLink, ImmediateOptionText, OptionType } from '@contler/models';
+import { ImmediateCategory } from '@contler/models';
 
 @Component({
   selector: 'contler-zone-request',
