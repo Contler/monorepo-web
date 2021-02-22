@@ -20,6 +20,7 @@ export class ZoneItemComponent {
       case OptionType.TEXT:
         const optionSelectedText: ImmediateOptionText = this.option as ImmediateOptionText;
         value = optionSelectedText.value;
+        this.clickedOption.emit(value);
         break;
       case OptionType.LINK:
         const optionSelectedLink: ImmediateOptionLink = this.option as ImmediateOptionLink;
@@ -27,11 +28,11 @@ export class ZoneItemComponent {
         break;
       case OptionType.OTHER:
         value = null;
+        this.clickedOption.emit(value);
         break;
       default:
         console.error('Option not allowed');
         break;
     }
-    this.clickedOption.emit(value);
   }
 }
