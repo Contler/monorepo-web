@@ -1,0 +1,46 @@
+<contler-module-layout
+  [data]="{
+    title: 'preferences.newService' | translate: { value: data.title },
+    icon: data.icon,
+    description: '',
+    description2: data.description2
+  }"
+>
+  <div class="container" *ngIf="$hotel | async; let hotel">
+    <div class="data">
+      <mat-form-field appearance="fill">
+        <input type="text" matInput />
+        <mat-hint>{{ 'preferences.service.nameOption' | translate }}</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <input type="text" matInput [(ngModel)]="optionTitle" />
+        <mat-hint>{{ 'preferences.service.description' | translate }}</mat-hint>
+      </mat-form-field>
+      <span class="divider"></span>
+
+      <contler-new-input
+        *ngFor="let inp of listOption; let i = index"
+        class="fieldOption"
+        (delete)="deleteInput(i)"
+        [inputData]="inp"
+      >
+      </contler-new-input>
+
+      <div>
+        <div class="new-option">
+          <button mat-icon-button (click)="addOption()">
+            <mat-icon>add_circle_outline</mat-icon>
+          </button>
+          <span>{{ 'preferences.newOptionbutton' | translate }}</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 class="title">{{ 'preferences.service.preview' | translate }}</h3>
+      <div class="preview">
+        <img [src]="hotel.logo" class="preview__logo" />
+        <p contlerColorHotel="primary" class="preview__title">{{ optionTitle }}</p>
+      </div>
+    </div>
+  </div>
+</contler-module-layout>

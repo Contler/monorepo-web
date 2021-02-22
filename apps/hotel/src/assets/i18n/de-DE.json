@@ -189,12 +189,26 @@
       "which": "Welche?"
     },
     "newOption": "Neue Option hinzufügen",
+    "newOptionbutton": "Fügen Sie ein neues Feld hinzu",
+    "newService": "Neuer Dienst {{value}}",
+    "optionInputs": {
+      "calendar": "Kalender",
+      "fileDescriptionHint": "Beschreibung des Feldes",
+      "nameInpitHit": "Feldtyp",
+      "select": "Optionsliste",
+      "text": "Offenes Feld"
+    },
     "reception": {
       "description": "Wählen Sie im Bereich Empfang aus, welche Optionen aktiviert bleiben sollen. Sie können neue Optionen erstellen.",
       "disableText": "Nein, deaktiviert lassen",
       "enableText": "Ja, Dienst aktivieren",
       "name": "Rezeption",
       "subDescription": "Anfragen an der Rezeption ermöglichen es dem Benutzer, Dienste aus erster Hand zu erhalten, die ihm bei seinem Aufenthalt helfen."
+    },
+    "service": {
+      "description": "Beschreibung",
+      "nameOption": "Optionsname",
+      "preview": "Vorschau"
     },
     "welcome": {
       "button": "start",

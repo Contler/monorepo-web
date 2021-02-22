@@ -21,6 +21,8 @@ import { UiModule } from '@contler/ui';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { FormsModule } from '@angular/forms';
 import { ReceptionComponent } from './pages/reception/reception.component';
+import { NewServiceWrapComponent } from './components/new-service-wrap/new-service-wrap.component';
+import { ServiceReceptionComponent } from './pages/service-reception/service-reception.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { ReceptionComponent } from './pages/reception/reception.component';
     ModuleLayoutComponent,
     ImmediateCategoryComponent,
     ReceptionComponent,
+    NewServiceWrapComponent,
+    ServiceReceptionComponent,
   ],
   imports: [
     CommonModule,

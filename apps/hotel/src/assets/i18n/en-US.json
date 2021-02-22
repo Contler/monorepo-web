@@ -189,12 +189,26 @@
       "which": "Which?"
     },
     "newOption": "Add new option",
+    "newOptionbutton": "Add a new field",
+    "newService": "New service {{value}}",
+    "optionInputs": {
+      "calendar": "Calendar",
+      "fileDescriptionHint": "Description of the field",
+      "nameInpitHit": "Field type",
+      "select": "Options list",
+      "text": "Open Field"
+    },
     "reception": {
       "description": "Choose which options to keep enabled in the Reception section. You can create new options.",
       "disableText": "No, leave disabled",
       "enableText": "Yes, enable service",
       "name": "Reception",
       "subDescription": "Requests at the reception allow the user to obtain first-hand services that help in their stay."
+    },
+    "service": {
+      "description": "Description",
+      "nameOption": "Name of the option",
+      "preview": "Preview"
     },
     "welcome": {
       "button": "start",

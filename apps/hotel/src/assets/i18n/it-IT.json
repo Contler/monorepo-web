@@ -189,12 +189,26 @@
       "which": "Quale?"
     },
     "newOption": "Aggiungi nuova opzione",
+    "newOptionbutton": "Aggiungi un nuovo campo",
+    "newService": "Nuovo servizio {{value}}",
+    "optionInputs": {
+      "calendar": "Calendario",
+      "fileDescriptionHint": "Descrizione del campo",
+      "nameInpitHit": "Tipo di campo",
+      "select": "Elenco delle opzioni",
+      "text": "Campo aperto"
+    },
     "reception": {
       "description": "Scegli quali opzioni mantenere abilitate nella sezione Reception. Puoi creare nuove opzioni.",
       "disableText": "No, lascia disabilitato",
       "enableText": "Sì, abilita il servizio",
       "name": "Ricezione",
       "subDescription": "Le richieste alla reception consentono all'utente di ottenere servizi di prima mano che aiutano nel suo soggiorno."
+    },
+    "service": {
+      "description": "Descrizione",
+      "nameOption": "Nome dell'opzione",
+      "preview": "Anteprima"
     },
     "welcome": {
       "button": "avvia",

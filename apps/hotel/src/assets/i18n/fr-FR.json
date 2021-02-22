@@ -189,12 +189,26 @@
       "which": "Qui?"
     },
     "newOption": "Ajouter une nouvelle option",
+    "newOptionbutton": "Ajouter un nouveau champ",
+    "newService": "Nouveau service {{value}}",
+    "optionInputs": {
+      "calendar": "Calendrier",
+      "fileDescriptionHint": "Description du champ",
+      "nameInpitHit": "Type de champ",
+      "select": "Liste d'options",
+      "text": "Champ ouvert"
+    },
     "reception": {
       "description": "Choisissez les options à garder activées dans la section Réception. Vous pouvez créer de nouvelles options.",
       "disableText": "Non, laissez désactivé",
       "enableText": "Oui, activer le service",
       "name": "Réception",
       "subDescription": "Les demandes à la réception permettent à l'utilisateur d'obtenir des services de première main qui l'aident dans son séjour."
+    },
+    "service": {
+      "description": "Description",
+      "nameOption": "Nom de l'option",
+      "preview": "Aperçu"
     },
     "welcome": {
       "button": "Démarrer",
