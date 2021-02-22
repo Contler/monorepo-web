@@ -1,28 +1,18 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
   <div class="container" marcoBody>
-    <p class="container__label" contlerColorHotel="primary">
+    <p class="container__label" contlerColorHotel="primary" *ngIf="zone">
       {{ 'zoneRequest.youAreIn' | translate }} {{ zone?.category.name | translate }} <br />
       {{ 'zoneRequest.whatDoYouNeed' | translate }}
     </p>
 
-    <div class="features-container" *ngIf="zone">
-      <div
+    <div class="features-container" *ngIf="zones$ | async as zones">
+      <contler-zone-item
         class="features-container-item"
-        *ngFor="let subcategory of categories[zone.category.id]"
-        (click)="setQuickRequest(subcategory.name)"
-      >
-        <mat-icon class="features-container-item__icon" *ngIf="subcategory.name != selectedSubcategory">
-          {{ subcategory.icon }}
-        </mat-icon>
-        <mat-icon
-          class="features-container-item__icon"
-          contlerColorHotel="primary"
-          *ngIf="subcategory.name === selectedSubcategory"
-        >
-          {{ subcategory.icon }}
-        </mat-icon>
-        <p class="features-container-item__name">{{ subcategory.name | translate }}</p>
-      </div>
+        *ngFor="let option of zones.options"
+        [option]="option"
+        [selectedOption]="selectedSubcategory"
+        (clickedOption)="setQuickRequest($event)"
+      ></contler-zone-item>
     </div>
 
     <div *ngIf="showRequestField">
