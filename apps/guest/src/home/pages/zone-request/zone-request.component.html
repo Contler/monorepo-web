@@ -6,29 +6,14 @@
     </p>
 
     <div class="features-container" *ngIf="zones$ | async as zones">
-      <div
+      <contler-zone-item
         class="features-container-item"
-        *ngFor="let subcategory of zones.options"
-        (click)="setQuickRequest(subcategory)"
-      >
-        <contler-icon
-          [key]="subcategory.icon"
-          class="features-container-item__icon"
-          *ngIf="subcategory.text != selectedSubcategory"
-        ></contler-icon>
-        <contler-icon
-          [key]="subcategory.icon"
-          class="features-container-item__icon"
-          contlerColorHotel="primary"
-          *ngIf="subcategory.text === selectedSubcategory"
-        ></contler-icon>
-        <p class="features-container-item__name" *ngIf="subcategory.text.includes('.')">
-          {{ subcategory.text | translate }}
-        </p>
-        <p class="features-container-item__name" *ngIf="!subcategory.text.includes('.')">
-          {{ subcategory.text | ctrTranslate }}
-        </p>
-      </div>
+        *ngFor="let option of zones.options"
+        [option]="option"
+        [selectedOption]="selectedSubcategory"
+        (clickedOption)="setQuickRequest($event)"
+      ></contler-zone-item>
+      <contler-zone-item></contler-zone-item>
     </div>
 
     <div *ngIf="showRequestField">

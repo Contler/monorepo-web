@@ -1,0 +1,19 @@
+<div (click)="setQuickRequest()" *ngIf="option" class="features-container-item">
+  <contler-icon
+    [key]="option.icon"
+    class="features-container-item__icon"
+    *ngIf="option.text != selectedOption"
+  ></contler-icon>
+  <contler-icon
+    [key]="option.icon"
+    class="features-container-item__icon"
+    contlerColorHotel="primary"
+    *ngIf="option.text === selectedOption"
+  ></contler-icon>
+  <p class="features-container-item__name" *ngIf="option.text.includes('.')">
+    {{ option.text | translate }}
+  </p>
+  <p class="features-container-item__name" *ngIf="!option.text.includes('.')">
+    {{ option.text | ctrTranslate }}
+  </p>
+</div>

@@ -33,7 +33,7 @@ export class ZoneRequestComponent implements AfterViewInit {
   //CODIGO TEMPORAL HASTA DEFINIR LOGICA DE PRODUCTOS
   public typeName: string | null = null;
   public drinkName = '';
-  zones$: Observable<ImmediateOptionText | ImmediateOptionLink | ImmediateCategory>;
+  zones$: Observable<ImmediateCategory>;
 
   constructor(
     private guestService: GuestService,
@@ -90,15 +90,7 @@ export class ZoneRequestComponent implements AfterViewInit {
     );
   }
 
-  setQuickRequest(option: ImmediateOptionText | ImmediateOptionLink) {
-    let value = null;
-    if (option.type === OptionType.TEXT) {
-      value = option.value;
-    } else if (option.type === OptionType.LINK) {
-      value = option.link;
-    }
-    console.log(option);
-    console.log(value);
+  setQuickRequest(value: string) {
     this.selectedSubcategory = value;
     if (value === SUB_CATEGORY_DRINKS || value === ROOM_SERVICE || value === 'zoneRequest.categories.drink') {
       this.router.navigate(['/home/product/create']);

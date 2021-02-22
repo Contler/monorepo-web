@@ -23,6 +23,7 @@ import { DrinkRequestComponent } from './pages/drink-request/drink-request.compo
 import { UiModule } from '@contler/ui';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { ZoneItemComponent } from './pages/zone-request/zone-item/zone-item.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     ModalBookingQualifyComponent,
     ModalOrdersQuialifyComponent,
     DrinkRequestComponent,
+    ZoneItemComponent,
   ],
   imports: [
     CommonModule,

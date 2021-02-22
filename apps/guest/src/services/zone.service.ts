@@ -7,7 +7,7 @@ import { ZoneEntity } from '@contler/entity';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'guest/environments/environment';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { ImmediateCategory, ImmediateOptionLink, ImmediateOptionText } from '@contler/models';
+import { ImmediateCategory } from '@contler/models';
 
 @Injectable({
   providedIn: 'root',
@@ -42,13 +42,8 @@ export class ZoneService {
   get $zones() {
     return this.zonesSubject.asObservable();
   }
-  getOptionsByZoneType(
-    hotelUid: string,
-    categoryUid: number,
-  ): Observable<ImmediateOptionText | ImmediateOptionLink | ImmediateCategory | null> {
+  getOptionsByZoneType(hotelUid: string, categoryUid: number): Observable<ImmediateCategory> {
     const ref = `modules/${hotelUid}/immediate/categories/${categoryUid}`;
-    return this.afDb
-      .object<ImmediateOptionText | ImmediateOptionLink | ImmediateCategory>(ref)
-      .valueChanges();
+    return this.afDb.object<ImmediateCategory>(ref).valueChanges();
   }
 }
