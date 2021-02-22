@@ -10,10 +10,7 @@
     contlerColorHotel="primary"
     *ngIf="option.text === selectedOption"
   ></contler-icon>
-  <p class="features-container-item__name" *ngIf="option.text.includes('.')">
-    {{ option.text | translate }}
-  </p>
-  <p class="features-container-item__name" *ngIf="!option.text.includes('.')">
-    {{ option.text | ctrTranslate }}
+  <p class="features-container-item__name">
+    {{ option.text | translate | ctrTranslate }}
   </p>
 </div>
