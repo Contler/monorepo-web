@@ -10,7 +10,6 @@ import { NotificationsService } from 'guest/services/notifications.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
 import { RequestService } from 'guest/services/request.service';
-import { ROOM_SERVICE, SUB_CATEGORY_DRINKS } from './const/zone-const';
 import { TranslateService } from '@ngx-translate/core';
 import { ImmediateCategory } from '@contler/models';
 
@@ -91,14 +90,7 @@ export class ZoneRequestComponent implements AfterViewInit {
   }
 
   setQuickRequest(value: string) {
-    this.selectedSubcategory = value;
-    if (value === SUB_CATEGORY_DRINKS || value === ROOM_SERVICE || value === 'zoneRequest.categories.drink') {
-      this.router.navigate(['/home/product/create']);
-    } else if (value === 'zoneRequest.categories.spaceReserve') {
-      this.router.navigate(['/home/reservation']);
-    } else {
-      this.showRequestField = value === 'zoneRequest.categories.other';
-    }
+    value ? (this.selectedSubcategory = value) : (this.showRequestField = true);
   }
 
   buttonDisabled() {
