@@ -25,6 +25,9 @@ export class ZoneItemComponent {
         const optionSelectedLink: ImmediateOptionLink = this.option as ImmediateOptionLink;
         this.router.navigateByUrl(optionSelectedLink.link);
         break;
+      case OptionType.OTHER:
+        value = null;
+        break;
       default:
         console.error('Option not allowed');
         break;
