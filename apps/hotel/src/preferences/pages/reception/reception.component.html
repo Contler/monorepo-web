@@ -11,7 +11,7 @@
     <mat-expansion-panel *ngFor="let option of mod.options; let i = index">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{ option.text | translate }}
+          {{ option.text | translate | ctrTranslate }}
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="service">

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AuthService } from 'hotel/services/auth.service';
 import { map, take } from 'rxjs/operators';
 import { HotelEntity } from '@contler/entity';
@@ -13,6 +13,11 @@ import { Location } from '@angular/common';
 export class ModuleLayoutComponent implements OnInit {
   @Input() data: ModuleData;
   @Input() nextUrl: string;
+  @Input() disable = false;
+  @Input() load = false;
+  @Input() redirectAction = true;
+
+  @Output() next = new EventEmitter();
 
   hotel: HotelEntity;
 

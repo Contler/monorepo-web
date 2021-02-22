@@ -188,13 +188,20 @@
       "subDescription": "Sofortige Anfragen ermöglichen es dem Gast, schnell etwas Pünktliches anzufordern, das vorrangig bedient werden soll.\n<br/><br/>Beispiel: ein Handtuch im Pool",
       "which": "Welche?"
     },
+    "message": {
+      "saveForm": "Formular speichern",
+      "saveService": "Service speichern",
+      "translateMessage": "Formularübersetzungen generieren"
+    },
     "newOption": "Neue Option hinzufügen",
     "newOptionbutton": "Fügen Sie ein neues Feld hinzu",
     "newService": "Neuer Dienst {{value}}",
     "optionInputs": {
       "calendar": "Kalender",
       "fileDescriptionHint": "Beschreibung des Feldes",
+      "iconHint": "Feldsymbol",
       "nameInpitHit": "Feldtyp",
+      "reload": "Nachladen",
       "select": "Optionsliste",
       "text": "Offenes Feld"
     },

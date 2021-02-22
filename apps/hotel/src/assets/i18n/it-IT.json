@@ -188,13 +188,20 @@
       "subDescription": "Le richieste immediate consentono all'ospite di richiedere rapidamente qualcosa di puntuale, da servire con priorità.\n<br/><br/>esempio: un telo in piscina",
       "which": "Quale?"
     },
+    "message": {
+      "saveForm": "Salvataggio del modulo",
+      "saveService": "Servizio di risparmio",
+      "translateMessage": "Generazione di traduzioni di moduli"
+    },
     "newOption": "Aggiungi nuova opzione",
     "newOptionbutton": "Aggiungi un nuovo campo",
     "newService": "Nuovo servizio {{value}}",
     "optionInputs": {
       "calendar": "Calendario",
       "fileDescriptionHint": "Descrizione del campo",
+      "iconHint": "Icona del campo",
       "nameInpitHit": "Tipo di campo",
+      "reload": "Ricarica",
       "select": "Elenco delle opzioni",
       "text": "Campo aperto"
     },

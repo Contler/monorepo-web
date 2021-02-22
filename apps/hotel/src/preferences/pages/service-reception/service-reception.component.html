@@ -5,5 +5,7 @@
     description: 'preferences.reception.description' | translate,
     description2: 'preferences.reception.subDescription' | translate
   }"
+  [load]="load"
+  (create)="save($event)"
 >
 </contler-new-service-wrap>

@@ -188,13 +188,20 @@
       "subDescription": "Immediate requests allow the guest to request something punctual quickly, to be served with priority.\n<br/><br/>example: a towel in the pool",
       "which": "Which?"
     },
+    "message": {
+      "saveForm": "Saving form",
+      "saveService": "Saving service",
+      "translateMessage": "Generating form translations"
+    },
     "newOption": "Add new option",
     "newOptionbutton": "Add a new field",
     "newService": "New service {{value}}",
     "optionInputs": {
       "calendar": "Calendar",
       "fileDescriptionHint": "Description of the field",
+      "iconHint": "Field icon",
       "nameInpitHit": "Field type",
+      "reload": "Recharge",
       "select": "Options list",
       "text": "Open Field"
     },

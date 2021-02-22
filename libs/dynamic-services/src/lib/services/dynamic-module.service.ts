@@ -50,6 +50,13 @@ export class DynamicModuleService {
     return this.db.object(url).set(list);
   }
 
+  async addOptionToReception(hotelId: string, option: ImmediateOptionLink) {
+    const url = `${MODULES.root}/${hotelId}/${MODULES.reception}/options`;
+    const list = await this.db.list(url).valueChanges().pipe(take(1)).toPromise();
+    list.push(option);
+    return this.db.object(url).set(list);
+  }
+
   private setUpReception(url: string) {
     const receptionModule: ReceptionModule = {
       options: [],

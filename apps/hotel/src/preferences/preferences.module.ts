@@ -19,7 +19,7 @@ import { DynamicServicesModule } from '@contler/dynamic-services';
 import { ImmediateCategoryComponent } from './components/immediate-category/immediate-category.component';
 import { UiModule } from '@contler/ui';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReceptionComponent } from './pages/reception/reception.component';
 import { NewServiceWrapComponent } from './components/new-service-wrap/new-service-wrap.component';
 import { ServiceReceptionComponent } from './pages/service-reception/service-reception.component';
@@ -60,6 +60,7 @@ import { ServiceReceptionComponent } from './pages/service-reception/service-rec
     UiModule,
     DynamicTranslateModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class PreferencesModule {}

@@ -7,9 +7,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { DynamicFormComponent } from './components/dynamicform/dynamic-form.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DateInputComponent } from './components/date-input/date-input.component';
 
 @NgModule({
   imports: [
@@ -22,9 +25,11 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     MatButtonModule,
     MatIconModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
   ],
   providers: [DynamicModuleService],
-  declarations: [NewInputComponent],
-  exports: [NewInputComponent],
+  declarations: [NewInputComponent, DynamicFormComponent, DateInputComponent],
+  exports: [NewInputComponent, DynamicFormComponent],
 })
 export class DynamicServicesModule {}

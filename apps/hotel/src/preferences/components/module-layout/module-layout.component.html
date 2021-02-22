@@ -28,8 +28,18 @@
       </div>
       <div class="complete marco__footer">
         <button mat-raised-button (click)="goBack()">{{ 'preferences.back' | translate }}</button>
-        <button mat-raised-button contlerBtnHotel="primary" [routerLink]="nextUrl">
+        <button *ngIf="redirectAction" mat-raised-button [routerLink]="nextUrl">
           {{ 'preferences.continue' | translate }}
+        </button>
+        <button
+          *ngIf="!redirectAction"
+          mat-raised-button
+          contlerBtnHotel="primary"
+          [disabled]="disable || load"
+          (click)="next.emit()"
+        >
+          <span *ngIf="!load">{{ 'preferences.continue' | translate }}</span>
+          <mat-spinner *ngIf="load" [diameter]="25" style="margin: auto"></mat-spinner>
         </button>
       </div>
     </div>

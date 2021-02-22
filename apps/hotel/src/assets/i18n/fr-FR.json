@@ -188,13 +188,20 @@
       "subDescription": "Les demandes immédiates permettent au client de demander quelque chose de ponctuel rapidement, à servir en priorité.\n<br/><br/>exemple: une serviette dans la piscine",
       "which": "Qui?"
     },
+    "message": {
+      "saveForm": "Enregistrement du formulaire",
+      "saveService": "Service d'épargne",
+      "translateMessage": "Générer des traductions de formulaires"
+    },
     "newOption": "Ajouter une nouvelle option",
     "newOptionbutton": "Ajouter un nouveau champ",
     "newService": "Nouveau service {{value}}",
     "optionInputs": {
       "calendar": "Calendrier",
       "fileDescriptionHint": "Description du champ",
+      "iconHint": "Icône de champ",
       "nameInpitHit": "Type de champ",
+      "reload": "Recharger",
       "select": "Liste d'options",
       "text": "Champ ouvert"
     },

@@ -188,13 +188,20 @@
       "subDescription": "As solicitações imediatas permitem que o hóspede solicite algo pontual com rapidez, para ser atendido com prioridade.\n<br/><br/>exemplo: uma toalha na piscina",
       "which": "Qual?"
     },
+    "message": {
+      "saveForm": "Salvando formulário",
+      "saveService": "Serviço de poupança",
+      "translateMessage": "Gerando traduções de formulários"
+    },
     "newOption": "ADICIONE NOVA OPÇÃO",
     "newOptionbutton": "Adicionar um novo campo",
     "newService": "Novo serviço {{value}}",
     "optionInputs": {
       "calendar": "Calendário",
       "fileDescriptionHint": "Descrição do campo",
+      "iconHint": "Ícone de campo",
       "nameInpitHit": "Tipo de campo",
+      "reload": "Recarregar",
       "select": "Lista de opções",
       "text": "Campo aberto"
     },
