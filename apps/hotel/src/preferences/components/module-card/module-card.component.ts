@@ -13,8 +13,8 @@ export class ModuleCardComponent {
     null,
   );
 
-  public onUpdateModule(status: boolean): void {
-    this.module.status = status;
+  public toggleModule(): void {
+    this.module.status = !this.module.status;
     this.enableModule.emit(this.module);
   }
 }
