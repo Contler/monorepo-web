@@ -1,43 +1,39 @@
-import { Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { GuestService } from 'guest/services/guest.service';
-import { Subscription } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'guest/services/zone.service';
-import { map } from 'rxjs/operators';
-import { SUB_CATEGORY } from '@contler/const';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { NotificationsService } from 'guest/services/notifications.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
 import { RequestService } from 'guest/services/request.service';
-import { CATEGORY_ZONE_EN, ROOM_SERVICE, SUB_CATEGORY_DRINKS } from './const/zone-const';
+import { ROOM_SERVICE, SUB_CATEGORY_DRINKS } from './const/zone-const';
 import { TranslateService } from '@ngx-translate/core';
-import { TranslateService as DynamicService } from '@contler/dynamic-translate';
+import { ImmediateCategory, ImmediateOptionLink, ImmediateOptionText, OptionType } from '@contler/models';
 
 @Component({
   selector: 'contler-zone-request',
   templateUrl: './zone-request.component.html',
   styleUrls: ['./zone-request.component.scss'],
 })
-export class ZoneRequestComponent implements OnDestroy {
+export class ZoneRequestComponent implements AfterViewInit {
   selectedSubcategory = '';
   showRequestField = false;
   hotel: HotelEntity | null | undefined;
   requestController = new FormControl('', Validators.required);
   loader = false;
   zone: ZoneEntity | undefined;
-  categoryZones = CATEGORY_ZONE_EN;
-  categories = SUB_CATEGORY;
   private zoneUid: string | null;
-  private guestSubscribe: Subscription;
-  private zoneSubscribe: Subscription;
 
   public isSubCategory = false; // DRINKS PAGE, etc
 
   //CODIGO TEMPORAL HASTA DEFINIR LOGICA DE PRODUCTOS
   public typeName: string | null = null;
   public drinkName = '';
+  zones$: Observable<ImmediateOptionText | ImmediateOptionLink | ImmediateCategory>;
 
   constructor(
     private guestService: GuestService,
@@ -50,16 +46,21 @@ export class ZoneRequestComponent implements OnDestroy {
     private router: Router,
     private translate: TranslateService,
   ) {
-    this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
     this.zoneUid = this.route.snapshot.paramMap.get('id');
-    this.zoneSubscribe = this.zoneService.$zones
-      .pipe(map((zones) => zones.find((zone) => zone.uid === this.zoneUid)))
-      .subscribe((zone) => {
-        if (zone) {
-          this.zone = zone;
-          this.zone.category = this.categoryZones[this.zone.category.id];
-        }
-      });
+  }
+
+  public ngAfterViewInit(): void {
+    const zone$ = this.zoneService.$zones.pipe(
+      map((zones) => zones.find((zone) => zone.uid === this.zoneUid)),
+    );
+    this.zones$ = combineLatest<[HotelEntity, ZoneEntity]>([this.guestService.$hotel, zone$]).pipe(
+      filter(([hotel, zone]) => !!hotel && !!zone),
+      tap(([hotel, zone]) => {
+        this.hotel = hotel;
+        this.zone = zone;
+      }),
+      switchMap(([hotel, zone]) => this.zoneService.getOptionsByZoneType(hotel.uid, zone.category.id)),
+    );
   }
 
   getButtonColorHotel() {
@@ -89,7 +90,15 @@ export class ZoneRequestComponent implements OnDestroy {
     );
   }
 
-  setQuickRequest(value: string) {
+  setQuickRequest(option: ImmediateOptionText | ImmediateOptionLink) {
+    let value = null;
+    if (option.type === OptionType.TEXT) {
+      value = option.value;
+    } else if (option.type === OptionType.LINK) {
+      value = option.link;
+    }
+    console.log(option);
+    console.log(value);
     this.selectedSubcategory = value;
     if (value === SUB_CATEGORY_DRINKS || value === ROOM_SERVICE || value === 'zoneRequest.categories.drink') {
       this.router.navigate(['/home/product/create']);
@@ -108,14 +117,5 @@ export class ZoneRequestComponent implements OnDestroy {
       disabledButton = true;
     }
     return disabledButton;
-  }
-
-  ngOnDestroy(): void {
-    if (this.guestSubscribe) {
-      this.guestSubscribe.unsubscribe();
-    }
-    if (this.zoneSubscribe) {
-      this.zoneSubscribe.unsubscribe();
-    }
   }
 }

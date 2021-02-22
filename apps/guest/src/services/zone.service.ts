@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { GuestService } from 'guest/services/guest.service';
 import { switchMap, tap } from 'rxjs/operators';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ZoneEntity } from '@contler/entity';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'guest/environments/environment';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { ImmediateCategory, ImmediateOptionLink, ImmediateOptionText } from '@contler/models';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +15,13 @@ import { environment } from 'guest/environments/environment';
 export class ZoneService {
   private zonesSubject = new BehaviorSubject<ZoneEntity[]>([]);
   private zonesSubscribe: Subscription | undefined;
-
-  constructor(private afAuth: AngularFireAuth, private http: HttpClient, private guestService: GuestService) {
-    this.afAuth.user.subscribe(user => {
+  constructor(
+    private afAuth: AngularFireAuth,
+    private http: HttpClient,
+    private guestService: GuestService,
+    private afDb: AngularFireDatabase,
+  ) {
+    this.afAuth.user.subscribe((user) => {
       if (user) {
         this.loadZones();
       } else if (this.zonesSubscribe) {
@@ -27,13 +33,22 @@ export class ZoneService {
   private loadZones() {
     this.zonesSubscribe = this.guestService.$hotel
       .pipe(
-        switchMap(hotel => this.http.get<ZoneEntity[]>(environment.apiUrl + `hotel/${hotel!.uid}/zone`)),
-        tap(zones => this.zonesSubject.next(zones)),
+        switchMap((hotel) => this.http.get<ZoneEntity[]>(environment.apiUrl + `hotel/${hotel!.uid}/zone`)),
+        tap((zones) => this.zonesSubject.next(zones)),
       )
       .subscribe();
   }
 
   get $zones() {
     return this.zonesSubject.asObservable();
+  }
+  getOptionsByZoneType(
+    hotelUid: string,
+    categoryUid: number,
+  ): Observable<ImmediateOptionText | ImmediateOptionLink | ImmediateCategory | null> {
+    const ref = `modules/${hotelUid}/immediate/categories/${categoryUid}`;
+    return this.afDb
+      .object<ImmediateOptionText | ImmediateOptionLink | ImmediateCategory>(ref)
+      .valueChanges();
   }
 }

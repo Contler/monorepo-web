@@ -1,27 +1,33 @@
 <contler-marco [backUrl]="'/home/guest-requests'">
   <div class="container" marcoBody>
-    <p class="container__label" contlerColorHotel="primary">
+    <p class="container__label" contlerColorHotel="primary" *ngIf="zone">
       {{ 'zoneRequest.youAreIn' | translate }} {{ zone?.category.name | translate }} <br />
       {{ 'zoneRequest.whatDoYouNeed' | translate }}
     </p>
 
-    <div class="features-container" *ngIf="zone">
+    <div class="features-container" *ngIf="zones$ | async as zones">
       <div
         class="features-container-item"
-        *ngFor="let subcategory of categories[zone.category.id]"
-        (click)="setQuickRequest(subcategory.name)"
+        *ngFor="let subcategory of zones.options"
+        (click)="setQuickRequest(subcategory)"
       >
-        <mat-icon class="features-container-item__icon" *ngIf="subcategory.name != selectedSubcategory">
-          {{ subcategory.icon }}
-        </mat-icon>
-        <mat-icon
+        <contler-icon
+          [key]="subcategory.icon"
+          class="features-container-item__icon"
+          *ngIf="subcategory.text != selectedSubcategory"
+        ></contler-icon>
+        <contler-icon
+          [key]="subcategory.icon"
           class="features-container-item__icon"
           contlerColorHotel="primary"
-          *ngIf="subcategory.name === selectedSubcategory"
-        >
-          {{ subcategory.icon }}
-        </mat-icon>
-        <p class="features-container-item__name">{{ subcategory.name | translate }}</p>
+          *ngIf="subcategory.text === selectedSubcategory"
+        ></contler-icon>
+        <p class="features-container-item__name" *ngIf="subcategory.text.includes('.')">
+          {{ subcategory.text | translate }}
+        </p>
+        <p class="features-container-item__name" *ngIf="!subcategory.text.includes('.')">
+          {{ subcategory.text | ctrTranslate }}
+        </p>
       </div>
     </div>
 
