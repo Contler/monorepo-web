@@ -27,7 +27,7 @@ export class MaintenanceComponent implements OnInit {
   ngOnInit(): void {
     this.modules$ = this.auth.$employer.pipe(
       tap((data) => (this.hotel = data.hotel)),
-      switchMap((user) => this.dynamicModule.getOptionsModule(user.hotel.uid, MODULES.maintenance)),
+      switchMap((user) => this.dynamicModule.getOptionsModule(user.hotel.uid, MODULES.maintenance, false)),
       tap((data) => (this.load = !data)),
     );
   }

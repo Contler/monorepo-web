@@ -29,7 +29,7 @@ export class ReceptionComponent implements OnInit {
   ngOnInit(): void {
     this.modules = this.auth.$employer.pipe(
       tap((data) => (this.hotel = data.hotel)),
-      switchMap((user) => this.dynamicModule.getOptionsModule(user.hotel.uid, MODULES.reception)),
+      switchMap((user) => this.dynamicModule.getOptionsModule(user.hotel.uid, MODULES.reception, false)),
       tap((data) => (this.load = !data)),
     );
   }

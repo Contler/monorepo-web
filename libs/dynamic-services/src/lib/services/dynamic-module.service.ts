@@ -41,22 +41,27 @@ export class DynamicModuleService {
       );
   }
 
-  public getOptionsModule(hotelUid: string, moduleReference: MODULES): Observable<OptionModule[] | null> {
+  public getOptionsModule(
+    hotelUid: string,
+    moduleReference: MODULES,
+    active = true,
+  ): Observable<OptionModule[] | null> {
     const url = `${MODULES.root}/${hotelUid}/${moduleReference}/options`;
-    return this.db
-      .object<OptionModule[]>(url)
-      .valueChanges()
-      .pipe(
-        tap((data) => {
-          if (!data) {
-            if (moduleReference === MODULES.reception) {
-              this.setUpReception(url);
-            } else if (moduleReference === MODULES.room) {
-              this.setUpRoom(url);
-            }
+    let query = this.db.list<OptionModule>(url);
+    if (active) {
+      query = this.db.list<OptionModule>(url, (ref) => ref.orderByChild('active').equalTo(true));
+    }
+    return query.valueChanges().pipe(
+      tap((data) => {
+        if (!data) {
+          if (moduleReference === MODULES.reception) {
+            this.setUpReception(url);
+          } else if (moduleReference === MODULES.room) {
+            this.setUpRoom(url);
           }
-        }),
-      );
+        }
+      }),
+    );
   }
 
   async addOptionToImmediate(hotelId: string, categoryId: string, option: OptionModule) {
