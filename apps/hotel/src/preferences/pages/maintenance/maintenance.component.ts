@@ -5,7 +5,7 @@ import { MaintenanceModule } from '@contler/models/maintenance-module';
 import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
 import { AuthService } from 'hotel/services/auth.service';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { count, switchMap, tap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { OptionModule } from '@contler/models';
 

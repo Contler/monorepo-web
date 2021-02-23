@@ -15,7 +15,6 @@ import { RoomModule } from '@contler/models/room-module';
 import { Observable } from 'rxjs';
 import { roomBaseModule } from './data-source/roomBase';
 import { MaintenanceModule } from '@contler/models/maintenance-module';
-import { maintenanceBaseModule } from './data-source/maintenanceBase';
 
 @Injectable()
 export class DynamicModuleService {
