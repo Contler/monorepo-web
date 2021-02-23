@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { OPTIONS_RECEPTION } from 'guest/reception/const/reception-options.const';
 import { ImmediateOptionLink } from '@contler/models';
 import { Observable } from 'rxjs';
 import { ReceptionService } from '@contler/core';
 import { GuestService } from 'guest/services/guest.service';
-import { first, switchMap } from 'rxjs/operators';
+import { first, switchMap, tap } from 'rxjs/operators';
+import { MessagesService } from 'guest/services/messages/messages.service';
 
 @Component({
   selector: 'contler-reception',
@@ -12,14 +12,19 @@ import { first, switchMap } from 'rxjs/operators';
   styleUrls: ['./reception.component.scss'],
 })
 export class ReceptionComponent implements OnInit {
-  // options = OPTIONS_RECEPTION;
   options$: Observable<ImmediateOptionLink[]>;
 
-  constructor(private guestService: GuestService, private receptionService: ReceptionService) {}
+  constructor(
+    private guestService: GuestService,
+    private receptionService: ReceptionService,
+    private messagesService: MessagesService,
+  ) {}
 
   public ngOnInit(): void {
-    this.options$ = this.guestService.$hotel
-      .pipe(first())
-      .pipe(switchMap((hotel) => this.receptionService.getOptionsReception(hotel.uid)));
+    const loader = this.messagesService.showLoader();
+    this.options$ = this.guestService.$hotel.pipe(first()).pipe(
+      switchMap((hotel) => this.receptionService.getOptionsReception(hotel.uid)),
+      tap(() => this.messagesService.closeLoader(loader)),
+    );
   }
 }
