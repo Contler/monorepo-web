@@ -11,6 +11,9 @@ import {
 } from '@contler/models';
 import { ImmediateModule } from '../utils/Immediate-module';
 import { ReceptionModule } from '@contler/models/reception-module';
+import { RoomModule } from '@contler/models/room-module';
+import { Observable } from 'rxjs';
+import { roomBaseModule } from './data-source/roomBase';
 
 @Injectable()
 export class DynamicModuleService {
@@ -43,6 +46,20 @@ export class DynamicModuleService {
       );
   }
 
+  public getRoomModule(hotelUid): Observable<RoomModule | null> {
+    const url = `${MODULES.root}/${hotelUid}/${MODULES.room}`;
+    return this.db
+      .object<RoomModule>(url)
+      .valueChanges()
+      .pipe(
+        tap((data) => {
+          if (!data) {
+            this.setUpRoom(url);
+          }
+        }),
+      );
+  }
+
   async addOptionToImmediate(hotelId: string, categoryId: string, option: OptionModule) {
     const url = `${MODULES.root}/${hotelId}/${MODULES.immediate}/categories/${categoryId}/options`;
     const list = await this.db.list(url).valueChanges().pipe(take(1)).toPromise();
@@ -52,6 +69,13 @@ export class DynamicModuleService {
 
   async addOptionToReception(hotelId: string, option: ImmediateOptionLink) {
     const url = `${MODULES.root}/${hotelId}/${MODULES.reception}/options`;
+    const list = await this.db.list(url).valueChanges().pipe(take(1)).toPromise();
+    list.push(option);
+    return this.db.object(url).set(list);
+  }
+
+  async addOptionToRoom(hotelId: string, option: OptionModule): Promise<void> {
+    const url = `${MODULES.root}/${hotelId}/${MODULES.room}/options`;
     const list = await this.db.list(url).valueChanges().pipe(take(1)).toPromise();
     list.push(option);
     return this.db.object(url).set(list);
@@ -192,5 +216,9 @@ export class DynamicModuleService {
     this.db
       .object<ImmediateRequestModule>(`${MODULES.root}/${hotelId}/${MODULES.immediate}`)
       .set(module.module);
+  }
+
+  private setUpRoom(url: string): void {
+    this.db.object(url).set(roomBaseModule);
   }
 }

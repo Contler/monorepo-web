@@ -212,6 +212,13 @@
       "name": "Recepción",
       "subDescription": "Las solicitudes en recepción permiten al usuario obtener los servicios de primera mano que ayuden en su estadía."
     },
+    "room": {
+      "description": "Elige qué opciones mantener habilitadas en la sección de Cuarto. Podrás crear nuevas opciones.",
+      "disableText": "No, dejar deshabilitado",
+      "enableText": "Sí, habilitar servicio",
+      "name": "Cuarto",
+      "subDescription": "Las solicitudes en cuarto permiten al usuario obtener los servicios de primera mano que ayuden en su estadía."
+    },
     "service": {
       "description": "Descripción",
       "nameOption": "Nombre de la opción",

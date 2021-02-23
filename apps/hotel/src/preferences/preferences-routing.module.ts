@@ -7,6 +7,8 @@ import { ModuleListComponent } from './pages/module-list/module-list.component';
 import { ImmediateRequestComponent } from './pages/inmediate-request/immediate-request.component';
 import { ReceptionComponent } from './pages/reception/reception.component';
 import { ServiceReceptionComponent } from './pages/service-reception/service-reception.component';
+import { RoomComponent } from './pages/room/room.component';
+import { CreateRoomModuleComponent } from './pages/create-room-module/create-room-module.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'immediate-request', component: ImmediateRequestComponent },
   { path: 'reception', component: ReceptionComponent },
   { path: 'reception/service', component: ServiceReceptionComponent },
+  { path: 'room', component: RoomComponent },
+  { path: 'room/service', component: CreateRoomModuleComponent },
 ];
 
 @NgModule({
