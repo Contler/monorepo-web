@@ -5,7 +5,6 @@ import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
 import { AuthService } from 'hotel/services/auth.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { switchMap, tap } from 'rxjs/operators';
-import { RoomModule } from '@contler/models/room-module';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { OptionModule } from '@contler/models';
 import { Router } from '@angular/router';
@@ -17,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class RoomComponent implements OnInit {
   load = true;
-  modules$: Observable<RoomModule | null>;
+  modules$: Observable<OptionModule[] | null>;
   private hotel: HotelEntity;
 
   constructor(
@@ -30,7 +29,7 @@ export class RoomComponent implements OnInit {
   ngOnInit(): void {
     this.modules$ = this.auth.$employer.pipe(
       tap((data) => (this.hotel = data.hotel)),
-      switchMap((user) => this.dynamicModule.getRoomModule(user.hotel.uid)),
+      switchMap((user) => this.dynamicModule.getOptionsModule(user.hotel.uid, MODULES.room)),
       tap((data) => (this.load = !data)),
     );
   }

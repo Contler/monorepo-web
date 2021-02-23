@@ -4,7 +4,6 @@ import { AuthService } from '../../../services/auth.service';
 import { switchMap, tap } from 'rxjs/operators';
 import { HotelEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
-import { ReceptionModule } from '@contler/models/reception-module';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { OptionModule } from '@contler/models';
@@ -16,9 +15,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./reception.component.scss'],
 })
 export class ReceptionComponent implements OnInit {
-  private hotel: HotelEntity;
   load = true;
-  modules: Observable<ReceptionModule | null>;
+  modules: Observable<OptionModule[] | null>;
+  private hotel: HotelEntity;
+
   constructor(
     private dynamicModule: DynamicModuleService,
     private auth: AuthService,
@@ -29,7 +29,7 @@ export class ReceptionComponent implements OnInit {
   ngOnInit(): void {
     this.modules = this.auth.$employer.pipe(
       tap((data) => (this.hotel = data.hotel)),
-      switchMap((user) => this.dynamicModule.getReceptionModule(user.hotel.uid)),
+      switchMap((user) => this.dynamicModule.getOptionsModule(user.hotel.uid, MODULES.reception)),
       tap((data) => (this.load = !data)),
     );
   }

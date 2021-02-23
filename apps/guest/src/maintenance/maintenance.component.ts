@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { ImmediateOptionLink } from '@contler/models';
 import { GuestService } from 'guest/services/guest.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
-import { first, switchMap, tap } from 'rxjs/operators';
-import { DynamicModuleService } from '@contler/dynamic-services';
+import { first, map, switchMap, tap } from 'rxjs/operators';
+import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
 
 @Component({
   selector: 'contler-maintenance',
@@ -23,7 +23,11 @@ export class MaintenanceComponent implements OnInit {
   ngOnInit(): void {
     const loader = this.messagesService.showLoader();
     this.options$ = this.guestService.$hotel.pipe(first()).pipe(
-      switchMap((hotel) => this.dynamicService.getMaintenanceModule(hotel.uid)),
+      switchMap((hotel) =>
+        this.dynamicService
+          .getOptionsModule(hotel.uid, MODULES.maintenance)
+          .pipe(map((options) => options as ImmediateOptionLink[])),
+      ),
       tap(() => this.messagesService.closeLoader(loader)),
     );
   }

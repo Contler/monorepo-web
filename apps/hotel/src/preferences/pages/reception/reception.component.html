@@ -10,7 +10,7 @@
 >
   <mat-spinner class="load" *ngIf="load"></mat-spinner>
   <mat-accordion *ngIf="modules | async; let mod">
-    <mat-expansion-panel *ngFor="let option of mod.options; let i = index">
+    <mat-expansion-panel *ngFor="let option of mod; let i = index">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{ option.text | translate | ctrTranslate }}
