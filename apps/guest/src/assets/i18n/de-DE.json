@@ -136,7 +136,7 @@
     "close": "Ich habs!",
     "createRequest": "Anfrage erstellen",
     "text": "Ihre Wartungsanfrage wurde erfolgreich empfangen.",
-    "title": "Bestätigen Sie die Zeit und den Grund für die Wartung Ihres Zimmers",
+    "title": "Wat voor onderhoud heeft u nodig?",
     "whatDoYouNeedTheMaintenanceFor": "Wofür benötigen Sie die Wartung?",
     "whenDoYouNeedTheMaintenance": "Wann brauchen Sie die Wartung?"
   },
@@ -232,6 +232,7 @@
     "lateCheckOut": "Später check out",
     "logOut": "Ausloggen",
     "myImmediateRequests": "Meine sofortigen Anfragen",
+    "maintenance": "Onderhoud",
     "myReservations": "Meine Reservierungen",
     "orders": "Aufträge",
     "reservations": "Reservierungen",

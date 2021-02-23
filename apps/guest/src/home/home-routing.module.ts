@@ -65,8 +65,7 @@ const routes: Routes = [
       },
       {
         path: 'reservation',
-        loadChildren: () =>
-          import('../reservation/reservation.module').then((m) => m.ReservationModule),
+        loadChildren: () => import('../reservation/reservation.module').then((m) => m.ReservationModule),
       },
       {
         path: 'late',
@@ -84,6 +83,10 @@ const routes: Routes = [
       {
         path: 'my-room',
         loadChildren: () => import('../my-room/my-room.module').then((m) => m.MyRoomModule),
+      },
+      {
+        path: 'maintenance',
+        loadChildren: () => import('../maintenance/maintenance.module').then((m) => m.MaintenanceModule),
       },
       {
         path: '',

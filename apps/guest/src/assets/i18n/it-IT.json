@@ -136,7 +136,7 @@
     "close": "Fatto!",
     "createRequest": "Crea richiesta",
     "text": "La tua richiesta di manutenzione è stata ricevuta con successo.",
-    "title": "Conferma l'ora e il motivo della manutenzione della tua camera",
+    "title": "Di che tipo di manutenzione avete bisogno?",
     "whatDoYouNeedTheMaintenanceFor": "A cosa serve la manutenzione?",
     "whenDoYouNeedTheMaintenance": "Quando hai bisogno della manutenzione?"
   },
@@ -232,6 +232,7 @@
     "lateCheckOut": "Late Check-out",
     "logOut": "Disconnettersi",
     "myImmediateRequests": "Le mie richieste immediate",
+    "maintenance": "Manutenzione",
     "myReservations": "Le mie prenotazioni",
     "orders": "ordini",
     "reservations": "prenotazioni",

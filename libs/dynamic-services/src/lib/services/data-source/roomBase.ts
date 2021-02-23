@@ -21,7 +21,7 @@ export const roomBaseModule: RoomModule = {
       active: true,
       type: OptionType.LINK,
       text: 'zoneRequest.categories.maintain',
-      link: '/home/my-room/maintenance',
+      link: '/home/maintenance',
       icon: 'fas fa-medkit',
     } as ImmediateOptionLink,
     {

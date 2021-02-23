@@ -32,6 +32,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
       route: '/home/my-inmediate-requests',
     },
     {
+      icon: 'engineering',
+      name: 'sidebar.maintenance',
+      route: '/home/maintenance',
+    },
+    {
       icon: 'calendar_today',
       name: 'sidebar.reservations',
       route: '/home/reservation',

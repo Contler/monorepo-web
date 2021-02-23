@@ -7,7 +7,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { AuthService } from 'hotel/services/auth.service';
 import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
 import { Router } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { first, take } from 'rxjs/operators';
 import { FormCreation } from 'hotel/preferences/components/new-service-wrap/new-service-wrap.component';
 import { getLan } from '@contler/const';
 import { ImmediateOptionLink, OptionType } from '@contler/models';
@@ -31,7 +31,7 @@ export class CreateMaintenanceModuleComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.auth.$employer.pipe(take(1)).subscribe((user) => (this.hotel = user.hotel));
+    this.auth.$hotel.pipe(first()).subscribe((hotel) => (this.hotel = hotel));
   }
   async save(data: FormCreation) {
     const form = [...data.form];
