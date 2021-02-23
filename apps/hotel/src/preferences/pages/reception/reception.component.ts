@@ -8,6 +8,7 @@ import { ReceptionModule } from '@contler/models/reception-module';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { OptionModule } from '@contler/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'contler-reception',
@@ -22,6 +23,7 @@ export class ReceptionComponent implements OnInit {
     private dynamicModule: DynamicModuleService,
     private auth: AuthService,
     private db: AngularFireDatabase,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -35,5 +37,9 @@ export class ReceptionComponent implements OnInit {
   changeStatus(change: MatSlideToggleChange, index: number) {
     const url = `${MODULES.root}/${this.hotel.uid}/${MODULES.reception}/options/${index}`;
     this.db.object<OptionModule>(url).update({ active: change.checked });
+  }
+
+  public goToRoomPage(): void {
+    this.router.navigate(['preferences', 'room']);
   }
 }

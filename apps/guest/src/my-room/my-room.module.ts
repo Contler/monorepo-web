@@ -10,9 +10,11 @@ import { UiModule } from '@contler/ui';
 import { CoreModule } from '@contler/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { RoomItemComponent } from './components/room-item/room-item.component';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
-  declarations: [MyRoomComponent, MaintenanceComponent, CleaningComponent],
+  declarations: [MyRoomComponent, MaintenanceComponent, CleaningComponent, RoomItemComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -22,6 +24,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CoreModule,
     ReactiveFormsModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
 })
 export class MyRoomModule {}

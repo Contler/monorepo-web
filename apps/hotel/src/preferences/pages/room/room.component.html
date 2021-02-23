@@ -1,15 +1,13 @@
 <contler-module-layout
   [data]="{
-    title: 'preferences.reception.name' | translate,
-    icon: 'error',
-    description: 'preferences.reception.description' | translate,
-    description2: 'preferences.reception.subDescription' | translate
+    title: 'preferences.room.name' | translate,
+    icon: 'night_shelter',
+    description: 'preferences.room.description' | translate,
+    description2: 'preferences.room.subDescription' | translate
   }"
-  [redirectAction]="false"
-  (next)="goToRoomPage()"
 >
   <mat-spinner class="load" *ngIf="load"></mat-spinner>
-  <mat-accordion *ngIf="modules | async; let mod">
+  <mat-accordion *ngIf="modules$ | async; let mod">
     <mat-expansion-panel *ngFor="let option of mod.options; let i = index">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -17,13 +15,13 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="service">
-        <span>{{ 'preferences.reception.disableText' | translate }}</span>
+        <span>{{ 'preferences.room.disableText' | translate }}</span>
         <mat-slide-toggle
           contlerColorSlideToggle
           [checked]="option.active"
           (change)="changeStatus($event, i)"
         ></mat-slide-toggle>
-        <span>{{ 'preferences.reception.enableText' | translate }}</span>
+        <span>{{ 'preferences.room.enableText' | translate }}</span>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

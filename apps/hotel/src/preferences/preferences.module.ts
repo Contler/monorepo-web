@@ -23,6 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReceptionComponent } from './pages/reception/reception.component';
 import { NewServiceWrapComponent } from './components/new-service-wrap/new-service-wrap.component';
 import { ServiceReceptionComponent } from './pages/service-reception/service-reception.component';
+import { RoomComponent } from './pages/room/room.component';
+import { CreateRoomModuleComponent } from './pages/create-room-module/create-room-module.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ServiceReceptionComponent } from './pages/service-reception/service-rec
     ReceptionComponent,
     NewServiceWrapComponent,
     ServiceReceptionComponent,
+    RoomComponent,
+    CreateRoomModuleComponent,
   ],
   imports: [
     CommonModule,

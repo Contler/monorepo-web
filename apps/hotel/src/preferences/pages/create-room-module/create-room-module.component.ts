@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { FormCreation } from '../../components/new-service-wrap/new-service-wrap.component';
+import { HotelEntity } from '@contler/entity';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateService as transDynamic } from '@contler/dynamic-translate';
-import { getLan } from '@contler/const';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { AuthService } from '../../../services/auth.service';
-import { first } from 'rxjs/operators';
-import { HotelEntity } from '@contler/entity';
+import { AuthService } from 'hotel/services/auth.service';
 import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
-import { ImmediateOptionLink, OptionType } from '@contler/models';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { FormCreation } from 'hotel/preferences/components/new-service-wrap/new-service-wrap.component';
+import { getLan } from '@contler/const';
+import { ImmediateOptionLink, OptionType } from '@contler/models';
 
 @Component({
-  selector: 'contler-service-reception',
-  templateUrl: './service-reception.component.html',
-  styleUrls: ['./service-reception.component.scss'],
+  selector: 'contler-create-room-module',
+  templateUrl: './create-room-module.component.html',
+  styleUrls: ['./create-room-module.component.scss'],
 })
-export class ServiceReceptionComponent implements OnInit {
+export class CreateRoomModuleComponent implements OnInit {
   load = false;
   private hotel: HotelEntity;
-
   constructor(
     private snackBar: MatSnackBar,
     private translate: TranslateService,
@@ -34,7 +33,6 @@ export class ServiceReceptionComponent implements OnInit {
   ngOnInit(): void {
     this.auth.$hotel.pipe(first()).subscribe((hotel) => (this.hotel = hotel));
   }
-
   async save(data: FormCreation) {
     const form = [...data.form];
     const [actualLan, languages] = getLan();
@@ -48,7 +46,7 @@ export class ServiceReceptionComponent implements OnInit {
           languages,
           hotel: this.hotel.uid,
           mgs: data.name,
-          url: `receptionModule/${keyService}/name`,
+          url: `roomModule/${keyService}/name`,
         })
         .toPromise(),
       this.dynTranslate
@@ -57,7 +55,7 @@ export class ServiceReceptionComponent implements OnInit {
           languages,
           hotel: this.hotel.uid,
           mgs: data.description,
-          url: `receptionModule/${keyService}/description`,
+          url: `roomModule/${keyService}/description`,
         })
         .toPromise(),
     ]);
@@ -69,7 +67,7 @@ export class ServiceReceptionComponent implements OnInit {
           languages,
           hotel: this.hotel.uid,
           mgs: inputField.description,
-          url: `receptionModule/${keyService}/descriptionFile`,
+          url: `roomModule/${keyService}/descriptionFile`,
         })
         .toPromise();
       inputField.description = dataInput.key;
@@ -82,7 +80,7 @@ export class ServiceReceptionComponent implements OnInit {
               languages,
               hotel: this.hotel.uid,
               mgs: inputFieldElementOption,
-              url: `receptionModule/${keyService}/optionFile`,
+              url: `roomModule/${keyService}/optionFile`,
             })
             .toPromise();
           inputField.option[i] = optionKey.key;
@@ -106,10 +104,9 @@ export class ServiceReceptionComponent implements OnInit {
       type: OptionType.LINK,
       link: `/home/services/${keyService}`,
     };
-    await this.dynamic.addOptionToReception(this.hotel.uid, option);
-    return this.route.navigate(['/preferences/reception']);
+    await this.dynamic.addOptionToRoom(this.hotel.uid, option);
+    return this.route.navigate(['/preferences/room']);
   }
-
   generateMSg(key: string) {
     const msg1 = this.translate.instant(key);
     this.snackBar.open(msg1, 'X', { duration: 3000 });
