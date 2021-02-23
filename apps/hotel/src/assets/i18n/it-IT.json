@@ -212,6 +212,13 @@
       "name": "Ricezione",
       "subDescription": "Le richieste alla reception consentono all'utente di ottenere servizi di prima mano che aiutano nel suo soggiorno."
     },
+    "room": {
+      "description": "Scegli quali opzioni mantenere abilitate nella sezione Stanza. Potrai creare nuove opzioni",
+      "disableText": "No, lascia disabilitato",
+      "enableText": "Sì, abilita servizio",
+      "name": "Camera",
+      "subDescription": "Le richieste in camera permettono all'utente di ottenere servizi di prima mano che aiuteranno nel loro soggiorno"
+    },
     "service": {
       "description": "Descrizione",
       "nameOption": "Nome dell'opzione",

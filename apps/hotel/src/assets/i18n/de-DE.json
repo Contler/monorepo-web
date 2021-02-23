@@ -212,6 +212,13 @@
       "name": "Rezeption",
       "subDescription": "Anfragen an der Rezeption ermöglichen es dem Benutzer, Dienste aus erster Hand zu erhalten, die ihm bei seinem Aufenthalt helfen."
     },
+    "room": {
+      "description": "Kies welke opties ingeschakeld moeten blijven in de sectie Kamer. U zult in staat zijn om nieuwe opties te creëren. ",
+      "disableText": "Nee, laat uitgeschakeld.",
+      "enableText": "Ja, schakel de dienst in.",
+      "name": "Kamer",
+      "subDescription": "Met kamerverzoeken kan de gebruiker diensten uit de eerste hand krijgen om te helpen bij zijn verblijf."
+    },
     "service": {
       "description": "Beschreibung",
       "nameOption": "Optionsname",

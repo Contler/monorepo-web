@@ -212,6 +212,13 @@
       "name": "Recepção",
       "subDescription": "As solicitações na recepção permitem que o usuário obtenha serviços de primeira mão que auxiliam em sua estadia."
     },
+    "room": {
+      "description": "Escolha quais as opções a manter activadas na secção Sala. Será capaz de criar novas opções",
+      "disableText": "Não, deixar desactivado",
+      "enableText": "Yes, enable service",
+      "nome": "Quarto",
+      "subDescription": "Pedidos no quarto permitem ao utilizador obter serviços em primeira mão que o ajudarão na sua estadia"
+    },
     "service": {
       "description": "Descrição",
       "nameOption": "Nome da opção",
