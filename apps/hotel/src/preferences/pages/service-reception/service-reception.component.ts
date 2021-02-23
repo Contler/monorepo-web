@@ -6,7 +6,7 @@ import { TranslateService as transDynamic } from '@contler/dynamic-translate';
 import { getLan } from '@contler/const';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AuthService } from '../../../services/auth.service';
-import { take } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
 import { HotelEntity } from '@contler/entity';
 import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
 import { ImmediateOptionLink, OptionType } from '@contler/models';
@@ -32,7 +32,7 @@ export class ServiceReceptionComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.auth.$employer.pipe(take(1)).subscribe((user) => (this.hotel = user.hotel));
+    this.auth.$hotel.pipe(first()).subscribe((hotel) => (this.hotel = hotel));
   }
 
   async save(data: FormCreation) {

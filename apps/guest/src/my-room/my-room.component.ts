@@ -55,9 +55,11 @@ export class MyRoomComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.modules$ = this.guestService.$hotel
-      .pipe(first())
-      .pipe(switchMap((hotel) => this.roomService.getOptionsRoom(hotel.uid)));
+    const loader = this.messagesService.showLoader();
+    this.modules$ = this.guestService.$hotel.pipe(first()).pipe(
+      switchMap((hotel) => this.roomService.getOptionsRoom(hotel.uid)),
+      tap(() => this.messagesService.closeLoader(loader)),
+    );
   }
 
   async saveRequest() {
