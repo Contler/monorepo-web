@@ -52,7 +52,7 @@
 }
 
 .new-option {
-  display: flex;
+  display: inline-flex;
   align-items: baseline;
   border-bottom: 1px solid #d6d6d6;
   & * + * {
