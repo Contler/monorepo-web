@@ -9,9 +9,11 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <img [src]="hotel?.logo" alt="hotel logo" class="logo" />
-    <p class="title">{{ data?.title }}</p>
     <div class="marco">
+      <div class="complete">
+        <img [src]="hotel?.logo" alt="hotel logo" class="logo" />
+        <p class="title">{{ data?.title }}</p>
+      </div>
       <div>
         <div class="marco__box">
           <mat-icon class="icon">check_circle_outline</mat-icon>
@@ -23,6 +25,22 @@
       <div class="marco__container">
         <p class="description">{{ data.description }}</p>
         <ng-content></ng-content>
+      </div>
+      <div class="complete marco__footer">
+        <button mat-raised-button (click)="goBack()">{{ 'preferences.back' | translate }}</button>
+        <button *ngIf="redirectAction" mat-raised-button [routerLink]="nextUrl">
+          {{ 'preferences.continue' | translate }}
+        </button>
+        <button
+          *ngIf="!redirectAction"
+          mat-raised-button
+          contlerBtnHotel="primary"
+          [disabled]="disable || load"
+          (click)="next.emit()"
+        >
+          <span *ngIf="!load">{{ 'preferences.continue' | translate }}</span>
+          <mat-spinner *ngIf="load" [diameter]="25" style="margin: auto"></mat-spinner>
+        </button>
       </div>
     </div>
   </mat-sidenav-content>

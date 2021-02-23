@@ -43,12 +43,16 @@ export class BtnHotelDirective implements OnChanges {
         backGroundColor = this.hotel.colorSecond;
       }
     }
-    this.elemRef.nativeElement!.style.backgroundColor = backGroundColor;
-    this.elemRef.nativeElement!.style.color = this.hotel.colorText || textColor;
+    if (this.elemRef && this.elemRef.nativeElement) {
+      this.elemRef.nativeElement!.style.backgroundColor = backGroundColor;
+      this.elemRef.nativeElement!.style.color = this.hotel.colorText || textColor;
+    }
   }
 
   private setDisabledColor(): void {
-    this.elemRef.nativeElement!.style.backgroundColor = 'rgba(0,0,0,0.12)';
-    this.elemRef.nativeElement!.style.color = this.hotel.colorTextSecond;
+    if (this.elemRef && this.elemRef.nativeElement) {
+      this.elemRef.nativeElement!.style.backgroundColor = 'rgba(0,0,0,0.12)';
+      this.elemRef.nativeElement!.style.color = this.hotel.colorTextSecond;
+    }
   }
 }

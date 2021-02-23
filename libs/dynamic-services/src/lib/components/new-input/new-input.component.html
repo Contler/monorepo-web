@@ -1,0 +1,36 @@
+<div class="option">
+  <mat-form-field appearance="fill">
+    <mat-select [(ngModel)]="inputData.type">
+      <mat-option *ngFor="let option of inputOptions" [value]="option.value">
+        {{ option.name | translate }}
+      </mat-option>
+    </mat-select>
+    <mat-hint>{{ 'preferences.optionInputs.nameInpitHit' | translate }}</mat-hint>
+  </mat-form-field>
+  <button mat-icon-button color="warn">
+    <mat-icon (click)="removeField()">delete</mat-icon>
+  </button>
+</div>
+
+<ng-container *ngIf="inputData.type === 2">
+  <div *ngFor="let opt of inputData.option; let i = index" class="option">
+    <span>{{ opt }}</span>
+    <button mat-icon-button>
+      <mat-icon (click)="removeOption(i)">delete</mat-icon>
+    </button>
+  </div>
+
+  <div class="option">
+    <mat-form-field appearance="fill">
+      <input type="text" matInput #inp />
+    </mat-form-field>
+    <button mat-icon-button>
+      <mat-icon (click)="addOption(inp.value)">add</mat-icon>
+    </button>
+  </div>
+</ng-container>
+
+<mat-form-field appearance="fill">
+  <input type="text" matInput [(ngModel)]="inputData.description" />
+  <mat-hint>{{ 'preferences.optionInputs.fileDescriptionHint' | translate }}</mat-hint>
+</mat-form-field>

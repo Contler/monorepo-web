@@ -177,12 +177,9 @@
     "value": "Value"
   },
   "preferences": {
+    "back": "Return",
+    "continue": "Continue",
     "hotel": "Hotel {{value}}",
-    "welcome": {
-      "title": "Welcome to your Contler administrator!",
-      "subtitle": "We will guide you through this step by step so you can organize the options you will offer to your guests.",
-      "button": "start"
-    },
     "immediate": {
       "description": "General immediate requests allow users to quickly request what they need in the areas of your Hotel. Choose the options to display in each type of zone:",
       "name": "Immediate requests",
@@ -191,7 +188,40 @@
       "subDescription": "Immediate requests allow the guest to request something punctual quickly, to be served with priority.\n<br/><br/>example: a towel in the pool",
       "which": "Which?"
     },
-    "continue": "Continue"
+    "message": {
+      "saveForm": "Saving form",
+      "saveService": "Saving service",
+      "translateMessage": "Generating form translations"
+    },
+    "newOption": "Add new option",
+    "newOptionbutton": "Add a new field",
+    "newService": "New service {{value}}",
+    "optionInputs": {
+      "calendar": "Calendar",
+      "fileDescriptionHint": "Description of the field",
+      "iconHint": "Field icon",
+      "nameInpitHit": "Field type",
+      "reload": "Recharge",
+      "select": "Options list",
+      "text": "Open Field"
+    },
+    "reception": {
+      "description": "Choose which options to keep enabled in the Reception section. You can create new options.",
+      "disableText": "No, leave disabled",
+      "enableText": "Yes, enable service",
+      "name": "Reception",
+      "subDescription": "Requests at the reception allow the user to obtain first-hand services that help in their stay."
+    },
+    "service": {
+      "description": "Description",
+      "nameOption": "Name of the option",
+      "preview": "Preview"
+    },
+    "welcome": {
+      "button": "start",
+      "subtitle": "We will guide you through this step by step so you can organize the options you will offer to your guests.",
+      "title": "Welcome to your Contler administrator!"
+    }
   },
   "product": {
     "active": "Active",
@@ -225,6 +255,12 @@
     "services": "No. of services",
     "time": "Average Time",
     "title": "Ratings"
+  },
+  "reception": {
+    "cashLoan": "Cash loan",
+    "concierge": "Concierge",
+    "currencyExchange": "Currency Exchange",
+    "transportation": "Transport"
   },
   "reservation": {
     "createButton": "Create zone",

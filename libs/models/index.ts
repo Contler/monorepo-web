@@ -26,3 +26,4 @@ export * from './special-zones.model';
 export * from './language.model';
 export * from './translate-request';
 export * from './immediate-request-module';
+export * from './module-option';

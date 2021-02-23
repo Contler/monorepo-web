@@ -1,0 +1,13 @@
+:host {
+  display: grid;
+  gap: 5px;
+  align-items: center;
+}
+
+.option {
+  display: grid;
+  grid-template-columns: auto max-content;
+  gap: 10px;
+  align-items: baseline;
+  margin: 10px 0;
+}

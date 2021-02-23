@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ModuleData } from '../../interfaces/module-data';
 import { DynamicModuleService } from '@contler/dynamic-services';
 import { AuthService } from '../../../services/auth.service';
 import { switchMap, tap } from 'rxjs/operators';
@@ -13,13 +12,6 @@ import { HotelEntity } from '@contler/entity';
   styleUrls: ['./immediate-request.component.scss'],
 })
 export class ImmediateRequestComponent implements OnInit {
-  data: ModuleData = {
-    title: '',
-    icon: '',
-    description: '',
-    description2: '',
-  };
-
   modules: Observable<ImmediateRequestModule | null>;
   load = true;
   hotel: HotelEntity;

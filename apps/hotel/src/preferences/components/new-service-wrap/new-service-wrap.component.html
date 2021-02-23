@@ -1,0 +1,66 @@
+<contler-module-layout
+  [data]="{
+    title: 'preferences.newService' | translate: { value: data.title },
+    icon: data.icon,
+    description: '',
+    description2: data.description2
+  }"
+  [load]="load"
+  [disable]="formBasic.invalid"
+  [redirectAction]="false"
+  (next)="sendData()"
+>
+  <div class="container" *ngIf="$hotel | async; let hotel">
+    <div class="data">
+      <form [formGroup]="formBasic" style="display: grid; gap: 10px">
+        <mat-form-field appearance="fill">
+          <input type="text" matInput formControlName="name" />
+          <mat-hint>{{ 'preferences.service.nameOption' | translate }}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <input type="text" matInput formControlName="description" />
+          <mat-hint>{{ 'preferences.service.description' | translate }}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-select formControlName="icon">
+            <mat-option *ngFor="let icon of icons | async" [value]="icon.key">
+              <contler-icon [key]="icon.key"></contler-icon>
+              <span style="margin-left: 10px">{{ icon.name }}</span>
+            </mat-option>
+          </mat-select>
+          <mat-hint>{{ 'preferences.optionInputs.iconHint' | translate }}</mat-hint>
+        </mat-form-field>
+      </form>
+
+      <span class="divider"></span>
+
+      <contler-new-input
+        *ngFor="let inp of listOption; let i = index"
+        class="fieldOption"
+        (delete)="deleteInput(i)"
+        [inputData]="inp"
+      >
+      </contler-new-input>
+
+      <div>
+        <div class="new-option">
+          <button mat-icon-button (click)="addOption()">
+            <mat-icon>add_circle_outline</mat-icon>
+          </button>
+          <span>{{ 'preferences.newOptionbutton' | translate }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="preview-container">
+      <h3 class="title">{{ 'preferences.service.preview' | translate }}</h3>
+      <div class="preview">
+        <img [src]="hotel.logo" class="preview__logo" />
+        <p contlerColorHotel="primary" class="preview__title">{{ formBasic.get('description').value }}</p>
+        <contler-dynamic-form [listInputs]="listOption"></contler-dynamic-form>
+      </div>
+      <button mat-raised-button contlerBtnHotel="second" (click)="this.reload()">
+        {{ 'preferences.optionInputs.reload' | translate }}
+      </button>
+    </div>
+  </div>
+</contler-module-layout>
