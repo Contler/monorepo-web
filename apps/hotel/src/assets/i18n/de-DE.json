@@ -219,6 +219,13 @@
       "name": "Kamer",
       "subDescription": "Met kamerverzoeken kan de gebruiker diensten uit de eerste hand krijgen om te helpen bij zijn verblijf."
     },
+    "maintenance": {
+      "description": "Kies welke opties ingeschakeld moeten blijven in de sectie Onderhoud. U zult in staat zijn om nieuwe opties aan te maken.",
+      "disableText": "Nee, laat uitgeschakeld",
+      "enableText": "Ja, schakel de service in",
+      "name": "Onderhoud",
+      "subDescription": "Verzoeken in onderhoud stellen de gebruiker in staat om diensten uit de eerste hand te krijgen die zullen helpen in hun verblijf."
+    },
     "service": {
       "description": "Beschreibung",
       "nameOption": "Optionsname",

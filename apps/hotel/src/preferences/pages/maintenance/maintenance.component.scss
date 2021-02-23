@@ -1,0 +1,25 @@
+.load {
+  margin: auto;
+}
+
+.service {
+  display: flex;
+  justify-content: center;
+
+  & * + * {
+    margin-left: 10px;
+  }
+}
+
+.divider {
+  width: 100%;
+  border-top: 1px solid #d6d6d6;
+  height: 1px;
+  display: block;
+  margin-top: 50px;
+}
+
+.newOption {
+  display: block;
+  margin: 20px auto 0;
+}

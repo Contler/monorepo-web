@@ -1,0 +1,11 @@
+<contler-new-service-wrap
+  [data]="{
+    title: 'preferences.maintenance.name' | translate,
+    icon: 'engineering',
+    description: 'preferences.maintenance.description' | translate,
+    description2: 'preferences.maintenance.subDescription' | translate
+  }"
+  [load]="load"
+  (create)="save($event)"
+>
+</contler-new-service-wrap>

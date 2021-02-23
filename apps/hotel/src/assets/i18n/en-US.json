@@ -219,6 +219,13 @@
       "name": "Room",
       "subDescription": "Requests in room allow the user to get first hand services that will help in their stay."
     },
+    "maintenance": {
+      "description": "Choose which options to keep enabled in the Maintenance section. You will be able to create new options.",
+      "disableText": "No, leave disabled",
+      "enableText": "Yes, enable service",
+      "name": "Maintenance",
+      "subDescription": "Requests in maintenance allow the user to get first hand services that will help in their stay."
+    },
     "service": {
       "description": "Description",
       "nameOption": "Name of the option",

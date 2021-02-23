@@ -14,6 +14,8 @@ import { ReceptionModule } from '@contler/models/reception-module';
 import { RoomModule } from '@contler/models/room-module';
 import { Observable } from 'rxjs';
 import { roomBaseModule } from './data-source/roomBase';
+import { MaintenanceModule } from '@contler/models/maintenance-module';
+import { maintenanceBaseModule } from './data-source/maintenanceBase';
 
 @Injectable()
 export class DynamicModuleService {
@@ -59,6 +61,10 @@ export class DynamicModuleService {
         }),
       );
   }
+  public getMaintenanceModule(hotelUid: string): Observable<MaintenanceModule | null> {
+    const url = `${MODULES.root}/${hotelUid}/${MODULES.maintenance}`;
+    return this.db.object<MaintenanceModule>(url).valueChanges();
+  }
 
   async addOptionToImmediate(hotelId: string, categoryId: string, option: OptionModule) {
     const url = `${MODULES.root}/${hotelId}/${MODULES.immediate}/categories/${categoryId}/options`;
@@ -76,6 +82,12 @@ export class DynamicModuleService {
 
   async addOptionToRoom(hotelId: string, option: OptionModule): Promise<void> {
     const url = `${MODULES.root}/${hotelId}/${MODULES.room}/options`;
+    const list = await this.db.list(url).valueChanges().pipe(take(1)).toPromise();
+    list.push(option);
+    return this.db.object(url).set(list);
+  }
+  async addOptionToMaintenance(hotelId: string, option: OptionModule): Promise<void> {
+    const url = `${MODULES.root}/${hotelId}/${MODULES.maintenance}/options`;
     const list = await this.db.list(url).valueChanges().pipe(take(1)).toPromise();
     list.push(option);
     return this.db.object(url).set(list);
@@ -220,5 +232,8 @@ export class DynamicModuleService {
 
   private setUpRoom(url: string): void {
     this.db.object(url).set(roomBaseModule);
+  }
+  private setUpMaintenance(url: string): void {
+    // this.db.object(url).set(maintenanceBaseModule);
   }
 }

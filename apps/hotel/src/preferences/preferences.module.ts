@@ -25,6 +25,8 @@ import { NewServiceWrapComponent } from './components/new-service-wrap/new-servi
 import { ServiceReceptionComponent } from './pages/service-reception/service-reception.component';
 import { RoomComponent } from './pages/room/room.component';
 import { CreateRoomModuleComponent } from './pages/create-room-module/create-room-module.component';
+import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
+import { CreateMaintenanceModuleComponent } from './pages/create-maintenance-module/create-maintenance-module.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { CreateRoomModuleComponent } from './pages/create-room-module/create-roo
     ServiceReceptionComponent,
     RoomComponent,
     CreateRoomModuleComponent,
+    MaintenanceComponent,
+    CreateMaintenanceModuleComponent,
   ],
   imports: [
     CommonModule,

@@ -9,6 +9,8 @@ import { ReceptionComponent } from './pages/reception/reception.component';
 import { ServiceReceptionComponent } from './pages/service-reception/service-reception.component';
 import { RoomComponent } from './pages/room/room.component';
 import { CreateRoomModuleComponent } from './pages/create-room-module/create-room-module.component';
+import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
+import { CreateMaintenanceModuleComponent } from './pages/create-maintenance-module/create-maintenance-module.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: 'reception/service', component: ServiceReceptionComponent },
   { path: 'room', component: RoomComponent },
   { path: 'room/service', component: CreateRoomModuleComponent },
+  { path: 'maintenance', component: MaintenanceComponent },
+  { path: 'maintenance/service', component: CreateMaintenanceModuleComponent },
 ];
 
 @NgModule({

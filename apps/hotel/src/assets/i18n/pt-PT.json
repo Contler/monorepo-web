@@ -219,6 +219,13 @@
       "nome": "Quarto",
       "subDescription": "Pedidos no quarto permitem ao utilizador obter serviços em primeira mão que o ajudarão na sua estadia"
     },
+    "maintenance": {
+      "description": "Escolha quais as opções a manter activadas na secção Manutenção. Será capaz de criar novas opções.",
+      "disableText": "Não, deixar incapacitado",
+      "enableText": "Sim, habilitar serviço",
+      "name": "Manutenção",
+      "subDescription": "Os pedidos em manutenção permitem ao utilizador obter serviços em primeira mão que ajudam na sua estadia."
+    },
     "service": {
       "description": "Descrição",
       "nameOption": "Nome da opção",
