@@ -219,6 +219,13 @@
       "name": "Camera",
       "subDescription": "Le richieste in camera permettono all'utente di ottenere servizi di prima mano che aiuteranno nel loro soggiorno"
     },
+    "maintenance": {
+      "description": "Scegliere quali opzioni mantenere abilitate nella sezione Manutenzione. Potrai creare nuove opzioni",
+      "disableText": "No, lascia disabilitato",
+      "enableText": "Sì, abilita il servizio",
+      "name": "Manutenzione",
+      "subDescription": "Le richieste in manutenzione permettono all'utente di ottenere servizi di prima mano che aiuteranno nel loro soggiorno"
+    },
     "service": {
       "description": "Descrizione",
       "nameOption": "Nome dell'opzione",

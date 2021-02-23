@@ -7,11 +7,11 @@ import { first } from 'rxjs/operators';
 import { FormCreation } from 'hotel/preferences/components/new-service-wrap/new-service-wrap.component';
 
 @Component({
-  selector: 'contler-create-room-module',
-  templateUrl: './create-room-module.component.html',
-  styleUrls: ['./create-room-module.component.scss'],
+  selector: 'contler-create-maintenance-module',
+  templateUrl: './create-maintenance-module.component.html',
+  styleUrls: ['./create-maintenance-module.component.scss'],
 })
-export class CreateRoomModuleComponent implements OnInit {
+export class CreateMaintenanceModuleComponent implements OnInit {
   load = false;
   private hotel: HotelEntity;
 
@@ -23,8 +23,8 @@ export class CreateRoomModuleComponent implements OnInit {
 
   async save(data: FormCreation) {
     this.load = true;
-    await this.dynamic.createFormModuleDynamic(data, this.hotel.uid, MODULES.room);
+    await this.dynamic.createFormModuleDynamic(data, this.hotel.uid, MODULES.maintenance);
     this.load = false;
-    return this.route.navigate(['/preferences/room']);
+    return this.route.navigate(['/preferences/maintenance']);
   }
 }

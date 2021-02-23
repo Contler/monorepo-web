@@ -1,0 +1,23 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { MaintenanceRoutingModule } from './maintenance-routing.module';
+import { MaintenanceComponent } from './maintenance.component';
+import { CommonComponentsModule } from '../common-components/common-components.module';
+import { TranslateModule } from '@ngx-translate/core';
+import { MaintenanceItemComponent } from './components/maintenance-item/maintenance-item.component';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { DynamicServicesModule } from '@contler/dynamic-services';
+
+@NgModule({
+  declarations: [MaintenanceComponent, MaintenanceItemComponent],
+  imports: [
+    CommonModule,
+    MaintenanceRoutingModule,
+    CommonComponentsModule,
+    TranslateModule,
+    DynamicTranslateModule,
+    DynamicServicesModule,
+  ],
+})
+export class MaintenanceModule {}

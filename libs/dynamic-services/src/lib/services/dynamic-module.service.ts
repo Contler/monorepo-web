@@ -11,13 +11,22 @@ import {
 } from '@contler/models';
 import { ImmediateModule } from '../utils/Immediate-module';
 import { ReceptionModule } from '@contler/models/reception-module';
-import { RoomModule } from '@contler/models/room-module';
 import { Observable } from 'rxjs';
 import { roomBaseModule } from './data-source/roomBase';
+import { getLan } from '@contler/const';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslateService as transDynamic } from '@contler/dynamic-translate';
+import { FormCreation } from '../interfaces/form-creation';
 
 @Injectable()
 export class DynamicModuleService {
-  constructor(private db: AngularFireDatabase) {}
+  constructor(
+    private db: AngularFireDatabase,
+    private snackBar: MatSnackBar,
+    private translate: TranslateService,
+    private dynTranslate: transDynamic,
+  ) {}
 
   getImmediateRequestModule(hotelId: string) {
     return this.db
@@ -32,32 +41,27 @@ export class DynamicModuleService {
       );
   }
 
-  getReceptionModule(hotelId: string) {
-    const url = `${MODULES.root}/${hotelId}/${MODULES.reception}`;
-    return this.db
-      .object<ReceptionModule>(url)
-      .valueChanges()
-      .pipe(
-        tap((data) => {
-          if (!data) {
+  public getOptionsModule(
+    hotelUid: string,
+    moduleReference: MODULES,
+    active = true,
+  ): Observable<OptionModule[] | null> {
+    const url = `${MODULES.root}/${hotelUid}/${moduleReference}/options`;
+    let query = this.db.list<OptionModule>(url);
+    if (active) {
+      query = this.db.list<OptionModule>(url, (ref) => ref.orderByChild('active').equalTo(true));
+    }
+    return query.valueChanges().pipe(
+      tap((data) => {
+        if (!data) {
+          if (moduleReference === MODULES.reception) {
             this.setUpReception(url);
-          }
-        }),
-      );
-  }
-
-  public getRoomModule(hotelUid): Observable<RoomModule | null> {
-    const url = `${MODULES.root}/${hotelUid}/${MODULES.room}`;
-    return this.db
-      .object<RoomModule>(url)
-      .valueChanges()
-      .pipe(
-        tap((data) => {
-          if (!data) {
+          } else if (moduleReference === MODULES.room) {
             this.setUpRoom(url);
           }
-        }),
-      );
+        }
+      }),
+    );
   }
 
   async addOptionToImmediate(hotelId: string, categoryId: string, option: OptionModule) {
@@ -67,20 +71,12 @@ export class DynamicModuleService {
     return this.db.object(url).set(list);
   }
 
-  async addOptionToReception(hotelId: string, option: ImmediateOptionLink) {
-    const url = `${MODULES.root}/${hotelId}/${MODULES.reception}/options`;
+  async addOptionToModule(hotelId: string, option: OptionModule, moduleReference: MODULES): Promise<void> {
+    const url = `${MODULES.root}/${hotelId}/${moduleReference}/options`;
     const list = await this.db.list(url).valueChanges().pipe(take(1)).toPromise();
     list.push(option);
     return this.db.object(url).set(list);
   }
-
-  async addOptionToRoom(hotelId: string, option: OptionModule): Promise<void> {
-    const url = `${MODULES.root}/${hotelId}/${MODULES.room}/options`;
-    const list = await this.db.list(url).valueChanges().pipe(take(1)).toPromise();
-    list.push(option);
-    return this.db.object(url).set(list);
-  }
-
   private setUpReception(url: string) {
     const receptionModule: ReceptionModule = {
       options: [],
@@ -220,5 +216,82 @@ export class DynamicModuleService {
 
   private setUpRoom(url: string): void {
     this.db.object(url).set(roomBaseModule);
+  }
+
+  async createFormModuleDynamic(data: FormCreation, hotelUid: string, moduleReference: MODULES) {
+    const form = [...data.form];
+    const [actualLan, languages] = getLan();
+    this.generateMSg('preferences.message.translateMessage');
+    const keyService = this.db.createPushId();
+    const dataInit = await Promise.all([
+      this.dynTranslate
+        .generateUrl({
+          actualLan,
+          languages,
+          hotel: hotelUid,
+          mgs: data.name,
+          url: `${moduleReference}Module/${keyService}/name`,
+        })
+        .toPromise(),
+      this.dynTranslate
+        .generateUrl({
+          actualLan,
+          languages,
+          hotel: hotelUid,
+          mgs: data.description,
+          url: `${moduleReference}Module/${keyService}/description`,
+        })
+        .toPromise(),
+    ]);
+
+    for await (const inputField of form) {
+      const dataInput = await this.dynTranslate
+        .generateUrl({
+          actualLan,
+          languages,
+          hotel: hotelUid,
+          mgs: inputField.description,
+          url: `${moduleReference}Module/${keyService}/descriptionFile`,
+        })
+        .toPromise();
+      inputField.description = dataInput.key;
+      if (inputField.option) {
+        let i = 0;
+        for await (const inputFieldElementOption of inputField.option) {
+          const optionKey = await this.dynTranslate
+            .generateUrl({
+              actualLan,
+              languages,
+              hotel: hotelUid,
+              mgs: inputFieldElementOption,
+              url: `${moduleReference}Module/${keyService}/optionFile`,
+            })
+            .toPromise();
+          inputField.option[i] = optionKey.key;
+          i++;
+        }
+      }
+    }
+    this.generateMSg('preferences.message.saveForm');
+    await this.db.database.ref(MODULES.form).child(keyService).set({
+      title: dataInit[1].key,
+      form,
+      key: keyService,
+      serviceName: dataInit[0].key,
+    });
+
+    this.generateMSg('preferences.message.saveService');
+    const option: ImmediateOptionLink = {
+      active: true,
+      text: dataInit[0].key,
+      icon: data.icon,
+      type: OptionType.LINK,
+      link: `/home/services/${keyService}`,
+    };
+    await this.addOptionToModule(hotelUid, option, moduleReference);
+  }
+  generateMSg(key: string) {
+    const msg1 = this.translate.instant(key);
+    this.snackBar.open(msg1, 'X', { duration: 3000 });
   }
 }

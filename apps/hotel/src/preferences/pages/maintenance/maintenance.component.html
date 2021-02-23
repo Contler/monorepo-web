@@ -1,12 +1,10 @@
 <contler-module-layout
   [data]="{
-    title: 'preferences.room.name' | translate,
+    title: 'preferences.maintenance.name' | translate,
     icon: 'night_shelter',
-    description: 'preferences.room.description' | translate,
-    description2: 'preferences.room.subDescription' | translate
+    description: 'preferences.maintenance.description' | translate,
+    description2: 'preferences.maintenance.subDescription' | translate
   }"
-  [redirectAction]="false"
-  (next)="goToMaintenancePage()"
 >
   <mat-spinner class="load" *ngIf="load"></mat-spinner>
   <mat-accordion *ngIf="modules$ | async; let mod">
@@ -17,13 +15,13 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="service">
-        <span>{{ 'preferences.room.disableText' | translate }}</span>
+        <span>{{ 'preferences.maintenance.disableText' | translate }}</span>
         <mat-slide-toggle
           contlerColorSlideToggle
           [checked]="option.active"
           (change)="changeStatus($event, i)"
         ></mat-slide-toggle>
-        <span>{{ 'preferences.room.enableText' | translate }}</span>
+        <span>{{ 'preferences.maintenance.enableText' | translate }}</span>
       </div>
     </mat-expansion-panel>
   </mat-accordion>
