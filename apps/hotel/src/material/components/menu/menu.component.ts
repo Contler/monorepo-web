@@ -137,6 +137,13 @@ export class MenuComponent implements OnInit {
       link: ['/home', 'reservation', 'calendar'],
       children: null,
     },
+    {
+      name: 'preferences.title',
+      icon: 'settings',
+      primary: false,
+      link: ['/preferences'],
+      children: null,
+    },
   ];
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {}

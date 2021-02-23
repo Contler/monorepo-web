@@ -7,6 +7,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { switchMap, tap } from 'rxjs/operators';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { OptionModule } from '@contler/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'contler-maintenance',
@@ -22,6 +23,7 @@ export class MaintenanceComponent implements OnInit {
     private dynamicModule: DynamicModuleService,
     private auth: AuthService,
     private db: AngularFireDatabase,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -35,5 +37,9 @@ export class MaintenanceComponent implements OnInit {
   public changeStatus($event: MatSlideToggleChange, index: number): void {
     const url = `${MODULES.root}/${this.hotel.uid}/${MODULES.maintenance}/options/${index}`;
     this.db.object<OptionModule>(url).update({ active: $event.checked });
+  }
+
+  public goToHome(): void {
+    this.router.navigate(['home']);
   }
 }

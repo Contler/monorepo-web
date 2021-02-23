@@ -179,6 +179,7 @@
   "preferences": {
     "back": "Retorno",
     "continue": "Continuar a ",
+    "title": "Preferências",
     "hotel": "Hotel {{value}}",
     "immediate": {
       "description": "As solicitações gerais imediatas permitem que os usuários solicitem rapidamente o que precisam nas áreas do seu Hotel. Escolha as opções a serem exibidas em cada tipo de zona:",

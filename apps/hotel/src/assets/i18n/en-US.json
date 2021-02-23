@@ -179,6 +179,7 @@
   "preferences": {
     "back": "Return",
     "continue": "Continue",
+    "title": "Preferences",
     "hotel": "Hotel {{value}}",
     "immediate": {
       "description": "General immediate requests allow users to quickly request what they need in the areas of your Hotel. Choose the options to display in each type of zone:",

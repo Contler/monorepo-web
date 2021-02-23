@@ -1,10 +1,12 @@
 <contler-module-layout
   [data]="{
     title: 'preferences.maintenance.name' | translate,
-    icon: 'night_shelter',
+    icon: 'engineering',
     description: 'preferences.maintenance.description' | translate,
     description2: 'preferences.maintenance.subDescription' | translate
   }"
+  [redirectAction]="false"
+  (next)="goToHome()"
 >
   <mat-spinner class="load" *ngIf="load"></mat-spinner>
   <mat-accordion *ngIf="modules$ | async; let mod">

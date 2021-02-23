@@ -55,7 +55,23 @@ export class ModuleListComponent implements OnInit {
     }
   }
 
-  public goToImmediateRequestPage(): void {
+  public async goToImmediateRequestPage(): Promise<void> {
+    await this.updateInitialConfigurationHotel(this.hotel);
     this.router.navigate(['preferences', 'immediate-request']);
+  }
+
+  private async updateInitialConfigurationHotel(hotel: HotelEntity): Promise<void> {
+    if (!hotel.initialConfiguration) {
+      const loader = this.messageService.showLoader();
+      hotel.initialConfiguration = true;
+      try {
+        await this.hotelService.updateHotel(hotel).pipe(first()).toPromise();
+        this.messageService.closeLoader(loader);
+      } catch (err) {
+        console.log(err);
+        this.messageService.closeLoader(loader);
+        this.messageService.showServerError();
+      }
+    }
   }
 }
