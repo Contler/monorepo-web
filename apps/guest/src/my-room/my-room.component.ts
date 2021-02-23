@@ -1,13 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SUB_CATEGORY_ROOM } from '@contler/const';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
 import { GuestService } from 'guest/services/guest.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
-import { Subscription } from 'rxjs';
-import { filter, map, switchMap, take } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { filter, first, map, switchMap, take, tap } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ReceptionModel } from '@contler/models';
-import { ReceptionService } from '@contler/core';
+import { OptionModule, ReceptionModel } from '@contler/models';
+import { ReceptionService, RoomService } from '@contler/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
 import { ModalCompleteComponent } from 'guest/common-components/modal-complete/modal-complete.component';
@@ -21,14 +20,13 @@ import { RequestService } from '../services/request.service';
   styleUrls: ['./my-room.component.scss'],
 })
 export class MyRoomComponent implements OnInit, OnDestroy {
-  categories = SUB_CATEGORY_ROOM;
   hotel: HotelEntity | null | undefined;
   selectedSubcategory = '';
-  showRequestField = false;
   loader = false;
 
   private guestSubscribe: Subscription;
   private zone: ZoneEntity;
+  public modules$: Observable<OptionModule[]>;
 
   constructor(
     private guestService: GuestService,
@@ -40,6 +38,7 @@ export class MyRoomComponent implements OnInit, OnDestroy {
     private zoneService: ZoneService,
     private requestService: RequestService,
     route: ActivatedRoute,
+    private roomService: RoomService,
   ) {
     const zoneUid = route.snapshot.paramMap.get('id');
     this.zoneService.$zones
@@ -56,7 +55,9 @@ export class MyRoomComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
+    this.modules$ = this.guestService.$hotel
+      .pipe(first())
+      .pipe(switchMap((hotel) => this.roomService.getOptionsRoom(hotel.uid)));
   }
 
   async saveRequest() {
@@ -129,10 +130,6 @@ export class MyRoomComponent implements OnInit, OnDestroy {
     }
   }
 
-  subCategorySelected(value: string) {
-    this.selectedSubcategory = value;
-  }
-
   buttonDisabled() {
     let disabledButton = false;
     if (!this.selectedSubcategory) {
@@ -141,5 +138,9 @@ export class MyRoomComponent implements OnInit, OnDestroy {
       disabledButton = true;
     }
     return disabledButton;
+  }
+
+  public setQuickRequest(value: string): void {
+    this.selectedSubcategory = value;
   }
 }

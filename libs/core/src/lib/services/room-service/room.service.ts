@@ -1,7 +1,10 @@
 import { Injectable, Optional } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { CoreConfig, receptionConverter, ReceptionModel } from '@contler/models';
+import { CoreConfig, OptionModule, receptionConverter, ReceptionModel } from '@contler/models';
 import { HttpClient } from '@angular/common/http';
+import { MODULES } from '@contler/dynamic-services';
+import { Observable } from 'rxjs';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable()
 export class RoomService {
@@ -11,6 +14,7 @@ export class RoomService {
     private afs: AngularFirestore,
     @Optional() private config: CoreConfig,
     private http: HttpClient,
+    private afDb: AngularFireDatabase,
   ) {
     this.url = this.config.urlBackend;
   }
@@ -35,5 +39,11 @@ export class RoomService {
 
   get maintainRef() {
     return this.afs.firestore.collection('maintain').withConverter(receptionConverter);
+  }
+  getOptionsRoom(hotelUid: string): Observable<OptionModule[] | null> {
+    const path = `${MODULES.root}/${hotelUid}/${MODULES.room}/options`;
+    return this.afDb
+      .list<OptionModule>(path, (ref) => ref.orderByChild('active').equalTo(true))
+      .valueChanges();
   }
 }

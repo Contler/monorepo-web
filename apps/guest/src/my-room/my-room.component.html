@@ -5,27 +5,15 @@
       {{ 'myRoom.whatDoYouNeed' | translate }}
     </p>
 
-    <div class="features-container">
-      <div
+    <div class="features-container" *ngIf="modules$ | async as modules">
+      <contler-room-item
         class="features-container-item"
-        *ngFor="let subcategory of categories"
-        [routerLink]="subcategory.link"
-        (click)="subCategorySelected(subcategory.name)"
-      >
-        <mat-icon class="features-container-item__icon" *ngIf="subcategory.name != selectedSubcategory">
-          {{ subcategory.icon }}
-        </mat-icon>
-        <mat-icon
-          class="features-container-item__icon"
-          contlerColorHotel="primary"
-          *ngIf="subcategory.name === selectedSubcategory"
-        >
-          {{ subcategory.icon }}
-        </mat-icon>
-        <p class="features-container-item__name">{{ subcategory.text | translate }}</p>
-      </div>
+        *ngFor="let option of modules"
+        [option]="option"
+        [selectedOption]="selectedSubcategory"
+        (clickedOption)="setQuickRequest($event)"
+      ></contler-room-item>
     </div>
-
     <button
       (click)="saveRequest()"
       [disabled]="loader || buttonDisabled()"
