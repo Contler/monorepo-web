@@ -28,7 +28,7 @@
       </div>
       <div class="complete marco__footer">
         <button mat-raised-button (click)="goBack()">{{ 'preferences.back' | translate }}</button>
-        <button *ngIf="redirectAction" mat-raised-button [routerLink]="nextUrl">
+        <button *ngIf="redirectAction" mat-raised-button [routerLink]="nextUrl" contlerBtnHotel="primary">
           {{ 'preferences.continue' | translate }}
         </button>
         <button
