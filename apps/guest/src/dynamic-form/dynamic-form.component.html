@@ -1,0 +1,23 @@
+<contler-marco [backUrl]="true">
+  <ng-container marcoBody>
+    <mat-spinner *ngIf="load" style="margin: auto"></mat-spinner>
+    <h1 class="ctl-title" contlerColorHotel="primary">
+      {{ formData?.title | ctrTranslate }}
+    </h1>
+    <contler-dynamic-form *ngIf="formData" [listInputs]="formData.form"></contler-dynamic-form>
+  </ng-container>
+
+  <div marcoFooter class="footer">
+    <button
+      *ngIf="!load"
+      mat-raised-button
+      contlerButton
+      contlerColorBtnHotel="primary"
+      [disabled]="dynamicForm?.form?.invalid || loading"
+      (click)="saveForm()"
+      [loading]="loading"
+    >
+      {{ 'transportation.createRequest' | translate }}
+    </button>
+  </div>
+</contler-marco>

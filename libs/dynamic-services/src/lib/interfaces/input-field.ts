@@ -7,5 +7,6 @@ export enum InputType {
 export interface InputField {
   description: string;
   type: InputType;
+  value?: string | Date;
   option?: string[];
 }

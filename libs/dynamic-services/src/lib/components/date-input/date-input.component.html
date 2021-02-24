@@ -9,5 +9,5 @@
   />
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
-  <mat-hint>{{ typeInput.description }}</mat-hint>
+  <mat-hint>{{ typeInput.description | ctrTranslate }}</mat-hint>
 </mat-form-field>

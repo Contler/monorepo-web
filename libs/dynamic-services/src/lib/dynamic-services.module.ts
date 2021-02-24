@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { DynamicFormComponent } from './components/dynamicform/dynamic-form.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DateInputComponent } from './components/date-input/date-input.component';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   imports: [
@@ -27,6 +29,8 @@ import { DateInputComponent } from './components/date-input/date-input.component
     MatIconModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    DynamicTranslateModule,
+    AngularFirestoreModule,
   ],
   providers: [DynamicModuleService],
   declarations: [NewInputComponent, DynamicFormComponent, DateInputComponent],
