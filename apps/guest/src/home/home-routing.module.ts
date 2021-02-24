@@ -89,6 +89,10 @@ const routes: Routes = [
         loadChildren: () => import('../maintenance/maintenance.module').then((m) => m.MaintenanceModule),
       },
       {
+        path: 'services/:module/:idService',
+        loadChildren: () => import('../dynamic-form/dynamic-form.module').then((m) => m.DynamicFormModule),
+      },
+      {
         path: '',
         redirectTo: 'guest-requests',
         pathMatch: 'full',

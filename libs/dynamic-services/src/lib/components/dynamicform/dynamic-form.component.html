@@ -4,7 +4,7 @@
       <ng-container *ngSwitchCase="0">
         <mat-form-field appearance="fill" *ngIf="getControl(opt.type, i)">
           <textarea type="text" matInput [formControlName]="generateName(opt.type, i)"></textarea>
-          <mat-hint>{{ opt.description }}</mat-hint>
+          <mat-hint>{{ opt.description | ctrTranslate }}</mat-hint>
         </mat-form-field>
       </ng-container>
 
@@ -19,9 +19,9 @@
       <ng-container *ngSwitchCase="2">
         <mat-form-field appearance="fill" *ngIf="getControl(opt.type, i)">
           <mat-select [formControlName]="generateName(opt.type, i)">
-            <mat-option *ngFor="let op of opt.option" [value]="op">{{ op }}</mat-option>
+            <mat-option *ngFor="let op of opt.option" [value]="op">{{ op | ctrTranslate }}</mat-option>
           </mat-select>
-          <mat-hint>{{ opt.description }}</mat-hint>
+          <mat-hint>{{ opt.description | ctrTranslate }}</mat-hint>
         </mat-form-field>
       </ng-container>
     </ng-container>

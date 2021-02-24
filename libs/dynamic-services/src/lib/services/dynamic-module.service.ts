@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { MODULES } from '../constants/modules-references';
-import { take, tap } from 'rxjs/operators';
+import { first, take, tap } from 'rxjs/operators';
 import {
   ImmediateOptionLink,
   ImmediateOptionText,
@@ -18,6 +18,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateService as transDynamic } from '@contler/dynamic-translate';
 import { FormCreation } from '../interfaces/form-creation';
+import { FormService } from '../interfaces/form-service';
+import { DynamicRequest } from '../interfaces/dynamic-request';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable()
 export class DynamicModuleService {
@@ -26,6 +29,7 @@ export class DynamicModuleService {
     private snackBar: MatSnackBar,
     private translate: TranslateService,
     private dynTranslate: transDynamic,
+    private fireDb: AngularFirestore,
   ) {}
 
   getImmediateRequestModule(hotelId: string) {
@@ -53,7 +57,7 @@ export class DynamicModuleService {
     }
     return query.valueChanges().pipe(
       tap((data) => {
-        if (!data) {
+        if (data.length === 0) {
           if (moduleReference === MODULES.reception) {
             this.setUpReception(url);
           } else if (moduleReference === MODULES.room) {
@@ -109,7 +113,7 @@ export class DynamicModuleService {
       link: '/home/reception/concierge',
       icon: 'fas fa-map-marker-alt',
     } as ImmediateOptionLink);
-    this.db.object(url).set(receptionModule);
+    this.db.object(url).set(receptionModule.options);
   }
 
   private setUpImmediateModule(hotelId) {
@@ -215,7 +219,7 @@ export class DynamicModuleService {
   }
 
   private setUpRoom(url: string): void {
-    this.db.object(url).set(roomBaseModule);
+    this.db.object(url).set(roomBaseModule.options);
   }
 
   async createFormModuleDynamic(data: FormCreation, hotelUid: string, moduleReference: MODULES) {
@@ -286,12 +290,23 @@ export class DynamicModuleService {
       text: dataInit[0].key,
       icon: data.icon,
       type: OptionType.LINK,
-      link: `/home/services/${keyService}`,
+      link: `/home/services/${moduleReference}/${keyService}`,
     };
     await this.addOptionToModule(hotelUid, option, moduleReference);
   }
   generateMSg(key: string) {
     const msg1 = this.translate.instant(key);
     this.snackBar.open(msg1, 'X', { duration: 3000 });
+  }
+
+  getFormData(formId: string) {
+    const url = `${MODULES.form}/${formId}`;
+    return this.db.object<FormService>(url).valueChanges().pipe(first());
+  }
+
+  saveDynamicRequest(request: DynamicRequest) {
+    const key = this.fireDb.createId();
+    request.key = key;
+    return this.fireDb.doc(`dynamicRequest/${key}`).set(request);
   }
 }

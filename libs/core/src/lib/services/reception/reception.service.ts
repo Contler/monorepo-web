@@ -26,7 +26,7 @@ export class ReceptionService {
     return receptionDoc.set({ ...reception });
   }
 
-  private sendNotification(hotelId: string) {
+  sendNotification(hotelId: string) {
     this.http.get(`${this.url}hotel/${hotelId}/notification/reception`).subscribe();
   }
 

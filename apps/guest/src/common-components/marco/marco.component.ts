@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Location } from '@angular/common';
+
 import { GuestService } from 'guest/services/guest.service';
 import { Router } from '@angular/router';
 import { GeneralService } from 'guest/services/general.service';
@@ -10,7 +12,7 @@ import { GeneralService } from 'guest/services/general.service';
 })
 export class MarcoComponent {
   @Input() padding = '16px 16px';
-  @Input() backUrl: string | null = null;
+  @Input() backUrl: string | boolean | null = null;
   logo: string | undefined;
   maxHeight = '';
 
@@ -18,12 +20,17 @@ export class MarcoComponent {
     private guestService: GuestService,
     public generalService: GeneralService,
     private router: Router,
+    private location: Location,
   ) {
     this.guestService.$hotel.subscribe((hotel) => (this.logo = hotel!.logo));
     this.maxHeight = window.innerHeight - 80 + 'px';
   }
 
-  goToRoute(url: string) {
-    this.router.navigateByUrl(url);
+  goToRoute(url: string | boolean) {
+    if (typeof url === 'string') {
+      this.router.navigateByUrl(url);
+    } else {
+      this.location.back();
+    }
   }
 }

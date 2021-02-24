@@ -4,3 +4,7 @@ export * from './lib/constants/modules-references';
 export * from './lib/constants/option-inputs';
 export * from './lib/interfaces/input-field';
 export * from './lib/interfaces/option-input';
+export * from './lib/interfaces/form-service';
+export * from './lib/components/dynamicform/dynamic-form.component';
+export * from './lib/interfaces/dynamic-request';
+export * from './lib/constants/dynamic-request-status';
