@@ -14,6 +14,7 @@ import { GuestService } from '../services/guest.service';
 import { take } from 'rxjs/operators';
 import { GuestEntity } from '@contler/entity';
 import { Location } from '@angular/common';
+import { ReceptionService, RoomService } from '@contler/core';
 
 @Component({
   selector: 'contler-dynamic-form-service',
@@ -37,6 +38,8 @@ export class DynamicFormServicesComponent implements OnInit {
     private dynamicService: DynamicModuleService,
     private auth: GuestService,
     private location: Location,
+    private reception: ReceptionService,
+    private room: RoomService,
   ) {
     this.route.params.subscribe((params) => {
       this.module = params['module'];
@@ -76,6 +79,17 @@ export class DynamicFormServicesComponent implements OnInit {
       createAt: new Date().toString(),
     };
     this.dynamicService.saveDynamicRequest(data).then(() => {
+      switch (this.module) {
+        case MODULES.reception:
+          this.reception.sendNotification(this.guest.hotel.uid);
+          break;
+        case MODULES.room:
+          this.room.sendNotification(this.guest.hotel.uid);
+          break;
+        case MODULES.maintenance:
+          this.room.sendNotificationMaintain(this.guest.hotel.uid);
+          break;
+      }
       this.location.back();
     });
   }
