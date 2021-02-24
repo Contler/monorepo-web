@@ -178,6 +178,7 @@
   },
   "preferences": {
     "back": "Regresar",
+    "title": "Preferencias",
     "continue": "Continuar",
     "hotel": "Hotel {{value}}",
     "immediate": {

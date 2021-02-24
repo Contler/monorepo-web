@@ -179,6 +179,7 @@
   "preferences": {
     "back": "Rückkehr",
     "continue": "Ga verder naar ",
+    "title": "Voorkeuren",
     "hotel": "Hotel {{value}}",
     "immediate": {
       "description": "Mit allgemeinen Sofortanfragen können Benutzer schnell anfordern, was sie in den Bereichen Ihres Hotels benötigen. Wählen Sie die Optionen aus, die in jedem Zonentyp angezeigt werden sollen:",
