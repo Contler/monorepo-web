@@ -10,6 +10,7 @@ import { CommonComponentsModule } from '../common-components/common-components.m
 import { PrincipalComponent } from './principal/principal.component';
 import { ItemHomeComponent } from './components/item-home/item-home.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicServicesModule } from '@contler/dynamic-services';
 
 @NgModule({
   imports: [
@@ -74,6 +75,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ]),
     CommonComponentsModule,
     TranslateModule,
+    DynamicServicesModule,
   ],
   declarations: [HomePage, PrincipalComponent, ItemHomeComponent],
 })

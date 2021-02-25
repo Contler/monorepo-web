@@ -2,12 +2,13 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { ServiceType } from '../../principal/principal.component';
 import { InmediateRequestsService } from '../../../services/inmediate-requests.service';
 import { map, switchMap, take } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { SpecialRequestsService } from '../../../services/special-requests.service';
 import { WakeService } from '../../../services/wake.service';
 import { AuthService } from '../../../services/auth.service';
 import { LateCheckOutService, ProductService, ReservationService } from '@contler/core';
 import { ReceptionLocalService } from '../../../services/reception/reception-local.service';
+import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
 
 interface Type {
   icon: string;
@@ -34,6 +35,7 @@ export class ItemHomeComponent implements OnInit, OnChanges {
     private productService: ProductService,
     private receptionLocalService: ReceptionLocalService,
     private lateService: LateCheckOutService,
+    private dynamicService: DynamicModuleService,
   ) {}
 
   ngOnInit(): void {}
@@ -71,7 +73,16 @@ export class ItemHomeComponent implements OnInit, OnChanges {
         );
         break;
       case ServiceType.RECEPTION:
-        this.$count = this.receptionLocalService.getReceptionReq().pipe(map((list) => list.length));
+        this.$count = combineLatest([
+          this.receptionLocalService.getReceptionReq(),
+          this.auth.$user.pipe(
+            take(1),
+            switchMap((user) =>
+              this.dynamicService.getDynamicRequest(user.hotel.uid, MODULES.reception, true),
+            ),
+          ),
+        ]).pipe(map(([data, req]) => [...data, ...req].length));
+
         break;
       case ServiceType.CHECK_OUT:
         this.$count = this.auth.$user.pipe(
@@ -83,8 +94,26 @@ export class ItemHomeComponent implements OnInit, OnChanges {
       case ServiceType.CLEAN:
         this.$count = this.receptionLocalService.getCleanReq().pipe(map((list) => list.length));
         break;
+      case ServiceType.ROOM:
+        this.$count = this.auth.$user
+          .pipe(
+            take(1),
+            switchMap((user) =>
+              this.dynamicService.getDynamicRequest(user.hotel.uid, MODULES.maintenance, true),
+            ),
+          )
+          .pipe(map((data) => data.length));
+        break;
       case ServiceType.MAINTAIN:
-        this.$count = this.receptionLocalService.getMaintainReq().pipe(map((list) => list.length));
+        this.$count = combineLatest([
+          this.receptionLocalService.getMaintainReq(),
+          this.auth.$user.pipe(
+            take(1),
+            switchMap((user) =>
+              this.dynamicService.getDynamicRequest(user.hotel.uid, MODULES.maintenance, true),
+            ),
+          ),
+        ]).pipe(map(([list, request]) => [...list, ...request].length));
     }
   }
 }

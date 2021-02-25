@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { GeneralService } from '../../../services/general.service';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { DynamicModuleService, DynamicRequest, MODULES } from '@contler/dynamic-services';
 
 @Component({
   selector: 'contler-reception-pending',
@@ -19,7 +20,9 @@ import { TranslateService } from '@ngx-translate/core';
 export class PendingComponent implements OnInit {
   user: EmployerEntity | null = null;
   totalReception: number;
+  totalReception2: number;
   $receptionReq: Observable<ReceptionModel[]>;
+  dynamicReq: Observable<DynamicRequest[]>;
   constructor(
     private auth: AuthService,
     private receptionLocalService: ReceptionLocalService,
@@ -28,10 +31,16 @@ export class PendingComponent implements OnInit {
     public generalService: GeneralService,
     public menu: MenuController,
     private translate: TranslateService,
+    private dynamicService: DynamicModuleService,
   ) {}
 
   ngOnInit() {
-    this.auth.$user.pipe(take(1)).subscribe((user) => (this.user = user));
+    this.auth.$user.pipe(take(1)).subscribe((user) => {
+      this.user = user;
+      this.dynamicReq = this.dynamicService
+        .getDynamicRequest(user.hotel.uid, MODULES.reception, true)
+        .pipe(tap(({ length }) => (this.totalReception2 = length)));
+    });
     this.$receptionReq = this.receptionLocalService
       .getReceptionReq()
       .pipe(tap(({ length }) => (this.totalReception = length)));
@@ -48,5 +57,9 @@ export class PendingComponent implements OnInit {
         duration: 3000,
       },
     );
+  }
+
+  convertDate(data: string) {
+    return new Date(data);
   }
 }

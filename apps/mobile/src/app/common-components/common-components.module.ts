@@ -14,6 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { DynamicItemComponent } from './dynamic-item/dynamic-item.component';
+import { DynamicResultComponent } from './dynamicresult/dynamic-result.component';
+import { DynamicServicesModule } from '@contler/dynamic-services';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     BtnHotelDirective,
     ReceptionItemComponent,
     RequestReceptionComponent,
+    DynamicItemComponent,
+    DynamicResultComponent,
   ],
   exports: [
     ToolbarComponent,
@@ -34,6 +39,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     ColorHotelDirective,
     BtnHotelDirective,
     ReceptionItemComponent,
+    DynamicItemComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +49,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     RouterModule,
     TranslateModule,
     DynamicTranslateModule,
+    DynamicServicesModule,
   ],
 })
 export class CommonComponentsModule {}

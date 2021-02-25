@@ -76,7 +76,7 @@ export class DynamicFormServicesComponent implements OnInit {
       hotelId: this.guest.hotel.uid,
       active: true,
       status: DynamicRequestStatus.PROGRAMING,
-      createAt: new Date().toString(),
+      createAt: new Date(),
     };
     this.dynamicService.saveDynamicRequest(data).then(() => {
       switch (this.module) {
