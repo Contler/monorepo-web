@@ -15,6 +15,7 @@ export enum ServiceType {
   CHECK_OUT,
   CLEAN,
   MAINTAIN,
+  ROOM,
 }
 
 @Component({
@@ -49,6 +50,15 @@ export class PrincipalComponent implements OnInit {
   constructor(private auth: AuthService, public generalService: GeneralService, public menu: MenuController) {
     this.auth.$user.pipe(take(1)).subscribe((user) => {
       this.user = user;
+
+      if (this.user.leaderZones.find((le) => le.category.id === 3)) {
+        this.listServices.push({
+          icon: 'bed',
+          name: 'menu.room',
+          route: '/home/room/pending',
+          type: ServiceType.ROOM,
+        });
+      }
       if (this.user.leaderSpecialZone.find((sp) => sp.zone.name === 'wakeZone')) {
         this.listServices.push({
           icon: 'access_alarm',

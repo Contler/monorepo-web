@@ -23,6 +23,11 @@
     "other": "altro",
     "towelChange": "Cambio asciugamani"
   },
+  "dynamicRequest": {
+    "attended": "Frequentato",
+    "complete": "Completato",
+    "programing": "Programmato"
+  },
   "global": {
     "ACTIVE": "Attivo",
     "CLOSE": "Vicino",
@@ -79,6 +84,7 @@
     "maintain": "Manutenzione",
     "order": "ordini",
     "reception": "Ricezione",
+    "room": "Stanza",
     "specialRequest": "RICHIESTE SPECIALI",
     "statistic": "statistica",
     "wakeUp": "Sveglia le chiamate"

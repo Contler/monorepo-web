@@ -10,6 +10,7 @@ import { CommonComponentsModule } from '../common-components/common-components.m
 import { PrincipalComponent } from './principal/principal.component';
 import { ItemHomeComponent } from './components/item-home/item-home.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicServicesModule } from '@contler/dynamic-services';
 
 @NgModule({
   imports: [
@@ -69,11 +70,13 @@ import { TranslateModule } from '@ngx-translate/core';
             path: 'maintain',
             loadChildren: () => import('../maintain/maintain.module').then((m) => m.MaintainModule),
           },
+          { path: 'room', loadChildren: () => import('../room/room.module').then((m) => m.RoomModule) },
         ],
       },
     ]),
     CommonComponentsModule,
     TranslateModule,
+    DynamicServicesModule,
   ],
   declarations: [HomePage, PrincipalComponent, ItemHomeComponent],
 })
