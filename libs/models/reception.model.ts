@@ -1,6 +1,6 @@
-import { GuestEntity, RoomEntity } from '../entity';
+import { RoomEntity } from '../entity';
 import * as firebase from 'firebase';
-import { DynamicRequest, DynamicRequestStatus } from '@contler/dynamic-services';
+import { DynamicRequest } from '@contler/dynamic-services';
 import FirestoreDataConverter = firebase.firestore.FirestoreDataConverter;
 
 export enum ReceptionStatus {
@@ -40,8 +40,9 @@ export const receptionDynamicConverter: FirestoreDataConverter<DynamicRequest> =
     snapshot: firebase.firestore.QueryDocumentSnapshot,
     options: firebase.firestore.SnapshotOptions,
   ): DynamicRequest {
+    const { createAt } = snapshot.data(options);
     const data = snapshot.data(options) as DynamicRequest;
-    return { ...data };
+    return { ...data, createAt: createAt.toDate() };
   },
   toFirestore(modelObject: DynamicRequest): firebase.firestore.DocumentData {
     const { createAt, ...rest } = modelObject;

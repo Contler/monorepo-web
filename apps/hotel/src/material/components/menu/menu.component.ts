@@ -87,7 +87,7 @@ export class MenuComponent implements OnInit {
         },
         {
           name: 'preferences.reception.name',
-          icon: 'error',
+          icon: 'room_service',
           link: ['/home', 'reception'],
           primary: false,
         },

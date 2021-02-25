@@ -13,7 +13,6 @@
       <mat-hint>{{ 'immediateRequest.nameTable' | translate }}</mat-hint>
       <input matInput type="text" readonly [value]="guestName" />
     </mat-form-field>
-
     <mat-form-field appearance="fill" *ngIf="isRequest">
       <mat-hint>{{ 'immediateRequest.stateTable' | translate }}</mat-hint>
       <mat-select [formControl]="requestStatusForm" *ngIf="isActive">
@@ -33,11 +32,28 @@
       <mat-hint>{{ 'immediateRequest.timeTable' | translate }}</mat-hint>
       <input matInput type="text" readonly [value]="createAt | date: 'shortTime'" />
     </mat-form-field>
-
-    <!--    <mat-form-field appearance="fill" style="grid-column: span 2">-->
-    <!--      <mat-hint>{{ 'immediateRequest.need' | translate }}</mat-hint>-->
-    <!--      <input matInput type="text" readonly [value]="data?.request.comment"/>-->
-    <!--    </mat-form-field>-->
+    <ng-container *ngIf="data.requestStatic; else answerDynamic">
+      <mat-form-field appearance="fill" style="grid-column: span 2">
+        <mat-hint>{{ 'immediateRequest.need' | translate }}</mat-hint>
+        <input matInput type="text" readonly [value]="data?.requestStatic.request.comment" />
+      </mat-form-field>
+    </ng-container>
+    <ng-template #answerDynamic>
+      <ng-container *ngFor="let form of data.requestDynamic.form">
+        <mat-form-field appearance="outline" class="two_columns" *ngIf="form.type === InputType.TEXT">
+          <mat-label>{{ form.description | ctrTranslate }}</mat-label>
+          <input type="text" matInput value="{{ form.value | ctrTranslate }}" readonly />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="two_columns" *ngIf="form.type === InputType.SELECT">
+          <mat-label>{{ form.description | ctrTranslate }}</mat-label>
+          <input type="text" matInput value="{{ form.value | ctrTranslate }}" readonly />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="two_columns" *ngIf="form.type === InputType.DATE">
+          <mat-label>{{ form.description | ctrTranslate }}</mat-label>
+          <input type="text" matInput value="{{ form.value | date: 'longDate':'':localZone }}" readonly />
+        </mat-form-field>
+      </ng-container>
+    </ng-template>
   </div>
   <button mat-raised-button color="accent" class="btn-update" (click)="update()" contlerBtnHotel="primary">
     {{ 'immediateRequest.update' | translate }}

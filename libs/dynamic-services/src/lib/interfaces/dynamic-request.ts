@@ -13,5 +13,5 @@ export interface DynamicRequest {
   key?: string;
   active: boolean;
   status: DynamicRequestStatus;
-  createAt: string | Date;
+  createAt: Date;
 }

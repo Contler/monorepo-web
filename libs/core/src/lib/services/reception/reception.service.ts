@@ -1,6 +1,12 @@
 import { Injectable, Optional } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { CoreConfig, ImmediateOptionLink, receptionConverter, ReceptionModel } from '@contler/models';
+import {
+  CoreConfig,
+  ImmediateOptionLink,
+  receptionConverter,
+  receptionDynamicConverter,
+  ReceptionModel,
+} from '@contler/models';
 import { HttpClient } from '@angular/common/http';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
@@ -70,8 +76,11 @@ export class ReceptionService {
   }
 
   getReceptionRequestDynamic(hotelUid: string, moduleReference: MODULES): Observable<DynamicRequest[]> {
+    const reference = this.afs.firestore
+      .collection('dynamicRequest')
+      .withConverter(receptionDynamicConverter);
     return this.afs
-      .collection<DynamicRequest>(`dynamicRequest`, (ref) =>
+      .collection<DynamicRequest>(reference, (ref) =>
         ref
           .where('hotelId', '==', hotelUid)
           .where('service', '==', moduleReference)

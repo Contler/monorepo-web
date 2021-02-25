@@ -8,7 +8,7 @@ import { ImmediateOptionLink, ReceptionModel, ReceptionStatus } from '@contler/m
 import { ReceptionService, UserService } from '@contler/core';
 import { AuthService } from 'hotel/services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
-import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
+import { DynamicModuleService, DynamicRequestStatus, MODULES } from '@contler/dynamic-services';
 import { MatDialog } from '@angular/material/dialog';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { REQUEST_STATUS } from 'hotel/inmediate-requests/const/request.const';
@@ -44,6 +44,7 @@ export class MaintenanceComponent implements OnInit {
   public filterByWordForm: FormControl;
   public filterByCategoryForm: FormControl;
   public categories: ImmediateOptionLink[];
+
   constructor(
     private receptionService: ReceptionService,
     private authService: AuthService,
@@ -53,6 +54,7 @@ export class MaintenanceComponent implements OnInit {
     private matDialog: MatDialog,
     private messagesService: MessagesService,
   ) {}
+
   get filterByStatusSelected() {
     return this.filterByStatusForm.value;
   }
@@ -76,6 +78,40 @@ export class MaintenanceComponent implements OnInit {
           return 0;
       }
     });
+  }
+
+  openModal(request: ReqRecpetionGuest) {
+    const receptionDynamic = this.receptionService.receptionRequest.find(
+      (r) => r.key === request.request.uid,
+    );
+    const requestStatic = receptionDynamic ? null : request;
+    this.matDialog
+      .open(ModalReceptionComponent, {
+        data: { requestStatic: requestStatic, requestDynamic: receptionDynamic },
+      })
+      .afterClosed()
+      .pipe()
+      .subscribe((d) => {
+        if (d) {
+          if (requestStatic) {
+            const nReq = requestStatic.request;
+            request.request.status = d;
+            request.request.active = d !== ReceptionStatus.COMPLETED;
+            this.receptionService.receptionRef
+              .doc(nReq.uid)
+              .update({ status: d, active: d !== ReceptionStatus.COMPLETED });
+          } else {
+            receptionDynamic.status = d;
+            receptionDynamic.active = d !== DynamicRequestStatus.COMPLETED;
+            request.request.active = receptionDynamic.active;
+            request.request.status = d;
+            this.dynamicModuleService.updateDynamicRequest(receptionDynamic);
+          }
+          const msg = this.translate.instant('immediateRequest.updateSusses');
+          this.messagesService.showToastMessage(msg);
+          this.dataSource.data = [...this.dataSource.data];
+        }
+      });
   }
 
   private compare(a: number | string, b: number | string, isAsc: boolean) {
@@ -117,7 +153,7 @@ export class MaintenanceComponent implements OnInit {
               .getReceptionRequestDynamic(hotel.uid, MODULES.maintenance)
               .pipe(first()),
             categories: this.dynamicModuleService
-              .getOptionsModule(hotel.uid, MODULES.reception)
+              .getOptionsModule(hotel.uid, MODULES.maintenance)
               .pipe(first()),
           });
         }),
@@ -128,7 +164,7 @@ export class MaintenanceComponent implements OnInit {
           const request: ReceptionModel = {
             uid: dr.key,
             active: dr.active,
-            createAt: new Date(dr.createAt),
+            createAt: dr.createAt,
             room: dr.guest.room,
             hotel: dr.guest.hotel.uid,
             type: dr.nameService,
@@ -186,37 +222,5 @@ export class MaintenanceComponent implements OnInit {
         data.sort((a, b) => this.compare(a.request.createAt.getTime(), b.request.createAt.getTime(), true)),
       ),
     );
-  }
-  openModal(request: ReqRecpetionGuest) {
-    const receptionDynamic = this.receptionService.receptionRequest.find(
-      (r) => r.key === request.request.uid,
-    );
-    const requestStatic = receptionDynamic ? null : request;
-    this.matDialog
-      .open(ModalReceptionComponent, {
-        data: { requestStatic: requestStatic, requestDynamic: receptionDynamic },
-      })
-      .afterClosed()
-      .pipe()
-      .subscribe((d) => {
-        if (d) {
-          if (requestStatic) {
-            const nReq = requestStatic.request;
-            this.receptionService.receptionRef
-              .doc(nReq.uid)
-              .update({ status: d, active: d !== ReceptionStatus.COMPLETED });
-          } else {
-            receptionDynamic.status = d;
-            this.dynamicModuleService.updateDynamicRequest(receptionDynamic);
-          }
-          const msg = this.translate.instant('immediateRequest.updateSusses');
-          this.messagesService.showToastMessage(msg);
-          this.dataSource.data = [...this.dataSource.data];
-        } else {
-          if (requestStatic) {
-            requestStatic.request.active = true;
-          }
-        }
-      });
   }
 }

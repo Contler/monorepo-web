@@ -2,8 +2,9 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit }
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ReqRecpetionGuest } from '../reception-request/reception-request.component';
 import { RECEPTION_STATUS } from '@contler/const';
-import { DynamicRequest, DynamicRequestStatus } from '@contler/dynamic-services';
+import { DynamicRequest, DynamicRequestStatus, InputType } from '@contler/dynamic-services';
 import { FormControl } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'contler-modal-reception',
@@ -14,12 +15,15 @@ import { FormControl } from '@angular/forms';
 export class ModalReceptionComponent implements OnInit {
   receptionStatus = [];
   requestStatusForm: FormControl;
+  InputType = InputType;
+  localZone = localStorage.lan || 'es-CO';
 
   constructor(
     public dialogRef: MatDialogRef<ModalReceptionComponent>,
     @Inject(MAT_DIALOG_DATA)
     public data: { requestStatic: ReqRecpetionGuest; requestDynamic: DynamicRequest },
     private cdr: ChangeDetectorRef,
+    private translate: TranslateService,
   ) {}
 
   get guestName() {
@@ -63,6 +67,7 @@ export class ModalReceptionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.translate.onLangChange.subscribe(({ lang }) => (this.localZone = lang));
     this.requestStatusForm = new FormControl();
     if (this.data.requestStatic) {
       this.receptionStatus = RECEPTION_STATUS;
