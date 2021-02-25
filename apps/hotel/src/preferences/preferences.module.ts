@@ -27,6 +27,8 @@ import { RoomComponent } from './pages/room/room.component';
 import { CreateRoomModuleComponent } from './pages/create-room-module/create-room-module.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { CreateMaintenanceModuleComponent } from './pages/create-maintenance-module/create-maintenance-module.component';
+import { CleaningComponent } from './pages/cleaning/cleaning.component';
+import { CreateCleaningModuleComponent } from './pages/create-cleaning-module/create-cleaning-module.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { CreateMaintenanceModuleComponent } from './pages/create-maintenance-mod
     CreateRoomModuleComponent,
     MaintenanceComponent,
     CreateMaintenanceModuleComponent,
+    CleaningComponent,
+    CreateCleaningModuleComponent,
   ],
   imports: [
     CommonModule,

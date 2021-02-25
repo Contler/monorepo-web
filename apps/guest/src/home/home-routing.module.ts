@@ -93,6 +93,10 @@ const routes: Routes = [
         loadChildren: () => import('../dynamic-form/dynamic-form.module').then((m) => m.DynamicFormModule),
       },
       {
+        path: 'cleaning',
+        loadChildren: () => import('../cleaning/cleaning.module').then((m) => m.CleaningModule),
+      },
+      {
         path: '',
         redirectTo: 'guest-requests',
         pathMatch: 'full',

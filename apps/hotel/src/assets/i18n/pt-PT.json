@@ -227,6 +227,13 @@
       "name": "Manutenção",
       "subDescription": "Os pedidos em manutenção permitem ao utilizador obter serviços em primeira mão que ajudam na sua estadia."
     },
+    "cleaning": {
+      "description": "Escolha quais as opções a manter activadas na secção de Limpeza. Será capaz de criar novas opções.",
+      "disableText": "Não, deixar incapacitado",
+      "enableText": "Sim, habilitar serviço",
+      "name": "Limpeza",
+      "subDescription": "Os pedidos de limpeza permitem ao utilizador obter serviços em primeira mão que ajudam na sua estadia."
+    },
     "service": {
       "description": "Descrição",
       "nameOption": "Nome da opção",

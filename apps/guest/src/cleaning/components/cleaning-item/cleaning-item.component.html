@@ -1,0 +1,7 @@
+<a class="cleaning__item" [routerLink]="option.link" [ngClass]="{ 'white-color': isEven }">
+  <contler-icon [key]="option.icon" class="cleaning__icon"></contler-icon>
+  <span contlerColorHotel="primary" class="cleaning__item-text">{{
+    option.text | translate | ctrTranslate
+  }}</span>
+  <contler-icon key="fas fa-chevron-right"></contler-icon>
+</a>
