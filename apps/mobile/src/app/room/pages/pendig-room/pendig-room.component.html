@@ -10,17 +10,10 @@
 </ion-header>
 
 <ion-content>
-  <div class="maintain">
-    <div class="maintain__title center" contlerColorHotel>
-      {{ 'pendingMaintain.title' | translate }}
-    </div>
-
-    <contler-reception-item
-      *ngFor="let item of $receptionReq | async"
-      [reception]="item"
-      [isReady]="true"
-      (closeModal)="modalClose($event, item.uid)"
-    ></contler-reception-item>
+  <div style="padding: 0 40px 20px">
+    <p *ngIf="!totalReception" class="ion-text-center">
+      {{ 'pendingReception.noRequests' | translate }}
+    </p>
 
     <contler-dynamic-item
       *ngFor="let item of dynamicReq | async"
@@ -28,8 +21,4 @@
       [item]="item"
     ></contler-dynamic-item>
   </div>
-
-  <p *ngIf="!totalReception && !totalReception2" class="reception__text">
-    {{ 'pendingMaintain.noRequests' | translate }}
-  </p>
 </ion-content>

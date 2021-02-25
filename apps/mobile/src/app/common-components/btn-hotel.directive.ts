@@ -8,6 +8,7 @@ import { take } from 'rxjs/operators';
 })
 export class BtnHotelDirective implements OnChanges {
   @Input() contlerBtnHotel: 'primary' | 'second' | '' = 'primary';
+  @Input() opacity: number;
   private hotel!: HotelEntity | null;
 
   constructor(private auth: AuthService, private elemRef: ElementRef) {
@@ -28,10 +29,10 @@ export class BtnHotelDirective implements OnChanges {
     let textColor = '#fff';
     if (this.hotel) {
       if (this.contlerBtnHotel === 'primary' || this.contlerBtnHotel === '') {
-        backGroundColor = this.hotel.color;
+        backGroundColor = this.hotel.color + (this.opacity ? this.opacity : '');
         textColor = this.hotel.colorText;
       } else {
-        backGroundColor = this.hotel.colorSecond;
+        backGroundColor = this.hotel.colorSecond + (this.opacity ? this.opacity : '');
       }
     }
     this.elemRef.nativeElement!.style.backgroundColor = backGroundColor;

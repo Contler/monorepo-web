@@ -1,0 +1,12 @@
+@import 'styles/variables';
+
+.selected_button {
+  background: #ffffff !important;
+  ion-label {
+    color: $text-4 !important;
+  }
+}
+
+.reception-bottom-tabs {
+  height: 56px;
+}

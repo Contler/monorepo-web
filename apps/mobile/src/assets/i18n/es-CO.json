@@ -23,6 +23,11 @@
     "other": "Otro",
     "towelChange": "Cambio de toallas"
   },
+  "dynamicRequest": {
+    "attended": "Atendida",
+    "complete": "Completada",
+    "programing": "Programada"
+  },
   "global": {
     "ACTIVE": "Activa",
     "CLOSE": "Cerrar",
@@ -79,6 +84,7 @@
     "maintain": "Mantenimiento",
     "order": "Pedidos",
     "reception": "Recepción",
+    "room": "Habitación",
     "specialRequest": "Solicitudes especiales",
     "statistic": "Estadísticas",
     "wakeUp": "Wake up calls"
