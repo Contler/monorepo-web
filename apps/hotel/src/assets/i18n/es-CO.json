@@ -227,6 +227,13 @@
       "name": "Mantenimiento",
       "subDescription": "Las solicitudes en mantenimiento permiten al usuario obtener los servicios de primera mano que ayuden en su estadía."
     },
+    "cleaning": {
+      "description": "Elige qué opciones mantener habilitadas en la sección de Limpieza. Podrás crear nuevas opciones.",
+      "disableText": "No, dejar deshabilitado",
+      "enableText": "Sí, habilitar servicio",
+      "name": "Limpieza",
+      "subDescription": "Las solicitudes en limpieza permiten al usuario obtener los servicios de primera mano que ayuden en su estadía."
+    },
     "service": {
       "description": "Descripción",
       "nameOption": "Nombre de la opción",

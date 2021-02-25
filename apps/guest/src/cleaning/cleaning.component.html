@@ -1,0 +1,15 @@
+<contler-marco padding="20px 0" backUrl="/home/guest-requests">
+  <ng-container marcoBody>
+    <h1 class="ctl-title cleaning__title" contlerColorHotel="primary">
+      {{ 'cleaning.title' | translate }}
+    </h1>
+    <div class="cleaning__menu_list">
+      <contler-cleaning-item
+        class="cleaning__menu_list__item"
+        *ngFor="let opt of options$ | async; even as e"
+        [option]="opt"
+        [isEven]="e"
+      ></contler-cleaning-item>
+    </div>
+  </ng-container>
+</contler-marco>

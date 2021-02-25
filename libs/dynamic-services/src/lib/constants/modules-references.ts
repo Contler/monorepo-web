@@ -4,5 +4,6 @@ export enum MODULES {
   reception = 'reception',
   room = 'room',
   maintenance = 'maintenance',
+  cleaning = 'cleaning',
   form = 'form',
 }
