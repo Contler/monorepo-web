@@ -98,9 +98,7 @@ export class ItemHomeComponent implements OnInit, OnChanges {
         this.$count = this.auth.$user
           .pipe(
             take(1),
-            switchMap((user) =>
-              this.dynamicService.getDynamicRequest(user.hotel.uid, MODULES.maintenance, true),
-            ),
+            switchMap((user) => this.dynamicService.getDynamicRequest(user.hotel.uid, MODULES.room, true)),
           )
           .pipe(map((data) => data.length));
         break;

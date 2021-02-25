@@ -1,0 +1,24 @@
+<ion-header no-border>
+  <div class="header">
+    <div class="ion-text-center header__logo">
+      <contler-logo *ngIf="user" [src]="user.hotel.logo"></contler-logo>
+    </div>
+    <button mat-icon-button class="header__menu" (click)="menu.toggle()">
+      <mat-icon contlerColorHotel="primary">menu</mat-icon>
+    </button>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 0 40px 20px">
+    <p *ngIf="!totalReception" class="ion-text-center">
+      {{ 'pendingReception.noRequests' | translate }}
+    </p>
+
+    <contler-dynamic-item
+      *ngFor="let item of dynamicReq | async"
+      [isReady]="false"
+      [item]="item"
+    ></contler-dynamic-item>
+  </div>
+</ion-content>
