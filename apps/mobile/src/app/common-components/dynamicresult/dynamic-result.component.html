@@ -1,0 +1,19 @@
+<h1 contlerColorHotel class="ctl-title">{{ data.nameService | ctrTranslate }}</h1>
+
+<div>
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-select [(ngModel)]="status">
+      <mat-option *ngFor="let opt of listStatus" [value]="opt">
+        {{ opt | translate }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <contler-dynamic-form [readOnly]="true" [listInputs]="data.form"></contler-dynamic-form>
+  <button mat-raised-button contlerBtnHotel class="create" (click)="update()">
+    {{ 'modalRequest.updateBtn' | translate }}
+  </button>
+</div>
+
+<button mat-icon-button class="modal__close" (click)="dialogRef.close()">
+  <mat-icon>close</mat-icon>
+</button>

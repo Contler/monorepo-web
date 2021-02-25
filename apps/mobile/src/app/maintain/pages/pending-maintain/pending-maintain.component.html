@@ -15,17 +15,21 @@
       {{ 'pendingMaintain.title' | translate }}
     </div>
 
-    <div *ngIf="this.totalReception === 0" class="center">
-      {{ 'pendingMaintain.noRequests' | translate }}
-    </div>
-
     <contler-reception-item
       *ngFor="let item of $receptionReq | async"
       [reception]="item"
       [isReady]="true"
       (closeModal)="modalClose($event, item.uid)"
     ></contler-reception-item>
+
+    <contler-dynamic-item
+      *ngFor="let item of dynamicReq | async"
+      [isReady]="true"
+      [item]="item"
+    ></contler-dynamic-item>
   </div>
 
-  <p *ngIf="!totalReception" class="reception__text">{{ 'pendingMaintain.noRequests' | translate }}</p>
+  <p *ngIf="!totalReception && !totalReception2" class="reception__text">
+    {{ 'pendingMaintain.noRequests' | translate }}
+  </p>
 </ion-content>

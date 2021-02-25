@@ -1,0 +1,13 @@
+<div class="item" (click)="openModal()">
+  <div class="item__text">
+    <span class="item__text-name"> {{ item.guest.name }} {{ item.guest.lastName }} </span>
+    <span class="small">{{ item.nameService | ctrTranslate }}</span>
+    <span class="small"> {{ getDate(item.createAt) | date: 'dd/MM/yyyy' }} </span>
+    <span class="small"> {{ item.guest.room?.name | ctrTranslate }} </span>
+  </div>
+  <div class="small">
+    {{ getDate(item.createAt) | date: 'shortTime' }}
+  </div>
+
+  <mat-icon *ngIf="isReady">keyboard_arrow_right</mat-icon>
+</div>

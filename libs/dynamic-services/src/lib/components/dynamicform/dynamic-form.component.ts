@@ -9,6 +9,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class DynamicFormComponent implements OnInit, OnChanges {
   @Input() listInputs: InputField[] = [];
+  @Input() readOnly = false;
+
   form: FormGroup;
 
   constructor(private formBuild: FormBuilder) {
@@ -20,7 +22,13 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.form = this.formBuild.group({});
     this.listInputs.forEach((value, index) => {
-      this.form.addControl(`inp-type-${value.type}-${index}`, new FormControl('', Validators.required));
+      this.form.addControl(
+        `inp-type-${value.type}-${index}`,
+        new FormControl(value.value, Validators.required),
+      );
+      if (this.readOnly) {
+        this.form.get(`inp-type-${value.type}-${index}`).disable();
+      }
     });
   }
 
