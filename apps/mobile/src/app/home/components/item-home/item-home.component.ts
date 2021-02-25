@@ -92,7 +92,15 @@ export class ItemHomeComponent implements OnInit, OnChanges {
         );
         break;
       case ServiceType.CLEAN:
-        this.$count = this.receptionLocalService.getCleanReq().pipe(map((list) => list.length));
+        this.$count = combineLatest([
+          this.receptionLocalService.getCleanReq(),
+          this.auth.$user.pipe(
+            take(1),
+            switchMap((user) =>
+              this.dynamicService.getDynamicRequest(user.hotel.uid, MODULES.cleaning, true),
+            ),
+          ),
+        ]).pipe(map(([data, request]) => [...data, ...request].length));
         break;
       case ServiceType.ROOM:
         this.$count = this.auth.$user

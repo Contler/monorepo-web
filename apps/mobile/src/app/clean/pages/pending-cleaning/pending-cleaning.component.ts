@@ -10,6 +10,7 @@ import { take, tap } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
 import { GeneralService } from '../../../services/general.service';
 import { ReceptionLocalService } from '../../../services/reception/reception-local.service';
+import { DynamicModuleService, DynamicRequest, MODULES } from '@contler/dynamic-services';
 
 @Component({
   selector: 'contler-pending-cleaning',
@@ -19,8 +20,9 @@ import { ReceptionLocalService } from '../../../services/reception/reception-loc
 export class PendingCleaningComponent implements OnInit {
   user: EmployerEntity | null = null;
   totalReception: number;
+  totalReception2: number;
   $receptionReq: Observable<ReceptionModel[]>;
-
+  dynamicReq: Observable<DynamicRequest[]>;
   constructor(
     private auth: AuthService,
     private receptionLocalService: ReceptionLocalService,
@@ -29,16 +31,22 @@ export class PendingCleaningComponent implements OnInit {
     public menu: MenuController,
     private roomService: RoomService,
     private translate: TranslateService,
+    private dynamicService: DynamicModuleService,
   ) {}
 
   ngOnInit() {
-    this.auth.$user.pipe(take(1)).subscribe((user) => (this.user = user));
+    this.auth.$user.pipe(take(1)).subscribe((user) => {
+      this.user = user;
+      this.dynamicReq = this.dynamicService
+        .getDynamicRequest(user.hotel.uid, MODULES.cleaning, true)
+        .pipe(tap(({ length }) => (this.totalReception2 = length)));
+    });
     this.$receptionReq = this.receptionLocalService
       .getCleanReq()
       .pipe(tap(({ length }) => (this.totalReception = length)));
   }
 
-  async modalClose(complete: boolean, uid: string) {
+  async modalClose(complete: any, uid: string) {
     await this.roomService.cleanRef.doc(uid).update({ active: complete });
     const msn = this.translate.instant('clean.petitionUpdate');
     const err = this.translate.instant('global.CLOSE');

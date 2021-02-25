@@ -9,6 +9,7 @@ import { SpecialRequestsPageRoutingModule } from './special-requests-routing.mod
 import { SpecialRequestsPage } from './special-requests.page';
 import { TranslateModule } from '@ngx-translate/core';
 import { UiModule } from '@contler/ui';
+import { CommonComponentsModule } from '../../common-components/common-components.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { UiModule } from '@contler/ui';
     SpecialRequestsPageRoutingModule,
     TranslateModule,
     UiModule,
+    CommonComponentsModule,
   ],
   declarations: [SpecialRequestsPage],
 })
