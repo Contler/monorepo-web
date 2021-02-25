@@ -1,28 +1,27 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
-import { ReceptionService, UserService } from '@contler/core';
-import { AuthService } from 'hotel/services/auth.service';
-import { debounceTime, distinctUntilChanged, first, map, mergeMap, switchMap, toArray } from 'rxjs/operators';
-import { forkJoin, from, merge, Observable } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
-import { ReqRecpetionGuest } from 'hotel/inmediate-requests/components/reception-request/reception-request.component';
-import { ImmediateOptionLink, ReceptionModel, ReceptionStatus } from '@contler/models';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
-import { REQUEST_STATUS } from 'hotel/inmediate-requests/const/request.const';
+import { MatTableDataSource } from '@angular/material/table';
+import { ReqRecpetionGuest } from 'hotel/inmediate-requests/components/reception-request/reception-request.component';
 import { FormControl } from '@angular/forms';
+import { ImmediateOptionLink, ReceptionModel, ReceptionStatus } from '@contler/models';
+import { ReceptionService, UserService } from '@contler/core';
+import { AuthService } from 'hotel/services/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
-import { ModalReceptionComponent } from 'hotel/inmediate-requests/components/modal-reception/modal-reception.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MessagesService } from 'hotel/services/messages/messages.service';
+import { REQUEST_STATUS } from 'hotel/inmediate-requests/const/request.const';
+import { debounceTime, distinctUntilChanged, first, map, mergeMap, switchMap, toArray } from 'rxjs/operators';
+import { forkJoin, from, merge, Observable } from 'rxjs';
+import { ModalReceptionComponent } from 'hotel/inmediate-requests/components/modal-reception/modal-reception.component';
 
 @Component({
-  selector: 'contler-reception',
-  templateUrl: './reception.component.html',
-  styleUrls: ['./reception.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'contler-request-room',
+  templateUrl: './request-room.component.html',
+  styleUrls: ['./request-room.component.scss'],
 })
-export class ReceptionComponent implements OnInit {
+export class RequestRoomComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   public requestStatus = {
@@ -44,7 +43,6 @@ export class ReceptionComponent implements OnInit {
   public filterByWordForm: FormControl;
   public filterByCategoryForm: FormControl;
   public categories: ImmediateOptionLink[];
-
   constructor(
     private receptionService: ReceptionService,
     private authService: AuthService,
@@ -54,7 +52,6 @@ export class ReceptionComponent implements OnInit {
     private matDialog: MatDialog,
     private messagesService: MessagesService,
   ) {}
-
   get filterByStatusSelected() {
     return this.filterByStatusForm.value;
   }
@@ -116,7 +113,7 @@ export class ReceptionComponent implements OnInit {
           return forkJoin({
             staticRequests: this.formatterReceptionModel(hotel.uid).pipe(first()),
             dynamicRequests: this.receptionService
-              .getReceptionRequestDynamic(hotel.uid, MODULES.reception)
+              .getReceptionRequestDynamic(hotel.uid, MODULES.room)
               .pipe(first()),
             categories: this.dynamicModuleService
               .getOptionsModule(hotel.uid, MODULES.reception)
@@ -177,7 +174,7 @@ export class ReceptionComponent implements OnInit {
   }
 
   private formatterReceptionModel(hotelUid: string): Observable<ReqRecpetionGuest[]> {
-    return this.receptionService.getReceptionRequest(hotelUid).pipe(
+    return this.receptionService.getRoomRequest(hotelUid).pipe(
       first(),
       switchMap((requests) => from(requests)),
       mergeMap<ReceptionModel, Observable<ReqRecpetionGuest>>((request) =>

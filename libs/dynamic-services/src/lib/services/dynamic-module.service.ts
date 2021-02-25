@@ -310,6 +310,10 @@ export class DynamicModuleService {
     return this.fireDb.doc(`dynamicRequest/${key}`).set(request);
   }
 
+  updateDynamicRequest(request: DynamicRequest) {
+    return this.fireDb.collection(`dynamicRequest`).doc(request.key).update(request);
+  }
+
   getDynamicRequest(hotelId: string, module: MODULES, status: boolean, untilDate?: number) {
     if (untilDate) {
       const oneDayToMilliseconds = 86400000;

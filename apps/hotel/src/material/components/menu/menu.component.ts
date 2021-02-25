@@ -94,13 +94,13 @@ export class MenuComponent implements OnInit {
         {
           name: 'preferences.maintenance.name',
           icon: 'engineering',
-          link: ['/home', 'special-requests'],
+          link: ['/home', 'maintenance'],
           primary: false,
         },
         {
           name: 'preferences.room.name',
           icon: 'night_shelter',
-          link: ['/home', 'special-requests'],
+          link: ['/home', 'request-room'],
           primary: false,
         },
         {

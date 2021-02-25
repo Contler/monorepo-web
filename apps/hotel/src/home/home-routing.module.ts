@@ -90,6 +90,14 @@ const routes: Routes = [
     loadChildren: () => import('../reception/reception.module').then((m) => m.ReceptionModule),
   },
   {
+    path: 'maintenance',
+    loadChildren: () => import('../maintenance/maintenance.module').then((m) => m.MaintenanceModule),
+  },
+  {
+    path: 'request-room',
+    loadChildren: () => import('../request-room/request-room.module').then((m) => m.RequestRoomModule),
+  },
+  {
     path: '**',
     component: AdminHomeComponent,
   },

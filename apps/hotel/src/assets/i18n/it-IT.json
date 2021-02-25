@@ -206,6 +206,11 @@
       "select": "Elenco delle opzioni",
       "text": "Campo aperto"
     },
+    "request": {
+      "active": "A disposizione",
+      "all": "Tutti",
+      "searchPlaceHolder": "Ricerca..."
+    },
     "reception": {
       "description": "Scegli quali opzioni mantenere abilitate nella sezione Reception. Puoi creare nuove opzioni.",
       "disableText": "No, lascia disabilitato",
@@ -366,6 +371,11 @@
     "title": "Servizio di zona"
   },
   "transportation": {
+    "attended": "Frequentato",
+    "complete": "Compiuto",
+    "programing": "Programmato"
+  },
+  "dynamicRequest": {
     "attended": "Frequentato",
     "complete": "Compiuto",
     "programing": "Programmato"

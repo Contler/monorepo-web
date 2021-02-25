@@ -34,9 +34,12 @@ export class ReceptionService {
   get receptionRef() {
     return this.afs.firestore.collection('reception').withConverter(receptionConverter);
   }
-  // get receptionDynamicRef() {
-  // return this.afs.firestore.collection('reception').withConverter(receptionDynamicConverter);
-  // }
+  get maintenanceRef() {
+    return this.afs.firestore.collection('maintain').withConverter(receptionConverter);
+  }
+  get roomRef() {
+    return this.afs.firestore.collection('maintain').withConverter(receptionConverter);
+  }
   getOptionsReception(hotelUid: string): Observable<ImmediateOptionLink[] | null> {
     const path = `${MODULES.root}/${hotelUid}/${MODULES.reception}/options`;
     return this.afDb
@@ -51,12 +54,27 @@ export class ReceptionService {
       )
       .valueChanges();
   }
-  getReceptionRequestDynamic(hotelUid: string): Observable<DynamicRequest[]> {
+  getMaintenanceRequest(hotelUid: string): Observable<ReceptionModel[]> {
+    return this.afs
+      .collection<ReceptionModel>(this.maintenanceRef, (ref) =>
+        ref.where('hotel', '==', hotelUid).orderBy('createAt', 'desc'),
+      )
+      .valueChanges();
+  }
+  getRoomRequest(hotelUid: string): Observable<ReceptionModel[]> {
+    return this.afs
+      .collection<ReceptionModel>(this.roomRef, (ref) =>
+        ref.where('hotel', '==', hotelUid).orderBy('createAt', 'desc'),
+      )
+      .valueChanges();
+  }
+
+  getReceptionRequestDynamic(hotelUid: string, moduleReference: MODULES): Observable<DynamicRequest[]> {
     return this.afs
       .collection<DynamicRequest>(`dynamicRequest`, (ref) =>
         ref
           .where('hotelId', '==', hotelUid)
-          .where('service', '==', MODULES.reception)
+          .where('service', '==', moduleReference)
           .orderBy('createAt', 'desc'),
       )
       .valueChanges()

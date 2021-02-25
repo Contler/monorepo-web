@@ -206,6 +206,11 @@
       "select": "Liste d'options",
       "text": "Champ ouvert"
     },
+    "request": {
+      "active": "Disponible",
+      "all": "Tout",
+      "searchPlaceHolder": "Chercher..."
+    },
     "reception": {
       "description": "Choisissez les options à garder activées dans la section Réception. Vous pouvez créer de nouvelles options.",
       "disableText": "Non, laissez désactivé",
@@ -366,6 +371,11 @@
     "title": "Service de zone"
   },
   "transportation": {
+    "attended": "Assisté",
+    "complete": "Accompli",
+    "programing": "Programme"
+  },
+  "dynamicRequest": {
     "attended": "Assisté",
     "complete": "Accompli",
     "programing": "Programme"

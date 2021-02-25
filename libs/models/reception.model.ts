@@ -14,7 +14,6 @@ export interface ReceptionModel {
   hotel: string;
   guest: string;
   comment: string;
-  request?: string;
   createAt: Date;
   active: boolean;
   type: string;
@@ -29,7 +28,7 @@ export const receptionConverter: FirestoreDataConverter<ReceptionModel> = {
   ): ReceptionModel {
     const data = snapshot.data(options) as ReceptionModel;
     const { createAt } = snapshot.data(options);
-    return { ...data, createAt: new Date(createAt), request: data.comment };
+    return { ...data, createAt: new Date(createAt) };
   },
   toFirestore(modelObject: ReceptionModel): firebase.firestore.DocumentData {
     const { createAt, ...rest } = modelObject;
@@ -49,21 +48,3 @@ export const receptionDynamicConverter: FirestoreDataConverter<DynamicRequest> =
     return { ...rest, createAt: createAt.toString() };
   },
 };
-// export const receptionDynamicConverter: FirestoreDataConverter<DynamicRequest> = {
-//   fromFirestore(
-//     snapshot: firebase.firestore.QueryDocumentSnapshot,
-//     options: firebase.firestore.SnapshotOptions,
-//   ): ReceptionModel {
-//     const data = snapshot.data(options) as DynamicRequest;
-//     const { createAt } = snapshot.data(options);
-//     // const receptionModel:ReceptionModel = {
-//     //   active:data.active,
-//     //   // comment:data.,
-//     // }
-//     return { ...data, createAt: new Date(createAt), request: data.comment };
-//   },
-//   toFirestore(modelObject: DynamicRequest): firebase.firestore.DocumentData {
-//     const { createAt, ...rest } = modelObject;
-//     return { ...rest, createAt: createAt.toString() };
-//   },
-// };

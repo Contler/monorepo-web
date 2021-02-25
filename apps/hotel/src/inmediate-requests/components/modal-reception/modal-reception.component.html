@@ -17,9 +17,9 @@
     <mat-form-field appearance="fill" *ngIf="isRequest">
       <mat-hint>{{ 'immediateRequest.stateTable' | translate }}</mat-hint>
       <mat-select [formControl]="requestStatusForm" *ngIf="isActive">
-        <mat-option *ngFor="let status of receptionStatus" [value]="status">{{
-          status | translate
-        }}</mat-option>
+        <mat-option *ngFor="let status of receptionStatus" [value]="status">
+          {{ status | translate }}</mat-option
+        >
       </mat-select>
       <input type="text" readonly matInput value="Cumplida" *ngIf="!isActive" />
     </mat-form-field>

@@ -72,11 +72,9 @@ export class ModalReceptionComponent implements OnInit {
       this.requestStatusForm.setValue(this.data.requestDynamic.status);
     }
     this.cdr.detectChanges();
-    console.log(this.data);
   }
 
   update() {
-    console.log(this.requestStatusForm.value);
-    // this.dialogRef.close(this.data.request.status);
+    this.dialogRef.close(this.requestStatusForm.value);
   }
 }
