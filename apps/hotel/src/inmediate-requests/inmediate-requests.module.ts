@@ -18,12 +18,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
-  declarations: [
-    InmediateRequestsComponent,
-    RequestComponent,
-    ReceptionRequestComponent,
-    ModalReceptionComponent,
-  ],
+  declarations: [InmediateRequestsComponent, RequestComponent, ReceptionRequestComponent],
   entryComponents: [],
   imports: [
     CommonModule,
