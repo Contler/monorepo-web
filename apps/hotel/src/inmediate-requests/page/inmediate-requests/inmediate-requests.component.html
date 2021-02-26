@@ -11,13 +11,12 @@
         <p class="header__title" contlerColorHotel="primary">{{ 'global.IMMEDIATE_REQUEST' | translate }}</p>
         <div class="buttons-container">
           <mat-form-field appearance="fill">
-            <mat-select [(ngModel)]="activeRequest">
-              <mat-option *ngFor="let req of typeRequests | keyvalue" [value]="req.value.id">
-                {{ req.value.name | translate }}
+            <mat-select [(ngModel)]="typeRequest">
+              <mat-option *ngFor="let category of categories$ | async" [value]="category.id">
+                {{ category.name | translate }}
               </mat-option>
             </mat-select>
           </mat-form-field>
-
           <mat-form-field appearance="fill">
             <mat-select [(ngModel)]="filterByStatusSelected">
               <mat-option [value]="requestStatus.ACTIVE">
@@ -40,16 +39,10 @@
 
       <div class="mat-elevation-z8">
         <contler-request
-          *ngIf="activeRequest === typeRequests.IMMEDIATE.id"
           [filterByStatusSelected]="filterByStatusSelected"
           [textFilter]="textFilter"
+          [typeRequest]="typeRequest"
         ></contler-request>
-        <contler-reception-request
-          [filterByStatusSelected]="filterByStatusSelected"
-          [textFilter]="textFilter"
-          [typeReq]="activeRequest"
-          *ngIf="activeRequest !== typeRequests.IMMEDIATE.id"
-        ></contler-reception-request>
       </div>
     </div>
   </mat-sidenav-content>

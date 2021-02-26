@@ -16,12 +16,16 @@
   }
 
   &__button {
-    margin-top: 73px;
-    min-width: 80%;
     position: absolute;
-    bottom: 5%;
-    margin-left: 10%;
-    border-radius: 12px;
+    bottom: 0;
+    left: 0;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: white;
+    width: 100%;
+    button {
+      width: 100%;
+    }
   }
 
   .features-container {

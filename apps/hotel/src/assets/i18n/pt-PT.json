@@ -206,6 +206,11 @@
       "select": "Lista de opções",
       "text": "Campo aberto"
     },
+    "request": {
+      "active": "A disposizione",
+      "all": "Tutti",
+      "searchPlaceHolder": "Ricerca..."
+    },
     "reception": {
       "description": "Escolha quais opções manter ativadas na seção Recepção. Você pode criar novas opções.",
       "disableText": "Não, deixe desativado",
@@ -373,6 +378,11 @@
     "title": "Serviço de Zona"
   },
   "transportation": {
+    "attended": "Participaram",
+    "complete": "Realizado",
+    "programing": "Programado"
+  },
+  "dynamicRequest": {
     "attended": "Participaram",
     "complete": "Realizado",
     "programing": "Programado"

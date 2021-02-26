@@ -19,8 +19,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { TranslateService as transDynamic } from '@contler/dynamic-translate';
 import { FormCreation } from '../interfaces/form-creation';
 import { FormService } from '../interfaces/form-service';
-import { DynamicRequest } from '../interfaces/dynamic-request';
+import { DynamicRequest, receptionDynamicConverter } from '../interfaces/dynamic-request';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { QueryFn } from '@angular/fire/firestore/interfaces';
 
 @Injectable()
 export class DynamicModuleService {
@@ -310,27 +311,31 @@ export class DynamicModuleService {
     return this.fireDb.doc(`dynamicRequest/${key}`).set(request);
   }
 
+  updateDynamicRequest(request: DynamicRequest) {
+    return this.fireDb.collection(`dynamicRequest`).doc(request.key).update(request);
+  }
+
   getDynamicRequest(hotelId: string, module: MODULES, status: boolean, untilDate?: number) {
+    const reference = this.fireDb.firestore
+      .collection('dynamicRequest')
+      .withConverter(receptionDynamicConverter);
+
+    let query: QueryFn;
+
     if (untilDate) {
       const oneDayToMilliseconds = 86400000;
       const totalDays = untilDate * oneDayToMilliseconds;
       const date = new Date(Date.now() - totalDays);
-
-      return this.fireDb
-        .collection<DynamicRequest>('dynamicRequest', (ref) =>
-          ref
-            .where('hotelId', '==', hotelId)
-            .where('service', '==', module)
-            .where('active', '==', status)
-            .where('createAt', '>=', date),
-        )
-        .valueChanges();
+      query = (ref) =>
+        ref
+          .where('hotelId', '==', hotelId)
+          .where('service', '==', module)
+          .where('active', '==', status)
+          .where('createAt', '>=', date);
     } else {
-      return this.fireDb
-        .collection<DynamicRequest>('dynamicRequest', (ref) =>
-          ref.where('hotelId', '==', hotelId).where('service', '==', module).where('active', '==', status),
-        )
-        .valueChanges();
+      query = (ref) =>
+        ref.where('hotelId', '==', hotelId).where('service', '==', module).where('active', '==', status);
     }
+    return this.fireDb.collection<DynamicRequest>(reference, query).valueChanges();
   }
 }

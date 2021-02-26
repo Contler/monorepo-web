@@ -8,3 +8,6 @@
   display: block;
   margin: 10px auto 0;
 }
+.two_columns {
+  grid-column: span 2;
+}

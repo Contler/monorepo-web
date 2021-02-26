@@ -206,6 +206,11 @@
       "select": "Options list",
       "text": "Open Field"
     },
+    "request": {
+      "active": "Available",
+      "all": "All",
+      "searchPlaceHolder": "Search..."
+    },
     "reception": {
       "description": "Choose which options to keep enabled in the Reception section. You can create new options.",
       "disableText": "No, leave disabled",
@@ -373,6 +378,11 @@
     "title": "Zone service"
   },
   "transportation": {
+    "attended": "Attended",
+    "complete": "Accomplished",
+    "programing": "Scheduled"
+  },
+  "dynamicRequest": {
     "attended": "Attended",
     "complete": "Accomplished",
     "programing": "Scheduled"

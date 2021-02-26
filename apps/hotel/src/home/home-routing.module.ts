@@ -42,9 +42,7 @@ const routes: Routes = [
   {
     path: 'inmediate-requests',
     loadChildren: () =>
-      import('hotel/inmediate-requests/inmediate-requests.module').then(
-        (m) => m.InmediateRequestsModule,
-      ),
+      import('hotel/inmediate-requests/inmediate-requests.module').then((m) => m.InmediateRequestsModule),
   },
   {
     path: 'special-requests',
@@ -65,13 +63,11 @@ const routes: Routes = [
   },
   {
     path: 'reservation',
-    loadChildren: () =>
-      import('../reservation/reservation.module').then((m) => m.ReservationModule),
+    loadChildren: () => import('../reservation/reservation.module').then((m) => m.ReservationModule),
   },
   {
     path: 'late',
-    loadChildren: () =>
-      import('../late-check-out/late-check-out.module').then((m) => m.LateCheckOutModule),
+    loadChildren: () => import('../late-check-out/late-check-out.module').then((m) => m.LateCheckOutModule),
   },
   {
     path: 'product',
@@ -87,8 +83,23 @@ const routes: Routes = [
   },
   {
     path: 'menu-category',
-    loadChildren: () =>
-      import('../menu-category/menu-category.module').then((m) => m.MenuCategoryModule),
+    loadChildren: () => import('../menu-category/menu-category.module').then((m) => m.MenuCategoryModule),
+  },
+  {
+    path: 'reception',
+    loadChildren: () => import('../reception/reception.module').then((m) => m.ReceptionModule),
+  },
+  {
+    path: 'maintenance',
+    loadChildren: () => import('../maintenance/maintenance.module').then((m) => m.MaintenanceModule),
+  },
+  {
+    path: 'request-room',
+    loadChildren: () => import('../request-room/request-room.module').then((m) => m.RequestRoomModule),
+  },
+  {
+    path: 'cleaning',
+    loadChildren: () => import('../cleaning/cleaning.module').then((m) => m.CleaningModule),
   },
   {
     path: '**',

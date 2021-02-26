@@ -206,6 +206,11 @@
       "select": "Optionsliste",
       "text": "Offenes Feld"
     },
+    "request": {
+      "active": "Verfügbar",
+      "all": "Alles",
+      "searchPlaceHolder": "Suche..."
+    },
     "reception": {
       "description": "Wählen Sie im Bereich Empfang aus, welche Optionen aktiviert bleiben sollen. Sie können neue Optionen erstellen.",
       "disableText": "Nein, deaktiviert lassen",
@@ -373,6 +378,11 @@
     "title": "Service des Bereichs"
   },
   "transportation": {
+    "attended": "Besucht",
+    "complete": "Erreicht",
+    "programing": "Geplant"
+  },
+  "dynamicRequest": {
     "attended": "Besucht",
     "complete": "Erreicht",
     "programing": "Geplant"

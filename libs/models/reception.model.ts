@@ -1,5 +1,6 @@
-import { RoomEntity } from '../entity';
+import { GuestEntity, RoomEntity } from '../entity';
 import * as firebase from 'firebase';
+import { DynamicRequest } from '@contler/dynamic-services';
 import FirestoreDataConverter = firebase.firestore.FirestoreDataConverter;
 
 export enum ReceptionStatus {
@@ -34,3 +35,7 @@ export const receptionConverter: FirestoreDataConverter<ReceptionModel> = {
     return { ...rest, createAt: createAt.toString() };
   },
 };
+export interface ReqRecpetionGuest {
+  request: ReceptionModel;
+  guest: GuestEntity;
+}

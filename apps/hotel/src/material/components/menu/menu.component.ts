@@ -86,6 +86,30 @@ export class MenuComponent implements OnInit {
           primary: false,
         },
         {
+          name: 'preferences.reception.name',
+          icon: 'room_service',
+          link: ['/home', 'reception'],
+          primary: false,
+        },
+        {
+          name: 'preferences.maintenance.name',
+          icon: 'engineering',
+          link: ['/home', 'maintenance'],
+          primary: false,
+        },
+        {
+          name: 'preferences.cleaning.name',
+          icon: 'cleaning_services',
+          link: ['/home', 'cleaning'],
+          primary: false,
+        },
+        {
+          name: 'preferences.room.name',
+          icon: 'night_shelter',
+          link: ['/home', 'request-room'],
+          primary: false,
+        },
+        {
           name: 'menu.wakeUpCalls',
           icon: 'access_alarm',
           link: ['/home', 'wake-up'],
