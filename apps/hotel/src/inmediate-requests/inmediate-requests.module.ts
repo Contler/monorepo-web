@@ -9,16 +9,14 @@ import { FormsModule } from '@angular/forms';
 import { RatingModule } from 'ng-starrating';
 import { EmployerService } from 'hotel/employer/services/employer.service';
 import { RequestComponent } from './components/request/request.component';
-import { ReceptionRequestComponent } from './components/reception-request/reception-request.component';
 import { MatSortModule } from '@angular/material/sort';
-import { ModalReceptionComponent } from './components/modal-reception/modal-reception.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
-  declarations: [InmediateRequestsComponent, RequestComponent, ReceptionRequestComponent],
+  declarations: [InmediateRequestsComponent, RequestComponent],
   entryComponents: [],
   imports: [
     CommonModule,

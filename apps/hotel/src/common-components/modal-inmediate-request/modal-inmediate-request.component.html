@@ -9,7 +9,7 @@
         <mat-hint>{{ 'immediateRequest.nameTable' | translate }}</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <input matInput [ngModel]="request.zone.name" readonly />
+        <input matInput value="{{ request.zone.name | translate | ctrTranslate }}" readonly />
         <mat-icon matSuffix>where_to_vote</mat-icon>
         <mat-hint>{{ 'immediateRequest.zoneTable' | translate }}</mat-hint>
       </mat-form-field>
@@ -43,7 +43,7 @@
         <mat-hint>{{ 'immediateRequest.roomTable' | translate }}</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <input matInput [ngModel]="request.message" readonly />
+        <input matInput value="{{ request.message | translate | ctrTranslate }}" readonly />
         <mat-hint>{{ 'immediateRequest.request' | translate }}</mat-hint>
       </mat-form-field>
     </div>

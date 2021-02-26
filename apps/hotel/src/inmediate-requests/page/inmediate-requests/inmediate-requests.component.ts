@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { REQUEST_STATUS, TYPE_REQUEST } from 'hotel/inmediate-requests/const/request.const';
-import { ActivatedRoute } from '@angular/router';
+import { REQUEST_STATUS } from 'hotel/inmediate-requests/const/request.const';
+import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
+import { first, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { ImmediateCategory } from '@contler/models';
+import { AuthService } from 'hotel/services/auth.service';
 
 @Component({
   selector: 'contler-inmediate-requests',
@@ -8,18 +12,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./inmediate-requests.component.scss'],
 })
 export class InmediateRequestsComponent implements OnInit {
-  queryParams = this.activeRoute.snapshot.queryParams;
-  filterByStatusSelected: string = REQUEST_STATUS.ACTIVE;
+  filterByStatusSelected: string = REQUEST_STATUS.ALL;
   textFilter: string;
-  activeRequest = 1;
+  typeRequest = 0;
   requestStatus = REQUEST_STATUS;
-  typeRequests = TYPE_REQUEST;
+  categories$: Observable<ImmediateCategory[]>;
 
-  constructor(private activeRoute: ActivatedRoute) {}
+  constructor(private inmediateRequestsService: InmediateRequestsService, private authService: AuthService) {}
 
   ngOnInit(): void {
-    if (this.queryParams['RECEPTION']) {
-      this.activeRequest = this.typeRequests.RECEPTION.id;
-    }
+    this.categories$ = this.authService.$hotel.pipe(
+      first(),
+      switchMap((hotel) => this.inmediateRequestsService.getCategoriesImmediate(hotel.uid)),
+    );
   }
 }

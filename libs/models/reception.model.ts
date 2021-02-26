@@ -1,4 +1,4 @@
-import { RoomEntity } from '../entity';
+import { GuestEntity, RoomEntity } from '../entity';
 import * as firebase from 'firebase';
 import { DynamicRequest } from '@contler/dynamic-services';
 import FirestoreDataConverter = firebase.firestore.FirestoreDataConverter;
@@ -35,6 +35,10 @@ export const receptionConverter: FirestoreDataConverter<ReceptionModel> = {
     return { ...rest, createAt: createAt.toString() };
   },
 };
+export interface ReqRecpetionGuest {
+  request: ReceptionModel;
+  guest: GuestEntity;
+}
 export const receptionDynamicConverter: FirestoreDataConverter<DynamicRequest> = {
   fromFirestore(
     snapshot: firebase.firestore.QueryDocumentSnapshot,

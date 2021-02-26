@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ReqRecpetionGuest } from '../reception-request/reception-request.component';
 import { RECEPTION_STATUS } from '@contler/const';
 import { DynamicRequest, DynamicRequestStatus, InputType } from '@contler/dynamic-services';
 import { FormControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { ReqRecpetionGuest } from '@contler/models';
 
 @Component({
   selector: 'contler-modal-reception',

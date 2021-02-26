@@ -18,6 +18,8 @@ import { ModalInmediateRequestComponent } from '../../../common-components/modal
 export class RequestComponent implements OnInit, OnDestroy, OnChanges {
   @Input() filterByStatusSelected: string;
   @Input() textFilter: string;
+  @Input() typeRequest: string;
+  @Input() subTypeRequest: string;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
 
   displayedColumns: string[] = [
@@ -43,6 +45,9 @@ export class RequestComponent implements OnInit, OnDestroy, OnChanges {
       this.dataSource.filter = !!this.textFilter
         ? this.textFilter.trim().toLowerCase()
         : this.filterByStatusSelected;
+    }
+    if (changes['typeRequest']) {
+      this.dataSource.filter = this.typeRequest;
     }
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
@@ -87,14 +92,17 @@ export class RequestComponent implements OnInit, OnDestroy, OnChanges {
     if (filter === REQUEST_STATUS.ALL) {
       return true;
     }
+    if (Number.isInteger(parseInt(filter, 0))) {
+      return data.zone.category.id === parseInt(filter, 0);
+    }
 
     const showByStatus = this.filterByStatusSelected === REQUEST_STATUS.ACTIVE ? !data.complete : true;
     return (
       showByStatus &&
-      (data.guest.name.toLowerCase().includes(filter) ||
-        data.zone.name.toLowerCase().includes(filter) ||
-        data.message.toLowerCase().includes(filter) ||
-        (data.solved && data.solved.name && data.solved.name.toLowerCase().includes(filter)))
+      (data.guest.name.toLowerCase().includes(filter.toString()) ||
+        data.zone.name.toLowerCase().includes(filter.toString()) ||
+        data.message.toLowerCase().includes(filter.toString()) ||
+        (data.solved && data.solved.name && data.solved.name.toLowerCase().includes(filter.toString())))
     );
   }
 }
