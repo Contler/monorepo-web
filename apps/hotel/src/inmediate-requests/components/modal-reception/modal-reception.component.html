@@ -39,20 +39,7 @@
       </mat-form-field>
     </ng-container>
     <ng-template #answerDynamic>
-      <ng-container *ngFor="let form of data.requestDynamic.form">
-        <mat-form-field appearance="outline" class="two_columns" *ngIf="form.type === InputType.TEXT">
-          <mat-label>{{ form.description | ctrTranslate }}</mat-label>
-          <input type="text" matInput value="{{ form.value | ctrTranslate }}" readonly />
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="two_columns" *ngIf="form.type === InputType.SELECT">
-          <mat-label>{{ form.description | ctrTranslate }}</mat-label>
-          <input type="text" matInput value="{{ form.value | ctrTranslate }}" readonly />
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="two_columns" *ngIf="form.type === InputType.DATE">
-          <mat-label>{{ form.description | ctrTranslate }}</mat-label>
-          <input type="text" matInput value="{{ form.value | date: 'longDate':'':localZone }}" readonly />
-        </mat-form-field>
-      </ng-container>
+      <contler-dynamic-form [listInputs]="data.requestDynamic.form" [readOnly]="true"></contler-dynamic-form>
     </ng-template>
   </div>
   <button mat-raised-button color="accent" class="btn-update" (click)="update()" contlerBtnHotel="primary">

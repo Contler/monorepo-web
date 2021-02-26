@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/
 import { ReceptionService, UserService } from '@contler/core';
 import { AuthService } from 'hotel/services/auth.service';
 import { debounceTime, distinctUntilChanged, first, map, mergeMap, switchMap, toArray } from 'rxjs/operators';
-import { forkJoin, from, merge, Observable } from 'rxjs';
+import { combineLatest, forkJoin, from, merge, Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { ImmediateOptionLink, ReceptionModel, ReceptionStatus, ReqRecpetionGuest } from '@contler/models';
 import { TranslateService } from '@ngx-translate/core';
@@ -148,9 +148,14 @@ export class ReceptionComponent implements OnInit {
         switchMap((hotel) => {
           return forkJoin({
             staticRequests: this.formatterReceptionModel(hotel.uid).pipe(first()),
-            dynamicRequests: this.receptionService
-              .getReceptionRequestDynamic(hotel.uid, MODULES.reception)
-              .pipe(first()),
+            dynamicRequests: combineLatest([
+              this.dynamicModuleService
+                .getDynamicRequest(hotel.uid, MODULES.reception, true, 30)
+                .pipe(first()),
+              this.dynamicModuleService
+                .getDynamicRequest(hotel.uid, MODULES.reception, false, 30)
+                .pipe(first()),
+            ]).pipe(map(([active, inactive]) => [...active, ...inactive])),
             categories: this.dynamicModuleService
               .getOptionsModule(hotel.uid, MODULES.reception)
               .pipe(first()),

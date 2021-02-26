@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { REQUEST_STATUS } from 'hotel/inmediate-requests/const/request.const';
 import { debounceTime, distinctUntilChanged, first, map, mergeMap, switchMap, toArray } from 'rxjs/operators';
-import { forkJoin, from, merge, Observable } from 'rxjs';
+import { combineLatest, forkJoin, from, merge, Observable } from 'rxjs';
 import { ModalReceptionComponent } from 'hotel/inmediate-requests/components/modal-reception/modal-reception.component';
 
 @Component({
@@ -148,9 +148,14 @@ export class MaintenanceComponent implements OnInit {
         switchMap((hotel) => {
           return forkJoin({
             staticRequests: this.formatterReceptionModel(hotel.uid).pipe(first()),
-            dynamicRequests: this.receptionService
-              .getReceptionRequestDynamic(hotel.uid, MODULES.maintenance)
-              .pipe(first()),
+            dynamicRequests: combineLatest([
+              this.dynamicModuleService
+                .getDynamicRequest(hotel.uid, MODULES.maintenance, true, 30)
+                .pipe(first()),
+              this.dynamicModuleService
+                .getDynamicRequest(hotel.uid, MODULES.maintenance, false, 30)
+                .pipe(first()),
+            ]).pipe(map(([active, inactive]) => [...active, ...inactive])),
             categories: this.dynamicModuleService
               .getOptionsModule(hotel.uid, MODULES.maintenance)
               .pipe(first()),

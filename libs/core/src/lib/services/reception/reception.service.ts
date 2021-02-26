@@ -74,19 +74,4 @@ export class ReceptionService {
       )
       .valueChanges();
   }
-
-  getReceptionRequestDynamic(hotelUid: string, moduleReference: MODULES): Observable<DynamicRequest[]> {
-    const reference = this.afs.firestore
-      .collection('dynamicRequest')
-      .withConverter(receptionDynamicConverter);
-    return this.afs
-      .collection<DynamicRequest>(reference, (ref) =>
-        ref
-          .where('hotelId', '==', hotelUid)
-          .where('service', '==', moduleReference)
-          .orderBy('createAt', 'desc'),
-      )
-      .valueChanges()
-      .pipe(tap((receptionRequest) => (this.receptionRequest = receptionRequest)));
-  }
 }

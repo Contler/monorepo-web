@@ -1,48 +1,40 @@
-<contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
-
-<mat-sidenav-container>
-  <mat-sidenav mode="over" #sidenav>
-    <contler-menu></contler-menu>
-  </mat-sidenav>
-
-  <mat-sidenav-content class="cnt-zone">
-    <div class="container">
-      <div class="header">
-        <p class="header__title" contlerColorHotel="primary">
-          {{ 'preferences.cleaning.name' | translate }}
-        </p>
-        <div class="buttons-container">
-          <mat-form-field appearance="fill">
-            <mat-select [formControl]="filterByCategoryForm" [value]="requestStatus.ALL">
-              <mat-option *ngFor="let category of categories" [value]="category.text">
-                {{ category.text | translate | ctrTranslate }}
-              </mat-option>
-              <mat-option [value]="requestStatus.ALL">
-                {{ 'preferences.request.all' | translate }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-select [formControl]="filterByStatusForm" [value]="requestStatus.ACTIVE">
-              <mat-option [value]="requestStatus.ACTIVE">
-                {{ 'preferences.request.active' | translate }}
-              </mat-option>
-              <mat-option [value]="requestStatus.ALL">
-                {{ 'preferences.request.all' | translate }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <input
-              matInput
-              placeholder="{{ 'preferences.request.searchPlaceHolder' | translate }}"
-              [formControl]="filterByWordForm"
-            />
-            <mat-icon matSuffix>search</mat-icon>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="mat-elevation-z8">
+<contler-marco-admin title="{{ 'preferences.cleaning.name' | translate }}">
+  <ng-container marcoHeader>
+    <!--        <p class="header__title" contlerColorHotel="primary">-->
+    <!--          -->
+    <!--        </p>-->
+    <mat-form-field appearance="fill">
+      <mat-select [formControl]="filterByCategoryForm" [value]="requestStatus.ALL">
+        <mat-option *ngFor="let category of categories" [value]="category.text">
+          {{ category.text | translate | ctrTranslate }}
+        </mat-option>
+        <mat-option [value]="requestStatus.ALL">
+          {{ 'preferences.request.all' | translate }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-select [formControl]="filterByStatusForm" [value]="requestStatus.ACTIVE">
+        <mat-option [value]="requestStatus.ACTIVE">
+          {{ 'preferences.request.active' | translate }}
+        </mat-option>
+        <mat-option [value]="requestStatus.ALL">
+          {{ 'preferences.request.all' | translate }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="{{ 'preferences.request.searchPlaceHolder' | translate }}"
+        [formControl]="filterByWordForm"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </ng-container>
+  <div marcoBody>
+    <div class="cnt-zone">
+      <div class="container">
         <table mat-table [dataSource]="dataSource" matSort class="table" (matSortChange)="sortData($event)">
           <ng-container matColumnDef="userName">
             <th mat-header-cell *matHeaderCellDef>{{ 'immediateRequest.nameTable' | translate }}</th>
@@ -88,5 +80,5 @@
         <mat-paginator [pageSizeOptions]="[10, 40, 100]" showFirstLastButtons></mat-paginator>
       </div>
     </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </div>
+</contler-marco-admin>
