@@ -89,6 +89,9 @@ export class DynamicFormServicesComponent implements OnInit {
         case MODULES.maintenance:
           this.room.sendNotificationMaintain(this.guest.hotel.uid);
           break;
+        case MODULES.cleaning:
+          this.room.sendNotificationCleaning(this.guest.hotel.uid);
+          break;
       }
       this.location.back();
     });

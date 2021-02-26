@@ -33,6 +33,9 @@ export class RoomService {
   sendNotificationMaintain(hotelId: string) {
     this.http.get(`${this.url}hotel/${hotelId}/notification/maintain`).subscribe();
   }
+  sendNotificationCleaning(hotelId: string) {
+    this.http.get(`${this.url}hotel/${hotelId}/notification/clean`).subscribe();
+  }
 
   createMaintain(reception: ReceptionModel) {
     const maintainDoc = this.maintainRef.doc();
