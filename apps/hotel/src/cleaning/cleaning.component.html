@@ -1,8 +1,5 @@
 <contler-marco-admin title="{{ 'preferences.cleaning.name' | translate }}">
   <ng-container marcoHeader>
-    <!--        <p class="header__title" contlerColorHotel="primary">-->
-    <!--          -->
-    <!--        </p>-->
     <mat-form-field appearance="fill">
       <mat-select [formControl]="filterByCategoryForm" [value]="requestStatus.ALL">
         <mat-option *ngFor="let category of categories" [value]="category.text">
