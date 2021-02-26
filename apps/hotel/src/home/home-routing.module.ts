@@ -98,6 +98,10 @@ const routes: Routes = [
     loadChildren: () => import('../request-room/request-room.module').then((m) => m.RequestRoomModule),
   },
   {
+    path: 'cleaning',
+    loadChildren: () => import('../cleaning/cleaning.module').then((m) => m.CleaningModule),
+  },
+  {
     path: '**',
     component: AdminHomeComponent,
   },

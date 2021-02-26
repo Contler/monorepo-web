@@ -6,8 +6,7 @@ import { environment } from 'hotel/environments/environment';
 import { RequestEntity } from '@contler/entity';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { MODULES } from '@contler/dynamic-services';
-import { OptionModule, ImmediateRequestModule, ImmediateCategory } from '@contler/models';
-import { ImmediateModule } from '../../../../../libs/dynamic-services/src/lib/utils/Immediate-module';
+import { ImmediateCategory } from '@contler/models';
 import { Observable } from 'rxjs';
 
 @Injectable({

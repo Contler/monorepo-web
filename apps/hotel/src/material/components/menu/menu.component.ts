@@ -98,6 +98,12 @@ export class MenuComponent implements OnInit {
           primary: false,
         },
         {
+          name: 'preferences.cleaning.name',
+          icon: 'cleaning_services',
+          link: ['/home', 'cleaning'],
+          primary: false,
+        },
+        {
           name: 'preferences.room.name',
           icon: 'night_shelter',
           link: ['/home', 'request-room'],
