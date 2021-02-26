@@ -40,6 +40,6 @@ export class MaintenanceComponent implements OnInit {
   }
 
   public goToHome(): void {
-    this.router.navigate(['home']);
+    this.router.navigate(['preferences', 'cleaning']);
   }
 }

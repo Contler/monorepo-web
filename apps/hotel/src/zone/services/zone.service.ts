@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { TranslateService, UserService } from '@contler/core';
-import { switchMap } from 'rxjs/operators';
+import { UserService } from '@contler/core';
+import { switchMap, take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { CategoryEntity, ZoneEntity } from '@contler/entity';
 import { environment } from 'hotel/environments/environment';
@@ -21,6 +21,7 @@ export class ZoneService {
     const [actualLan, languages] = getLan();
 
     return this.userService.getUser().pipe(
+      take(1),
       switchMap((user) =>
         this.http.post<ZoneEntity>(environment.apiUrl + `hotel/${user.hotel.uid}/zone`, {
           name,

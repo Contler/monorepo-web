@@ -4,8 +4,8 @@
       <ion-tab-button
         tab="pending"
         class="booking-bottom-tab"
-        [style.color]="generalService.hotelColor"
-        [style.background-color]="generalService.backgroundHotelColor"
+        contlerBtnHotel
+        [opacity]="82"
         [ngClass]="{ selected_button: currentPage === PAGES.PENDING }"
       >
         <ion-label>{{ 'booking.pending' | translate }}</ion-label>
@@ -13,8 +13,8 @@
       <ion-tab-button
         tab="ready"
         class="booking-bottom-tab"
-        [style.color]="generalService.hotelColor"
-        [style.background-color]="generalService.backgroundHotelColor"
+        contlerBtnHotel
+        [opacity]="82"
         [ngClass]="{ selected_button: currentPage === PAGES.READY }"
       >
         <ion-label>{{ 'booking.resolved' | translate }}</ion-label>

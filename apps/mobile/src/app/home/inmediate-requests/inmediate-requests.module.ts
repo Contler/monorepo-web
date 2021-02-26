@@ -9,6 +9,7 @@ import { InmediateRequestsPageRoutingModule } from './inmediate-requests-routing
 import { InmediateRequestsPage } from './inmediate-requests.page';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { CommonComponentsModule } from '../../common-components/common-components.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     InmediateRequestsPageRoutingModule,
     TranslateModule,
     DynamicTranslateModule,
+    CommonComponentsModule,
   ],
   declarations: [InmediateRequestsPage],
 })

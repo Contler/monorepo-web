@@ -14,7 +14,7 @@ export const roomBaseModule: RoomModule = {
       active: true,
       type: OptionType.LINK,
       text: 'zoneRequest.categories.requestClean',
-      link: '/home/my-room/cleaning',
+      link: '/home/cleaning',
       icon: 'fas fa-hotel',
     } as ImmediateOptionLink,
     {

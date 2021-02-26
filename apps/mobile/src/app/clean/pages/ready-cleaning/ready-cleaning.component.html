@@ -15,13 +15,15 @@
       {{ 'clean.resultTitle' | translate }}
     </div>
 
-    <div *ngIf="totalReception && totalReception === 0" class="center">
-      {{ 'clean.empty' | translate }}
-    </div>
-
     <contler-reception-item *ngFor="let item of $receptionReq | async" [reception]="item" [isReady]="false">
     </contler-reception-item>
+
+    <contler-dynamic-item
+      *ngFor="let item of dynamicReq | async"
+      [isReady]="false"
+      [item]="item"
+    ></contler-dynamic-item>
   </div>
 
-  <p *ngIf="!totalReception" class="reception__text">{{ 'clean.empty' | translate }}</p>
+  <p *ngIf="!totalReception && !totalReception2" class="reception__text">{{ 'clean.empty' | translate }}</p>
 </ion-content>

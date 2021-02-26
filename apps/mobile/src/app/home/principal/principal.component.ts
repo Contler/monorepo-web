@@ -55,7 +55,7 @@ export class PrincipalComponent implements OnInit {
         this.listServices.push({
           icon: 'bed',
           name: 'menu.room',
-          route: '/home/room',
+          route: '/home/room/pending',
           type: ServiceType.ROOM,
         });
       }

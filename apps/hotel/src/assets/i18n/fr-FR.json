@@ -232,6 +232,13 @@
       "name": "Maintenance",
       "subDescription": "Les demandes en maintenance permettent à l'utilisateur d'obtenir des services de première main qui l'aideront dans son séjour."
     },
+    "cleaning": {
+      "description": "Choisissez les options à maintenir activées dans la section Nettoyage. Vous pourrez créer de nouvelles options.",
+      "disableText": "Non, laissez désactivé",
+      "enableText": "Oui, activer le service",
+      "name": "Nettoyage",
+      "subDescription": "Les demandes de nettoyage permettent à l'utilisateur d'obtenir des services de première main qui l'aident dans son séjour."
+    },
     "service": {
       "description": "Description",
       "nameOption": "Nom de l'option",

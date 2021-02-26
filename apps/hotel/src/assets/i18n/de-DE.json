@@ -232,6 +232,13 @@
       "name": "Onderhoud",
       "subDescription": "Verzoeken in onderhoud stellen de gebruiker in staat om diensten uit de eerste hand te krijgen die zullen helpen in hun verblijf."
     },
+    "cleaning": {
+      "description": "Kies welke opties ingeschakeld moeten blijven in de Schoonmaak sectie. U kunt nieuwe opties aanmaken.",
+      "disableText": "Nee, laat uitgeschakeld",
+      "enableText": "Ja, schakel de service in",
+      "name": "Schoonmaak",
+      "subDescription": "De Schoonmaak verzoeken stellen de gebruiker in staat om diensten uit de eerste hand te verkrijgen die helpen bij hun verblijf."
+    },
     "service": {
       "description": "Beschreibung",
       "nameOption": "Optionsname",

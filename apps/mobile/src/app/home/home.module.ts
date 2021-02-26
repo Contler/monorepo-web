@@ -70,6 +70,7 @@ import { DynamicServicesModule } from '@contler/dynamic-services';
             path: 'maintain',
             loadChildren: () => import('../maintain/maintain.module').then((m) => m.MaintainModule),
           },
+          { path: 'room', loadChildren: () => import('../room/room.module').then((m) => m.RoomModule) },
         ],
       },
     ]),
