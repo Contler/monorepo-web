@@ -149,6 +149,8 @@ export class RestaurantComponent implements OnInit, OnDestroy {
 
         this.restaurantArray = new FormArray(groupRestaurant);
         this.totalSize = this.restaurantArray.length;
+      } else {
+        this.dataSource = new MatTableDataSource<Element>([]);
       }
     });
   }
