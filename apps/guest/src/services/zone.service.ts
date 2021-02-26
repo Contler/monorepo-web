@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GuestService } from 'guest/services/guest.service';
-import { switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ZoneEntity } from '@contler/entity';
@@ -44,6 +44,9 @@ export class ZoneService {
   }
   getOptionsByZoneType(hotelUid: string, categoryUid: number): Observable<ImmediateCategory> {
     const ref = `modules/${hotelUid}/immediate/categories/${categoryUid}`;
-    return this.afDb.object<ImmediateCategory>(ref).valueChanges();
+    return this.afDb
+      .object<ImmediateCategory>(ref)
+      .valueChanges()
+      .pipe(map((options) => ({ ...options, options: options.options.filter((option) => option.active) })));
   }
 }
