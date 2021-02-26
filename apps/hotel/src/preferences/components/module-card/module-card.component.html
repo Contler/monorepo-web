@@ -1,6 +1,6 @@
 <div class="module" [ngClass]="{ disabled_module: module.status }" (click)="toggleModule()">
-  <mat-icon class="icon-check" *ngIf="!module.status">check_circle_outline</mat-icon>
-  <mat-icon class="icon-check" *ngIf="module.status">do_disturb_on</mat-icon>
+  <mat-icon class="icon-check" *ngIf="module.status">check_circle_outline</mat-icon>
+  <mat-icon class="icon-check" *ngIf="!module.status">do_disturb_on</mat-icon>
   <div class="module__icon_container">
     <mat-icon class="module__icon_container__icon">{{ module.icon }}</mat-icon>
   </div>
