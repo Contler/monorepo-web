@@ -39,7 +39,11 @@
       </mat-form-field>
     </ng-container>
     <ng-template #answerDynamic>
-      <contler-dynamic-form [listInputs]="data.requestDynamic.form" [readOnly]="true"></contler-dynamic-form>
+      <contler-dynamic-form
+        [listInputs]="data.requestDynamic.form"
+        [readOnly]="true"
+        class="two_columns"
+      ></contler-dynamic-form>
     </ng-template>
   </div>
   <button mat-raised-button color="accent" class="btn-update" (click)="update()" contlerBtnHotel="primary">

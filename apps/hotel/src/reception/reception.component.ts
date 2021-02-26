@@ -1,7 +1,16 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { ReceptionService, UserService } from '@contler/core';
 import { AuthService } from 'hotel/services/auth.service';
-import { debounceTime, distinctUntilChanged, first, map, mergeMap, switchMap, toArray } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  first,
+  map,
+  mergeMap,
+  switchMap,
+  tap,
+  toArray,
+} from 'rxjs/operators';
 import { combineLatest, forkJoin, from, merge, Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { ImmediateOptionLink, ReceptionModel, ReceptionStatus, ReqRecpetionGuest } from '@contler/models';
@@ -11,7 +20,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { REQUEST_STATUS } from 'hotel/inmediate-requests/const/request.const';
 import { FormControl } from '@angular/forms';
 import { DynamicModuleService, DynamicRequestStatus, MODULES } from '@contler/dynamic-services';
-import { ModalReceptionComponent } from 'hotel/inmediate-requests/components/modal-reception/modal-reception.component';
+import { ModalReceptionComponent } from 'hotel/common-components/modal-reception/modal-reception.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 
@@ -155,7 +164,10 @@ export class ReceptionComponent implements OnInit {
               this.dynamicModuleService
                 .getDynamicRequest(hotel.uid, MODULES.reception, false, 30)
                 .pipe(first()),
-            ]).pipe(map(([active, inactive]) => [...active, ...inactive])),
+            ]).pipe(
+              map(([active, inactive]) => [...active, ...inactive]),
+              tap((requests) => (this.receptionService.receptionRequest = requests)),
+            ),
             categories: this.dynamicModuleService
               .getOptionsModule(hotel.uid, MODULES.reception)
               .pipe(first()),

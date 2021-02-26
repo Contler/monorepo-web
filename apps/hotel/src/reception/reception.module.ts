@@ -11,10 +11,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { MatSortModule } from '@angular/material/sort';
 import { DynamicServicesModule } from '@contler/dynamic-services';
-import { ModalReceptionComponent } from '../inmediate-requests/components/modal-reception/modal-reception.component';
 
 @NgModule({
-  declarations: [ReceptionComponent, ModalReceptionComponent],
+  declarations: [ReceptionComponent],
   imports: [
     CommonModule,
     ReceptionRoutingModule,

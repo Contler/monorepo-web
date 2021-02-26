@@ -11,9 +11,18 @@ import { DynamicModuleService, DynamicRequestStatus, MODULES } from '@contler/dy
 import { MatDialog } from '@angular/material/dialog';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { REQUEST_STATUS } from 'hotel/inmediate-requests/const/request.const';
-import { debounceTime, distinctUntilChanged, first, map, mergeMap, switchMap, toArray } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  first,
+  map,
+  mergeMap,
+  switchMap,
+  tap,
+  toArray,
+} from 'rxjs/operators';
 import { combineLatest, forkJoin, from, merge, Observable } from 'rxjs';
-import { ModalReceptionComponent } from 'hotel/inmediate-requests/components/modal-reception/modal-reception.component';
+import { ModalReceptionComponent } from 'hotel/common-components/modal-reception/modal-reception.component';
 
 @Component({
   selector: 'contler-request-room',
@@ -150,7 +159,10 @@ export class RequestRoomComponent implements OnInit {
             dynamicRequests: combineLatest([
               this.dynamicModuleService.getDynamicRequest(hotel.uid, MODULES.room, true, 30).pipe(first()),
               this.dynamicModuleService.getDynamicRequest(hotel.uid, MODULES.room, false, 30).pipe(first()),
-            ]).pipe(map(([active, inactive]) => [...active, ...inactive])),
+            ]).pipe(
+              map(([active, inactive]) => [...active, ...inactive]),
+              tap((requests) => (this.receptionService.receptionRequest = requests)),
+            ),
             categories: this.dynamicModuleService.getOptionsModule(hotel.uid, MODULES.room).pipe(
               first(),
               map((options) =>

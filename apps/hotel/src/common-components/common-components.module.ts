@@ -14,6 +14,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { UiModule } from '@contler/ui';
 import { DirectivesModule } from '../directives/directives.module';
+import { ModalReceptionComponent } from './modal-reception/modal-reception.component';
+import { DynamicServicesModule } from '@contler/dynamic-services';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,16 @@ import { DirectivesModule } from '../directives/directives.module';
     ModalEditEmployerComponent,
     ModalInmediateRequestComponent,
     MarcoAdminComponent,
+    ModalReceptionComponent,
   ],
   entryComponents: [ModalEditEmployerComponent, ModalInmediateRequestComponent],
-  exports: [StatusIconComponent, ToolbarComponent, ModalInmediateRequestComponent, MarcoAdminComponent],
+  exports: [
+    StatusIconComponent,
+    ToolbarComponent,
+    ModalInmediateRequestComponent,
+    MarcoAdminComponent,
+    ModalReceptionComponent,
+  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -36,6 +45,7 @@ import { DirectivesModule } from '../directives/directives.module';
     DynamicTranslateModule,
     UiModule,
     DirectivesModule,
+    DynamicServicesModule,
   ],
   providers: [InmediateRequestsService],
 })

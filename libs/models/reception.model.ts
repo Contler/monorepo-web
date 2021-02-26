@@ -39,17 +39,3 @@ export interface ReqRecpetionGuest {
   request: ReceptionModel;
   guest: GuestEntity;
 }
-export const receptionDynamicConverter: FirestoreDataConverter<DynamicRequest> = {
-  fromFirestore(
-    snapshot: firebase.firestore.QueryDocumentSnapshot,
-    options: firebase.firestore.SnapshotOptions,
-  ): DynamicRequest {
-    const { createAt } = snapshot.data(options);
-    const data = snapshot.data(options) as DynamicRequest;
-    return { ...data, createAt: createAt.toDate() };
-  },
-  toFirestore(modelObject: DynamicRequest): firebase.firestore.DocumentData {
-    const { createAt, ...rest } = modelObject;
-    return { ...rest, createAt: createAt.toString() };
-  },
-};

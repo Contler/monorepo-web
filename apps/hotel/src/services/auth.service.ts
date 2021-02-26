@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { filter, map, shareReplay, switchMap, share, refCount } from 'rxjs/operators';
+import { filter, map, share, shareReplay, switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'hotel/environments/environment';
 import { EmployerEntity, HotelEntity } from '@contler/entity';
@@ -29,16 +29,12 @@ export class AuthService {
     return this.userSubject.asObservable().pipe(
       filter((user) => !!user),
       map((e) => e!),
-      shareReplay({
-        refCount: true,
-      }),
     );
   }
   get $hotel(): Observable<HotelEntity> {
     return this.hotelSubject.asObservable().pipe(
       filter((hotel) => !!hotel),
       map((e) => e!),
-      share(),
     );
   }
 }

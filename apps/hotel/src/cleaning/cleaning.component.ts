@@ -10,9 +10,18 @@ import { TranslateService } from '@ngx-translate/core';
 import { DynamicModuleService, DynamicRequestStatus, MODULES } from '@contler/dynamic-services';
 import { MatDialog } from '@angular/material/dialog';
 import { MessagesService } from 'hotel/services/messages/messages.service';
-import { ModalReceptionComponent } from 'hotel/inmediate-requests/components/modal-reception/modal-reception.component';
+import { ModalReceptionComponent } from 'hotel/common-components/modal-reception/modal-reception.component';
 import { REQUEST_STATUS } from 'hotel/inmediate-requests/const/request.const';
-import { debounceTime, distinctUntilChanged, first, map, mergeMap, switchMap, toArray } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  first,
+  map,
+  mergeMap,
+  switchMap,
+  tap,
+  toArray,
+} from 'rxjs/operators';
 import { combineLatest, forkJoin, from, merge, Observable } from 'rxjs';
 
 @Component({
@@ -154,7 +163,10 @@ export class CleaningComponent implements OnInit {
               this.dynamicModuleService
                 .getDynamicRequest(hotel.uid, MODULES.cleaning, false, 30)
                 .pipe(first()),
-            ]).pipe(map(([active, inactive]) => [...active, ...inactive])),
+            ]).pipe(
+              map(([active, inactive]) => [...active, ...inactive]),
+              tap((requests) => (this.receptionService.receptionRequest = requests)),
+            ),
             categories: this.dynamicModuleService.getOptionsModule(hotel.uid, MODULES.cleaning).pipe(first()),
           });
         }),
