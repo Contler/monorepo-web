@@ -7,10 +7,9 @@ import { MaterialModule } from 'hotel/material/material.module';
 import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { DirectivesModule } from '../directives/directives.module';
-import { IsActiveModulePipe } from './page/admin-home/pipes/is-active-module.pipe';
 
 @NgModule({
-  declarations: [AdminHomeComponent, IsActiveModulePipe],
+  declarations: [AdminHomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
