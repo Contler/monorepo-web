@@ -1,4 +1,9 @@
-<div class="menu__option" (click)="onItemSelected(item)" [routerLink]="item.link">
+<div
+  class="menu__option"
+  (click)="onItemSelected(item)"
+  [routerLink]="item.link"
+  [ngStyle]="{ 'margin-left.px': depth * 10 }"
+>
   <mat-icon
     *ngIf="item.outlined"
     contlerColorHotel="primary"
@@ -25,12 +30,15 @@
   </span>
 </div>
 <div *ngIf="expanded">
-  <contler-menu-list-item
-    *ngFor="let child of item.children"
-    [item]="child"
-    [depth]="depth + 1"
-    [routerLink]="child.link"
-    routerLinkActive="select"
-  >
-  </contler-menu-list-item>
+  <ng-container *ngFor="let child of item.children">
+    <contler-menu-list-item
+      *ngIf="child.show"
+      [item]="child"
+      [depth]="depth + 1"
+      [routerLink]="child.link"
+      routerLinkActive="select"
+      class="child_items"
+    >
+    </contler-menu-list-item>
+  </ng-container>
 </div>

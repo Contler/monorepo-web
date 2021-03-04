@@ -5,4 +5,5 @@ export interface ChildrenMenu {
   outlined?: boolean;
   primary?: boolean;
   children?: ChildrenMenu[];
+  show: boolean;
 }
