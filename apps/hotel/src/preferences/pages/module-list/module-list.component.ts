@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'hotel/services/auth.service';
-import { first, map } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
 import { SpecialZoneHotelEntity } from '@contler/entity/SpecialZoneHotel.entity';
 import { HotelService } from '@contler/core';
 import { HotelEntity } from '@contler/entity';
@@ -34,17 +34,13 @@ export class ModuleListComponent implements OnInit {
   }
 
   private async loadInitialData(): Promise<void> {
-    this.hotel = await this.authService.$employer
-      .pipe(
-        map((employer) => employer.hotel),
-        first(),
-      )
-      .toPromise();
+    this.hotel = await this.authService.$hotel.pipe(first()).toPromise();
   }
 
   public async updateModule(module: SpecialZoneHotelEntity): Promise<void> {
     const loader = this.messageService.showLoader();
     this.hotel.specialZones = this.hotel.specialZones.map((m) => (m.id === module.id ? module : m));
+    this.authService.hotel = this.hotel;
     try {
       await this.hotelService.updateHotel(this.hotel).toPromise();
       this.messageService.closeLoader(loader);

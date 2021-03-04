@@ -37,4 +37,8 @@ export class AuthService {
       map((e) => e!),
     );
   }
+
+  set hotel(hotel: HotelEntity) {
+    this.hotelSubject.next(hotel);
+  }
 }

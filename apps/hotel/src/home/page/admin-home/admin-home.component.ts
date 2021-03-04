@@ -120,7 +120,6 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       this.router.navigate(['preferences']);
     }
     this.authService.$hotel.pipe(map((hotel) => hotel.specialZones)).subscribe((zones) => {
-      console.log({ zones });
       this.sections = this.sections.map((section) => {
         if (section.isReception) {
           const isReceptionActive = zones.find((z) => z.zone.name === 'receptionZone');
