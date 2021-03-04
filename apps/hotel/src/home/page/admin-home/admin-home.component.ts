@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
 import { first, map } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { SpecialRequestsService } from 'hotel/special-requests/services/special-requests.service';
-import { RequestEntity } from '@contler/entity';
+import { RequestEntity, SpecialZoneHotelEntity } from '@contler/entity';
 import { AuthService } from 'hotel/services/auth.service';
 
 @Component({
@@ -20,6 +20,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       link: ['/home', 'guest'],
       outlined: false,
       isReception: false,
+      show: true,
     },
     {
       name: 'global.IMMEDIATE_REQUEST',
@@ -29,6 +30,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       link: ['home', 'inmediate-requests'],
       badge: null,
       isReception: false,
+      show: true,
     },
     {
       name: 'global.RECEPTION',
@@ -36,6 +38,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       link: ['home', 'inmediate-requests'],
       outlined: false,
       isReception: true,
+      show: true,
     },
     {
       name: 'global.ZONE',
@@ -43,6 +46,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       outlined: false,
       link: ['home', 'zone'],
       isReception: false,
+      show: true,
     },
     {
       name: 'global.SPACE_RESERVATION',
@@ -50,6 +54,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       outlined: false,
       link: ['home', 'reservation', 'calendar'],
       isReception: false,
+      show: true,
     },
     {
       name: 'global.RESTAURANT',
@@ -57,6 +62,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       outlined: false,
       link: ['home', 'restaurant'],
       isReception: false,
+      show: true,
     },
     {
       name: 'global.EMPLOYER',
@@ -64,6 +70,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       outlined: true,
       link: ['home', 'employer'],
       isReception: false,
+      show: true,
     },
     {
       name: 'global.SPECIAL_REQUEST',
@@ -71,6 +78,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       outlined: false,
       link: ['home', 'special-requests'],
       isReception: false,
+      show: true,
     },
     {
       name: 'global.LATE_CHECKOUT',
@@ -78,11 +86,13 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       outlined: false,
       link: ['home', 'late'],
       isReception: false,
+      show: true,
     },
   ];
 
   private inmediateRequestsSubscription: Subscription | null = null;
   private specialRequestsSubscription: Subscription | null = null;
+  public specialZones$: Observable<SpecialZoneHotelEntity[]>;
 
   constructor(
     private router: Router,
@@ -109,6 +119,24 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     if (!initialConfiguration) {
       this.router.navigate(['preferences']);
     }
+    this.authService.$hotel.pipe(map((hotel) => hotel.specialZones)).subscribe((zones) => {
+      console.log({ zones });
+      this.sections = this.sections.map((section) => {
+        if (section.isReception) {
+          const isReceptionActive = zones.find((z) => z.zone.name === 'receptionZone');
+          if (isReceptionActive) {
+            section.show = isReceptionActive.status;
+          }
+        }
+        if (section.name === 'global.LATE_CHECKOUT') {
+          const isLateCheckoutActive = zones.find((z) => z.zone.name === 'lateZone');
+          if (isLateCheckoutActive) {
+            section.show = isLateCheckoutActive.status;
+          }
+        }
+        return section;
+      });
+    });
     this.inmediateRequestsSubscription = this.inmediateRequestsService
       .listenInmediateRequestByHotel()
       .pipe(
@@ -143,4 +171,5 @@ interface ItemMenu {
   primary?: boolean;
   link: string[] | null;
   badge?: number | null;
+  show: boolean;
 }

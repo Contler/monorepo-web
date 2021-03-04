@@ -6,31 +6,33 @@
   <mat-sidenav-content>
     <h1 class="contler-admin__title" contlerColorHotel="primary">{{ 'home.desktop' | translate }}</h1>
     <div class="contler-admin__options">
-      <mat-card
-        class="contler-admin__options-card"
-        *ngFor="let section of sections"
-        (click)="goToPage(section.link, section.isReception)"
-      >
-        <mat-icon
-          *ngIf="section.outlined"
-          [class.contler-admin__primary]="section.primary"
-          fontSet="material-icons-outlined"
-          contlerColorHotel="primary"
-          class="contler-admin__options-icon"
+      <ng-container *ngFor="let section of sections">
+        <mat-card
+          class="contler-admin__options-card"
+          *ngIf="section.show"
+          (click)="goToPage(section.link, section.isReception)"
         >
-          {{ section.icon }}
-        </mat-icon>
-        <mat-icon
-          *ngIf="!section.outlined"
-          contlerColorHotel="primary"
-          class="contler-admin__options-icon"
-          [class.contler-admin__primary]="section.primary"
-        >
-          {{ section.icon }}
-        </mat-icon>
-        <p class="contler-admin__options-text">{{ section.name | translate }}</p>
-        <p class="badge" *ngIf="section.badge">{{ section.badge }}</p>
-      </mat-card>
+          <mat-icon
+            *ngIf="section.outlined"
+            [class.contler-admin__primary]="section.primary"
+            fontSet="material-icons-outlined"
+            contlerColorHotel="primary"
+            class="contler-admin__options-icon"
+          >
+            {{ section.icon }}
+          </mat-icon>
+          <mat-icon
+            *ngIf="!section.outlined"
+            contlerColorHotel="primary"
+            class="contler-admin__options-icon"
+            [class.contler-admin__primary]="section.primary"
+          >
+            {{ section.icon }}
+          </mat-icon>
+          <p class="contler-admin__options-text">{{ section.name | translate }}</p>
+          <p class="badge" *ngIf="section.badge">{{ section.badge }}</p>
+        </mat-card>
+      </ng-container>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
