@@ -90,7 +90,8 @@ export class ZoneRequestComponent implements AfterViewInit {
   }
 
   setQuickRequest(value: string) {
-    value ? (this.selectedSubcategory = value) : (this.showRequestField = true);
+    value ? (this.selectedSubcategory = value) : (this.selectedSubcategory = 'Other');
+    value ? (this.showRequestField = false) : (this.showRequestField = true);
   }
 
   buttonDisabled() {

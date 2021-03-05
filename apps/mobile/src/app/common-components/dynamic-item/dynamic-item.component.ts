@@ -1,26 +1,27 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DynamicRequest } from '@contler/dynamic-services';
 import { MatDialog } from '@angular/material/dialog';
 import { DynamicResultComponent } from '../dynamicresult/dynamic-result.component';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'contler-dynamic-item',
   templateUrl: './dynamic-item.component.html',
   styleUrls: ['./dynamic-item.component.scss'],
 })
-export class DynamicItemComponent implements OnInit {
+export class DynamicItemComponent {
   @Input() item: DynamicRequest;
   @Input() isReady: boolean;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private modalController: ModalController) {}
 
-  ngOnInit(): void {}
-
-  openModal() {
+  async openModal() {
     if (this.isReady) {
-      this.dialog.open(DynamicResultComponent, {
-        data: this.item,
+      const modal = await this.modalController.create({
+        component: DynamicResultComponent,
+        componentProps: { data: this.item },
       });
+      modal.present();
     }
   }
 

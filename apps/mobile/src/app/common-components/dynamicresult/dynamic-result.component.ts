@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component, Input, OnInit } from '@angular/core';
 import { DynamicRequest, DynamicRequestStatus } from '@contler/dynamic-services';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'contler-dynamicresult',
@@ -9,6 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./dynamic-result.component.scss'],
 })
 export class DynamicResultComponent implements OnInit {
+  @Input() data: DynamicRequest;
   status: DynamicRequestStatus;
 
   listStatus = [
@@ -17,11 +18,7 @@ export class DynamicResultComponent implements OnInit {
     DynamicRequestStatus.COMPLETED,
   ];
 
-  constructor(
-    public dialogRef: MatDialogRef<DynamicResultComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DynamicRequest,
-    private db: AngularFirestore,
-  ) {}
+  constructor(private db: AngularFirestore, private modalController: ModalController) {}
 
   ngOnInit(): void {
     this.status = this.data.status;
@@ -33,6 +30,8 @@ export class DynamicResultComponent implements OnInit {
       this.data.active = false;
     }
     this.db.collection('dynamicRequest').doc(this.data.key).update(this.data);
-    this.dialogRef.close();
+  }
+  closeModal() {
+    this.modalController.dismiss();
   }
 }
