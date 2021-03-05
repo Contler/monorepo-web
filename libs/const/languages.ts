@@ -16,7 +16,7 @@ export const LANGUAGES: Language[] = [
     code: 'en',
   },
   {
-    name: 'Deutsche',
+    name: 'Deutsch',
     englishName: 'German',
     prefix: 'de-DE',
     unicode: '🇩🇪',

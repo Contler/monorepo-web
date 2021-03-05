@@ -6,6 +6,15 @@
 
   <mat-sidenav-content class="cnt-restaurant">
     <div class="container">
+      <div></div>
+      <div class="button_container">
+        <a mat-raised-button contlerBtnHotel="primary" [routerLink]="['/home', 'product']">{{
+          'menu.products' | translate
+        }}</a>
+        <a mat-raised-button contlerBtnHotel="primary" [routerLink]="['/home', 'menu-category']">{{
+          'menu.categories' | translate
+        }}</a>
+      </div>
       <div class="form_section">
         <p class="title" contlerColorHotel="primary">{{ 'restaurant.title' | translate }}</p>
         <form [formGroup]="restaurantGroup" (ngSubmit)="save()">
