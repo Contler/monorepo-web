@@ -1,16 +1,11 @@
-<ion-header translucent>
-  <ion-toolbar>
-    <ion-title contlerColorHotel="primary">{{ data.nameService | ctrTranslate }}</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="closeModal()" contlerColorHotel="primary">{{
-        'pendingMaintain.close' | translate | titlecase
-      }}</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<contler-toolbar [isModal]="true" (closeClick)="closeModal()" class="close_modal"></contler-toolbar>
 <ion-content fullscreen="">
   <div class="modal">
     <div>
+      <div class="modal__title" [style.color]="generalService.hotelColor">
+        {{ data.nameService | ctrTranslate }}
+      </div>
+
       <mat-form-field appearance="fill" style="width: 100%">
         <mat-select [(ngModel)]="status">
           <mat-option *ngFor="let opt of listStatus" [value]="opt">

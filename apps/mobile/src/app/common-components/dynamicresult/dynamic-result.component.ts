@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DynamicRequest, DynamicRequestStatus } from '@contler/dynamic-services';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ModalController } from '@ionic/angular';
+import { GeneralService } from '../../services/general.service';
 
 @Component({
   selector: 'contler-dynamicresult',
@@ -18,7 +19,11 @@ export class DynamicResultComponent implements OnInit {
     DynamicRequestStatus.COMPLETED,
   ];
 
-  constructor(private db: AngularFirestore, private modalController: ModalController) {}
+  constructor(
+    private db: AngularFirestore,
+    private modalController: ModalController,
+    public generalService: GeneralService,
+  ) {}
 
   ngOnInit(): void {
     this.status = this.data.status;
