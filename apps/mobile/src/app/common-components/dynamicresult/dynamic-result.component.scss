@@ -1,8 +1,5 @@
-:host {
-  position: relative;
-}
-
 .modal {
+  padding: 40px;
   &__form {
     margin-top: 40px;
     display: grid;
@@ -12,12 +9,6 @@
     .double {
       grid-column: span 2;
     }
-  }
-
-  &__close {
-    position: absolute;
-    top: -25px;
-    left: -25px;
   }
 }
 

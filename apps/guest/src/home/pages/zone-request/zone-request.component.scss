@@ -53,6 +53,7 @@ $grayFeatures: #9e9e9e; // OJO!: HAY VARIOS GRISES DISTINTOS EN ZEPLIN
 
   &__input {
     width: 100%;
+    padding-bottom: 20px;
   }
 
   &__button {
@@ -96,4 +97,19 @@ $grayFeatures: #9e9e9e; // OJO!: HAY VARIOS GRISES DISTINTOS EN ZEPLIN
       margin-bottom: 21px;
     }
   }
+}
+.zone-request-container__button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: white;
+  width: 100%;
+  button {
+    width: 100%;
+  }
+}
+.pb-100 {
+  padding-bottom: 100px;
 }

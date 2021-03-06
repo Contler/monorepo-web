@@ -38,7 +38,8 @@
           <textarea
             matInput
             cdkTextareaAutosize
-            [(ngModel)]="request.comment"
+            [value]="request.comment | ctrTranslate"
+            readonly
             name="scoreComments"
             required
           ></textarea>
