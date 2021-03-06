@@ -52,7 +52,7 @@ export class ZoneComponent {
       (zone) => {
         this.zones = [...this.zones, zone];
         this.load = false;
-        this.translate.get(zone.name).subscribe(() => this.messagesService.showToastMessage(name));
+        this.messagesService.showToastMessage(name);
         this.zoneGroup.reset({ name: '', category: '', icon: '', principal: false });
       },
       () => {
