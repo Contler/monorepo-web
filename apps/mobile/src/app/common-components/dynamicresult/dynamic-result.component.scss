@@ -1,5 +1,16 @@
 .modal {
   padding: 40px;
+  &__title {
+    font-family: Raleway;
+    font-size: 20.2px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.25px;
+    text-align: center;
+    margin: 0 0 38px;
+  }
   &__form {
     margin-top: 40px;
     display: grid;
@@ -15,4 +26,7 @@
 .create {
   width: 100%;
   margin-top: 10px;
+}
+.close_modal {
+  padding: 24px 40px 0;
 }

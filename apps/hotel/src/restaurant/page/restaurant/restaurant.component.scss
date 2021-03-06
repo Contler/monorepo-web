@@ -42,3 +42,8 @@ table {
     }
   }
 }
+.button_container {
+  display: flex;
+  column-gap: 20px;
+  padding-bottom: 10px;
+}
