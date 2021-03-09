@@ -42,4 +42,17 @@ export class MaintenanceComponent implements OnInit {
   public goToHome(): void {
     this.router.navigate(['preferences', 'cleaning']);
   }
+  isDynamicModule(module: OptionModule) {
+    return module.text.includes('/name');
+  }
+
+  public editModule(option: OptionModule): void {
+    const optionTextArr = option.text.split('/');
+    if (optionTextArr.length > 0) {
+      const formId = optionTextArr[1];
+      this.router.navigate(['preferences', 'maintenance', 'service', formId], {
+        queryParams: { icon: option.icon },
+      });
+    }
+  }
 }

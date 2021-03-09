@@ -42,4 +42,16 @@ export class RoomComponent implements OnInit {
   public goToMaintenancePage(): void {
     this.router.navigate(['preferences', 'maintenance']);
   }
+  isDynamicModule(module: OptionModule) {
+    return module.text.includes('/name');
+  }
+  public editModule(option: OptionModule): void {
+    const optionTextArr = option.text.split('/');
+    if (optionTextArr.length > 0) {
+      const formId = optionTextArr[1];
+      this.router.navigate(['preferences', 'room', 'service', formId], {
+        queryParams: { icon: option.icon },
+      });
+    }
+  }
 }

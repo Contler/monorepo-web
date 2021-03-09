@@ -95,4 +95,8 @@ export class TranslateService {
   generateUrl(request: TranslateRequest) {
     return this.http.post<{ key: string }>(`${this.url}translate`, request);
   }
+  removeTranslate(key: string, hotelUid: string): Promise<void> {
+    const path = `dictionary/${hotelUid}/${key}`;
+    return this.afDb.object(path).remove();
+  }
 }

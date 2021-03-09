@@ -42,4 +42,17 @@ export class ReceptionComponent implements OnInit {
   public goToRoomPage(): void {
     this.router.navigate(['preferences', 'room']);
   }
+  isDynamicModule(module: OptionModule) {
+    return module.text.includes('/name');
+  }
+
+  public editModule(option: OptionModule): void {
+    const optionTextArr = option.text.split('/');
+    if (optionTextArr.length > 0) {
+      const formId = optionTextArr[1];
+      this.router.navigate(['preferences', 'reception', 'service', formId], {
+        queryParams: { icon: option.icon },
+      });
+    }
+  }
 }
