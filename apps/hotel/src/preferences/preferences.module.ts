@@ -29,6 +29,7 @@ import { MaintenanceComponent } from './pages/maintenance/maintenance.component'
 import { CreateMaintenanceModuleComponent } from './pages/create-maintenance-module/create-maintenance-module.component';
 import { CleaningComponent } from './pages/cleaning/cleaning.component';
 import { CreateCleaningModuleComponent } from './pages/create-cleaning-module/create-cleaning-module.component';
+import { PreferencesService } from './services/preferences.service';
 
 @NgModule({
   declarations: [
@@ -74,5 +75,6 @@ import { CreateCleaningModuleComponent } from './pages/create-cleaning-module/cr
     FormsModule,
     ReactiveFormsModule,
   ],
+  providers: [PreferencesService],
 })
 export class PreferencesModule {}

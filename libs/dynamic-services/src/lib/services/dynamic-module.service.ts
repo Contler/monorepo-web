@@ -3,6 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { MODULES } from '../constants/modules-references';
 import { first, map, take, tap } from 'rxjs/operators';
 import {
+  ImmediateOptionDynamicForm,
   ImmediateOptionLink,
   ImmediateOptionText,
   ImmediateRequestModule,
@@ -94,7 +95,7 @@ export class DynamicModuleService {
   }
   async updateOptionToModule(
     hotelId: string,
-    option: ImmediateOptionLink,
+    option: ImmediateOptionDynamicForm,
     moduleReference: MODULES,
   ): Promise<void> {
     const url = `${MODULES.root}/${hotelId}/${moduleReference}/options`;
@@ -203,6 +204,7 @@ export class DynamicModuleService {
         icon: 'fas fa-plus',
         text: 'zoneRequest.categories.other',
         active: true,
+        formKey: null,
       })
       .addOption('4', {
         type: OptionType.LINK,
@@ -315,12 +317,13 @@ export class DynamicModuleService {
     });
 
     this.generateMSg('preferences.message.saveService');
-    const option: ImmediateOptionLink = {
+    const option: ImmediateOptionDynamicForm = {
       active: true,
       text: dataInit[0].key,
       icon: data.icon,
-      type: OptionType.LINK,
+      type: OptionType.DYNAMIC_FORM,
       link: `/home/services/${moduleReference}/${keyService}`,
+      formKey: keyService,
     };
     if (!formService) {
       await this.addOptionToModule(hotelUid, option, moduleReference);
