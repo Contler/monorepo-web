@@ -5,7 +5,7 @@ import { EmployerService } from '../../services/employer.service';
 import { InmediateRequestsService } from '../../services/inmediate-requests.service';
 import { EmployerEntity, RequestEntity } from '@contler/entity';
 import { AuthService } from '../../services/auth.service';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -37,7 +37,16 @@ export class ModalInmediateRequestPage implements OnInit {
   ngOnInit() {
     this.idSelected = this.request!.solved ? this.request!.solved.uid : null;
     this.isFinished = this.request!.complete;
-    this.employerService.getEmployers().subscribe((employers) => (this.employers = employers));
+    this.employerService
+      .getEmployers()
+      .pipe(
+        map((employers) =>
+          employers.filter((employer) =>
+            employer.leaderZones.find((zone) => zone.uid === this.data.zone.uid),
+          ),
+        ),
+      )
+      .subscribe((employers) => (this.employers = employers));
   }
 
   save() {
