@@ -1,4 +1,11 @@
 {
+  "login": {
+    "username": "Usuario",
+    "username-placeholder": "user@company.com",
+    "password": "Contraseña",
+    "sign-in": "ingresar",
+    "forgot-password": "¿Olvidaste tu contraseña?"
+  },
   "DAYS": {
     "allDay": "Todos los días",
     "friday": "Viernes",

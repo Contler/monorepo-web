@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { GUEST } from '@contler/const';
+import { GUEST, LANGUAGES } from '@contler/const';
 import { GuestService } from 'guest/services/guest.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Language } from '@contler/models';
 
 @Component({
   selector: 'contler-login',
@@ -15,6 +16,8 @@ export class LoginComponent {
   loginForm: FormGroup;
   loader = false;
   error: string | undefined;
+  actualLanguage: Language;
+  readonly languages = LANGUAGES;
 
   constructor(
     formBuilder: FormBuilder,
@@ -23,6 +26,8 @@ export class LoginComponent {
     private guestService: GuestService,
     private translate: TranslateService,
   ) {
+    const { lan } = window.localStorage;
+    this.actualLanguage = LANGUAGES.find((l) => l.prefix === lan) || LANGUAGES[0];
     this.loginForm = formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required]],
@@ -71,5 +76,9 @@ export class LoginComponent {
           break;
       }
     }
+  }
+  changeLanguage() {
+    this.translate.use(this.actualLanguage.prefix);
+    window.localStorage.lan = this.actualLanguage.prefix;
   }
 }

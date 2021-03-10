@@ -6,8 +6,7 @@ import { MaterialModule } from 'hotel/material/material.module';
 import { LoginComponent } from 'hotel/login/login.component';
 import { LoginRoutingModule } from 'hotel/login/login-routing.module';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -17,7 +16,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireAuthModule
-  ]
+    AngularFireAuthModule,
+    TranslateModule,
+  ],
 })
-export class LoginModule { }
+export class LoginModule {}
