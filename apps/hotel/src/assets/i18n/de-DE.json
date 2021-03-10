@@ -192,7 +192,9 @@
     "message": {
       "saveForm": "Formular speichern",
       "saveService": "Service speichern",
-      "translateMessage": "Formularübersetzungen generieren"
+      "translateMessage": "Formularübersetzungen generieren",
+      "removeFormError": "Dit formulier heeft actieve verzoeken",
+      "removeFormSuccess": "Het formulier is succesvol verwijderd"
     },
     "newOption": "Neue Option hinzufügen",
     "newOptionbutton": "Fügen Sie ein neues Feld hinzu",

@@ -28,7 +28,7 @@
         </div>
         <div *ngIf="isDynamicModule(option)">
           <mat-icon contlerColorHotel="primary" class="cursor" (click)="editModule(option)">edit</mat-icon>
-          <mat-icon color="warn" class="cursor">delete</mat-icon>
+          <mat-icon color="warn" class="cursor" (click)="removeDynamicForm(option)">delete</mat-icon>
         </div>
       </div>
     </mat-expansion-panel>

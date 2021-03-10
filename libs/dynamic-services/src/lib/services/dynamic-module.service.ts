@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { MODULES } from '../constants/modules-references';
-import { first, take, tap } from 'rxjs/operators';
+import { first, map, take, tap } from 'rxjs/operators';
 import {
   ImmediateOptionLink,
   ImmediateOptionText,
@@ -80,6 +80,16 @@ export class DynamicModuleService {
     const url = `${MODULES.root}/${hotelId}/${moduleReference}/options`;
     const list = await this.db.list(url).valueChanges().pipe(take(1)).toPromise();
     list.push(option);
+    return this.db.object(url).set(list);
+  }
+  async removeOptionModule(
+    hotelId: string,
+    option: ImmediateOptionLink,
+    moduleReference: MODULES,
+  ): Promise<void> {
+    const url = `${MODULES.root}/${hotelId}/${moduleReference}/options`;
+    let list = await this.db.list<ImmediateOptionLink>(url).valueChanges().pipe(take(1)).toPromise();
+    list = list.filter((l) => l.link !== option.link);
     return this.db.object(url).set(list);
   }
   async updateOptionToModule(
@@ -338,7 +348,7 @@ export class DynamicModuleService {
     return this.fireDb.collection(`dynamicRequest`).doc(request.key).update(request);
   }
 
-  getDynamicRequest(hotelId: string, module: MODULES, status: boolean, untilDate?: number) {
+  getDynamicRequest(hotelId: string, module: MODULES, status: boolean, untilDate?: number, formId?: string) {
     const reference = this.fireDb.firestore
       .collection('dynamicRequest')
       .withConverter(receptionDynamicConverter);
@@ -359,8 +369,16 @@ export class DynamicModuleService {
       query = (ref) =>
         ref.where('hotelId', '==', hotelId).where('service', '==', module).where('active', '==', status);
     }
-    return this.fireDb.collection<DynamicRequest>(reference, query).valueChanges();
+    if (formId) {
+      return this.fireDb
+        .collection<DynamicRequest>(reference, query)
+        .valueChanges()
+        .pipe(map((forms) => forms.filter((form) => form.nameService.includes(formId))));
+    } else {
+      return this.fireDb.collection<DynamicRequest>(reference, query).valueChanges();
+    }
   }
+
   getOptionModule(path: string, hotelUid: string, optionUid): Observable<OptionModule[]> {
     let ref = `modules/${hotelUid}`;
     let link = '/home/services/';
@@ -378,5 +396,10 @@ export class DynamicModuleService {
     return this.db
       .list<OptionModule>(ref, (queryFn) => queryFn.orderByChild('link').equalTo(link))
       .valueChanges();
+  }
+
+  removeDictionaryFormModule(hotelUid: string, moduleReference: MODULES, formId: string) {
+    const path = `dictionary/${hotelUid}/${moduleReference}Module/${formId}`;
+    return this.db.object(path).remove();
   }
 }

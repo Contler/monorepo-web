@@ -92,17 +92,6 @@ export class NewServiceWrapComponent implements OnChanges {
         form: this.listOption,
       });
     } else {
-      const hotel = await this.$hotel.pipe(first()).toPromise();
-      const promisesToExecute = this.keys.map((key) => this.translateService.removeTranslate(key, hotel.uid));
-      const loader = this.messagesService.showLoader();
-      try {
-        await Promise.all(promisesToExecute);
-        this.messagesService.closeLoader(loader);
-      } catch (err) {
-        console.log(err);
-        this.messagesService.closeLoader(loader);
-        this.messagesService.showServerError();
-      }
       this.update.emit({
         formCreation: {
           ...this.formBasic.value,

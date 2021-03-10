@@ -192,7 +192,9 @@
     "message": {
       "saveForm": "Enregistrement du formulaire",
       "saveService": "Service d'épargne",
-      "translateMessage": "Générer des traductions de formulaires"
+      "translateMessage": "Générer des traductions de formulaires",
+      "removeFormError": "Ce formulaire a des demandes actives",
+      "removeFormSuccess": "Le formulaire a été supprimé avec succès"
     },
     "newOption": "Ajouter une nouvelle option",
     "newOptionbutton": "Ajouter un nouveau champ",

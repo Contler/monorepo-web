@@ -192,7 +192,9 @@
     "message": {
       "saveForm": "Saving form",
       "saveService": "Saving service",
-      "translateMessage": "Generating form translations"
+      "translateMessage": "Generating form translations",
+      "removeFormError": "This form has active requests",
+      "removeFormSuccess": "The form was successfully deleted"
     },
     "newOption": "Add new option",
     "newOptionbutton": "Add a new field",
