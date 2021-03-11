@@ -213,6 +213,8 @@
       "nameInpitHit": "Tipo de campo",
       "reload": "Recargar",
       "select": "Lista de opciones",
+      "select-other": "Lista de opciones con 'otro'",
+      "other": "Otro",
       "text": "Campo abierto"
     },
     "request": {
@@ -458,5 +460,8 @@
       "waiter": "Camarero",
       "wakeUp": "Programa despertador"
     }
+  },
+  "dynamicForm": {
+    "which": "¿Cual?"
   }
 }

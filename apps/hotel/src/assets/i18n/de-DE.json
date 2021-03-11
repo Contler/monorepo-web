@@ -213,6 +213,8 @@
       "nameInpitHit": "Feldtyp",
       "reload": "Nachladen",
       "select": "Optionsliste",
+      "select-other": "Lijst van opties met 'andere'",
+      "other": "Andere",
       "text": "Offenes Feld"
     },
     "request": {
@@ -458,5 +460,8 @@
       "waiter": "Bedienung",
       "wakeUp": "Weckprogramm"
     }
+  },
+  "dynamicForm": {
+    "which": "Welke?"
   }
 }

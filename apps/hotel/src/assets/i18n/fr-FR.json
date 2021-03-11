@@ -213,6 +213,8 @@
       "nameInpitHit": "Type de champ",
       "reload": "Recharger",
       "select": "Liste d'options",
+      "select-other": "Liste des options avec 'autre'",
+      "other": "Autre",
       "text": "Champ ouvert"
     },
     "request": {
@@ -458,5 +460,8 @@
       "waiter": "Garçon",
       "wakeUp": "Programme de réveil"
     }
+  },
+  "dynamicForm": {
+    "which": "Laquelle ?"
   }
 }

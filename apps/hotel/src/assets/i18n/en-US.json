@@ -213,6 +213,8 @@
       "nameInpitHit": "Field type",
       "reload": "Recharge",
       "select": "Options list",
+      "select-other": "List of options with 'other'",
+      "other": "Other",
       "text": "Open Field"
     },
     "request": {
@@ -458,5 +460,8 @@
       "waiter": "Waiter",
       "wakeUp": "Wake-up program"
     }
+  },
+  "dynamicForm": {
+    "which": "Which?"
   }
 }

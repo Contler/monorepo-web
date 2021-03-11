@@ -12,6 +12,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   @Input() readOnly = false;
 
   form: FormGroup;
+  showWhich = false;
 
   constructor(private formBuild: FormBuilder) {
     this.form = formBuild.group({});

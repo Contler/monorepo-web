@@ -2,10 +2,11 @@
   <ng-container *ngFor="let opt of listInputs; let i = index">
     <ng-container [ngSwitch]="opt.type">
       <ng-container *ngSwitchCase="0">
-        <mat-form-field appearance="fill" *ngIf="getControl(opt.type, i)">
-          <textarea type="text" matInput [formControlName]="generateName(opt.type, i)"></textarea>
-          <mat-hint>{{ opt.description | ctrTranslate }}</mat-hint>
-        </mat-form-field>
+        <contler-text-input
+          [typeInput]="opt"
+          *ngIf="getControl(opt.type, i)"
+          [formControlName]="generateName(opt.type, i)"
+        ></contler-text-input>
       </ng-container>
 
       <ng-container *ngSwitchCase="1">
@@ -23,6 +24,13 @@
           </mat-select>
           <mat-hint>{{ opt.description | ctrTranslate }}</mat-hint>
         </mat-form-field>
+      </ng-container>
+      <ng-container *ngSwitchCase="3">
+        <contler-other-input
+          [typeInput]="opt"
+          *ngIf="getControl(opt.type, i)"
+          [formControlName]="generateName(opt.type, i)"
+        ></contler-other-input>
       </ng-container>
     </ng-container>
   </ng-container>

@@ -210,5 +210,8 @@
       "waiter": "Bedienung",
       "wakeUp": "Programm Weckruf"
     }
+  },
+  "dynamicForm": {
+    "which": "Welke?"
   }
 }

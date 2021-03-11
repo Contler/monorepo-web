@@ -35,6 +35,7 @@ export class DynamicResultComponent implements OnInit {
       this.data.active = false;
     }
     this.db.collection('dynamicRequest').doc(this.data.key).update(this.data);
+    this.closeModal();
   }
   closeModal() {
     this.modalController.dismiss();

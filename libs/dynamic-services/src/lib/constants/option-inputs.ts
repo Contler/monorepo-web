@@ -11,6 +11,10 @@ export const OPTION_INPUTS: OptionInput[] = [
     value: InputType.SELECT,
   },
   {
+    name: 'preferences.optionInputs.select-other',
+    value: InputType.SELECT_WITH_OTHER,
+  },
+  {
     name: 'preferences.optionInputs.calendar',
     value: InputType.DATE,
   },
