@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
-import { ADMIN, CHIEF, LANGUAGES } from '@contler/const';
+import { ADMIN, CHIEF, getLan, LANGUAGES } from '@contler/const';
 import { User, Language } from '@contler/models';
 import { AuthService } from '../../services/auth.service';
 import { MessagesService } from '../../services/messages/messages.service';
@@ -25,8 +25,8 @@ export class LoginPage implements OnInit {
     private usersService: UsersService,
     private translate: TranslateService,
   ) {
-    const { lan } = window.localStorage;
-    this.actualLanguage = LANGUAGES.find((l) => l.prefix === lan) || LANGUAGES[0];
+    const [actualLan] = getLan();
+    this.actualLanguage = actualLan;
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required]],
