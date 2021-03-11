@@ -47,6 +47,5 @@ export class LoginComponent {
     this.actualLanguage = lan;
     this.translate.use(lan.prefix);
     window.localStorage.lan = lan.prefix;
-    // this.changeCurrentLanguage.emit(lan);
   }
 }
