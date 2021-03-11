@@ -1,0 +1,18 @@
+<mat-form-field appearance="fill" class="w-100">
+  <mat-select (valueChange)="changeSelect($event)" [(ngModel)]="isOptionForm" [disabled]="isDisabled">
+    <mat-option *ngFor="let op of typeInput.option" [value]="op">{{ op | ctrTranslate }}</mat-option>
+  </mat-select>
+  <mat-hint>{{ typeInput.description | ctrTranslate }}</mat-hint>
+</mat-form-field>
+<ng-container *ngIf="isOther">
+  <mat-form-field appearance="fill" class="w-100">
+    <textarea
+      type="text"
+      matInput
+      (change)="setValueFromFieldOther($event)"
+      [disabled]="isDisabled"
+      value="{{ isOtherForm | ctrTranslate }}"
+    ></textarea>
+    <mat-hint>{{ 'dynamicForm.which' | translate }}</mat-hint>
+  </mat-form-field>
+</ng-container>

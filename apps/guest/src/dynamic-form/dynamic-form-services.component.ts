@@ -33,7 +33,6 @@ export class DynamicFormServicesComponent implements OnInit {
   formData: FormService;
   formGroup: FormGroup;
   loading = false;
-  translating = false;
   constructor(
     private route: ActivatedRoute,
     private dynamicService: DynamicModuleService,
@@ -67,7 +66,10 @@ export class DynamicFormServicesComponent implements OnInit {
     const promisesToExecute = formClone.map(async (input, index) => {
       const key = `inp-type-${input.type}-${index}`;
       let value = this.dynamicForm.form.value[key];
-      if (input.type === InputType.SELECT_WITH_OTHER && !input.option.includes(value)) {
+      if (
+        (input.type === InputType.SELECT_WITH_OTHER && !input.option.includes(value)) ||
+        input.type === InputType.TEXT
+      ) {
         const [actualLan, languages] = getLan();
         const trans = await this.dynTranslate
           .generateUrl({
