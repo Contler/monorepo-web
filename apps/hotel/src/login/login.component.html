@@ -1,21 +1,32 @@
 <div class="contler-login">
+  <div class="languages">
+    <button mat-button [matMenuTriggerFor]="menuLanguage">
+      {{ actualLanguage.name }}
+    </button>
+
+    <mat-menu #menuLanguage="matMenu">
+      <button mat-menu-item *ngFor="let lan of languages" (click)="changeLanguage(lan)">
+        {{ lan.name }}
+      </button>
+    </mat-menu>
+  </div>
   <img src="assets/img/logo.svg" alt="" />
   <form class="contler-login__form" [formGroup]="loginForm" (ngSubmit)="login()">
     <mat-form-field appearance="fill">
-      <input matInput placeholder="user@company.com" formControlName="email" />
+      <input matInput placeholder="{{ 'login.username-placeholder' | translate }}" formControlName="email" />
       <mat-icon matSuffix>account_circle</mat-icon>
-      <mat-hint>Usuario</mat-hint>
+      <mat-hint>{{ 'login.username' | translate }}</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <input matInput placeholder="123456" type="password" formControlName="pass" />
       <mat-icon matSuffix>check_circle</mat-icon>
-      <mat-hint>Contrseña</mat-hint>
+      <mat-hint>{{ 'login.password' | translate }}</mat-hint>
     </mat-form-field>
 
-    <a class="contler-login__form__link">Olvidaste tu contraseña?</a>
+    <a class="contler-login__form__link">{{ 'login.forgot-password' | translate }}</a>
     <button mat-raised-button color="accent" class="button" [disabled]="loginForm.invalid">
-      Ingresar
+      {{ 'login.sign-in' | translate }}
     </button>
   </form>
 </div>
