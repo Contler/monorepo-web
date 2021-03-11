@@ -2,6 +2,7 @@ export enum InputType {
   TEXT,
   DATE,
   SELECT,
+  SELECT_WITH_OTHER,
 }
 
 export interface InputField {

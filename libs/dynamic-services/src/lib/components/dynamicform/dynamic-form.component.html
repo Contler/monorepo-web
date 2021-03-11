@@ -24,6 +24,28 @@
           <mat-hint>{{ opt.description | ctrTranslate }}</mat-hint>
         </mat-form-field>
       </ng-container>
+      <ng-container *ngSwitchCase="3">
+        <mat-form-field appearance="fill" *ngIf="getControl(opt.type, i, '-fake')">
+          <mat-select
+            [formControlName]="generateName(opt.type, i) + '-fake'"
+            (valueChange)="changeSelectWithOther(opt.option, $event, opt.type, i)"
+          >
+            <mat-option *ngFor="let op of opt.option" [value]="op">{{ op | ctrTranslate }}</mat-option>
+          </mat-select>
+          <mat-hint>{{ opt.description | ctrTranslate }}</mat-hint>
+        </mat-form-field>
+        <ng-container *ngIf="showWhich">
+          <mat-form-field appearance="fill" *ngIf="getControl(opt.type, i)">
+            <textarea
+              type="text"
+              matInput
+              [formControlName]="generateName(opt.type, i)"
+              value="{{ opt.value | ctrTranslate }}"
+            ></textarea>
+            <mat-hint>{{ 'dynamicForm.which' | translate }}</mat-hint>
+          </mat-form-field>
+        </ng-container>
+      </ng-container>
     </ng-container>
   </ng-container>
 </form>
