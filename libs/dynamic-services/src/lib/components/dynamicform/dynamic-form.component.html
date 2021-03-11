@@ -7,11 +7,6 @@
           *ngIf="getControl(opt.type, i)"
           [formControlName]="generateName(opt.type, i)"
         ></contler-text-input>
-        <!--        <mat-form-field appearance="fill" *ngIf="getControl(opt.type, i)">-->
-        <!--          <textarea type="text" value="{{opt.value | ctrTranslate}}" matInput-->
-        <!--                    [formControlName]="generateName(opt.type, i)"></textarea>-->
-        <!--          <mat-hint>{{ opt.description | ctrTranslate }}</mat-hint>-->
-        <!--        </mat-form-field>-->
       </ng-container>
 
       <ng-container *ngSwitchCase="1">
