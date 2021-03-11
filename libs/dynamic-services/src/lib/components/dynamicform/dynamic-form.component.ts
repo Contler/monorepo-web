@@ -33,6 +33,10 @@ export class DynamicFormComponent implements OnInit, OnChanges {
           `inp-type-${value.type}-${index}`,
           new FormControl(value.value, Validators.required),
         );
+        this.form.addControl(
+          `inp-type-${value.type}-${index}-fake`,
+          new FormControl(value.value, Validators.required),
+        );
       } else if (
         value.type === InputType.SELECT_WITH_OTHER &&
         value.value &&
