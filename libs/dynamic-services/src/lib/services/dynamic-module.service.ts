@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { MODULES } from '../constants/modules-references';
-import { first, take, tap } from 'rxjs/operators';
+import { first, map, take, tap } from 'rxjs/operators';
 import {
+  ImmediateOptionDynamicForm,
   ImmediateOptionLink,
   ImmediateOptionText,
   ImmediateRequestModule,
@@ -80,6 +81,32 @@ export class DynamicModuleService {
     const url = `${MODULES.root}/${hotelId}/${moduleReference}/options`;
     const list = await this.db.list(url).valueChanges().pipe(take(1)).toPromise();
     list.push(option);
+    return this.db.object(url).set(list);
+  }
+  async removeOptionModule(
+    hotelId: string,
+    option: ImmediateOptionLink,
+    moduleReference: MODULES,
+  ): Promise<void> {
+    const url = `${MODULES.root}/${hotelId}/${moduleReference}/options`;
+    let list = await this.db.list<ImmediateOptionLink>(url).valueChanges().pipe(take(1)).toPromise();
+    list = list.filter((l) => l.link !== option.link);
+    return this.db.object(url).set(list);
+  }
+  async updateOptionToModule(
+    hotelId: string,
+    option: ImmediateOptionDynamicForm,
+    moduleReference: MODULES,
+  ): Promise<void> {
+    const url = `${MODULES.root}/${hotelId}/${moduleReference}/options`;
+    let list = await this.db.list<ImmediateOptionLink>(url).valueChanges().pipe(take(1)).toPromise();
+    list = list.map((l) => {
+      if (l.link === option.link) {
+        l.text = option.text;
+        l.icon = option.icon;
+      }
+      return l;
+    });
     return this.db.object(url).set(list);
   }
   private setUpReception(url: string) {
@@ -178,6 +205,7 @@ export class DynamicModuleService {
         icon: 'fas fa-plus',
         text: 'zoneRequest.categories.other',
         active: true,
+        formKey: null,
       })
       .addOption('4', {
         type: OptionType.LINK,
@@ -223,11 +251,16 @@ export class DynamicModuleService {
     this.db.object(url).set(roomBaseModule.options);
   }
 
-  async createFormModuleDynamic(data: FormCreation, hotelUid: string, moduleReference: MODULES) {
+  async createFormModuleDynamic(
+    data: FormCreation,
+    hotelUid: string,
+    moduleReference: MODULES,
+    formService: FormService = null,
+  ) {
     const form = [...data.form];
     const [actualLan, languages] = getLan();
     this.generateMSg('preferences.message.translateMessage');
-    const keyService = this.db.createPushId();
+    const keyService = formService ? formService.key : this.db.createPushId();
     const dataInit = await Promise.all([
       this.dynTranslate
         .generateUrl({
@@ -248,7 +281,6 @@ export class DynamicModuleService {
         })
         .toPromise(),
     ]);
-
     for await (const inputField of form) {
       const dataInput = await this.dynTranslate
         .generateUrl({
@@ -286,14 +318,19 @@ export class DynamicModuleService {
     });
 
     this.generateMSg('preferences.message.saveService');
-    const option: ImmediateOptionLink = {
+    const option: ImmediateOptionDynamicForm = {
       active: true,
       text: dataInit[0].key,
       icon: data.icon,
-      type: OptionType.LINK,
+      type: OptionType.DYNAMIC_FORM,
       link: `/home/services/${moduleReference}/${keyService}`,
+      formKey: keyService,
     };
-    await this.addOptionToModule(hotelUid, option, moduleReference);
+    if (!formService) {
+      await this.addOptionToModule(hotelUid, option, moduleReference);
+    } else {
+      await this.updateOptionToModule(hotelUid, option, moduleReference);
+    }
   }
   generateMSg(key: string) {
     const msg1 = this.translate.instant(key);
@@ -315,7 +352,7 @@ export class DynamicModuleService {
     return this.fireDb.collection(`dynamicRequest`).doc(request.key).update(request);
   }
 
-  getDynamicRequest(hotelId: string, module: MODULES, status: boolean, untilDate?: number) {
+  getDynamicRequest(hotelId: string, module: MODULES, status: boolean, untilDate?: number, formId?: string) {
     const reference = this.fireDb.firestore
       .collection('dynamicRequest')
       .withConverter(receptionDynamicConverter);
@@ -336,6 +373,37 @@ export class DynamicModuleService {
       query = (ref) =>
         ref.where('hotelId', '==', hotelId).where('service', '==', module).where('active', '==', status);
     }
-    return this.fireDb.collection<DynamicRequest>(reference, query).valueChanges();
+    if (formId) {
+      return this.fireDb
+        .collection<DynamicRequest>(reference, query)
+        .valueChanges()
+        .pipe(map((forms) => forms.filter((form) => form.nameService.includes(formId))));
+    } else {
+      return this.fireDb.collection<DynamicRequest>(reference, query).valueChanges();
+    }
+  }
+
+  getOptionModule(path: string, hotelUid: string, optionUid): Observable<OptionModule[]> {
+    let ref = `modules/${hotelUid}`;
+    let link = '/home/services/';
+    if (path.includes('cleaning')) {
+      ref += '/cleaning/options';
+      link += 'cleaning';
+    } else if (path.includes('reception')) {
+      ref += '/reception/options';
+      link += 'reception';
+    } else if (path.includes('room')) {
+      ref += '/room/options';
+      link += 'room';
+    }
+    link += `/${optionUid}`;
+    return this.db
+      .list<OptionModule>(ref, (queryFn) => queryFn.orderByChild('link').equalTo(link))
+      .valueChanges();
+  }
+
+  removeDictionaryFormModule(hotelUid: string, moduleReference: MODULES, formId: string) {
+    const path = `dictionary/${hotelUid}/${moduleReference}Module/${formId}`;
+    return this.db.object(path).remove();
   }
 }

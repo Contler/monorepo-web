@@ -192,7 +192,9 @@
     "message": {
       "saveForm": "Salvando formulario",
       "saveService": "Salvando servicio",
-      "translateMessage": "Generando traducciones del formulario"
+      "translateMessage": "Generando traducciones del formulario",
+      "removeFormError": "Este formulario tiene solicitudes activas",
+      "removeFormSuccess": "Se elimino el formulario correctamente"
     },
     "newOption": "AGREGAR NUEVA OPCIÓN",
     "newOptionbutton": "Agregar un nuevo campo",

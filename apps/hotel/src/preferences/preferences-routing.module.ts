@@ -26,12 +26,16 @@ const routes: Routes = [
   { path: 'immediate-request', component: ImmediateRequestComponent },
   { path: 'reception', component: ReceptionComponent },
   { path: 'reception/service', component: ServiceReceptionComponent },
+  { path: 'reception/service/:id', component: ServiceReceptionComponent },
   { path: 'room', component: RoomComponent },
   { path: 'room/service', component: CreateRoomModuleComponent },
+  { path: 'room/service/:id', component: CreateRoomModuleComponent },
   { path: 'maintenance', component: MaintenanceComponent },
   { path: 'maintenance/service', component: CreateMaintenanceModuleComponent },
+  { path: 'maintenance/service/:id', component: CreateMaintenanceModuleComponent },
   { path: 'cleaning', component: CleaningComponent },
   { path: 'cleaning/service', component: CreateCleaningModuleComponent },
+  { path: 'cleaning/service/:id', component: CreateCleaningModuleComponent },
 ];
 
 @NgModule({

@@ -192,7 +192,9 @@
     "message": {
       "saveForm": "Salvataggio del modulo",
       "saveService": "Servizio di risparmio",
-      "translateMessage": "Generazione di traduzioni di moduli"
+      "translateMessage": "Generazione di traduzioni di moduli",
+      "removeFormError": "Questo modulo ha richieste attive",
+      "removeFormSuccess": "Il modulo è stato cancellato con successo"
     },
     "newOption": "Aggiungi nuova opzione",
     "newOptionbutton": "Aggiungi un nuovo campo",

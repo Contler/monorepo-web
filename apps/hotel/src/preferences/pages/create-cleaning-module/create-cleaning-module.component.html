@@ -6,6 +6,8 @@
     description2: 'preferences.cleaning.subDescription' | translate
   }"
   [load]="load"
+  [formService]="formService$ | async"
   (create)="save($event)"
+  (update)="update($event)"
 >
 </contler-new-service-wrap>

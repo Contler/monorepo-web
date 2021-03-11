@@ -6,8 +6,9 @@ import { AuthService } from 'hotel/services/auth.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { switchMap, tap } from 'rxjs/operators';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { OptionModule } from '@contler/models';
+import { OptionModule, OptionType } from '@contler/models';
 import { Router } from '@angular/router';
+import { PreferencesService } from 'hotel/preferences/services/preferences.service';
 
 @Component({
   selector: 'contler-room',
@@ -24,6 +25,7 @@ export class RoomComponent implements OnInit {
     private auth: AuthService,
     private db: AngularFireDatabase,
     private router: Router,
+    private preferencesService: PreferencesService,
   ) {}
 
   ngOnInit(): void {
@@ -41,5 +43,16 @@ export class RoomComponent implements OnInit {
 
   public goToMaintenancePage(): void {
     this.router.navigate(['preferences', 'maintenance']);
+  }
+  isDynamicModule(module: OptionModule) {
+    return module.type === OptionType.DYNAMIC_FORM;
+  }
+
+  public editModule(option: OptionModule): void {
+    this.preferencesService.redirectEditDynamicForm(option, MODULES.room);
+  }
+
+  public async removeDynamicForm(option: OptionModule): Promise<void> {
+    await this.preferencesService.removeDynamicForm(option, this.hotel.uid, MODULES.room);
   }
 }

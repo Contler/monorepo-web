@@ -17,13 +17,19 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="service">
-        <span>{{ 'preferences.cleaning.disableText' | translate }}</span>
-        <mat-slide-toggle
-          contlerColorSlideToggle
-          [checked]="option.active"
-          (change)="changeStatus($event, i)"
-        ></mat-slide-toggle>
-        <span>{{ 'preferences.cleaning.enableText' | translate }}</span>
+        <div>
+          <span>{{ 'preferences.reception.disableText' | translate }}</span>
+          <mat-slide-toggle
+            contlerColorSlideToggle
+            [checked]="option.active"
+            (change)="changeStatus($event, i)"
+          ></mat-slide-toggle>
+          <span>{{ 'preferences.reception.enableText' | translate }}</span>
+        </div>
+        <div *ngIf="isDynamicModule(option)">
+          <mat-icon contlerColorHotel="primary" class="cursor" (click)="editModule(option)">edit</mat-icon>
+          <mat-icon color="warn" class="cursor" (click)="removeDynamicForm(option)">delete</mat-icon>
+        </div>
       </div>
     </mat-expansion-panel>
   </mat-accordion>
