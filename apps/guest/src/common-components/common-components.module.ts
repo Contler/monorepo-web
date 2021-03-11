@@ -49,7 +49,6 @@ import { TranslateModule } from '@ngx-translate/core';
     BtnMenuHotelDirective,
     ModalCompleteComponent,
     UiModule,
-    AvalibleUserGuard,
   ],
   providers: [UserService, AvalibleUserGuard],
 })

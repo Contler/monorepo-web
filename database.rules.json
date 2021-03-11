@@ -3,16 +3,40 @@
     ".read": "auth.uid !== null",
     ".write": "auth.uid !== null",
     "zone": {
-      ".indexOn" : ["hotel"]
+      ".indexOn": ["hotel"]
     },
     "room": {
-      ".indexOn" : ["hotel"]
+      ".indexOn": ["hotel"]
     },
     "request": {
-      ".indexOn" : ["user"]
+      ".indexOn": ["user"]
     },
     "notification": {
-      ".indexOn" : ["view"]
+      ".indexOn": ["view"]
+    },
+    "modules": {
+      "$uid": {
+        "reception": {
+          "options": {
+            ".indexOn": "active"
+          }
+        },
+        "room": {
+          "options": {
+            ".indexOn": "active"
+          }
+        },
+        "maintenance": {
+          "options": {
+            ".indexOn": "active"
+          }
+        },
+        "cleaning": {
+          "options": {
+            ".indexOn": "active"
+          }
+        }
+      }
     }
   }
 }
