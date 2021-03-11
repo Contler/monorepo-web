@@ -103,6 +103,7 @@ export class DynamicModuleService {
     list = list.map((l) => {
       if (l.link === option.link) {
         l.text = option.text;
+        l.icon = option.icon;
       }
       return l;
     });
