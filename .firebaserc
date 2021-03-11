@@ -20,6 +20,9 @@
         ],
         "hotel": [
           "hotel-a6137"
+        ],
+        "admin": [
+          "admin-contler"
         ]
       }
     }
