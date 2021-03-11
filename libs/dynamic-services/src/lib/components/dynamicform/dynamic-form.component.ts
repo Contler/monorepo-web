@@ -1,7 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { InputField, InputType } from '../../interfaces/input-field';
+import { InputField } from '../../interfaces/input-field';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { TranslateService } from '@contler/dynamic-translate';
 
 @Component({
   selector: 'contler-dynamic-form',
@@ -13,9 +12,9 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   @Input() readOnly = false;
 
   form: FormGroup;
-  public showWhich = false;
+  showWhich = false;
 
-  constructor(private formBuild: FormBuilder, private translateService: TranslateService) {
+  constructor(private formBuild: FormBuilder) {
     this.form = formBuild.group({});
   }
 
@@ -35,7 +34,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   }
 
   getControl(type: number, index: number) {
-    return this.form.get(`${this.generateName(type, index)}`);
+    return this.form.get(this.generateName(type, index));
   }
 
   generateName(type: number, index: number) {

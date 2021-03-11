@@ -42,6 +42,8 @@ export class NewInputComponent implements OnInit {
         .pipe(first())
         .toPromise();
       this.addOption(other);
+    } else {
+      this.inputData.option = [];
     }
   }
 }
