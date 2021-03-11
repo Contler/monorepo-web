@@ -210,5 +210,8 @@
       "waiter": "Cameriere",
       "wakeUp": "Programma sveglia telefonica"
     }
+  },
+  "dynamicForm": {
+    "which": "Quale?"
   }
 }

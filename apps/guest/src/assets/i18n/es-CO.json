@@ -297,5 +297,8 @@
     "whatDoYouNeed": "¿Que necesitas?",
     "writeWhatYouNeed": "Escribe lo que necesitas",
     "youAreIn": "Tú estás en"
+  },
+  "dynamicForm": {
+    "which": "¿Cual?"
   }
 }

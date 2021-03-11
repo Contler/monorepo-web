@@ -210,5 +210,8 @@
       "waiter": "Serveur",
       "wakeUp": "Appel de réveil du programme"
     }
+  },
+  "dynamicForm": {
+    "which": "Laquelle ?"
   }
 }

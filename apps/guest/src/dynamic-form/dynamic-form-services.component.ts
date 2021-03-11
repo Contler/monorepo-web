@@ -14,7 +14,8 @@ import { GuestService } from '../services/guest.service';
 import { take } from 'rxjs/operators';
 import { GuestEntity } from '@contler/entity';
 import { Location } from '@angular/common';
-import { ReceptionService, RoomService } from '@contler/core';
+import { ReceptionService, RoomService, TranslateService } from '@contler/core';
+import { getLan } from '@contler/const';
 
 @Component({
   selector: 'contler-dynamic-form-service',
@@ -32,7 +33,6 @@ export class DynamicFormServicesComponent implements OnInit {
   formData: FormService;
   formGroup: FormGroup;
   loading = false;
-
   constructor(
     private route: ActivatedRoute,
     private dynamicService: DynamicModuleService,
@@ -40,6 +40,7 @@ export class DynamicFormServicesComponent implements OnInit {
     private location: Location,
     private reception: ReceptionService,
     private room: RoomService,
+    private dynTranslate: TranslateService,
   ) {
     this.route.params.subscribe((params) => {
       this.module = params['module'];
@@ -59,14 +60,32 @@ export class DynamicFormServicesComponent implements OnInit {
     });
   }
 
-  saveForm() {
+  async saveForm() {
     this.loading = true;
-    const formClone = [...this.formData.form];
-    formClone.forEach((input, index) => {
+    let formClone = [...this.formData.form];
+    const promisesToExecute = formClone.map(async (input, index) => {
       const key = `inp-type-${input.type}-${index}`;
-      const value = this.dynamicForm.form.value[key];
+      let value = this.dynamicForm.form.value[key];
+      if (
+        (input.type === InputType.SELECT_WITH_OTHER && !input.option.includes(value)) ||
+        input.type === InputType.TEXT
+      ) {
+        const [actualLan, languages] = getLan();
+        const trans = await this.dynTranslate
+          .generateUrl({
+            actualLan,
+            languages,
+            hotel: this.guest.hotel.uid,
+            mgs: value,
+            url: `${this.module}Module/${this.idService}/optionFile`,
+          })
+          .toPromise();
+        value = trans.key;
+      }
       input.value = input.type === InputType.DATE ? value.toString() : value;
+      return input;
     });
+    formClone = await Promise.all(promisesToExecute);
     const data: DynamicRequest = {
       form: formClone,
       nameService: this.formData.serviceName,
