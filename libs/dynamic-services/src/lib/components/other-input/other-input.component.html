@@ -9,7 +9,7 @@
     <textarea
       type="text"
       matInput
-      (change)="setValueFromFieldOther($event)"
+      (change)="setValueFromFieldOther($event.target['value'])"
       [disabled]="isDisabled"
       value="{{ isOtherForm | ctrTranslate }}"
     ></textarea>

@@ -28,8 +28,7 @@ export class TextInputComponent implements ControlValueAccessor {
   }
   public writeValue(obj: any): void {}
 
-  public setValueFromFieldOther($event: Event): void {
-    // @ts-ignore
-    this.onChange($event.target.value);
+  public setValueFromFieldOther(value: string): void {
+    this.onChange(value);
   }
 }

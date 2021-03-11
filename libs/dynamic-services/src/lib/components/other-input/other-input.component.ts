@@ -54,8 +54,7 @@ export class OtherInputComponent implements ControlValueAccessor {
     }
   }
 
-  public setValueFromFieldOther(event: Event): void {
-    // @ts-ignore
-    this.onChange(event.target.value);
+  public setValueFromFieldOther(option: string): void {
+    this.onChange(option);
   }
 }
