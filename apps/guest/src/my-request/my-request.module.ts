@@ -7,15 +7,18 @@ import { CommonComponentsModule } from '../common-components/common-components.m
 import { TranslateModule } from '@ngx-translate/core';
 import { RequestItemComponent } from './components/request-item/request-item.component';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { DetailRequestComponent } from './pages/detail-request/detail-request.component';
+import { DynamicServicesModule } from '@contler/dynamic-services';
 
 @NgModule({
-  declarations: [MyRequestComponent, RequestItemComponent],
+  declarations: [MyRequestComponent, RequestItemComponent, DetailRequestComponent],
   imports: [
     CommonModule,
     MyRequestRoutingModule,
     CommonComponentsModule,
     TranslateModule,
     DynamicTranslateModule,
+    DynamicServicesModule,
   ],
 })
 export class MyRequestModule {}

@@ -45,7 +45,6 @@ export class TimeInputComponent implements ControlValueAccessor {
     } else if (!!obj) {
       this.value = this.convertDate(obj);
     }
-    console.log(this.value);
   }
 
   convertDate(date: Date) {

@@ -1,0 +1,6 @@
+<contler-marco [backUrl]="true">
+  <ng-container marcoBody *ngIf="request | async; let rq">
+    <h1 class="ctl-title" contlerColorHotel="primary">{{ rq.nameService | ctrTranslate }}</h1>
+    <contler-dynamic-form [readOnly]="true" [listInputs]="rq.form"></contler-dynamic-form>
+  </ng-container>
+</contler-marco>

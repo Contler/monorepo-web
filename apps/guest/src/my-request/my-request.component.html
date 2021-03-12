@@ -4,8 +4,8 @@
       {{ 'sidebar.myRequest' | translate }}
     </h1>
 
-    <div>
-      <contler-request-item *ngFor="let item of request | async" [request]="item"></contler-request-item>
-    </div>
+    <a *ngFor="let item of request | async" [routerLink]="item.key" style="text-decoration: none">
+      <contler-request-item [request]="item"></contler-request-item>
+    </a>
   </ng-container>
 </contler-marco>
