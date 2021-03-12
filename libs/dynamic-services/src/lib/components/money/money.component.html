@@ -11,7 +11,9 @@
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-  <span matPrefix style="margin-right: 10px">{{ value.money.symbol }} </span>
+  <span matPrefix style="margin-right: 10px"
+    >{{ typeInput.money.staticMoney ? typeInput.money.money.symbol : value.money.symbol }}
+  </span>
   <input
     [(ngModel)]="value.value"
     (ngModelChange)="update($event)"
