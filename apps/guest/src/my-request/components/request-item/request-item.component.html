@@ -1,0 +1,8 @@
+<div class="request-status {{ colorStatus }}"></div>
+
+<div>
+  <p class="request-title">{{ request.nameService | ctrTranslate }}</p>
+  <span class="request-text">{{ nameModule[request.service] | translate }}</span>
+</div>
+
+<span class="request-text">{{ request.createAt | date }}</span>

@@ -16,15 +16,15 @@
     "changeOfBlankets": "Cambio de mantas",
     "cleaningOfSheets": "Limpieza de sábanas",
     "cleaningTime": "Hora de limpieza",
+    "close": "¡Entendido!",
     "createRequest": "CREAR SOLICITUD",
     "generalRoomCleaning": "Limpieza general de habitaciones",
     "other": "Otro",
     "specificCleaning": "Limpieza especifica",
-    "towelChange": "Cambio de toallas",
-    "what": "¿Qué?",
-    "close": "¡Entendido!",
     "text": "Su solicitud de limpieza se ha recibido correctamente.",
     "title": "¿Qué tipo de limpieza necesitas?",
+    "towelChange": "Cambio de toallas",
+    "what": "¿Qué?",
     "whatDoYouNeedTheMaintenanceFor": "¿Para qué necesita la limpieza?",
     "whenDoYouNeedTheMaintenance": "¿Cuándo necesita la limpieza?"
   },
@@ -70,6 +70,9 @@
   "drinkRequest": {
     "createRequest": "CREAR SOLICITUD",
     "immediateRequestSuccessfullyCreated": "Solicitud inmediata creada con éxito"
+  },
+  "dynamicForm": {
+    "which": "¿Cual?"
   },
   "exchange": {
     "close": "¡Entendido!",
@@ -167,6 +170,12 @@
     "title": "¿Cómo encontró el servicio que nuestro equipo brindó en su solicitud",
     "veryBad": "Muy mala"
   },
+  "modules": {
+    "clean": "Limpieza",
+    "maintenance": "Mantenimiento",
+    "reception": "Recepción",
+    "room": "Habitación"
+  },
   "myInmediateRequests": {
     "done": "TERMINADO",
     "myInmediatePendingRequest": "Mi solicitud pendiente inmediata",
@@ -230,12 +239,13 @@
     "veryBad": "Muy mal 1/5"
   },
   "sidebar": {
+    "cleaning": "Limpieza",
     "immediateRequest": "Solicitud inmediata",
     "lateCheckOut": "Salida tarde",
     "logOut": "Cerrar sesión",
-    "myImmediateRequests": "Mis solicitudes inmediatas",
     "maintenance": "Mantenimiento",
-    "cleaning": "Limpieza",
+    "myImmediateRequests": "Mis solicitudes inmediatas",
+    "myRequest": "Mis Solicitudes",
     "myReservations": "Mis Reservas",
     "orders": "Pedidos",
     "reservations": "Reservaciones",
@@ -297,8 +307,5 @@
     "whatDoYouNeed": "¿Que necesitas?",
     "writeWhatYouNeed": "Escribe lo que necesitas",
     "youAreIn": "Tú estás en"
-  },
-  "dynamicForm": {
-    "which": "¿Cual?"
   }
 }

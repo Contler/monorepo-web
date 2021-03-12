@@ -24,7 +24,9 @@
     "text": "Ihre Zimmerreinigungsanfrage wurde erfolgreich empfangen.",
     "title": "Wann sollen wir Ihr Zimmer reinigen?",
     "towelChange": "Handtuchwechsel",
-    "what": "Was?"
+    "what": "Was?",
+    "whatDoYouNeedTheMaintenanceFor": "",
+    "whenDoYouNeedTheMaintenance": ""
   },
   "concierge": {
     "close": "Ich habs!",
@@ -68,6 +70,9 @@
   "drinkRequest": {
     "createRequest": "Anfrage erstellen",
     "immediateRequestSuccessfullyCreated": "Sofortige Anfrage erfolgreich erstellt"
+  },
+  "dynamicForm": {
+    "which": "Welke?"
   },
   "exchange": {
     "close": "Ich habs!",
@@ -165,6 +170,12 @@
     "title": "Wie haben Sie den Service gefunden, den unser Team in Ihrer Anfrage erbracht hat?",
     "veryBad": "sehr schlecht"
   },
+  "modules": {
+    "clean": "Reinigung",
+    "maintenance": "Instandhaltung",
+    "reception": "Rezeption",
+    "room": "Zimmer"
+  },
   "myInmediateRequests": {
     "done": "Erledigt",
     "myInmediatePendingRequest": "Meine sofortige ausstehende Anfrage",
@@ -228,12 +239,13 @@
     "veryBad": "Sehr schlecht 1/5"
   },
   "sidebar": {
+    "cleaning": "Schoonmaak",
     "immediateRequest": "Sofortige Anfrage",
     "lateCheckOut": "Später check out",
     "logOut": "Ausloggen",
-    "myImmediateRequests": "Meine sofortigen Anfragen",
     "maintenance": "Onderhoud",
-    "cleaning": "Schoonmaak",
+    "myImmediateRequests": "Meine sofortigen Anfragen",
+    "myRequest": "Meine Anfragen",
     "myReservations": "Meine Reservierungen",
     "orders": "Aufträge",
     "reservations": "Reservierungen",
@@ -295,8 +307,5 @@
     "whatDoYouNeed": "Was brauchst du?",
     "writeWhatYouNeed": "Schreiben Sie, was Sie brauchen",
     "youAreIn": "Sie sind in"
-  },
-  "dynamicForm": {
-    "which": "Welke?"
   }
 }

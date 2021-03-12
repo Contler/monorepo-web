@@ -24,7 +24,9 @@
     "text": "Your room cleaning request has been successfully received.",
     "title": "When do you want us to clean your room?",
     "towelChange": "Towel change",
-    "what": "What?"
+    "what": "What?",
+    "whatDoYouNeedTheMaintenanceFor": "",
+    "whenDoYouNeedTheMaintenance": ""
   },
   "concierge": {
     "close": "Got it!",
@@ -68,6 +70,9 @@
   "drinkRequest": {
     "createRequest": "CREATE REQUEST",
     "immediateRequestSuccessfullyCreated": "Immediate request successfully created"
+  },
+  "dynamicForm": {
+    "which": "Which?"
   },
   "exchange": {
     "close": "Got it!",
@@ -165,6 +170,12 @@
     "title": "How did you find the service our team provided in your request",
     "veryBad": "Very bad"
   },
+  "modules": {
+    "clean": "Cleaning",
+    "maintenance": "Maintenance",
+    "reception": "Reception",
+    "room": "Room"
+  },
   "myInmediateRequests": {
     "done": "DONE",
     "myInmediatePendingRequest": "My inmediate pending request",
@@ -228,12 +239,13 @@
     "veryBad": "Very bad 1/5"
   },
   "sidebar": {
+    "cleaning": "Cleaning",
     "immediateRequest": "Immediate Request",
     "lateCheckOut": "Late Check-out",
     "logOut": "Log Out",
-    "myImmediateRequests": "My immediate requests",
     "maintenance": "Maintenance",
-    "cleaning": "Cleaning",
+    "myImmediateRequests": "My immediate requests",
+    "myRequest": "My requests",
     "myReservations": "My Reservations",
     "orders": "Orders",
     "reservations": "Reservations",
@@ -295,8 +307,5 @@
     "whatDoYouNeed": "What do you need?",
     "writeWhatYouNeed": "Write what you need",
     "youAreIn": "You are in"
-  },
-  "dynamicForm": {
-    "which": "Which?"
   }
 }

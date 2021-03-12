@@ -97,6 +97,10 @@ const routes: Routes = [
         loadChildren: () => import('../cleaning/cleaning.module').then((m) => m.CleaningModule),
       },
       {
+        path: 'my-request',
+        loadChildren: () => import('../my-request/my-request.module').then((m) => m.MyRequestModule),
+      },
+      {
         path: '',
         redirectTo: 'guest-requests',
         pathMatch: 'full',

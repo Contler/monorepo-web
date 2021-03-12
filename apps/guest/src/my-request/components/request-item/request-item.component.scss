@@ -1,0 +1,46 @@
+:host {
+  display: grid;
+  grid-template-columns: max-content auto max-content;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  padding: 14px 0;
+}
+.request {
+  &-title {
+    font-family: Raleway, sans-serif;
+    font-size: 20.2px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.25px;
+    margin: 0 0 5px;
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  &-text {
+    font-family: Raleway, sans-serif;
+    font-size: 12.2px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.31;
+    letter-spacing: 0.4px;
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  &-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+}
+
+.yellow {
+  background: #fdd251;
+}
+
+.red {
+  background: #ee3636;
+}

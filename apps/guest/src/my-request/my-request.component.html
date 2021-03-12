@@ -1,0 +1,11 @@
+<contler-marco>
+  <ng-container marcoBody>
+    <h1 class="ctl-title" style="text-align: center" contlerColorHotel="primary">
+      {{ 'sidebar.myRequest' | translate }}
+    </h1>
+
+    <div>
+      <contler-request-item *ngFor="let item of request | async" [request]="item"></contler-request-item>
+    </div>
+  </ng-container>
+</contler-marco>

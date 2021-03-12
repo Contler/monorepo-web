@@ -24,7 +24,9 @@
     "text": "O seu pedido de limpeza do quarto foi recebido com sucesso.",
     "title": "Quando você quer que limpemos seu quarto?",
     "towelChange": "Troca de toalhas",
-    "what": "O que?"
+    "what": "O que?",
+    "whatDoYouNeedTheMaintenanceFor": "",
+    "whenDoYouNeedTheMaintenance": ""
   },
   "concierge": {
     "close": "Consegui!",
@@ -68,6 +70,9 @@
   "drinkRequest": {
     "createRequest": "Criar pedido",
     "immediateRequestSuccessfullyCreated": "Solicitação imediata criada com sucesso"
+  },
+  "dynamicForm": {
+    "which": "Qual deles?"
   },
   "exchange": {
     "close": "Consegui!",
@@ -165,6 +170,12 @@
     "title": "Como você encontrou o atendimento que nossa equipe prestou em sua solicitação",
     "veryBad": "Muito mal"
   },
+  "modules": {
+    "clean": "Limpeza",
+    "maintenance": "Manutenção",
+    "reception": "Recepção",
+    "room": "Quarto"
+  },
   "myInmediateRequests": {
     "done": "Feito",
     "myInmediatePendingRequest": "Minha solicitação pendente imediata",
@@ -228,12 +239,13 @@
     "veryBad": "Muito ruim 1/5"
   },
   "sidebar": {
+    "cleaning": "Limpeza",
     "immediateRequest": "Pedido imediato",
     "lateCheckOut": "Checkout tardio",
     "logOut": "Sair",
-    "myImmediateRequests": "Meus pedidos imediatos",
     "maintenance": "Manutenção",
-    "cleaning": "Limpeza",
+    "myImmediateRequests": "Meus pedidos imediatos",
+    "myRequest": "Minhas solicitações",
     "myReservations": "Minhas reservas",
     "orders": "Encomendas",
     "reservations": "Reservas",
@@ -295,8 +307,5 @@
     "whatDoYouNeed": "O que você precisa?",
     "writeWhatYouNeed": "Escreva o que você precisa",
     "youAreIn": "Estás dentro"
-  },
-  "dynamicForm": {
-    "which": "Qual deles?"
   }
 }
