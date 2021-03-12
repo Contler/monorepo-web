@@ -352,7 +352,7 @@ export class DynamicModuleService {
     return this.fireDb.collection(`dynamicRequest`).doc(request.key).update(request);
   }
 
-  getDynamicRequest(hotelId: string, module: MODULES, status: boolean, untilDate?: number, formId?: string) {
+  getDynamicRequest(hotelId: string, module: MODULES, status: boolean, untilDate?: number) {
     const reference = this.fireDb.firestore
       .collection('dynamicRequest')
       .withConverter(receptionDynamicConverter);
