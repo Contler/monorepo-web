@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FileInput } from 'ngx-material-file-input';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { filter, finalize, map, switchMap, tap } from 'rxjs/operators';
+import { filter, finalize, first, map, switchMap, tap } from 'rxjs/operators';
 import firebase from 'firebase/app';
 import 'firebase/storage';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,8 +11,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HotelService, SpecialZoneService } from '@contler/core';
 import { EmployerEntity, HotelEntity, SpecialZoneHotelEntity } from '@contler/entity';
 import { concat, forkJoin } from 'rxjs';
-import TaskState = firebase.storage.TaskState;
 import { AngularFireAuth } from '@angular/fire/auth';
+import { LANGUAGES } from '@contler/const';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { Language } from '../../../../../../../libs/models';
+import TaskState = firebase.storage.TaskState;
 
 @Component({
   selector: 'contler-hotel',
@@ -29,6 +32,7 @@ export class HotelComponent implements OnInit {
   private hotel: HotelEntity;
   specialZones: SpecialZoneHotelEntity[] = [];
   admin: EmployerEntity;
+  languages: Language[] = LANGUAGES.map((lan) => ({ ...lan, active: true }));
 
   constructor(
     route: ActivatedRoute,
@@ -39,6 +43,7 @@ export class HotelComponent implements OnInit {
     private router: Router,
     private specialZoneService: SpecialZoneService,
     private afAuth: AngularFireAuth,
+    private db: AngularFireDatabase,
   ) {
     this.hotelForm = formBuild.group({
       name: ['', Validators.required],
@@ -96,7 +101,8 @@ export class HotelComponent implements OnInit {
         switchMap((req) => this.hotelService.createHotel(req)),
         finalize(() => (this.load = false)),
       )
-      .subscribe(() => {
+      .subscribe((emp) => {
+        this.db.object(`language/${emp.hotel.uid}`).set(this.languages);
         this.snackBar.open('Hotel creado', 'Cerrar', { duration: 3000 });
         this.router.navigate(['home']);
       });
@@ -113,6 +119,7 @@ export class HotelComponent implements OnInit {
     this.hotel.colorText = `#${(textPrimary as Color).hex}`;
     this.hotel.colorTextSecond = `#${(textSecondary as Color).hex}`;
     this.hotel.specialZones = this.specialZones;
+    this.db.object(`language/${this.hotel.uid}`).set(this.languages);
     if (file) {
       const nFile = (file as FileInput).files[0];
       this.loadFile(nFile, this.hotel.name)
@@ -137,6 +144,7 @@ export class HotelComponent implements OnInit {
 
   deleteHotel() {
     this.loadDelete = true;
+    this.db.object(`language/${this.hotel.uid}`).remove();
     this.hotelService
       .deleteHotel(this.hotel.uid)
       .pipe(finalize(() => (this.loadDelete = false)))
@@ -191,6 +199,14 @@ export class HotelComponent implements OnInit {
     });
     this.imageSrc = hotel.logo;
     this.admin = admin;
+    this.db
+      .list<Language>(`language/${this.hotel.uid}`)
+      .valueChanges()
+      .pipe(
+        first(),
+        filter((data) => !!data && data.length > 0),
+      )
+      .subscribe((data) => (this.languages = data));
   }
 
   private loadDefaultSpecialZone() {

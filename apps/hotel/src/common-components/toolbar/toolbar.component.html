@@ -28,12 +28,12 @@
   </button>
 
   <button mat-button [matMenuTriggerFor]="menuLanguage" contlerBtnHotel="primary">
-    {{ actualLanguage.name }}
+    {{ actualLanguage?.name }}
   </button>
 
   <mat-menu #menuLanguage="matMenu">
-    <button mat-menu-item *ngFor="let lan of languages" (click)="changeLanguage(lan)">
-      {{ lan.name }}
+    <button mat-menu-item *ngFor="let lan of languages | async" (click)="changeLanguage(lan)">
+      {{ lan?.name }}
     </button>
   </mat-menu>
 

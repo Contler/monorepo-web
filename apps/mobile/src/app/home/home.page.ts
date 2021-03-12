@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { NotificationsService } from '../services/notifications.service';
 import { AuthService } from '../services/auth.service';
 import { MenuController, Platform } from '@ionic/angular';
@@ -9,6 +9,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Language } from '@contler/models/language.model';
 import { LANGUAGES } from '@contler/const';
 import { TranslateService as DynamicTranslate } from '@contler/dynamic-translate';
+import { Observable } from 'rxjs';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'contler-home',
@@ -18,7 +20,7 @@ import { TranslateService as DynamicTranslate } from '@contler/dynamic-translate
 export class HomePage implements OnInit {
   user: EmployerEntity | null = null;
 
-  readonly languages = LANGUAGES;
+  languages: Observable<Language[]>;
   actualLanguage: Language;
 
   public readonly menuItems: MenuItem[] = [
@@ -100,6 +102,7 @@ export class HomePage implements OnInit {
     private menuController: MenuController,
     private translate: TranslateService,
     private dynamic: DynamicTranslate,
+    private db: AngularFireDatabase,
   ) {
     this.actualLanguage = LANGUAGES.find((lan) => lan.prefix === localStorage.lan) || LANGUAGES[0];
     this.auth.$user.subscribe((user) => {
@@ -115,6 +118,18 @@ export class HomePage implements OnInit {
       this.menuItems[8].show = this.user.lateZone;
       this.menuItems[9].show = this.user.cleanZone;
       this.menuItems[10].show = this.user.maintainZone;
+
+      this.languages = this.db
+        .list<Language>(`language/${this.user.hotel.uid}`)
+        .valueChanges()
+        .pipe(
+          map((data) => data.filter((item) => item.active)),
+          tap((listLan) => {
+            const { lan } = window.localStorage;
+            this.actualLanguage = listLan.find((l) => l.prefix === lan) || listLan[0];
+            this.changeLanguage();
+          }),
+        );
     });
   }
 
@@ -164,7 +179,7 @@ export class HomePage implements OnInit {
   changeLanguage() {
     localStorage.lan = this.actualLanguage.prefix;
     this.translate.use(this.actualLanguage.prefix);
-    this.menuController.toggle();
+    this.menuController.close();
   }
 }
 

@@ -151,6 +151,12 @@
 
       <div>
         <contler-zone-list [(specialZones)]="specialZones"></contler-zone-list>
+        <p class="hotel-lan">Idiomas</p>
+        <section class="hotel-lan__section">
+          <mat-checkbox *ngFor="let item of languages" [(ngModel)]="item.active">
+            {{ item.name }}
+          </mat-checkbox>
+        </section>
       </div>
     </div>
   </ng-container>

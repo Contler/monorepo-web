@@ -4,4 +4,5 @@ export interface Language {
   prefix: string;
   unicode: string;
   code: string;
+  active?: boolean;
 }

@@ -22,10 +22,10 @@
 
     <div class="menu__item language">
       <div class="custom_icon">
-        {{ actualLanguage.unicode }}
+        {{ actualLanguage?.unicode }}
       </div>
       <mat-select required [(ngModel)]="actualLanguage" (selectionChange)="changeLanguage()">
-        <mat-option *ngFor="let language of languages" [value]="language">
+        <mat-option *ngFor="let language of languages | async" [value]="language">
           <p class="label">{{ language.name }}</p>
         </mat-option>
       </mat-select>

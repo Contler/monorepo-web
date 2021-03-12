@@ -31,4 +31,15 @@
     display: inline-grid;
     gap: 20px;
   }
+
+  &-lan {
+    font-size: 25px;
+    margin-top: 30px;
+
+    &__section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+  }
 }

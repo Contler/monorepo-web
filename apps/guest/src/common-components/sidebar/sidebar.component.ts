@@ -1,15 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { User } from '@contler/models/user';
 import { UsersService } from 'guest/services/users.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { GuestService } from 'guest/services/guest.service';
 import { HotelEntity } from '@contler/entity';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '@contler/models/language.model';
-import { LANGUAGES } from '@contler/const';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'contler-sidebar',
@@ -17,8 +17,8 @@ import { LANGUAGES } from '@contler/const';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit, OnDestroy {
-  readonly languages = LANGUAGES;
   actualLanguage: Language;
+  languages: Observable<Language[]>;
 
   public readonly menuItems: MenuItem[] = [
     {
@@ -91,10 +91,22 @@ export class SidebarComponent implements OnInit, OnDestroy {
     private auth: AngularFireAuth,
     private guestService: GuestService,
     private translate: TranslateService,
+    private db: AngularFireDatabase,
   ) {
-    this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
-    const { lan } = window.localStorage;
-    this.actualLanguage = LANGUAGES.find((l) => l.prefix === lan) || LANGUAGES[0];
+    this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => {
+      this.hotel = hotel;
+      this.languages = this.db
+        .list<Language>(`language/${this.hotel.uid}`)
+        .valueChanges()
+        .pipe(
+          map((data) => data.filter((item) => item.active)),
+          tap((listLan) => {
+            const { lan } = window.localStorage;
+            this.actualLanguage = listLan.find((l) => l.prefix === lan) || listLan[0];
+            this.changeLanguage();
+          }),
+        );
+    });
   }
 
   async ngOnInit() {
