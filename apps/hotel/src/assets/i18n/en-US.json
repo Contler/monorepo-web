@@ -33,6 +33,14 @@
   "createReservation": {
     "noSpotsAvailable": "No places available"
   },
+  "dynamicForm": {
+    "which": "Which?"
+  },
+  "dynamicRequest": {
+    "attended": "Attended",
+    "complete": "Accomplished",
+    "programing": "Scheduled"
+  },
   "editGuest": {
     "noRequest": "No requests",
     "order": "Order",
@@ -178,8 +186,14 @@
   },
   "preferences": {
     "back": "Return",
+    "cleaning": {
+      "description": "Choose which options to keep enabled in the Cleaning section. You will be able to create new options.",
+      "disableText": "No, leave disabled",
+      "enableText": "Yes, enable service",
+      "name": "Cleaning",
+      "subDescription": "The cleaning requests allow the user to obtain first hand services that help in their stay."
+    },
     "continue": "Continue",
-    "title": "Preferences",
     "hotel": "Hotel {{value}}",
     "immediate": {
       "description": "General immediate requests allow users to quickly request what they need in the areas of your Hotel. Choose the options to display in each type of zone:",
@@ -189,12 +203,19 @@
       "subDescription": "Immediate requests allow the guest to request something punctual quickly, to be served with priority.\n<br/><br/>example: a towel in the pool",
       "which": "Which?"
     },
+    "maintenance": {
+      "description": "Choose which options to keep enabled in the Maintenance section. You will be able to create new options.",
+      "disableText": "No, leave disabled",
+      "enableText": "Yes, enable service",
+      "name": "Maintenance",
+      "subDescription": "Requests in maintenance allow the user to get first hand services that will help in their stay."
+    },
     "message": {
+      "removeFormError": "This form has active requests",
+      "removeFormSuccess": "The form was successfully deleted",
       "saveForm": "Saving form",
       "saveService": "Saving service",
-      "translateMessage": "Generating form translations",
-      "removeFormError": "This form has active requests",
-      "removeFormSuccess": "The form was successfully deleted"
+      "translateMessage": "Generating form translations"
     },
     "newOption": "Add new option",
     "newOptionbutton": "Add a new field",
@@ -202,18 +223,17 @@
     "optionInputs": {
       "calendar": "Calendar",
       "fileDescriptionHint": "Description of the field",
+      "hour": "Hour",
       "iconHint": "Field icon",
+      "money": "Currency",
+      "moneyNameSelect": "Selector name",
       "nameInpitHit": "Field type",
+      "other": "Other",
       "reload": "Recharge",
       "select": "Options list",
       "select-other": "List of options with 'other'",
-      "other": "Other",
+      "staticMoney": "Simple field",
       "text": "Open Field"
-    },
-    "request": {
-      "active": "Available",
-      "all": "All",
-      "searchPlaceHolder": "Search..."
     },
     "reception": {
       "description": "Choose which options to keep enabled in the Reception section. You can create new options.",
@@ -222,32 +242,25 @@
       "name": "Reception",
       "subDescription": "Requests at the reception allow the user to obtain first-hand services that help in their stay."
     },
+    "request": {
+      "active": "Available",
+      "all": "All",
+      "searchPlaceHolder": "Search..."
+    },
     "room": {
       "description": "Choose which options to keep enabled in the Room section. You will be able to create new options.",
       "disableText": "No, leave disabled",
       "enableText": "Yes, enable service",
       "name": "Room",
+      "nome": "",
       "subDescription": "Requests in room allow the user to get first hand services that will help in their stay."
-    },
-    "maintenance": {
-      "description": "Choose which options to keep enabled in the Maintenance section. You will be able to create new options.",
-      "disableText": "No, leave disabled",
-      "enableText": "Yes, enable service",
-      "name": "Maintenance",
-      "subDescription": "Requests in maintenance allow the user to get first hand services that will help in their stay."
-    },
-    "cleaning": {
-      "description": "Choose which options to keep enabled in the Cleaning section. You will be able to create new options.",
-      "disableText": "No, leave disabled",
-      "enableText": "Yes, enable service",
-      "name": "Cleaning",
-      "subDescription": "The cleaning requests allow the user to obtain first hand services that help in their stay."
     },
     "service": {
       "description": "Description",
       "nameOption": "Name of the option",
       "preview": "Preview"
     },
+    "title": "Preferences",
     "welcome": {
       "button": "start",
       "subtitle": "We will guide you through this step by step so you can organize the options you will offer to your guests.",
@@ -386,11 +399,6 @@
     "complete": "Accomplished",
     "programing": "Scheduled"
   },
-  "dynamicRequest": {
-    "attended": "Attended",
-    "complete": "Accomplished",
-    "programing": "Scheduled"
-  },
   "typeRequest": {
     "CASH_LOAN": "Cash loan",
     "CLEAN": "Clean",
@@ -453,8 +461,5 @@
       "waiter": "Waiter",
       "wakeUp": "Wake-up program"
     }
-  },
-  "dynamicForm": {
-    "which": "Which?"
   }
 }

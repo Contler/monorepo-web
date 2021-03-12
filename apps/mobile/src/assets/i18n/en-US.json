@@ -23,7 +23,11 @@
     "other": "Other",
     "towelChange": "Towel change"
   },
+  "dynamicForm": {
+    "which": "Which?"
+  },
   "dynamicRequest": {
+    "all": "All",
     "attended": "Attended",
     "complete": "Completed",
     "programing": "Scheduled"
@@ -210,8 +214,5 @@
       "waiter": "Waiter",
       "wakeUp": "Program wake up call"
     }
-  },
-  "dynamicForm": {
-    "which": "Which?"
   }
 }

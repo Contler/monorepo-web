@@ -23,7 +23,11 @@
     "other": "Otro",
     "towelChange": "Cambio de toallas"
   },
+  "dynamicForm": {
+    "which": "¿Cual?"
+  },
   "dynamicRequest": {
+    "all": "Todas",
     "attended": "Atendida",
     "complete": "Completada",
     "programing": "Programada"
@@ -210,8 +214,5 @@
       "waiter": "Camarero",
       "wakeUp": "Programa despertador"
     }
-  },
-  "dynamicForm": {
-    "which": "¿Cual?"
   }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ImmediateOptionLink, ImmediateOptionText, OptionModule, OptionType } from '@contler/models';
 import { Router } from '@angular/router';
 
@@ -22,6 +22,7 @@ export class RoomItemComponent {
         value = optionSelectedText.value;
         this.clickedOption.emit(value);
         break;
+      case OptionType.DYNAMIC_FORM:
       case OptionType.LINK:
         const optionSelectedLink: ImmediateOptionLink = this.option as ImmediateOptionLink;
         this.router.navigateByUrl(optionSelectedLink.link);

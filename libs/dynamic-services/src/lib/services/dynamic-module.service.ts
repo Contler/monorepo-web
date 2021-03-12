@@ -7,6 +7,7 @@ import {
   ImmediateOptionLink,
   ImmediateOptionText,
   ImmediateRequestModule,
+  Language,
   OptionModule,
   OptionType,
 } from '@contler/models';
@@ -14,7 +15,7 @@ import { ImmediateModule } from '../utils/Immediate-module';
 import { ReceptionModule } from '@contler/models/reception-module';
 import { Observable } from 'rxjs';
 import { roomBaseModule } from './data-source/roomBase';
-import { getLan } from '@contler/const';
+import { getLan, LANGUAGES } from '@contler/const';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateService as transDynamic } from '@contler/dynamic-translate';
@@ -23,6 +24,12 @@ import { FormService } from '../interfaces/form-service';
 import { DynamicRequest, receptionDynamicConverter } from '../interfaces/dynamic-request';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { QueryFn } from '@angular/fire/firestore/interfaces';
+import {
+  cashLoanTemplate,
+  exchangeTemplate,
+  transportTemplate,
+  travelServiceTemplate,
+} from '../utils/service-template';
 
 @Injectable()
 export class DynamicModuleService {
@@ -61,7 +68,7 @@ export class DynamicModuleService {
       tap((data) => {
         if (data.length === 0) {
           if (moduleReference === MODULES.reception) {
-            this.setUpReception(url);
+            this.setUpReception(url, hotelUid, moduleReference);
           } else if (moduleReference === MODULES.room) {
             this.setUpRoom(url);
           }
@@ -109,39 +116,39 @@ export class DynamicModuleService {
     });
     return this.db.object(url).set(list);
   }
-  private setUpReception(url: string) {
+  private async setUpReception(url: string, hotelUid: string, moduleReference: MODULES.reception) {
     const receptionModule: ReceptionModule = {
       options: [],
     };
-    receptionModule.options.push({
-      active: true,
-      type: OptionType.LINK,
-      text: 'reception.transportation',
-      link: '/home/reception/transportation',
-      icon: 'fas fa-taxi',
-    } as ImmediateOptionLink);
-    receptionModule.options.push({
-      active: true,
-      type: OptionType.LINK,
-      text: 'reception.cashLoan',
-      link: '/home/reception/cash',
-      icon: 'fas fa-dollar-sign',
-    } as ImmediateOptionLink);
-    receptionModule.options.push({
-      active: true,
-      type: OptionType.LINK,
-      text: 'reception.currencyExchange',
-      link: '/home/reception/exchange',
-      icon: 'fas fa-globe',
-    } as ImmediateOptionLink);
-    receptionModule.options.push({
-      active: true,
-      type: OptionType.LINK,
-      text: 'reception.concierge',
-      link: '/home/reception/concierge',
-      icon: 'fas fa-map-marker-alt',
-    } as ImmediateOptionLink);
-    this.db.object(url).set(receptionModule.options);
+    await this.db.object(url).set(receptionModule.options);
+    await this.createFormModuleDynamic(
+      travelServiceTemplate,
+      hotelUid,
+      moduleReference,
+      null,
+      LANGUAGES.find((lg) => lg.code === 'es'),
+    );
+    await this.createFormModuleDynamic(
+      cashLoanTemplate,
+      hotelUid,
+      moduleReference,
+      null,
+      LANGUAGES.find((lg) => lg.code === 'es'),
+    );
+    await this.createFormModuleDynamic(
+      exchangeTemplate,
+      hotelUid,
+      moduleReference,
+      null,
+      LANGUAGES.find((lg) => lg.code === 'es'),
+    );
+    await this.createFormModuleDynamic(
+      transportTemplate,
+      hotelUid,
+      moduleReference,
+      null,
+      LANGUAGES.find((lg) => lg.code === 'es'),
+    );
   }
 
   private setUpImmediateModule(hotelId) {
@@ -256,9 +263,19 @@ export class DynamicModuleService {
     hotelUid: string,
     moduleReference: MODULES,
     formService: FormService = null,
+    defaultLang?: Language,
   ) {
     const form = [...data.form];
-    const [actualLan, languages] = getLan();
+    let actualLan: Language;
+    let languages: Language[];
+
+    if (defaultLang) {
+      actualLan = defaultLang;
+      languages = LANGUAGES.filter((lg) => lg.code !== actualLan.code);
+    } else {
+      actualLan = getLan()[0];
+      languages = getLan()[1];
+    }
     this.generateMSg('preferences.message.translateMessage');
     const keyService = formService ? formService.key : this.db.createPushId();
     const dataInit = await Promise.all([
@@ -307,6 +324,18 @@ export class DynamicModuleService {
           inputField.option[i] = optionKey.key;
           i++;
         }
+      }
+      if (!!inputField.money?.nameSelect) {
+        const nameSelect = await this.dynTranslate
+          .generateUrl({
+            actualLan,
+            languages,
+            hotel: hotelUid,
+            mgs: inputField.money.nameSelect,
+            url: `${moduleReference}Module/${keyService}/optionFile`,
+          })
+          .toPromise();
+        inputField.money.nameSelect = nameSelect.key;
       }
     }
     this.generateMSg('preferences.message.saveForm');

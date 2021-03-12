@@ -3,7 +3,7 @@
 
 .item {
   display: grid;
-  grid-template-columns: auto max-content max-content;
+  grid-template-columns: max-content auto max-content max-content;
   column-gap: 5px;
   align-items: center;
   border-bottom: 1px solid #c8c8c8;
@@ -17,5 +17,19 @@
   }
   .small {
     @include text($text-4, 12px);
+  }
+
+  .status {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+  }
+
+  .yellow {
+    background: #fdd251;
+  }
+
+  .red {
+    background: #ee3636;
   }
 }

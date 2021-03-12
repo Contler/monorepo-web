@@ -19,8 +19,6 @@
       {{ 'readyMaintain.noRequests' | translate }}
     </div>
 
-    <contler-reception-item *ngFor="let item of $receptionReq | async" [reception]="item" [isReady]="false">
-    </contler-reception-item>
     <contler-dynamic-item
       *ngFor="let item of dynamicReq | async"
       [isReady]="false"
@@ -28,7 +26,7 @@
     ></contler-dynamic-item>
   </div>
 
-  <p *ngIf="!totalReception && !totalReception2" class="reception__text">
+  <p *ngIf="!totalReception2" class="reception__text">
     {{ 'readyMaintain.noRequests' | translate }}
   </p>
 </ion-content>

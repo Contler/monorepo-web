@@ -9,6 +9,8 @@ import { PendigRoomComponent } from './pages/pendig-room/pendig-room.component';
 import { CompleteRoomComponent } from './pages/complete-room/complete-room.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -31,6 +33,8 @@ const routes: Routes = [
     TranslateModule,
     MatIconModule,
     MatButtonModule,
+    MatSelectModule,
+    FormsModule,
   ],
 })
 export class RoomModule {}

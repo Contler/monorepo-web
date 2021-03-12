@@ -82,7 +82,7 @@ export class DynamicFormServicesComponent implements OnInit {
           .toPromise();
         value = trans.key;
       }
-      input.value = input.type === InputType.DATE ? value.toString() : value;
+      input.value = input.type === InputType.DATE || input.type === InputType.TIME ? value.toString() : value;
       return input;
     });
     formClone = await Promise.all(promisesToExecute);

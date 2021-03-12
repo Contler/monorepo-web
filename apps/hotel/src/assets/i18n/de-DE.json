@@ -33,6 +33,14 @@
   "createReservation": {
     "noSpotsAvailable": "Keine Plätze verfügbar"
   },
+  "dynamicForm": {
+    "which": "Welke?"
+  },
+  "dynamicRequest": {
+    "attended": "Besucht",
+    "complete": "Erreicht",
+    "programing": "Geplant"
+  },
   "editGuest": {
     "noRequest": "Keine Anfragen",
     "order": "Auftrag",
@@ -178,8 +186,14 @@
   },
   "preferences": {
     "back": "Rückkehr",
+    "cleaning": {
+      "description": "Kies welke opties ingeschakeld moeten blijven in de Schoonmaak sectie. U kunt nieuwe opties aanmaken.",
+      "disableText": "Nee, laat uitgeschakeld",
+      "enableText": "Ja, schakel de service in",
+      "name": "Schoonmaak",
+      "subDescription": "De Schoonmaak verzoeken stellen de gebruiker in staat om diensten uit de eerste hand te verkrijgen die helpen bij hun verblijf."
+    },
     "continue": "Ga verder naar ",
-    "title": "Voorkeuren",
     "hotel": "Hotel {{value}}",
     "immediate": {
       "description": "Mit allgemeinen Sofortanfragen können Benutzer schnell anfordern, was sie in den Bereichen Ihres Hotels benötigen. Wählen Sie die Optionen aus, die in jedem Zonentyp angezeigt werden sollen:",
@@ -189,12 +203,19 @@
       "subDescription": "Sofortige Anfragen ermöglichen es dem Gast, schnell etwas Pünktliches anzufordern, das vorrangig bedient werden soll.\n<br/><br/>Beispiel: ein Handtuch im Pool",
       "which": "Welche?"
     },
+    "maintenance": {
+      "description": "Kies welke opties ingeschakeld moeten blijven in de sectie Onderhoud. U zult in staat zijn om nieuwe opties aan te maken.",
+      "disableText": "Nee, laat uitgeschakeld",
+      "enableText": "Ja, schakel de service in",
+      "name": "Onderhoud",
+      "subDescription": "Verzoeken in onderhoud stellen de gebruiker in staat om diensten uit de eerste hand te krijgen die zullen helpen in hun verblijf."
+    },
     "message": {
+      "removeFormError": "Dit formulier heeft actieve verzoeken",
+      "removeFormSuccess": "Het formulier is succesvol verwijderd",
       "saveForm": "Formular speichern",
       "saveService": "Service speichern",
-      "translateMessage": "Formularübersetzungen generieren",
-      "removeFormError": "Dit formulier heeft actieve verzoeken",
-      "removeFormSuccess": "Het formulier is succesvol verwijderd"
+      "translateMessage": "Formularübersetzungen generieren"
     },
     "newOption": "Neue Option hinzufügen",
     "newOptionbutton": "Fügen Sie ein neues Feld hinzu",
@@ -202,18 +223,17 @@
     "optionInputs": {
       "calendar": "Kalender",
       "fileDescriptionHint": "Beschreibung des Feldes",
+      "hour": "Stunde",
       "iconHint": "Feldsymbol",
+      "money": "Währung",
+      "moneyNameSelect": "Name des Selektors",
       "nameInpitHit": "Feldtyp",
+      "other": "Andere",
       "reload": "Nachladen",
       "select": "Optionsliste",
       "select-other": "Lijst van opties met 'andere'",
-      "other": "Andere",
+      "staticMoney": "Einfaches Feld",
       "text": "Offenes Feld"
-    },
-    "request": {
-      "active": "Verfügbar",
-      "all": "Alles",
-      "searchPlaceHolder": "Suche..."
     },
     "reception": {
       "description": "Wählen Sie im Bereich Empfang aus, welche Optionen aktiviert bleiben sollen. Sie können neue Optionen erstellen.",
@@ -222,32 +242,25 @@
       "name": "Rezeption",
       "subDescription": "Anfragen an der Rezeption ermöglichen es dem Benutzer, Dienste aus erster Hand zu erhalten, die ihm bei seinem Aufenthalt helfen."
     },
+    "request": {
+      "active": "Verfügbar",
+      "all": "Alles",
+      "searchPlaceHolder": "Suche..."
+    },
     "room": {
       "description": "Kies welke opties ingeschakeld moeten blijven in de sectie Kamer. U zult in staat zijn om nieuwe opties te creëren. ",
       "disableText": "Nee, laat uitgeschakeld.",
       "enableText": "Ja, schakel de dienst in.",
       "name": "Kamer",
+      "nome": "",
       "subDescription": "Met kamerverzoeken kan de gebruiker diensten uit de eerste hand krijgen om te helpen bij zijn verblijf."
-    },
-    "maintenance": {
-      "description": "Kies welke opties ingeschakeld moeten blijven in de sectie Onderhoud. U zult in staat zijn om nieuwe opties aan te maken.",
-      "disableText": "Nee, laat uitgeschakeld",
-      "enableText": "Ja, schakel de service in",
-      "name": "Onderhoud",
-      "subDescription": "Verzoeken in onderhoud stellen de gebruiker in staat om diensten uit de eerste hand te krijgen die zullen helpen in hun verblijf."
-    },
-    "cleaning": {
-      "description": "Kies welke opties ingeschakeld moeten blijven in de Schoonmaak sectie. U kunt nieuwe opties aanmaken.",
-      "disableText": "Nee, laat uitgeschakeld",
-      "enableText": "Ja, schakel de service in",
-      "name": "Schoonmaak",
-      "subDescription": "De Schoonmaak verzoeken stellen de gebruiker in staat om diensten uit de eerste hand te verkrijgen die helpen bij hun verblijf."
     },
     "service": {
       "description": "Beschreibung",
       "nameOption": "Optionsname",
       "preview": "Vorschau"
     },
+    "title": "Voorkeuren",
     "welcome": {
       "button": "start",
       "subtitle": "Wij zullen u stap voor stap begeleiden, zodat u de mogelijkheden die u uw gasten zult aanbieden, kunt organiseren.",
@@ -386,11 +399,6 @@
     "complete": "Erreicht",
     "programing": "Geplant"
   },
-  "dynamicRequest": {
-    "attended": "Besucht",
-    "complete": "Erreicht",
-    "programing": "Geplant"
-  },
   "typeRequest": {
     "CASH_LOAN": "Darlehen",
     "CLEAN": "Sauber",
@@ -453,8 +461,5 @@
       "waiter": "Bedienung",
       "wakeUp": "Weckprogramm"
     }
-  },
-  "dynamicForm": {
-    "which": "Welke?"
   }
 }

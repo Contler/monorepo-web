@@ -17,6 +17,11 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { OtherInputComponent } from './components/other-input/other-input.component';
 import { TextInputComponent } from './components/text-input/text-input.component';
+import { MoneyComponent } from './components/money/money.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { TimeInputComponent } from './components/time-input/time-input.component';
 
 @NgModule({
   imports: [
@@ -33,6 +38,9 @@ import { TextInputComponent } from './components/text-input/text-input.component
     MatDatepickerModule,
     DynamicTranslateModule,
     AngularFirestoreModule,
+    NgxMaskModule,
+    MatButtonToggleModule,
+    MatSlideToggleModule,
   ],
   providers: [DynamicModuleService],
   declarations: [
@@ -41,7 +49,9 @@ import { TextInputComponent } from './components/text-input/text-input.component
     DateInputComponent,
     OtherInputComponent,
     TextInputComponent,
+    MoneyComponent,
+    TimeInputComponent,
   ],
-  exports: [NewInputComponent, DynamicFormComponent],
+  exports: [NewInputComponent, DynamicFormComponent, MoneyComponent, TimeInputComponent],
 })
 export class DynamicServicesModule {}

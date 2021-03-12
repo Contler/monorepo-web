@@ -1,7 +1,7 @@
 @import 'styles/variables';
 
 .reception {
-  padding: 0 40px 20px;
+  padding: 0 40px 20px 25px;
   &__text {
     text-align: center;
   }
@@ -17,6 +17,10 @@
     text-align: center;
     margin-bottom: 10%;
   }
+}
+
+.search {
+  padding: 0 40px;
 }
 
 .center {

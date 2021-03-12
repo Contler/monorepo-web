@@ -1,5 +1,6 @@
 <div class="item" (click)="openModal()">
-  <div class="item__text">
+  <div class="status {{ colorStatus }}" *ngIf="!isComplete"></div>
+  <div class="item__text" [ngStyle]="{ 'grid-column': isComplete ? 'span 2' : '' }">
     <span class="item__text-name"> {{ item.guest.name }} {{ item.guest.lastName }} </span>
     <span class="small">{{ item.nameService | ctrTranslate }}</span>
     <span class="small"> {{ item.createAt | date: 'dd/MM/yyyy' }} </span>

@@ -19,9 +19,6 @@
       {{ 'readyReception.noRequests' | translate }}
     </div>
 
-    <contler-reception-item *ngFor="let item of $receptionReq | async" [reception]="item" [isReady]="false">
-    </contler-reception-item>
-
     <contler-dynamic-item
       *ngFor="let item of dynamicReq | async"
       [isReady]="false"

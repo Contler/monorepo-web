@@ -23,7 +23,11 @@
     "other": "altro",
     "towelChange": "Cambio asciugamani"
   },
+  "dynamicForm": {
+    "which": "Quale?"
+  },
   "dynamicRequest": {
+    "all": "Tutto",
     "attended": "Frequentato",
     "complete": "Completato",
     "programing": "Programmato"
@@ -210,8 +214,5 @@
       "waiter": "Cameriere",
       "wakeUp": "Programma sveglia telefonica"
     }
-  },
-  "dynamicForm": {
-    "which": "Quale?"
   }
 }

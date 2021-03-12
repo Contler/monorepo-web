@@ -18,4 +18,12 @@ export const OPTION_INPUTS: OptionInput[] = [
     name: 'preferences.optionInputs.calendar',
     value: InputType.DATE,
   },
+  {
+    name: 'preferences.optionInputs.money',
+    value: InputType.MONEY,
+  },
+  {
+    name: 'preferences.optionInputs.hour',
+    value: InputType.TIME,
+  },
 ];

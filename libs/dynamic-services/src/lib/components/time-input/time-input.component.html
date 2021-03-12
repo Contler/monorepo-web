@@ -1,0 +1,11 @@
+<mat-form-field appearance="fill">
+  <mat-select
+    [(ngModel)]="value"
+    (ngModelChange)="change($event)"
+    [disabled]="isDisabled"
+    [compareWith]="compareTime"
+  >
+    <mat-option *ngFor="let date of hoursOptions" [value]="date">{{ date | date: 'HH:mm' }}</mat-option>
+  </mat-select>
+  <mat-hint>{{ typeInput.description | ctrTranslate }}</mat-hint>
+</mat-form-field>

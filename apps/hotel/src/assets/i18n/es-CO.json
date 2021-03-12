@@ -33,6 +33,14 @@
   "createReservation": {
     "noSpotsAvailable": "No hay cupos disponibles"
   },
+  "dynamicForm": {
+    "which": "¿Cual?"
+  },
+  "dynamicRequest": {
+    "attended": "Atendida",
+    "complete": "Completada",
+    "programing": "Programada"
+  },
   "editGuest": {
     "noRequest": "No hay solicitudes",
     "order": "Pedido",
@@ -178,7 +186,13 @@
   },
   "preferences": {
     "back": "Regresar",
-    "title": "Preferencias",
+    "cleaning": {
+      "description": "Elige qué opciones mantener habilitadas en la sección de Limpieza. Podrás crear nuevas opciones.",
+      "disableText": "No, dejar deshabilitado",
+      "enableText": "Sí, habilitar servicio",
+      "name": "Limpieza",
+      "subDescription": "Las solicitudes en limpieza permiten al usuario obtener los servicios de primera mano que ayuden en su estadía."
+    },
     "continue": "Continuar",
     "hotel": "Hotel {{value}}",
     "immediate": {
@@ -189,12 +203,19 @@
       "subDescription": "Las solicitudes inmediatas permiten al huésped solicitar algo puntual de forma rápida, para ser atendido con prioridad. \n<br/><br/>\nejemplo: una toalla en la piscina",
       "which": "¿Cual?"
     },
+    "maintenance": {
+      "description": "Elige qué opciones mantener habilitadas en la sección de Mantenimiento. Podrás crear nuevas opciones.",
+      "disableText": "No, dejar deshabilitado",
+      "enableText": "Sí, habilitar servicio",
+      "name": "Mantenimiento",
+      "subDescription": "Las solicitudes en mantenimiento permiten al usuario obtener los servicios de primera mano que ayuden en su estadía."
+    },
     "message": {
+      "removeFormError": "Este formulario tiene solicitudes activas",
+      "removeFormSuccess": "Se elimino el formulario correctamente",
       "saveForm": "Salvando formulario",
       "saveService": "Salvando servicio",
-      "translateMessage": "Generando traducciones del formulario",
-      "removeFormError": "Este formulario tiene solicitudes activas",
-      "removeFormSuccess": "Se elimino el formulario correctamente"
+      "translateMessage": "Generando traducciones del formulario"
     },
     "newOption": "AGREGAR NUEVA OPCIÓN",
     "newOptionbutton": "Agregar un nuevo campo",
@@ -202,18 +223,17 @@
     "optionInputs": {
       "calendar": "Calendario",
       "fileDescriptionHint": "Descripción del campo",
+      "hour": "Hora",
       "iconHint": "Icono del campo",
+      "money": "Moneda",
+      "moneyNameSelect": "Nombre del selector",
       "nameInpitHit": "Tipo de campo",
+      "other": "Otro",
       "reload": "Recargar",
       "select": "Lista de opciones",
       "select-other": "Lista de opciones con 'otro'",
-      "other": "Otro",
+      "staticMoney": "Campo simple",
       "text": "Campo abierto"
-    },
-    "request": {
-      "active": "Activos",
-      "all": "Todos",
-      "searchPlaceHolder": "Buscar..."
     },
     "reception": {
       "description": "Elige qué opciones mantener habilitadas en la sección de Recepción. Podrás crear nuevas opciones.",
@@ -222,32 +242,25 @@
       "name": "Recepción",
       "subDescription": "Las solicitudes en recepción permiten al usuario obtener los servicios de primera mano que ayuden en su estadía."
     },
+    "request": {
+      "active": "Activos",
+      "all": "Todos",
+      "searchPlaceHolder": "Buscar..."
+    },
     "room": {
       "description": "Elige qué opciones mantener habilitadas en la sección de Cuarto. Podrás crear nuevas opciones.",
       "disableText": "No, dejar deshabilitado",
       "enableText": "Sí, habilitar servicio",
       "name": "Cuarto",
+      "nome": "",
       "subDescription": "Las solicitudes en cuarto permiten al usuario obtener los servicios de primera mano que ayuden en su estadía."
-    },
-    "maintenance": {
-      "description": "Elige qué opciones mantener habilitadas en la sección de Mantenimiento. Podrás crear nuevas opciones.",
-      "disableText": "No, dejar deshabilitado",
-      "enableText": "Sí, habilitar servicio",
-      "name": "Mantenimiento",
-      "subDescription": "Las solicitudes en mantenimiento permiten al usuario obtener los servicios de primera mano que ayuden en su estadía."
-    },
-    "cleaning": {
-      "description": "Elige qué opciones mantener habilitadas en la sección de Limpieza. Podrás crear nuevas opciones.",
-      "disableText": "No, dejar deshabilitado",
-      "enableText": "Sí, habilitar servicio",
-      "name": "Limpieza",
-      "subDescription": "Las solicitudes en limpieza permiten al usuario obtener los servicios de primera mano que ayuden en su estadía."
     },
     "service": {
       "description": "Descripción",
       "nameOption": "Nombre de la opción",
       "preview": "Previsualización"
     },
+    "title": "Preferencias",
     "welcome": {
       "button": "iniciar",
       "subtitle": "Te guiaremos en este paso a paso para que puedas organizar las opciones que ofrecerás a tus huéspedes",
@@ -386,11 +399,6 @@
     "complete": "Cumplida",
     "programing": "Programada"
   },
-  "dynamicRequest": {
-    "attended": "Atendida",
-    "complete": "Completada",
-    "programing": "Programada"
-  },
   "typeRequest": {
     "CASH_LOAN": "Préstamo en efectivo",
     "CLEAN": "Limpieza",
@@ -453,8 +461,5 @@
       "waiter": "Camarero",
       "wakeUp": "Programa despertador"
     }
-  },
-  "dynamicForm": {
-    "which": "¿Cual?"
   }
 }

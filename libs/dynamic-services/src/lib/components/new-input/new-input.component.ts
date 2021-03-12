@@ -3,6 +3,7 @@ import { OPTION_INPUTS } from '../../constants/option-inputs';
 import { InputField, InputType } from '../../interfaces/input-field';
 import { TranslateService } from '@ngx-translate/core';
 import { first } from 'rxjs/operators';
+import { MONEY_OPTIONS } from '../../constants/money';
 
 @Component({
   selector: 'contler-new-input',
@@ -14,6 +15,7 @@ export class NewInputComponent implements OnInit {
   @Output() delete = new EventEmitter();
 
   readonly inputOptions = OPTION_INPUTS;
+  readonly moneyOption = MONEY_OPTIONS;
   InputType = InputType;
 
   constructor(private translateService: TranslateService) {}
@@ -35,15 +37,25 @@ export class NewInputComponent implements OnInit {
     this.delete.emit();
   }
 
-  public async changeInputData(inputType: number): Promise<void> {
-    if (inputType === this.InputType.SELECT_WITH_OTHER) {
-      const other = await this.translateService
-        .get('preferences.optionInputs.other')
-        .pipe(first())
-        .toPromise();
-      this.addOption(other);
-    } else {
-      this.inputData.option = [];
+  public async changeInputData(inputType: InputType): Promise<void> {
+    switch (inputType) {
+      case InputType.SELECT_WITH_OTHER:
+        const other = await this.translateService
+          .get('preferences.optionInputs.other')
+          .pipe(first())
+          .toPromise();
+        this.addOption(other);
+        break;
+      case InputType.MONEY:
+        this.inputData.money = {
+          money: this.moneyOption[0],
+          staticMoney: true,
+          nameSelect: '',
+        };
+        break;
+      case InputType.SELECT:
+        this.inputData.option = [];
+        break;
     }
   }
 }

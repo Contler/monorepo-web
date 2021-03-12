@@ -17,6 +17,8 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { DynamicItemComponent } from './dynamic-item/dynamic-item.component';
 import { DynamicResultComponent } from './dynamicresult/dynamic-result.component';
 import { DynamicServicesModule } from '@contler/dynamic-services';
+import { DynamicFilterPipe } from './dynamic-filter.pipe';
+import { SearchListComponent } from './search-list/search-list.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { DynamicServicesModule } from '@contler/dynamic-services';
     RequestReceptionComponent,
     DynamicItemComponent,
     DynamicResultComponent,
+    DynamicFilterPipe,
+    SearchListComponent,
   ],
   exports: [
     ToolbarComponent,
@@ -40,6 +44,8 @@ import { DynamicServicesModule } from '@contler/dynamic-services';
     BtnHotelDirective,
     ReceptionItemComponent,
     DynamicItemComponent,
+    DynamicFilterPipe,
+    SearchListComponent,
   ],
   imports: [
     CommonModule,

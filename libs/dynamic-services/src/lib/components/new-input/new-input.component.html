@@ -47,6 +47,27 @@
   </div>
 </ng-container>
 
+<ng-container *ngIf="inputData.type === InputType.MONEY">
+  <mat-slide-toggle [(ngModel)]="inputData.money.staticMoney">
+    {{ 'preferences.optionInputs.staticMoney' | translate }}
+  </mat-slide-toggle>
+  <mat-form-field appearance="fill" *ngIf="inputData.money.staticMoney">
+    <mat-select [(ngModel)]="inputData.money.money">
+      <mat-option *ngFor="let money of moneyOption" [value]="money">{{ money.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="!inputData.money.staticMoney" appearance="fill">
+    <input
+      type="text"
+      matInput
+      [value]="inputData.money.nameSelect | ctrTranslate"
+      (input)="inputData.money.nameSelect = $event.target['value']"
+    />
+    <mat-hint>{{ 'preferences.optionInputs.moneyNameSelect' | translate }}</mat-hint>
+  </mat-form-field>
+</ng-container>
+
 <mat-form-field appearance="fill">
   <input type="text" matInput [(ngModel)]="inputData.description" />
   <mat-hint>{{ 'preferences.optionInputs.fileDescriptionHint' | translate }}</mat-hint>

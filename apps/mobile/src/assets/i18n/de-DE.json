@@ -23,7 +23,11 @@
     "other": "andere",
     "towelChange": "Handtuchwechsel"
   },
+  "dynamicForm": {
+    "which": "Welke?"
+  },
   "dynamicRequest": {
+    "all": "Alle",
     "attended": "Besucht",
     "complete": "Abgeschlossen",
     "programing": "Geplant"
@@ -210,8 +214,5 @@
       "waiter": "Bedienung",
       "wakeUp": "Programm Weckruf"
     }
-  },
-  "dynamicForm": {
-    "which": "Welke?"
   }
 }

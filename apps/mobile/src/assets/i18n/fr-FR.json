@@ -23,7 +23,11 @@
     "other": "Autre",
     "towelChange": "Changement de serviette"
   },
+  "dynamicForm": {
+    "which": "Laquelle ?"
+  },
   "dynamicRequest": {
+    "all": "Toutes",
     "attended": "Assisté",
     "complete": "Terminé",
     "programing": "Programme"
@@ -210,8 +214,5 @@
       "waiter": "Serveur",
       "wakeUp": "Appel de réveil du programme"
     }
-  },
-  "dynamicForm": {
-    "which": "Laquelle ?"
   }
 }

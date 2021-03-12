@@ -7,6 +7,7 @@
       <mat-icon contlerColorHotel="primary">menu</mat-icon>
     </button>
   </div>
+  <contler-search-list class="search" (status)="filter = $event"></contler-search-list>
 </ion-header>
 
 <ion-content>
@@ -15,21 +16,14 @@
       {{ 'pendingMaintain.title' | translate }}
     </div>
 
-    <contler-reception-item
-      *ngFor="let item of $receptionReq | async"
-      [reception]="item"
-      [isReady]="true"
-      (closeModal)="modalClose($event, item.uid)"
-    ></contler-reception-item>
-
     <contler-dynamic-item
-      *ngFor="let item of dynamicReq | async"
+      *ngFor="let item of dynamicReq | async | dynamicFilter: filter"
       [isReady]="true"
       [item]="item"
     ></contler-dynamic-item>
   </div>
 
-  <p *ngIf="!totalReception && !totalReception2" class="reception__text">
+  <p *ngIf="!totalReception2" class="reception__text">
     {{ 'pendingMaintain.noRequests' | translate }}
   </p>
 </ion-content>

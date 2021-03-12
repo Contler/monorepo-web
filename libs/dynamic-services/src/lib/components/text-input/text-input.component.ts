@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { InputField } from '@contler/dynamic-services';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -30,5 +30,6 @@ export class TextInputComponent implements ControlValueAccessor {
 
   public setValueFromFieldOther(value: string): void {
     this.onChange(value);
+    this.onTouch();
   }
 }

@@ -1,0 +1,26 @@
+<mat-form-field *ngIf="!typeInput.money.staticMoney" appearance="fill">
+  <mat-select
+    [(ngModel)]="value.money"
+    [disabled]="isDisable"
+    (ngModelChange)="updateMoney($event)"
+    [compareWith]="moneyCompare"
+  >
+    <mat-option *ngFor="let opt of moneyOption" [value]="opt">{{ opt.name }}</mat-option>
+  </mat-select>
+  <mat-hint>{{ typeInput.money.nameSelect | ctrTranslate }}</mat-hint>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <span matPrefix style="margin-right: 10px">{{ value.money.symbol }} </span>
+  <input
+    [(ngModel)]="value.value"
+    (ngModelChange)="update($event)"
+    matInput
+    type="tel"
+    aria-label="money"
+    mask="separator"
+    thousandSeparator="."
+    [disabled]="isDisable"
+  />
+  <mat-hint>{{ typeInput.description | ctrTranslate }}</mat-hint>
+</mat-form-field>

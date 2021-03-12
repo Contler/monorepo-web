@@ -2,7 +2,7 @@
   <textarea
     type="text"
     value="{{ typeInput.value | ctrTranslate }}"
-    (change)="setValueFromFieldOther($event.target['value'])"
+    (input)="setValueFromFieldOther($event.target['value'])"
     matInput
     [disabled]="isDisabled"
   ></textarea>

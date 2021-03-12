@@ -10,7 +10,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { GeneralService } from '../../../services/general.service';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { DynamicModuleService, DynamicRequest, MODULES } from '@contler/dynamic-services';
+import {
+  DynamicModuleService,
+  DynamicRequest,
+  DynamicRequestStatus,
+  MODULES,
+} from '@contler/dynamic-services';
 
 @Component({
   selector: 'contler-reception-pending',
@@ -23,6 +28,7 @@ export class PendingComponent implements OnInit {
   totalReception2: number;
   $receptionReq: Observable<ReceptionModel[]>;
   dynamicReq: Observable<DynamicRequest[]>;
+  filter: DynamicRequestStatus;
   constructor(
     private auth: AuthService,
     private receptionLocalService: ReceptionLocalService,

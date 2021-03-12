@@ -33,6 +33,14 @@
   "createReservation": {
     "noSpotsAvailable": "Nessun posto disponibile"
   },
+  "dynamicForm": {
+    "which": "Quale?"
+  },
+  "dynamicRequest": {
+    "attended": "Frequentato",
+    "complete": "Compiuto",
+    "programing": "Programmato"
+  },
   "editGuest": {
     "noRequest": "Nessuna richiesta",
     "order": "ordine",
@@ -178,8 +186,14 @@
   },
   "preferences": {
     "back": "Ritornare",
+    "cleaning": {
+      "description": "Scegliete quali opzioni mantenere abilitate nella sezione Pulizia. Potrai creare nuove opzioni.",
+      "disableText": "No, lascia disabilitato",
+      "enableText": "Sì, abilita il servizio",
+      "name": "Pulizia",
+      "subDescription": "Le richieste di pulizia permettono all'utente di ottenere servizi di prima mano che aiutano nel loro soggiorno."
+    },
     "continue": "Continuare a ",
-    "title": "Preferenze",
     "hotel": "Hotel {{value}}",
     "immediate": {
       "description": "Le richieste generali immediate consentono agli utenti di richiedere rapidamente ciò di cui hanno bisogno nelle aree del tuo Hotel. Scegli le opzioni da visualizzare in ogni tipo di zona:",
@@ -189,12 +203,19 @@
       "subDescription": "Le richieste immediate consentono all'ospite di richiedere rapidamente qualcosa di puntuale, da servire con priorità.\n<br/><br/>esempio: un telo in piscina",
       "which": "Quale?"
     },
+    "maintenance": {
+      "description": "Scegliere quali opzioni mantenere abilitate nella sezione Manutenzione. Potrai creare nuove opzioni",
+      "disableText": "No, lascia disabilitato",
+      "enableText": "Sì, abilita il servizio",
+      "name": "Manutenzione",
+      "subDescription": "Le richieste in manutenzione permettono all'utente di ottenere servizi di prima mano che aiuteranno nel loro soggiorno"
+    },
     "message": {
+      "removeFormError": "Questo modulo ha richieste attive",
+      "removeFormSuccess": "Il modulo è stato cancellato con successo",
       "saveForm": "Salvataggio del modulo",
       "saveService": "Servizio di risparmio",
-      "translateMessage": "Generazione di traduzioni di moduli",
-      "removeFormError": "Questo modulo ha richieste attive",
-      "removeFormSuccess": "Il modulo è stato cancellato con successo"
+      "translateMessage": "Generazione di traduzioni di moduli"
     },
     "newOption": "Aggiungi nuova opzione",
     "newOptionbutton": "Aggiungi un nuovo campo",
@@ -202,18 +223,17 @@
     "optionInputs": {
       "calendar": "Calendario",
       "fileDescriptionHint": "Descrizione del campo",
+      "hour": "Tempo",
       "iconHint": "Icona del campo",
+      "money": "valuta",
+      "moneyNameSelect": "Nome del selettore",
       "nameInpitHit": "Tipo di campo",
+      "other": "Altro",
       "reload": "Ricarica",
       "select": "Elenco delle opzioni",
       "select-other": "Elenco di opzioni con 'altro'",
-      "other": "Altro",
+      "staticMoney": "Campo semplice",
       "text": "Campo aperto"
-    },
-    "request": {
-      "active": "A disposizione",
-      "all": "Tutti",
-      "searchPlaceHolder": "Ricerca..."
     },
     "reception": {
       "description": "Scegli quali opzioni mantenere abilitate nella sezione Reception. Puoi creare nuove opzioni.",
@@ -222,32 +242,25 @@
       "name": "Ricezione",
       "subDescription": "Le richieste alla reception consentono all'utente di ottenere servizi di prima mano che aiutano nel suo soggiorno."
     },
+    "request": {
+      "active": "A disposizione",
+      "all": "Tutti",
+      "searchPlaceHolder": "Ricerca..."
+    },
     "room": {
       "description": "Scegli quali opzioni mantenere abilitate nella sezione Stanza. Potrai creare nuove opzioni",
       "disableText": "No, lascia disabilitato",
       "enableText": "Sì, abilita servizio",
       "name": "Camera",
+      "nome": "",
       "subDescription": "Le richieste in camera permettono all'utente di ottenere servizi di prima mano che aiuteranno nel loro soggiorno"
-    },
-    "maintenance": {
-      "description": "Scegliere quali opzioni mantenere abilitate nella sezione Manutenzione. Potrai creare nuove opzioni",
-      "disableText": "No, lascia disabilitato",
-      "enableText": "Sì, abilita il servizio",
-      "name": "Manutenzione",
-      "subDescription": "Le richieste in manutenzione permettono all'utente di ottenere servizi di prima mano che aiuteranno nel loro soggiorno"
-    },
-    "cleaning": {
-      "description": "Scegliete quali opzioni mantenere abilitate nella sezione Pulizia. Potrai creare nuove opzioni.",
-      "disableText": "No, lascia disabilitato",
-      "enableText": "Sì, abilita il servizio",
-      "name": "Pulizia",
-      "subDescription": "Le richieste di pulizia permettono all'utente di ottenere servizi di prima mano che aiutano nel loro soggiorno."
     },
     "service": {
       "description": "Descrizione",
       "nameOption": "Nome dell'opzione",
       "preview": "Anteprima"
     },
+    "title": "Preferenze",
     "welcome": {
       "button": "avvia",
       "subtitle": "Ti guideremo passo dopo passo in modo che tu possa organizzare le opzioni che offrirai ai tuoi ospiti.",
@@ -386,11 +399,6 @@
     "complete": "Compiuto",
     "programing": "Programmato"
   },
-  "dynamicRequest": {
-    "attended": "Frequentato",
-    "complete": "Compiuto",
-    "programing": "Programmato"
-  },
   "typeRequest": {
     "CASH_LOAN": "Prestito in contanti",
     "CLEAN": "Pulito",
@@ -453,8 +461,5 @@
       "waiter": "Cameriere",
       "wakeUp": "Programma di sveglia"
     }
-  },
-  "dynamicForm": {
-    "which": "Quale?"
   }
 }

@@ -1,0 +1,5 @@
+<mat-form-field class="content">
+  <mat-select [(ngModel)]="filter" (ngModelChange)="status.emit($event)">
+    <mat-option *ngFor="let opt of listStatus" [value]="opt">{{ opt | translate }}</mat-option>
+  </mat-select>
+</mat-form-field>

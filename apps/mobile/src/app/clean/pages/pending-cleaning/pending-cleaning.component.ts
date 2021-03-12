@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RoomService } from '@contler/core';
 import { EmployerEntity } from '@contler/entity';
-import { ReceptionModel } from '@contler/models';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
@@ -10,7 +9,12 @@ import { take, tap } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
 import { GeneralService } from '../../../services/general.service';
 import { ReceptionLocalService } from '../../../services/reception/reception-local.service';
-import { DynamicModuleService, DynamicRequest, MODULES } from '@contler/dynamic-services';
+import {
+  DynamicModuleService,
+  DynamicRequest,
+  DynamicRequestStatus,
+  MODULES,
+} from '@contler/dynamic-services';
 
 @Component({
   selector: 'contler-pending-cleaning',
@@ -19,10 +23,9 @@ import { DynamicModuleService, DynamicRequest, MODULES } from '@contler/dynamic-
 })
 export class PendingCleaningComponent implements OnInit {
   user: EmployerEntity | null = null;
-  totalReception: number;
   totalReception2: number;
-  $receptionReq: Observable<ReceptionModel[]>;
   dynamicReq: Observable<DynamicRequest[]>;
+  filter: DynamicRequestStatus;
   constructor(
     private auth: AuthService,
     private receptionLocalService: ReceptionLocalService,
@@ -41,9 +44,6 @@ export class PendingCleaningComponent implements OnInit {
         .getDynamicRequest(user.hotel.uid, MODULES.cleaning, true)
         .pipe(tap(({ length }) => (this.totalReception2 = length)));
     });
-    this.$receptionReq = this.receptionLocalService
-      .getCleanReq()
-      .pipe(tap(({ length }) => (this.totalReception = length)));
   }
 
   async modalClose(complete: any, uid: string) {

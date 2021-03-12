@@ -8,3 +8,4 @@ export * from './lib/interfaces/form-service';
 export * from './lib/components/dynamicform/dynamic-form.component';
 export * from './lib/interfaces/dynamic-request';
 export * from './lib/constants/dynamic-request-status';
+export * from './lib/constants/money';

@@ -25,12 +25,29 @@
           <mat-hint>{{ opt.description | ctrTranslate }}</mat-hint>
         </mat-form-field>
       </ng-container>
+
       <ng-container *ngSwitchCase="3">
         <contler-other-input
           [typeInput]="opt"
           *ngIf="getControl(opt.type, i)"
           [formControlName]="generateName(opt.type, i)"
         ></contler-other-input>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="4">
+        <contler-money
+          [typeInput]="opt"
+          *ngIf="getControl(opt.type, i)"
+          [formControlName]="generateName(opt.type, i)"
+        ></contler-money>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="5">
+        <contler-time-input
+          [typeInput]="opt"
+          *ngIf="getControl(opt.type, i)"
+          [formControlName]="generateName(opt.type, i)"
+        ></contler-time-input>
       </ng-container>
     </ng-container>
   </ng-container>

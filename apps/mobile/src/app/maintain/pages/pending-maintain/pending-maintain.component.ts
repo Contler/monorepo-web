@@ -10,7 +10,12 @@ import { GeneralService } from '../../../services/general.service';
 import { ReceptionLocalService } from '../../../services/reception/reception-local.service';
 import { RoomService } from '@contler/core';
 import { TranslateService } from '@ngx-translate/core';
-import { DynamicModuleService, DynamicRequest, MODULES } from '@contler/dynamic-services';
+import {
+  DynamicModuleService,
+  DynamicRequest,
+  DynamicRequestStatus,
+  MODULES,
+} from '@contler/dynamic-services';
 
 @Component({
   selector: 'contler-pending-maintain',
@@ -23,6 +28,7 @@ export class PendingMaintainComponent implements OnInit {
   totalReception: number;
   totalReception2: number;
   dynamicReq: Observable<DynamicRequest[]>;
+  filter: DynamicRequestStatus;
 
   constructor(
     private auth: AuthService,

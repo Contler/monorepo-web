@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DynamicRequest } from '@contler/dynamic-services';
+import { DynamicRequest, DynamicRequestStatus } from '@contler/dynamic-services';
 import { MatDialog } from '@angular/material/dialog';
 import { DynamicResultComponent } from '../dynamicresult/dynamic-result.component';
 import { ModalController } from '@ionic/angular';
@@ -25,7 +25,11 @@ export class DynamicItemComponent {
     }
   }
 
-  getDate(data: any) {
-    return new Date(data['seconds'] * 1000);
+  get colorStatus() {
+    return this.item?.status === DynamicRequestStatus.ATTENDED ? 'yellow' : 'red';
+  }
+
+  get isComplete() {
+    return this.item?.status === DynamicRequestStatus.COMPLETED;
   }
 }

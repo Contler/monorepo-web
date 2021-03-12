@@ -7,16 +7,17 @@
       <mat-icon contlerColorHotel="primary">menu</mat-icon>
     </button>
   </div>
+  <contler-search-list class="search" (status)="filter = $event"></contler-search-list>
 </ion-header>
 
 <ion-content>
-  <div style="padding: 0 40px 20px">
+  <div style="padding: 0 40px 20px 25px">
     <p *ngIf="!totalReception" class="ion-text-center">
       {{ 'pendingReception.noRequests' | translate }}
     </p>
 
     <contler-dynamic-item
-      *ngFor="let item of dynamicReq | async"
+      *ngFor="let item of dynamicReq | async | dynamicFilter: filter"
       [isReady]="true"
       [item]="item"
     ></contler-dynamic-item>
