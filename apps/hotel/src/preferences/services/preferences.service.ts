@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ImmediateOptionLink, OptionModule, OptionType } from '@contler/models';
 import { Router } from '@angular/router';
-import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
-import { first } from 'rxjs/operators';
+import {
+  DynamicModuleService,
+  DynamicRequest,
+  DynamicRequestStatus,
+  MODULES,
+  receptionDynamicConverter,
+} from '@contler/dynamic-services';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +22,7 @@ export class PreferencesService {
     private messagesService: MessagesService,
     private dynamicModuleService: DynamicModuleService,
     private angularFireDatabase: AngularFireDatabase,
+    private angularFirestore: AngularFirestore,
   ) {}
 
   public redirectEditDynamicForm(option: OptionModule, moduleReference: MODULES): void {
@@ -33,10 +41,15 @@ export class PreferencesService {
     const loader = this.messagesService.showLoader();
     const formId = option.formKey;
     try {
-      const formsActive = await this.dynamicModuleService
-        .getDynamicRequest(hotelUid, moduleReference, true, null, formId)
+      const reference = this.angularFirestore.firestore
+        .collection('dynamicRequest')
+        .withConverter(receptionDynamicConverter);
+      const forms = await this.angularFirestore
+        .collection<DynamicRequest>(reference, (ref) => ref.where('serviceId', '==', formId))
+        .valueChanges()
         .pipe(first())
         .toPromise();
+      const formsActive = forms.filter((form) => form.status !== DynamicRequestStatus.COMPLETED);
       if (formsActive.length) {
         this.messagesService.closeLoader(loader);
         const removeFormError = 'preferences.message.removeFormError';
@@ -46,10 +59,7 @@ export class PreferencesService {
         await this.removeForm(formId);
         await this.removeOptionModule(option, hotelUid, moduleReference);
       }
-      const formsInactive = await this.dynamicModuleService
-        .getDynamicRequest(hotelUid, moduleReference, false, null, formId)
-        .pipe(first())
-        .toPromise();
+      const formsInactive = forms.filter((form) => form.status === DynamicRequestStatus.COMPLETED);
       if (!formsInactive.length) {
         await this.removeDictionaryForm(option, hotelUid, moduleReference);
       }

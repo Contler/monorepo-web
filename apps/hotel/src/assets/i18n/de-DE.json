@@ -1,4 +1,11 @@
 {
+  "login": {
+    "username": "Gebruiker",
+    "username-placeholder": "gebruiker@bedrijf.com",
+    "password": "Wachtwoord",
+    "sign-in": "Inloggen",
+    "forgot-password": "Wachtwoord vergeten?"
+  },
   "DAYS": {
     "allDay": "Alle Tage",
     "friday": "Freitag",

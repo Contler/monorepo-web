@@ -1,5 +1,13 @@
 <ion-content>
   <div class="main-container">
+    <div class="language">
+      <div class="custom_icon">{{ actualLanguage.unicode }}</div>
+      <mat-select required [(ngModel)]="actualLanguage" (selectionChange)="changeLanguage()">
+        <mat-option *ngFor="let language of languages" [value]="language">
+          <p class="label">{{ language.name }}</p>
+        </mat-option>
+      </mat-select>
+    </div>
     <img src="assets/img/logo.svg" class="main-container__logo" />
     <p class="main-container__label">{{'login.message' | translate}}</p>
     <form [formGroup]="loginForm" (ngSubmit)="login()">

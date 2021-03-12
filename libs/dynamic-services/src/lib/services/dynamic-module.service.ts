@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { MODULES } from '../constants/modules-references';
-import { first, map, take, tap } from 'rxjs/operators';
+import { first, take, tap } from 'rxjs/operators';
 import {
   ImmediateOptionDynamicForm,
   ImmediateOptionLink,
@@ -381,7 +381,7 @@ export class DynamicModuleService {
     return this.fireDb.collection(`dynamicRequest`).doc(request.key).update(request);
   }
 
-  getDynamicRequest(hotelId: string, module: MODULES, status: boolean, untilDate?: number, formId?: string) {
+  getDynamicRequest(hotelId: string, module: MODULES, status: boolean, untilDate?: number) {
     const reference = this.fireDb.firestore
       .collection('dynamicRequest')
       .withConverter(receptionDynamicConverter);
@@ -402,14 +402,7 @@ export class DynamicModuleService {
       query = (ref) =>
         ref.where('hotelId', '==', hotelId).where('service', '==', module).where('active', '==', status);
     }
-    if (formId) {
-      return this.fireDb
-        .collection<DynamicRequest>(reference, query)
-        .valueChanges()
-        .pipe(map((forms) => forms.filter((form) => form.nameService.includes(formId))));
-    } else {
-      return this.fireDb.collection<DynamicRequest>(reference, query).valueChanges();
-    }
+    return this.fireDb.collection<DynamicRequest>(reference, query).valueChanges();
   }
 
   getOptionModule(path: string, hotelUid: string, optionUid): Observable<OptionModule[]> {

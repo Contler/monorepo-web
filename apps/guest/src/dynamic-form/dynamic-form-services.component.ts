@@ -90,6 +90,7 @@ export class DynamicFormServicesComponent implements OnInit {
       form: formClone,
       nameService: this.formData.serviceName,
       service: this.module,
+      serviceId: this.idService,
       guest: this.guest,
       guestId: this.guest.uid,
       hotelId: this.guest.hotel.uid,

@@ -1,5 +1,15 @@
 <div class="wrapper">
   <div class="main_container">
+    <div class="language">
+      <div class="custom_icon">
+        {{ actualLanguage.unicode }}
+      </div>
+      <mat-select required [(ngModel)]="actualLanguage" (selectionChange)="changeLanguage()">
+        <mat-option *ngFor="let language of languages" [value]="language">
+          <p class="label">{{ language.name }}</p>
+        </mat-option>
+      </mat-select>
+    </div>
     <img src="assets/img/logo.svg" class="logo" />
     <p class="label">
       {{ 'login.title' | translate }}

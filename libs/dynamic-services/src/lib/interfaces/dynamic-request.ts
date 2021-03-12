@@ -12,6 +12,7 @@ export interface DynamicRequest {
   hotelId: string;
   nameService: string;
   service: MODULES;
+  serviceId: string;
   key?: string;
   active: boolean;
   status: DynamicRequestStatus;
