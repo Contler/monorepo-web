@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { MODULES } from '../constants/modules-references';
-import { first, map, take, tap } from 'rxjs/operators';
+import { first, take, tap } from 'rxjs/operators';
 import {
   ImmediateOptionDynamicForm,
   ImmediateOptionLink,
@@ -375,9 +375,8 @@ export class DynamicModuleService {
     }
     if (formId) {
       return this.fireDb
-        .collection<DynamicRequest>(reference, query)
-        .valueChanges()
-        .pipe(map((forms) => forms.filter((form) => form.nameService.includes(formId))));
+        .collection<DynamicRequest>(reference, (ref) => ref.where('serviceId', '==', formId))
+        .valueChanges();
     } else {
       return this.fireDb.collection<DynamicRequest>(reference, query).valueChanges();
     }
