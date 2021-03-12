@@ -373,13 +373,7 @@ export class DynamicModuleService {
       query = (ref) =>
         ref.where('hotelId', '==', hotelId).where('service', '==', module).where('active', '==', status);
     }
-    if (formId) {
-      return this.fireDb
-        .collection<DynamicRequest>(reference, (ref) => ref.where('serviceId', '==', formId))
-        .valueChanges();
-    } else {
-      return this.fireDb.collection<DynamicRequest>(reference, query).valueChanges();
-    }
+    return this.fireDb.collection<DynamicRequest>(reference, query).valueChanges();
   }
 
   getOptionModule(path: string, hotelUid: string, optionUid): Observable<OptionModule[]> {
