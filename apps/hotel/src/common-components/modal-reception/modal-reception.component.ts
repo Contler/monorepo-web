@@ -73,7 +73,11 @@ export class ModalReceptionComponent implements OnInit {
       this.receptionStatus = RECEPTION_STATUS;
       this.requestStatusForm.setValue(this.data.requestStatic.request.status);
     } else {
-      this.receptionStatus = Object.values(DynamicRequestStatus);
+      for (const dynamicRequestStatusKey in DynamicRequestStatus) {
+        if (dynamicRequestStatusKey !== 'ALL') {
+          this.receptionStatus = [...this.receptionStatus, DynamicRequestStatus[dynamicRequestStatusKey]];
+        }
+      }
       this.requestStatusForm.setValue(this.data.requestDynamic.status);
     }
     this.cdr.detectChanges();
