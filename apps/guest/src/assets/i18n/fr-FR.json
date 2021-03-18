@@ -86,7 +86,7 @@
   "finishOrder": {
     "immediately": "Immédiatement",
     "order": "ordre",
-    "orderRemarks": "Remarques sur la commande:",
+    "orderRemarks": "Avez-vous des commentaires sur votre commande? ex: sans oignon. Veuillez apporter des couverts. Boisson froide, etc.",
     "orderSummaryIn": "Récapitulatif de la commande en:",
     "selectYourHourOfDelivery": "Sélectionnez votre heure de livraison",
     "title": "Confirmez votre commande et l'heure de livraison",
