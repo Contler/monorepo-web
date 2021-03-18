@@ -215,4 +215,8 @@ export class HotelComponent implements OnInit {
       tap((data) => (this.specialZones = data)),
     );
   }
+
+  back(): void {
+    this.router.navigate(['home']);
+  }
 }
