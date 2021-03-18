@@ -1,4 +1,4 @@
-import { SpecialZoneGuest } from '@contler/models/special-zone-guest';
+import { SpecialZoneGuest } from '../models';
 
 export const DataSourceSpecialZoneGuest: SpecialZoneGuest[] = [
   { name: 'modules.immediateRequests', icon: 'room_service', link: '/home/guest-requests', status: false },

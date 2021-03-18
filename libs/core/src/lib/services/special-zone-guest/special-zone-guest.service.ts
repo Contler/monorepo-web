@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { tap } from 'rxjs/operators';
 import { SpecialZoneGuest } from '@contler/models/special-zone-guest';
-import { DataSourceSpecialZoneGuest } from './data-source-special-zone-guest';
+import { DataSourceSpecialZoneGuest } from '@contler/const/data-source-special-zone-guest';
 import { Observable } from 'rxjs';
 
 @Injectable({

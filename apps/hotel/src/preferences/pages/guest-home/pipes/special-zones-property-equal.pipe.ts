@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SpecialZoneEntity, SpecialZoneHotelEntity } from '@contler/entity';
 
 @Pipe({
   name: 'ArrFilterPropertyEqual',
@@ -9,11 +8,8 @@ export class ArrFilterPropertyEqualPipe implements PipeTransform {
     if (!arr) {
       return [];
     }
-    return arr.filter((element) => {
-      if (element.hasOwnProperty(property)) {
-        return element[property] === condition;
-      }
-      return false;
-    });
+    return arr.filter((element) =>
+      element.hasOwnProperty(property) ? element[property] === condition : false,
+    );
   }
 }
