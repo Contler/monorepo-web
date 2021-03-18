@@ -96,7 +96,8 @@
   "guestRequest": {
     "hello": "Hallo",
     "seeAllHotel": "SEHEN SIE ALLE HOTEL",
-    "whereDoYouNeedUs": "Wo brauchen Sie uns?"
+    "whereDoYouNeedUs": "Wo brauchen Sie uns?",
+    "WhatDoYouNeedToday": "Wat heb je vandaag nodig?"
   },
   "inmediateRequest": {
     "area": "Bereich",
@@ -171,10 +172,16 @@
     "veryBad": "sehr schlecht"
   },
   "modules": {
+    "immediateRequests": "Onmiddellijke verzoeken",
+    "specialRequest": "Speciale verzoeken",
+    "reservations": "Reserveringen",
     "clean": "Reinigung",
     "maintenance": "Instandhaltung",
     "reception": "Rezeption",
-    "room": "Zimmer"
+    "room": "Zimmer",
+    "wakeup-call": "Attentie oproepen",
+    "late-checkouts": "Laat vertrek",
+    "orders": "Bestellingen"
   },
   "myInmediateRequests": {
     "done": "Erledigt",

@@ -24,6 +24,7 @@ import { UiModule } from '@contler/ui';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { ZoneItemComponent } from './pages/zone-request/zone-item/zone-item.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ZoneItemComponent } from './pages/zone-request/zone-item/zone-item.comp
     ModalOrdersQuialifyComponent,
     DrinkRequestComponent,
     ZoneItemComponent,
+    WelcomeComponent,
   ],
   imports: [
     CommonModule,

@@ -30,6 +30,8 @@ import { CreateMaintenanceModuleComponent } from './pages/create-maintenance-mod
 import { CleaningComponent } from './pages/cleaning/cleaning.component';
 import { CreateCleaningModuleComponent } from './pages/create-cleaning-module/create-cleaning-module.component';
 import { PreferencesService } from './services/preferences.service';
+import { GuestHomeComponent } from './pages/guest-home/guest-home.component';
+import { ArrFilterPropertyEqualPipe } from './pages/guest-home/pipes/special-zones-property-equal.pipe';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { PreferencesService } from './services/preferences.service';
     CreateMaintenanceModuleComponent,
     CleaningComponent,
     CreateCleaningModuleComponent,
+    GuestHomeComponent,
+    ArrFilterPropertyEqualPipe,
   ],
   imports: [
     CommonModule,
@@ -74,6 +78,7 @@ import { PreferencesService } from './services/preferences.service';
     DynamicTranslateModule,
     FormsModule,
     ReactiveFormsModule,
+    CommonComponentsModule,
   ],
   providers: [PreferencesService],
 })

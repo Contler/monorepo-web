@@ -14,7 +14,7 @@
         <img [src]="hotel?.logo" alt="hotel logo" class="logo" />
         <p class="title">{{ data?.title }}</p>
       </div>
-      <div>
+      <div *ngIf="showIcon">
         <div class="marco__box">
           <mat-icon class="icon">check_circle_outline</mat-icon>
           <mat-icon class="big-icon">{{ data?.icon }}</mat-icon>
@@ -22,7 +22,7 @@
         </div>
         <p [innerHTML]="data?.description2" class="marco__description"></p>
       </div>
-      <div class="marco__container">
+      <div class="marco__container" [ngClass]="{ 'not-show-icon': !showIcon }">
         <p class="description">{{ data.description }}</p>
         <ng-content></ng-content>
       </div>
