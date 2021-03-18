@@ -16,6 +16,18 @@
     "tuesday": "Martedì",
     "wednesday": "Mercoledì"
   },
+  "modules": {
+    "immediateRequests": "Richieste immediate",
+    "specialRequest": "Richieste speciali",
+    "reservations": "Prenotazioni",
+    "clean": "Pulizia",
+    "maintenance": "Manutenzione",
+    "reception": "Ricezione",
+    "room": "Camera",
+    "wakeup-call": "Chiamate di attenzione",
+    "late-checkouts": "Late check-out",
+    "orders": "Ordini"
+  },
   "calendar": {
     "all": "Tutti",
     "persons": "persone",
@@ -192,6 +204,7 @@
     "value": "Valore"
   },
   "preferences": {
+    "confirmServices": "Prima conferma i servizi che vuoi offrire",
     "back": "Ritornare",
     "cleaning": {
       "description": "Scegliete quali opzioni mantenere abilitate nella sezione Pulizia. Potrai creare nuove opzioni.",
@@ -272,6 +285,11 @@
       "button": "avvia",
       "subtitle": "Ti guideremo passo dopo passo in modo che tu possa organizzare le opzioni che offrirai ai tuoi ospiti.",
       "title": "Benvenuto nel tuo amministratore Contler!"
+    },
+    "guestHome": {
+      "sections": "Sezioni",
+      "name": "Opzioni di partenza per l'ospite",
+      "description": "Scegliete le opzioni che i vostri ospiti vedranno all'inizio della piattaforma una volta effettuato il login"
     }
   },
   "product": {
@@ -468,5 +486,9 @@
       "waiter": "Cameriere",
       "wakeUp": "Programma di sveglia"
     }
+  },
+  "guestRequest": {
+    "hello": "Ciao",
+    "WhatDoYouNeedToday": "Di cosa avete bisogno oggi?"
   }
 }

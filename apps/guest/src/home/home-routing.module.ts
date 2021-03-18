@@ -15,6 +15,7 @@ import { InmediateRequestComponent } from './pages/inmediate-request/inmediate-r
 import { WakeUpComponent } from 'guest/home/pages/wake-up/wake-up.component';
 import { CreateWakeComponent } from 'guest/home/pages/create-wake/create-wake.component';
 import { DrinkRequestComponent } from 'guest/home/pages/drink-request/drink-request.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const redirectUnauthorizedToLogin = () =>
   pipe(
@@ -31,6 +32,10 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
     children: [
+      {
+        path: 'welcome',
+        component: WelcomeComponent,
+      },
       {
         path: 'guest-requests',
         component: GuestRequestsComponent,
@@ -102,7 +107,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'guest-requests',
+        redirectTo: 'welcome',
         pathMatch: 'full',
       },
     ],

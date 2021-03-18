@@ -6,7 +6,7 @@
     description2: 'preferences.cleaning.subDescription' | translate
   }"
   [redirectAction]="false"
-  (next)="goToHome()"
+  (next)="goToGuestHome()"
 >
   <mat-spinner class="load" *ngIf="load"></mat-spinner>
   <mat-accordion *ngIf="modules$ | async; let mod">

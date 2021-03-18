@@ -96,7 +96,8 @@
   "guestRequest": {
     "hello": "Bonjour",
     "seeAllHotel": "VOIR TOUS HÔTEL",
-    "whereDoYouNeedUs": "Où avez-vous besoin de nous?"
+    "whereDoYouNeedUs": "Où avez-vous besoin de nous?",
+    "WhatDoYouNeedToday": "De quoi avez-vous besoin aujourd'hui ?"
   },
   "inmediateRequest": {
     "area": "Surface",
@@ -171,10 +172,16 @@
     "veryBad": "très mauvais"
   },
   "modules": {
+    "immediateRequests": "Demandes immédiates",
+    "specialRequest": "Demandes spéciales",
+    "reservations": "Réservations",
     "clean": "Pettoyage",
     "maintenance": "La maintenance",
     "reception": "La réception",
-    "room": "Chambre"
+    "room": "Chambre",
+    "wakeup-call": "Les appels à l'attention",
+    "late-checkouts": "Départs tardifs",
+    "orders": "Commandes"
   },
   "myInmediateRequests": {
     "done": "Terminé",

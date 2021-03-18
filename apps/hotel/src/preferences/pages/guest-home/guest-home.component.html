@@ -1,0 +1,48 @@
+<contler-module-layout
+  [data]="{
+    title: 'preferences.guestHome.name' | translate,
+    icon: null,
+    description: 'preferences.guestHome.description' | translate,
+    description2: null
+  }"
+  [redirectAction]="false"
+  [showIcon]="false"
+  (next)="goToHome()"
+>
+  <div class="two_columns" *ngIf="hotel$ | async as hotel">
+    <div>
+      <h2 class="title">{{ 'preferences.guestHome.sections' | translate }}</h2>
+      <div>
+        <div *ngFor="let zone of specialZoneGuest$ | async; let i = index" class="zone">
+          <p>{{ zone.name | translate }}</p>
+          <mat-slide-toggle (change)="updateZone($event, zone, i)" [checked]="zone.status"></mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2 class="title">{{ 'preferences.service.preview' | translate }}</h2>
+      <div class="phone mat-elevation-z2">
+        <div class="phone__header">
+          <img [src]="hotel.logo" [alt]="hotel.name" class="phone__header__img" />
+          <mat-icon>menu</mat-icon>
+        </div>
+        <p class="phone__great">{{ 'guestRequest.hello' | translate }} Carlos!</p>
+        <p class="phone__great2">{{ 'guestRequest.WhatDoYouNeedToday' | translate }}</p>
+        <div class="phone__zones">
+          <div
+            *ngFor="
+              let zone of specialZoneGuest$ | async | ArrFilterPropertyEqual: 'status':true;
+              let e = even
+            "
+            [ngClass]="{ even: e }"
+            class="phone__zones__zone"
+          >
+            <mat-icon>{{ zone.icon }}</mat-icon>
+            <p>{{ zone.name | translate }}</p>
+            <mat-icon>arrow_right</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</contler-module-layout>

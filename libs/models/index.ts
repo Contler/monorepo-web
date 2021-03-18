@@ -27,3 +27,4 @@ export * from './language.model';
 export * from './translate-request';
 export * from './immediate-request-module';
 export * from './module-option';
+export * from './special-zone-guest';

@@ -16,6 +16,7 @@ export class ModuleLayoutComponent implements OnInit {
   @Input() disable = false;
   @Input() load = false;
   @Input() redirectAction = true;
+  @Input() showIcon = true;
 
   @Output() next = new EventEmitter();
 

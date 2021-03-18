@@ -1,4 +1,4 @@
-<contler-marco padding="0">
+<contler-marco padding="0" [backUrl]="'/home/welcome'">
   <div marcoBody class="main-container">
     <p class="request__label request__user request__question" contlerColorHotel>
       {{ 'guestRequest.hello' | translate }} {{ ($guest | async)?.name }}!
@@ -7,11 +7,6 @@
       {{ 'guestRequest.whereDoYouNeedUs' | translate }}
     </p>
 
-    <a class="request__zone" routerLink="/home/reception">
-      <contler-icon class="request__zone-icon" key="fas fa-concierge-bell"></contler-icon>
-      <p class="request__zone-text" contlerColorHotel>{{ 'reception.name' | translate }}</p>
-      <mat-icon class="request__zone-icon">navigate_next</mat-icon>
-    </a>
     <a
       class="request__zone striped"
       *ngFor="let zone of showedZones"

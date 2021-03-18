@@ -16,6 +16,18 @@
     "tuesday": "Tuesday",
     "wednesday": "Wednesday"
   },
+  "modules": {
+    "immediateRequests": "Immediate requests",
+    "specialRequest": "Special requests",
+    "reservations": "Reservations",
+    "clean": "Cleaning",
+    "maintenance": "Maintenance",
+    "reception": "Reception",
+    "room": "Room",
+    "wakeup-call": "Attention calls",
+    "late-checkouts": "Late check-out",
+    "orders": "Orders"
+  },
   "calendar": {
     "all": "All",
     "persons": "People",
@@ -192,6 +204,7 @@
     "value": "Value"
   },
   "preferences": {
+    "confirmServices": "First confirm the services you want to offer",
     "back": "Return",
     "cleaning": {
       "description": "Choose which options to keep enabled in the Cleaning section. You will be able to create new options.",
@@ -272,6 +285,11 @@
       "button": "start",
       "subtitle": "We will guide you through this step by step so you can organize the options you will offer to your guests.",
       "title": "Welcome to your Contler administrator!"
+    },
+    "guestHome": {
+      "sections": "Sections",
+      "name": "Guest login options",
+      "description": "Choose which options your guests will see at the start of the platform once they log in."
     }
   },
   "product": {
@@ -468,5 +486,9 @@
       "waiter": "Waiter",
       "wakeUp": "Wake-up program"
     }
+  },
+  "guestRequest": {
+    "hello": "Hello",
+    "WhatDoYouNeedToday": "What do you need today?"
   }
 }

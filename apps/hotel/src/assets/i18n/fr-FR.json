@@ -16,6 +16,18 @@
     "tuesday": "Mardi",
     "wednesday": "Mercredi"
   },
+  "modules": {
+    "immediateRequests": "Demandes immédiates",
+    "specialRequest": "Demandes spéciales",
+    "reservations": "Réservations",
+    "clean": "Nettoyage",
+    "maintenance": "Maintenance",
+    "reception": "Réception",
+    "room": "Chambre",
+    "wakeup-call": "Les appels à l'attention",
+    "late-checkouts": "Départ tardif",
+    "orders": "Commandes"
+  },
   "calendar": {
     "all": "Tout",
     "persons": "Personnes",
@@ -192,6 +204,7 @@
     "value": "Valeur"
   },
   "preferences": {
+    "confirmServices": "Confirmez d'abord les services que vous voulez offrir",
     "back": "Retour",
     "cleaning": {
       "description": "Choisissez les options à maintenir activées dans la section Nettoyage. Vous pourrez créer de nouvelles options.",
@@ -272,6 +285,11 @@
       "button": "Démarrer",
       "subtitle": "Nous vous guiderons pas à pas afin que vous puissiez organiser les options que vous proposerez à vos invités.",
       "title": "Bienvenue à votre administrateur Contler !"
+    },
+    "guestHome": {
+      "sections": "Sections",
+      "name": "Options de connexion des invités",
+      "description": "Choisissez les options que vos invités verront sur la page d'accueil de la plateforme une fois qu'ils se seront connectés."
     }
   },
   "product": {
@@ -468,5 +486,9 @@
       "waiter": "Garçon",
       "wakeUp": "Programme de réveil"
     }
+  },
+  "guestRequest": {
+    "hello": "Bonjour",
+    "WhatDoYouNeedToday": "De quoi avez-vous besoin aujourd'hui ?"
   }
 }

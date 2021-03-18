@@ -16,6 +16,18 @@
     "tuesday": "Dienstag",
     "wednesday": "Mittwoch"
   },
+  "modules": {
+    "immediateRequests": "Onmiddellijke verzoeken",
+    "specialRequest": "Speciale verzoeken",
+    "reservations": "Reserveringen",
+    "clean": "Reiniging",
+    "maintenance": "Onderhoud",
+    "reception": "Receptie",
+    "room": "Kamer",
+    "wakeup-call": "Attentie oproepen",
+    "late-checkouts": "Late check-out",
+    "orders": "Bestellingen"
+  },
   "calendar": {
     "all": "Alles",
     "persons": "Menschen",
@@ -192,6 +204,7 @@
     "value": "Wert"
   },
   "preferences": {
+    "confirmServices": "Bevestig eerst de diensten die u wilt aanbieden",
     "back": "Rückkehr",
     "cleaning": {
       "description": "Kies welke opties ingeschakeld moeten blijven in de Schoonmaak sectie. U kunt nieuwe opties aanmaken.",
@@ -272,6 +285,11 @@
       "button": "start",
       "subtitle": "Wij zullen u stap voor stap begeleiden, zodat u de mogelijkheden die u uw gasten zult aanbieden, kunt organiseren.",
       "title": "Welkom bij uw Contler beheerder!"
+    },
+    "guestHome": {
+      "sections": "Secties",
+      "name": "Inlogopties voor gasten",
+      "description": "Kies welke opties uw gasten te zien krijgen op de startpagina van het platform zodra ze inloggen."
     }
   },
   "product": {
@@ -468,5 +486,9 @@
       "waiter": "Bedienung",
       "wakeUp": "Weckprogramm"
     }
+  },
+  "guestRequest": {
+    "hello": "Hallo",
+    "WhatDoYouNeedToday": "Wat heb je vandaag nodig?"
   }
 }

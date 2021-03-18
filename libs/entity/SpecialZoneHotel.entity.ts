@@ -9,6 +9,8 @@ export class SpecialZoneHotelEntity {
 
   icon: string;
 
+  showToGuest: boolean;
+
   zone: SpecialZoneEntity;
 
   hotel: HotelEntity;

@@ -39,8 +39,8 @@ export class CleaningComponent implements OnInit {
     this.db.object<OptionModule>(url).update({ active: $event.checked });
   }
 
-  public goToHome(): void {
-    this.router.navigate(['home']);
+  public goToGuestHome(): void {
+    this.router.navigate(['preferences', 'guest-home']);
   }
   isDynamicModule(module: OptionModule) {
     return module.type === OptionType.DYNAMIC_FORM;
