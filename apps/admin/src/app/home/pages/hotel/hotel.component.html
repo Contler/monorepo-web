@@ -34,6 +34,16 @@
     >
       ACTUALIZAR
     </button>
+    <button
+      *ngIf="edit"
+      mat-raised-button
+      contlerButton
+      [loading]="loadDelete || load"
+      [disabled]="loadDelete || load"
+      (click)="back()"
+    >
+      REGRESAR
+    </button>
   </ng-container>
 
   <ng-container layoutBody>
