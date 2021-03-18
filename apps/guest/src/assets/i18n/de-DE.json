@@ -86,7 +86,7 @@
   "finishOrder": {
     "immediately": "Sofort",
     "order": "Auftrag",
-    "orderRemarks": "Bestellhinweise:",
+    "orderRemarks": "Heeft u opmerkingen over uw bestelling? ex: zonder ui. Bestek meenemen a.u.b. Koud drankje, etc.",
     "orderSummaryIn": "Bestellübersicht in:",
     "selectYourHourOfDelivery": "Wählen Sie Ihre Lieferzeit",
     "title": "Bestätigen Sie Ihre Bestellung und Lieferzeit",
