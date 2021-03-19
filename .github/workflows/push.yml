@@ -44,10 +44,10 @@ jobs:
         if: steps.npm-cache.outputs.cache-hit != 'true'
 
       - name: check affected apps
-        run: npm run affected:apps -- --base=origin/master --plain
+        run: npm run affected:apps -- --base=origin/dev --plain
 
       - name: check affected lint
-        run: npm run affected:lint -- --base=origin/master
+        run: npm run affected:lint -- --base=origin/dev
 
       - name: build affected apps
-        run: npm run affected:build -- --base=origin/master
+        run: npm run affected:build -- --base=origin/dev
