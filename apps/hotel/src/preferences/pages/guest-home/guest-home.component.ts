@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
 import { Observable } from 'rxjs';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
@@ -15,10 +15,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./guest-home.component.scss'],
 })
 export class GuestHomeComponent implements OnInit {
-  public hotel$: Observable<HotelEntity>;
   hotel: HotelEntity;
   SpecialZoneHotelEntity = SpecialZoneHotelEntity;
   specialZoneGuest$: Observable<SpecialZoneGuest[]>;
+  private preparedZonesUpdate: { [index: string]: SpecialZoneGuest } = {};
+  specialZoneGuest: SpecialZoneGuest[] = [];
+
   constructor(
     private authService: AuthService,
     private hotelService: HotelService,
@@ -28,32 +30,50 @@ export class GuestHomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.hotel$ = this.authService.$hotel.pipe(
+    this.specialZoneGuest$ = this.authService.$hotel.pipe(
       tap((hotel) => (this.hotel = hotel)),
-      tap((hotel) => {
-        this.specialZoneGuest$ = this.specialZoneGuestService.getSpecialZoneGuest(hotel.uid);
-      }),
+      switchMap((hotel) =>
+        this.specialZoneGuestService
+          .getSpecialZoneGuest(hotel.uid)
+          .pipe(tap((specialZones) => (this.specialZoneGuest = specialZones))),
+      ),
     );
   }
 
-  public goToHome(): void {
-    this.router.navigate(['home']);
-  }
-
-  public async updateZone(
-    $event: MatSlideToggleChange,
-    zone: SpecialZoneGuest,
-    index: number,
-  ): Promise<void> {
+  public async goToHome(): Promise<void> {
+    const zonesUpdate: { [index: string]: SpecialZoneGuest } = {};
+    this.specialZoneGuest.forEach((zone, index) => {
+      if (
+        this.preparedZonesUpdate.hasOwnProperty(index) &&
+        this.preparedZonesUpdate[index].status !== zone.status
+      ) {
+        zonesUpdate[index] = this.preparedZonesUpdate[index];
+      }
+    });
     const loader = this.messagesService.showLoader();
-    zone.status = $event.checked;
     try {
-      await this.specialZoneGuestService.updateSpecialZoneGuest(this.hotel.uid, index, zone);
+      await this.specialZoneGuestService.updateMultipleSpecialZoneGuest(this.hotel.uid, zonesUpdate);
       this.messagesService.closeLoader(loader);
+      this.router.navigate(['home']);
     } catch (err) {
       this.messagesService.closeLoader(loader);
       this.messagesService.showServerError();
       console.log(err);
     }
+  }
+
+  updateZone($event: MatSlideToggleChange, zone: SpecialZoneGuest, index: number): void {
+    zone.status = $event.checked;
+    this.preparedZonesUpdate[index] = zone;
+    this.specialZoneGuest$ = this.specialZoneGuest$.pipe(
+      map((specialZones) =>
+        specialZones.map((specialZone, i) => {
+          if (i === index) {
+            specialZone = zone;
+          }
+          return specialZone;
+        }),
+      ),
+    );
   }
 }

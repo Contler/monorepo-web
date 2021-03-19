@@ -24,6 +24,7 @@ export class SpecialZoneGuestService {
         }),
       );
   }
+
   getSpecialZoneGuestActive(hotelUid: string): Observable<SpecialZoneGuest[] | null> {
     const url = `specialZoneGuest/${hotelUid}/zones`;
     return this.angularFireDatabase
@@ -31,9 +32,17 @@ export class SpecialZoneGuestService {
       .valueChanges();
   }
 
-  updateSpecialZoneGuest(hotelUid: string, zoneIndex, zone: SpecialZoneGuest): Promise<void> {
-    const url = `specialZoneGuest/${hotelUid}/zones/${zoneIndex}`;
-    return this.angularFireDatabase.object(url).update(zone);
+  updateMultipleSpecialZoneGuest(
+    hotelUid: string,
+    zones: { [index: string]: SpecialZoneGuest },
+  ): Promise<void> {
+    const updates: { [ref: string]: SpecialZoneGuest } = {};
+    for (const zoneKey in zones) {
+      if (zones.hasOwnProperty(zoneKey)) {
+        updates[`specialZoneGuest/${hotelUid}/zones/${zoneKey}`] = zones[zoneKey];
+      }
+    }
+    return this.angularFireDatabase.database.ref().update(updates);
   }
 
   private setUpSpecialZoneGuest(url: string): void {

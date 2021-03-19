@@ -9,7 +9,7 @@
   [showIcon]="false"
   (next)="goToHome()"
 >
-  <div class="two_columns" *ngIf="hotel$ | async as hotel">
+  <div class="two_columns">
     <div>
       <h2 class="title">{{ 'preferences.guestHome.sections' | translate }}</h2>
       <div>
@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <div>
+    <div *ngIf="hotel">
       <h2 class="title">{{ 'preferences.service.preview' | translate }}</h2>
       <div class="phone mat-elevation-z2">
         <div class="phone__header">
