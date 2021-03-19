@@ -43,25 +43,27 @@ export class LoginComponent {
       const token = await userCredential.user!.getIdTokenResult();
       if (token.claims.role !== GUEST) {
         this.error = this.translate.instant(`login.youDoNotHavePermissionToAccess`);
+        await this.afAuth.signOut();
+      } else {
+        this.guestService.checkAvailableUser().subscribe(({ checkIn, checkOut }) => {
+          this.loader = false;
+          if (new Date() < checkIn) {
+            this.afAuth.signOut();
+            this.error = `${this.translate.instant(
+              'login.yourEntryDateIs',
+            )} ${checkIn.toLocaleDateString()}. ${this.translate.instant(
+              'login.weInviteYouToLogInOnThisDate',
+            )}.`;
+          } else if (new Date() > checkOut) {
+            this.afAuth.signOut();
+            this.error = `${this.translate.instant(
+              'login.yourDepartureDateWas',
+            )} ${checkOut.toLocaleDateString()}.`;
+          } else {
+            this.router.navigate(['/home']);
+          }
+        });
       }
-      this.guestService.checkAvailableUser().subscribe(({ checkIn, checkOut }) => {
-        this.loader = false;
-        if (new Date() < checkIn) {
-          this.afAuth.signOut();
-          this.error = `${this.translate.instant(
-            'login.yourEntryDateIs',
-          )} ${checkIn.toLocaleDateString()}. ${this.translate.instant(
-            'login.weInviteYouToLogInOnThisDate',
-          )}.`;
-        } else if (new Date() > checkOut) {
-          this.afAuth.signOut();
-          this.error = `${this.translate.instant(
-            'login.yourDepartureDateWas',
-          )} ${checkOut.toLocaleDateString()}.`;
-        } else {
-          this.router.navigate(['/home']);
-        }
-      });
     } catch (error) {
       this.loader = false;
       const { code } = error;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserService } from '@contler/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject, iif, Observable, of } from 'rxjs';
+import { filter, map, mergeMap, tap } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
@@ -24,10 +24,11 @@ export class GuestService {
   ) {
     this.afAuth.user
       .pipe(
-        filter((user) => !!user),
-        switchMap((user) => this.http.get<GuestEntity>(environment.apiUrl + `guest/${user!.uid}`)),
+        mergeMap((user) =>
+          iif(() => !!user, this.http.get<GuestEntity>(environment.apiUrl + `guest/${user?.uid}`), of(null)),
+        ),
         tap((guest) => this.guestSubject.next(guest)),
-        tap((guest) => this.hotelSubject.next(guest.hotel)),
+        tap((guest) => this.hotelSubject.next(guest?.hotel)),
       )
       .subscribe();
   }

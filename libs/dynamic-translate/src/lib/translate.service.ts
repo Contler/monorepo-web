@@ -2,14 +2,15 @@ import { Inject, Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { HttpClient } from '@angular/common/http';
 import { LangChangeEvent, TranslateService as TrService } from '@ngx-translate/core';
-import { filter, map, mergeMap, startWith, switchMap, take, tap } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { filter, map, mergeMap, startWith, switchMap, take, takeUntil, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { getLan } from '@contler/const';
 import { LoaderDynamicTranslate } from './loader';
 import { getDicValue } from './utils/getDicValue';
 import { TranslateConfig } from './interface/config.interface';
 import { TRANSLATE_CONFIG } from './app.config';
 import { TranslateRequest } from '@contler/models';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable()
 export class TranslateService {
@@ -20,6 +21,7 @@ export class TranslateService {
   private lan: string;
 
   changeDic = this.sub.asObservable().pipe(filter((data) => !!data));
+  private logOut$: Observable<any>;
 
   constructor(
     loader: LoaderDynamicTranslate,
@@ -27,25 +29,31 @@ export class TranslateService {
     @Inject(TRANSLATE_CONFIG) config: TranslateConfig,
     private afDb: AngularFireDatabase,
     private http: HttpClient,
+    private auth: AngularFireAuth,
   ) {
-    const [actual] = getLan();
+    this.logOut$ = this.auth.user.pipe(filter((user) => !user));
     this.url = config.url;
 
-    loader.obs
-      .pipe(
-        switchMap((uid) => afDb.object<any>(`dictionary/${uid}`).valueChanges()),
-        mergeMap((dic) =>
-          externalTranslate.onLangChange.pipe(
-            startWith({ lang: actual.prefix } as LangChangeEvent),
-            map((lan) => ({ lan, dic })),
+    this.auth.user.pipe(filter((user) => !!user)).subscribe(() => {
+      const [actual] = getLan();
+      loader.obs
+        .pipe(
+          switchMap((uid) =>
+            afDb.object<any>(`dictionary/${uid}`).valueChanges().pipe(takeUntil(this.logOut$)),
           ),
-        ),
-        tap((data) => {
-          this.dic = data.dic;
-          this.lan = data.lan.lang;
-        }),
-      )
-      .subscribe((data) => this.sub.next(data));
+          mergeMap((dic) =>
+            externalTranslate.onLangChange.pipe(
+              startWith({ lang: actual.prefix } as LangChangeEvent),
+              map((lan) => ({ lan, dic })),
+            ),
+          ),
+          tap((data) => {
+            this.dic = data.dic;
+            this.lan = data.lan.lang;
+          }),
+        )
+        .subscribe((data) => this.sub.next(data));
+    });
   }
 
   getTranslate(key: string | Array<string>) {
