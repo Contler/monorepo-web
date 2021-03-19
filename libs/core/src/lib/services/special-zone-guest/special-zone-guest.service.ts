@@ -32,11 +32,6 @@ export class SpecialZoneGuestService {
       .valueChanges();
   }
 
-  updateSpecialZoneGuest(hotelUid: string, zoneIndex, zone: SpecialZoneGuest): Promise<void> {
-    const url = `specialZoneGuest/${hotelUid}/zones/${zoneIndex}`;
-    return this.angularFireDatabase.object(url).update(zone);
-  }
-
   updateMultipleSpecialZoneGuest(
     hotelUid: string,
     zones: { [index: string]: SpecialZoneGuest },

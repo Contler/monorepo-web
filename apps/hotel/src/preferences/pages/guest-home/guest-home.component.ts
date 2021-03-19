@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { first, map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
 import { Observable } from 'rxjs';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
