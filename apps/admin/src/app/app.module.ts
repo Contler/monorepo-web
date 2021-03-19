@@ -25,12 +25,16 @@ import {
   redirectLoggedInTo,
   redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
-import { HttpClientModule } from '@angular/common/http';
-import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const isLogin = () => redirectLoggedInTo(['home']);
-
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 const routers: Routes = [
   {
     path: 'login',
@@ -69,6 +73,14 @@ const routers: Routes = [
     CoreModule.forRoot({ urlBackend: environment.apiUrl }),
     NgxMatColorPickerModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      defaultLanguage: window.localStorage.lan || 'es-CO',
+    }),
   ],
   providers: [{ provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }],
   bootstrap: [AppComponent],

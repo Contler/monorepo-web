@@ -1,0 +1,14 @@
+{
+  "modules": {
+    "immediateRequests": "Solicitudes inmediatas",
+    "specialRequest": "Solicitudes especiales",
+    "reservations": "Reservas",
+    "clean": "Limpieza",
+    "maintenance": "Mantenimiento",
+    "reception": "Recepción",
+    "room": "Habitación",
+    "wakeup-call": "Llamadas de atención",
+    "late-checkouts": "Salidas tardías",
+    "orders": "Pedidos"
+  }
+}
