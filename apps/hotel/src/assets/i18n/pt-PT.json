@@ -1,11 +1,4 @@
 {
-  "login": {
-    "username": "Utilizador",
-    "username-placeholder": "utilizador@empresa.com",
-    "password": "Senha",
-    "sign-in": "Login",
-    "forgot-password": "Esqueceu-se da sua palavra-passe?"
-  },
   "DAYS": {
     "allDay": "Todos os dias",
     "friday": "Sexta-feira",
@@ -15,18 +8,6 @@
     "thursday": "Quinta-feira",
     "tuesday": "Terça",
     "wednesday": "Quarta-feira"
-  },
-  "modules": {
-    "immediateRequests": "Pedidos imediatos",
-    "specialRequest": "Pedidos especiais",
-    "reservations": "Reservas",
-    "clean": "Limpeza",
-    "maintenance": "Manutenção",
-    "reception": "Recepção",
-    "room": "Quarto",
-    "wakeup-call": "Chamadas de atenção",
-    "late-checkouts": "Saída tardia",
-    "orders": "Encomendas"
   },
   "calendar": {
     "all": "Todos",
@@ -125,6 +106,10 @@
     },
     "typeDocument": "Tipo"
   },
+  "guestRequest": {
+    "WhatDoYouNeedToday": "Do que precisa hoje?",
+    "hello": "Olá"
+  },
   "home": {
     "desktop": "Área de Trabalho"
   },
@@ -160,6 +145,13 @@
     "room": "sala",
     "state": "Estado"
   },
+  "login": {
+    "forgot-password": "Esqueceu-se da sua palavra-passe?",
+    "password": "Senha",
+    "sign-in": "Login",
+    "username": "Utilizador",
+    "username-placeholder": "utilizador@empresa.com"
+  },
   "menu": {
     "admin": "Administrador",
     "categories": "Categorias de Menu",
@@ -176,6 +168,18 @@
     "spaceReservations": "Reservas de espaço",
     "team": "Equipe",
     "wakeUpCalls": "Chamadas de despertar"
+  },
+  "modules": {
+    "clean": "Limpeza",
+    "immediateRequests": "Pedidos imediatos",
+    "late-checkouts": "Saída tardia",
+    "maintenance": "Manutenção",
+    "orders": "Encomendas",
+    "reception": "Recepção",
+    "reservations": "Reservas",
+    "room": "Quarto",
+    "specialRequest": "Pedidos especiais",
+    "wakeup-call": "Chamadas de atenção"
   },
   "newGuest": {
     "email": "O email",
@@ -204,7 +208,6 @@
     "value": "Valor"
   },
   "preferences": {
-    "confirmServices": "Primeiro confirme os serviços que pretende oferecer",
     "back": "Retorno",
     "cleaning": {
       "description": "Escolha quais as opções a manter activadas na secção de Limpeza. Será capaz de criar novas opções.",
@@ -213,7 +216,13 @@
       "name": "Limpeza",
       "subDescription": "Os pedidos de limpeza permitem ao utilizador obter serviços em primeira mão que ajudam na sua estadia."
     },
+    "confirmServices": "Primeiro confirme os serviços que pretende oferecer",
     "continue": "Continuar a ",
+    "guestHome": {
+      "description": "Escolha as opções que os seus convidados verão na página inicial da plataforma uma vez que façam o login.",
+      "name": "Opções de login de convidados",
+      "sections": "Secções"
+    },
     "hotel": "Hotel {{value}}",
     "immediate": {
       "description": "As solicitações gerais imediatas permitem que os usuários solicitem rapidamente o que precisam nas áreas do seu Hotel. Escolha as opções a serem exibidas em cada tipo de zona:",
@@ -285,11 +294,6 @@
       "button": "iniciar",
       "subtitle": "Guiá-lo-emos passo a passo para que possa organizar as opções que irá oferecer aos seus convidados.",
       "title": "Bem-vindo ao seu administrador Contler!"
-    },
-    "guestHome": {
-      "sections": "Secções",
-      "name": "Opções de login de convidados",
-      "description": "Escolha as opções que os seus convidados verão na página inicial da plataforma uma vez que façam o login."
     }
   },
   "product": {
@@ -351,7 +355,7 @@
       "name": "Nome do convidado",
       "people": "Pessoas",
       "room": "Quarto",
-      "service": "Serviço",
+      "service": "Quantidade de pessoas",
       "title": "Reserva",
       "zone": "Zona"
     },
@@ -486,9 +490,5 @@
       "waiter": "Garçom",
       "wakeUp": "Programa de despertar"
     }
-  },
-  "guestRequest": {
-    "hello": "Olá",
-    "WhatDoYouNeedToday": "Do que precisa hoje?"
   }
 }
