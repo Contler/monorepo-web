@@ -1,13 +1,13 @@
 # This is a basic workflow to help you get started with Actions
 
-name: linter and build
+name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-  pull_request:
+  push:
     branches:
-      - 'dev'
+      - 'master'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,6 +19,12 @@ jobs:
       matrix:
         node-version: [12.x]
 
+    env:
+      BEFORE_COMMIT: ${{ github.event.before }}
+      AFTHER_COMMIT: ${{ github.event.after }}
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      FIREBASE_PROJECT: ${{ secrets.FIREBASE_PRO_PROJECT }}
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -29,11 +35,12 @@ jobs:
           # fetch-depth is set to 0 then then the entire history of commits is fetched
           fetch-depth: 0
 
-      - uses: actions/cache@v2
+      - name: npm cahce
+        uses: actions/cache@v2
         id: npm-cache
         with:
           path: ./node_modules
-          key: ${{ runner.os }}-npm-cache-${{ hashFiles('package-lock.json') }}
+          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-cache-
 
@@ -42,15 +49,21 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: install firebase
+        run: npm i -g firebase-tools
+
       - name: install dependencies
         run: npm i -s
         if: steps.npm-cache.outputs.cache-hit != 'true'
 
       - name: check affected apps
-        run: npm run affected:apps -- --base=origin/dev --plain
-
-      - name: check affected lint
-        run: npm run affected:lint -- --base=origin/dev
+        run: npm run affected:apps -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT"
 
       - name: build affected apps
-        run: npm run affected:build -- --base=origin/dev
+        run: npm run affected:build -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT" --configuration production
+
+      - name: deploy hotel
+        run: node bin/deploy.js hotel "$FIREBASE_TOKEN" "$FIREBASE_PROJECT"
+
+      - name: deploy guest
+        run: node bin/deploy.js guest "$FIREBASE_TOKEN" "$FIREBASE_PROJECT"
