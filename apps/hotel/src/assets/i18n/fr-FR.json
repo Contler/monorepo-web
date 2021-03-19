@@ -1,11 +1,4 @@
 {
-  "login": {
-    "username": "Utilisateur",
-    "username-placeholder": "utilisateur@entreprise.com",
-    "password": "Mot de passe",
-    "sign-in": "Connexion",
-    "forgot-password": "Vous avez oublié votre mot de passe ?"
-  },
   "DAYS": {
     "allDay": "Tous les jours",
     "friday": "Vendredi",
@@ -15,18 +8,6 @@
     "thursday": "JEUDI",
     "tuesday": "Mardi",
     "wednesday": "Mercredi"
-  },
-  "modules": {
-    "immediateRequests": "Demandes immédiates",
-    "specialRequest": "Demandes spéciales",
-    "reservations": "Réservations",
-    "clean": "Nettoyage",
-    "maintenance": "Maintenance",
-    "reception": "Réception",
-    "room": "Chambre",
-    "wakeup-call": "Les appels à l'attention",
-    "late-checkouts": "Départ tardif",
-    "orders": "Commandes"
   },
   "calendar": {
     "all": "Tout",
@@ -125,6 +106,10 @@
     },
     "typeDocument": "Type"
   },
+  "guestRequest": {
+    "WhatDoYouNeedToday": "De quoi avez-vous besoin aujourd'hui ?",
+    "hello": "Bonjour"
+  },
   "home": {
     "desktop": "bureau"
   },
@@ -160,6 +145,13 @@
     "room": "pièce",
     "state": "Etat"
   },
+  "login": {
+    "forgot-password": "Vous avez oublié votre mot de passe ?",
+    "password": "Mot de passe",
+    "sign-in": "Connexion",
+    "username": "Utilisateur",
+    "username-placeholder": "utilisateur@entreprise.com"
+  },
   "menu": {
     "admin": "Administrateur",
     "categories": "Catégories de menu",
@@ -176,6 +168,18 @@
     "spaceReservations": "Réservation d'espace",
     "team": "Équipe",
     "wakeUpCalls": "Services de reveil"
+  },
+  "modules": {
+    "clean": "Nettoyage",
+    "immediateRequests": "Demandes immédiates",
+    "late-checkouts": "Départ tardif",
+    "maintenance": "Maintenance",
+    "orders": "Commandes",
+    "reception": "Réception",
+    "reservations": "Réservations",
+    "room": "Chambre",
+    "specialRequest": "Demandes spéciales",
+    "wakeup-call": "Les appels à l'attention"
   },
   "newGuest": {
     "email": "Email",
@@ -204,7 +208,6 @@
     "value": "Valeur"
   },
   "preferences": {
-    "confirmServices": "Confirmez d'abord les services que vous voulez offrir",
     "back": "Retour",
     "cleaning": {
       "description": "Choisissez les options à maintenir activées dans la section Nettoyage. Vous pourrez créer de nouvelles options.",
@@ -213,7 +216,13 @@
       "name": "Nettoyage",
       "subDescription": "Les demandes de nettoyage permettent à l'utilisateur d'obtenir des services de première main qui l'aident dans son séjour."
     },
+    "confirmServices": "Confirmez d'abord les services que vous voulez offrir",
     "continue": "Continuer à ",
+    "guestHome": {
+      "description": "Choisissez les options que vos invités verront sur la page d'accueil de la plateforme une fois qu'ils se seront connectés.",
+      "name": "Options de connexion des invités",
+      "sections": "Sections"
+    },
     "hotel": "Hôtel {{value}}",
     "immediate": {
       "description": "Les demandes générales immédiates permettent aux utilisateurs de demander rapidement ce dont ils ont besoin dans les zones de votre hôtel. Choisissez les options à afficher dans chaque type de zone:",
@@ -285,11 +294,6 @@
       "button": "Démarrer",
       "subtitle": "Nous vous guiderons pas à pas afin que vous puissiez organiser les options que vous proposerez à vos invités.",
       "title": "Bienvenue à votre administrateur Contler !"
-    },
-    "guestHome": {
-      "sections": "Sections",
-      "name": "Options de connexion des invités",
-      "description": "Choisissez les options que vos invités verront sur la page d'accueil de la plateforme une fois qu'ils se seront connectés."
     }
   },
   "product": {
@@ -351,7 +355,7 @@
       "name": "Nom de l'invité",
       "people": "Les gens",
       "room": "Chambre",
-      "service": "Service",
+      "service": "Quantité de personnes",
       "title": "Réservation",
       "zone": "Zone"
     },
@@ -486,9 +490,5 @@
       "waiter": "Garçon",
       "wakeUp": "Programme de réveil"
     }
-  },
-  "guestRequest": {
-    "hello": "Bonjour",
-    "WhatDoYouNeedToday": "De quoi avez-vous besoin aujourd'hui ?"
   }
 }

@@ -1,11 +1,4 @@
 {
-  "login": {
-    "username": "Gebruiker",
-    "username-placeholder": "gebruiker@bedrijf.com",
-    "password": "Wachtwoord",
-    "sign-in": "Inloggen",
-    "forgot-password": "Wachtwoord vergeten?"
-  },
   "DAYS": {
     "allDay": "Alle Tage",
     "friday": "Freitag",
@@ -15,18 +8,6 @@
     "thursday": "Donnerstag",
     "tuesday": "Dienstag",
     "wednesday": "Mittwoch"
-  },
-  "modules": {
-    "immediateRequests": "Onmiddellijke verzoeken",
-    "specialRequest": "Speciale verzoeken",
-    "reservations": "Reserveringen",
-    "clean": "Reiniging",
-    "maintenance": "Onderhoud",
-    "reception": "Receptie",
-    "room": "Kamer",
-    "wakeup-call": "Attentie oproepen",
-    "late-checkouts": "Late check-out",
-    "orders": "Bestellingen"
   },
   "calendar": {
     "all": "Alles",
@@ -125,6 +106,10 @@
     },
     "typeDocument": "Art"
   },
+  "guestRequest": {
+    "WhatDoYouNeedToday": "Wat heb je vandaag nodig?",
+    "hello": "Hallo"
+  },
   "home": {
     "desktop": "Desktop"
   },
@@ -160,6 +145,13 @@
     "room": "Zimmer",
     "state": "Zustand"
   },
+  "login": {
+    "forgot-password": "Wachtwoord vergeten?",
+    "password": "Wachtwoord",
+    "sign-in": "Inloggen",
+    "username": "Gebruiker",
+    "username-placeholder": "gebruiker@bedrijf.com"
+  },
   "menu": {
     "admin": "Administrator",
     "categories": "Menükategorien",
@@ -176,6 +168,18 @@
     "spaceReservations": "Platzreservierungen",
     "team": "Mannschaft",
     "wakeUpCalls": "Aufweck-Anruf"
+  },
+  "modules": {
+    "clean": "Reiniging",
+    "immediateRequests": "Onmiddellijke verzoeken",
+    "late-checkouts": "Late check-out",
+    "maintenance": "Onderhoud",
+    "orders": "Bestellingen",
+    "reception": "Receptie",
+    "reservations": "Reserveringen",
+    "room": "Kamer",
+    "specialRequest": "Speciale verzoeken",
+    "wakeup-call": "Attentie oproepen"
   },
   "newGuest": {
     "email": "Email",
@@ -204,7 +208,6 @@
     "value": "Wert"
   },
   "preferences": {
-    "confirmServices": "Bevestig eerst de diensten die u wilt aanbieden",
     "back": "Rückkehr",
     "cleaning": {
       "description": "Kies welke opties ingeschakeld moeten blijven in de Schoonmaak sectie. U kunt nieuwe opties aanmaken.",
@@ -213,7 +216,13 @@
       "name": "Schoonmaak",
       "subDescription": "De Schoonmaak verzoeken stellen de gebruiker in staat om diensten uit de eerste hand te verkrijgen die helpen bij hun verblijf."
     },
+    "confirmServices": "Bevestig eerst de diensten die u wilt aanbieden",
     "continue": "Ga verder naar ",
+    "guestHome": {
+      "description": "Kies welke opties uw gasten te zien krijgen op de startpagina van het platform zodra ze inloggen.",
+      "name": "Inlogopties voor gasten",
+      "sections": "Secties"
+    },
     "hotel": "Hotel {{value}}",
     "immediate": {
       "description": "Mit allgemeinen Sofortanfragen können Benutzer schnell anfordern, was sie in den Bereichen Ihres Hotels benötigen. Wählen Sie die Optionen aus, die in jedem Zonentyp angezeigt werden sollen:",
@@ -285,11 +294,6 @@
       "button": "start",
       "subtitle": "Wij zullen u stap voor stap begeleiden, zodat u de mogelijkheden die u uw gasten zult aanbieden, kunt organiseren.",
       "title": "Welkom bij uw Contler beheerder!"
-    },
-    "guestHome": {
-      "sections": "Secties",
-      "name": "Inlogopties voor gasten",
-      "description": "Kies welke opties uw gasten te zien krijgen op de startpagina van het platform zodra ze inloggen."
     }
   },
   "product": {
@@ -351,7 +355,7 @@
       "name": "Gastname",
       "people": "Leute",
       "room": "Zimmer",
-      "service": "Service",
+      "service": "Anzahl von Leuten",
       "title": "Reservierung",
       "zone": "Zone"
     },
@@ -486,9 +490,5 @@
       "waiter": "Bedienung",
       "wakeUp": "Weckprogramm"
     }
-  },
-  "guestRequest": {
-    "hello": "Hallo",
-    "WhatDoYouNeedToday": "Wat heb je vandaag nodig?"
   }
 }

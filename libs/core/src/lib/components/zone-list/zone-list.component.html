@@ -6,7 +6,7 @@
       class="contler-zone__check"
       (ngModelChange)="specialZonesChange.emit(specialZones)"
     >
-      {{ specialZone.zone.text }}
+      {{ specialZone.zone.text | translate }}
     </mat-checkbox>
   </ng-container>
 
