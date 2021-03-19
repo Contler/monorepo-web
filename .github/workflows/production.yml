@@ -7,7 +7,7 @@ name: CI
 on:
   push:
     branches:
-      - 'dev'
+      - 'master'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -23,7 +23,7 @@ jobs:
       BEFORE_COMMIT: ${{ github.event.before }}
       AFTHER_COMMIT: ${{ github.event.after }}
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      FIREBASE_PROJECT: ${{ secrets.FIREBASE_DEV_PROJECT }}
+      FIREBASE_PROJECT: ${{ secrets.FIREBASE_PRO_PROJECT }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -60,7 +60,7 @@ jobs:
         run: npm run affected:apps -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT"
 
       - name: build affected apps
-        run: npm run affected:build -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT" --configuration qa --progress=false
+        run: npm run affected:build -- --base="$BEFORE_COMMIT" --head="$AFTHER_COMMIT" --configuration production
 
       - name: deploy hotel
         run: node bin/deploy.js hotel "$FIREBASE_TOKEN" "$FIREBASE_PROJECT"
