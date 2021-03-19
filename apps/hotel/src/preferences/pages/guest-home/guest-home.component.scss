@@ -35,10 +35,10 @@
   line-height: 1.13;
   letter-spacing: 1.25px;
   color: #142c63;
-  &__great {
-  }
+  height: 500px;
+  overflow-y: scroll;
   &__great2 {
-    margin-bottom: 100px;
+    margin-bottom: 40px;
   }
   &__header {
     display: flex;
