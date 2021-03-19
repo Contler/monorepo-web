@@ -86,7 +86,7 @@
   "finishOrder": {
     "immediately": "Subito",
     "order": "ordine",
-    "orderRemarks": "Osservazioni sull'ordine:",
+    "orderRemarks": "Hai commenti sul tuo ordine? es: senza cipolla. Si prega di portare le posate. Bevanda fredda, ecc.",
     "orderSummaryIn": "Riepilogo dell'ordine in:",
     "selectYourHourOfDelivery": "Seleziona la tua ora di consegna",
     "title": "Conferma il tuo ordine e l'ora di consegna",

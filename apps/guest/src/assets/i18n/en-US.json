@@ -86,7 +86,7 @@
   "finishOrder": {
     "immediately": "Immediately",
     "order": "ORDER",
-    "orderRemarks": "Order remarks:",
+    "orderRemarks": "Do you have any comments on your order? ex: without onion. Please bring cutlery. Cold drink, etc.",
     "orderSummaryIn": "Order summary in:",
     "selectYourHourOfDelivery": "Select your hour of delivery",
     "title": "Confirm your order and hour of delivery",
