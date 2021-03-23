@@ -6,13 +6,24 @@
     </p>
 
     <div class="features-container" *ngIf="modules$ | async as modules">
-      <contler-room-item
-        class="features-container-item"
-        *ngFor="let option of modules"
-        [option]="option"
-        [selectedOption]="selectedSubcategory"
-        (clickedOption)="setQuickRequest($event)"
-      ></contler-room-item>
+      <ng-container *ngFor="let option of modules">
+        <ng-container *ngIf="option.text === 'zoneRequest.categories.roomKeys' && zone">
+          <contler-room-item
+            class="features-container-item"
+            [option]="option"
+            [selectedOption]="selectedSubcategory"
+            (clickedOption)="setQuickRequest($event)"
+          ></contler-room-item>
+        </ng-container>
+        <ng-container *ngIf="option.text !== 'zoneRequest.categories.roomKeys'">
+          <contler-room-item
+            class="features-container-item"
+            [option]="option"
+            [selectedOption]="selectedSubcategory"
+            (clickedOption)="setQuickRequest($event)"
+          ></contler-room-item>
+        </ng-container>
+      </ng-container>
     </div>
     <div class="my-room-container__button">
       <button
