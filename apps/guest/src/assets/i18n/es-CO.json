@@ -177,11 +177,11 @@
     "reservations": "Reservas",
     "clean": "Limpieza",
     "maintenance": "Mantenimiento",
-    "reception": "Recepción",
+    "reception": "Front Desk",
     "room": "Habitación",
     "wakeup-call": "Llamadas de atención",
     "late-checkouts": "Salidas tardías",
-    "orders": "Pedidos"
+    "orders": "Room service"
   },
   "myInmediateRequests": {
     "done": "TERMINADO",
@@ -208,7 +208,7 @@
   "order": {
     "accomplished": "Terminado",
     "inProcess": "En proceso",
-    "makeANewOrder": "Hacer un nuevo pedido",
+    "makeANewOrder": "Haz un nuevo pedido",
     "title": "Mis ordenes"
   },
   "orderDetail": {
