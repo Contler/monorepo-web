@@ -25,7 +25,7 @@ export class MyRoomComponent implements OnInit, OnDestroy {
   loader = false;
 
   private guestSubscribe: Subscription;
-  private zone: ZoneEntity;
+  zone: ZoneEntity;
   public modules$: Observable<OptionModule[]>;
 
   constructor(
