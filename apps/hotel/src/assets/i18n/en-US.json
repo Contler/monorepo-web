@@ -221,7 +221,12 @@
     "guestHome": {
       "description": "Choose which options your guests will see at the start of the platform once they log in.",
       "name": "Guest login options",
-      "sections": "Sections"
+      "sections": "Sections",
+      "updateSection": "Update section",
+      "updateSectionPlaceholder": "Name",
+      "currentName": "Current name",
+      "saveButton": "Save",
+      "cancel": "Cancel"
     },
     "hotel": "Hotel {{value}}",
     "immediate": {

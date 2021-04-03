@@ -32,6 +32,7 @@ import { CreateCleaningModuleComponent } from './pages/create-cleaning-module/cr
 import { PreferencesService } from './services/preferences.service';
 import { GuestHomeComponent } from './pages/guest-home/guest-home.component';
 import { ArrFilterPropertyEqualPipe } from './pages/guest-home/pipes/special-zones-property-equal.pipe';
+import { EditSpecialZoneGuestComponent } from './pages/guest-home/edit-special-zone-guest/edit-special-zone-guest.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ArrFilterPropertyEqualPipe } from './pages/guest-home/pipes/special-zon
     CreateCleaningModuleComponent,
     GuestHomeComponent,
     ArrFilterPropertyEqualPipe,
+    EditSpecialZoneGuestComponent,
   ],
   imports: [
     CommonModule,

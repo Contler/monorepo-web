@@ -1,0 +1,21 @@
+<h1 class="title">{{ 'preferences.guestHome.updateSection' | translate }}</h1>
+<mat-dialog-content *ngIf="data">
+  <mat-form-field appearance="fill" class="w-100">
+    <input
+      type="text"
+      matInput
+      [formControl]="specialZoneNameForm"
+      placeholder="{{ 'preferences.guestHome.updateSectionPlaceholder' | translate }}"
+    />
+  </mat-form-field>
+  <mat-hint
+    >{{ 'preferences.guestHome.currentName' | translate }}:
+    {{ data.name | translate | ctrTranslate }}</mat-hint
+  >
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>{{ 'preferences.guestHome.cancel' | translate }}</button>
+  <button mat-button [mat-dialog-close]="specialZoneNameForm.value" [disabled]="specialZoneNameForm.invalid">
+    {{ 'preferences.guestHome.saveButton' | translate }}
+  </button>
+</mat-dialog-actions>

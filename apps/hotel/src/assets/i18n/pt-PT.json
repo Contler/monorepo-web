@@ -221,7 +221,12 @@
     "guestHome": {
       "description": "Escolha as opções que os seus convidados verão na página inicial da plataforma uma vez que façam o login.",
       "name": "Opções de login de convidados",
-      "sections": "Secções"
+      "sections": "Secções",
+      "updateSection": "Manter secção",
+      "updateSectionPlaceholder": "Nome",
+      "currentName": "Nome actual",
+      "saveButton": "Guardar",
+      "cancel": "Cancelar"
     },
     "hotel": "Hotel {{value}}",
     "immediate": {

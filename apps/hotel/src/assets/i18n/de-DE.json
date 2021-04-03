@@ -221,7 +221,12 @@
     "guestHome": {
       "description": "Kies welke opties uw gasten te zien krijgen op de startpagina van het platform zodra ze inloggen.",
       "name": "Inlogopties voor gasten",
-      "sections": "Secties"
+      "sections": "Secties",
+      "updateSection": "Onderhouden sectie",
+      "updateSectionPlaceholder": "Naam",
+      "currentName": "Huidige naam",
+      "saveButton": "Save",
+      "cancel": "Annuleren"
     },
     "hotel": "Hotel {{value}}",
     "immediate": {

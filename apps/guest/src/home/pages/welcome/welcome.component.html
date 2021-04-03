@@ -8,7 +8,9 @@
     </p>
     <a class="request__zone striped" *ngFor="let zone of zones$ | async" [routerLink]="zone.link">
       <mat-icon class="request__zone-icon">{{ zone.icon }}</mat-icon>
-      <p class="request__zone-text" contlerColorHotel>{{ zone.name | translate | uppercase }}</p>
+      <p class="request__zone-text" contlerColorHotel>
+        {{ zone.name | translate | ctrTranslate | uppercase }}
+      </p>
       <mat-icon class="request__zone-icon">navigate_next</mat-icon>
     </a>
   </div>

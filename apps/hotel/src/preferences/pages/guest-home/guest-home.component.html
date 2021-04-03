@@ -14,7 +14,10 @@
       <h2 class="title">{{ 'preferences.guestHome.sections' | translate }}</h2>
       <div>
         <div *ngFor="let zone of specialZoneGuest$ | async; let i = index" class="zone">
-          <p>{{ zone.name | translate }}</p>
+          <p>{{ zone.name | translate | ctrTranslate }}</p>
+          <button mat-icon-button color="primary" class="edit" (click)="openEditZoneName(zone, i)">
+            <mat-icon>edit</mat-icon>
+          </button>
           <mat-slide-toggle (change)="updateZone($event, zone, i)" [checked]="zone.status"></mat-slide-toggle>
         </div>
       </div>
@@ -38,7 +41,7 @@
             class="phone__zones__zone"
           >
             <mat-icon>{{ zone.icon }}</mat-icon>
-            <p>{{ zone.name | translate }}</p>
+            <p>{{ zone.name | translate | ctrTranslate }}</p>
             <mat-icon>arrow_right</mat-icon>
           </div>
         </div>
