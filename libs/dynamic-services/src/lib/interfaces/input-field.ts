@@ -8,6 +8,7 @@ export enum InputType {
   SELECT_WITH_OTHER,
   MONEY,
   TIME,
+  URL,
 }
 
 export interface InputField {

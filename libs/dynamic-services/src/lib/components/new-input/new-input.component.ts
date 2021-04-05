@@ -4,6 +4,7 @@ import { InputField, InputType } from '../../interfaces/input-field';
 import { TranslateService } from '@ngx-translate/core';
 import { first } from 'rxjs/operators';
 import { MONEY_OPTIONS } from '../../constants/money';
+import { SpecialZoneGuest } from '@contler/models';
 
 @Component({
   selector: 'contler-new-input',
@@ -11,8 +12,10 @@ import { MONEY_OPTIONS } from '../../constants/money';
   styleUrls: ['./new-input.component.scss'],
 })
 export class NewInputComponent implements OnInit {
-  @Input() inputData: InputField;
   @Output() delete = new EventEmitter();
+  @Output() disabledAddOption = new EventEmitter<boolean>();
+  @Input() inputData: InputField;
+  @Input() specialZoneGuest: SpecialZoneGuest[] | null;
 
   readonly inputOptions = OPTION_INPUTS;
   readonly moneyOption = MONEY_OPTIONS;
@@ -38,6 +41,7 @@ export class NewInputComponent implements OnInit {
   }
 
   public async changeInputData(inputType: InputType): Promise<void> {
+    this.disabledAddOption.emit(false);
     switch (inputType) {
       case InputType.SELECT_WITH_OTHER:
         const other = await this.translateService
@@ -55,6 +59,9 @@ export class NewInputComponent implements OnInit {
         break;
       case InputType.SELECT:
         this.inputData.option = [];
+        break;
+      case InputType.URL:
+        this.disabledAddOption.emit(true);
         break;
     }
   }

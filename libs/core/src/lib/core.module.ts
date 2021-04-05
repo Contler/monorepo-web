@@ -36,6 +36,7 @@ import { SpecialZoneService } from './services/special-zone/special-zone.service
 import { TranslateService } from './services/translate/translate.service';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { TranslateModule } from '@ngx-translate/core';
+import { SpecialZoneGuestService } from 'lib/lib/services/special-zone-guest/special-zone-guest.service';
 
 const materialModules = [
   MatFormFieldModule,
@@ -94,6 +95,7 @@ const materialModules = [
     HotelService,
     SpecialZoneService,
     TranslateService,
+    SpecialZoneGuestService,
   ],
 })
 export class CoreModule {
