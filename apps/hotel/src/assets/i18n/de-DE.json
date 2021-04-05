@@ -267,7 +267,8 @@
       "select": "Optionsliste",
       "select-other": "Lijst van opties met 'andere'",
       "staticMoney": "Einfaches Feld",
-      "text": "Offenes Feld"
+      "text": "Offenes Feld",
+      "url": "Link"
     },
     "reception": {
       "description": "Wählen Sie im Bereich Empfang aus, welche Optionen aktiviert bleiben sollen. Sie können neue Optionen erstellen.",

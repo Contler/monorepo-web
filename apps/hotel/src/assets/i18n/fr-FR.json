@@ -267,7 +267,8 @@
       "select": "Liste d'options",
       "select-other": "Liste des options avec 'autre'",
       "staticMoney": "Champ simple",
-      "text": "Champ ouvert"
+      "text": "Champ ouvert",
+      "url": "Lien"
     },
     "reception": {
       "description": "Choisissez les options à garder activées dans la section Réception. Vous pouvez créer de nouvelles options.",

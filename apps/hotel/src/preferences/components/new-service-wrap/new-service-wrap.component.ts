@@ -1,16 +1,18 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { ModuleData } from '../../interfaces/module-data';
-import { filter, first, map, take } from 'rxjs/operators';
+import { filter, first, map, take, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HotelEntity } from '@contler/entity';
 import { AuthService } from 'hotel/services/auth.service';
-import { DynamicModuleService, FormService, InputField } from '@contler/dynamic-services';
+import { DynamicModuleService, FormService, InputField, InputType } from '@contler/dynamic-services';
 import { IconModel } from '@contler/models/icon.model';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@contler/dynamic-translate';
 import { MessagesService } from 'hotel/services/messages/messages.service';
 import { ActivatedRoute } from '@angular/router';
+import { SpecialZoneGuestService } from '@contler/core';
+import { SpecialZoneGuest } from '@contler/models';
 
 export interface FormCreation {
   form: InputField[];
@@ -35,8 +37,9 @@ export class NewServiceWrapComponent implements OnChanges {
   icon: string = null;
   listOption: InputField[] = [];
   icons: Observable<IconModel[]>;
-
+  specialZoneGuest: SpecialZoneGuest[] = [];
   formBasic: FormGroup;
+  disabledAppOption = false;
   private keys: string[] = [];
 
   constructor(
@@ -47,8 +50,17 @@ export class NewServiceWrapComponent implements OnChanges {
     private translateService: TranslateService,
     private messagesService: MessagesService,
     private activatedRoute: ActivatedRoute,
+    private specialZoneGuestService: SpecialZoneGuestService,
   ) {
-    this.$hotel = this.afAuth.$hotel.pipe(take(1));
+    this.$hotel = this.afAuth.$hotel.pipe(
+      take(1),
+      tap(async (hotel) => {
+        this.specialZoneGuest = await this.specialZoneGuestService
+          .getSpecialZoneGuest(hotel.uid)
+          .pipe(first())
+          .toPromise();
+      }),
+    );
     this.icons = this.db.list<IconModel>('icons').valueChanges().pipe(take(1));
     this.formBasic = this.formBuild.group({
       name: ['', Validators.required],
@@ -72,6 +84,10 @@ export class NewServiceWrapComponent implements OnChanges {
       this.setIconFromQueryParams();
       this.setKeysDictionary();
       this.setDataFormServiceToForm();
+      const isRedirectModule = this.formService.form.filter((input) => input.type === InputType.URL);
+      if (isRedirectModule.length) {
+        this.disabledAppOption = true;
+      }
       this.listOption = [...this.listOption, ...this.formService.form];
       this.formBasic.updateValueAndValidity();
     }
@@ -79,6 +95,9 @@ export class NewServiceWrapComponent implements OnChanges {
 
   deleteInput(i: number) {
     this.listOption = this.listOption.filter((value, index) => index !== i);
+    if (!this.listOption.length) {
+      this.disabledAppOption = false;
+    }
   }
 
   reload() {
@@ -152,5 +171,19 @@ export class NewServiceWrapComponent implements OnChanges {
           }
         });
       });
+  }
+
+  selectUrlInput(isInputUrl: boolean): void {
+    if (isInputUrl) {
+      this.disabledAppOption = true;
+      this.listOption = [
+        {
+          type: InputType.URL,
+          description: '',
+        },
+      ];
+    } else {
+      this.disabledAppOption = false;
+    }
   }
 }

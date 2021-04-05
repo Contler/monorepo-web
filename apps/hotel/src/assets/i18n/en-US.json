@@ -267,7 +267,8 @@
       "select": "Options list",
       "select-other": "List of options with 'other'",
       "staticMoney": "Simple field",
-      "text": "Open Field"
+      "text": "Open Field",
+      "url": "Link"
     },
     "reception": {
       "description": "Choose which options to keep enabled in the Reception section. You can create new options.",

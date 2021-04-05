@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ImmediateOptionLink, OptionModule, OptionType } from '@contler/models';
+import { ImmediateOptionLink, OptionModule } from '@contler/models';
 import { Router } from '@angular/router';
 import {
   DynamicModuleService,
@@ -26,7 +26,7 @@ export class PreferencesService {
   ) {}
 
   public redirectEditDynamicForm(option: OptionModule, moduleReference: MODULES): void {
-    if (option.type === OptionType.DYNAMIC_FORM) {
+    if (option.formKey) {
       this.router.navigate(['preferences', moduleReference, 'service', option.formKey], {
         queryParams: { icon: option.icon },
       });

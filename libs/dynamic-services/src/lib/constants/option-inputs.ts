@@ -26,4 +26,8 @@ export const OPTION_INPUTS: OptionInput[] = [
     name: 'preferences.optionInputs.hour',
     value: InputType.TIME,
   },
+  {
+    name: 'preferences.optionInputs.url',
+    value: InputType.URL,
+  },
 ];
