@@ -1,25 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from 'hotel/services/auth.service';
 import { Observable } from 'rxjs';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { HotelEntity, SpecialZoneHotelEntity } from '@contler/entity';
 import { HotelService, SpecialZoneGuestService } from '@contler/core';
-import { MessagesService } from '../../../services/messages/messages.service';
+import { MessagesService } from 'hotel/services/messages/messages.service';
 import { SpecialZoneGuest } from '@contler/models';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { EditSpecialZoneGuestComponent } from './edit-special-zone-guest/edit-special-zone-guest.component';
+import { TranslateService } from '@contler/dynamic-translate';
+import { getLan } from '@contler/const';
+import { GuestHomeCanDeactivateGuard } from 'hotel/preferences/pages/guest-home/guards/guest-home-can-deactivate.guard';
 
 @Component({
   selector: 'contler-guest-home',
   templateUrl: './guest-home.component.html',
   styleUrls: ['./guest-home.component.scss'],
+  providers: [GuestHomeCanDeactivateGuard],
 })
 export class GuestHomeComponent implements OnInit {
   hotel: HotelEntity;
   SpecialZoneHotelEntity = SpecialZoneHotelEntity;
   specialZoneGuest$: Observable<SpecialZoneGuest[]>;
-  private preparedZonesUpdate: { [index: string]: SpecialZoneGuest } = {};
   specialZoneGuest: SpecialZoneGuest[] = [];
+  preparedZonesUpdate: { [index: string]: SpecialZoneGuest } = {};
+  hasChanges = false;
 
   constructor(
     private authService: AuthService,
@@ -27,7 +34,14 @@ export class GuestHomeComponent implements OnInit {
     private messagesService: MessagesService,
     private specialZoneGuestService: SpecialZoneGuestService,
     private router: Router,
+    private matDialog: MatDialog,
+    public translate: TranslateService,
   ) {}
+
+  @HostListener('window:beforeunload', ['$event'])
+  canDeactivate(): boolean {
+    return !this.hasChanges;
+  }
 
   ngOnInit(): void {
     this.specialZoneGuest$ = this.authService.$hotel.pipe(
@@ -42,18 +56,29 @@ export class GuestHomeComponent implements OnInit {
 
   public async goToHome(): Promise<void> {
     const zonesUpdate: { [index: string]: SpecialZoneGuest } = {};
+    const promisesRemoveOldKeys = [];
+    const loader = this.messagesService.showLoader();
     this.specialZoneGuest.forEach((zone, index) => {
       if (
         this.preparedZonesUpdate.hasOwnProperty(index) &&
-        this.preparedZonesUpdate[index].status !== zone.status
+        (this.preparedZonesUpdate[index].status !== zone.status ||
+          this.preparedZonesUpdate[index].name !== zone.name)
       ) {
         zonesUpdate[index] = this.preparedZonesUpdate[index];
       }
+      if (
+        this.preparedZonesUpdate.hasOwnProperty(index) &&
+        this.preparedZonesUpdate[index].name !== zone.name &&
+        !zone.name.includes('.')
+      ) {
+        promisesRemoveOldKeys.push(this.translate.removeTranslate(zone.name, this.hotel.uid));
+      }
     });
-    const loader = this.messagesService.showLoader();
     try {
+      await Promise.all(promisesRemoveOldKeys);
       await this.specialZoneGuestService.updateMultipleSpecialZoneGuest(this.hotel.uid, zonesUpdate);
       this.messagesService.closeLoader(loader);
+      this.hasChanges = false;
       this.router.navigate(['home']);
     } catch (err) {
       this.messagesService.closeLoader(loader);
@@ -64,6 +89,55 @@ export class GuestHomeComponent implements OnInit {
 
   updateZone($event: MatSlideToggleChange, zone: SpecialZoneGuest, index: number): void {
     zone.status = $event.checked;
+    this.preparedZonesUpdate[index] = zone;
+    if (Object.keys(this.preparedZonesUpdate).length) {
+      this.hasChanges = true;
+    }
+    this.specialZoneGuest$ = this.specialZoneGuest$.pipe(
+      map((specialZones) =>
+        specialZones.map((specialZone, i) => {
+          if (i === index) {
+            specialZone = zone;
+          }
+          return specialZone;
+        }),
+      ),
+    );
+  }
+
+  public openEditZoneName(zone: SpecialZoneGuest, index: number): void {
+    const dialogEditSpecialZone = this.matDialog.open(EditSpecialZoneGuestComponent, {
+      disableClose: true,
+      data: zone,
+      id: zone.link,
+    });
+    dialogEditSpecialZone.afterClosed().subscribe(async (response) => {
+      if (response) {
+        const loader = this.messagesService.showLoader();
+        try {
+          await this.updateSpecialZone(response, zone, index);
+          this.hasChanges = true;
+          this.messagesService.closeLoader(loader);
+        } catch (err) {
+          this.messagesService.closeLoader(loader);
+          this.messagesService.showServerError();
+        }
+      }
+    });
+  }
+
+  async updateSpecialZone(response: string, zone: SpecialZoneGuest, index: number) {
+    const [actualLan, languages] = getLan();
+    const translate = await this.translate
+      .generateUrl({
+        actualLan,
+        languages,
+        url: 'specialZoneGuest',
+        hotel: this.hotel.uid,
+        mgs: response,
+      })
+      .toPromise();
+    zone.name = translate.key;
     this.preparedZonesUpdate[index] = zone;
     this.specialZoneGuest$ = this.specialZoneGuest$.pipe(
       map((specialZones) =>

@@ -221,7 +221,12 @@
     "guestHome": {
       "description": "Elige qué opciones verán tus huéspedes en el inicio de la plataforma una vez inician sesión",
       "name": "Opciones de inicio para el huésped",
-      "sections": "Secciones"
+      "sections": "Secciones",
+      "updateSection": "Actualizar sección",
+      "updateSectionPlaceholder": "Nombre",
+      "currentName": "Nombre actual",
+      "saveButton": "Guardar",
+      "cancel": "Cancelar"
     },
     "hotel": "Hotel {{value}}",
     "immediate": {

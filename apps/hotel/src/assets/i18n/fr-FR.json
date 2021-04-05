@@ -221,7 +221,12 @@
     "guestHome": {
       "description": "Choisissez les options que vos invités verront sur la page d'accueil de la plateforme une fois qu'ils se seront connectés.",
       "name": "Options de connexion des invités",
-      "sections": "Sections"
+      "sections": "Sections",
+      "updateSection": "Maintenir la section",
+      "updateSectionPlaceholder": "Nom",
+      "currentName": "Nom actuel",
+      "saveButton": "Sauvez",
+      "cancel": "Annuler"
     },
     "hotel": "Hôtel {{value}}",
     "immediate": {
