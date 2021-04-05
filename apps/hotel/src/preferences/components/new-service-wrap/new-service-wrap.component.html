@@ -36,13 +36,15 @@
 
       <contler-new-input
         *ngFor="let inp of listOption; let i = index"
+        [specialZoneGuest]="specialZoneGuest"
         class="fieldOption"
         (delete)="deleteInput(i)"
         [inputData]="inp"
+        (disabledAddOption)="selectUrlInput($event)"
       >
       </contler-new-input>
 
-      <div>
+      <div *ngIf="!disabledAppOption">
         <div class="new-option">
           <button mat-icon-button (click)="addOption()">
             <mat-icon>add_circle_outline</mat-icon>

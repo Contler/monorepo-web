@@ -46,7 +46,7 @@ export class ReceptionComponent implements OnInit {
   }
 
   isDynamicModule(module: OptionModule) {
-    return module.type === OptionType.DYNAMIC_FORM;
+    return module.type === OptionType.DYNAMIC_FORM || module.formKey;
   }
 
   public editModule(option: OptionModule): void {

@@ -262,7 +262,8 @@
       "select": "Lista de opções",
       "select-other": "Lista de opções com 'outros'",
       "staticMoney": "Campo simples",
-      "text": "Campo aberto"
+      "text": "Campo aberto",
+      "url": "Ligação"
     },
     "reception": {
       "description": "Escolha quais opções manter ativadas na seção Recepção. Você pode criar novas opções.",

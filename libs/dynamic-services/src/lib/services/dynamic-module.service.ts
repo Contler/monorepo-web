@@ -30,6 +30,7 @@ import {
   transportTemplate,
   travelServiceTemplate,
 } from '../utils/service-template';
+import { InputType } from '../interfaces/input-field';
 
 @Injectable()
 export class DynamicModuleService {
@@ -97,7 +98,7 @@ export class DynamicModuleService {
   ): Promise<void> {
     const url = `${MODULES.root}/${hotelId}/${moduleReference}/options`;
     let list = await this.db.list<ImmediateOptionLink>(url).valueChanges().pipe(take(1)).toPromise();
-    list = list.filter((l) => l.link !== option.link);
+    list = list.filter((opt) => option.formKey !== opt.formKey);
     return this.db.object(url).set(list);
   }
   async updateOptionToModule(
@@ -107,12 +108,13 @@ export class DynamicModuleService {
   ): Promise<void> {
     const url = `${MODULES.root}/${hotelId}/${moduleReference}/options`;
     let list = await this.db.list<ImmediateOptionLink>(url).valueChanges().pipe(take(1)).toPromise();
-    list = list.map((l) => {
-      if (l.link === option.link) {
-        l.text = option.text;
-        l.icon = option.icon;
+    list = list.map((opt) => {
+      if (option.formKey === opt.formKey) {
+        opt.text = option.text;
+        opt.icon = option.icon;
+        opt.link = option.link;
       }
-      return l;
+      return opt;
     });
     return this.db.object(url).set(list);
   }
@@ -264,6 +266,7 @@ export class DynamicModuleService {
     moduleReference: MODULES,
     formService: FormService = null,
     defaultLang?: Language,
+    isUrl = false,
   ) {
     const form = [...data.form];
     let actualLan: Language;
@@ -299,16 +302,18 @@ export class DynamicModuleService {
         .toPromise(),
     ]);
     for await (const inputField of form) {
-      const dataInput = await this.dynTranslate
-        .generateUrl({
-          actualLan,
-          languages,
-          hotel: hotelUid,
-          mgs: inputField.description,
-          url: `${moduleReference}Module/${keyService}/descriptionFile`,
-        })
-        .toPromise();
-      inputField.description = dataInput.key;
+      if (inputField.type !== InputType.URL) {
+        const dataInput = await this.dynTranslate
+          .generateUrl({
+            actualLan,
+            languages,
+            hotel: hotelUid,
+            mgs: inputField.description,
+            url: `${moduleReference}Module/${keyService}/descriptionFile`,
+          })
+          .toPromise();
+        inputField.description = dataInput.key;
+      }
       if (inputField.option) {
         let i = 0;
         for await (const inputFieldElementOption of inputField.option) {
@@ -347,14 +352,26 @@ export class DynamicModuleService {
     });
 
     this.generateMSg('preferences.message.saveService');
-    const option: ImmediateOptionDynamicForm = {
-      active: true,
-      text: dataInit[0].key,
-      icon: data.icon,
-      type: OptionType.DYNAMIC_FORM,
-      link: `/home/services/${moduleReference}/${keyService}`,
-      formKey: keyService,
-    };
+    let option = null;
+    if (isUrl) {
+      option = {
+        active: true,
+        text: dataInit[0].key,
+        icon: data.icon,
+        type: OptionType.LINK,
+        link: data.form[0].value,
+        formKey: keyService,
+      } as ImmediateOptionLink;
+    } else {
+      option = {
+        active: true,
+        text: dataInit[0].key,
+        icon: data.icon,
+        type: OptionType.DYNAMIC_FORM,
+        link: `/home/services/${moduleReference}/${keyService}`,
+        formKey: keyService,
+      } as ImmediateOptionDynamicForm;
+    }
     if (!formService) {
       await this.addOptionToModule(hotelUid, option, moduleReference);
     } else {

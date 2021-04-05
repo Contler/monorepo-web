@@ -45,7 +45,7 @@ export class RoomComponent implements OnInit {
     this.router.navigate(['preferences', 'maintenance']);
   }
   isDynamicModule(module: OptionModule) {
-    return module.type === OptionType.DYNAMIC_FORM;
+    return module.type === OptionType.DYNAMIC_FORM || module.formKey;
   }
 
   public editModule(option: OptionModule): void {
