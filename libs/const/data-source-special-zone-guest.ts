@@ -9,5 +9,6 @@ export const DataSourceSpecialZoneGuest: SpecialZoneGuest[] = [
   { name: 'modules.reservations', icon: 'book_online', link: '/home/reservation', status: true },
   { name: 'modules.orders', icon: 'fastfood', link: '/home/product', status: true },
   { name: 'modules.wakeup-call', icon: 'local_phone', link: '/home/wake-up', status: true },
+  { name: 'modules.late-checkouts', icon: 'directions_walk', link: '/home/late', status: true },
   { name: 'modules.specialRequest', icon: 'smart_button', link: '/home/special-requests', status: true },
 ];
