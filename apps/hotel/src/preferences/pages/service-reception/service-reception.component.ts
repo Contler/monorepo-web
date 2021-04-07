@@ -3,7 +3,7 @@ import { FormCreation } from '../../components/new-service-wrap/new-service-wrap
 import { AuthService } from '../../../services/auth.service';
 import { filter, first, map, switchMap, tap } from 'rxjs/operators';
 import { HotelEntity } from '@contler/entity';
-import { DynamicModuleService, FormService, MODULES } from '@contler/dynamic-services';
+import { DynamicModuleService, FormService, InputType, MODULES } from '@contler/dynamic-services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -34,9 +34,17 @@ export class ServiceReceptionComponent implements OnInit {
       tap(() => (this.load = false)),
     );
   }
+
   async save(data: FormCreation) {
     this.load = true;
-    await this.dynamic.createFormModuleDynamic(data, this.hotel.uid, MODULES.reception);
+    await this.dynamic.createFormModuleDynamic(
+      data,
+      this.hotel.uid,
+      MODULES.reception,
+      null,
+      null,
+      data.form.length && data.form[0].type === InputType.URL,
+    );
     this.load = false;
     return this.route.navigate(['/preferences/reception']);
   }
@@ -48,6 +56,8 @@ export class ServiceReceptionComponent implements OnInit {
       this.hotel.uid,
       MODULES.reception,
       data.formService,
+      null,
+      data.formService.form.length && data.formService.form[0].type === InputType.URL,
     );
     this.load = false;
     return this.route.navigate(['/preferences/reception']);

@@ -221,7 +221,12 @@
     "guestHome": {
       "description": "Escolha as opções que os seus convidados verão na página inicial da plataforma uma vez que façam o login.",
       "name": "Opções de login de convidados",
-      "sections": "Secções"
+      "sections": "Secções",
+      "updateSection": "Manter secção",
+      "updateSectionPlaceholder": "Nome",
+      "currentName": "Nome actual",
+      "saveButton": "Guardar",
+      "cancel": "Cancelar"
     },
     "hotel": "Hotel {{value}}",
     "immediate": {
@@ -262,7 +267,8 @@
       "select": "Lista de opções",
       "select-other": "Lista de opções com 'outros'",
       "staticMoney": "Campo simples",
-      "text": "Campo aberto"
+      "text": "Campo aberto",
+      "url": "Ligação"
     },
     "reception": {
       "description": "Escolha quais opções manter ativadas na seção Recepção. Você pode criar novas opções.",

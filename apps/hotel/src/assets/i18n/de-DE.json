@@ -221,7 +221,12 @@
     "guestHome": {
       "description": "Kies welke opties uw gasten te zien krijgen op de startpagina van het platform zodra ze inloggen.",
       "name": "Inlogopties voor gasten",
-      "sections": "Secties"
+      "sections": "Secties",
+      "updateSection": "Onderhouden sectie",
+      "updateSectionPlaceholder": "Naam",
+      "currentName": "Huidige naam",
+      "saveButton": "Save",
+      "cancel": "Annuleren"
     },
     "hotel": "Hotel {{value}}",
     "immediate": {
@@ -262,7 +267,8 @@
       "select": "Optionsliste",
       "select-other": "Lijst van opties met 'andere'",
       "staticMoney": "Einfaches Feld",
-      "text": "Offenes Feld"
+      "text": "Offenes Feld",
+      "url": "Link"
     },
     "reception": {
       "description": "Wählen Sie im Bereich Empfang aus, welche Optionen aktiviert bleiben sollen. Sie können neue Optionen erstellen.",

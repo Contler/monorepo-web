@@ -14,6 +14,7 @@ import { CreateMaintenanceModuleComponent } from './pages/create-maintenance-mod
 import { CleaningComponent } from './pages/cleaning/cleaning.component';
 import { CreateCleaningModuleComponent } from './pages/create-cleaning-module/create-cleaning-module.component';
 import { GuestHomeComponent } from './pages/guest-home/guest-home.component';
+import { GuestHomeCanDeactivateGuard } from './pages/guest-home/guards/guest-home-can-deactivate.guard';
 
 const routes: Routes = [
   {
@@ -37,7 +38,7 @@ const routes: Routes = [
   { path: 'cleaning', component: CleaningComponent },
   { path: 'cleaning/service', component: CreateCleaningModuleComponent },
   { path: 'cleaning/service/:id', component: CreateCleaningModuleComponent },
-  { path: 'guest-home', component: GuestHomeComponent },
+  { path: 'guest-home', component: GuestHomeComponent, canDeactivate: [GuestHomeCanDeactivateGuard] },
 ];
 
 @NgModule({

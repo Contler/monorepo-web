@@ -221,7 +221,12 @@
     "guestHome": {
       "description": "Choose which options your guests will see at the start of the platform once they log in.",
       "name": "Guest login options",
-      "sections": "Sections"
+      "sections": "Sections",
+      "updateSection": "Update section",
+      "updateSectionPlaceholder": "Name",
+      "currentName": "Current name",
+      "saveButton": "Save",
+      "cancel": "Cancel"
     },
     "hotel": "Hotel {{value}}",
     "immediate": {
@@ -262,7 +267,8 @@
       "select": "Options list",
       "select-other": "List of options with 'other'",
       "staticMoney": "Simple field",
-      "text": "Open Field"
+      "text": "Open Field",
+      "url": "Link"
     },
     "reception": {
       "description": "Choose which options to keep enabled in the Reception section. You can create new options.",

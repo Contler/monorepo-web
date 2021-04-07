@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelEntity } from '@contler/entity';
 import { AuthService } from 'hotel/services/auth.service';
-import { DynamicModuleService, FormService, MODULES } from '@contler/dynamic-services';
+import { DynamicModuleService, FormService, InputType, MODULES } from '@contler/dynamic-services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, first, map, switchMap, tap } from 'rxjs/operators';
 import { FormCreation } from 'hotel/preferences/components/new-service-wrap/new-service-wrap.component';
@@ -37,7 +37,14 @@ export class CreateMaintenanceModuleComponent implements OnInit {
 
   async save(data: FormCreation) {
     this.load = true;
-    await this.dynamic.createFormModuleDynamic(data, this.hotel.uid, MODULES.maintenance);
+    await this.dynamic.createFormModuleDynamic(
+      data,
+      this.hotel.uid,
+      MODULES.maintenance,
+      null,
+      null,
+      data.form.length && data.form[0].type === InputType.URL,
+    );
     this.load = false;
     return this.route.navigate(['/preferences/maintenance']);
   }
@@ -48,6 +55,8 @@ export class CreateMaintenanceModuleComponent implements OnInit {
       this.hotel.uid,
       MODULES.maintenance,
       data.formService,
+      null,
+      data.formService.form.length && data.formService.form[0].type === InputType.URL,
     );
     this.load = false;
     return this.route.navigate(['/preferences/maintenance']);
