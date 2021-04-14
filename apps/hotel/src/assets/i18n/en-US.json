@@ -184,7 +184,7 @@
   "newGuest": {
     "email": "Email",
     "lastName": "Last name",
-    "message": "Remind the guest that to enter the app <br> his username will be his email and his password his document",
+    "message": "Remind the guest that for the login in the app <br> your username will be your email address and your password will be your first last name and room number.",
     "name": "Name",
     "title": "Create new guest"
   },

@@ -184,7 +184,7 @@
   "newGuest": {
     "email": "Email",
     "lastName": "Nachname",
-    "message": "Erinnern Sie den Gast daran, dass sein Benutzername für die Eingabe der App <br> seine E-Mail-Adresse und sein Passwort sein Dokument ist",
+    "message": "Herinner de gast eraan dat voor het inloggen in de app <br> je gebruikersnaam je email zal zijn en je wachtwoord je voornaam en kamernummer.",
     "name": "Name",
     "title": "Neuen Gast erstellen"
   },

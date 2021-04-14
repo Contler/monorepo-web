@@ -184,7 +184,7 @@
   "newGuest": {
     "email": "Correo",
     "lastName": "Apellidos",
-    "message": "Recuerda al huesped que para el ingreso en el app <br> su usuario será su correo electrónico y su contraseña su documento",
+    "message": "Recuerda al huesped que para el ingreso en el app <br> su usuario será su correo electrónico y su contraseña su primer apellido y numero de habitación",
     "name": "Nombre",
     "title": "Crear nuevo huesped"
   },

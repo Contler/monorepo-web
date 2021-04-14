@@ -184,7 +184,7 @@
   "newGuest": {
     "email": "O email",
     "lastName": "Último nome",
-    "message": "Lembre ao convidado que para entrar no aplicativo <br> seu nome de usuário será seu e-mail e sua senha seu documento",
+    "message": "Lembre o convidado que para o login na aplicação <br> o seu nome de utilizador será o seu e-mail e a sua palavra-passe será o seu primeiro apelido e número de quarto.",
     "name": "Nome",
     "title": "Criar novo convidado"
   },
