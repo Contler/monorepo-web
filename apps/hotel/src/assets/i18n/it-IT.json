@@ -184,7 +184,7 @@
   "newGuest": {
     "email": "E-mail",
     "lastName": "Cognome",
-    "message": "Ricorda all'ospite che per accedere all'app <br> il suo nome utente sarà la sua email e la sua password il suo documento",
+    "message": "Ricorda all'ospite che per il login nell'app <br> il tuo nome utente sarà la tua email e la tua password sarà il tuo primo cognome e il numero di stanza.",
     "name": "Nome",
     "title": "Crea nuovo ospite"
   },
