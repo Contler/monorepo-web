@@ -10,6 +10,13 @@
     "text": "Votre demande de prêt en espèces a été reçue avec succès. Venez à la réception pour recevoir votre argent.",
     "title": "Avez-vous besoin d'un prêt en espèces? Remplissez ces informations."
   },
+  "dynamicRequest": {
+    "all": "Tous",
+    "attended": "Présence à",
+    "complete": "Complété",
+    "programing": "Programmé",
+    "update": "Mise à jour"
+  },
   "cleaning": {
     "anyRecommendation": "Toute recommandation",
     "bathroomCleaning": "Nettoyage de salle de bain",

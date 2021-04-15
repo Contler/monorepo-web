@@ -10,6 +10,13 @@
     "text": "Ihre Gelddarlehensanfrage wurde erfolgreich empfangen. Kommen Sie zur Rezeption, um Ihr Geld zu erhalten.",
     "title": "Benötigen Sie einen Geldkredit? Füllen Sie diese Informationen aus."
   },
+  "dynamicRequest": {
+    "all": "Alle",
+    "attended": "Bijgewoond",
+    "complete": "Voltooid",
+    "programing": "Gepland",
+    "update": "Update"
+  },
   "cleaning": {
     "anyRecommendation": "Irgendeine Empfehlung",
     "bathroomCleaning": "Badezimmerreinigung",
