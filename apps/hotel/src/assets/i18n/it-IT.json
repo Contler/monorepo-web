@@ -205,7 +205,13 @@
     "timeDelivery": "Tempo di consegna",
     "title": "ordini",
     "updateBtn": "Aggiornare",
-    "value": "Valore"
+    "value": "Valore",
+    "informativeMessage": {
+      "modalTitle": "Messaggio informativo",
+      "button": "Messaggio informativo",
+      "update": "Aggiornamento",
+      "cancel": "Cancella"
+    }
   },
   "preferences": {
     "back": "Ritornare",

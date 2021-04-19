@@ -21,7 +21,7 @@
     <p contlerColorHotel="primary" class="finish-order__total">
       {{ 'finishOrder.total' | translate }} {{ totalPrice$ | async | currency: 'COP':'$':'1.0-0' }}
     </p>
-
+    <p class="order_note" *ngIf="hotel.orderText">{{ hotel.orderText | ctrTranslate }}</p>
     <form class="finish-order__form" [formGroup]="orderForm" (ngSubmit)="createOrder()">
       <mat-form-field appearance="fill">
         <mat-select formControlName="time">
