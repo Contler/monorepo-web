@@ -13,9 +13,6 @@ export class UpdateInformationalMessageComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: string) {}
 
   ngOnInit(): void {
-    this.orderTextForm = new FormControl(
-      '',
-      Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(100)]),
-    );
+    this.orderTextForm = new FormControl('', Validators.compose([Validators.maxLength(100)]));
   }
 }
