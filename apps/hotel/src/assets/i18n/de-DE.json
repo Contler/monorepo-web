@@ -186,7 +186,9 @@
     "lastName": "Nachname",
     "message": "Herinner de gast eraan dat voor het inloggen in de app <br> je gebruikersnaam je email zal zijn en je wachtwoord je voornaam en kamernummer.",
     "name": "Name",
-    "title": "Neuen Gast erstellen"
+    "title": "Neuen Gast erstellen",
+    "create": "Maak",
+    "update": "Update"
   },
   "order": {
     "all": "Alles",

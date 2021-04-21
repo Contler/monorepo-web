@@ -1,11 +1,11 @@
-@import "styles/variables";
-@import "styles/mixin";
+@import 'styles/variables';
+@import 'styles/mixin';
 
 $gap-form: 10px;
 
 .cnt-modal-guest {
-  padding: 72px 120px 84px;
   text-align: center;
+  padding: 0 120px;
 
   &__close {
     position: absolute;
@@ -49,5 +49,11 @@ $gap-form: 10px;
     text-align: center;
     margin: 62px 0 38px;
   }
-
+}
+.search-guest {
+  height: 400px;
+  display: flex;
+  column-gap: 20px;
+  align-items: baseline;
+  margin-top: 20px;
 }

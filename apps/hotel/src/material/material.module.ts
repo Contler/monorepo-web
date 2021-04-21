@@ -33,6 +33,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { DirectivesModule } from 'hotel/directives/directives.module';
+import { MatStepperModule } from '@angular/material/stepper';
 
 const materialModules = [
   MatFormFieldModule,
@@ -58,6 +59,7 @@ const materialModules = [
   MatExpansionModule,
   MatListModule,
   MatTooltipModule,
+  MatStepperModule,
 ];
 
 @NgModule({
