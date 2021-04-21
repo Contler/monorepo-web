@@ -1,5 +1,8 @@
 <contler-marco-admin title="{{ 'order.title' | translate }}">
   <ng-container marcoHeader>
+    <button contlerBtnHotel="primary" mat-raised-button (click)="updateMessageInformational()">
+      {{ 'order.informativeMessage.button' | translate }}
+    </button>
     <mat-form-field appearance="fill" class="select">
       <mat-select [(ngModel)]="filter" (ngModelChange)="changeOrderView($event)">
         <mat-option *ngFor="let option of filters" [value]="option.value">
