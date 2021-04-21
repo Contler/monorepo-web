@@ -1,18 +1,23 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { OrderEntity } from '@contler/entity';
-import { switchMap, take } from 'rxjs/operators';
+import { first, switchMap, take } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'hotel/services/auth.service';
-import { ProductService } from '@contler/core';
+import { HotelService, ProductService } from '@contler/core';
 import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { UpdateInformationalMessageComponent } from 'hotel/order/modals/update-informational-message/update-informational-message.component';
+import { TranslateService as transDynamic } from '@contler/dynamic-translate';
+import { getLan } from '@contler/const';
+import { MessagesService } from 'hotel/services/messages/messages.service';
 
 @Component({
   selector: 'contler-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss'],
 })
-export class OrderComponent implements OnInit {
+export class OrderComponent {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
   readonly filters = [
     { name: 'order.all', value: 0 },
@@ -24,12 +29,18 @@ export class OrderComponent implements OnInit {
   displayedColumns: string[] = ['id', 'guest', 'zone', 'value', 'time', 'state', 'actions'];
   private orders: OrderEntity[] = [];
 
-  constructor(private auth: AuthService, private productService: ProductService, private router: Router) {
+  constructor(
+    private auth: AuthService,
+    private productService: ProductService,
+    private router: Router,
+    private matDialog: MatDialog,
+    private hotelService: HotelService,
+    private dynTranslate: transDynamic,
+    private messagesService: MessagesService,
+  ) {
     this.getAllOrders();
     this.dataSource.paginator = this.paginator!;
   }
-
-  ngOnInit() {}
 
   changeOrderView(event: number) {
     if (event === 0) {
@@ -79,5 +90,41 @@ export class OrderComponent implements OnInit {
 
   goToOrder(order: OrderEntity) {
     this.router.navigate(['home/order', order.id]);
+  }
+
+  public async updateMessageInformational(): Promise<void> {
+    const hotel = await this.auth.$hotel.pipe(first()).toPromise();
+    const updateInformationalMessage = this.matDialog.open(UpdateInformationalMessageComponent, {
+      width: '500px',
+      height: '300px',
+      data: hotel.orderText,
+    });
+    updateInformationalMessage.afterClosed().subscribe(async (orderText) => {
+      if (orderText) {
+        const loader = this.messagesService.showLoader();
+        const [actualLan, languages] = getLan();
+        const orderTextOld = hotel.orderText;
+        try {
+          const translateOrderText = await this.dynTranslate
+            .generateUrl({
+              actualLan,
+              languages,
+              hotel: hotel.uid,
+              mgs: orderText,
+              url: `orderText/name`,
+            })
+            .toPromise();
+          hotel.orderText = translateOrderText.key;
+          await this.hotelService.updateHotel(hotel).pipe(first()).toPromise();
+          if (orderTextOld) {
+            await this.dynTranslate.removeTranslate(orderTextOld, hotel.uid);
+          }
+          this.messagesService.closeLoader(loader);
+        } catch (err) {
+          this.messagesService.closeLoader(loader);
+          this.messagesService.showServerError();
+        }
+      }
+    });
   }
 }

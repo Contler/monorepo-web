@@ -205,7 +205,13 @@
     "timeDelivery": "Delivery time",
     "title": "Orders",
     "updateBtn": "Update",
-    "value": "Value"
+    "value": "Value",
+    "informativeMessage": {
+      "modalTitle": "Informative message",
+      "button": "Informative message",
+      "update": "Update",
+      "cancel": "Cancel"
+    }
   },
   "preferences": {
     "back": "Return",

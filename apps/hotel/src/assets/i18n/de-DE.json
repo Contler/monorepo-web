@@ -205,7 +205,13 @@
     "timeDelivery": "Lieferzeit",
     "title": "Aufträge",
     "updateBtn": "Aktualisieren",
-    "value": "Wert"
+    "value": "Wert",
+    "informativeMessage": {
+      "modalTitle": "Informatief Bericht",
+      "button": "Informatief Bericht",
+      "update": "Update",
+      "cancel": "Annuleren"
+    }
   },
   "preferences": {
     "back": "Rückkehr",

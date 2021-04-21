@@ -35,6 +35,8 @@ export class HotelEntity {
 
   initialConfiguration: boolean;
 
+  orderText: string;
+
   employees!: EmployerEntity[];
 
   zones!: ZoneEntity[];
