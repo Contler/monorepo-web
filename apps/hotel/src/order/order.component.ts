@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { OrderEntity } from '@contler/entity';
+import { HotelEntity, OrderEntity } from '@contler/entity';
 import { first, switchMap, take } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'hotel/services/auth.service';
@@ -100,31 +100,55 @@ export class OrderComponent {
       data: hotel.orderText,
     });
     updateInformationalMessage.afterClosed().subscribe(async (orderText) => {
-      if (orderText) {
+      if (typeof orderText === 'string') {
         const loader = this.messagesService.showLoader();
-        const [actualLan, languages] = getLan();
-        const orderTextOld = hotel.orderText;
-        try {
-          const translateOrderText = await this.dynTranslate
-            .generateUrl({
-              actualLan,
-              languages,
-              hotel: hotel.uid,
-              mgs: orderText,
-              url: `orderText/name`,
-            })
-            .toPromise();
-          hotel.orderText = translateOrderText.key;
-          await this.hotelService.updateHotel(hotel).pipe(first()).toPromise();
-          if (orderTextOld) {
-            await this.dynTranslate.removeTranslate(orderTextOld, hotel.uid);
+        if (orderText) {
+          const [actualLan, languages] = getLan();
+          const orderTextOld = hotel.orderText;
+          try {
+            const translateOrderText = await this.dynTranslate
+              .generateUrl({
+                actualLan,
+                languages,
+                hotel: hotel.uid,
+                mgs: orderText,
+                url: `orderText/name`,
+              })
+              .toPromise();
+            hotel.orderText = translateOrderText.key;
+            await this.hotelService.updateHotel(hotel).pipe(first()).toPromise();
+            if (orderTextOld) {
+              await this.dynTranslate.removeTranslate(orderTextOld, hotel.uid);
+            }
+            this.messagesService.closeLoader(loader);
+          } catch (err) {
+            this.messagesService.closeLoader(loader);
+            this.messagesService.showServerError();
           }
-          this.messagesService.closeLoader(loader);
-        } catch (err) {
-          this.messagesService.closeLoader(loader);
-          this.messagesService.showServerError();
+        } else {
+          try {
+            await this.removeOldTextOrder(hotel);
+            this.messagesService.closeLoader(loader);
+          } catch (err) {
+            this.messagesService.closeLoader(loader);
+            this.messagesService.showServerError();
+          }
         }
       }
     });
+  }
+
+  private async removeOldTextOrder(hotel: HotelEntity): Promise<void> {
+    const orderTextOld = hotel.orderText;
+    if (orderTextOld) {
+      try {
+        hotel.orderText = null;
+        await this.hotelService.updateHotel(hotel).pipe(first()).toPromise();
+        await this.dynTranslate.removeTranslate(orderTextOld, hotel.uid);
+        return Promise.resolve();
+      } catch (err) {
+        return Promise.reject();
+      }
+    }
   }
 }

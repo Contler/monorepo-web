@@ -7,7 +7,7 @@
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close cdkFocusInitial>
+  <button mat-raised-button [mat-dialog-close]="null" cdkFocusInitial>
     {{ 'order.informativeMessage.cancel' | translate }}
   </button>
   <button
