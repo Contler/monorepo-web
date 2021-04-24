@@ -186,7 +186,9 @@
     "lastName": "Cognome",
     "message": "Ricorda all'ospite che per il login nell'app <br> il tuo nome utente sarà la tua email e la tua password sarà il tuo primo cognome e il numero di stanza.",
     "name": "Nome",
-    "title": "Crea nuovo ospite"
+    "title": "Crea nuovo ospite",
+    "create": "Creare",
+    "update": "Aggiornamento"
   },
   "order": {
     "all": "Tutti",
@@ -205,7 +207,13 @@
     "timeDelivery": "Tempo di consegna",
     "title": "ordini",
     "updateBtn": "Aggiornare",
-    "value": "Valore"
+    "value": "Valore",
+    "informativeMessage": {
+      "modalTitle": "Messaggio informativo",
+      "button": "Messaggio informativo",
+      "update": "Aggiornamento",
+      "cancel": "Cancella"
+    }
   },
   "preferences": {
     "back": "Ritornare",

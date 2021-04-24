@@ -3,6 +3,13 @@
     "userDisabled": "La cuenta ya no esta activa",
     "userNotFound": "Correo o contraseña invalida"
   },
+  "dynamicRequest": {
+    "all": "Todas",
+    "attended": "Atendida",
+    "complete": "Completada",
+    "programing": "Programada",
+    "update": "Actualizar"
+  },
   "cashLoan": {
     "cashAmount": "Monto en efectivo (COP)",
     "close": "¡Entendido!",

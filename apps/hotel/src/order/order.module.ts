@@ -12,9 +12,10 @@ import { ViewOrderComponent } from './pages/view-order/view-order.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { DirectivesModule } from '../directives/directives.module';
+import { UpdateInformationalMessageComponent } from './modals/update-informational-message/update-informational-message.component';
 
 @NgModule({
-  declarations: [OrderComponent, ViewOrderComponent],
+  declarations: [OrderComponent, ViewOrderComponent, UpdateInformationalMessageComponent],
   entryComponents: [],
   imports: [
     CommonModule,

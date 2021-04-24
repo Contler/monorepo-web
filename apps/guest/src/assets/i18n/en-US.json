@@ -10,6 +10,13 @@
     "text": "Your cash loan request has been successfully received. Come to the reception to receive your money.",
     "title": "Do you need a cash loan? Fill out this information."
   },
+  "dynamicRequest": {
+    "all": "All",
+    "attended": "Attended",
+    "complete": "Completed",
+    "programing": "Scheduled",
+    "update": "Update"
+  },
   "cleaning": {
     "anyRecommendation": "Any recommendation",
     "bathroomCleaning": "Bathroom cleaning",

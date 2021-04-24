@@ -186,7 +186,9 @@
     "lastName": "Apellidos",
     "message": "Recuerda al huesped que para el ingreso en el app <br> su usuario será su correo electrónico y su contraseña su primer apellido y numero de habitación",
     "name": "Nombre",
-    "title": "Crear nuevo huesped"
+    "title": "Crear nuevo huesped",
+    "create": "Crear",
+    "update": "Actualizar"
   },
   "order": {
     "all": "Todos",
@@ -205,7 +207,13 @@
     "timeDelivery": "Hora de entrega",
     "title": "Pedidos",
     "updateBtn": "Actualizar",
-    "value": "Valor"
+    "value": "Valor",
+    "informativeMessage": {
+      "modalTitle": "Mensaje informativo",
+      "button": "Mensaje informativo",
+      "update": "Actualizar",
+      "cancel": "Cancelar"
+    }
   },
   "preferences": {
     "back": "Regresar",

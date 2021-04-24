@@ -186,7 +186,9 @@
     "lastName": "Nom de famille",
     "message": "Rappelez à l'invité que pour la connexion dans l'appli <br> votre nom d'utilisateur sera votre email et votre mot de passe sera votre prénom et votre numéro de chambre.",
     "name": "Prénom",
-    "title": "Créer un nouvel invité"
+    "title": "Créer un nouvel invité",
+    "create": "Créer",
+    "update": "Mise à jour"
   },
   "order": {
     "all": "Tout",
@@ -205,7 +207,13 @@
     "timeDelivery": "Heure de livraison",
     "title": "Ordres",
     "updateBtn": "Mettre à jour",
-    "value": "Valeur"
+    "value": "Valeur",
+    "informativeMessage": {
+      "modalTitle": "Message d'information",
+      "button": "Message d'information",
+      "update": "Mise à jour",
+      "cancel": "Annuler"
+    }
   },
   "preferences": {
     "back": "Retour",

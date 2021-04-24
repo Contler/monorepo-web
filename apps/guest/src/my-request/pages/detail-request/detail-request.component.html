@@ -1,6 +1,27 @@
 <contler-marco [backUrl]="true">
   <ng-container marcoBody *ngIf="request | async; let rq">
     <h1 class="ctl-title" contlerColorHotel="primary">{{ rq.nameService | ctrTranslate }}</h1>
-    <contler-dynamic-form [readOnly]="true" [listInputs]="rq.form"></contler-dynamic-form>
+    <contler-dynamic-form [readOnly]="true" [listInputs]="rq.form" class=""></contler-dynamic-form>
+    <mat-form-field appearance="fill" class="w-100 mt-40 mb-20">
+      <mat-select [(ngModel)]="rq.status" [disabled]="hiddenButton">
+        <mat-option
+          *ngFor="let opt of listStatus"
+          [value]="opt"
+          [disabled]="opt === statusRequest.ATTENDED || opt === statusRequest.PROGRAMING"
+        >
+          {{ opt | translate }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      contlerColorBtnHotel="primary"
+      class="w-100"
+      *ngIf="!hiddenButton"
+      (click)="onUpdateRequest(rq)"
+    >
+      {{ 'dynamicRequest.update' | translate }}
+    </button>
   </ng-container>
 </contler-marco>

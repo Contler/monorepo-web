@@ -10,6 +10,13 @@
     "text": "Sua solicitação de empréstimo em dinheiro foi recebida com sucesso. Venha até a recepção para receber seu dinheiro.",
     "title": "Você precisa de um empréstimo em dinheiro? Preencha essas informações."
   },
+  "dynamicRequest": {
+    "all": "Todos",
+    "attended": "Atendido",
+    "complete": "Concluído",
+    "programing": "Agendado",
+    "update": "Actualização"
+  },
   "cleaning": {
     "anyRecommendation": "Qualquer recomendação",
     "bathroomCleaning": "Limpeza de banheiro",

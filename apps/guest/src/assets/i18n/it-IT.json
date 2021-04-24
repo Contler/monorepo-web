@@ -10,6 +10,13 @@
     "text": "La tua richiesta di prestito in contanti è stata ricevuta con successo. Vieni alla reception per ricevere i tuoi soldi.",
     "title": "Hai bisogno di un prestito in contanti? Compila queste informazioni."
   },
+  "dynamicRequest": {
+    "all": "Tutti",
+    "attended": "Frequentato",
+    "complete": "Completato",
+    "programing": "Programmato",
+    "update": "Aggiornamento"
+  },
   "cleaning": {
     "anyRecommendation": "Qualsiasi raccomandazione",
     "bathroomCleaning": "Pulizia del bagno",

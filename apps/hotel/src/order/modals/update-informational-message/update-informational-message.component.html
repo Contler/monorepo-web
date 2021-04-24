@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>{{ 'order.informativeMessage.button' | translate }}</h1>
+<mat-dialog-content>
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label></mat-label>
+    <textarea matInput [formControl]="orderTextForm" class="no-resize" rows="3"></textarea>
+    <mat-hint *ngIf="data">{{ data | ctrTranslate }}</mat-hint>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close]="null" cdkFocusInitial>
+    {{ 'order.informativeMessage.cancel' | translate }}
+  </button>
+  <button
+    contlerBtnHotel="primary"
+    mat-raised-button
+    [disabled]="orderTextForm.invalid"
+    [mat-dialog-close]="orderTextForm.value"
+  >
+    {{ 'order.informativeMessage.update' | translate }}
+  </button>
+</mat-dialog-actions>

@@ -186,7 +186,9 @@
     "lastName": "Last name",
     "message": "Remind the guest that for the login in the app <br> your username will be your email address and your password will be your first last name and room number.",
     "name": "Name",
-    "title": "Create new guest"
+    "title": "Create new guest",
+    "create": "Create",
+    "update": "Update"
   },
   "order": {
     "all": "All",
@@ -205,7 +207,13 @@
     "timeDelivery": "Delivery time",
     "title": "Orders",
     "updateBtn": "Update",
-    "value": "Value"
+    "value": "Value",
+    "informativeMessage": {
+      "modalTitle": "Informative message",
+      "button": "Informative message",
+      "update": "Update",
+      "cancel": "Cancel"
+    }
   },
   "preferences": {
     "back": "Return",
