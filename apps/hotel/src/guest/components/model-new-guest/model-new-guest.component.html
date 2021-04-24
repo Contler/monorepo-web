@@ -1,19 +1,26 @@
 <mat-horizontal-stepper linear #stepper>
   <mat-step [stepControl]="searchEmailForm">
     <div class="search-guest">
-      <mat-form-field appearance="fill" class="custom-filed">
-        <mat-label>{{ 'newGuest.email' | translate }}</mat-label>
-        <input type="email" matInput [formControl]="searchEmailForm" />
-      </mat-form-field>
-      <button
-        contlerButton
-        contlerBtnHotel="primary"
-        (click)="searchGuest(stepper)"
-        mat-raised-button
-        [disabled]="searchEmailForm.invalid"
-      >
-        {{ 'guest.search' | translate }}
-      </button>
+      <div class="w-100">
+        <h1 class="cnt-modal-guest__title-step-1">Crear/Actualizar huésped</h1>
+        <p class="cnt-modal-guest__label-step-1">Ingresa el correo del huésped que llega a tu hotel</p>
+        <div class="form-search-container">
+          <mat-form-field appearance="fill" class="custom-filed form-search-email">
+            <input type="email" matInput [formControl]="searchEmailForm" />
+            <mat-hint>Correo</mat-hint>
+          </mat-form-field>
+          <button
+            contlerButton
+            contlerBtnHotel="primary"
+            (click)="searchGuest(stepper)"
+            mat-raised-button
+            class="btn-search"
+            [disabled]="searchEmailForm.invalid"
+          >
+            {{ 'guest.search' | translate }}
+          </button>
+        </div>
+      </div>
     </div>
   </mat-step>
   <mat-step>
