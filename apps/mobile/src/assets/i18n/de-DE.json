@@ -1,16 +1,16 @@
 {
   "booking": {
-    "pending": "steht aus",
+    "pending": "Ausstehend",
     "resolved": "Aufgelöst"
   },
   "cardEmployees": {
     "averageTime": "Durchschnittliche Zeit:",
     "numberOfServices": "Anzahl der Dienste:",
-    "qualification": "Qualifikation:"
+    "qualification": "Bewertungen:"
   },
   "clean": {
     "empty": "Keine Anfragen",
-    "pending": "steht aus",
+    "pending": "Ausstehend",
     "pendingTitle": "Ausstehende Reinigungsanfragen",
     "petitionUpdate": "Aktualisierte Anfrage",
     "resultTitle": "Freigabeanfragen gelöst"
@@ -18,19 +18,10 @@
   "cleaning": {
     "bathroomCleaning": "Badezimmerreinigung",
     "changeOfBlankets": "Deckenwechsel",
-    "cleaningOfSheets": "Reinigung von Blättern",
+    "cleaningOfSheets": "Reinigung von Bettzeug",
     "generalRoomCleaning": "Allgemeine Raumreinigung",
-    "other": "andere",
+    "other": "Sonstiges",
     "towelChange": "Handtuchwechsel"
-  },
-  "dynamicForm": {
-    "which": "Welke?"
-  },
-  "dynamicRequest": {
-    "all": "Alle",
-    "attended": "Besucht",
-    "complete": "Abgeschlossen",
-    "programing": "Geplant"
   },
   "global": {
     "ACTIVE": "Aktiv",
@@ -40,7 +31,7 @@
     "GUEST": "Gast",
     "NEED": "brauchen",
     "NO_RESULT": "Es gibt keine Ergebnisse für diese Suche",
-    "PENDING": "steht aus",
+    "PENDING": "Ausstehend",
     "RESULT": "Aufgelöst",
     "ROOM": "Zimmer",
     "SEARCH": "Suche",
@@ -88,7 +79,6 @@
     "maintain": "Instandhaltung",
     "order": "Aufträge",
     "reception": "Rezeption",
-    "room": "Zimmer",
     "specialRequest": "Spezialwünsche",
     "statistic": "Statistiken",
     "wakeUp": "Aufweck-Anruf"
@@ -114,7 +104,7 @@
   },
   "orderComplete": {
     "noOrders": "Keine Bestellungen",
-    "resolvedOrders": "Gelöste Bestellungen"
+    "resolvedOrders": "Erledigte Bestellungen"
   },
   "orderDetail": {
     "comments": "Bemerkungen:",
@@ -135,7 +125,7 @@
     "guest": "Gast:",
     "noReservations": "Keine Reservierungen",
     "pendingReservationRequests": "Ausstehende Reservierungsanfragen",
-    "people": "Menschen"
+    "people": "Anzahl Pers."
   },
   "pendingMaintain": {
     "close": "Schließen",
@@ -154,7 +144,7 @@
     "confirmed": "Bestätigt",
     "guest": "Gast:",
     "noReservations": "Keine Reservierungen",
-    "people": "Menschen",
+    "people": "Anzahl Pers.",
     "resolvedReservationRequests": "Behobene Reservierungsanfragen"
   },
   "readyMaintain": {
@@ -169,6 +159,31 @@
     "pendings": "Anhänge",
     "resolved": "Aufgelöst"
   },
+  "signup-dialog": {
+    "form": {
+      "password": {
+        "hint": "Das Passwort muss mindestens 8 Zeichen Lang sein & eine Zahl enthalten.",
+        "label": "Passwort",
+        "placeholder": "Ihr Passwort"
+      },
+      "username": {
+        "hint": "Der Benutzername kann Buchstaben von a-z und Zahlen enthalten.",
+        "label": "Benutzername",
+        "placeholder": "Ihr Name"
+      }
+    },
+    "header": "Anmeldeformular",
+    "submit-button": "Eingeben",
+    "validation": {
+      "password": {
+        "missing-digit": "Das Passwort muss mindestens eine Zahl enthalten.",
+        "too-short": "Das Passwort muss mindestens 8 Zeichen lang sein."
+      },
+      "username": {
+        "exists": "Dieser Benutzer existiert bereits."
+      }
+    }
+  },
   "specialRequest": {
     "activeTitle": "Aktive Sonderwünsche",
     "completeTitle": "Frühere Sonderwünsche",
@@ -181,11 +196,6 @@
   "statistic": {
     "ratingsPerEmployee": "Bewertungen pro Mitarbeiter"
   },
-  "transportation": {
-    "attended": "Besucht",
-    "complete": "Erreicht",
-    "programing": "Geplant"
-  },
   "wakeComplete": {
     "wakeUpCallsResolved": "Weckrufe gelöst"
   },
@@ -193,26 +203,7 @@
     "wakeUpCallsPending": "Weckrufe ausstehend"
   },
   "wakeUp": {
-    "pending": "steht aus",
+    "pending": "Ausstehend",
     "resolved": "Aufgelöst"
-  },
-  "zoneRequest": {
-    "categories": {
-      "callHotel": "Rufen Sie das Hotelpersonal an",
-      "checkOut": "Bitte um späten Check-out",
-      "clean": "Zimmerreinigung anfordern",
-      "drink": "Ein Drink",
-      "food": "Essen vorbestellen",
-      "maintain": "Wartung anfordern",
-      "other": "andere",
-      "requestClean": "Reinigung anfordern",
-      "roomKeys": "Zimmerschlüssel",
-      "roomService": "Zimmerservice",
-      "spaceReserve": "Reservieren Sie einen Platz",
-      "specialRequest": "Spezialwünsche",
-      "towels": "Handtücher",
-      "waiter": "Bedienung",
-      "wakeUp": "Programm Weckruf"
-    }
   }
 }
