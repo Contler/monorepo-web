@@ -11,7 +11,7 @@
   },
   "calendar": {
     "all": "Alles",
-    "persons": "Menschen",
+    "persons": "Personen",
     "zone": "Zone",
     "zones": "Zonen"
   },
@@ -30,17 +30,6 @@
     "title": "Menükategorien",
     "updateSusses": "Kategorie erfolgreich aktualisiert"
   },
-  "createReservation": {
-    "noSpotsAvailable": "Keine Plätze verfügbar"
-  },
-  "dynamicForm": {
-    "which": "Welke?"
-  },
-  "dynamicRequest": {
-    "attended": "Besucht",
-    "complete": "Erreicht",
-    "programing": "Geplant"
-  },
   "editGuest": {
     "noRequest": "Keine Anfragen",
     "order": "Auftrag",
@@ -50,18 +39,18 @@
   },
   "employer": {
     "allOption": "Jeder",
-    "createBtn": "Erstellen Sie Mitarbeiter",
+    "createBtn": "Mitarbeiter erstellen",
     "employerOption": "Angestellte",
-    "leader": "Führer",
+    "leader": "Leiter",
     "leaderOption": "Gebietsleiter",
     "modal": {
       "averageTime": "Durchschnittliche Zeit",
       "create": "Erstellen",
       "createSusses": "Mitarbeiter erfolgreich erstellt",
       "lastName": "Nachname",
-      "leaderZone": "Bereich, in dem es führend ist:",
+      "leaderZone": "Bereich, in dem er/sie führend ist:",
       "name": "Vorname",
-      "noOption": "Nicht",
+      "noOption": "Nein",
       "title": "Mitarbeiter",
       "totalAverage": "Gesamtzahl der Dienstleistungen",
       "totalServices": "Anzahl der Dienste",
@@ -70,9 +59,9 @@
       "yesOption": "Ja"
     },
     "name": "Name des Arbeitgebers",
-    "rating": "Qualifikation",
+    "rating": "Kundenbewertung",
     "request": "Anfordern",
-    "viewRating": "Siehe Noten"
+    "viewRating": "Siehe Kundenbewertungen"
   },
   "global": {
     "CLOSE": "Schließen",
@@ -80,18 +69,18 @@
     "EMPLOYER": "Angestellte",
     "GUEST": "Gäste",
     "IMMEDIATE_REQUEST": "Sofortige Anfragen",
-    "LATE_CHECKOUT": "Späte Kasse",
+    "LATE_CHECKOUT": "Late Checkout",
     "PASSWORD": "Passwort",
     "RECEPTION": "Rezeption",
     "RESTAURANT": "Restaurant",
     "SEARCH": "Suche",
-    "SPACE_RESERVATION": "Platzreservierungen",
+    "SPACE_RESERVATION": "Reservierungen",
     "SPECIAL_REQUEST": "Spezialwünsche",
     "ZONE": "Zonen"
   },
   "guest": {
     "active": "Aktiv",
-    "checkIn": "Datum der Zulassung",
+    "checkIn": "Einreisedatum",
     "checkOut": "Abreisedatum",
     "create": "Gast erstellen",
     "document": "Dokumentieren",
@@ -101,14 +90,10 @@
     "room": "Zimmer",
     "search": "Suche...",
     "type": {
-      "cc": "Staatsbürgerschaftskarte",
+      "cc": "ID",
       "passport": "Reisepass"
     },
-    "typeDocument": "Art"
-  },
-  "guestRequest": {
-    "WhatDoYouNeedToday": "Wat heb je vandaag nodig?",
-    "hello": "Hallo"
+    "typeDocument": "Art des Ausweises"
   },
   "home": {
     "desktop": "Desktop"
@@ -140,17 +125,10 @@
     "checkOut": "Auschecken",
     "crate": "Erstellen",
     "name": "Name",
-    "newDate": "Neues Datum auschecken",
+    "newDate": "Neues Abreisedatum",
     "notAccepted": "Nicht akzeptiert",
     "room": "Zimmer",
     "state": "Zustand"
-  },
-  "login": {
-    "forgot-password": "Wachtwoord vergeten?",
-    "password": "Wachtwoord",
-    "sign-in": "Inloggen",
-    "username": "Gebruiker",
-    "username-placeholder": "gebruiker@bedrijf.com"
   },
   "menu": {
     "admin": "Administrator",
@@ -158,47 +136,32 @@
     "logout": "Ausloggen",
     "products": "Produkte",
     "qualification": "Bewertungen",
-    "remoteOrders": "Fernbestellungen",
+    "remoteOrders": "Zimmerservice\n",
     "request": "Anfordern",
-    "reserveAreas": "Reservegebiete",
+    "reserveAreas": "Reservationen",
     "restaurant": "Restaurant",
-    "roomService": "Zimmerservice",
+    "roomService": "Zimmerservice & Restaurants",
     "rooms": "Räume",
-    "space": "Spaces",
+    "space": "Hotelgebiete",
     "spaceReservations": "Platzreservierungen",
-    "team": "Mannschaft",
+    "team": "Team",
     "wakeUpCalls": "Aufweck-Anruf"
-  },
-  "modules": {
-    "clean": "Reiniging",
-    "immediateRequests": "Onmiddellijke verzoeken",
-    "late-checkouts": "Late check-out",
-    "maintenance": "Onderhoud",
-    "orders": "Bestellingen",
-    "reception": "Receptie",
-    "reservations": "Reserveringen",
-    "room": "Kamer",
-    "specialRequest": "Speciale verzoeken",
-    "wakeup-call": "Attentie oproepen"
   },
   "newGuest": {
     "email": "Email",
     "lastName": "Nachname",
-    "message": "Herinner de gast eraan dat voor het inloggen in de app <br> je gebruikersnaam je email zal zijn en je wachtwoord je voornaam en kamernummer.",
-    "name": "Name",
-    "title": "Neuen Gast erstellen",
-    "create": "Maak",
-    "update": "Update"
+    "message": "Erinnern Sie den Gast daran, dass für das login sein Benutzername seine E-Mail-Adresse und sein Passwort sein Vornamen mit Zimmernummer ist.",
+    "name": "Vorname",
+    "title": "Neuen Gast erstellen"
   },
   "order": {
     "all": "Alles",
     "complete": "Komplett",
     "dataOrder": "Bestelldaten",
-    "deleteBtn": "Entfernen",
     "delivery": "Lieferung",
     "guest": "Gast",
-    "leader": "Anführer, der die Anfrage beantwortet hat",
-    "observationOrder": "Kommentare bestellen",
+    "leader": "Mitarbeiter, der die Anfrage beantwortet hat",
+    "observationOrder": "Kommentare zur Bestellung",
     "pending": "steht aus",
     "room": "Zimmer",
     "state": "Zustand",
@@ -207,108 +170,7 @@
     "timeDelivery": "Lieferzeit",
     "title": "Aufträge",
     "updateBtn": "Aktualisieren",
-    "value": "Wert",
-    "informativeMessage": {
-      "modalTitle": "Informatief Bericht",
-      "button": "Informatief Bericht",
-      "update": "Update",
-      "cancel": "Annuleren"
-    }
-  },
-  "preferences": {
-    "back": "Rückkehr",
-    "cleaning": {
-      "description": "Kies welke opties ingeschakeld moeten blijven in de Schoonmaak sectie. U kunt nieuwe opties aanmaken.",
-      "disableText": "Nee, laat uitgeschakeld",
-      "enableText": "Ja, schakel de service in",
-      "name": "Schoonmaak",
-      "subDescription": "De Schoonmaak verzoeken stellen de gebruiker in staat om diensten uit de eerste hand te verkrijgen die helpen bij hun verblijf."
-    },
-    "confirmServices": "Bevestig eerst de diensten die u wilt aanbieden",
-    "continue": "Ga verder naar ",
-    "guestHome": {
-      "description": "Kies welke opties uw gasten te zien krijgen op de startpagina van het platform zodra ze inloggen.",
-      "name": "Inlogopties voor gasten",
-      "sections": "Secties",
-      "updateSection": "Onderhouden sectie",
-      "updateSectionPlaceholder": "Naam",
-      "currentName": "Huidige naam",
-      "saveButton": "Save",
-      "cancel": "Annuleren"
-    },
-    "hotel": "Hotel {{value}}",
-    "immediate": {
-      "description": "Mit allgemeinen Sofortanfragen können Benutzer schnell anfordern, was sie in den Bereichen Ihres Hotels benötigen. Wählen Sie die Optionen aus, die in jedem Zonentyp angezeigt werden sollen:",
-      "name": "Sofortige Anfragen",
-      "other": "Andere",
-      "selectIcon": "Wählen Sie das Symbol",
-      "subDescription": "Sofortige Anfragen ermöglichen es dem Gast, schnell etwas Pünktliches anzufordern, das vorrangig bedient werden soll.\n<br/><br/>Beispiel: ein Handtuch im Pool",
-      "which": "Welche?"
-    },
-    "maintenance": {
-      "description": "Kies welke opties ingeschakeld moeten blijven in de sectie Onderhoud. U zult in staat zijn om nieuwe opties aan te maken.",
-      "disableText": "Nee, laat uitgeschakeld",
-      "enableText": "Ja, schakel de service in",
-      "name": "Onderhoud",
-      "subDescription": "Verzoeken in onderhoud stellen de gebruiker in staat om diensten uit de eerste hand te krijgen die zullen helpen in hun verblijf."
-    },
-    "message": {
-      "removeFormError": "Dit formulier heeft actieve verzoeken",
-      "removeFormSuccess": "Het formulier is succesvol verwijderd",
-      "saveForm": "Formular speichern",
-      "saveService": "Service speichern",
-      "translateMessage": "Formularübersetzungen generieren"
-    },
-    "newOption": "Neue Option hinzufügen",
-    "newOptionbutton": "Fügen Sie ein neues Feld hinzu",
-    "newService": "Neuer Dienst {{value}}",
-    "optionInputs": {
-      "calendar": "Kalender",
-      "fileDescriptionHint": "Beschreibung des Feldes",
-      "hour": "Stunde",
-      "iconHint": "Feldsymbol",
-      "money": "Währung",
-      "moneyNameSelect": "Name des Selektors",
-      "nameInpitHit": "Feldtyp",
-      "other": "Andere",
-      "reload": "Nachladen",
-      "select": "Optionsliste",
-      "select-other": "Lijst van opties met 'andere'",
-      "staticMoney": "Einfaches Feld",
-      "text": "Offenes Feld",
-      "url": "Link"
-    },
-    "reception": {
-      "description": "Wählen Sie im Bereich Empfang aus, welche Optionen aktiviert bleiben sollen. Sie können neue Optionen erstellen.",
-      "disableText": "Nein, deaktiviert lassen",
-      "enableText": "Ja, Dienst aktivieren",
-      "name": "Rezeption",
-      "subDescription": "Anfragen an der Rezeption ermöglichen es dem Benutzer, Dienste aus erster Hand zu erhalten, die ihm bei seinem Aufenthalt helfen."
-    },
-    "request": {
-      "active": "Verfügbar",
-      "all": "Alles",
-      "searchPlaceHolder": "Suche..."
-    },
-    "room": {
-      "description": "Kies welke opties ingeschakeld moeten blijven in de sectie Kamer. U zult in staat zijn om nieuwe opties te creëren. ",
-      "disableText": "Nee, laat uitgeschakeld.",
-      "enableText": "Ja, schakel de dienst in.",
-      "name": "Kamer",
-      "nome": "",
-      "subDescription": "Met kamerverzoeken kan de gebruiker diensten uit de eerste hand krijgen om te helpen bij zijn verblijf."
-    },
-    "service": {
-      "description": "Beschreibung",
-      "nameOption": "Optionsname",
-      "preview": "Vorschau"
-    },
-    "title": "Voorkeuren",
-    "welcome": {
-      "button": "start",
-      "subtitle": "Wij zullen u stap voor stap begeleiden, zodat u de mogelijkheden die u uw gasten zult aanbieden, kunt organiseren.",
-      "title": "Welkom bij uw Contler beheerder!"
-    }
+    "value": "Wert"
   },
   "product": {
     "active": "Aktiv",
@@ -337,17 +199,11 @@
   },
   "rating": {
     "average": "Durchschnittliche Bewertung",
-    "name": "Qualifikation",
+    "name": "Bewertung",
     "profile": "Vollständiges Profil",
-    "services": "Anzahl der Dienstleistungen",
+    "services": "Anzahl der Services",
     "time": "Durchschnittliche Zeit",
     "title": "Bewertungen"
-  },
-  "reception": {
-    "cashLoan": "Darlehen",
-    "concierge": "Portier",
-    "currencyExchange": "Geldwechsel",
-    "transportation": "Transport"
   },
   "reservation": {
     "createButton": "ZONE ERSTELLEN",
@@ -361,32 +217,18 @@
     "labelCategory": "Zonenname",
     "labelIcon": "Wählen Sie ein Symbol",
     "labelName": "Zonenname",
-    "manual": {
-      "category": "Kategorie",
-      "create": "Maak een reservering",
-      "date": "Datum",
-      "hour": "Stunde",
-      "name": "Gastname",
-      "people": "Leute",
-      "room": "Zimmer",
-      "service": "Anzahl von Leuten",
-      "title": "Reservierung",
-      "zone": "Zone"
-    },
-    "manualCreation": "Maak een reservering",
     "nameList": "Zonenname",
     "range": {
       "endTime": "Zeitende",
-      "initTime": "Zeit init",
+      "initTime": "Zeit Anfang",
       "labelDay": "Wochentag",
-      "quotaLabel": "Quoten",
-      "rooms": "Zimmer"
+      "quotaLabel": "Max. Personenzahl"
     },
     "title": "Zonenreservierung"
   },
   "restaurant": {
     "createBtn": "Restaurant erstellen",
-    "createSusses": "Erfolgreich erstelltes Restaurant",
+    "createSusses": "Restaurant erfolgreich erstellt",
     "deleteSusses": "Restaurant erfolgreich entfernt",
     "name": "Name des Restaurants",
     "title": "Restaurants",
@@ -402,9 +244,33 @@
     "hasExistRooms": "Die Räume {{value}} sind bereits vorhanden",
     "initRoom": "Anfangsraum",
     "multiple": "Raumbereich",
-    "name": "Zimmer",
     "susses": "Erfolgreich erstellter Raum",
     "unique": "Einzigartiges Zimmer"
+  },
+  "signup-dialog": {
+    "form": {
+      "password": {
+        "hint": "",
+        "label": "",
+        "placeholder": ""
+      },
+      "username": {
+        "hint": "",
+        "label": "",
+        "placeholder": ""
+      }
+    },
+    "header": "",
+    "submit-button": "",
+    "validation": {
+      "password": {
+        "missing-digit": "",
+        "too-short": ""
+      },
+      "username": {
+        "exists": ""
+      }
+    }
   },
   "specialRequest": {
     "dateEnd": "Endtermin",
@@ -412,45 +278,11 @@
     "request": "Petition",
     "title": "Besondere Bitte"
   },
-  "subZone": {
-    "answerNot": "Geen",
-    "answerYes": "Ja",
-    "createButton": "Bereichsservice anlegen",
-    "edit": {
-      "addBtn": "Bereich hinzufügen",
-      "deleteBtn": "Dienst aus der Zone entfernen",
-      "editBtn": "Aktualisieren",
-      "subtitle": "Zone Serviceverfügbarkeit",
-      "title": "Informationen zum Zonendienst"
-    },
-    "labelIcon": "Wählen Sie ein Symbol",
-    "labelName": "Zone Dienstname",
-    "labelZone": "Zone",
-    "nameList": "Zone Dienstname",
-    "questionLabel": "Is het een lokale dienst?",
-    "range": {
-      "endTime": "Zeitende",
-      "initTime": "Zeit init",
-      "labelDay": "Wochentag",
-      "quotaLabel": "Quoten",
-      "rooms": "Zimmer"
-    },
-    "title": "Service des Bereichs"
-  },
-  "transportation": {
-    "attended": "Besucht",
-    "complete": "Erreicht",
-    "programing": "Geplant"
-  },
   "typeRequest": {
-    "CASH_LOAN": "Darlehen",
     "CLEAN": "Sauber",
-    "CONCIERGE": "Portier",
-    "CURRENCY_EXCHANGE": "Geldwechsel",
-    "IMMEDIATE": "Sofortig",
+    "IMMEDIATE": "Baldmöglichst",
     "MAINTAIN": "pflegen",
-    "RECEPTION": "Rezeption",
-    "TRANSPORTATION": "Transport"
+    "RECEPTION": "Rezeption"
   },
   "wakeUp": {
     "callTo": "Aufruf",
@@ -469,7 +301,7 @@
     "editName": "Zone bearbeiten",
     "errorUpdate": "Die Zone konnte nicht aktualisiert werden. Sie müssen eine Hauptzone deaktivieren, um sie zu aktivieren.",
     "foodZone": "LEBENSMITTELBEREICHE",
-    "humidZone": "FEUCHTIGKEITSGEBIETE",
+    "humidZone": "Spa & Pools",
     "maxZoneError": "Sie haben bereits die vier Hauptzonen ausgewählt. Sie müssen eine deaktivieren, um diese zu aktivieren.",
     "modal": {
       "admitOrder": "Bestellungen zulassen",
@@ -481,28 +313,9 @@
     "order": "Aufträge",
     "outsideHotel": "AUSSERHALB DES HOTELS",
     "principal": "Hauptzone",
-    "principalZone": "Ausgewählter Bereich (Sie können maximal 4 Bereiche auswählen)",
+    "principalZone": "a",
     "selectIcon": "Wählen Sie ein Symbol",
     "socialZone": "SOZIALGEBIETE",
     "updateSusses": "Zone erfolgreich aktualisiert"
-  },
-  "zoneRequest": {
-    "categories": {
-      "callHotel": "Rufen Sie das Hotelpersonal an",
-      "checkOut": "Spätes Auschecken anfordern",
-      "clean": "Zimmerreinigung anfordern",
-      "drink": "Ein Drink",
-      "food": "Essen im Voraus bestellen",
-      "maintain": "Wartung anfordern",
-      "other": "andere",
-      "requestClean": "Reinigung anfordern",
-      "roomKeys": "Zimmerschlüssel",
-      "roomService": "Zimmerservice",
-      "spaceReserve": "Reservieren Sie einen Platz",
-      "specialRequest": "Spezialwünsche",
-      "towels": "Handtücher",
-      "waiter": "Bedienung",
-      "wakeUp": "Weckprogramm"
-    }
   }
 }
