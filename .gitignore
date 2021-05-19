@@ -45,3 +45,4 @@ Thumbs.db
 .firebase
 
 *.log
+.vscode/settings.json
