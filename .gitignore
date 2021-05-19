@@ -46,3 +46,4 @@ Thumbs.db
 
 *.log
 .vscode/settings.json
+.devcontainer
