@@ -64,7 +64,7 @@
     "@capacitor/ios": "^2.0.0-beta.1",
     "@ionic-native/core": "^5.18.0",
     "@ionic-native/onesignal": "^5.18.0",
-    "@ionic/angular": "^4.11.7",
+    "@ionic/angular": "^5.6.7",
     "@ionic/storage": "^2.2.0",
     "@ngrx/entity": "^11.1.1",
     "@ngrx/schematics": "^11.1.1",
