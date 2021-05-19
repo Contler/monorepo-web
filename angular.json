@@ -83,7 +83,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -116,10 +117,9 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/hotel/jest.config.js",
-            "tsConfig": "apps/hotel/tsconfig.spec.json",
-            "setupFile": "apps/hotel/src/test-setup.ts"
-          }
+            "jestConfig": "apps/hotel/jest.config.js"
+          },
+          "outputs": ["coverage/apps/hotel"]
         },
         "deploy": {
           "builder": "@angular/fire:deploy",
@@ -194,10 +194,9 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/core/jest.config.js",
-            "tsConfig": "libs/core/tsconfig.spec.json",
-            "setupFile": "libs/core/src/test-setup.ts"
-          }
+            "jestConfig": "libs/core/jest.config.js"
+          },
+          "outputs": ["coverage/libs/core"]
         }
       },
       "schematics": {
@@ -287,7 +286,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -319,10 +319,9 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/guest/jest.config.js",
-            "tsConfig": "apps/guest/tsconfig.spec.json",
-            "setupFile": "apps/guest/src/test-setup.ts"
-          }
+            "jestConfig": "apps/guest/jest.config.js"
+          },
+          "outputs": ["coverage/apps/guest"]
         }
       }
     },
@@ -477,7 +476,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -509,10 +509,9 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/mobile/jest.config.js",
-            "tsConfig": "apps/mobile/tsconfig.spec.json",
-            "setupFile": "apps/mobile/src/test-setup.ts"
-          }
+            "jestConfig": "apps/mobile/jest.config.js"
+          },
+          "outputs": ["coverage/apps/mobile"]
         }
       }
     },
@@ -560,10 +559,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/ui/jest.config.js",
-            "tsConfig": "libs/ui/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/ui/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/ui"]
         }
       },
       "schematics": {
@@ -649,7 +647,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -682,10 +681,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/admin/jest.config.js",
-            "tsConfig": "apps/admin/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/admin/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/apps/admin"]
         }
       }
     },
@@ -736,10 +734,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/dynamic-translate/jest.config.js",
-            "tsConfig": "libs/dynamic-translate/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/dynamic-translate/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/dynamic-translate"]
         }
       },
       "schematics": {
@@ -768,10 +765,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/dynamic-services/jest.config.js",
-            "tsConfig": "libs/dynamic-services/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/dynamic-services/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/dynamic-services"]
         }
       },
       "schematics": {

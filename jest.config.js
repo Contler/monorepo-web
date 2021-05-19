@@ -1,10 +1,12 @@
 module.exports = {
-  testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
-  transform: {
-    '^.+\\.(ts|js|html)$': 'ts-jest'
-  },
-  resolver: '@nrwl/jest/plugins/resolver',
-  moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageReporters: ['html'],
-  passWithNoTests: true
+  projects: [
+    '<rootDir>/apps/hotel',
+    '<rootDir>/libs/core',
+    '<rootDir>/apps/guest',
+    '<rootDir>/apps/mobile',
+    '<rootDir>/libs/ui',
+    '<rootDir>/apps/admin',
+    '<rootDir>/libs/dynamic-translate',
+    '<rootDir>/libs/dynamic-services',
+  ],
 };
