@@ -34,7 +34,7 @@
             "main": "apps/hotel/src/main.ts",
             "polyfills": "apps/hotel/src/polyfills.ts",
             "tsConfig": "apps/hotel/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/hotel/src/favicon.ico", "apps/hotel/src/assets"],
             "styles": [
               "apps/hotel/src/styles.scss",
@@ -238,7 +238,7 @@
             "main": "apps/guest/src/main.ts",
             "polyfills": "apps/guest/src/polyfills.ts",
             "tsConfig": "apps/guest/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/guest/src/favicon.ico", "apps/guest/src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
@@ -385,7 +385,7 @@
             "main": "apps/mobile/src/main.ts",
             "polyfills": "apps/mobile/src/polyfills.ts",
             "tsConfig": "apps/mobile/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/mobile/src/favicon.ico", "apps/mobile/src/assets"],
             "stylePreprocessorOptions": {
               "includePaths": ["apps/mobile/src"]
