@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SubZoneReservationComponent } from './sub-zone-reservation.component';
 
@@ -6,11 +6,13 @@ describe('SubZoneReservationComponent', () => {
   let component: SubZoneReservationComponent;
   let fixture: ComponentFixture<SubZoneReservationComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [SubZoneReservationComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SubZoneReservationComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SubZoneReservationComponent);

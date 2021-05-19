@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { InmediateRequestsComponent } from './inmediate-requests.component';
 
@@ -6,12 +6,13 @@ describe('InmediateRequestsComponent', () => {
   let component: InmediateRequestsComponent;
   let fixture: ComponentFixture<InmediateRequestsComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ InmediateRequestsComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [InmediateRequestsComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(InmediateRequestsComponent);

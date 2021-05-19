@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LatecheckOutComponent } from './latecheck-out.component';
 
@@ -6,12 +6,13 @@ describe('LatecheckOutComponent', () => {
   let component: LatecheckOutComponent;
   let fixture: ComponentFixture<LatecheckOutComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LatecheckOutComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [LatecheckOutComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LatecheckOutComponent);

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ModalInmediateRequestComponent } from './modal-inmediate-request.component';
 
@@ -6,12 +6,13 @@ describe('ModalInmediateRequestComponent', () => {
   let component: ModalInmediateRequestComponent;
   let fixture: ComponentFixture<ModalInmediateRequestComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ModalInmediateRequestComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ModalInmediateRequestComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ModalInmediateRequestComponent);

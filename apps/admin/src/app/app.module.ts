@@ -59,7 +59,7 @@ const routers: Routes = [
   declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routers, { initialNavigation: 'enabled' }),
+    RouterModule.forRoot(routers, { initialNavigation: 'enabled', relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule,
     MatInputModule,
     MatIconModule,
