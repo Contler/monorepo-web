@@ -1,5 +1,6 @@
 {
   "npmScope": "contler",
+  "affected": { "defaultBase": "dev" },
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",

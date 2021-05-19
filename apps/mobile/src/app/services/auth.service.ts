@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   saveUserDataStorage(user: User) {
-    return new Promise(async (resolve) => {
+    return new Promise<void>(async (resolve) => {
       this.user = Object.assign({}, user);
       if (this.platform.is('cordova')) {
         await this.storage.set('user', user);
