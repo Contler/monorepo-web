@@ -244,7 +244,7 @@
               "apps/guest/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["apps/guest/src"]
+              "includePaths": ["apps/guest/src", "libs/styles"]
             },
             "scripts": []
           },

@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
-import { environment } from 'guest/environments/environment';
+import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule, HotelService, UserService } from '@contler/core';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -20,10 +20,12 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
-import { AvalibleUserGuard } from 'guest/common-components/guards/avalible-user.guard';
+import { AvalibleUserGuard } from '../common-components/guards/avalible-user.guard';
 import { DynamicTranslateModule, Loader, LoaderDynamicTranslate } from '@contler/dynamic-translate';
 import { map } from 'rxjs/operators';
-import { GuestService } from 'guest/services/guest.service';
+import { GuestService } from '../services/guest.service';
+import { UiModule } from '@contler/ui';
+import { MatMenuModule } from '@angular/material/menu';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -47,6 +49,7 @@ export function LoadHotel(auth: GuestService) {
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     FormsModule,
+    UiModule,
     ReactiveFormsModule,
     CoreModule.forRoot({ urlBackend: environment.apiUrl }),
     NgxMaskModule.forRoot(),
@@ -70,6 +73,7 @@ export function LoadHotel(auth: GuestService) {
       },
       url: environment.apiUrl,
     }),
+    MatMenuModule,
   ],
   providers: [HotelService, UserService, AvalibleUserGuard],
   bootstrap: [AppComponent],

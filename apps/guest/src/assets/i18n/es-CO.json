@@ -1,7 +1,8 @@
 {
   "auth": {
     "userDisabled": "La cuenta ya no esta activa",
-    "userNotFound": "Correo o contraseña invalida"
+    "userNotFound": "Correo o contraseña invalida",
+    "entry": "Ingreso"
   },
   "dynamicRequest": {
     "all": "Todas",
