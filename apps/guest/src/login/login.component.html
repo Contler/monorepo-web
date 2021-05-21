@@ -33,7 +33,9 @@
         <mat-icon class="custom_icon" matSuffix>check_circle</mat-icon>
         <mat-hint>{{ 'login.password.label' | translate }}</mat-hint>
       </mat-form-field>
-      <p class="cursor forgot_password">{{ 'login.didYouForgetYourPassword' | translate }}</p>
+      <button mat-button class="forgot_password" type="button" (click)="forgotPassword()">
+        {{ 'login.didYouForgetYourPassword' | translate }}
+      </button>
       <button
         class="input custom-button"
         mat-raised-button

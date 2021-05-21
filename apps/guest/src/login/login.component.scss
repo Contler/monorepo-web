@@ -44,9 +44,8 @@
     }
   }
   .forgot_password {
-    @include text(12px);
+    @include text(12px, $text-1);
     text-align: center;
-    color: $text-1;
     margin-bottom: 36px;
   }
 

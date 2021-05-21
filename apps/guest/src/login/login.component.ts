@@ -79,9 +79,12 @@ export class LoginComponent {
       }
     }
   }
+
   changeLanguage(lan: Language) {
     this.actualLanguage = lan;
     this.translate.use(this.actualLanguage.prefix);
     window.localStorage.lan = this.actualLanguage.prefix;
   }
+
+  forgotPassword() {}
 }
