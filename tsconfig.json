@@ -33,8 +33,5 @@
       "@contler/dynamic-services": ["libs/dynamic-services/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp"],
-  "angularCompilerOptions": {
-    "strictTemplates": true
-  }
+  "exclude": ["node_modules", "tmp"]
 }

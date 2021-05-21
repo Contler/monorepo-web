@@ -14,6 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { DirectivesModule } from '../directives/directives.module';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [InmediateRequestsComponent, RequestComponent],
@@ -28,6 +29,7 @@ import { DirectivesModule } from '../directives/directives.module';
     RatingModule,
     MatSortModule,
     MatDialogModule,
+    MatSidenavModule,
     TranslateModule,
     DynamicTranslateModule,
     DirectivesModule,
