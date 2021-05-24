@@ -1,0 +1,22 @@
+<a *ngIf="link" [routerLink]="link" class="option">
+  <mat-icon *ngIf="!custom" class="option-icon icon" contlerColorHotel>{{ icon }}</mat-icon>
+  <contler-icon *ngIf="custom" class="icon" contlerColorHotel [key]="icon"></contler-icon>
+  <span contlerColorHotel class="option-text">
+    {{ name | translate | ctrTranslate | uppercase }}
+  </span>
+</a>
+
+<button *ngIf="!link" class="option" (click)="select()">
+  <mat-icon *ngIf="!custom" class="option-icon icon" [contlerColorHotel]="isSelect ? 'second' : 'primary'">
+    {{ icon }}
+  </mat-icon>
+  <contler-icon
+    *ngIf="custom"
+    class="icon"
+    [contlerColorHotel]="isSelect ? 'second' : 'primary'"
+    [key]="icon"
+  ></contler-icon>
+  <span [contlerColorHotel]="isSelect ? 'second' : 'primary'" class="option-text">
+    {{ name | translate | ctrTranslate | uppercase }}
+  </span>
+</button>

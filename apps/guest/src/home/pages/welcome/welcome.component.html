@@ -7,12 +7,12 @@
       {{ 'guestRequest.WhatDoYouNeedToday' | translate }}
     </p>
     <div class="request__content">
-      <a *ngFor="let zone of zones$ | async" class="request__zone" [routerLink]="zone.link">
-        <mat-icon class="request__zone-icon" contlerColorHotel>{{ zone.icon }}</mat-icon>
-        <span contlerColorHotel class="request__zone-text">
-          {{ zone.name | translate | ctrTranslate | uppercase }}
-        </span>
-      </a>
+      <contler-option-request
+        *ngFor="let zone of zones$ | async"
+        [name]="zone.name"
+        [link]="zone.link"
+        [icon]="zone.icon"
+      ></contler-option-request>
     </div>
   </div>
 

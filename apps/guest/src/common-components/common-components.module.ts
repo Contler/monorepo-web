@@ -18,6 +18,8 @@ import { AvalibleUserGuard } from './guards/avalible-user.guard';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { OptionRequestComponent } from './option-request/option-request.component';
+import { OptionGridComponent } from './option-grid/option-grid.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     ColorBtnHotelDirective,
     BtnMenuHotelDirective,
     ModalCompleteComponent,
+    OptionRequestComponent,
+    OptionGridComponent,
   ],
   imports: [
     CommonModule,
@@ -51,6 +55,8 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     BtnMenuHotelDirective,
     ModalCompleteComponent,
     UiModule,
+    OptionRequestComponent,
+    OptionGridComponent,
   ],
   providers: [UserService, AvalibleUserGuard],
 })
