@@ -25,7 +25,9 @@ export class ColorSlideToggleDirective implements AfterViewChecked {
         }
       });
     });
-    this.elemRef.checked === true ? this.setColor() : this.setUnChecked();
+    if (this.hotel) {
+      this.elemRef.checked === true ? this.setColor() : this.setUnChecked();
+    }
   }
 
   /**
@@ -52,8 +54,8 @@ export class ColorSlideToggleDirective implements AfterViewChecked {
       'style',
       `background-color: ${this.hexToRGB(
         this.contlerColorHotel === 'primary' || this.contlerColorHotel === ''
-          ? this.hotel!.color
-          : this.hotel!.colorSecond,
+          ? this.hotel?.color
+          : this.hotel?.colorSecond,
         0.7,
       )}`,
     );
@@ -62,8 +64,8 @@ export class ColorSlideToggleDirective implements AfterViewChecked {
       'style',
       `background-color: ${
         this.contlerColorHotel === 'primary' || this.contlerColorHotel === ''
-          ? this.hotel!.color
-          : this.hotel!.colorSecond
+          ? this.hotel?.color
+          : this.hotel?.colorSecond
       }`,
     );
   }

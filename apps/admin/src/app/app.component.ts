@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'contler-root',
@@ -9,10 +9,10 @@ import { AngularFireStorage } from '@angular/fire/storage';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(afAuth: AngularFireAuth, storage: AngularFireStorage) {
+  constructor(storage: AngularFireStorage, db: AngularFireDatabase) {
     if (environment.emulate) {
-      afAuth.useEmulator('http://localhost:9099/');
       storage.storage.useEmulator('localhost', 9199);
+      db.database.useEmulator('localhost', 9000);
     }
   }
 }

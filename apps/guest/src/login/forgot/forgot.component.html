@@ -1,7 +1,10 @@
-<div mat-dialog-content>
-  <span>{{ constants.titleModal | translate }}</span>
+<div mat-dialog-content class="forgot">
+  <span class="forgot_title">{{ constants.titleModal | translate }}</span>
   <mat-form-field appearance="fill">
-    <input type="text" matInput />
+    <input type="text" matInput [(ngModel)]="password" />
   </mat-form-field>
-  <button mat-button></button>
+  <button mat-raised-button color="primary" (click)="recoveryPassword()">
+    {{ constants.btnRecovery | translate }}
+  </button>
+  <span class="forgot__error">{{ error | translate }}</span>
 </div>

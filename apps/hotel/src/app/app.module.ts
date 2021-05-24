@@ -40,12 +40,19 @@ export function LoadHotel(auth: AuthService) {
   return new Loader(auth.$employer.pipe(map((emp) => emp.hotel.uid)));
 }
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+const app = firebase.initializeApp(environment.fire, 'app');
+if (environment.emulate) {
+  app.auth().useEmulator('http://localhost:9099/');
+}
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.fire),
+    AngularFireModule.initializeApp(environment.fire, 'app'),
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
     AngularFirestoreModule,

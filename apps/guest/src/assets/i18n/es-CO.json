@@ -3,7 +3,9 @@
     "userDisabled": "La cuenta ya no esta activa",
     "userNotFound": "Correo o contraseña invalida",
     "entry": "Ingreso",
-    "forgotTitle": "Ingresa tu correo"
+    "forgotTitle": "Ingresa tu correo",
+    "recovery": "Recuperar",
+    "invalidEmail": "Correo invalido"
   },
   "dynamicRequest": {
     "all": "Todas",

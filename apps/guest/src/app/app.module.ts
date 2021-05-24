@@ -32,6 +32,13 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+const app = firebase.initializeApp(environment.fire, 'app');
+if (environment.emulate) {
+  app.auth().useEmulator('http://localhost:9099/');
+}
+
 export function LoadHotel(auth: GuestService) {
   return new Loader(auth.$guest.pipe(map((emp) => emp.hotel.uid)));
 }
@@ -44,7 +51,7 @@ export function LoadHotel(auth: GuestService) {
     MaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.fire),
+    AngularFireModule.initializeApp(environment.fire, 'app'),
     AngularFireAuthGuardModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
