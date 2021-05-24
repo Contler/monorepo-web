@@ -19,6 +19,9 @@ export class MyRequestComponent implements OnInit {
   readonly constants = MY_REQUEST_CONSTANTS;
   readonly nameModule = [...Object.values(this.constants), ...Object.values(NAME_MODULES)];
   selected = this.constants.all;
+  isComplete = false;
+  completeReq: RequestEntity[];
+  requestComplete: Observable<DynamicRequest[]>;
 
   constructor(
     private db: AngularFirestore,
@@ -40,6 +43,18 @@ export class MyRequestComponent implements OnInit {
     this.requestService.getRequests(false).subscribe((req) => {
       this.pendingRequests = req;
     });
+    this.requestService.getRequests(true).subscribe((req) => {
+      this.completeReq = req;
+    });
+    this.requestComplete = this.guestService.$guest.pipe(
+      switchMap((user) =>
+        this.db
+          .collection<DynamicRequest>(reference, (ref) =>
+            ref.where('guestId', '==', user.uid).where('active', '==', false),
+          )
+          .valueChanges(),
+      ),
+    );
   }
 
   get showImmediate() {

@@ -212,7 +212,12 @@
     "all": "Todas",
     "immediate": "Inmediatas",
     "specials": "Especiales",
-    "complete": " Mis Solicitudes Completas"
+    "complete": " Mis Solicitudes Completas",
+    "pending": "Mis Solicitudes"
+  },
+  "switch": {
+    "pending": "Pendiente",
+    "complete": "Completo"
   },
   "myRoom": {
     "close": "¡Entendido!",

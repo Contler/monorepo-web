@@ -21,6 +21,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { OptionRequestComponent } from './option-request/option-request.component';
 import { OptionGridComponent } from './option-grid/option-grid.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { SwitchComponent } from './swith/switch.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MatMenuModule } from '@angular/material/menu';
     ModalCompleteComponent,
     OptionRequestComponent,
     OptionGridComponent,
+    SwitchComponent,
   ],
   imports: [
     CommonModule,
@@ -59,6 +61,7 @@ import { MatMenuModule } from '@angular/material/menu';
     UiModule,
     OptionRequestComponent,
     OptionGridComponent,
+    SwitchComponent,
   ],
   providers: [UserService, AvalibleUserGuard],
 })
