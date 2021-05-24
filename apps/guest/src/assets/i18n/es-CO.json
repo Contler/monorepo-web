@@ -108,7 +108,10 @@
     "hello": "Hola",
     "seeAllHotel": "VER TODO EL HOTEL",
     "whereDoYouNeedUs": "Donde nos necesitas?",
-    "WhatDoYouNeedToday": "¿Qué necesitas hoy?"
+    "WhatDoYouNeedToday": "¿Qué necesitas hoy?",
+    "request": "Solicitudes",
+    "reservations": "Reservaciones",
+    "orders": "Pedidos"
   },
   "inmediateRequest": {
     "area": "Area",

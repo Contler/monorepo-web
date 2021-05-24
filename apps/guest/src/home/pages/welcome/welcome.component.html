@@ -3,7 +3,7 @@
     <p class="request__label request__user request__question" contlerColorHotel>
       {{ 'guestRequest.hello' | translate }} {{ ($guest | async)?.name }}!
     </p>
-    <p class="request__label request__space request__question" contlerColorHotel>
+    <p class="request__label request__question" contlerColorHotel>
       {{ 'guestRequest.WhatDoYouNeedToday' | translate }}
     </p>
     <div class="request__content">
@@ -13,6 +13,23 @@
           {{ zone.name | translate | ctrTranslate | uppercase }}
         </span>
       </a>
+    </div>
+  </div>
+
+  <div marcoFooter class="request__footer">
+    <div class="request__footer-content">
+      <button class="btn">
+        <img src="assets/img/request.svg" alt="request" />
+        <span class="text">{{ constants.request | translate }}</span>
+      </button>
+      <button class="btn" routerLink="/home/reservation">
+        <img src="assets/img/reservation.svg" alt="request" />
+        <span class="text">{{ constants.reservations | translate }}</span>
+      </button>
+      <button class="btn" routerLink="/home/product">
+        <img src="assets/img/order.svg" alt="request" />
+        <span class="text">{{ constants.orders | translate }}</span>
+      </button>
     </div>
   </div>
 </contler-marco>

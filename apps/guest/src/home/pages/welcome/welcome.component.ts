@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { GuestEntity } from '@contler/entity';
 import { SpecialZoneGuest } from '@contler/models';
 import { switchMap } from 'rxjs/operators';
+import { WELCOME_CONSTANTS } from './welcome.constants';
 
 @Component({
   selector: 'contler-welcome',
@@ -14,6 +15,7 @@ import { switchMap } from 'rxjs/operators';
 export class WelcomeComponent implements OnInit {
   $guest: Observable<GuestEntity | null>;
   zones$: Observable<SpecialZoneGuest[]>;
+  constants = WELCOME_CONSTANTS;
 
   constructor(private guestService: GuestService, private specialZoneGuestService: SpecialZoneGuestService) {}
 
