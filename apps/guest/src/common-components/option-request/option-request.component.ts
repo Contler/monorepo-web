@@ -20,4 +20,8 @@ export class OptionRequestComponent implements OnInit {
   select() {
     this.isSelect = true;
   }
+
+  blur() {
+    this.isSelect = false;
+  }
 }

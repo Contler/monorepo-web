@@ -6,7 +6,7 @@
   </span>
 </a>
 
-<button *ngIf="!link" class="option" (click)="select()">
+<button *ngIf="!link" class="option" (click)="select()" (blur)="blur()">
   <mat-icon *ngIf="!custom" class="option-icon icon" [contlerColorHotel]="isSelect ? 'second' : 'primary'">
     {{ icon }}
   </mat-icon>
