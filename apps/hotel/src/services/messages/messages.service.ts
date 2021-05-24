@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LoaderComponent } from 'hotel/material/components/loader/loader.component';
+import { LoaderComponent } from '@contler/hotel/material/components/loader/loader.component';
 
 @Injectable({
   providedIn: 'root',

@@ -8,8 +8,8 @@ import {
   Renderer2,
 } from '@angular/core';
 import * as Chart from 'chart.js';
-import { HotelService } from 'hotel/services/hotel.service';
-import { EmployerService } from 'hotel/employer/services/employer.service';
+import { HotelService } from '@contler/hotel/services/hotel.service';
+import { EmployerService } from '@contler/hotel/employer/services/employer.service';
 import { EmployerEntity, HotelEntity } from '@contler/entity';
 import { first } from 'rxjs/operators';
 

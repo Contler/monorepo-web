@@ -11,11 +11,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { CoreModule, HotelService, UserService } from '@contler/core';
 import { DynamicTranslateModule, Loader, LoaderDynamicTranslate } from '@contler/dynamic-translate';
 
-import { AppComponent } from 'hotel/app/app.component';
-import { environment } from 'hotel/environments/environment';
-import { AppRoutingModule } from 'hotel/app/app-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from 'hotel/material/material.module';
 import { NgxMaskModule } from 'ngx-mask';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -27,8 +23,12 @@ import { UiModule } from '@contler/ui';
 //Register language Es
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import { AuthService } from 'hotel/services/auth.service';
 import { map } from 'rxjs/operators';
+import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from '../material/material.module';
+import { AuthService } from '../services/auth.service';
 
 registerLocaleData(localeEs);
 
@@ -76,7 +76,7 @@ export function LoadHotel(auth: AuthService) {
         useFactory: LoadHotel,
         deps: [AuthService],
       },
-      url: environment.apiUrl
+      url: environment.apiUrl,
     }),
   ],
   providers: [UserService, HotelService],

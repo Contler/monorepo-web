@@ -1,13 +1,13 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { EmployerService } from 'hotel/employer/services/employer.service';
 import { Subscription } from 'rxjs';
-import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
-import { MessagesService } from 'hotel/services/messages/messages.service';
 import { EmployerEntity, RequestEntity } from '@contler/entity';
 import { switchMap } from 'rxjs/operators';
-import { AuthService } from 'hotel/services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
+import { EmployerService } from '../../employer/services/employer.service';
+import { InmediateRequestsService } from '../../inmediate-requests/services/inmediate-requests.service';
+import { MessagesService } from '../../services/messages/messages.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'contler-modal-inmediate-request',

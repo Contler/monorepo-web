@@ -4,10 +4,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { GuestEntity } from '@contler/entity/guest.entity';
-import { GuestService } from 'hotel/guest/services/guest.service';
-import { MessagesService } from 'hotel/services/messages/messages.service';
-import { SpecialRequestsService } from 'hotel/special-requests/services/special-requests.service';
 import { Subscription } from 'rxjs';
+import { GuestService } from '../../services/guest.service';
+import { MessagesService } from '../../../services/messages/messages.service';
+import { SpecialRequestsService } from '../../../special-requests/services/special-requests.service';
 
 @Component({
   selector: 'contler-modal-edit-guest',

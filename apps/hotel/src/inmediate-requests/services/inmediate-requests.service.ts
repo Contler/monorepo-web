@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'hotel/environments/environment';
+import { environment } from '@contler/hotel/environments/environment';
 import { RequestEntity } from '@contler/entity';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { MODULES } from '@contler/dynamic-services';

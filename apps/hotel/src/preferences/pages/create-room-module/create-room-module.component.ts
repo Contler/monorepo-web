@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelEntity } from '@contler/entity';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { DynamicModuleService, FormService, InputType, MODULES } from '@contler/dynamic-services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, first, map, switchMap, tap } from 'rxjs/operators';
-import { FormCreation } from 'hotel/preferences/components/new-service-wrap/new-service-wrap.component';
+import { FormCreation } from '../../../preferences/components/new-service-wrap/new-service-wrap.component';
 import { Observable } from 'rxjs';
 
 @Component({

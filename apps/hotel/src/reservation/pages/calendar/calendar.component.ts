@@ -7,11 +7,11 @@ import * as fns from 'date-fns';
 import { BookingEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
-import { convertMonthToString } from 'hotel/utils/returnMonth';
+import { convertMonthToString } from '@contler/hotel/utils/returnMonth';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateService as DynamicService } from '@contler/dynamic-translate';
 import { MatDialog } from '@angular/material/dialog';
-import { ManualReservationComponent } from 'hotel/reservation/components/manual-reservation/manual-reservation.component';
+import { ManualReservationComponent } from '@contler/hotel/reservation/components/manual-reservation/manual-reservation.component';
 
 @Component({
   selector: 'contler-calendar',
@@ -59,7 +59,7 @@ export class CalendarComponent {
     this.activeDayIsOpen = false;
   }
 
-  convertBooking(booking: BookingEntity[]) {
+  convertBooking(booking: BookingEntity[]): CalendarEvent[] {
     return booking ? booking.map(this.bookingToCalendar.bind(this)) : [];
   }
 

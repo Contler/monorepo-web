@@ -4,13 +4,13 @@ import { CategoryEntity, HotelEntity, ScheduleEntity } from '@contler/entity';
 import { AllDays, DAYS, ICONS } from '@contler/const';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
-import { ZoneService } from 'hotel/zone/services/zone.service';
+import { ZoneService } from '@contler/hotel/zone/services/zone.service';
 import { ReservationService } from '@contler/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@contler/dynamic-translate';
 import { filter, first, map, startWith, switchMap, tap } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 
 @Component({
   selector: 'contler-schedule-sub-zone',

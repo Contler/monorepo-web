@@ -26,6 +26,7 @@ import { map } from 'rxjs/operators';
 import { GuestService } from '../services/guest.service';
 import { UiModule } from '@contler/ui';
 import { MatMenuModule } from '@angular/material/menu';
+import { ForgotComponent } from '../login/forgot/forgot.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,7 +37,7 @@ export function LoadHotel(auth: GuestService) {
 }
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, ForgotComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

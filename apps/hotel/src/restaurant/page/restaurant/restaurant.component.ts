@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RestaurantService } from '@contler/core';
-import { MessagesService } from 'hotel/services/messages/messages.service';
+import { MessagesService } from '@contler/hotel/services/messages/messages.service';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';

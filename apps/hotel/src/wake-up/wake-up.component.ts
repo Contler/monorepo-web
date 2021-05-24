@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { WakeService } from 'hotel/wake-up/services/wake.service';
+import { WakeService } from '@contler/hotel/wake-up/services/wake.service';
 import { WakeUpEntity } from '@contler/entity';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { switchMap } from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
 import { WakeTable } from '@contler/models';

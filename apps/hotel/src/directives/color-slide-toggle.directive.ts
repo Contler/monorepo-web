@@ -1,9 +1,9 @@
 import { AfterViewChecked, Directive, Input, Renderer2 } from '@angular/core';
 import { HotelEntity } from '@contler/entity';
-import { AuthService } from 'hotel/services/auth.service';
 import { take } from 'rxjs/operators';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Directive({
   selector: '[contlerColorSlideToggle]',

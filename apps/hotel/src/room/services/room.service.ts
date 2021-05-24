@@ -3,7 +3,7 @@ import { UserService } from '@contler/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { switchMap, take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'hotel/environments/environment';
+import { environment } from '@contler/hotel/environments/environment';
 import { RoomEntity } from '@contler/entity';
 import { getLan } from '@contler/const';
 import { TranslateService } from '@ngx-translate/core';

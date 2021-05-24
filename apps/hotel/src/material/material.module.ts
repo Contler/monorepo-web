@@ -15,8 +15,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MenuComponent } from 'hotel/material/components/menu/menu.component';
-import { MenuListItemComponent } from 'hotel/material/components/menu-list-item/menu-list-item.component';
+import { MenuComponent } from '@contler/hotel/material/components/menu/menu.component';
+import { MenuListItemComponent } from '@contler/hotel/material/components/menu-list-item/menu-list-item.component';
 import { RouterModule } from '@angular/router';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -32,7 +32,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
-import { DirectivesModule } from 'hotel/directives/directives.module';
+import { DirectivesModule } from '@contler/hotel/directives/directives.module';
 import { MatStepperModule } from '@angular/material/stepper';
 
 const materialModules = [

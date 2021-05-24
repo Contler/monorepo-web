@@ -7,14 +7,14 @@ import { CoreModule } from '@contler/core';
 import { ModalEmployerComponent } from './components/modal-employer/modal-employer.component';
 import { EmployerRoutingModule } from './employer-routing.module';
 import { EmployerComponent } from './page/employer/employer.component';
-import { EmployerService } from 'hotel/employer/services/employer.service';
-import { MaterialModule } from 'hotel/material/material.module';
 import { ModalRemoveEmployerComponent } from './components/modal-remove-employer/modal-remove-employer.component';
-import { ZoneService } from 'hotel/zone/services/zone.service';
-import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { DirectivesModule } from '../directives/directives.module';
+import { MaterialModule } from '../material/material.module';
+import { EmployerService } from './services/employer.service';
+import { CommonComponentsModule } from '../common-components/common-components.module';
+import { ZoneService } from '../zone/services/zone.service';
 
 @NgModule({
   declarations: [EmployerComponent, ModalEmployerComponent, ModalRemoveEmployerComponent],

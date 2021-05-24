@@ -2,10 +2,10 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RestaurantService } from '@contler/core';
-import { MessagesService } from 'hotel/services/messages/messages.service';
+import { MessagesService } from '@contler/hotel/services/messages/messages.service';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateService as DynamicService } from '@contler/dynamic-translate';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { switchMap } from 'rxjs/operators';
 
 @Component({

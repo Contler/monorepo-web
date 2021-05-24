@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'ArrFilterPropertyEqual',
 })
 export class ArrFilterPropertyEqualPipe implements PipeTransform {
-  transform(arr: unknown[], property: string, condition: boolean): unknown[] {
+  transform<T>(arr: T[], property: string, condition: boolean): T[] {
     if (!arr) {
       return [];
     }

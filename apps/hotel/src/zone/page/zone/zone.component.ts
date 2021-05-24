@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ZoneService } from 'hotel/zone/services/zone.service';
+import { ZoneService } from '@contler/hotel/zone/services/zone.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalEditZoneComponent } from 'hotel/zone/components/modal-edit-zone/modal-edit-zone.component';
-import { MessagesService } from 'hotel/services/messages/messages.service';
+import { ModalEditZoneComponent } from '@contler/hotel/zone/components/modal-edit-zone/modal-edit-zone.component';
+import { MessagesService } from '@contler/hotel/services/messages/messages.service';
 import { CategoryEntity, ZoneEntity } from '@contler/entity';
 import { IconsService } from '@contler/ui';
 import { IconModel } from '@contler/models/icon.model';

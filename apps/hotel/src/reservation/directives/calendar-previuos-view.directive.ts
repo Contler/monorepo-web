@@ -1,6 +1,6 @@
 import { Directive, HostListener, Input, Output, EventEmitter } from '@angular/core';
 import { DateAdapter, CalendarView } from 'angular-calendar';
-import { addDaysWithExclusions } from 'hotel/utils/calendar.util';
+import { addDaysWithExclusions } from '@contler/hotel/utils/calendar.util';
 
 @Directive({
   selector: '[contlerCalendarPreviuosView]',

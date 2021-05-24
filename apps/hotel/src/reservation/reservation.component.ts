@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ReservationRequest } from '@contler/models';
 import { ReservationService } from '@contler/core';
-import { ReservationFormComponent } from 'hotel/reservation/components/reservation-form/reservation-form.component';
-import { AuthService } from 'hotel/services/auth.service';
+import { ReservationFormComponent } from '@contler/hotel/reservation/components/reservation-form/reservation-form.component';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { switchMap, tap } from 'rxjs/operators';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { HotelEntity } from '@contler/entity';
-import { SubZoneReservationFormComponent } from 'hotel/reservation/components/sub-zone-reservation-form/sub-zone-reservation-form.component';
+import { SubZoneReservationFormComponent } from '@contler/hotel/reservation/components/sub-zone-reservation-form/sub-zone-reservation-form.component';
 
 @Component({
   selector: 'contler-reservation',

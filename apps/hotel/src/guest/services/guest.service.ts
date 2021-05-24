@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { GuestRequest } from '@contler/models';
-import { environment } from 'hotel/environments/environment';
+import { environment } from '@contler/hotel/environments/environment';
 import { UserService } from '@contler/core';
 import { switchMap } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';

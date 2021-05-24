@@ -5,13 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ImmediateOptionLink, ReceptionModel, ReceptionStatus, ReqRecpetionGuest } from '@contler/models';
 import { FormControl } from '@angular/forms';
 import { ReceptionService, UserService } from '@contler/core';
-import { AuthService } from 'hotel/services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DynamicModuleService, DynamicRequestStatus, MODULES } from '@contler/dynamic-services';
 import { MatDialog } from '@angular/material/dialog';
-import { MessagesService } from 'hotel/services/messages/messages.service';
-import { ModalReceptionComponent } from 'hotel/common-components/modal-reception/modal-reception.component';
-import { REQUEST_STATUS } from 'hotel/inmediate-requests/const/request.const';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -23,6 +19,10 @@ import {
   toArray,
 } from 'rxjs/operators';
 import { combineLatest, forkJoin, from, merge, Observable } from 'rxjs';
+import { ModalReceptionComponent } from '../common-components/modal-reception/modal-reception.component';
+import { REQUEST_STATUS } from '../inmediate-requests/const/request.const';
+import { AuthService } from '../services/auth.service';
+import { MessagesService } from '../services/messages/messages.service';
 
 @Component({
   selector: 'contler-cleaning',

@@ -3,12 +3,12 @@ import { DOCUMENT_TYPE } from '@contler/const';
 import { MatDialogRef } from '@angular/material/dialog';
 import { GuestRequest } from '@contler/models';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { RoomService } from 'hotel/room/services/room.service';
+import { RoomService } from '../../../room/services/room.service';
 import { map, switchMap } from 'rxjs/operators';
-import { GuestService } from 'hotel/guest/services/guest.service';
+import { GuestService } from '../../../guest/services/guest.service';
 import { UserService } from '@contler/core';
 import { GuestEntity, RoomEntity } from '@contler/entity';
-import { MessagesService } from 'hotel/services/messages/messages.service';
+import { MessagesService } from '../../../services/messages/messages.service';
 import { MatHorizontalStepper } from '@angular/material/stepper';
 
 @Component({

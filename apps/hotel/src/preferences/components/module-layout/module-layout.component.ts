@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { map, take } from 'rxjs/operators';
 import { HotelEntity } from '@contler/entity';
 import { ModuleData } from '../../interfaces/module-data';

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { REQUEST_STATUS } from 'hotel/inmediate-requests/const/request.const';
-import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
+import { REQUEST_STATUS } from '@contler/hotel/inmediate-requests/const/request.const';
+import { InmediateRequestsService } from '@contler/hotel/inmediate-requests/services/inmediate-requests.service';
 import { first, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { ImmediateCategory } from '@contler/models';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 
 @Component({
   selector: 'contler-inmediate-requests',
