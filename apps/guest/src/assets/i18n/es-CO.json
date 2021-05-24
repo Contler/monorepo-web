@@ -208,6 +208,12 @@
     "title": "Mis reservas",
     "youHaveNoReservationRequest": "No tienes solicitud de reserva"
   },
+  "myRequest": {
+    "all": "Todas",
+    "immediate": "Inmediatas",
+    "specials": "Especiales",
+    "complete": " Mis Solicitudes Completas"
+  },
   "myRoom": {
     "close": "¡Entendido!",
     "createRequest": "CREAR SOLICITUD",

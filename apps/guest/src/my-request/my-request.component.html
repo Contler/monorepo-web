@@ -1,11 +1,30 @@
-<contler-marco [backUrl]="true">
+<contler-marco [backUrl]="true" [filter]="true">
+  <ng-container marcoFilter>
+    <ng-container *ngFor="let item of nameModule">
+      <button mat-menu-item *ngIf="selected !== item" (click)="selected = item">
+        {{ item | translate }}
+      </button>
+      <button mat-menu-item contlerColorBtnHotel *ngIf="selected === item">{{ item | translate }}</button>
+    </ng-container>
+  </ng-container>
+
   <ng-container marcoBody>
     <h1 class="ctl-title" style="text-align: center" contlerColorHotel="primary">
       {{ 'sidebar.myRequest' | translate }}
     </h1>
 
-    <a *ngFor="let item of request | async" [routerLink]="item.key" style="text-decoration: none">
+    <a
+      *ngFor="let item of request | async | filterSpecial: selected"
+      [routerLink]="item.key"
+      style="text-decoration: none"
+    >
       <contler-request-item [request]="item"></contler-request-item>
     </a>
+
+    <ng-container *ngIf="showImmediate">
+      <a *ngFor="let item of pendingRequests" style="text-decoration: none">
+        <contler-immediate-item [request]="item"></contler-immediate-item>
+      </a>
+    </ng-container>
   </ng-container>
 </contler-marco>

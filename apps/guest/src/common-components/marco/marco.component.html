@@ -14,9 +14,27 @@
       <img *ngIf="logo" [src]="logo" routerLink="/home" class="logo-general" alt="logo" />
 
       <div class="marco__menu">
-        <button mat-icon-button type="button" (click)="sidenav.toggle()" contlerColorHotel="primary">
+        <button
+          *ngIf="!filter"
+          mat-icon-button
+          type="button"
+          (click)="sidenav.toggle()"
+          contlerColorHotel="primary"
+        >
           <mat-icon>menu</mat-icon>
         </button>
+        <button
+          *ngIf="filter"
+          [matMenuTriggerFor]="menu"
+          mat-icon-button
+          type="button"
+          contlerColorHotel="primary"
+        >
+          <mat-icon>filter_alt</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <ng-content select="[marcoFilter]"></ng-content>
+        </mat-menu>
       </div>
 
       <ng-content select="[marcoMenu]"></ng-content>

@@ -20,6 +20,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { OptionRequestComponent } from './option-request/option-request.component';
 import { OptionGridComponent } from './option-grid/option-grid.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { OptionGridComponent } from './option-grid/option-grid.component';
     FormsModule,
     TranslateModule,
     DynamicTranslateModule,
+    MatMenuModule,
   ],
   exports: [
     ToolbarComponent,

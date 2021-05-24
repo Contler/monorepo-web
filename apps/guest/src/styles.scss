@@ -92,3 +92,6 @@ button {
 button[disabled] {
   background-color: rgba(0, 0, 0, 0.12) !important;
 }
+.firebase-emulator-warning {
+  display: none;
+}

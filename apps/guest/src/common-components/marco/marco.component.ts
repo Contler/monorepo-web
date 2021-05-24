@@ -13,6 +13,8 @@ import { GeneralService } from 'guest/services/general.service';
 export class MarcoComponent {
   @Input() padding = '16px 16px';
   @Input() backUrl: string | boolean | null = null;
+  @Input() filter = false;
+
   logo: string | undefined;
   maxHeight = '';
 

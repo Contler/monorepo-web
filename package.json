@@ -43,7 +43,8 @@
     "deploy:guest": "npm run build:qa:guest && firebase deploy --only hosting:guest",
     "deploy:app": "npm run build:qa:mobile && firebase deploy --only hosting:employer-qa",
     "hotel:i18n:init": "ngx-translate-extract --input ./apps/hotel/src --output ./apps/hotel/src/assets/i18n/template.json --key-as-default-value --replace --format json",
-    "hotel:i18n:extract": "ngx-translate-extract --input ./apps/hotel/src --output ./apps/hotel/src/assets/i18n/es-CO.json --format namespaced-json"
+    "hotel:i18n:extract": "ngx-translate-extract --input ./apps/hotel/src --output ./apps/hotel/src/assets/i18n/es-CO.json --format namespaced-json",
+    "emulate": "firebase emulators:start --export-on-exit=./fireBack --import=./fireBack"
   },
   "private": true,
   "dependencies": {
