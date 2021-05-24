@@ -17,6 +17,7 @@ import { ModalInmediateRequestComponent } from './modal-inmediate-request/modal-
 import { MaterialModule } from '../material/material.module';
 import { InmediateRequestsService } from '../inmediate-requests/services/inmediate-requests.service';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LoaderComponent } from './modal-loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ModalInmediateRequestComponent,
     MarcoAdminComponent,
     ModalReceptionComponent,
+    LoaderComponent,
   ],
-  entryComponents: [ModalEditEmployerComponent, ModalInmediateRequestComponent],
   exports: [
     StatusIconComponent,
     ToolbarComponent,

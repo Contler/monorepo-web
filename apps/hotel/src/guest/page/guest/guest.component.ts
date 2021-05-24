@@ -2,14 +2,14 @@ import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Guest } from '@contler/models';
-import { GuestService } from '@contler/hotel/guest/services/guest.service';
-import { ModelNewGuestComponent } from '@contler/hotel/guest/components/model-new-guest/model-new-guest.component';
+import { GuestService } from '../../services/guest.service';
+import { ModelNewGuestComponent } from '../../components/model-new-guest/model-new-guest.component';
 import { Subscription } from 'rxjs';
 import { DOCUMENT_TYPE } from '@contler/const';
-import { LoaderComponent } from '@contler/hotel/material/components/loader/loader.component';
-import { ModalEditGuestComponent } from '@contler/hotel/guest/components/modal-edit-guest/modal-edit-guest.component';
+import { ModalEditGuestComponent } from '../../components/modal-edit-guest/modal-edit-guest.component';
 import { GuestEntity } from '@contler/entity/guest.entity';
 import { filter } from 'rxjs/operators';
+import { LoaderComponent } from '../../../common-components/modal-loader/loader.component';
 
 @Component({
   selector: 'contler-guest',
