@@ -48,7 +48,6 @@ export class LoginComponent {
         this.error = this.translate.instant(`login.youDoNotHavePermissionToAccess`);
         await this.afAuth.signOut();
       } else {
-        debugger;
         this.guestService.checkAvailableUser().subscribe(
           ({ checkIn, checkOut }) => {
             this.loader = false;

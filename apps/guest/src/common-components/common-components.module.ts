@@ -17,6 +17,7 @@ import { UserService } from '@contler/core';
 import { AvalibleUserGuard } from './guards/avalible-user.guard';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterModule,
     FormsModule,
     TranslateModule,
+    DynamicTranslateModule,
   ],
   exports: [
     ToolbarComponent,
