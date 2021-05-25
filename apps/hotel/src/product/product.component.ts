@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalProductComponent } from 'hotel/product/components/modal-product/modal-product.component';
+import { ModalProductComponent } from '@contler/hotel/product/components/modal-product/modal-product.component';
 import { ProductEntity } from '@contler/entity';
 import { filter, switchMap, take } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { ProductService } from '@contler/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';

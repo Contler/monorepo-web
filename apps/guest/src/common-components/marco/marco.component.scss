@@ -1,16 +1,12 @@
 :host {
-  padding-top: 80px;
   position: relative;
   display: block;
 }
 
 .mat-toolbar {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 80px;
-  background: white;
+  background: #f4f4f4;
   justify-content: space-between;
   z-index: 99;
   display: grid;
@@ -21,12 +17,16 @@
   &__menu {
     grid-column-start: 3;
   }
+
+  &__footer {
+    background-color: rgb(244, 244, 244);
+  }
 }
 
 .menu {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto max-content;
+  grid-template-rows: max-content auto max-content;
   background-color: #ffffff;
 }

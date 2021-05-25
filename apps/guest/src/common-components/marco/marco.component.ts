@@ -13,6 +13,8 @@ import { GeneralService } from 'guest/services/general.service';
 export class MarcoComponent {
   @Input() padding = '16px 16px';
   @Input() backUrl: string | boolean | null = null;
+  @Input() filter = false;
+
   logo: string | undefined;
   maxHeight = '';
 
@@ -23,7 +25,7 @@ export class MarcoComponent {
     private location: Location,
   ) {
     this.guestService.$hotel.subscribe((hotel) => (this.logo = hotel!.logo));
-    this.maxHeight = window.innerHeight - 80 + 'px';
+    this.maxHeight = window.innerHeight + 'px';
   }
 
   goToRoute(url: string | boolean) {

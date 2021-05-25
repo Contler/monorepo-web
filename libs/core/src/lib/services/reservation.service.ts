@@ -26,6 +26,10 @@ export class ReservationService {
     return this.http.get<ZoneReserveEntity[]>(this.url + `hotel/${idHotel}/reservation`);
   }
 
+  getZoneReservation(idHotel: string) {
+    return this.http.get<ZoneReserveEntity[]>(this.url + `hotel/${idHotel}/zone-reservation`);
+  }
+
   getReservation(id: number) {
     return this.http.get<ZoneReserveEntity>(this.url + `reservation/${id}`);
   }
@@ -55,9 +59,7 @@ export class ReservationService {
   }
 
   getBookingByGuest(id: string) {
-    return this.http
-      .get<BookingEntity[]>(this.url + `guest/${id}/reservation`)
-      .pipe(map((bookings) => bookings.filter((booking) => booking.active)));
+    return this.http.get<BookingEntity[]>(this.url + `guest/${id}/reservation`);
   }
 
   getBookingByHotel(id: string) {

@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { GuestService } from 'hotel/guest/services/guest.service';
+import { GuestService } from '@contler/hotel/guest/services/guest.service';
 import { map, startWith, switchMap } from 'rxjs/operators';
 import { GuestEntity, RoomEntity, ScheduleEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
 import { ReservationService } from '@contler/core';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { DAYS, TYPE_ERROR } from '@contler/const';
 import { TranslateService } from '@ngx-translate/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { DateFilterFn } from '@angular/material/datepicker';
 
 @Component({
   selector: 'contler-manual-reservation',
@@ -24,7 +25,7 @@ export class ManualReservationComponent implements OnInit {
   reservationForm: FormGroup;
   $guestList: Observable<GuestEntity[]>;
   $zone: Observable<ZoneReserveEntity[]>;
-  filterDate: Function;
+  filterDate: DateFilterFn<any>;
   actualDay = new Date();
   load = false;
   err: string;

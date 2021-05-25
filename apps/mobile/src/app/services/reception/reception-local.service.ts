@@ -4,7 +4,7 @@ import { ReceptionService, RoomService } from '@contler/core';
 import { EmployerEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import { AuthService } from '../auth.service';
 
 @Injectable({

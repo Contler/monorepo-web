@@ -2,6 +2,7 @@ import { Component, HostBinding, Input } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ChildrenMenu } from '../interfaces/children-menu.interface';
 import { Router } from '@angular/router';
+import { ItemMenu } from '../interfaces/item-menu.interface';
 
 @Component({
   selector: 'contler-menu-list-item',

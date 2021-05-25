@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HotelEntity } from '@contler/entity';
 import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { switchMap, tap } from 'rxjs/operators';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { OptionModule, OptionType } from '@contler/models';
 import { Router } from '@angular/router';
-import { PreferencesService } from 'hotel/preferences/services/preferences.service';
+import { PreferencesService } from '@contler/hotel/preferences/services/preferences.service';
 
 @Component({
   selector: 'contler-maintenance',

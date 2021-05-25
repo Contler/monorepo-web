@@ -4,16 +4,16 @@ import { CommonModule } from '@angular/common';
 import { GuestRoutingModule } from './guest-routing.module';
 import { GuestComponent } from './page/guest/guest.component';
 import { CoreModule, UserService } from '@contler/core';
-import { MaterialModule } from 'hotel/material/material.module';
 import { ModelNewGuestComponent } from './components/model-new-guest/model-new-guest.component';
-import { RoomService } from 'hotel/room/services/room.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GuestService } from 'hotel/guest/services/guest.service';
 import { ModalEditGuestComponent } from './components/modal-edit-guest/modal-edit-guest.component';
-import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { DirectivesModule } from '../directives/directives.module';
+import { MaterialModule } from '../material/material.module';
+import { CommonComponentsModule } from '../common-components/common-components.module';
+import { RoomService } from '../room/services/room.service';
+import { GuestService } from './services/guest.service';
 
 @NgModule({
   declarations: [GuestComponent, ModelNewGuestComponent, ModalEditGuestComponent],

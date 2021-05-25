@@ -17,6 +17,11 @@ import { UserService } from '@contler/core';
 import { AvalibleUserGuard } from './guards/avalible-user.guard';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { OptionRequestComponent } from './option-request/option-request.component';
+import { OptionGridComponent } from './option-grid/option-grid.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { SwitchComponent } from './swith/switch.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +33,9 @@ import { TranslateModule } from '@ngx-translate/core';
     ColorBtnHotelDirective,
     BtnMenuHotelDirective,
     ModalCompleteComponent,
+    OptionRequestComponent,
+    OptionGridComponent,
+    SwitchComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +46,8 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterModule,
     FormsModule,
     TranslateModule,
+    DynamicTranslateModule,
+    MatMenuModule,
   ],
   exports: [
     ToolbarComponent,
@@ -49,6 +59,9 @@ import { TranslateModule } from '@ngx-translate/core';
     BtnMenuHotelDirective,
     ModalCompleteComponent,
     UiModule,
+    OptionRequestComponent,
+    OptionGridComponent,
+    SwitchComponent,
   ],
   providers: [UserService, AvalibleUserGuard],
 })

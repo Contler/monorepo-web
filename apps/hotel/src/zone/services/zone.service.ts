@@ -4,7 +4,7 @@ import { UserService } from '@contler/core';
 import { switchMap, take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { CategoryEntity, ZoneEntity } from '@contler/entity';
-import { environment } from 'hotel/environments/environment';
+import { environment } from '@contler/hotel/environments/environment';
 import { getLan } from '@contler/const';
 
 @Injectable({

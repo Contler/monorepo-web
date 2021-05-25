@@ -1,7 +1,11 @@
 {
   "auth": {
     "userDisabled": "La cuenta ya no esta activa",
-    "userNotFound": "Correo o contraseña invalida"
+    "userNotFound": "Correo o contraseña invalida",
+    "entry": "Ingreso",
+    "forgotTitle": "Ingresa tu correo",
+    "recovery": "Recuperar",
+    "invalidEmail": "Correo invalido"
   },
   "dynamicRequest": {
     "all": "Todas",
@@ -104,7 +108,10 @@
     "hello": "Hola",
     "seeAllHotel": "VER TODO EL HOTEL",
     "whereDoYouNeedUs": "Donde nos necesitas?",
-    "WhatDoYouNeedToday": "¿Qué necesitas hoy?"
+    "WhatDoYouNeedToday": "¿Qué necesitas hoy?",
+    "request": "Solicitudes",
+    "reservations": "Reservaciones",
+    "orders": "Pedidos"
   },
   "inmediateRequest": {
     "area": "Area",
@@ -199,7 +206,20 @@
   "myReservations": {
     "people": "personas",
     "title": "Mis reservas",
-    "youHaveNoReservationRequest": "No tienes solicitud de reserva"
+    "complete": "Mis reservas completas",
+    "youHaveNoReservationRequest": "No tienes solicitud de reserva",
+    "all": "Todos"
+  },
+  "myRequest": {
+    "all": "Todas",
+    "immediate": "Inmediatas",
+    "specials": "Especiales",
+    "complete": " Mis Solicitudes completas",
+    "pending": "Mis Solicitudes"
+  },
+  "switch": {
+    "pending": "Pendiente",
+    "complete": "Completo"
   },
   "myRoom": {
     "close": "¡Entendido!",

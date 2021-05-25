@@ -54,14 +54,6 @@
                   "with": "apps/hotel/src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -76,12 +68,26 @@
               ]
             },
             "qa": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
               "fileReplacements": [
                 {
                   "replace": "apps/hotel/src/environments/environment.ts",
                   "with": "apps/hotel/src/environments/environment.qa.ts"
                 }
               ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "outputs": ["{options.outputPath}"]
@@ -98,8 +104,12 @@
             },
             "qa": {
               "browserTarget": "hotel:build:qa"
+            },
+            "development": {
+              "browserTarget": "hotel:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -147,33 +157,6 @@
             "production": {
               "browserTarget": "app:build:production"
             }
-          }
-        }
-      }
-    },
-    "hotel-e2e": {
-      "root": "apps/hotel-e2e",
-      "sourceRoot": "apps/hotel-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/hotel-e2e/cypress.json",
-            "tsConfig": "apps/hotel-e2e/tsconfig.e2e.json",
-            "devServerTarget": "hotel:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "hotel:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/hotel-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/hotel-e2e/**"]
           }
         }
       }
@@ -244,7 +227,7 @@
               "apps/guest/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["apps/guest/src"]
+              "includePaths": ["apps/guest/src", "libs/styles"]
             },
             "scripts": []
           },
@@ -331,33 +314,6 @@
             "jestConfig": "apps/guest/jest.config.js"
           },
           "outputs": ["coverage/apps/guest"]
-        }
-      }
-    },
-    "guest-e2e": {
-      "root": "apps/guest-e2e",
-      "sourceRoot": "apps/guest-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/guest-e2e/cypress.json",
-            "tsConfig": "apps/guest-e2e/tsconfig.e2e.json",
-            "devServerTarget": "guest:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "guest:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/guest-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/guest-e2e/**"]
-          }
         }
       }
     },
@@ -524,33 +480,6 @@
         }
       }
     },
-    "mobile-e2e": {
-      "root": "apps/mobile-e2e",
-      "sourceRoot": "apps/mobile-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/mobile-e2e/cypress.json",
-            "tsConfig": "apps/mobile-e2e/tsconfig.e2e.json",
-            "devServerTarget": "mobile:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "mobile:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/mobile-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/mobile-e2e/**"]
-          }
-        }
-      }
-    },
     "ui": {
       "projectType": "library",
       "root": "libs/ui",
@@ -628,13 +557,6 @@
                   "with": "apps/admin/src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -649,12 +571,26 @@
               ]
             },
             "qa": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
               "fileReplacements": [
                 {
                   "replace": "apps/admin/src/environments/environment.ts",
                   "with": "apps/admin/src/environments/environment.qa.ts"
                 }
               ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "outputs": ["{options.outputPath}"]
@@ -670,8 +606,12 @@
             },
             "qa": {
               "browserTarget": "admin:build:qa"
+            },
+            "development": {
+              "browserTarget": "admin:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -693,33 +633,6 @@
             "passWithNoTests": true
           },
           "outputs": ["coverage/apps/admin"]
-        }
-      }
-    },
-    "admin-e2e": {
-      "root": "apps/admin-e2e",
-      "sourceRoot": "apps/admin-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/admin-e2e/cypress.json",
-            "tsConfig": "apps/admin-e2e/tsconfig.e2e.json",
-            "devServerTarget": "admin:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "admin:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/admin-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/admin-e2e/**/*"]
-          }
         }
       }
     },

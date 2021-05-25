@@ -11,4 +11,5 @@ export const environment = {
     measurementId: 'G-935F32GH5E',
   },
   apiUrl: 'https://contler-back.herokuapp.com/',
+  emulate: false,
 };

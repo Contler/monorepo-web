@@ -3,9 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { getLan, GUEST, LANGUAGES } from '@contler/const';
-import { GuestService } from 'guest/services/guest.service';
+import { GuestService } from '../services/guest.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '@contler/models';
+import { MatDialog } from '@angular/material/dialog';
+import { ForgotComponent } from './forgot/forgot.component';
 
 @Component({
   selector: 'contler-login',
@@ -25,6 +27,7 @@ export class LoginComponent {
     private router: Router,
     private guestService: GuestService,
     private translate: TranslateService,
+    private dialog: MatDialog,
   ) {
     const [actualLan] = getLan();
     this.actualLanguage = actualLan;
@@ -45,24 +48,29 @@ export class LoginComponent {
         this.error = this.translate.instant(`login.youDoNotHavePermissionToAccess`);
         await this.afAuth.signOut();
       } else {
-        this.guestService.checkAvailableUser().subscribe(({ checkIn, checkOut }) => {
-          this.loader = false;
-          if (new Date() < checkIn) {
-            this.afAuth.signOut();
-            this.error = `${this.translate.instant(
-              'login.yourEntryDateIs',
-            )} ${checkIn.toLocaleDateString()}. ${this.translate.instant(
-              'login.weInviteYouToLogInOnThisDate',
-            )}.`;
-          } else if (new Date() > checkOut) {
-            this.afAuth.signOut();
-            this.error = `${this.translate.instant(
-              'login.yourDepartureDateWas',
-            )} ${checkOut.toLocaleDateString()}.`;
-          } else {
-            this.router.navigate(['/home']);
-          }
-        });
+        this.guestService.checkAvailableUser().subscribe(
+          ({ checkIn, checkOut }) => {
+            this.loader = false;
+            if (new Date() < checkIn) {
+              this.afAuth.signOut();
+              this.error = `${this.translate.instant(
+                'login.yourEntryDateIs',
+              )} ${checkIn.toLocaleDateString()}. ${this.translate.instant(
+                'login.weInviteYouToLogInOnThisDate',
+              )}.`;
+            } else if (new Date() > checkOut) {
+              this.afAuth.signOut();
+              this.error = `${this.translate.instant(
+                'login.yourDepartureDateWas',
+              )} ${checkOut.toLocaleDateString()}.`;
+            } else {
+              this.router.navigate(['/home']);
+            }
+          },
+          (err) => {
+            console.log(err);
+          },
+        );
       }
     } catch (error) {
       this.loader = false;
@@ -79,8 +87,14 @@ export class LoginComponent {
       }
     }
   }
-  changeLanguage() {
+
+  changeLanguage(lan: Language) {
+    this.actualLanguage = lan;
     this.translate.use(this.actualLanguage.prefix);
     window.localStorage.lan = this.actualLanguage.prefix;
+  }
+
+  forgotPassword() {
+    this.dialog.open(ForgotComponent);
   }
 }

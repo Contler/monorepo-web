@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { filter, map, switchMap } from 'rxjs/operators';
-import { environment } from 'hotel/environments/environment';
+import { environment } from '@contler/hotel/environments/environment';
 import { Statistic } from '@contler/models/statistic';
 import { Interval } from '@contler/models/interval';
 

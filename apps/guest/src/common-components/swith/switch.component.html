@@ -1,0 +1,7 @@
+<button class="action" mat-raised-button (click)="toggle()" [class.active]="!complete">
+  <span class="action__text">{{ constants.pending | translate }}</span>
+</button>
+
+<button class="action" mat-raised-button (click)="toggle()" [class.active]="complete">
+  <span class="action__text">{{ constants.complete | translate }}</span>
+</button>

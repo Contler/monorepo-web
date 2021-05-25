@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ZoneService } from 'hotel/zone/services/zone.service';
-import { RoomService } from 'hotel/room/services/room.service';
+import { ZoneService } from '@contler/hotel/zone/services/zone.service';
+import { RoomService } from '@contler/hotel/room/services/room.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RoomEntity, ZoneEntity } from '@contler/entity';
 

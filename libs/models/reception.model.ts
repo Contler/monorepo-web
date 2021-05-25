@@ -1,5 +1,5 @@
 import { GuestEntity, RoomEntity } from '../entity';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 import { DynamicRequest } from '@contler/dynamic-services';
 import FirestoreDataConverter = firebase.firestore.FirestoreDataConverter;
 

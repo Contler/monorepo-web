@@ -24,7 +24,9 @@ export class ReceptionComponent implements OnInit {
     const loader = this.messagesService.showLoader();
     this.options$ = this.guestService.$hotel.pipe(first()).pipe(
       switchMap((hotel) => this.receptionService.getOptionsReception(hotel.uid)),
-      tap(() => this.messagesService.closeLoader(loader)),
+      tap((data) => {
+        this.messagesService.closeLoader(loader);
+      }),
     );
   }
 }

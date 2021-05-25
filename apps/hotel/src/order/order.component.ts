@@ -2,15 +2,15 @@ import { Component, ViewChild } from '@angular/core';
 import { HotelEntity, OrderEntity } from '@contler/entity';
 import { first, switchMap, take } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { HotelService, ProductService } from '@contler/core';
 import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
-import { UpdateInformationalMessageComponent } from 'hotel/order/modals/update-informational-message/update-informational-message.component';
+import { UpdateInformationalMessageComponent } from '@contler/hotel/order/modals/update-informational-message/update-informational-message.component';
 import { TranslateService as transDynamic } from '@contler/dynamic-translate';
 import { getLan } from '@contler/const';
-import { MessagesService } from 'hotel/services/messages/messages.service';
+import { MessagesService } from '@contler/hotel/services/messages/messages.service';
 
 @Component({
   selector: 'contler-order',

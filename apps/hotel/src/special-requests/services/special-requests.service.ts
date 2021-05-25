@@ -3,8 +3,8 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { UserService } from '@contler/core';
 import { switchMap } from 'rxjs/operators';
 import { RequestEntity } from '@contler/entity';
-import { environment } from 'hotel/environments/environment';
-import { AuthService } from 'hotel/services/auth.service';
+import { environment } from '@contler/hotel/environments/environment';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -20,7 +20,9 @@ export class SpecialRequestsService {
 
   listenSpecialRequestByHotel() {
     return this.authService.$employer.pipe(
-      switchMap(user => this.http.get<RequestEntity[]>(environment.apiUrl + `hotel/${user.hotel.uid}/special-request`)),
+      switchMap((user) =>
+        this.http.get<RequestEntity[]>(environment.apiUrl + `hotel/${user.hotel.uid}/special-request`),
+      ),
     );
   }
 

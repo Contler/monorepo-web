@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { Observable } from 'rxjs';
 import { HotelEntity } from '@contler/entity';
 import { map } from 'rxjs/operators';

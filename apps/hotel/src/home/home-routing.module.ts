@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard, customClaims } from '@angular/fire/auth-guard';
 
-import { AdminHomeComponent } from 'hotel/home/page/admin-home/admin-home.component';
 import { map } from 'rxjs/operators';
 import { ADMIN } from '@contler/const';
 import { pipe } from 'rxjs';
+import { AdminHomeComponent } from '../home/page/admin-home/admin-home.component';
 
 const redirectToAdmin = () =>
   pipe(
@@ -29,29 +29,29 @@ const routes: Routes = [
   },
   {
     path: 'employer',
-    loadChildren: () => import('hotel/employer/employer.module').then((m) => m.EmployerModule),
+    loadChildren: () => import('../employer/employer.module').then((m) => m.EmployerModule),
   },
   {
     path: 'room',
-    loadChildren: () => import('hotel/room/room.module').then((m) => m.RoomModule),
+    loadChildren: () => import('../room/room.module').then((m) => m.RoomModule),
   },
   {
     path: 'zone',
-    loadChildren: () => import('hotel/zone/zone.module').then((m) => m.ZoneModule),
+    loadChildren: () => import('../zone/zone.module').then((m) => m.ZoneModule),
   },
   {
     path: 'inmediate-requests',
     loadChildren: () =>
-      import('hotel/inmediate-requests/inmediate-requests.module').then((m) => m.InmediateRequestsModule),
+      import('../inmediate-requests/inmediate-requests.module').then((m) => m.InmediateRequestsModule),
   },
   {
     path: 'special-requests',
     loadChildren: () =>
-      import('hotel/special-requests/special-requests.module').then((m) => m.SpecialRequestsModule),
+      import('../special-requests/special-requests.module').then((m) => m.SpecialRequestsModule),
   },
   {
     path: 'guest',
-    loadChildren: () => import('hotel/guest/guest.module').then((m) => m.GuestModule),
+    loadChildren: () => import('../guest/guest.module').then((m) => m.GuestModule),
   },
   {
     path: 'wake-up',

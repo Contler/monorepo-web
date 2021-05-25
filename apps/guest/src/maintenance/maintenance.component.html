@@ -1,15 +1,16 @@
-<contler-marco padding="20px 0" backUrl="/home/welcome">
+<contler-marco padding="20px 0" [backUrl]="true">
   <ng-container marcoBody>
     <h1 class="ctl-title maintenance__title" contlerColorHotel="primary">
       {{ 'maintenance.title' | translate }}
     </h1>
-    <div class="maintenance__menu_list">
-      <contler-maintenance-item
-        class="maintenance__menu_list__item"
-        *ngFor="let opt of options$ | async; even as e"
-        [option]="opt"
-        [isEven]="e"
-      ></contler-maintenance-item>
-    </div>
+    <contler-option-grid>
+      <contler-option-request
+        *ngFor="let opt of options$ | async"
+        [name]="opt.text"
+        [icon]="opt.icon"
+        [custom]="true"
+        [link]="opt.link"
+      ></contler-option-request>
+    </contler-option-grid>
   </ng-container>
 </contler-marco>

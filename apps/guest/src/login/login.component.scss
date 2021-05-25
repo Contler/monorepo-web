@@ -1,34 +1,42 @@
-@import 'styles/variables';
-@import 'styles/mixin';
+@import 'global';
 
 .wrapper {
-  padding: 50px 51px 10px;
+  padding: 74px 0 0;
+  background-color: #1c1c1c;
+  min-height: 100vh;
+  overflow: auto;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: max-content auto;
 
   .input {
     width: 100%;
   }
 
-  .main_container {
-    max-width: 600px;
-    margin: 0 auto;
-  }
   img.logo {
     display: block;
     margin: 0 auto;
   }
-  .label {
-    font-family: $family;
-    font-size: 16.2px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.48;
-    letter-spacing: 0.15px;
+
+  .form {
+    background: white;
+    border-radius: 54px 54px 0 0;
+    padding: 64.4px 50px 28.6px;
+    box-sizing: border-box;
     text-align: center;
-    color: $text-1;
-    margin-top: 80px;
-    margin-bottom: 40px;
+
+    .title {
+      @include text(24px, $text-6);
+      margin-bottom: 50px;
+      font-weight: bold;
+    }
   }
+
+  .label {
+    @include text(16px);
+    margin-bottom: 10px;
+  }
+
   mat-form-field {
     margin-bottom: 25px;
     &:last-of-type {
@@ -36,31 +44,30 @@
     }
   }
   .forgot_password {
-    font-family: $family;
-    font-size: 12.2px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.31;
-    letter-spacing: 0.4px;
+    @include text(12px, $text-1);
     text-align: center;
-    color: $text-1;
     margin-bottom: 36px;
   }
 
   .error {
-    @include text(red, 12px);
+    @include text(12px, red);
     text-align: center;
     margin-top: 10px;
   }
 }
+
 .language {
-  top: 0;
-  right: 0;
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  margin-right: 20px;
+  margin: 20px auto 30px;
+
+  &__text {
+    color: white;
+    text-transform: uppercase;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 16px;
+  }
 }

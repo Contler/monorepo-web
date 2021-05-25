@@ -8,7 +8,7 @@ import {
   MODULES,
   receptionDynamicConverter,
 } from '@contler/dynamic-services';
-import { MessagesService } from 'hotel/services/messages/messages.service';
+import { MessagesService } from '@contler/hotel/services/messages/messages.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { first } from 'rxjs/operators';

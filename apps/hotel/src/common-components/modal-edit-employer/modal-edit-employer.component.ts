@@ -2,13 +2,13 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CHIEF, EMPLOYER } from '@contler/const';
-import { EmployerService } from 'hotel/employer/services/employer.service';
-import { ZoneService } from 'hotel/zone/services/zone.service';
 import { Observable } from 'rxjs';
-import { MessagesService } from 'hotel/services/messages/messages.service';
 import { EmployerEntity, SpecialZoneHotelEntity, ZoneEntity } from '@contler/entity';
 import { map, switchMap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { EmployerService } from '../../employer/services/employer.service';
+import { ZoneService } from '../../zone/services/zone.service';
+import { MessagesService } from '../../services/messages/messages.service';
 
 @Component({
   selector: 'contler-modal-edit-employer',

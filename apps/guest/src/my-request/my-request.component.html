@@ -1,11 +1,47 @@
-<contler-marco>
+<contler-marco [backUrl]="true" [filter]="true" padding="16px 30px">
+  <ng-container marcoFilter>
+    <ng-container *ngFor="let item of nameModule">
+      <button mat-menu-item *ngIf="selected !== item" (click)="selected = item">
+        {{ item | translate }}
+      </button>
+      <button mat-menu-item contlerColorBtnHotel *ngIf="selected === item">{{ item | translate }}</button>
+    </ng-container>
+  </ng-container>
+
   <ng-container marcoBody>
     <h1 class="ctl-title" style="text-align: center" contlerColorHotel="primary">
-      {{ 'sidebar.myRequest' | translate }}
+      {{ (isComplete ? constants.complete : constants.pending) | translate }}
     </h1>
+    <ng-container *ngIf="!isComplete">
+      <a
+        *ngFor="let item of request | async | filterSpecial: selected"
+        [routerLink]="item.key"
+        style="text-decoration: none"
+      >
+        <contler-request-item [request]="item"></contler-request-item>
+      </a>
 
-    <a *ngFor="let item of request | async" [routerLink]="item.key" style="text-decoration: none">
-      <contler-request-item [request]="item"></contler-request-item>
-    </a>
+      <ng-container *ngIf="showImmediate">
+        <a *ngFor="let item of pendingRequests" style="text-decoration: none">
+          <contler-immediate-item [request]="item"></contler-immediate-item>
+        </a>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="isComplete">
+      <contler-request-item
+        [request]="item"
+        *ngFor="let item of requestComplete | async | filterSpecial: selected"
+      ></contler-request-item>
+      <ng-container *ngIf="showImmediate">
+        <a *ngFor="let item of completeReq" style="text-decoration: none">
+          <contler-immediate-item [request]="item"></contler-immediate-item>
+        </a>
+      </ng-container>
+    </ng-container>
   </ng-container>
+
+  <div marcoFooter class="footer">
+    <contler-switch (value)="isComplete = $event"></contler-switch>
+  </div>
 </contler-marco>

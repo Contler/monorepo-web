@@ -8,13 +8,13 @@ const isLogin = () => redirectLoggedInTo(['home']);
 const routes: Routes = [
   {
     path: 'login',
-    loadChildren: () => import('hotel/login/login.module').then((m) => m.LoginModule),
+    loadChildren: () => import('../login/login.module').then((m) => m.LoginModule),
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: isLogin },
   },
   {
     path: 'home',
-    loadChildren: () => import('hotel/home/home.module').then((m) => m.HomeModule),
+    loadChildren: () => import('../home/home.module').then((m) => m.HomeModule),
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },

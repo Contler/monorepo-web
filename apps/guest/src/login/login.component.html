@@ -1,16 +1,24 @@
 <div class="wrapper">
-  <div class="main_container">
+  <div>
+    <img src="assets/img/logo-white.svg" class="logo" alt="logo" />
+
     <div class="language">
-      <div class="custom_icon">
-        {{ actualLanguage.unicode }}
-      </div>
-      <mat-select required [(ngModel)]="actualLanguage" (selectionChange)="changeLanguage()">
-        <mat-option *ngFor="let language of languages" [value]="language">
-          <p class="label">{{ language.name }}</p>
-        </mat-option>
-      </mat-select>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <span class="language__text">
+          <span>{{ actualLanguage.unicode }}</span> {{ actualLanguage.code }}
+          <contler-icon key="fas fa-chevron-down"></contler-icon>
+        </span>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngFor="let language of languages" (click)="changeLanguage(language)">
+          {{ language.unicode }} {{ language.name }}
+        </button>
+      </mat-menu>
     </div>
-    <img src="assets/img/logo.svg" class="logo" />
+  </div>
+
+  <div class="form">
+    <h1 class="title">{{ 'auth.entry' | translate }}</h1>
     <p class="label">
       {{ 'login.title' | translate }}
     </p>
@@ -25,7 +33,9 @@
         <mat-icon class="custom_icon" matSuffix>check_circle</mat-icon>
         <mat-hint>{{ 'login.password.label' | translate }}</mat-hint>
       </mat-form-field>
-      <p class="cursor forgot_password">{{ 'login.didYouForgetYourPassword' | translate }}</p>
+      <button mat-button class="forgot_password" type="button" (click)="forgotPassword()">
+        {{ 'login.didYouForgetYourPassword' | translate }}
+      </button>
       <button
         class="input custom-button"
         mat-raised-button

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular
 import { Observable } from 'rxjs';
 import { CategoryEntity } from '@contler/entity';
 import { ICONS } from '@contler/const';
-import { ZoneService } from 'hotel/zone/services/zone.service';
+import { ZoneService } from '@contler/hotel/zone/services/zone.service';
 import { ZoneReserveEntity } from '@contler/entity/zone-reserve.entity';
 import { ReservationRequest } from '@contler/models';
 

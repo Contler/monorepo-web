@@ -1,7 +1,4 @@
-@import 'styles/variables';
-@import 'styles/mixin';
-
-$temporalColor: #006633;
+@import 'global';
 
 .request {
   &__hotel-logo {
@@ -10,7 +7,7 @@ $temporalColor: #006633;
     width: 100px;
   }
   &__label {
-    @include text($text-3, 20px, 500);
+    @include text(20px, $text-3, 500);
     text-align: center;
   }
   &__space {
@@ -20,72 +17,43 @@ $temporalColor: #006633;
     margin-bottom: -16px;
   }
   &__question {
-    font-family: $family;
-    font-size: 16.2px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.48;
-    letter-spacing: 0.15px;
+    @include text(16.2px, $text-3);
     text-align: center;
-    margin-top: 7%;
   }
 
-  &__zone {
-    display: grid;
-    grid-template-columns: max-content auto max-content;
-    column-gap: 16px;
-    padding: 16px 32px 25px;
-    height: 30px;
-    align-items: center;
-    text-decoration: none;
+  &__content {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: center;
+  }
 
-    &-icon {
-      color: $lighterIcon;
+  &__footer {
+    background: #f4f4f4;
+    padding: 20px 16px 40px;
 
-      &__add {
-        margin-left: -7px;
-        margin-right: -4px;
+    &-content {
+      justify-content: space-evenly;
+      background-color: white;
+      border-radius: 18px;
+      box-shadow: 0 12px 18px 0 rgba(0, 0, 0, 0.08);
+      display: flex;
+      padding: 10px 0;
+      align-items: flex-end;
+
+      .btn {
+        background: transparent;
+        border: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .text {
+        @include text(14px, #7a7a7a, bold);
       }
     }
-    &-text {
-      @include text(rgba(0, 0, 0, 0.87), 20px, 500);
-      letter-spacing: 0.25px;
-      text-transform: uppercase;
-      font-family: $family;
-      font-family: $family;
-      font-size: 14.2px;
-      font-weight: 500;
-      font-stretch: normal;
-      font-style: normal;
-      align-items: center;
-      margin-left: 20px;
-      line-height: 1.13;
-      letter-spacing: 1.25px;
-    }
   }
-}
-.main-container {
-  height: 100%;
-  width: 100%;
-  .zones-container {
-    max-height: 45%;
-    overflow: auto;
-  }
-  .request__zone:nth-child(even) {
-    background-color: #f6f6f6;
-  }
-}
-
-.request-question {
-  width: 362px;
-  height: 93px;
-  font-family: $family;
-  font-size: 16.2px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.48;
-  letter-spacing: 0.15px;
-  text-align: center;
 }

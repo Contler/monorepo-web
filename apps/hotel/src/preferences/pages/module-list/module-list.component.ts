@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { first } from 'rxjs/operators';
 import { SpecialZoneHotelEntity } from '@contler/entity/SpecialZoneHotel.entity';
 import { HotelService } from '@contler/core';
 import { HotelEntity } from '@contler/entity';
-import { MessagesService } from 'hotel/services/messages/messages.service';
+import { MessagesService } from '@contler/hotel/services/messages/messages.service';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ZoneService } from 'hotel/zone/services/zone.service';
-import { MessagesService } from 'hotel/services/messages/messages.service';
+import { ZoneService } from '@contler/hotel/zone/services/zone.service';
+import { MessagesService } from '@contler/hotel/services/messages/messages.service';
 import { ZoneEntity } from '@contler/entity';
 import { IconsService } from '@contler/ui';
 import { IconModel } from '@contler/models/icon.model';

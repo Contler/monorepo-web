@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RestaurantComponent } from './page/restaurant/restaurant.component';
 import { RestaurantRoutingModule } from './restaurant-routing.module';
-import { MaterialModule } from 'hotel/material/material.module';
+import { MaterialModule } from '@contler/hotel/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule, RestaurantService } from '@contler/core';
-import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
+import { CommonComponentsModule } from '@contler/hotel/common-components/common-components.module';
 
 // editable table
 import { EditableComponent } from './components/editable/editable.component';
