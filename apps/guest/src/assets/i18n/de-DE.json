@@ -1,5 +1,9 @@
 {
   "auth": {
+    "entry": "Eintrag",
+    "forgotTitle": "Geben sie ihre E-Mail Adresse ein",
+    "invalidEmail": "Ungültige E-Mail",
+    "recovery": "Genesen",
     "userDisabled": "Das Konto ist nicht mehr aktiv",
     "userNotFound": "Ungültige E-Mail oder Passwort"
   },
@@ -24,7 +28,9 @@
     "text": "Ihre Zimmerreinigungsanfrage wurde erfolgreich empfangen.",
     "title": "Wann sollen wir Ihr Zimmer reinigen?",
     "towelChange": "Handtuchwechsel",
-    "what": "Was?"
+    "what": "Was?",
+    "whatDoYouNeedTheMaintenanceFor": "Wofür müssen Sie gereinigt werden?",
+    "whenDoYouNeedTheMaintenance": "Wann brauchen Sie eine Reinigung?"
   },
   "concierge": {
     "close": "Ich habs!",
@@ -69,6 +75,16 @@
     "createRequest": "Anfrage erstellen",
     "immediateRequestSuccessfullyCreated": "Sofortige Anfrage erfolgreich erstellt"
   },
+  "dynamicForm": {
+    "which": "Welche?"
+  },
+  "dynamicRequest": {
+    "all": "Alle",
+    "attended": "Besucht",
+    "complete": "Abgeschlossen",
+    "programing": "Geplant",
+    "update": "Aktualisieren"
+  },
   "exchange": {
     "close": "Ich habs!",
     "createRequest": "Anfrage erstellen",
@@ -89,7 +105,11 @@
     "whereDoYouWantToReceiveIt": "Wo möchten Sie es erhalten?"
   },
   "guestRequest": {
+    "WhatDoYouNeedToday": "Was brauchst du heute?",
     "hello": "Hallo",
+    "orders": "Bestellungen",
+    "request": "Anfragen",
+    "reservations": "Reservierungen",
     "seeAllHotel": "ALLE HOTELSERVICES",
     "whereDoYouNeedUs": "Wo brauchen Sie uns?"
   },
@@ -165,13 +185,34 @@
     "title": "Wie haben Sie den Service gefunden, den unser Team in Ihrer Anfrage erbracht hat?",
     "veryBad": "sehr schlecht"
   },
+  "modules": {
+    "clean": "Reinigung",
+    "immediateRequests": "Sofortige Anfragen",
+    "late-checkouts": "Späte Abreise",
+    "maintenance": "Instandhaltung",
+    "orders": "Zimmerservice",
+    "reception": "Rezeption",
+    "reservations": "Buchungen",
+    "room": "Zimmer",
+    "specialRequest": "Spezialwünsche",
+    "wakeup-call": "Ruft zur Aufmerksamkeit auf"
+  },
   "myInmediateRequests": {
     "done": "Erledigt",
     "myInmediatePendingRequest": "Meine sofortige ausstehende Anfrage",
     "toDo": "Machen",
     "youHaveNoImmediateRequest": "Sie haben keine sofortige Anfrage"
   },
+  "myRequest": {
+    "all": "Alle",
+    "complete": " Meine vollständigen Bewerbungen",
+    "immediate": "Sofortig",
+    "pending": "Meine Anfragen",
+    "specials": "Specials"
+  },
   "myReservations": {
+    "all": "Alle",
+    "complete": "Meine vollständigen Reservierungen",
     "people": "Menschen",
     "title": "Meine Reservierungen",
     "youHaveNoReservationRequest": "Sie haben keine Reservierungsanfrage"
@@ -213,6 +254,7 @@
     "cashLoan": "Darlehen",
     "concierge": "Portier",
     "currencyExchange": "Geldwechsel",
+    "name": "Rezeption",
     "title": "Sie sind an der Rezeption. Was brauchen Sie?",
     "transportation": "Transport"
   },
@@ -227,10 +269,13 @@
     "veryBad": "Sehr schlecht 1/5"
   },
   "sidebar": {
+    "cleaning": "Reinigung",
     "immediateRequest": "Sofortige Anfrage",
     "lateCheckOut": "Später check out",
     "logOut": "Ausloggen",
+    "maintenance": "Instandhaltung",
     "myImmediateRequests": "Meine sofortigen Anfragen",
+    "myRequest": "Meine Anfragen",
     "myReservations": "Meine Reservierungen",
     "orders": "Aufträge",
     "reservations": "Reservierungen",
@@ -269,12 +314,19 @@
     "placeholder": "Schreiben Sie Ihre Anfragen ...",
     "send": "Senden"
   },
+  "switch": {
+    "complete": "vervollständigen",
+    "pending": "Ausstehend"
+  },
   "transportation": {
+    "attended": "",
     "close": "Ich habs!",
+    "complete": "",
     "createRequest": "Anfrage erstellen",
     "date": "Datum",
     "departureTime": "Abfahrtszeit",
     "destination": "Ziel",
+    "programing": "",
     "text": "Ihr Transport wurde angefordert, wir warten Sie zur Abfahrtszeit an der Rezeption",
     "title": "Wir können Ihnen beim Transport vom Hotel helfen. Bitte füllen Sie diese Informationen aus",
     "whereAreYouGoing": "Wohin gehst du?"
@@ -285,10 +337,32 @@
     "youDontHaveAnyoneWakeUpCalls": "Sie haben niemanden Weckrufe"
   },
   "zoneRequest": {
+    "categories": {
+      "callHotel": "",
+      "checkOut": "",
+      "clean": "",
+      "drink": "",
+      "food": "",
+      "maintain": "",
+      "other": "",
+      "requestClean": "",
+      "roomKeys": "",
+      "roomService": "",
+      "spaceReserve": "",
+      "specialRequest": "",
+      "towels": "",
+      "waiter": "",
+      "wakeUp": ""
+    },
     "createRequest": "Anfrage erstellen",
+    "foodAreas": "",
+    "humidAreas": "",
     "immediateRequestSuccessfullyCreated": "Sofortige Anfrage erfolgreich erstellt",
+    "myRoom": "",
+    "outsideHotel": "",
+    "socialArea": "",
     "thereIsAnImmediateRequestAt": "Es gibt eine sofortige Anfrage an",
-    "waitingToBeAttended.": "darauf warten, besucht zu werden.",
+    "waitingToBeAttended": "",
     "whatDoYouNeed": "Was brauchst du?",
     "writeWhatYouNeed": "Schreiben Sie, was Sie brauchen",
     "youAreIn": "Sie sind in"

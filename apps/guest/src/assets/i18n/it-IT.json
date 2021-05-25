@@ -1,5 +1,9 @@
 {
   "auth": {
+    "entry": "Iscrizione",
+    "forgotTitle": "Inserisci il tuo indirizzo email",
+    "invalidEmail": "Email non valida",
+    "recovery": "Recuperare",
     "userDisabled": "Il conto non è più attivo",
     "userNotFound": "Email o password non valida"
   },
@@ -9,13 +13,6 @@
     "createRequest": "Crea richiesta",
     "text": "La tua richiesta di prestito in contanti è stata ricevuta con successo. Vieni alla reception per ricevere i tuoi soldi.",
     "title": "Hai bisogno di un prestito in contanti? Compila queste informazioni."
-  },
-  "dynamicRequest": {
-    "all": "Tutti",
-    "attended": "Frequentato",
-    "complete": "Completato",
-    "programing": "Programmato",
-    "update": "Aggiornamento"
   },
   "cleaning": {
     "anyRecommendation": "Qualsiasi raccomandazione",
@@ -32,8 +29,8 @@
     "title": "Quando vuoi che puliamo la tua stanza?",
     "towelChange": "Cambio asciugamani",
     "what": "Che cosa?",
-    "whatDoYouNeedTheMaintenanceFor": "",
-    "whenDoYouNeedTheMaintenance": ""
+    "whatDoYouNeedTheMaintenanceFor": "A cosa ti serve la pulizia?",
+    "whenDoYouNeedTheMaintenance": "Quando hai bisogno di pulire?"
   },
   "concierge": {
     "close": "Fatto!",
@@ -81,6 +78,13 @@
   "dynamicForm": {
     "which": "Quale?"
   },
+  "dynamicRequest": {
+    "all": "Tutti",
+    "attended": "Frequentato",
+    "complete": "Completato",
+    "programing": "Programmato",
+    "update": "Aggiornamento"
+  },
   "exchange": {
     "close": "Fatto!",
     "createRequest": "Crea richiesta",
@@ -101,10 +105,13 @@
     "whereDoYouWantToReceiveIt": "Dove vuoi riceverlo"
   },
   "guestRequest": {
+    "WhatDoYouNeedToday": "Di cosa avete bisogno oggi?",
     "hello": "Ciao",
+    "orders": "Ordine",
+    "request": "Richieste",
+    "reservations": "prenotazioni",
     "seeAllHotel": "VEDI TUTTI GLI HOTEL",
-    "whereDoYouNeedUs": "Dove hai bisogno di noi?",
-    "WhatDoYouNeedToday": "Di cosa avete bisogno oggi?"
+    "whereDoYouNeedUs": "Dove hai bisogno di noi?"
   },
   "inmediateRequest": {
     "area": "La zona",
@@ -179,16 +186,16 @@
     "veryBad": "molto brutto"
   },
   "modules": {
-    "immediateRequests": "Richieste immediate",
-    "specialRequest": "Richieste speciali",
-    "reservations": "Prenotazioni",
     "clean": "Pulizia",
-    "maintenance": "Manutenzione",
-    "reception": "Ricezione",
-    "room": "Stanza",
-    "wakeup-call": "Chiamate di attenzione",
+    "immediateRequests": "Richieste immediate",
     "late-checkouts": "Partenze in ritardo",
-    "orders": "Ordini"
+    "maintenance": "Manutenzione",
+    "orders": "Ordini",
+    "reception": "Ricezione",
+    "reservations": "Prenotazioni",
+    "room": "Stanza",
+    "specialRequest": "Richieste speciali",
+    "wakeup-call": "Chiamate di attenzione"
   },
   "myInmediateRequests": {
     "done": "Fatto",
@@ -196,7 +203,16 @@
     "toDo": "fare",
     "youHaveNoImmediateRequest": "Non hai una richiesta immediata"
   },
+  "myRequest": {
+    "all": "tutto",
+    "complete": " Le mie applicazioni complete",
+    "immediate": "immediato",
+    "pending": "Le mie richieste",
+    "specials": "Specials"
+  },
   "myReservations": {
+    "all": "tutto",
+    "complete": "Le mie prenotazioni complete",
     "people": "persone",
     "title": "Le mie prenotazioni",
     "youHaveNoReservationRequest": "Non hai richiesta di prenotazione"
@@ -266,12 +282,41 @@
     "specialRequests": "RICHIESTE SPECIALI",
     "wakeUpCall": "Sveglia"
   },
+  "signup-dialog": {
+    "form": {
+      "password": {
+        "hint": "La password deve essere lunga almeno 8 caratteri e contenere un numero.",
+        "label": "password",
+        "placeholder": ""
+      },
+      "username": {
+        "hint": "",
+        "label": "",
+        "placeholder": ""
+      }
+    },
+    "header": "",
+    "submit-button": "",
+    "validation": {
+      "password": {
+        "missing-digit": "",
+        "too-short": ""
+      },
+      "username": {
+        "exists": ""
+      }
+    }
+  },
   "specialRequest": {
     "errorCreatingRequest": "Errore durante la creazione della richiesta",
     "immediateRequestSuccessfullyCreated": "Richiesta immediata creata con successo",
     "message": "Parlaci della tua richiesta speciale durante il tuo detto, saremo felici di accontentarti",
     "placeholder": "Scrivi le tue richieste ...",
     "send": "inviare"
+  },
+  "switch": {
+    "complete": "Pieno",
+    "pending": "in attesa di"
   },
   "transportation": {
     "attended": "Frequentato",

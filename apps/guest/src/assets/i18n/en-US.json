@@ -1,5 +1,9 @@
 {
   "auth": {
+    "entry": "Entry",
+    "forgotTitle": "Enter your email",
+    "invalidEmail": "Invalid Email",
+    "recovery": "Recover",
     "userDisabled": "The account is no longer active",
     "userNotFound": "Invalid email or password"
   },
@@ -9,13 +13,6 @@
     "createRequest": "CREATE REQUEST",
     "text": "Your cash loan request has been successfully received. Come to the reception to receive your money.",
     "title": "Do you need a cash loan? Fill out this information."
-  },
-  "dynamicRequest": {
-    "all": "All",
-    "attended": "Attended",
-    "complete": "Completed",
-    "programing": "Scheduled",
-    "update": "Update"
   },
   "cleaning": {
     "anyRecommendation": "Any recommendation",
@@ -32,8 +29,8 @@
     "title": "When do you want us to clean your room?",
     "towelChange": "Towel change",
     "what": "What?",
-    "whatDoYouNeedTheMaintenanceFor": "",
-    "whenDoYouNeedTheMaintenance": ""
+    "whatDoYouNeedTheMaintenanceFor": "What do you need cleaning for?",
+    "whenDoYouNeedTheMaintenance": "When do you need cleaning?"
   },
   "concierge": {
     "close": "Got it!",
@@ -81,6 +78,13 @@
   "dynamicForm": {
     "which": "Which?"
   },
+  "dynamicRequest": {
+    "all": "All",
+    "attended": "Attended",
+    "complete": "Completed",
+    "programing": "Scheduled",
+    "update": "Update"
+  },
   "exchange": {
     "close": "Got it!",
     "createRequest": "CREATE REQUEST",
@@ -101,10 +105,13 @@
     "whereDoYouWantToReceiveIt": "Where do you want to receive it"
   },
   "guestRequest": {
+    "WhatDoYouNeedToday": "What do you need today?",
     "hello": "Hello",
+    "orders": "Orders",
+    "request": "Applications",
+    "reservations": "reservations",
     "seeAllHotel": "SEE ALL HOTEL",
-    "whereDoYouNeedUs": "Where do you need us?",
-    "WhatDoYouNeedToday": "What do you need today?"
+    "whereDoYouNeedUs": "Where do you need us?"
   },
   "inmediateRequest": {
     "area": "Area",
@@ -179,16 +186,16 @@
     "veryBad": "Very bad"
   },
   "modules": {
-    "immediateRequests": "Immediate requests",
-    "specialRequest": "Special requests",
-    "reservations": "Reservations",
     "clean": "Cleaning",
-    "maintenance": "Maintenance",
-    "reception": "Reception",
-    "room": "Room",
-    "wakeup-call": "Wakeup calls",
+    "immediateRequests": "Immediate requests",
     "late-checkouts": "Late checkouts",
-    "orders": "Orders"
+    "maintenance": "Maintenance",
+    "orders": "Orders",
+    "reception": "Reception",
+    "reservations": "Reservations",
+    "room": "Room",
+    "specialRequest": "Special requests",
+    "wakeup-call": "Wakeup calls"
   },
   "myInmediateRequests": {
     "done": "DONE",
@@ -196,7 +203,16 @@
     "toDo": "TO DO",
     "youHaveNoImmediateRequest": "You have no immediate request"
   },
+  "myRequest": {
+    "all": "All",
+    "complete": " My complete applications",
+    "immediate": "Immediate",
+    "pending": "My requests",
+    "specials": "Specials"
+  },
   "myReservations": {
+    "all": "Everyone",
+    "complete": "My complete reservations",
     "people": "people",
     "title": "My reservations",
     "youHaveNoReservationRequest": "You have no reservation request"
@@ -266,12 +282,41 @@
     "specialRequests": "Special requests",
     "wakeUpCall": "Wake up call"
   },
+  "signup-dialog": {
+    "form": {
+      "password": {
+        "hint": "The password must be at least 8 characters long and contain a number.",
+        "label": "Password",
+        "placeholder": ""
+      },
+      "username": {
+        "hint": "",
+        "label": "",
+        "placeholder": ""
+      }
+    },
+    "header": "",
+    "submit-button": "",
+    "validation": {
+      "password": {
+        "missing-digit": "",
+        "too-short": ""
+      },
+      "username": {
+        "exists": ""
+      }
+    }
+  },
   "specialRequest": {
     "errorCreatingRequest": "Error creating request",
     "immediateRequestSuccessfullyCreated": "Immediate request successfully created",
     "message": "Tell us about your special request during your saying, we will be happy to please you",
     "placeholder": "Write your requests…",
     "send": "send"
+  },
+  "switch": {
+    "complete": "Full",
+    "pending": "Pending"
   },
   "transportation": {
     "attended": "Attended",

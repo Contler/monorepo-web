@@ -1,5 +1,9 @@
 {
   "auth": {
+    "entry": "Entrada",
+    "forgotTitle": "Digite seu e-mail",
+    "invalidEmail": "Correio inválido",
+    "recovery": "Recuperar",
     "userDisabled": "A conta já não está activa",
     "userNotFound": "E-mail ou senha inválidos"
   },
@@ -9,13 +13,6 @@
     "createRequest": "Criar pedido",
     "text": "Sua solicitação de empréstimo em dinheiro foi recebida com sucesso. Venha até a recepção para receber seu dinheiro.",
     "title": "Você precisa de um empréstimo em dinheiro? Preencha essas informações."
-  },
-  "dynamicRequest": {
-    "all": "Todos",
-    "attended": "Atendido",
-    "complete": "Concluído",
-    "programing": "Agendado",
-    "update": "Actualização"
   },
   "cleaning": {
     "anyRecommendation": "Qualquer recomendação",
@@ -32,8 +29,8 @@
     "title": "Quando você quer que limpemos seu quarto?",
     "towelChange": "Troca de toalhas",
     "what": "O que?",
-    "whatDoYouNeedTheMaintenanceFor": "",
-    "whenDoYouNeedTheMaintenance": ""
+    "whatDoYouNeedTheMaintenanceFor": "Para que você precisa de limpeza?",
+    "whenDoYouNeedTheMaintenance": "Quando você precisa de limpeza?"
   },
   "concierge": {
     "close": "Consegui!",
@@ -81,6 +78,13 @@
   "dynamicForm": {
     "which": "Qual deles?"
   },
+  "dynamicRequest": {
+    "all": "Todos",
+    "attended": "Atendido",
+    "complete": "Concluído",
+    "programing": "Agendado",
+    "update": "Actualização"
+  },
   "exchange": {
     "close": "Consegui!",
     "createRequest": "Criar pedido",
@@ -101,10 +105,13 @@
     "whereDoYouWantToReceiveIt": "Onde você quer recebê-lo"
   },
   "guestRequest": {
+    "WhatDoYouNeedToday": "Do que precisa hoje?",
     "hello": "Olá",
+    "orders": "Encomendas",
+    "request": "Pedidos",
+    "reservations": "Reservas",
     "seeAllHotel": "VER TODOS OS HOTÉIS",
-    "whereDoYouNeedUs": "Onde você precisa de nós?",
-    "WhatDoYouNeedToday": "Do que precisa hoje?"
+    "whereDoYouNeedUs": "Onde você precisa de nós?"
   },
   "inmediateRequest": {
     "area": "Área",
@@ -179,16 +186,16 @@
     "veryBad": "Muito mal"
   },
   "modules": {
-    "immediateRequests": "Pedidos imediatos",
-    "specialRequest": "Pedidos especiais",
-    "reservations": "Reservas",
     "clean": "Limpeza",
-    "maintenance": "Manutenção",
-    "reception": "Recepção",
-    "room": "Quarto",
-    "wakeup-call": "Chamadas de atenção",
+    "immediateRequests": "Pedidos imediatos",
     "late-checkouts": "Partidas tardias",
-    "orders": "Encomendas"
+    "maintenance": "Manutenção",
+    "orders": "Encomendas",
+    "reception": "Recepção",
+    "reservations": "Reservas",
+    "room": "Quarto",
+    "specialRequest": "Pedidos especiais",
+    "wakeup-call": "Chamadas de atenção"
   },
   "myInmediateRequests": {
     "done": "Feito",
@@ -196,7 +203,16 @@
     "toDo": "Façam",
     "youHaveNoImmediateRequest": "Você não tem pedido imediato"
   },
+  "myRequest": {
+    "all": "Todos",
+    "complete": " Meus aplicativos completos",
+    "immediate": "Imediato",
+    "pending": "Minhas solicitações",
+    "specials": "Especiais"
+  },
   "myReservations": {
+    "all": "Todos",
+    "complete": "Minhas reservas completas",
     "people": "pessoas",
     "title": "Minhas reservas",
     "youHaveNoReservationRequest": "Você não tem pedido de reserva"
@@ -266,12 +282,41 @@
     "specialRequests": "requerimentos especiais",
     "wakeUpCall": "Despertar"
   },
+  "signup-dialog": {
+    "form": {
+      "password": {
+        "hint": "A senha deve ter pelo menos 8 caracteres e conter um número.",
+        "label": "Senha",
+        "placeholder": ""
+      },
+      "username": {
+        "hint": "",
+        "label": "",
+        "placeholder": ""
+      }
+    },
+    "header": "",
+    "submit-button": "",
+    "validation": {
+      "password": {
+        "missing-digit": "",
+        "too-short": ""
+      },
+      "username": {
+        "exists": ""
+      }
+    }
+  },
   "specialRequest": {
     "errorCreatingRequest": "Erro ao criar pedido",
     "immediateRequestSuccessfullyCreated": "Solicitação imediata criada com sucesso",
     "message": "Conte-nos sobre o seu pedido especial ao dizer, teremos o maior prazer em agradá-lo",
     "placeholder": "Escreva seus pedidos ...",
     "send": "Mandar"
+  },
+  "switch": {
+    "complete": "Cheio",
+    "pending": "Pendente"
   },
   "transportation": {
     "attended": "Participaram",

@@ -1,18 +1,11 @@
 {
   "auth": {
-    "userDisabled": "La cuenta ya no esta activa",
-    "userNotFound": "Correo o contraseña invalida",
     "entry": "Ingreso",
     "forgotTitle": "Ingresa tu correo",
+    "invalidEmail": "Correo invalido",
     "recovery": "Recuperar",
-    "invalidEmail": "Correo invalido"
-  },
-  "dynamicRequest": {
-    "all": "Todas",
-    "attended": "Atendida",
-    "complete": "Completada",
-    "programing": "Programada",
-    "update": "Actualizar"
+    "userDisabled": "La cuenta ya no esta activa",
+    "userNotFound": "Correo o contraseña invalida"
   },
   "cashLoan": {
     "cashAmount": "Monto en efectivo (COP)",
@@ -85,6 +78,13 @@
   "dynamicForm": {
     "which": "¿Cual?"
   },
+  "dynamicRequest": {
+    "all": "Todas",
+    "attended": "Atendida",
+    "complete": "Completada",
+    "programing": "Programada",
+    "update": "Actualizar"
+  },
   "exchange": {
     "close": "¡Entendido!",
     "createRequest": "CREAR SOLICITUD",
@@ -105,13 +105,13 @@
     "whereDoYouWantToReceiveIt": "Donde quieres recibirlo"
   },
   "guestRequest": {
-    "hello": "Hola",
-    "seeAllHotel": "VER TODO EL HOTEL",
-    "whereDoYouNeedUs": "Donde nos necesitas?",
     "WhatDoYouNeedToday": "¿Qué necesitas hoy?",
+    "hello": "Hola",
+    "orders": "Pedidos",
     "request": "Solicitudes",
     "reservations": "Reservaciones",
-    "orders": "Pedidos"
+    "seeAllHotel": "VER TODO EL HOTEL",
+    "whereDoYouNeedUs": "Donde nos necesitas?"
   },
   "inmediateRequest": {
     "area": "Area",
@@ -186,16 +186,16 @@
     "veryBad": "Muy mala"
   },
   "modules": {
-    "immediateRequests": "Solicitudes inmediatas",
-    "specialRequest": "Solicitudes especiales",
-    "reservations": "Reservas",
     "clean": "Limpieza",
-    "maintenance": "Mantenimiento",
-    "reception": "Front Desk",
-    "room": "Habitación",
-    "wakeup-call": "Llamadas de atención",
+    "immediateRequests": "Solicitudes inmediatas",
     "late-checkouts": "Salidas tardías",
-    "orders": "Room service"
+    "maintenance": "Mantenimiento",
+    "orders": "Room service",
+    "reception": "Front Desk",
+    "reservations": "Reservas",
+    "room": "Habitación",
+    "specialRequest": "Solicitudes especiales",
+    "wakeup-call": "Llamadas de atención"
   },
   "myInmediateRequests": {
     "done": "TERMINADO",
@@ -203,23 +203,19 @@
     "toDo": "QUE HACER",
     "youHaveNoImmediateRequest": "No tienes una solicitud inmediata"
   },
-  "myReservations": {
-    "people": "personas",
-    "title": "Mis reservas",
-    "complete": "Mis reservas completas",
-    "youHaveNoReservationRequest": "No tienes solicitud de reserva",
-    "all": "Todos"
-  },
   "myRequest": {
     "all": "Todas",
-    "immediate": "Inmediatas",
-    "specials": "Especiales",
     "complete": " Mis Solicitudes completas",
-    "pending": "Mis Solicitudes"
+    "immediate": "Inmediatas",
+    "pending": "Mis Solicitudes",
+    "specials": "Especiales"
   },
-  "switch": {
-    "pending": "Pendiente",
-    "complete": "Completo"
+  "myReservations": {
+    "all": "Todos",
+    "complete": "Mis reservas completas",
+    "people": "personas",
+    "title": "Mis reservas",
+    "youHaveNoReservationRequest": "No tienes solicitud de reserva"
   },
   "myRoom": {
     "close": "¡Entendido!",
@@ -286,12 +282,41 @@
     "specialRequests": "Solicitudes especiales",
     "wakeUpCall": "Despertador"
   },
+  "signup-dialog": {
+    "form": {
+      "password": {
+        "hint": "La contraseña debe tener al menos 8 caracteres y contener un número.",
+        "label": "Contraseña",
+        "placeholder": ""
+      },
+      "username": {
+        "hint": "",
+        "label": "",
+        "placeholder": ""
+      }
+    },
+    "header": "",
+    "submit-button": "",
+    "validation": {
+      "password": {
+        "missing-digit": "",
+        "too-short": ""
+      },
+      "username": {
+        "exists": ""
+      }
+    }
+  },
   "specialRequest": {
     "errorCreatingRequest": "Error al crear la solicitud",
     "immediateRequestSuccessfullyCreated": "Solicitud inmediata creada con éxito",
     "message": "Cuéntenos sobre su solicitud especial durante su estadía, estaremos encantados de complacerlo.",
     "placeholder": "Escriba sus solicitudes...",
     "send": "enviar"
+  },
+  "switch": {
+    "complete": "Completo",
+    "pending": "Pendiente"
   },
   "transportation": {
     "attended": "Atendida",
