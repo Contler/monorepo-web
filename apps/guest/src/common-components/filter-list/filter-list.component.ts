@@ -7,15 +7,21 @@ import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material/bott
   styleUrls: ['./filter-list.component.scss'],
 })
 export class FilterListComponent implements OnInit {
+  list: { select: boolean; value: any }[] = [];
   constructor(
     private bottomSheetRef: MatBottomSheetRef<FilterListComponent>,
     @Inject(MAT_BOTTOM_SHEET_DATA)
     public listData: { title: string; list: { select: boolean; value: any }[] },
-  ) {}
+  ) {
 
-  ngOnInit(): void {}
+  }
+
+  ngOnInit(): void {
+    this.list = [...this.listData.list].map(data => ({...data}))
+  }
+
 
   close() {
-    this.bottomSheetRef.dismiss(this.listData.list);
+    this.bottomSheetRef.dismiss(this.list);
   }
 }
