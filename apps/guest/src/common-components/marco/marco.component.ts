@@ -14,6 +14,7 @@ export class MarcoComponent {
   @Input() padding = '16px 16px';
   @Input() backUrl: string | boolean | null = null;
   @Input() filter = false;
+  @Input() home = false;
 
   logo: string | undefined;
   maxHeight = '';

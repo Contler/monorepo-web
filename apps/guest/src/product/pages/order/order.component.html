@@ -1,4 +1,4 @@
-<contler-marco padding="16px 40px" [backUrl]="true">
+<contler-marco padding="16px 40px" [home]="true">
   <ng-container marcoBody>
     <h1 class="ctl-title" contlerColorHotel="primary">{{ 'order.title' | translate }}</h1>
 
@@ -10,25 +10,15 @@
   </ng-container>
 
   <div class="order-footer" marcoFooter>
-    <div style="padding: 0 40px; box-sizing: border-box">
-      <button
-        mat-raised-button
-        color="accent"
-        contlerColorBtnHotel="primary"
-        routerLink="/home/product/create"
-        style="width: 100%"
-      >
-        {{ 'order.makeANewOrder' | translate }}
-      </button>
-    </div>
-
-    <div class="order-footer__btn">
-      <button mat-button disableRipple contlerBtnMenuHotel [select]="pending" (click)="pending = true">
-        {{ 'order.inProcess' | translate }}
-      </button>
-      <button mat-button disableRipple contlerBtnMenuHotel [select]="!pending" (click)="pending = false">
-        {{ 'order.accomplished' | translate }}
-      </button>
-    </div>
+    <button
+      mat-raised-button
+      color="accent"
+      contlerColorBtnHotel="primary"
+      routerLink="/home/product/create"
+      style="width: 100%; margin-bottom: 10px"
+    >
+      {{ 'order.makeANewOrder' | translate }}
+    </button>
+    <contler-switch (value)="pending = !$event"></contler-switch>
   </div>
 </contler-marco>

@@ -24,4 +24,15 @@ export class OptionRequestComponent implements OnInit {
   blur() {
     this.isSelect = false;
   }
+
+  transformText(text: string) {
+    if (!text) {
+      return '';
+    }
+    const data = text.split(' ');
+    data[0] = data[0].replace(/[a-zA-ZÀ-ÖØ-öø-ÿ]/, function (m) {
+      return m.toUpperCase();
+    });
+    return data.join(' ');
+  }
 }

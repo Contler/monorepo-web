@@ -9,6 +9,9 @@
         <button mat-icon-button type="button" (click)="goToRoute(backUrl)" *ngIf="backUrl">
           <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
+        <button mat-icon-button type="button" routerLink="/home/welcome" contlerColorHotel *ngIf="home">
+          <mat-icon>home</mat-icon>
+        </button>
       </div>
 
       <img *ngIf="logo" [src]="logo" routerLink="/home" class="logo-general" alt="logo" />
@@ -40,11 +43,11 @@
       <ng-content select="[marcoMenu]"></ng-content>
     </mat-toolbar>
 
-    <div [style.padding]="padding" style="overflow: scroll; background: #f4f4f4">
+    <div [style.padding]="padding" style="overflow: scroll">
       <ng-content select="[marcoBody]"></ng-content>
     </div>
 
-    <div class="marco__footer">
+    <div>
       <ng-content select="[marcoFooter]"></ng-content>
     </div>
   </mat-sidenav-content>

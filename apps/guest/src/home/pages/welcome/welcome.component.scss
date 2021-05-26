@@ -22,11 +22,7 @@
   }
 
   &__content {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
     margin-top: 20px;
-    justify-content: center;
   }
 
   &__footer {
@@ -53,6 +49,11 @@
 
       .text {
         @include text(14px, #7a7a7a, bold);
+        text-transform: capitalize;
+      }
+
+      .icon {
+        height: 24px;
       }
     }
   }

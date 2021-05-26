@@ -6,29 +6,29 @@
     <p class="request__label request__question" contlerColorHotel>
       {{ 'guestRequest.WhatDoYouNeedToday' | translate }}
     </p>
-    <div class="request__content">
+    <contler-option-grid class="request__content">
       <contler-option-request
         *ngFor="let zone of zones$ | async"
         [name]="zone.name"
         [link]="zone.link"
         [icon]="zone.icon"
       ></contler-option-request>
-    </div>
+    </contler-option-grid>
   </div>
 
   <div marcoFooter class="request__footer">
     <div class="request__footer-content">
       <button class="btn" routerLink="/home/my-request">
-        <img src="assets/img/request.svg" alt="request" />
-        <span class="text">{{ constants.request | translate }}</span>
+        <img src="assets/img/request.svg" alt="request" class="icon" />
+        <span class="text">{{ constants.request | translate | lowercase }}</span>
       </button>
       <button class="btn" routerLink="/home/reservation/my-reservation">
-        <img src="assets/img/reservation.svg" alt="request" />
-        <span class="text">{{ constants.reservations | translate }}</span>
+        <img src="assets/img/reservation.svg" alt="request" class="icon" />
+        <span class="text">{{ constants.reservations | translate | lowercase }}</span>
       </button>
       <button class="btn" routerLink="/home/product">
-        <img src="assets/img/order.svg" alt="request" />
-        <span class="text">{{ constants.orders | translate }}</span>
+        <img src="assets/img/order.svg" alt="request" class="icon" />
+        <span class="text">{{ constants.orders | translate | lowercase }}</span>
       </button>
     </div>
   </div>

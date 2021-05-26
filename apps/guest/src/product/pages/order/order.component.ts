@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductService } from '@contler/core';
 import { GuestService } from 'guest/services/guest.service';
 import { switchMap, take } from 'rxjs/operators';
