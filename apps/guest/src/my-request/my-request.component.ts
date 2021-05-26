@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { DynamicRequest, NAME_MODULES, receptionDynamicConverter } from '@contler/dynamic-services';
 import { GuestService } from '../services/guest.service';
-import { switchMap } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { RequestService } from 'guest/services/request.service';
 import { RequestEntity } from '@contler/entity';
 import { MY_REQUEST_CONSTANTS } from './my-request.constants';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { FilterListComponent } from 'guest/common-components/filter-list/filter-list.component';
 
 @Component({
   selector: 'contler-my-request',
@@ -17,8 +19,10 @@ export class MyRequestComponent implements OnInit {
   request: Observable<DynamicRequest[]>;
   pendingRequests: RequestEntity[];
   readonly constants = MY_REQUEST_CONSTANTS;
-  readonly nameModule = [...Object.values(this.constants), ...Object.values(NAME_MODULES)];
-  selected = this.constants.all;
+  nameModule = [...Object.values(this.constants.options), ...Object.values(NAME_MODULES)].map((val) => ({
+    select: false,
+    value: val,
+  }));
   isComplete = false;
   completeReq: RequestEntity[];
   requestComplete: Observable<DynamicRequest[]>;
@@ -27,7 +31,10 @@ export class MyRequestComponent implements OnInit {
     private db: AngularFirestore,
     private guestService: GuestService,
     private requestService: RequestService,
-  ) {}
+    private bottomSheet: MatBottomSheet,
+  ) {
+    this.nameModule.find(f => f.value === this.constants.options.all).select = true;
+  }
 
   ngOnInit(): void {
     const reference = this.db.firestore.collection('dynamicRequest').withConverter(receptionDynamicConverter);
@@ -57,7 +64,22 @@ export class MyRequestComponent implements OnInit {
     );
   }
 
+  openFilter() {
+    this.bottomSheet.open(FilterListComponent, {
+      data: {
+        title: this.constants.filter,
+        list: this.nameModule,
+      },
+      panelClass: 'bottom-custom',
+    }).afterDismissed().pipe(filter(f => !!f)).subscribe(data => {
+      this.nameModule = [...data]
+    })
+  }
+
   get showImmediate() {
-    return this.selected === this.constants.all || this.selected === this.constants.immediate;
+    return (
+      this.nameModule.find((f) => f.value === this.constants.options.all).select ||
+      this.nameModule.find((f) => f.value === this.constants.options.immediate).select
+    );
   }
 }

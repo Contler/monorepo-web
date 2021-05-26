@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { ImmediateItemComponent } from './components/inmediate-item/immediate-item.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { FilterSpecialPipe } from './pipes/filter-special.pipe';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FilterSpecialPipe } from './pipes/filter-special.pipe';
     MaterialModule,
     FormsModule,
     MatMenuModule,
+    MatBottomSheetModule,
   ],
 })
 export class MyRequestModule {}

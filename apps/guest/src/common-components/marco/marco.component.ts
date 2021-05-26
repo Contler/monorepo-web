@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Location } from '@angular/common';
 
 import { GuestService } from 'guest/services/guest.service';
@@ -15,6 +15,7 @@ export class MarcoComponent {
   @Input() backUrl: string | boolean | null = null;
   @Input() filter = false;
   @Input() home = false;
+  @Output() openFilter = new EventEmitter<void>();
 
   logo: string | undefined;
   maxHeight = '';

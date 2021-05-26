@@ -22,6 +22,8 @@ import { OptionRequestComponent } from './option-request/option-request.componen
 import { OptionGridComponent } from './option-grid/option-grid.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { SwitchComponent } from './swith/switch.component';
+import { FilterListComponent } from './filter-list/filter-list.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { SwitchComponent } from './swith/switch.component';
     OptionRequestComponent,
     OptionGridComponent,
     SwitchComponent,
+    FilterListComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +51,7 @@ import { SwitchComponent } from './swith/switch.component';
     TranslateModule,
     DynamicTranslateModule,
     MatMenuModule,
+    MatListModule,
   ],
   exports: [
     ToolbarComponent,

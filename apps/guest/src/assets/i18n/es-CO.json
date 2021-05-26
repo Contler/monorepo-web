@@ -1,4 +1,7 @@
 {
+  "filter": {
+    "name": "Filtrar"
+  },
   "auth": {
     "entry": "Ingreso",
     "forgotTitle": "Ingresa tu correo",
@@ -208,7 +211,8 @@
     "complete": " Mis Solicitudes completas",
     "immediate": "Inmediatas",
     "pending": "Mis Solicitudes",
-    "specials": "Especiales"
+    "specials": "Especiales",
+    "filter": "Filtrar por tipo de solicitud"
   },
   "myReservations": {
     "all": "Todos",

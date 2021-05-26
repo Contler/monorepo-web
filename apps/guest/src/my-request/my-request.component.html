@@ -1,12 +1,4 @@
-<contler-marco [backUrl]="true" [filter]="true" padding="16px 30px">
-  <ng-container marcoFilter>
-    <ng-container *ngFor="let item of nameModule">
-      <button mat-menu-item *ngIf="selected !== item" (click)="selected = item">
-        {{ item | translate }}
-      </button>
-      <button mat-menu-item contlerColorBtnHotel *ngIf="selected === item">{{ item | translate }}</button>
-    </ng-container>
-  </ng-container>
+<contler-marco [backUrl]="true" [filter]="true" padding="16px 30px" (openFilter)='openFilter()'>
 
   <ng-container marcoBody>
     <h1 class="ctl-title" style="text-align: center" contlerColorHotel="primary">
@@ -14,7 +6,7 @@
     </h1>
     <ng-container *ngIf="!isComplete">
       <a
-        *ngFor="let item of request | async | filterSpecial: selected"
+        *ngFor="let item of request | async | filterSpecial: nameModule"
         [routerLink]="item.key"
         style="text-decoration: none"
       >
@@ -31,7 +23,7 @@
     <ng-container *ngIf="isComplete">
       <contler-request-item
         [request]="item"
-        *ngFor="let item of requestComplete | async | filterSpecial: selected"
+        *ngFor="let item of requestComplete | async | filterSpecial: nameModule"
       ></contler-request-item>
       <ng-container *ngIf="showImmediate">
         <a *ngFor="let item of completeReq" style="text-decoration: none">

@@ -1,0 +1,31 @@
+@import "global";
+
+ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  li {
+    list-style-type: none;
+    @include text(16px, #212121);
+    line-height: 1.48;
+    letter-spacing: 0.15px;
+  }
+}
+
+.content {
+  padding: 50px 41px 20px;
+  box-sizing: border-box;
+}
+
+.btn {
+  margin: 40px 0;
+  width: 100%;
+}
+
+.title {
+  @include text(24px);
+  margin-bottom: 20px;
+  font-weight: bold;
+}
