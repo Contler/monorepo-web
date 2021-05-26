@@ -17,6 +17,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { SubZoneReservationComponent } from './page/sub-zone-reservation/sub-zone-reservation.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { FilterReservationPipe } from './pipes/filter-reservation.pipe';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { FilterReservationPipe } from './pipes/filter-reservation.pipe';
     TranslateModule,
     DynamicTranslateModule,
     MatMenuModule,
+    MatBottomSheetModule,
   ],
   entryComponents: [ModalConfirmComponent],
 })

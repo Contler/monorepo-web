@@ -22,6 +22,7 @@ export class MyRequestComponent implements OnInit {
   nameModule = [...Object.values(this.constants.options), ...Object.values(NAME_MODULES)].map((val) => ({
     select: false,
     value: val,
+    name: val,
   }));
   isComplete = false;
   completeReq: RequestEntity[];
@@ -33,7 +34,7 @@ export class MyRequestComponent implements OnInit {
     private requestService: RequestService,
     private bottomSheet: MatBottomSheet,
   ) {
-    this.nameModule.find(f => f.value === this.constants.options.all).select = true;
+    this.nameModule.find((f) => f.value === this.constants.options.all).select = true;
   }
 
   ngOnInit(): void {
@@ -49,6 +50,7 @@ export class MyRequestComponent implements OnInit {
     );
     this.requestService.getRequests(false).subscribe((req) => {
       this.pendingRequests = req;
+      console.log(this.pendingRequests);
     });
     this.requestService.getRequests(true).subscribe((req) => {
       this.completeReq = req;
@@ -65,15 +67,19 @@ export class MyRequestComponent implements OnInit {
   }
 
   openFilter() {
-    this.bottomSheet.open(FilterListComponent, {
-      data: {
-        title: this.constants.filter,
-        list: this.nameModule,
-      },
-      panelClass: 'bottom-custom',
-    }).afterDismissed().pipe(filter(f => !!f)).subscribe(data => {
-      this.nameModule = [...data]
-    })
+    this.bottomSheet
+      .open(FilterListComponent, {
+        data: {
+          title: this.constants.filter,
+          list: this.nameModule,
+        },
+        panelClass: 'bottom-custom',
+      })
+      .afterDismissed()
+      .pipe(filter((f) => !!f))
+      .subscribe((data) => {
+        this.nameModule = [...data];
+      });
   }
 
   get showImmediate() {

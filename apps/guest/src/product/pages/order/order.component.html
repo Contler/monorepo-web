@@ -1,6 +1,6 @@
-<contler-marco padding="16px 40px" [home]="true">
+<contler-marco padding="16px 40px" [home]="true" [filter]="true">
   <ng-container marcoBody>
-    <h1 class="ctl-title" contlerColorHotel="primary">{{ 'order.title' | translate }}</h1>
+    <h1 class="ctl-title" contlerColorHotel="primary">{{ constants.title | translate }}</h1>
 
     <contler-order-item
       *ngFor="let order of order$ | async | activeOrder: pending"

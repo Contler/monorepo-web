@@ -1,24 +1,4 @@
-<contler-marco [home]="true" padding="16px 30px" [filter]="true">
-  <ng-container marcoFilter>
-    <ng-container>
-      <button mat-menu-item contlerColorBtnHotel *ngIf="select === constants.all">
-        {{ constants.all | translate }}
-      </button>
-      <button mat-menu-item *ngIf="select !== constants.all" (click)="select = constants.all">
-        {{ constants.all | translate }}
-      </button>
-    </ng-container>
-
-    <ng-container *ngFor="let zone of zones">
-      <button mat-menu-item contlerColorBtnHotel *ngIf="select === zone.id">
-        {{ zone.name | ctrTranslate }}
-      </button>
-      <button mat-menu-item *ngIf="select !== zone.id" (click)="select = zone.id">
-        {{ zone.name | ctrTranslate }}
-      </button>
-    </ng-container>
-  </ng-container>
-
+<contler-marco [home]="true" padding="16px 30px" [filter]="true" (openFilter)="openFilter()">
   <div marcoBody>
     <h1 class="my-reservation__title" contlerColorHotel="primary">
       {{ (isComplete ? constants.complete : constants.pending) | translate }}
@@ -26,7 +6,7 @@
 
     <div
       class="my-reservation__item"
-      *ngFor="let item of isComplete ? bookingComplete : (bookings | filterReservation: select)"
+      *ngFor="let item of isComplete ? bookingComplete : (bookings | filterReservation: zones)"
       routerLink="/home/reservation/my-reservation/{{ item.id }}"
     >
       <div>

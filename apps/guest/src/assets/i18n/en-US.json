@@ -94,6 +94,9 @@
     "text": "Your currency exchange request has been successfully received. Come to the reception to receive your money.",
     "title": "Do you need a currency exchange? Fill out this information."
   },
+  "filter": {
+    "name": "Filter"
+  },
   "finishOrder": {
     "immediately": "Immediately",
     "order": "ORDER",
@@ -206,6 +209,7 @@
   "myRequest": {
     "all": "All",
     "complete": " My complete applications",
+    "filter": "Filter by request type",
     "immediate": "Immediate",
     "pending": "My requests",
     "specials": "Specials"
@@ -213,6 +217,7 @@
   "myReservations": {
     "all": "Everyone",
     "complete": "My complete reservations",
+    "filter": "Filter by type of reservation",
     "people": "people",
     "title": "My reservations",
     "youHaveNoReservationRequest": "You have no reservation request"
@@ -230,6 +235,7 @@
   },
   "order": {
     "accomplished": "Accomplished",
+    "all": "Everyone",
     "inProcess": "In process",
     "makeANewOrder": "Make a new order",
     "title": "My orders"
@@ -286,24 +292,7 @@
     "form": {
       "password": {
         "hint": "The password must be at least 8 characters long and contain a number.",
-        "label": "Password",
-        "placeholder": ""
-      },
-      "username": {
-        "hint": "",
-        "label": "",
-        "placeholder": ""
-      }
-    },
-    "header": "",
-    "submit-button": "",
-    "validation": {
-      "password": {
-        "missing-digit": "",
-        "too-short": ""
-      },
-      "username": {
-        "exists": ""
+        "label": "Password"
       }
     }
   },

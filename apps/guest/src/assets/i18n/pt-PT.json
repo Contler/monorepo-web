@@ -94,6 +94,9 @@
     "text": "Sua solicitação de câmbio foi recebida com sucesso. Venha até a recepção para receber seu dinheiro.",
     "title": "Você precisa de um serviço de câmbio? Preencha essas informações."
   },
+  "filter": {
+    "name": "Filtrar"
+  },
   "finishOrder": {
     "immediately": "Imediatamente",
     "order": "Ordem",
@@ -206,6 +209,7 @@
   "myRequest": {
     "all": "Todos",
     "complete": " Meus aplicativos completos",
+    "filter": "Filtrar por tipo de solicitação",
     "immediate": "Imediato",
     "pending": "Minhas solicitações",
     "specials": "Especiais"
@@ -213,6 +217,7 @@
   "myReservations": {
     "all": "Todos",
     "complete": "Minhas reservas completas",
+    "filter": "Filtrar por tipo de reserva",
     "people": "pessoas",
     "title": "Minhas reservas",
     "youHaveNoReservationRequest": "Você não tem pedido de reserva"
@@ -230,6 +235,7 @@
   },
   "order": {
     "accomplished": "Realizado",
+    "all": "Todos",
     "inProcess": "Em processo",
     "makeANewOrder": "Faça um novo pedido",
     "title": "minhas ordens"
@@ -286,24 +292,7 @@
     "form": {
       "password": {
         "hint": "A senha deve ter pelo menos 8 caracteres e conter um número.",
-        "label": "Senha",
-        "placeholder": ""
-      },
-      "username": {
-        "hint": "",
-        "label": "",
-        "placeholder": ""
-      }
-    },
-    "header": "",
-    "submit-button": "",
-    "validation": {
-      "password": {
-        "missing-digit": "",
-        "too-short": ""
-      },
-      "username": {
-        "exists": ""
+        "label": "Senha"
       }
     }
   },

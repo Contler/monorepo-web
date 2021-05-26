@@ -1,13 +1,13 @@
 <div class="content">
-  <h1 contlerColorHotel class='title'>{{ listData.title | translate }}</h1>
+  <h1 contlerColorHotel class="title">{{ listData.title | translate }}</h1>
   <ul>
     <li *ngFor="let item of list">
       <mat-checkbox [(ngModel)]="item.select">
-        {{ item.value | translate | ctrTranslate }}
+        {{ item.name | translate | ctrTranslate }}
       </mat-checkbox>
     </li>
   </ul>
-  <button mat-button contlerColorBtnHotel class="btn" (click)="close()">
+  <button mat-raised-button contlerColorBtnHotel class="btn" (click)="close()">
     {{ 'filter.name' | translate }}
   </button>
 </div>

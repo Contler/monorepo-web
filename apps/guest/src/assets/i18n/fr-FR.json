@@ -94,6 +94,9 @@
     "text": "Votre demande de change a été reçue avec succès. Venez à la réception pour recevoir votre argent.",
     "title": "Avez-vous besoin d'un bureau de change? Remplissez ces informations."
   },
+  "filter": {
+    "name": "Filtrer"
+  },
   "finishOrder": {
     "immediately": "Immédiatement",
     "order": "ordre",
@@ -206,6 +209,7 @@
   "myRequest": {
     "all": "Toutes",
     "complete": " Mes applications complètes",
+    "filter": "Filtrer par type de demande",
     "immediate": "Immédiat",
     "pending": "Mes demandes",
     "specials": "Promotions"
@@ -213,6 +217,7 @@
   "myReservations": {
     "all": "tous",
     "complete": "Mes réservations complètes",
+    "filter": "Filtrer par type de réservation",
     "people": "Personnes",
     "title": "Mes réservations",
     "youHaveNoReservationRequest": "Vous n'avez pas de demande de réservation"
@@ -230,6 +235,7 @@
   },
   "order": {
     "accomplished": "accompli",
+    "all": "tous",
     "inProcess": "En cours",
     "makeANewOrder": "Faire une nouvelle commande",
     "title": "Mes commandes"
@@ -286,24 +292,7 @@
     "form": {
       "password": {
         "hint": "Le mot de passe doit comporter au moins 8 caractères et contenir un nombre.",
-        "label": "Mot de passe",
-        "placeholder": ""
-      },
-      "username": {
-        "hint": "",
-        "label": "",
-        "placeholder": ""
-      }
-    },
-    "header": "",
-    "submit-button": "",
-    "validation": {
-      "password": {
-        "missing-digit": "",
-        "too-short": ""
-      },
-      "username": {
-        "exists": ""
+        "label": "Mot de passe"
       }
     }
   },

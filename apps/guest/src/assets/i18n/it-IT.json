@@ -94,6 +94,9 @@
     "text": "La tua richiesta di cambio valuta è stata ricevuta con successo. Vieni alla reception per ricevere i tuoi soldi.",
     "title": "Hai bisogno di un cambio valuta? Compila queste informazioni."
   },
+  "filter": {
+    "name": "Filtro"
+  },
   "finishOrder": {
     "immediately": "Subito",
     "order": "ordine",
@@ -206,6 +209,7 @@
   "myRequest": {
     "all": "tutto",
     "complete": " Le mie applicazioni complete",
+    "filter": "Filtra per tipo di richiesta",
     "immediate": "immediato",
     "pending": "Le mie richieste",
     "specials": "Specials"
@@ -213,6 +217,7 @@
   "myReservations": {
     "all": "tutto",
     "complete": "Le mie prenotazioni complete",
+    "filter": "Filtra per tipo di prenotazione",
     "people": "persone",
     "title": "Le mie prenotazioni",
     "youHaveNoReservationRequest": "Non hai richiesta di prenotazione"
@@ -230,6 +235,7 @@
   },
   "order": {
     "accomplished": "compiuto",
+    "all": "tutto",
     "inProcess": "In corso",
     "makeANewOrder": "Fai un nuovo ordine",
     "title": "I miei ordini"
@@ -286,24 +292,7 @@
     "form": {
       "password": {
         "hint": "La password deve essere lunga almeno 8 caratteri e contenere un numero.",
-        "label": "password",
-        "placeholder": ""
-      },
-      "username": {
-        "hint": "",
-        "label": "",
-        "placeholder": ""
-      }
-    },
-    "header": "",
-    "submit-button": "",
-    "validation": {
-      "password": {
-        "missing-digit": "",
-        "too-short": ""
-      },
-      "username": {
-        "exists": ""
+        "label": "password"
       }
     }
   },

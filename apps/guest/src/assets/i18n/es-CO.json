@@ -1,7 +1,4 @@
 {
-  "filter": {
-    "name": "Filtrar"
-  },
   "auth": {
     "entry": "Ingreso",
     "forgotTitle": "Ingresa tu correo",
@@ -96,6 +93,9 @@
     "quantityToChange": "Cantidad a cambiar",
     "text": "Su solicitud de cambio de moneda se ha recibido correctamente. Acércate a recepción para recibir tu dinero.",
     "title": "¿Necesitas un cambio de moneda? Complete esta información."
+  },
+  "filter": {
+    "name": "Filtrar"
   },
   "finishOrder": {
     "immediately": "Inmediatamente",
@@ -209,14 +209,15 @@
   "myRequest": {
     "all": "Todas",
     "complete": " Mis Solicitudes completas",
+    "filter": "Filtrar por tipo de solicitud",
     "immediate": "Inmediatas",
     "pending": "Mis Solicitudes",
-    "specials": "Especiales",
-    "filter": "Filtrar por tipo de solicitud"
+    "specials": "Especiales"
   },
   "myReservations": {
     "all": "Todos",
     "complete": "Mis reservas completas",
+    "filter": "Filtrar por tipo de reserva",
     "people": "personas",
     "title": "Mis reservas",
     "youHaveNoReservationRequest": "No tienes solicitud de reserva"
@@ -234,6 +235,7 @@
   },
   "order": {
     "accomplished": "Terminado",
+    "all": "Todos",
     "inProcess": "En proceso",
     "makeANewOrder": "Haz un nuevo pedido",
     "title": "Mis ordenes"
@@ -290,24 +292,7 @@
     "form": {
       "password": {
         "hint": "La contraseña debe tener al menos 8 caracteres y contener un número.",
-        "label": "Contraseña",
-        "placeholder": ""
-      },
-      "username": {
-        "hint": "",
-        "label": "",
-        "placeholder": ""
-      }
-    },
-    "header": "",
-    "submit-button": "",
-    "validation": {
-      "password": {
-        "missing-digit": "",
-        "too-short": ""
-      },
-      "username": {
-        "exists": ""
+        "label": "Contraseña"
       }
     }
   },
