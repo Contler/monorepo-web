@@ -17,6 +17,8 @@ import { CompleteOrderModalComponent } from './components/complete-order-modal/c
 import { MatDialogModule } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { OrderFilterPipe } from './order-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     ActiveOrderPipe,
     OrderDetailComponent,
     CompleteOrderModalComponent,
+    OrderFilterPipe,
   ],
   imports: [
     CommonModule,
@@ -39,6 +42,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     MatDialogModule,
     TranslateModule,
     DynamicTranslateModule,
+    MatBottomSheetModule,
   ],
 })
 export class ProductModule {}

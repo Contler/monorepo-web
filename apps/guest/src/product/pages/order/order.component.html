@@ -1,9 +1,9 @@
-<contler-marco padding="16px 40px" [home]="true" [filter]="true">
+<contler-marco padding="16px 40px" [home]="true" [filter]="true" (openFilter)="openFilter()">
   <ng-container marcoBody>
     <h1 class="ctl-title" contlerColorHotel="primary">{{ constants.title | translate }}</h1>
 
     <contler-order-item
-      *ngFor="let order of order$ | async | activeOrder: pending"
+      *ngFor="let order of order$ | async | activeOrder: pending | orderFilter: listRestaurants"
       [order]="order"
       (click)="goToOrder(order)"
     ></contler-order-item>

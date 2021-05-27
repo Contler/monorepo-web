@@ -238,7 +238,8 @@
     "all": "Todos",
     "inProcess": "En proceso",
     "makeANewOrder": "Haz un nuevo pedido",
-    "title": "Mis ordenes"
+    "title": "Mis ordenes",
+    "filter": "Filtrar por restaurante"
   },
   "orderDetail": {
     "comments": "Comentarios:",
