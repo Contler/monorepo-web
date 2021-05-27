@@ -236,6 +236,7 @@
   "order": {
     "accomplished": "compiuto",
     "all": "tutto",
+    "filter": "Filtra per Ristorante",
     "inProcess": "In corso",
     "makeANewOrder": "Fai un nuovo ordine",
     "title": "I miei ordini"

@@ -236,6 +236,7 @@
   "order": {
     "accomplished": "Accomplished",
     "all": "Everyone",
+    "filter": "Filter by Restaurant",
     "inProcess": "In process",
     "makeANewOrder": "Make a new order",
     "title": "My orders"

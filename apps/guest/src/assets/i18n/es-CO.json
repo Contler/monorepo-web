@@ -236,10 +236,10 @@
   "order": {
     "accomplished": "Terminado",
     "all": "Todos",
+    "filter": "Filtrar por restaurante",
     "inProcess": "En proceso",
     "makeANewOrder": "Haz un nuevo pedido",
-    "title": "Mis ordenes",
-    "filter": "Filtrar por restaurante"
+    "title": "Mis ordenes"
   },
   "orderDetail": {
     "comments": "Comentarios:",

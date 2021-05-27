@@ -236,6 +236,7 @@
   "order": {
     "accomplished": "Vollbracht",
     "all": "Alle",
+    "filter": "Nach Restaurant filtern",
     "inProcess": "In Bearbeitung",
     "makeANewOrder": "Machen Sie eine neue Bestellung",
     "title": "Meine Bestellungen"

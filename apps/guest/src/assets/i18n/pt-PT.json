@@ -236,6 +236,7 @@
   "order": {
     "accomplished": "Realizado",
     "all": "Todos",
+    "filter": "Filtrar por restaurante",
     "inProcess": "Em processo",
     "makeANewOrder": "Faça um novo pedido",
     "title": "minhas ordens"
