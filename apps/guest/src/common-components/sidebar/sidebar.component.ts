@@ -9,6 +9,7 @@ import { GuestEntity, HotelEntity } from '@contler/entity';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '@contler/models/language.model';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { SIDEBAR_CONSTANTS } from './sidebar.contants';
 
 @Component({
   selector: 'contler-sidebar',
@@ -20,6 +21,7 @@ export class SidebarComponent {
   languages: Observable<Language[]>;
   hotel: HotelEntity;
   guest: GuestEntity;
+  constants = SIDEBAR_CONSTANTS;
 
   constructor(
     private router: Router,

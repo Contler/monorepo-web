@@ -276,18 +276,8 @@
     "veryBad": "Very bad 1/5"
   },
   "sidebar": {
-    "cleaning": "Cleaning",
-    "immediateRequest": "Immediate Request",
-    "lateCheckOut": "Late Check-out",
-    "logOut": "Log Out",
-    "maintenance": "Maintenance",
-    "myImmediateRequests": "My immediate requests",
-    "myRequest": "My requests",
-    "myReservations": "My Reservations",
-    "orders": "Orders",
-    "reservations": "Reservations",
-    "specialRequests": "Special requests",
-    "wakeUpCall": "Wake up call"
+    "home": "Start",
+    "logOut": "Log Out"
   },
   "signup-dialog": {
     "form": {

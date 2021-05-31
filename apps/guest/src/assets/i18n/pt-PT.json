@@ -276,18 +276,8 @@
     "veryBad": "Muito ruim 1/5"
   },
   "sidebar": {
-    "cleaning": "Limpeza",
-    "immediateRequest": "Pedido imediato",
-    "lateCheckOut": "Checkout tardio",
-    "logOut": "Sair",
-    "maintenance": "Manutenção",
-    "myImmediateRequests": "Meus pedidos imediatos",
-    "myRequest": "Minhas solicitações",
-    "myReservations": "Minhas reservas",
-    "orders": "Encomendas",
-    "reservations": "Reservas",
-    "specialRequests": "requerimentos especiais",
-    "wakeUpCall": "Despertar"
+    "home": "Home",
+    "logOut": "Sair"
   },
   "signup-dialog": {
     "form": {

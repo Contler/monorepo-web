@@ -3,6 +3,10 @@
   <span class="menu__text" contlerColorHotel>{{ guest?.name }} {{ guest?.lastName }}</span>
   <span class="menu__text space" contlerColorHotel>{{ guest?.room?.name | ctrTranslate }}</span>
 
+  <button mat-button routerLink="/home/welcome" class="space">
+    <span class="menu__text" contlerColorHotel> {{ constants.home | translate }}</span>
+  </button>
+
   <button mat-button *ngFor="let language of languages | async" (click)="changeLanguage(language)">
     <span
       class="menu__text"
@@ -16,7 +20,7 @@
   <div class="menu__logout">
     <button mat-button (click)="logout()">
       <span contlerColorHotel class="menu__text">
-        {{ 'sidebar.logOut' | translate }}
+        {{ constants.logout | translate }}
       </span>
     </button>
   </div>

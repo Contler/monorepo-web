@@ -276,18 +276,8 @@
     "veryBad": "Sehr schlecht 1/5"
   },
   "sidebar": {
-    "cleaning": "Reinigung",
-    "immediateRequest": "Sofortige Anfrage",
-    "lateCheckOut": "Später check out",
-    "logOut": "Ausloggen",
-    "maintenance": "Instandhaltung",
-    "myImmediateRequests": "Meine sofortigen Anfragen",
-    "myRequest": "Meine Anfragen",
-    "myReservations": "Meine Reservierungen",
-    "orders": "Aufträge",
-    "reservations": "Reservierungen",
-    "specialRequests": "Spezialwünsche",
-    "wakeUpCall": "Weckruf"
+    "home": "Zuhause",
+    "logOut": "Ausloggen"
   },
   "signup-dialog": {
     "form": {
