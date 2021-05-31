@@ -67,3 +67,6 @@ jobs:
 
       - name: deploy guest
         run: node bin/deploy.js guest "$FIREBASE_TOKEN" "$FIREBASE_PROJECT"
+
+      - name: deploy admin
+        run: node bin/deploy.js admin "$FIREBASE_TOKEN" "$FIREBASE_PROJECT"
