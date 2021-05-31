@@ -1,0 +1,31 @@
+.icons {
+  display: flex;
+  column-gap: 40px;
+  row-gap: 30px;
+  flex-wrap: wrap;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 5px;
+  position: relative;
+}
+
+.delete {
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  transform: scale(0.5);
+}
+
+.create {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  align-items: baseline;
+}
