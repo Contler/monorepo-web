@@ -24,6 +24,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { SwitchComponent } from './swith/switch.component';
 import { FilterListComponent } from './filter-list/filter-list.component';
 import { MatListModule } from '@angular/material/list';
+import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MatListModule } from '@angular/material/list';
     OptionGridComponent,
     SwitchComponent,
     FilterListComponent,
+    BottomBarComponent,
   ],
   imports: [
     CommonModule,
@@ -66,6 +68,7 @@ import { MatListModule } from '@angular/material/list';
     OptionRequestComponent,
     OptionGridComponent,
     SwitchComponent,
+    BottomBarComponent,
   ],
   providers: [UserService, AvalibleUserGuard],
 })
