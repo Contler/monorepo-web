@@ -14,6 +14,7 @@ export const environment = {
     appId: '1:424830318314:web:aa057126d096f3d747c993',
   },
   apiUrl: 'http://localhost:3000/',
+  emulate: true,
 };
 
 /*

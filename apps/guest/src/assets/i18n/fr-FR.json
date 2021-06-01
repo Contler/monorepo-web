@@ -1,5 +1,9 @@
 {
   "auth": {
+    "entry": "Entrée",
+    "forgotTitle": "Entrer votre Email",
+    "invalidEmail": "Courrier invalide",
+    "recovery": "Récupérer",
     "userDisabled": "Le compte n'est plus actif",
     "userNotFound": "Courriel ou mot de passe non valide"
   },
@@ -9,13 +13,6 @@
     "createRequest": "Créer une demande",
     "text": "Votre demande de prêt en espèces a été reçue avec succès. Venez à la réception pour recevoir votre argent.",
     "title": "Avez-vous besoin d'un prêt en espèces? Remplissez ces informations."
-  },
-  "dynamicRequest": {
-    "all": "Tous",
-    "attended": "Présence à",
-    "complete": "Complété",
-    "programing": "Programmé",
-    "update": "Mise à jour"
   },
   "cleaning": {
     "anyRecommendation": "Toute recommandation",
@@ -32,8 +29,8 @@
     "title": "Quand voulez-vous que nous nettoyions votre chambre?",
     "towelChange": "Changement de serviette",
     "what": "Quoi?",
-    "whatDoYouNeedTheMaintenanceFor": "",
-    "whenDoYouNeedTheMaintenance": ""
+    "whatDoYouNeedTheMaintenanceFor": "Pourquoi avez-vous besoin d'un nettoyage?",
+    "whenDoYouNeedTheMaintenance": "Quand avez-vous besoin d'un nettoyage?"
   },
   "concierge": {
     "close": "Je l'ai!",
@@ -81,6 +78,13 @@
   "dynamicForm": {
     "which": "Laquelle ?"
   },
+  "dynamicRequest": {
+    "all": "Tous",
+    "attended": "Présence à",
+    "complete": "Complété",
+    "programing": "Programmé",
+    "update": "Mise à jour"
+  },
   "exchange": {
     "close": "Je l'ai!",
     "createRequest": "Créer une demande",
@@ -89,6 +93,9 @@
     "quantityToChange": "Quantité à changer",
     "text": "Votre demande de change a été reçue avec succès. Venez à la réception pour recevoir votre argent.",
     "title": "Avez-vous besoin d'un bureau de change? Remplissez ces informations."
+  },
+  "filter": {
+    "name": "Filtrer"
   },
   "finishOrder": {
     "immediately": "Immédiatement",
@@ -101,10 +108,13 @@
     "whereDoYouWantToReceiveIt": "Où voulez-vous le recevoir"
   },
   "guestRequest": {
+    "WhatDoYouNeedToday": "De quoi avez-vous besoin aujourd'hui ?",
     "hello": "Bonjour",
+    "orders": "Les commandes",
+    "request": "Demandes",
+    "reservations": "Réservations",
     "seeAllHotel": "VOIR TOUS HÔTEL",
-    "whereDoYouNeedUs": "Où avez-vous besoin de nous?",
-    "WhatDoYouNeedToday": "De quoi avez-vous besoin aujourd'hui ?"
+    "whereDoYouNeedUs": "Où avez-vous besoin de nous?"
   },
   "inmediateRequest": {
     "area": "Surface",
@@ -179,16 +189,16 @@
     "veryBad": "très mauvais"
   },
   "modules": {
-    "immediateRequests": "Demandes immédiates",
-    "specialRequest": "Demandes spéciales",
-    "reservations": "Réservations",
     "clean": "Pettoyage",
-    "maintenance": "La maintenance",
-    "reception": "La réception",
-    "room": "Chambre",
-    "wakeup-call": "Les appels à l'attention",
+    "immediateRequests": "Demandes immédiates",
     "late-checkouts": "Départs tardifs",
-    "orders": "Commandes"
+    "maintenance": "La maintenance",
+    "orders": "Commandes",
+    "reception": "La réception",
+    "reservations": "Réservations",
+    "room": "Chambre",
+    "specialRequest": "Demandes spéciales",
+    "wakeup-call": "Les appels à l'attention"
   },
   "myInmediateRequests": {
     "done": "Terminé",
@@ -196,7 +206,18 @@
     "toDo": "Faire",
     "youHaveNoImmediateRequest": "Vous n'avez pas de demande immédiate"
   },
+  "myRequest": {
+    "all": "Toutes",
+    "complete": " Mes applications complètes",
+    "filter": "Filtrer par type de demande",
+    "immediate": "Immédiat",
+    "pending": "Mes demandes",
+    "specials": "Promotions"
+  },
   "myReservations": {
+    "all": "tous",
+    "complete": "Mes réservations complètes",
+    "filter": "Filtrer par type de réservation",
     "people": "Personnes",
     "title": "Mes réservations",
     "youHaveNoReservationRequest": "Vous n'avez pas de demande de réservation"
@@ -214,6 +235,8 @@
   },
   "order": {
     "accomplished": "accompli",
+    "all": "tous",
+    "filter": "Filtrer par restaurant",
     "inProcess": "En cours",
     "makeANewOrder": "Faire une nouvelle commande",
     "title": "Mes commandes"
@@ -253,18 +276,16 @@
     "veryBad": "Très mauvais 1/5"
   },
   "sidebar": {
-    "cleaning": "Nettoyage",
-    "immediateRequest": "Demande immédiate",
-    "lateCheckOut": "Départ tardif",
-    "logOut": "Connectez - Out",
-    "maintenance": "Maintenance",
-    "myImmediateRequests": "Mes demandes immédiates",
-    "myRequest": "Mes demandes",
-    "myReservations": "Mes réservations",
-    "orders": "Ordres",
-    "reservations": "Réservations",
-    "specialRequests": "Demandes spéciales",
-    "wakeUpCall": "Réveil téléphonique"
+    "home": "Accueil",
+    "logOut": "Connectez - Out"
+  },
+  "signup-dialog": {
+    "form": {
+      "password": {
+        "hint": "Le mot de passe doit comporter au moins 8 caractères et contenir un nombre.",
+        "label": "Mot de passe"
+      }
+    }
   },
   "specialRequest": {
     "errorCreatingRequest": "Erreur lors de la création de la demande",
@@ -272,6 +293,10 @@
     "message": "Faites-nous part de votre demande particulière lors de votre discours, nous serons heureux de vous plaire",
     "placeholder": "Écrivez vos demandes…",
     "send": "Envoyer"
+  },
+  "switch": {
+    "complete": "Complète",
+    "pending": "EN ATTENTE"
   },
   "transportation": {
     "attended": "Assisté",

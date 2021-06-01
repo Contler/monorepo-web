@@ -1,6 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
-import { InputField } from '@contler/dynamic-services';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { InputField } from '../../interfaces/input-field';
 
 @Component({
   selector: 'contler-text-input',
@@ -31,5 +31,9 @@ export class TextInputComponent implements ControlValueAccessor {
   public setValueFromFieldOther(value: string): void {
     this.onChange(value);
     this.onTouch();
+  }
+
+  get typeValue(): string {
+    return this.typeInput?.value as string;
   }
 }

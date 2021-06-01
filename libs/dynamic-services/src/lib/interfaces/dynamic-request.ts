@@ -2,7 +2,7 @@ import { InputField } from './input-field';
 import { GuestEntity } from '@contler/entity';
 import { MODULES } from '../constants/modules-references';
 import { DynamicRequestStatus } from '../constants/dynamic-request-status';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 import FirestoreDataConverter = firebase.firestore.FirestoreDataConverter;
 
 export interface DynamicRequest {

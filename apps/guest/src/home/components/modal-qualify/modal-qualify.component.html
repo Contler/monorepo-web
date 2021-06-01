@@ -2,17 +2,17 @@
   <img src="assets/img/rating.svg" alt="" class="cnt-qualify__img" />
   <p class="cnt-qualify__title">
     {{ 'modalQualifyComponent.title' | translate }} {{ data.message | translate | ctrTranslate }}
-    {{ 'modalQualifyComponent.on' | translate }} {{ data.zone.name | ctrTranslate }}
+    {{ 'modalQualifyComponent.on' | translate }} {{ data.zone?.name | ctrTranslate }}
     {{ 'modalQualifyComponent.day' | translate }} {{ data.createAt | date: 'dd/MM/yyyy' }}?
   </p>
 
   <contler-start
-    value="0"
-    totalstars="5"
+    [value]="0"
+    [totalstars]="5"
     checkedcolor="#dfae00"
     uncheckedcolor="#6c6c6c"
     size="24px"
-    readonly="false"
+    [readonly]="false"
     (rate)="selectStart($event)"
   ></contler-start>
 

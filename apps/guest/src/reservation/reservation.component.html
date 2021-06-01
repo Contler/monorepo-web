@@ -1,15 +1,19 @@
-<contler-marco padding="0" [backUrl]="'/home/welcome'">
+<contler-marco padding="0" [backUrl]="true">
   <div marcoBody class="reservation">
     <h1 class="reservation__title" contlerColorHotel="primary">
       {{ 'reservation.title' | translate }}
     </h1>
 
-    <a class="reservation__zone striped" *ngFor="let item of zoneReservation" (click)="goToPage(item)">
-      <mat-icon class="reservation__zone-icon">{{ item.icon || 'room_service' }}</mat-icon>
-      <p class="reservation__zone-text" contlerColorHotel="primary">
-        {{ item.name | ctrTranslate | uppercase }}
-      </p>
-      <mat-icon class="reservation__zone-icon">navigate_next</mat-icon>
-    </a>
+    <contler-option-grid>
+      <contler-option-request
+        *ngFor="let opt of zoneReservation"
+        [name]="opt.name"
+        [icon]="opt.icon"
+        [link]="getLink(opt)"
+      ></contler-option-request>
+    </contler-option-grid>
+  </div>
+  <div marcoFooter>
+    <contler-bottom-bar></contler-bottom-bar>
   </div>
 </contler-marco>

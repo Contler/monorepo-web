@@ -1,0 +1,13 @@
+.forgot {
+  display: grid;
+
+  &_title {
+    margin-bottom: 10px;
+  }
+
+  &__error {
+    color: red;
+    text-align: center;
+    display: block;
+  }
+}

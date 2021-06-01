@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { CategoryEntity, ScheduleEntity } from '@contler/entity';
 import { AllDays, DAYS, ICONS } from '@contler/const';
-import { ZoneService } from 'hotel/zone/services/zone.service';
+import { ZoneService } from '@contler/hotel/zone/services/zone.service';
 import { ReservationService } from '@contler/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, first, map, startWith, switchMap, tap } from 'rxjs/operators';

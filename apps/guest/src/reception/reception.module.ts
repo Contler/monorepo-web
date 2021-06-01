@@ -20,7 +20,6 @@ import { CashLoanComponent } from './pages/cash-loan/cash-loan.component';
 import { ExchangeComponent } from './pages/exchange/exchange.component';
 import { ConciergeComponent } from './pages/concierge/concierge.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ReceptionItemComponent } from './components/reception-item/reception-item.component';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 
 @NgModule({
@@ -30,7 +29,6 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     CashLoanComponent,
     ExchangeComponent,
     ConciergeComponent,
-    ReceptionItemComponent,
   ],
   imports: [
     CommonModule,

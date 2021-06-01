@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { RoomService } from 'hotel/room/services/room.service';
-import { MessagesService } from 'hotel/services/messages/messages.service';
+import { RoomService } from '@contler/hotel/room/services/room.service';
+import { MessagesService } from '@contler/hotel/services/messages/messages.service';
 import { RoomEntity } from '@contler/entity';
 import { TranslateService } from '@ngx-translate/core';
 

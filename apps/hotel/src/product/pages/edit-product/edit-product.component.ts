@@ -4,7 +4,7 @@ import { ProductService, RestaurantService } from '@contler/core';
 import { map, switchMap, take } from 'rxjs/operators';
 import { ProductEntity } from '@contler/entity';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { Observable } from 'rxjs';
 import { CategoryModels } from '@contler/models/category.models';

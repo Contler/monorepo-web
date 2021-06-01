@@ -12,6 +12,7 @@ import { BookingRequest } from '@contler/models/booking-request';
 import { MessagesService } from 'guest/services/messages/messages.service';
 import { TranslateService } from '@ngx-translate/core';
 import { forkJoin, of } from 'rxjs';
+import { DateFilterFn } from '@angular/material/datepicker';
 
 @Component({
   selector: 'contler-create-reservation',
@@ -27,7 +28,7 @@ export class CreateReservationComponent implements OnInit {
   loader = false;
   schedule: ScheduleEntity[] = [];
   err = '';
-  filterDate: Function;
+  filterDate: DateFilterFn<any>;
 
   constructor(
     private guestService: GuestService,

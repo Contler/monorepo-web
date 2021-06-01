@@ -1,34 +1,27 @@
-<div class="menu-container">
-  <div class="header">
-    <div class="header__m10">
-      <img *ngIf="hotel" [src]="hotel.logo" routerLink="/home" class="header__hotel-logo" />
-      <p class="header__name">{{ user?.name }} {{ user?.lastName }}</p>
-    </div>
-  </div>
-  <div class="menu">
-    <div
-      class="menu__item"
-      *ngFor="let item of menuItems"
-      (click)="goToRoute(item.route)"
-      [ngClass]="{ 'menu__item--selected': isSelectedRoute(item.route) }"
-    >
-      <mat-icon class="custom_icon">{{ item.icon }}</mat-icon>
-      <p class="label">{{ item.name | translate }}</p>
-    </div>
-    <div class="menu__item" (click)="logout()">
-      <mat-icon class="custom_icon">exit_to_app</mat-icon>
-      <p class="label">{{ 'sidebar.logOut' | translate }}</p>
-    </div>
+<div class="menu">
+  <img *ngIf="hotel" [src]="hotel.logo" routerLink="/home" alt="logo" class="menu__logo" />
+  <span class="menu__text" contlerColorHotel>{{ guest?.name }} {{ guest?.lastName }}</span>
+  <span class="menu__text space" contlerColorHotel>{{ guest?.room?.name | ctrTranslate }}</span>
 
-    <div class="menu__item language">
-      <div class="custom_icon">
-        {{ actualLanguage?.unicode }}
-      </div>
-      <mat-select required [(ngModel)]="actualLanguage" (selectionChange)="changeLanguage()">
-        <mat-option *ngFor="let language of languages | async" [value]="language">
-          <p class="label">{{ language.name }}</p>
-        </mat-option>
-      </mat-select>
-    </div>
+  <button mat-button routerLink="/home/welcome" class="space">
+    <span class="menu__text" contlerColorHotel> {{ constants.home | translate }}</span>
+  </button>
+
+  <button mat-button *ngFor="let language of languages | async" (click)="changeLanguage(language)">
+    <span
+      class="menu__text"
+      contlerColorHotel
+      [overwrite]="this.actualLanguage.prefix === language.prefix ? '#9b9c9d' : null"
+    >
+      {{ language.name }}
+    </span>
+  </button>
+
+  <div class="menu__logout">
+    <button mat-button (click)="logout()">
+      <span contlerColorHotel class="menu__text">
+        {{ constants.logout | translate }}
+      </span>
+    </button>
   </div>
 </div>

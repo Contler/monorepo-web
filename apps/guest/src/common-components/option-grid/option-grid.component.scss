@@ -1,0 +1,15 @@
+$gap: 30px;
+
+:host {
+  display: block;
+}
+
+.host {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 0 calc(-1 * #{$gap}) calc(-1 * #{$gap});
+  & > * {
+    margin: 0 0 $gap $gap;
+  }
+}

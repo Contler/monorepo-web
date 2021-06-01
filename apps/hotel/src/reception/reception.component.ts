@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { ReceptionService, UserService } from '@contler/core';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -17,12 +17,12 @@ import { ImmediateOptionLink, ReceptionModel, ReceptionStatus, ReqRecpetionGuest
 import { TranslateService } from '@ngx-translate/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
-import { REQUEST_STATUS } from 'hotel/inmediate-requests/const/request.const';
+import { REQUEST_STATUS } from '@contler/hotel/inmediate-requests/const/request.const';
 import { FormControl } from '@angular/forms';
 import { DynamicModuleService, DynamicRequestStatus, MODULES } from '@contler/dynamic-services';
-import { ModalReceptionComponent } from 'hotel/common-components/modal-reception/modal-reception.component';
+import { ModalReceptionComponent } from '@contler/hotel/common-components/modal-reception/modal-reception.component';
 import { MatDialog } from '@angular/material/dialog';
-import { MessagesService } from 'hotel/services/messages/messages.service';
+import { MessagesService } from '@contler/hotel/services/messages/messages.service';
 
 @Component({
   selector: 'contler-reception',

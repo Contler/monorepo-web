@@ -1,14 +1,11 @@
 {
   "auth": {
+    "entry": "Ingreso",
+    "forgotTitle": "Ingresa tu correo",
+    "invalidEmail": "Correo invalido",
+    "recovery": "Recuperar",
     "userDisabled": "La cuenta ya no esta activa",
     "userNotFound": "Correo o contraseña invalida"
-  },
-  "dynamicRequest": {
-    "all": "Todas",
-    "attended": "Atendida",
-    "complete": "Completada",
-    "programing": "Programada",
-    "update": "Actualizar"
   },
   "cashLoan": {
     "cashAmount": "Monto en efectivo (COP)",
@@ -81,6 +78,13 @@
   "dynamicForm": {
     "which": "¿Cual?"
   },
+  "dynamicRequest": {
+    "all": "Todas",
+    "attended": "Atendida",
+    "complete": "Completada",
+    "programing": "Programada",
+    "update": "Actualizar"
+  },
   "exchange": {
     "close": "¡Entendido!",
     "createRequest": "CREAR SOLICITUD",
@@ -89,6 +93,9 @@
     "quantityToChange": "Cantidad a cambiar",
     "text": "Su solicitud de cambio de moneda se ha recibido correctamente. Acércate a recepción para recibir tu dinero.",
     "title": "¿Necesitas un cambio de moneda? Complete esta información."
+  },
+  "filter": {
+    "name": "Filtrar"
   },
   "finishOrder": {
     "immediately": "Inmediatamente",
@@ -101,10 +108,13 @@
     "whereDoYouWantToReceiveIt": "Donde quieres recibirlo"
   },
   "guestRequest": {
+    "WhatDoYouNeedToday": "¿Qué necesitas hoy?",
     "hello": "Hola",
+    "orders": "Pedidos",
+    "request": "Solicitudes",
+    "reservations": "Reservaciones",
     "seeAllHotel": "VER TODO EL HOTEL",
-    "whereDoYouNeedUs": "Donde nos necesitas?",
-    "WhatDoYouNeedToday": "¿Qué necesitas hoy?"
+    "whereDoYouNeedUs": "Donde nos necesitas?"
   },
   "inmediateRequest": {
     "area": "Area",
@@ -179,16 +189,16 @@
     "veryBad": "Muy mala"
   },
   "modules": {
-    "immediateRequests": "Solicitudes inmediatas",
-    "specialRequest": "Solicitudes especiales",
-    "reservations": "Reservas",
     "clean": "Limpieza",
-    "maintenance": "Mantenimiento",
-    "reception": "Front Desk",
-    "room": "Habitación",
-    "wakeup-call": "Llamadas de atención",
+    "immediateRequests": "Solicitudes inmediatas",
     "late-checkouts": "Salidas tardías",
-    "orders": "Room service"
+    "maintenance": "Mantenimiento",
+    "orders": "Room service",
+    "reception": "Front Desk",
+    "reservations": "Reservas",
+    "room": "Habitación",
+    "specialRequest": "Solicitudes especiales",
+    "wakeup-call": "Llamadas de atención"
   },
   "myInmediateRequests": {
     "done": "TERMINADO",
@@ -196,7 +206,18 @@
     "toDo": "QUE HACER",
     "youHaveNoImmediateRequest": "No tienes una solicitud inmediata"
   },
+  "myRequest": {
+    "all": "Todas",
+    "complete": " Mis Solicitudes completas",
+    "filter": "Filtrar por tipo de solicitud",
+    "immediate": "Inmediatas",
+    "pending": "Mis Solicitudes",
+    "specials": "Especiales"
+  },
   "myReservations": {
+    "all": "Todos",
+    "complete": "Mis reservas completas",
+    "filter": "Filtrar por tipo de reserva",
     "people": "personas",
     "title": "Mis reservas",
     "youHaveNoReservationRequest": "No tienes solicitud de reserva"
@@ -214,6 +235,8 @@
   },
   "order": {
     "accomplished": "Terminado",
+    "all": "Todos",
+    "filter": "Filtrar por restaurante",
     "inProcess": "En proceso",
     "makeANewOrder": "Haz un nuevo pedido",
     "title": "Mis ordenes"
@@ -253,18 +276,16 @@
     "veryBad": "Muy mal 1/5"
   },
   "sidebar": {
-    "cleaning": "Limpieza",
-    "immediateRequest": "Solicitud inmediata",
-    "lateCheckOut": "Salida tarde",
-    "logOut": "Cerrar sesión",
-    "maintenance": "Mantenimiento",
-    "myImmediateRequests": "Mis solicitudes inmediatas",
-    "myRequest": "Mis Solicitudes",
-    "myReservations": "Mis Reservas",
-    "orders": "Pedidos",
-    "reservations": "Reservaciones",
-    "specialRequests": "Solicitudes especiales",
-    "wakeUpCall": "Despertador"
+    "home": "Inicio",
+    "logOut": "Cerrar sesión"
+  },
+  "signup-dialog": {
+    "form": {
+      "password": {
+        "hint": "La contraseña debe tener al menos 8 caracteres y contener un número.",
+        "label": "Contraseña"
+      }
+    }
   },
   "specialRequest": {
     "errorCreatingRequest": "Error al crear la solicitud",
@@ -272,6 +293,10 @@
     "message": "Cuéntenos sobre su solicitud especial durante su estadía, estaremos encantados de complacerlo.",
     "placeholder": "Escriba sus solicitudes...",
     "send": "enviar"
+  },
+  "switch": {
+    "complete": "Completo",
+    "pending": "Pendiente"
   },
   "transportation": {
     "attended": "Atendida",

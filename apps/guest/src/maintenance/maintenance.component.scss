@@ -1,34 +1,7 @@
 .maintenance {
   &__title {
-    margin: 0 0 68px;
-    padding: 0 50px;
-  }
-
-  &__item {
-    height: 80px;
-    display: grid;
-    grid-template-columns: 30px auto max-content;
-    padding: 0 50px;
-    align-items: center;
-    font-size: 14px;
-    text-transform: uppercase;
-    text-decoration: none;
-
-    & > :first-child {
-      text-align: center;
-    }
-
-    &:nth-child(2n-1) {
-      background: #f6f6f6;
-    }
-
-    &-text {
-      padding-left: 40px;
-    }
-  }
-
-  &__icon {
-    font-size: 20px;
-    color: #bbbbbb;
+    margin: 0 0 50px;
+    padding: 0 16px;
+    text-align: center;
   }
 }

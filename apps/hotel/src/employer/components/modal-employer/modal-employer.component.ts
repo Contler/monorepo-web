@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { CreateEmployer } from 'hotel/employer/models/create-employer';
 import { UserService } from '@contler/core';
 import { EmployerRequest } from '@contler/models';
 import { CHIEF, EMPLOYER } from '@contler/const';
 import { map, switchMap, take } from 'rxjs/operators';
-import { EmployerService } from 'hotel/employer/services/employer.service';
-import { ZoneService } from 'hotel/zone/services/zone.service';
 import { Observable } from 'rxjs';
-import { MessagesService } from 'hotel/services/messages/messages.service';
 import { EmployerEntity, SpecialZoneHotelEntity, ZoneEntity } from '@contler/entity';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { TranslateService } from '@ngx-translate/core';
+import { EmployerService } from '../../services/employer.service';
+import { CreateEmployer } from '../../models/create-employer';
+import { ZoneService } from '../../../zone/services/zone.service';
+import { MessagesService } from '../../../services/messages/messages.service';
 
 @Component({
   selector: 'contler-modal-employer',

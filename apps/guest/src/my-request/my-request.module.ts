@@ -11,9 +11,19 @@ import { DetailRequestComponent } from './pages/detail-request/detail-request.co
 import { DynamicServicesModule } from '@contler/dynamic-services';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
+import { ImmediateItemComponent } from './components/inmediate-item/immediate-item.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { FilterSpecialPipe } from './pipes/filter-special.pipe';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 @NgModule({
-  declarations: [MyRequestComponent, RequestItemComponent, DetailRequestComponent],
+  declarations: [
+    MyRequestComponent,
+    RequestItemComponent,
+    DetailRequestComponent,
+    ImmediateItemComponent,
+    FilterSpecialPipe,
+  ],
   imports: [
     CommonModule,
     MyRequestRoutingModule,
@@ -23,6 +33,8 @@ import { FormsModule } from '@angular/forms';
     DynamicServicesModule,
     MaterialModule,
     FormsModule,
+    MatMenuModule,
+    MatBottomSheetModule,
   ],
 })
 export class MyRequestModule {}

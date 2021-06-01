@@ -1,5 +1,6 @@
 {
   "npmScope": "contler",
+  "affected": { "defaultBase": "dev" },
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
@@ -8,22 +9,13 @@
     "nx.json": "*"
   },
   "projects": {
-    "hotel-e2e": {
-      "tags": []
-    },
     "hotel": {
       "tags": []
     },
     "core": {
       "tags": []
     },
-    "guest-e2e": {
-      "tags": []
-    },
     "guest": {
-      "tags": []
-    },
-    "mobile-e2e": {
       "tags": []
     },
     "mobile": {
@@ -34,10 +26,6 @@
     },
     "admin": {
       "tags": []
-    },
-    "admin-e2e": {
-      "tags": [],
-      "implicitDependencies": ["admin"]
     },
     "dynamic-translate": {
       "tags": []

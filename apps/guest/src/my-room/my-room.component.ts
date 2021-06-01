@@ -5,7 +5,7 @@ import { MessagesService } from 'guest/services/messages/messages.service';
 import { Observable, Subscription } from 'rxjs';
 import { filter, first, map, switchMap, take, tap } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OptionModule, ReceptionModel } from '@contler/models';
+import { ImmediateOptionLink, OptionModule, OptionType, ReceptionModel } from '@contler/models';
 import { ReceptionService, RoomService } from '@contler/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalConfigModel } from '@contler/models/modal-config.model';
@@ -60,6 +60,17 @@ export class MyRoomComponent implements OnInit, OnDestroy {
       switchMap((hotel) => this.roomService.getOptionsRoom(hotel.uid)),
       tap(() => this.messagesService.closeLoader(loader)),
     );
+  }
+
+  selectOption(opt: OptionModule) {
+    switch (opt.type) {
+      case OptionType.DYNAMIC_FORM:
+      case OptionType.LINK:
+        this.router.navigate([(opt as ImmediateOptionLink).link]);
+        break;
+      case OptionType.TEXT:
+        this.selectedSubcategory = opt.text;
+    }
   }
 
   async saveRequest() {

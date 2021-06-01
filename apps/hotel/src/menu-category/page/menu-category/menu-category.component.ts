@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MessagesService } from 'hotel/services/messages/messages.service';
-import { AuthService } from 'hotel/services/auth.service';
+import { MessagesService } from '@contler/hotel/services/messages/messages.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { Observable } from 'rxjs';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { RestaurantService } from '@contler/core';

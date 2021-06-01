@@ -13,15 +13,17 @@ import { HotelComponent } from './pages/hotel/hotel.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { NgxMatColorPickerModule } from '@angular-material-components/color-picker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { IconsComponent } from './pages/icons/icons.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'hotel', component: HotelComponent },
   { path: 'hotel/:id', component: HotelComponent },
+  { path: 'icons', component: IconsComponent },
 ];
 
 @NgModule({
-  declarations: [HomeComponent, HotelComponent],
+  declarations: [HomeComponent, HotelComponent, IconsComponent],
   imports: [
     CommonModule,
     UiModule,

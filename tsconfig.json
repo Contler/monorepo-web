@@ -1,0 +1,40 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@contler/const": ["libs/const/index.ts"],
+      "@contler/const/*": ["libs/const/*"],
+      "@contler/models": ["libs/models/index.ts"],
+      "@contler/models/*": ["libs/models/*"],
+      "@contler/entity": ["libs/entity/index.ts"],
+      "@contler/entity/*": ["libs/entity/*"],
+      "@contler/core": ["libs/core/src/index.ts"],
+      "@contler/ui": ["libs/ui/src/index.ts"],
+      "@contler/hotel/*": ["apps/hotel/src/*"],
+      "api/*": ["apps/api/src/*"],
+      "guest/*": ["apps/guest/src/*"],
+      "lib/*": ["libs/core/src/*"],
+      "@contler/dynamic-translate": ["libs/dynamic-translate/src/index.ts"],
+      "@contler/dynamic-services": ["libs/dynamic-services/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"],
+  "angularCompilerOptions": {
+    "strictTemplates": true
+  }
+}

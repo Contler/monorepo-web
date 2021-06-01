@@ -1,27 +1,45 @@
-<mat-toolbar>
-  <div class="left-container">
-    <button mat-icon-button type="button" (click)="goToRoute(backUrl)" *ngIf="backUrl">
-      <mat-icon>keyboard_arrow_left</mat-icon>
-    </button>
-  </div>
-
-  <img *ngIf="logo" [src]="logo" routerLink="/home" class="logo-general" alt="logo" />
-
-  <div class="marco__menu">
-    <button mat-icon-button type="button" (click)="sidenav.toggle()" contlerColorHotel="primary">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
-
-  <ng-content select="[marcoMenu]"></ng-content>
-</mat-toolbar>
-
 <mat-sidenav-container [style.height]="maxHeight">
   <mat-sidenav mode="over" #sidenav position="end">
     <contler-sidebar></contler-sidebar>
   </mat-sidenav>
 
   <mat-sidenav-content class="menu">
+    <mat-toolbar>
+      <div class="left-container">
+        <button mat-icon-button type="button" (click)="goToRoute(backUrl)" *ngIf="backUrl">
+          <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button mat-icon-button type="button" routerLink="/home/welcome" contlerColorHotel *ngIf="home">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+
+      <img *ngIf="logo" [src]="logo" routerLink="/home" class="logo-general" alt="logo" />
+
+      <div class="marco__menu">
+        <button
+          *ngIf="!filter"
+          mat-icon-button
+          type="button"
+          (click)="sidenav.toggle()"
+          contlerColorHotel="primary"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <button
+          *ngIf="filter"
+          mat-icon-button
+          type="button"
+          contlerColorHotel="primary"
+          (click)="openFilter.emit()"
+        >
+          <mat-icon>filter_alt</mat-icon>
+        </button>
+      </div>
+
+      <ng-content select="[marcoMenu]"></ng-content>
+    </mat-toolbar>
+
     <div [style.padding]="padding" style="overflow: scroll">
       <ng-content select="[marcoBody]"></ng-content>
     </div>

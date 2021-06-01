@@ -1,18 +1,18 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { Observable } from 'rxjs';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { HotelEntity, SpecialZoneHotelEntity } from '@contler/entity';
 import { HotelService, SpecialZoneGuestService } from '@contler/core';
-import { MessagesService } from 'hotel/services/messages/messages.service';
+import { MessagesService } from '@contler/hotel/services/messages/messages.service';
 import { SpecialZoneGuest } from '@contler/models';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { EditSpecialZoneGuestComponent } from './edit-special-zone-guest/edit-special-zone-guest.component';
 import { TranslateService } from '@contler/dynamic-translate';
 import { getLan } from '@contler/const';
-import { GuestHomeCanDeactivateGuard } from 'hotel/preferences/pages/guest-home/guards/guest-home-can-deactivate.guard';
+import { GuestHomeCanDeactivateGuard } from '@contler/hotel/preferences/pages/guest-home/guards/guest-home-can-deactivate.guard';
 
 @Component({
   selector: 'contler-guest-home',

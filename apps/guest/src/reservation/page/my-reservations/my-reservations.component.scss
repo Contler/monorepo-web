@@ -1,7 +1,6 @@
 @import 'styles/variables';
 
 .my-reservation {
-  padding: 0 24px 80px;
   &__logo {
     display: block;
     margin: 0 auto;
@@ -10,7 +9,6 @@
 
   &__title {
     font-family: $family;
-    text-align: center;
     margin: 38px 0 48px;
     font-size: 16.2px;
     letter-spacing: 0.15px;
@@ -50,6 +48,10 @@
       color: rgba(0, 0, 0, 0.87);
       margin: 0;
     }
+  }
+
+  &__footer {
+    padding: 20px 30px;
   }
 }
 

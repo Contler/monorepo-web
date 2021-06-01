@@ -1,19 +1,19 @@
-<contler-marco [backUrl]="'/home/guest-requests'">
+<contler-marco [backUrl]="true" padding="16px 0">
   <div class="container" marcoBody [ngClass]="{ 'pb-100': showRequestField }">
     <p class="container__label" contlerColorHotel="primary" *ngIf="zone">
       {{ 'zoneRequest.youAreIn' | translate }} {{ zone?.name | translate | ctrTranslate }} <br />
       {{ 'zoneRequest.whatDoYouNeed' | translate }}
     </p>
 
-    <div class="features-container" *ngIf="zones$ | async as zones">
-      <contler-zone-item
-        class="features-container-item"
+    <contler-option-grid *ngIf="zones$ | async as zones">
+      <contler-option-request
         *ngFor="let option of zones.options"
-        [option]="option"
-        [selectedOption]="selectedSubcategory"
-        (clickedOption)="setQuickRequest($event)"
-      ></contler-zone-item>
-    </div>
+        [name]="option.text"
+        [icon]="option.icon"
+        [custom]="true"
+        (click)="selectOpt(option)"
+      ></contler-option-request>
+    </contler-option-grid>
 
     <div class="zone-request-container__button">
       <div *ngIf="showRequestField">

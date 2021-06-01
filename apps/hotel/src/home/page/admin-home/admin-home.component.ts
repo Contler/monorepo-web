@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
+import { InmediateRequestsService } from '@contler/hotel/inmediate-requests/services/inmediate-requests.service';
 import { first, map } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
-import { SpecialRequestsService } from 'hotel/special-requests/services/special-requests.service';
+import { SpecialRequestsService } from '@contler/hotel/special-requests/services/special-requests.service';
 import { RequestEntity, SpecialZoneHotelEntity } from '@contler/entity';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 
 @Component({
   selector: 'contler-admin-home',

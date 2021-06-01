@@ -1,0 +1,36 @@
+<contler-layout title="Iconos">
+  <ng-container layoutMenu>
+    <contler-menu></contler-menu>
+  </ng-container>
+  <contler-toolbar layoutToolbar></contler-toolbar>
+  <ng-container layoutBody>
+    <div class="create">
+      <mat-form-field appearance="fill">
+        <input type="text" matInput [(ngModel)]="name" />
+        <mat-hint>Nombre</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <input type="text" matInput [(ngModel)]="key" />
+        <mat-hint>key</mat-hint>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="createIcon()" [disabled]="!key || !name">
+        Crear icono
+      </button>
+
+      <div class="icon" *ngIf="!!key || !!name">
+        <contler-icon [key]="key"></contler-icon>
+        <span>{{ name }}</span>
+      </div>
+    </div>
+
+    <div class="icons">
+      <div *ngFor="let icon of icons | async" class="icon">
+        <contler-icon [key]="icon.key"></contler-icon>
+        <span>{{ icon.name }}</span>
+        <button mat-mini-fab color="warn" class="delete" (click)="deleteIcon(icon.keyObj)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</contler-layout>

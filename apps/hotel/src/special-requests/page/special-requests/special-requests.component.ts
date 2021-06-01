@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { SpecialRequest } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { SpecialRequestsService } from 'hotel/special-requests/services/special-requests.service';
+import { SpecialRequestsService } from '@contler/hotel/special-requests/services/special-requests.service';
 import { RequestEntity } from '@contler/entity';
 
 @Component({

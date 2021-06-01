@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { OrderRoutingModule } from './order-routing.module';
 import { OrderComponent } from './order.component';
-import { CommonComponentsModule } from 'hotel/common-components/common-components.module';
-import { MaterialModule } from 'hotel/material/material.module';
+import { CommonComponentsModule } from '@contler/hotel/common-components/common-components.module';
+import { MaterialModule } from '@contler/hotel/material/material.module';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '@contler/core';

@@ -45,3 +45,6 @@ Thumbs.db
 .firebase
 
 *.log
+.vscode/settings.json
+.devcontainer
+fireBack

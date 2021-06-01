@@ -11,7 +11,7 @@ import { MessagesService } from 'guest/services/messages/messages.service';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
 import { RequestService } from 'guest/services/request.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ImmediateCategory } from '@contler/models';
+import { ImmediateCategory, ImmediateOptionLink, OptionModule, OptionType } from '@contler/models';
 
 @Component({
   selector: 'contler-zone-request',
@@ -60,6 +60,22 @@ export class ZoneRequestComponent implements AfterViewInit {
       }),
       switchMap(([hotel, zone]) => this.zoneService.getOptionsByZoneType(hotel.uid, zone.category.id)),
     );
+  }
+
+  selectOpt(opt: OptionModule) {
+    switch (opt.type) {
+      case OptionType.LINK:
+      case OptionType.DYNAMIC_FORM:
+        this.router.navigate([(opt as ImmediateOptionLink).link]);
+        break;
+      case OptionType.TEXT:
+        this.selectedSubcategory = opt.text;
+        this.showRequestField = false;
+        break;
+      case OptionType.OTHER:
+        this.selectedSubcategory = 'Other';
+        this.showRequestField = true;
+    }
   }
 
   getButtonColorHotel() {

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ModalOrdersQuialifyComponent } from './modal-orders-quialify.component';
 
@@ -6,12 +6,13 @@ describe('ModalOrdersQuialifyComponent', () => {
   let component: ModalOrdersQuialifyComponent;
   let fixture: ComponentFixture<ModalOrdersQuialifyComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ModalOrdersQuialifyComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ModalOrdersQuialifyComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ModalOrdersQuialifyComponent);

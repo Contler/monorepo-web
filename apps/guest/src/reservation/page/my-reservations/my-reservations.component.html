@@ -1,30 +1,32 @@
-<contler-marco [backUrl]="'/home/reservation'">
-  <div marcoBody class="my-reservation">
+<contler-marco [home]="true" padding="16px 30px" [filter]="true" (openFilter)="openFilter()">
+  <div marcoBody>
     <h1 class="my-reservation__title" contlerColorHotel="primary">
-      {{ 'myReservations.title' | translate }}
+      {{ (isComplete ? constants.complete : constants.pending) | translate }}
     </h1>
 
-    <ng-container *ngIf="bookings.length; else empty">
-      <div
-        class="my-reservation__item"
-        *ngFor="let item of bookings"
-        routerLink="/home/reservation/my-reservation/{{ item.id }}"
-      >
-        <div>
-          <p class="my-reservation__item-name">
-            {{ item.schedule.reservation.name | ctrTranslate }}
-          </p>
-          <p class="my-reservation__item-text">
-            {{ item.schedule.timeInit | date: 'shortTime' }} - {{ item.quote }}
-            {{ 'myReservations.people' | translate }}
-          </p>
-        </div>
-        <p class="my-reservation__item-text">{{ item.date | date: 'dd/MM/yyyy' }}</p>
-        <button mat-icon-button aria-label="Example icon-button with a heart icon">
-          <mat-icon>keyboard_arrow_right</mat-icon>
-        </button>
+    <div
+      class="my-reservation__item"
+      *ngFor="let item of isComplete ? bookingComplete : (bookings | filterReservation: zones)"
+      routerLink="/home/reservation/my-reservation/{{ item.id }}"
+    >
+      <div>
+        <p class="my-reservation__item-name">
+          {{ item.schedule.reservation.name | ctrTranslate }}
+        </p>
+        <p class="my-reservation__item-text">
+          {{ item.schedule.timeInit | date: 'shortTime' }} - {{ item.quote }}
+          {{ 'myReservations.people' | translate }}
+        </p>
       </div>
-    </ng-container>
+      <p class="my-reservation__item-text">{{ item.date | date: 'dd/MM/yyyy' }}</p>
+      <button mat-icon-button aria-label="Example icon-button with a heart icon">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div marcoFooter class="my-reservation__footer">
+    <contler-switch (value)="isComplete = $event"></contler-switch>
   </div>
 </contler-marco>
 

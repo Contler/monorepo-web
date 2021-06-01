@@ -15,6 +15,9 @@ import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { SubZoneReservationComponent } from './page/sub-zone-reservation/sub-zone-reservation.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { FilterReservationPipe } from './pipes/filter-reservation.pipe';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { SubZoneReservationComponent } from './page/sub-zone-reservation/sub-zon
     EditReservationComponent,
     ModalConfirmComponent,
     SubZoneReservationComponent,
+    FilterReservationPipe,
   ],
   imports: [
     CommonModule,
@@ -35,6 +39,8 @@ import { SubZoneReservationComponent } from './page/sub-zone-reservation/sub-zon
     CoreModule,
     TranslateModule,
     DynamicTranslateModule,
+    MatMenuModule,
+    MatBottomSheetModule,
   ],
   entryComponents: [ModalConfirmComponent],
 })

@@ -15,6 +15,10 @@ export class RequestItemComponent implements OnInit {
   ngOnInit(): void {}
 
   get colorStatus() {
-    return this.request?.status === DynamicRequestStatus.ATTENDED ? 'yellow' : 'red';
+    return this.request?.status === DynamicRequestStatus.ATTENDED
+      ? 'yellow'
+      : this.request?.status === DynamicRequestStatus.COMPLETED
+      ? 'green'
+      : 'red';
   }
 }

@@ -2,13 +2,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { MatDialog } from '@angular/material/dialog';
-import { InmediateRequestsService } from 'hotel/inmediate-requests/services/inmediate-requests.service';
-import { ModalInmediateRequestComponent } from 'hotel/common-components/modal-inmediate-request/modal-inmediate-request.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '@contler/models/language.model';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { map, switchMap, tap } from 'rxjs/operators';
+import { ModalInmediateRequestComponent } from '../modal-inmediate-request/modal-inmediate-request.component';
+import { InmediateRequestsService } from '../../inmediate-requests/services/inmediate-requests.service';
 
 @Component({
   selector: 'contler-toolbar',

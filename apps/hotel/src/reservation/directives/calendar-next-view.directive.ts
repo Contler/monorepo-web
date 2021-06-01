@@ -1,5 +1,5 @@
 import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { addDaysWithExclusions } from 'hotel/utils/calendar.util';
+import { addDaysWithExclusions } from '@contler/hotel/utils/calendar.util';
 import { DateAdapter, CalendarView } from 'angular-calendar';
 
 @Directive({

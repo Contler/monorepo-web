@@ -1,17 +1,17 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
-import { ModalEmployerComponent } from 'hotel/employer/components/modal-employer/modal-employer.component';
-import { EmployerService } from 'hotel/employer/services/employer.service';
 import { Subscription } from 'rxjs';
 import { ADMIN, CHIEF } from '@contler/const';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { ModalRemoveEmployerComponent } from 'hotel/employer/components/modal-remove-employer/modal-remove-employer.component';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
-import { LoaderComponent } from 'hotel/material/components/loader/loader.component';
 import { EmployerEntity } from '@contler/entity';
-import { ModalEditEmployerComponent } from 'hotel/common-components/modal-edit-employer/modal-edit-employer.component';
+import { EmployerService } from '../../services/employer.service';
+import { ModalEditEmployerComponent } from '../../../common-components/modal-edit-employer/modal-edit-employer.component';
+import { ModalRemoveEmployerComponent } from '../../components/modal-remove-employer/modal-remove-employer.component';
+import { ModalEmployerComponent } from '../../components/modal-employer/modal-employer.component';
+import { LoaderComponent } from '../../../common-components/modal-loader/loader.component';
 
 @Component({
   selector: 'contler-employer',

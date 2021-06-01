@@ -61,11 +61,11 @@
           <p class="ranking-container__label">{{ 'immediateRequest.qualification' | translate }}</p>
           <contler-start
             [value]="request.score"
-            totalstars="5"
+            [totalstars]="5"
             checkedcolor="#dfae00"
             uncheckedcolor="#6c6c6c"
             size="24px"
-            readonly="true"
+            [readonly]="true"
           ></contler-start>
         </div>
         <p class="user-comment">{{ request.comment | ctrTranslate }}</p>

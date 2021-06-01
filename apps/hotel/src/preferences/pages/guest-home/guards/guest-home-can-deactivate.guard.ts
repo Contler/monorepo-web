@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot } from '@angular/router';
-import { GuestHomeComponent } from 'hotel/preferences/pages/guest-home/guest-home.component';
-import { MessagesService } from 'hotel/services/messages/messages.service';
+import { GuestHomeComponent } from '@contler/hotel/preferences/pages/guest-home/guest-home.component';
+import { MessagesService } from '@contler/hotel/services/messages/messages.service';
 import { SpecialZoneGuest } from '@contler/models';
 
 @Injectable({

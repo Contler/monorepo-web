@@ -92,3 +92,7 @@ button {
 button[disabled] {
   background-color: rgba(0, 0, 0, 0.12) !important;
 }
+
+.bottom-custom {
+  border-radius: 50px 50px 0 0;
+}

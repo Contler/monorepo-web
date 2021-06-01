@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { ItemMenu } from '../interfaces/item-menu.interface';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
+import { ChildrenMenu } from '@contler/hotel/material/components/interfaces/children-menu.interface';
 
 @Component({
   selector: 'contler-menu',
@@ -10,7 +11,7 @@ import { AuthService } from 'hotel/services/auth.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  sections: ItemMenu[] = [
+  sections: ChildrenMenu[] = [
     {
       name: 'global.GUEST',
       icon: 'account_circle',

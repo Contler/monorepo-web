@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ScheduleSubZoneComponent } from './schedule-sub-zone.component';
 
@@ -6,11 +6,13 @@ describe('ScheduleSubZoneComponent', () => {
   let component: ScheduleSubZoneComponent;
   let fixture: ComponentFixture<ScheduleSubZoneComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ScheduleSubZoneComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ScheduleSubZoneComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ScheduleSubZoneComponent);

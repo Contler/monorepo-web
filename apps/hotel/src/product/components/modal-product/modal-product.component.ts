@@ -2,12 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CATEGORY_PRODUCTS } from '@contler/const';
 import { ProductService, RestaurantService } from '@contler/core';
-import { AuthService } from 'hotel/services/auth.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 import { switchMap, take } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
 import { MatDialogRef } from '@angular/material/dialog';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { CategoryModels } from '@contler/models/category.models';
+import { ProductEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-modal-product',
@@ -20,10 +21,15 @@ export class ModalProductComponent implements OnInit, OnDestroy {
 
   productForm: FormGroup;
   loading = false;
-  product = {
+  product: ProductEntity = {
     name: '',
     value: 0,
     description: '',
+    hotel: null,
+    id: null,
+    category: null,
+    restaurant: null,
+    state: null,
   };
   private sc1: Subscription | undefined;
   private sc2: Subscription | undefined;

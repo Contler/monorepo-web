@@ -34,7 +34,7 @@
             "main": "apps/hotel/src/main.ts",
             "polyfills": "apps/hotel/src/polyfills.ts",
             "tsConfig": "apps/hotel/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/hotel/src/favicon.ico", "apps/hotel/src/assets"],
             "styles": [
               "apps/hotel/src/styles.scss",
@@ -54,15 +54,6 @@
                   "with": "apps/hotel/src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -77,14 +68,29 @@
               ]
             },
             "qa": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
               "fileReplacements": [
                 {
                   "replace": "apps/hotel/src/environments/environment.ts",
                   "with": "apps/hotel/src/environments/environment.qa.ts"
                 }
               ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -98,8 +104,12 @@
             },
             "qa": {
               "browserTarget": "hotel:build:qa"
+            },
+            "development": {
+              "browserTarget": "hotel:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -117,10 +127,9 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/hotel/jest.config.js",
-            "tsConfig": "apps/hotel/tsconfig.spec.json",
-            "setupFile": "apps/hotel/src/test-setup.ts"
-          }
+            "jestConfig": "apps/hotel/jest.config.js"
+          },
+          "outputs": ["coverage/apps/hotel"]
         },
         "deploy": {
           "builder": "@angular/fire:deploy",
@@ -152,33 +161,6 @@
         }
       }
     },
-    "hotel-e2e": {
-      "root": "apps/hotel-e2e",
-      "sourceRoot": "apps/hotel-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/hotel-e2e/cypress.json",
-            "tsConfig": "apps/hotel-e2e/tsconfig.e2e.json",
-            "devServerTarget": "hotel:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "hotel:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/hotel-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/hotel-e2e/**"]
-          }
-        }
-      }
-    },
     "core": {
       "projectType": "library",
       "root": "libs/core",
@@ -195,10 +177,9 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/core/jest.config.js",
-            "tsConfig": "libs/core/tsconfig.spec.json",
-            "setupFile": "libs/core/src/test-setup.ts"
-          }
+            "jestConfig": "libs/core/jest.config.js"
+          },
+          "outputs": ["coverage/libs/core"]
         }
       },
       "schematics": {
@@ -240,14 +221,13 @@
             "main": "apps/guest/src/main.ts",
             "polyfills": "apps/guest/src/polyfills.ts",
             "tsConfig": "apps/guest/tsconfig.app.json",
-            "aot": false,
             "assets": ["apps/guest/src/favicon.ico", "apps/guest/src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "apps/guest/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["apps/guest/src"]
+              "includePaths": ["apps/guest/src", "libs/styles"]
             },
             "scripts": []
           },
@@ -259,15 +239,6 @@
                   "with": "apps/guest/src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -282,14 +253,29 @@
               ]
             },
             "qa": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
               "fileReplacements": [
                 {
                   "replace": "apps/guest/src/environments/environment.ts",
                   "with": "apps/guest/src/environments/environment.qa.ts"
                 }
               ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -302,8 +288,12 @@
             },
             "qa": {
               "browserTarget": "guest:build:qa"
+            },
+            "development": {
+              "browserTarget": "guest:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -321,37 +311,9 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/guest/jest.config.js",
-            "tsConfig": "apps/guest/tsconfig.spec.json",
-            "setupFile": "apps/guest/src/test-setup.ts"
-          }
-        }
-      }
-    },
-    "guest-e2e": {
-      "root": "apps/guest-e2e",
-      "sourceRoot": "apps/guest-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/guest-e2e/cypress.json",
-            "tsConfig": "apps/guest-e2e/tsconfig.e2e.json",
-            "devServerTarget": "guest:serve"
+            "jestConfig": "apps/guest/jest.config.js"
           },
-          "configurations": {
-            "production": {
-              "devServerTarget": "guest:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/guest-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/guest-e2e/**"]
-          }
+          "outputs": ["coverage/apps/guest"]
         }
       }
     },
@@ -388,7 +350,7 @@
             "main": "apps/mobile/src/main.ts",
             "polyfills": "apps/mobile/src/polyfills.ts",
             "tsConfig": "apps/mobile/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": ["apps/mobile/src/favicon.ico", "apps/mobile/src/assets"],
             "stylePreprocessorOptions": {
               "includePaths": ["apps/mobile/src"]
@@ -396,37 +358,48 @@
             "styles": [
               "apps/mobile/src/styles.scss",
               {
-                "input": "node_modules/@ionic/angular/css/normalize.css"
+                "input": "node_modules/@ionic/angular/css/normalize.css",
+                "inject": true
               },
               {
-                "input": "node_modules/@ionic/angular/css/structure.css"
+                "input": "node_modules/@ionic/angular/css/structure.css",
+                "inject": true
               },
               {
-                "input": "node_modules/@ionic/angular/css/typography.css"
+                "input": "node_modules/@ionic/angular/css/typography.css",
+                "inject": true
               },
               {
-                "input": "node_modules/@ionic/angular/css/core.css"
+                "input": "node_modules/@ionic/angular/css/core.css",
+                "inject": true
               },
               {
-                "input": "node_modules/@ionic/angular/css/padding.css"
+                "input": "node_modules/@ionic/angular/css/padding.css",
+                "inject": true
               },
               {
-                "input": "node_modules/@ionic/angular/css/float-elements.css"
+                "input": "node_modules/@ionic/angular/css/float-elements.css",
+                "inject": true
               },
               {
-                "input": "node_modules/@ionic/angular/css/text-alignment.css"
+                "input": "node_modules/@ionic/angular/css/text-alignment.css",
+                "inject": true
               },
               {
-                "input": "node_modules/@ionic/angular/css/text-transformation.css"
+                "input": "node_modules/@ionic/angular/css/text-transformation.css",
+                "inject": true
               },
               {
-                "input": "node_modules/@ionic/angular/css/flex-utils.css"
+                "input": "node_modules/@ionic/angular/css/flex-utils.css",
+                "inject": true
               },
               {
-                "input": "apps/mobile/src/theme/variables.css"
+                "input": "apps/mobile/src/theme/variables.css",
+                "inject": true
               },
               {
-                "input": "node_modules/@ionic/angular/css/ionic.bundle.css"
+                "input": "node_modules/@ionic/angular/css/ionic.bundle.css",
+                "inject": true
               }
             ],
             "scripts": []
@@ -442,7 +415,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -469,7 +441,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -501,37 +474,9 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/mobile/jest.config.js",
-            "tsConfig": "apps/mobile/tsconfig.spec.json",
-            "setupFile": "apps/mobile/src/test-setup.ts"
-          }
-        }
-      }
-    },
-    "mobile-e2e": {
-      "root": "apps/mobile-e2e",
-      "sourceRoot": "apps/mobile-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/mobile-e2e/cypress.json",
-            "tsConfig": "apps/mobile-e2e/tsconfig.e2e.json",
-            "devServerTarget": "mobile:serve"
+            "jestConfig": "apps/mobile/jest.config.js"
           },
-          "configurations": {
-            "production": {
-              "devServerTarget": "mobile:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/mobile-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/mobile-e2e/**"]
-          }
+          "outputs": ["coverage/apps/mobile"]
         }
       }
     },
@@ -552,10 +497,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/ui/jest.config.js",
-            "tsConfig": "libs/ui/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/ui/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/ui"]
         }
       },
       "schematics": {
@@ -613,14 +557,6 @@
                   "with": "apps/admin/src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -635,14 +571,29 @@
               ]
             },
             "qa": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
               "fileReplacements": [
                 {
                   "replace": "apps/admin/src/environments/environment.ts",
                   "with": "apps/admin/src/environments/environment.qa.ts"
                 }
               ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -655,8 +606,12 @@
             },
             "qa": {
               "browserTarget": "admin:build:qa"
+            },
+            "development": {
+              "browserTarget": "admin:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -675,37 +630,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/admin/jest.config.js",
-            "tsConfig": "apps/admin/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/admin/src/test-setup.ts"
-          }
-        }
-      }
-    },
-    "admin-e2e": {
-      "root": "apps/admin-e2e",
-      "sourceRoot": "apps/admin-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/admin-e2e/cypress.json",
-            "tsConfig": "apps/admin-e2e/tsconfig.e2e.json",
-            "devServerTarget": "admin:serve"
+            "passWithNoTests": true
           },
-          "configurations": {
-            "production": {
-              "devServerTarget": "admin:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/admin-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/admin-e2e/**/*"]
-          }
+          "outputs": ["coverage/apps/admin"]
         }
       }
     },
@@ -729,10 +656,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/dynamic-translate/jest.config.js",
-            "tsConfig": "libs/dynamic-translate/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/dynamic-translate/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/dynamic-translate"]
         }
       },
       "schematics": {
@@ -761,10 +687,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/dynamic-services/jest.config.js",
-            "tsConfig": "libs/dynamic-services/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/dynamic-services/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/dynamic-services"]
         }
       },
       "schematics": {

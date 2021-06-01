@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ZoneRequestComponent } from './zone-request.component';
 
@@ -6,12 +6,13 @@ describe('ZoneRequestComponent', () => {
   let component: ZoneRequestComponent;
   let fixture: ComponentFixture<ZoneRequestComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ZoneRequestComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ZoneRequestComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ZoneRequestComponent);

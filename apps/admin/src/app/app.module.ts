@@ -55,17 +55,24 @@ const routers: Routes = [
   },
 ];
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+const app = firebase.initializeApp(environment.fire, 'app');
+if (environment.emulate) {
+  app.auth().useEmulator('http://localhost:9099/');
+}
+
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routers, { initialNavigation: 'enabled' }),
+    RouterModule.forRoot(routers, { initialNavigation: 'enabled', relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule,
     MatInputModule,
     MatIconModule,
     ReactiveFormsModule,
     MatButtonModule,
-    AngularFireModule.initializeApp(environment.fire),
+    AngularFireModule.initializeApp(environment.fire, 'app'),
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFireAuthGuardModule,

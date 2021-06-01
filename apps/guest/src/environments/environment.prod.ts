@@ -13,4 +13,5 @@ export const environment = {
   apiUrl: 'https://contler-back.herokuapp.com/',
   oneSignalKey: '04a89f42-34ec-4e3b-aeb1-21df861b6884',
   oneSignalKeyApiKey: 'MDFhZTVjM2YtMDEzZC00NjM3LWExYmYtOWViM2Y1NzE2MmI2',
+  emulate: false,
 };

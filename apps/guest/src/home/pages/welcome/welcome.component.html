@@ -1,17 +1,22 @@
-<contler-marco padding="0">
-  <div marcoBody class="main-container">
+<contler-marco padding="16px">
+  <div marcoBody>
     <p class="request__label request__user request__question" contlerColorHotel>
       {{ 'guestRequest.hello' | translate }} {{ ($guest | async)?.name }}!
     </p>
-    <p class="request__label request__space request__question" contlerColorHotel>
+    <p class="request__label request__question" contlerColorHotel>
       {{ 'guestRequest.WhatDoYouNeedToday' | translate }}
     </p>
-    <a class="request__zone striped" *ngFor="let zone of zones$ | async" [routerLink]="zone.link">
-      <mat-icon class="request__zone-icon">{{ zone.icon }}</mat-icon>
-      <p class="request__zone-text" contlerColorHotel>
-        {{ zone.name | translate | ctrTranslate | uppercase }}
-      </p>
-      <mat-icon class="request__zone-icon">navigate_next</mat-icon>
-    </a>
+    <contler-option-grid class="request__content">
+      <contler-option-request
+        *ngFor="let zone of zones$ | async"
+        [name]="zone.name"
+        [link]="zone.link"
+        [icon]="zone.icon"
+      ></contler-option-request>
+    </contler-option-grid>
+  </div>
+
+  <div marcoFooter>
+    <contler-bottom-bar></contler-bottom-bar>
   </div>
 </contler-marco>
