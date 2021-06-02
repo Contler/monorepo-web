@@ -29,10 +29,8 @@ export class GuestRequestsComponent implements OnDestroy {
   constructor(
     private guestService: GuestService,
     private dialog: MatDialog,
-    private reservationService: ReservationService,
     private requestService: RequestService,
     public generalService: GeneralService,
-    private productService: ProductService,
   ) {
     this.$guest = this.guestService.$guest;
 
@@ -43,69 +41,6 @@ export class GuestRequestsComponent implements OnDestroy {
         ? this.zones.slice()
         : this.zones.filter((zone) => zone.principal);
     });
-
-    this.requestSubscription = this.requestService
-      .getRequests(true)
-      .pipe(map((reqs) => reqs.filter((req) => req.score === null)))
-      .subscribe((requests) => {
-        if (requests && requests.length > 0) {
-          requests.forEach((request) => {
-            this.dialog.open(ModalQualifyComponent, {
-              width: '342px',
-              panelClass: 'cot-dialog',
-              data: request,
-              disableClose: true,
-            });
-          });
-        }
-      });
-    this.qualifyReservation();
-    this.qualifyOrders();
-  }
-
-  qualifyOrders() {
-    this.$guest
-      .pipe(
-        take(1),
-        switchMap((guest) => this.productService.getOrderByGuest(guest!.uid)),
-        map((orders) => orders.filter((order) => order.state === 2 && order.qualification == null)),
-        filter((data) => data.length > 0),
-      )
-      .subscribe((data) => {
-        data.forEach((item) => {
-          this.dialog.open(ModalOrdersQuialifyComponent, {
-            width: '342px',
-            panelClass: 'cot-dialog',
-            data: item,
-            disableClose: true,
-          });
-        });
-      });
-  }
-
-  qualifyReservation() {
-    this.$guest
-      .pipe(
-        switchMap((guest) => this.reservationService.getBookingByGuest(guest!.uid)),
-        map((booking) =>
-          booking.filter(
-            (book) =>
-              book.complete && new Date(book.date).getTime() < Date.now() && book.qualification == null,
-          ),
-        ),
-      )
-      .subscribe((data) => {
-        if (data && data.length) {
-          data.forEach((booking) => {
-            this.dialog.open(ModalBookingQualifyComponent, {
-              width: '342px',
-              panelClass: 'cot-dialog',
-              data: booking,
-              disableClose: true,
-            });
-          });
-        }
-      });
   }
 
   showAllZones() {

@@ -93,7 +93,7 @@ export class ZoneRequestComponent implements AfterViewInit {
       () => {
         this.loader = false;
         this.requestController.reset();
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home/my-request']);
         this.messagesService.showToastMessage(
           this.translate.instant('zoneRequest.immediateRequestSuccessfullyCreated'),
         );
