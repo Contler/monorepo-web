@@ -1,5 +1,4 @@
-<contler-marco [backUrl]="true" [filter]="true" padding="16px 30px" (openFilter)='openFilter()'>
-
+<contler-marco [backUrl]="true" [filter]="true" padding="16px 30px" (openFilter)="openFilter()">
   <ng-container marcoBody>
     <h1 class="ctl-title" style="text-align: center" contlerColorHotel="primary">
       {{ (isComplete ? constants.complete : constants.pending) | translate }}
@@ -13,11 +12,9 @@
         <contler-request-item [request]="item"></contler-request-item>
       </a>
 
-      <ng-container *ngIf="showImmediate">
-        <a *ngFor="let item of pendingRequests" style="text-decoration: none">
-          <contler-immediate-item [request]="item"></contler-immediate-item>
-        </a>
-      </ng-container>
+      <a *ngFor="let item of pendingRequests | filterRequest: nameModule" style="text-decoration: none">
+        <contler-immediate-item [request]="item"></contler-immediate-item>
+      </a>
     </ng-container>
 
     <ng-container *ngIf="isComplete">

@@ -211,7 +211,9 @@
     "complete": " Meine vollständigen Bewerbungen",
     "filter": "Nach Anfragetyp filtern",
     "immediate": "Sofortig",
+    "immediateRequest": "Sofortige Anfrage",
     "pending": "Meine Anfragen",
+    "specialRequest": "Besondere Bitte",
     "specials": "Specials"
   },
   "myReservations": {

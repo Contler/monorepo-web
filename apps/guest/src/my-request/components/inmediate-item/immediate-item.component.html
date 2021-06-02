@@ -7,4 +7,7 @@
 
 <div style="text-align: right">
   <span class="request-text">{{ request.createAt | date }}</span>
+  <span class="request-text space">{{
+    (request.special ? constants.specialRequest : constants.immediateRequest) | translate
+  }}</span>
 </div>

@@ -15,6 +15,7 @@ import { ImmediateItemComponent } from './components/inmediate-item/immediate-it
 import { MatMenuModule } from '@angular/material/menu';
 import { FilterSpecialPipe } from './pipes/filter-special.pipe';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { FilterRequestPipe } from './pipes/filter-request.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     DetailRequestComponent,
     ImmediateItemComponent,
     FilterSpecialPipe,
+    FilterRequestPipe,
   ],
   imports: [
     CommonModule,

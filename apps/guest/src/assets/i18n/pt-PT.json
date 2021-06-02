@@ -211,7 +211,9 @@
     "complete": " Meus aplicativos completos",
     "filter": "Filtrar por tipo de solicitação",
     "immediate": "Imediato",
+    "immediateRequest": "Pedido imediato",
     "pending": "Minhas solicitações",
+    "specialRequest": "Pedido especial",
     "specials": "Especiais"
   },
   "myReservations": {
