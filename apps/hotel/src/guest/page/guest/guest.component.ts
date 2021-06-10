@@ -10,6 +10,7 @@ import { ModalEditGuestComponent } from '../../components/modal-edit-guest/modal
 import { GuestEntity } from '@contler/entity/guest.entity';
 import { filter } from 'rxjs/operators';
 import { LoaderComponent } from '../../../common-components/modal-loader/loader.component';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
 
 @Component({
   selector: 'contler-guest',
@@ -28,7 +29,11 @@ export class GuestComponent implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private dialog: MatDialog, private guestService: GuestService) {
+  constructor(
+    private dialog: MatDialog,
+    private guestService: GuestService,
+    private analytics: AngularFireAnalytics,
+  ) {
     this.subscription = this.guestService.getGuest().subscribe((guests) => {
       this.dataSource.data = guests;
     });
@@ -41,6 +46,7 @@ export class GuestComponent implements OnDestroy {
   }
 
   openModalNewGuest() {
+    this.analytics.logEvent('create_guest_open');
     this.dialog
       .open<ModelNewGuestComponent, void, GuestEntity>(ModelNewGuestComponent, {
         width: '940px',

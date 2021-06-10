@@ -19,6 +19,10 @@ export class HotelService {
     return this.http.get<EmployerEntity[]>(`${this.url}hotel/${id}/admin`);
   }
 
+  getUserHotel(id: string) {
+    return this.http.get<HotelEntity>(`${this.url}hotel/user/${id}`);
+  }
+
   getHotel(id: string) {
     return this.http.get<HotelEntity>(`${this.url}hotel/${id}`);
   }

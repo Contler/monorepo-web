@@ -12,6 +12,7 @@ export const environment = {
     storageBucket: 'contler-dev.appspot.com',
     messagingSenderId: '424830318314',
     appId: '1:424830318314:web:aa057126d096f3d747c993',
+    measurementId: 'G-CNY99F9HZR',
   },
   apiUrl: 'http://localhost:3000/',
   emulate: true,

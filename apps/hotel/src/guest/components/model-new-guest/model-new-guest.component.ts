@@ -10,6 +10,7 @@ import { UserService } from '@contler/core';
 import { GuestEntity, RoomEntity } from '@contler/entity';
 import { MessagesService } from '../../../services/messages/messages.service';
 import { MatHorizontalStepper } from '@angular/material/stepper';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
 
 @Component({
   selector: 'contler-model-new-guest',
@@ -34,6 +35,7 @@ export class ModelNewGuestComponent {
     private userService: UserService,
     formBuild: FormBuilder,
     private messagesService: MessagesService,
+    private analytics: AngularFireAnalytics,
   ) {
     this.searchEmailForm = new FormControl(
       '',
@@ -77,6 +79,7 @@ export class ModelNewGuestComponent {
       )
       .subscribe(
         (guest) => {
+          this.analytics.logEvent('create_guest_complete');
           this.load = false;
           this.dialogRef.close(guest);
         },
@@ -85,11 +88,20 @@ export class ModelNewGuestComponent {
           if (error.status === 400) {
             if (error.error && error.error.message) {
               this.error = error.error.message;
+              this.analytics.logEvent('create_guest_error', {
+                error: error.error.message,
+              });
             } else {
               this.error = 'La Habitación ya fue ocupada';
+              this.analytics.logEvent('create_guest_error', {
+                error: 'room unavailable',
+              });
             }
           } else {
             this.error = 'No pudimos crear el usuario';
+            this.analytics.logEvent('create_guest_error', {
+              error: JSON.stringify(error),
+            });
           }
         },
       );

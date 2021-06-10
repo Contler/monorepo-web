@@ -7,6 +7,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import {
+  AngularFireAnalyticsModule,
+  ScreenTrackingService,
+  UserTrackingService,
+} from '@angular/fire/analytics';
 
 import { CoreModule, HotelService, UserService } from '@contler/core';
 import { DynamicTranslateModule, Loader, LoaderDynamicTranslate } from '@contler/dynamic-translate';
@@ -57,6 +62,7 @@ if (environment.emulate) {
     AngularFireAuthGuardModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    AngularFireAnalyticsModule,
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
@@ -86,7 +92,7 @@ if (environment.emulate) {
       url: environment.apiUrl,
     }),
   ],
-  providers: [UserService, HotelService],
+  providers: [UserService, HotelService, UserTrackingService, ScreenTrackingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
