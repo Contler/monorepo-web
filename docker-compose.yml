@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  hotel:
+    build: .
+    ports:
+      - 4200:4200
+    volumes:
+      - .:/home/app
+    command: ng run hotel:serve --host=0.0.0.0 --port=4200
+
+networks:
+  default:
+    external:
+      name: contler_network
