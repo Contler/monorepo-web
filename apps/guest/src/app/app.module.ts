@@ -34,6 +34,11 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import {
+  AngularFireAnalyticsModule,
+  ScreenTrackingService,
+  UserTrackingService,
+} from '@angular/fire/analytics';
 const app = firebase.initializeApp(environment.fire, 'app');
 if (environment.emulate) {
   app.auth().useEmulator('http://localhost:9099/');
@@ -56,6 +61,7 @@ export function LoadHotel(auth: GuestService) {
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    AngularFireAnalyticsModule,
     FormsModule,
     UiModule,
     ReactiveFormsModule,
@@ -83,7 +89,7 @@ export function LoadHotel(auth: GuestService) {
     }),
     MatMenuModule,
   ],
-  providers: [HotelService, UserService, AvalibleUserGuard],
+  providers: [HotelService, UserService, AvalibleUserGuard, UserTrackingService, ScreenTrackingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
