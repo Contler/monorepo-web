@@ -1,5 +1,4 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { GuestService } from 'guest/services/guest.service';
 import { combineLatest, Observable } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, Validators } from '@angular/forms';
@@ -11,7 +10,12 @@ import { MessagesService } from 'guest/services/messages/messages.service';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
 import { RequestService } from 'guest/services/request.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ImmediateCategory, ImmediateOptionLink, OptionModule, OptionType } from '@contler/models';
+import { ImmediateOptionLink, OptionModule, OptionType } from '@contler/models';
+import { Store } from '@ngrx/store';
+import { State } from 'guest/app/reducers';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
+import { selectUserState } from 'guest/app/reducers/user/user.selectors';
+import { UserState } from 'guest/app/reducers/user/user.reducer';
 
 @Component({
   selector: 'contler-zone-request',
@@ -25,17 +29,15 @@ export class ZoneRequestComponent implements AfterViewInit {
   requestController = new FormControl('', Validators.required);
   loader = false;
   zone: ZoneEntity | undefined;
-  private zoneUid: string | null;
+  zones$: Observable<any>;
 
-  public isSubCategory = false; // DRINKS PAGE, etc
+  private userSelector: Observable<UserState>;
 
-  //CODIGO TEMPORAL HASTA DEFINIR LOGICA DE PRODUCTOS
-  public typeName: string | null = null;
-  public drinkName = '';
-  zones$: Observable<ImmediateCategory>;
+  private readonly zoneUid: string | null;
 
   constructor(
-    private guestService: GuestService,
+    private store: Store<State>,
+    private analytics: AngularFireAnalytics,
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private zoneService: ZoneService,
@@ -46,19 +48,21 @@ export class ZoneRequestComponent implements AfterViewInit {
     private translate: TranslateService,
   ) {
     this.zoneUid = this.route.snapshot.paramMap.get('id');
+    this.userSelector = this.store.pipe(selectUserState);
   }
 
   public ngAfterViewInit(): void {
     const zone$ = this.zoneService.$zones.pipe(
       map((zones) => zones.find((zone) => zone.uid === this.zoneUid)),
     );
-    this.zones$ = combineLatest<[HotelEntity, ZoneEntity]>([this.guestService.$hotel, zone$]).pipe(
-      filter(([hotel, zone]) => !!hotel && !!zone),
-      tap(([hotel, zone]) => {
+
+    this.zones$ = combineLatest<[UserState, ZoneEntity]>([this.userSelector, zone$]).pipe(
+      filter(([{ hotel }, zone]) => !!hotel && !!zone),
+      tap(([{ hotel }, zone]) => {
         this.hotel = hotel;
         this.zone = zone;
       }),
-      switchMap(([hotel, zone]) => this.zoneService.getOptionsByZoneType(hotel.uid, zone.category.id)),
+      switchMap(([{ hotel }, zone]) => this.zoneService.getOptionsByZoneType(hotel.uid, zone.category.id)),
     );
   }
 
@@ -91,6 +95,13 @@ export class ZoneRequestComponent implements AfterViewInit {
     const msg = this.requestController.value || this.selectedSubcategory;
     this.requestService.newRequest(this.zone, msg, !!this.requestController.value).subscribe(
       () => {
+        this.analytics.logEvent('request_create', {
+          type: 'immediate',
+          zone: this.zone.uid,
+          zoneName: this.zone.name,
+          requestMessage: msg,
+          time: new Date(),
+        });
         this.loader = false;
         this.requestController.reset();
         this.router.navigate(['/home/my-request']);

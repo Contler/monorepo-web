@@ -25,6 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { ZoneItemComponent } from './pages/zone-request/zone-item/zone-item.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { DirectivesModule } from '@contler/hotel/directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     UiModule,
     TranslateModule,
     DynamicTranslateModule,
+    DirectivesModule,
   ],
   entryComponents: [ModalQualifyComponent, ModalBookingQualifyComponent, ModalOrdersQuialifyComponent],
 })

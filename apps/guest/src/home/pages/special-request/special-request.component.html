@@ -22,7 +22,6 @@
         contlerColorBtnHotel="primary"
         [loading]="loader"
         [disabled]="loader || specialRequestForm.invalid"
-        [style]="specialRequestForm.invalid ? '' : getButtonColorHotel()"
       >
         {{ 'specialRequest.send' | translate }}
       </button>

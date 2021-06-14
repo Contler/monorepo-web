@@ -9,6 +9,14 @@ services:
       - .:/home/app
     command: ng run hotel:serve --host=0.0.0.0 --port=4200
 
+  guest:
+    build: .
+    ports:
+      - 4201:4201
+    volumes:
+      - .:/home/app
+    command: ng run guest:serve --host=0.0.0.0 --port=4201
+
 networks:
   default:
     external:

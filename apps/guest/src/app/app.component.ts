@@ -7,6 +7,8 @@ import { filter } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { State } from 'guest/app/reducers';
 import * as UserAction from '../app/reducers/user/user.actions';
+import { selectUserState } from 'guest/app/reducers/user/user.selectors';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
 
 @Component({
   selector: 'contler-root',
@@ -21,6 +23,7 @@ export class AppComponent implements OnInit {
     fire: AngularFirestore,
     private afAuth: AngularFireAuth,
     private store: Store<State>,
+    private analytics: AngularFireAnalytics,
   ) {
     if (environment.emulate) {
       db.database.useEmulator('localhost', 9000);
@@ -30,8 +33,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.afAuth.authState.pipe(filter((user) => !!user)).subscribe(({ uid }) => {
-      console.log(uid);
       this.store.dispatch(UserAction.loadUsers({ uid }));
+    });
+
+    this.store.pipe(selectUserState).subscribe((data) => {
+      this.analytics.setUserId(data.user.uid);
+      this.analytics.setUserProperties({ hotel: data.hotel.uid });
     });
   }
 }

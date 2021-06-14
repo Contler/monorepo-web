@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, OnInit } from '@angular/core';
 import { HotelEntity } from '@contler/entity';
 import { GuestService } from 'guest/services/guest.service';
 import { take } from 'rxjs/operators';
@@ -6,11 +6,11 @@ import { take } from 'rxjs/operators';
 @Directive({
   selector: '[contlerColorBtnHotel]',
 })
-export class ColorBtnHotelDirective implements OnChanges {
+export class ColorBtnHotelDirective implements OnChanges, OnInit {
   @Input() contlerColorBtnHotel: 'primary' | 'second' | '' = 'primary';
   private hotel!: HotelEntity | null;
 
-  constructor(private guestService: GuestService, private elemRef: ElementRef) {
+  constructor(private guestService: GuestService, private elemRef: ElementRef<HTMLButtonElement>) {
     this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => {
       this.hotel = hotel;
       this.setColor();
@@ -33,5 +33,12 @@ export class ColorBtnHotelDirective implements OnChanges {
     }
     this.elemRef.nativeElement!.style.backgroundColor = backGroundColor;
     this.elemRef.nativeElement!.style.color = this.hotel.colorText || textColor;
+  }
+
+  ngOnInit(): void {
+    const obs = new MutationObserver((mutations, observer) => {
+      for (const mutation of mutations) {
+      }
+    });
   }
 }
