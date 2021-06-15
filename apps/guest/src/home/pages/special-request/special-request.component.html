@@ -3,8 +3,8 @@
     <p contlerColorHotel="primary" class="p-label">
       {{ 'specialRequest.message' | translate }}
     </p>
-    <form #specialRequestForm (ngSubmit)="saveRequest()">
-      <mat-form-field appearance="fill" class="wd-area">
+    <form>
+      <mat-form-field appearance="fill" style="width: 100%">
         <textarea
           matInput
           cdkAutosizeMinRows="15"
@@ -15,16 +15,19 @@
           required
         ></textarea>
       </mat-form-field>
-      <button
-        class="btn"
-        mat-raised-button
-        contlerButton
-        contlerColorBtnHotel="primary"
-        [loading]="loader"
-        [disabled]="loader || specialRequestForm.invalid"
-      >
-        {{ 'specialRequest.send' | translate }}
-      </button>
     </form>
+  </div>
+
+  <div marcoFooter class="footer">
+    <button
+      mat-raised-button
+      contlerButton
+      contlerColorBtnHotel="primary"
+      (click)="saveRequest()"
+      [loading]="loader"
+      [disabled]="loader || !description"
+    >
+      {{ 'specialRequest.send' | translate }}
+    </button>
   </div>
 </contler-marco>

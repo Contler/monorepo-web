@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { environment } from 'guest/environments/environment';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { filter } from 'rxjs/operators';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Component, OnInit } from '@angular/core';
+
 import { Store } from '@ngrx/store';
+import { filter } from 'rxjs/operators';
+
+import { environment } from 'guest/environments/environment';
 import { State } from 'guest/app/reducers';
 import * as UserAction from '../app/reducers/user/user.actions';
 import { selectUserState } from 'guest/app/reducers/user/user.selectors';
-import { AngularFireAnalytics } from '@angular/fire/analytics';
 
 @Component({
   selector: 'contler-root',
