@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RequestEntity } from '@contler/entity';
+import { MY_REQUEST_CONSTANTS } from '../../my-request.constants';
 
 @Component({
   selector: 'contler-immediate-item',
@@ -8,6 +9,8 @@ import { RequestEntity } from '@contler/entity';
 })
 export class ImmediateItemComponent implements OnInit {
   @Input() request: RequestEntity;
+  constants = MY_REQUEST_CONSTANTS;
+
   constructor() {}
 
   ngOnInit(): void {}

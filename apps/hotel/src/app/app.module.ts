@@ -7,6 +7,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAnalyticsModule, ScreenTrackingService } from '@angular/fire/analytics';
 
 import { CoreModule, HotelService, UserService } from '@contler/core';
 import { DynamicTranslateModule, Loader, LoaderDynamicTranslate } from '@contler/dynamic-translate';
@@ -29,6 +30,8 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { AuthService } from '../services/auth.service';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 registerLocaleData(localeEs);
 
@@ -40,8 +43,6 @@ export function LoadHotel(auth: AuthService) {
   return new Loader(auth.$employer.pipe(map((emp) => emp.hotel.uid)));
 }
 
-import firebase from 'firebase/app';
-import 'firebase/auth';
 const app = firebase.initializeApp(environment.fire, 'app');
 if (environment.emulate) {
   app.auth().useEmulator('http://localhost:9099/');
@@ -57,6 +58,7 @@ if (environment.emulate) {
     AngularFireAuthGuardModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    AngularFireAnalyticsModule,
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
@@ -86,7 +88,7 @@ if (environment.emulate) {
       url: environment.apiUrl,
     }),
   ],
-  providers: [UserService, HotelService],
+  providers: [UserService, HotelService, ScreenTrackingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

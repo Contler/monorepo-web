@@ -10,7 +10,7 @@ export class ColorBtnHotelDirective implements OnChanges {
   @Input() contlerColorBtnHotel: 'primary' | 'second' | '' = 'primary';
   private hotel!: HotelEntity | null;
 
-  constructor(private guestService: GuestService, private elemRef: ElementRef) {
+  constructor(private guestService: GuestService, private elemRef: ElementRef<HTMLButtonElement>) {
     this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => {
       this.hotel = hotel;
       this.setColor();
