@@ -34,6 +34,13 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import {
+  AngularFireAnalyticsModule,
+  ScreenTrackingService,
+  UserTrackingService,
+} from '@angular/fire/analytics';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from 'guest/app/reducers/user/user.effects';
 const app = firebase.initializeApp(environment.fire, 'app');
 if (environment.emulate) {
   app.auth().useEmulator('http://localhost:9099/');
@@ -56,15 +63,16 @@ export function LoadHotel(auth: GuestService) {
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    AngularFireAnalyticsModule,
     FormsModule,
     UiModule,
     ReactiveFormsModule,
     CoreModule.forRoot({ urlBackend: environment.apiUrl }),
     NgxMaskModule.forRoot(),
-    StoreModule.forRoot({}, {}),
     StoreModule.forRoot(reducers, {
       metaReducers,
     }),
+    EffectsModule.forRoot([UserEffects]),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -83,7 +91,7 @@ export function LoadHotel(auth: GuestService) {
     }),
     MatMenuModule,
   ],
-  providers: [HotelService, UserService, AvalibleUserGuard],
+  providers: [HotelService, UserService, AvalibleUserGuard, ScreenTrackingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

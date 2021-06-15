@@ -4,7 +4,7 @@ import { GuestService } from 'guest/services/guest.service';
 import { Observable } from 'rxjs';
 import { GuestEntity } from '@contler/entity';
 import { SpecialZoneGuest } from '@contler/models';
-import { filter, map, switchMap, take } from 'rxjs/operators';
+import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { WELCOME_CONSTANTS } from './welcome.constants';
 import { ModalOrdersQuialifyComponent } from 'guest/home/components/modal-orders-quialify/modal-orders-quialify.component';
 import { ModalBookingQualifyComponent } from 'guest/home/components/modal-booking-qualify/modal-booking-qualify.component';

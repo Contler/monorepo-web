@@ -13,6 +13,7 @@ import { ModalCompleteComponent } from 'guest/common-components/modal-complete/m
 import { TranslateService } from '@ngx-translate/core';
 import { ZoneService } from '../services/zone.service';
 import { RequestService } from '../services/request.service';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
 
 @Component({
   selector: 'contler-my-room',
@@ -39,6 +40,7 @@ export class MyRoomComponent implements OnInit, OnDestroy {
     private requestService: RequestService,
     route: ActivatedRoute,
     private roomService: RoomService,
+    private analytics: AngularFireAnalytics,
   ) {
     const zoneUid = route.snapshot.paramMap.get('id');
     this.zoneService.$zones
@@ -86,8 +88,16 @@ export class MyRoomComponent implements OnInit, OnDestroy {
   createRoomKeys(msg: string) {
     this.requestService.newRequest(this.zone, msg).subscribe(
       () => {
-        this.loader = false;
-        this.router.navigate(['/home/guest-requests']);
+        this.analytics
+          .logEvent('request_create', {
+            type: 'room',
+            service: 'zoneRequest.categories.roomKeys',
+            time: new Date(),
+          })
+          .then(() => {
+            this.loader = false;
+            this.router.navigate(['/home/guest-requests']);
+          });
       },
       () => {
         this.loader = false;

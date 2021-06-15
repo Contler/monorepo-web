@@ -1,58 +1,46 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UsersService } from 'guest/services/users.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { map, switchMap, take } from 'rxjs/operators';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { SpecialRequestsService } from 'guest/services/special-requests.service';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { GuestService } from 'guest/services/guest.service';
-import { Subscription } from 'rxjs';
-import { DomSanitizer } from '@angular/platform-browser';
-import { MessagesService } from 'guest/services/messages/messages.service';
-import { HotelEntity } from '@contler/entity';
-import { RequestRequest } from '@contler/models/request-request';
-import { RequestService } from 'guest/services/request.service';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
+
+import { first, map, switchMap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { Store } from '@ngrx/store';
+import { RequestRequest } from '@contler/models/request-request';
+
+import { MessagesService } from 'guest/services/messages/messages.service';
+import { RequestService } from 'guest/services/request.service';
+import { State } from 'guest/app/reducers';
+import { selectUserState } from 'guest/app/reducers/user/user.selectors';
 
 @Component({
   selector: 'contler-special-request',
   templateUrl: './special-request.component.html',
   styleUrls: ['./special-request.component.scss'],
 })
-export class SpecialRequestComponent implements OnInit, OnDestroy {
+export class SpecialRequestComponent {
   loader = false;
   description: string | null = null;
 
-  hotel: HotelEntity | null | undefined;
-  private guestSubscribe: Subscription;
-
   constructor(
     private requestService: RequestService,
-    private sanitizer: DomSanitizer,
-    private usersService: UsersService,
-    private auth: AngularFireAuth,
-    private realtime: AngularFireDatabase,
-    private specialRequestsService: SpecialRequestsService,
     private router: Router,
-    private guestService: GuestService,
     private messagesService: MessagesService,
     private translate: TranslateService,
-  ) {
-    this.guestSubscribe = this.guestService.$hotel.subscribe((hotel) => (this.hotel = hotel));
-  }
-
-  ngOnInit() {}
+    private analytics: AngularFireAnalytics,
+    private store: Store<State>,
+  ) {}
 
   async saveRequest() {
     this.loader = true;
-    this.guestService.$guest
+    this.store
       .pipe(
-        take(1),
-        map((guest) => {
+        selectUserState,
+        first(),
+        map(({ user, hotel }) => {
           const request = new RequestRequest();
-          request.hotel = this.hotel!;
-          request.guest = guest!;
-          request.room = guest!.room;
+          request.hotel = hotel;
+          request.guest = user;
+          request.room = user!.room;
           request.special = true;
           request.message = this.description!;
           return request;
@@ -61,32 +49,26 @@ export class SpecialRequestComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         () => {
-          this.loader = false;
-          this.router.navigate(['/home']);
+          this.analytics
+            .logEvent('request_create', {
+              type: 'special',
+              requestMessage: this.description,
+              time: new Date(),
+            })
+            .then(() => {
+              this.loader = false;
+              this.router.navigate(['/home']);
+            });
           this.messagesService.showToastMessage(
             this.translate.instant('specialRequest.immediateRequestSuccessfullyCreated'),
           );
         },
-        (error) => {
+        () => {
           this.loader = false;
           this.messagesService.showToastMessage(
             this.translate.instant('specialRequest.errorCreatingRequest'),
           );
         },
       );
-  }
-
-  getButtonColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color
-        ? `background-color: ${this.hotel.color}; color: #ffffff !important`
-        : '',
-    );
-  }
-
-  ngOnDestroy() {
-    if (this.guestSubscribe) {
-      this.guestSubscribe.unsubscribe();
-    }
   }
 }
