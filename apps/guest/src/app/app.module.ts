@@ -91,7 +91,7 @@ export function LoadHotel(auth: GuestService) {
     }),
     MatMenuModule,
   ],
-  providers: [HotelService, UserService, AvalibleUserGuard, UserTrackingService, ScreenTrackingService],
+  providers: [HotelService, UserService, AvalibleUserGuard, ScreenTrackingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
