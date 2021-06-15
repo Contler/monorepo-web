@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
+
 import {
   DynamicFormComponent,
   DynamicModuleService,
@@ -41,6 +43,7 @@ export class DynamicFormServicesComponent implements OnInit {
     private reception: ReceptionService,
     private room: RoomService,
     private dynTranslate: TranslateService,
+    private analytics: AngularFireAnalytics,
   ) {
     this.route.params.subscribe((params) => {
       this.module = params['module'];
@@ -113,7 +116,16 @@ export class DynamicFormServicesComponent implements OnInit {
           this.room.sendNotificationCleaning(this.guest.hotel.uid);
           break;
       }
-      this.location.back();
+
+      this.analytics
+        .logEvent('request_create', {
+          type: this.module,
+          service: this.idService,
+          time: new Date(),
+        })
+        .then(() => {
+          this.location.back();
+        });
     });
   }
 }
