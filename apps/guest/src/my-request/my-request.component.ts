@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { DynamicRequest, NAME_MODULES, receptionDynamicConverter } from '@contler/dynamic-services';
+import { AbstractRequest, NAME_MODULES, RequestService } from '@contler/dynamic-services';
 import { GuestService } from '../services/guest.service';
-import { filter, switchMap } from 'rxjs/operators';
+import { filter, first, map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { RequestService } from 'guest/services/request.service';
+import { RequestService as OldRequestService } from 'guest/services/request.service';
 import { RequestEntity } from '@contler/entity';
 import { MY_REQUEST_CONSTANTS } from './my-request.constants';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { FilterListComponent } from 'guest/common-components/filter-list/filter-list.component';
+import { Store } from '@ngrx/store';
+import { State } from 'guest/app/reducers';
+import { selectUserState } from 'guest/app/reducers/user/user.selectors';
 
 @Component({
   selector: 'contler-my-request',
@@ -16,7 +19,9 @@ import { FilterListComponent } from 'guest/common-components/filter-list/filter-
   styleUrls: ['./my-request.component.scss'],
 })
 export class MyRequestComponent implements OnInit {
-  request: Observable<DynamicRequest[]>;
+  request: Observable<AbstractRequest[]>;
+  requestComplete: Observable<AbstractRequest[]>;
+
   pendingRequests: RequestEntity[];
   readonly constants = MY_REQUEST_CONSTANTS;
   nameModule = [...Object.values(this.constants.options), ...Object.values(NAME_MODULES)].map((val) => ({
@@ -26,40 +31,44 @@ export class MyRequestComponent implements OnInit {
   }));
   isComplete = false;
   completeReq: RequestEntity[];
-  requestComplete: Observable<DynamicRequest[]>;
 
   constructor(
     private db: AngularFirestore,
     private guestService: GuestService,
-    private requestService: RequestService,
+    private requestService: OldRequestService,
     private bottomSheet: MatBottomSheet,
+    private store: Store<State>,
+    private reqService: RequestService,
   ) {
     this.nameModule.find((f) => f.value === this.constants.options.all).select = true;
   }
 
   ngOnInit(): void {
-    const reference = this.db.firestore.collection('dynamicRequest').withConverter(receptionDynamicConverter);
-    this.request = this.guestService.$guest.pipe(
-      switchMap((user) =>
-        this.db
-          .collection<DynamicRequest>(reference, (ref) =>
-            ref.where('guestId', '==', user.uid).where('active', '==', true),
-          )
+    const guest$ = this.store.pipe(selectUserState).pipe(
+      first(),
+      map((data) => data.user),
+    );
+
+    this.request = guest$.pipe(
+      switchMap((guest) =>
+        this.reqService
+          .requestRef((qr) => qr.where('guestId', '==', guest.uid).orderBy('createAt', 'desc'))
           .valueChanges(),
       ),
     );
+
     this.requestService.getRequests(false).subscribe((req) => {
       this.pendingRequests = req;
-      console.log(this.pendingRequests);
     });
     this.requestService.getRequests(true).subscribe((req) => {
       this.completeReq = req;
     });
-    this.requestComplete = this.guestService.$guest.pipe(
-      switchMap((user) =>
-        this.db
-          .collection<DynamicRequest>(reference, (ref) =>
-            ref.where('guestId', '==', user.uid).where('active', '==', false),
+
+    this.requestComplete = guest$.pipe(
+      switchMap((guest) =>
+        this.reqService
+          .requestRef((qr) =>
+            qr.where('guestId', '==', guest.uid).where('active', '==', false).orderBy('createAt', 'desc'),
           )
           .valueChanges(),
       ),

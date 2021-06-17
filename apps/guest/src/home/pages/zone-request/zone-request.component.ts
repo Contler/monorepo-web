@@ -1,14 +1,12 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
-import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ZoneService } from 'guest/services/zone.service';
-import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { filter, first, map, switchMap, tap } from 'rxjs/operators';
 import { NotificationsService } from 'guest/services/notifications.service';
 import { MessagesService } from 'guest/services/messages/messages.service';
 import { HotelEntity, ZoneEntity } from '@contler/entity';
-import { RequestService } from 'guest/services/request.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ImmediateOptionLink, OptionModule, OptionType } from '@contler/models';
 import { Store } from '@ngrx/store';
@@ -16,6 +14,7 @@ import { State } from 'guest/app/reducers';
 import { AngularFireAnalytics } from '@angular/fire/analytics';
 import { selectUserState } from 'guest/app/reducers/user/user.selectors';
 import { UserState } from 'guest/app/reducers/user/user.reducer';
+import { MODULES, RequestService, TypeRequest } from '@contler/dynamic-services';
 
 @Component({
   selector: 'contler-zone-request',
@@ -38,14 +37,13 @@ export class ZoneRequestComponent implements AfterViewInit {
   constructor(
     private store: Store<State>,
     private analytics: AngularFireAnalytics,
-    private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private zoneService: ZoneService,
-    private requestService: RequestService,
     private notificationsService: NotificationsService,
     private messagesService: MessagesService,
     private router: Router,
     private translate: TranslateService,
+    private request: RequestService,
   ) {
     this.zoneUid = this.route.snapshot.paramMap.get('id');
     this.userSelector = this.store.pipe(selectUserState);
@@ -82,38 +80,46 @@ export class ZoneRequestComponent implements AfterViewInit {
     }
   }
 
-  getButtonColorHotel() {
-    return this.sanitizer.bypassSecurityTrustStyle(
-      this.hotel && this.hotel.color
-        ? `background-color: ${this.hotel.color}; color: #ffffff !important`
-        : '',
-    );
-  }
-
   async saveRequest() {
     this.loader = true;
     const msg = this.requestController.value || this.selectedSubcategory;
-    this.requestService.newRequest(this.zone, msg, !!this.requestController.value).subscribe(
-      () => {
-        this.analytics.logEvent('request_create', {
-          type: 'immediate',
-          zone: this.zone.uid,
-          zoneName: this.zone.name,
-          requestMessage: msg,
-          time: new Date(),
-        });
-        this.loader = false;
-        this.requestController.reset();
-        this.router.navigate(['/home/my-request']);
-        this.messagesService.showToastMessage(
-          this.translate.instant('zoneRequest.immediateRequestSuccessfullyCreated'),
-        );
-      },
-      () => {
-        this.loader = false;
-        this.messagesService.showServerError();
-      },
-    );
+
+    this.userSelector
+      .pipe(
+        first(),
+        map(
+          ({ user, hotel }) =>
+            this.request.createRequest(TypeRequest.MESSAGE_REQUEST, {
+              service: MODULES.immediate,
+              guest: user,
+              hotel,
+              message: msg,
+              zone: this.zone,
+            }).request,
+        ),
+        switchMap((req) => this.request.saveRequest(req)),
+      )
+      .subscribe(
+        () => {
+          this.analytics.logEvent('request_create', {
+            type: 'immediate',
+            zone: this.zone.uid,
+            zoneName: this.zone.name,
+            requestMessage: msg,
+            time: new Date(),
+          });
+          this.loader = false;
+          this.requestController.reset();
+          this.router.navigate(['/home/my-request']);
+          this.messagesService.showToastMessage(
+            this.translate.instant('zoneRequest.immediateRequestSuccessfullyCreated'),
+          );
+        },
+        () => {
+          this.loader = false;
+          this.messagesService.showServerError();
+        },
+      );
   }
 
   setQuickRequest(value: string) {

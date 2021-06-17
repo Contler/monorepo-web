@@ -4,6 +4,8 @@ import { RequestFormData, RequestMessageData } from '../interfaces/dataRequestCr
 import { RequestFormCreator, RequestMessageCreator } from '../utils/requestCreators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AbstractRequest } from '../interfaces/abstractRequest';
+import { QueryFn } from '@angular/fire/firestore/interfaces';
+
 import firebase from 'firebase';
 import FirestoreDataConverter = firebase.firestore.FirestoreDataConverter;
 
@@ -11,7 +13,7 @@ import FirestoreDataConverter = firebase.firestore.FirestoreDataConverter;
   providedIn: 'root',
 })
 export class RequestService {
-  readonly requestRef: AngularFirestoreCollection<AbstractRequest>;
+  readonly requestRef: (query?: QueryFn) => AngularFirestoreCollection<AbstractRequest>;
 
   constructor(private afFirestore: AngularFirestore) {
     const requestConverter: FirestoreDataConverter<AbstractRequest> = {
@@ -32,8 +34,10 @@ export class RequestService {
       },
     };
 
-    const ref = this.afFirestore.firestore.collection('dynamicRequest').withConverter(requestConverter);
-    this.requestRef = this.afFirestore.collection<AbstractRequest>(ref);
+    this.requestRef = (query?: QueryFn) => {
+      const ref = this.afFirestore.firestore.collection('dynamicRequest').withConverter(requestConverter);
+      return this.afFirestore.collection<AbstractRequest>(ref, query);
+    };
   }
 
   createRequest(type: TypeRequest.FORM_REQUEST, data: RequestFormData): RequestFormCreator;
@@ -49,6 +53,6 @@ export class RequestService {
   }
 
   saveRequest(request: AbstractRequest) {
-    return this.requestRef.doc(request.key).set(request);
+    return this.requestRef().doc(request.key).set(request);
   }
 }

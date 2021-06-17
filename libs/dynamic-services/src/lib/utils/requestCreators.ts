@@ -18,19 +18,8 @@ export class RequestCreator {
       hotelId: requestData.hotel.uid,
       typeRequest: type,
       status: DynamicRequestStatus.PROGRAMING,
-    };
-  }
-
-  createRequest(type: TypeRequest, requestData: RequestData): AbstractRequest {
-    return {
-      key: '',
-      ...requestData,
-      createAt: new Date(),
-      active: true,
-      guestId: requestData.guest.uid,
-      hotelId: requestData.hotel.uid,
-      typeRequest: type,
-      status: DynamicRequestStatus.PROGRAMING,
+      zone: requestData.zone ? requestData.zone : undefined,
+      zoneId: requestData.zone?.uid,
     };
   }
 }
@@ -45,13 +34,6 @@ export class RequestFormCreator extends RequestCreator {
       ...requestData,
     };
   }
-
-  createRequest(type: TypeRequest, requestData: RequestFormData): DynamicRequest {
-    return {
-      ...super.createRequest(type, requestData),
-      ...requestData,
-    };
-  }
 }
 
 export class RequestMessageCreator extends RequestCreator {
@@ -60,14 +42,7 @@ export class RequestMessageCreator extends RequestCreator {
   constructor(key: string, type: TypeRequest, requestData: RequestMessageData) {
     super(key, type, requestData);
     this.request = {
-      ...super.request,
-      ...requestData,
-    };
-  }
-
-  createRequest(type: TypeRequest, requestData: RequestMessageData): RequestMessage {
-    return {
-      ...super.createRequest(type, requestData),
+      ...this.request,
       ...requestData,
     };
   }

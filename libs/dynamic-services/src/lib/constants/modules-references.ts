@@ -1,6 +1,7 @@
 export enum MODULES {
   root = 'modules',
   immediate = 'immediate',
+  special = 'special',
   reception = 'reception',
   room = 'room',
   maintenance = 'maintenance',
@@ -13,4 +14,6 @@ export const NAME_MODULES = {
   [MODULES.room]: 'modules.room',
   [MODULES.maintenance]: 'modules.maintenance',
   [MODULES.cleaning]: 'modules.clean',
+  [MODULES.immediate]: 'myRequest.immediateRequest',
+  [MODULES.special]: 'myRequest.specialRequest',
 };

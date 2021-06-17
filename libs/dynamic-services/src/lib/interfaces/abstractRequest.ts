@@ -1,4 +1,4 @@
-import { EmployerEntity, GuestEntity, HotelEntity } from '@contler/entity';
+import { EmployerEntity, GuestEntity, HotelEntity, ZoneEntity } from '@contler/entity';
 import { MODULES } from '../constants/modules-references';
 import { DynamicRequestStatus } from '../constants/dynamic-request-status';
 import { TypeRequest } from '../constants/typeRequest';
@@ -20,4 +20,7 @@ export interface AbstractRequest {
 
   assignedId?: string;
   assigned?: EmployerEntity;
+
+  zoneId?: string;
+  zone?: ZoneEntity;
 }
