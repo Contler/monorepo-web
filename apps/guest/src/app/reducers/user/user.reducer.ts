@@ -16,5 +16,5 @@ export const initialState: UserState = {
 
 export const reducer = createReducer(
   initialState,
-  on(UserActions.setUser, (state, { user }) => ({ ...state, user, hotel: user.hotel })),
+  on(UserActions.setUser, (state, { user }) => ({ ...state, user, hotel: user?.hotel })),
 );

@@ -39,8 +39,10 @@ export class AppComponent implements OnInit {
     });
 
     this.store.pipe(selectUserState).subscribe((data) => {
-      this.analytics.setUserId(data.user.uid);
-      this.analytics.setUserProperties({ hotel: data.hotel.uid });
+      if (data.user && data.user.hotel) {
+        this.analytics.setUserId(data.user.uid);
+        this.analytics.setUserProperties({ hotel: data.hotel.uid });
+      }
     });
   }
 }

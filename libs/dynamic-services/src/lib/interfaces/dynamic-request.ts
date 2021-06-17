@@ -1,22 +1,12 @@
 import { InputField } from './input-field';
-import { GuestEntity } from '@contler/entity';
-import { MODULES } from '../constants/modules-references';
-import { DynamicRequestStatus } from '../constants/dynamic-request-status';
 import firebase from 'firebase/app';
 import FirestoreDataConverter = firebase.firestore.FirestoreDataConverter;
+import { AbstractRequest } from './abstractRequest';
 
-export interface DynamicRequest {
+export interface DynamicRequest extends AbstractRequest {
   form: InputField[];
-  guest?: GuestEntity;
-  guestId: string;
-  hotelId: string;
   nameService: string;
-  service: MODULES;
   serviceId: string;
-  key?: string;
-  active: boolean;
-  status: DynamicRequestStatus;
-  createAt: Date;
 }
 
 export const receptionDynamicConverter: FirestoreDataConverter<DynamicRequest> = {

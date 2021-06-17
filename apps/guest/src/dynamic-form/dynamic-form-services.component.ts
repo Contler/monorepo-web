@@ -10,6 +10,8 @@ import {
   FormService,
   InputType,
   MODULES,
+  RequestService,
+  TypeRequest,
 } from '@contler/dynamic-services';
 import { FormGroup } from '@angular/forms';
 import { GuestService } from '../services/guest.service';
@@ -44,6 +46,7 @@ export class DynamicFormServicesComponent implements OnInit {
     private room: RoomService,
     private dynTranslate: TranslateService,
     private analytics: AngularFireAnalytics,
+    private requestService: RequestService,
   ) {
     this.route.params.subscribe((params) => {
       this.module = params['module'];
@@ -89,19 +92,16 @@ export class DynamicFormServicesComponent implements OnInit {
       return input;
     });
     formClone = await Promise.all(promisesToExecute);
-    const data: DynamicRequest = {
+    const data = this.requestService.createRequest(TypeRequest.FORM_REQUEST, {
       form: formClone,
       nameService: this.formData.serviceName,
       service: this.module,
       serviceId: this.idService,
       guest: this.guest,
-      guestId: this.guest.uid,
-      hotelId: this.guest.hotel.uid,
-      active: true,
-      status: DynamicRequestStatus.PROGRAMING,
-      createAt: new Date(),
-    };
-    this.dynamicService.saveDynamicRequest(data).then(() => {
+      hotel: this.guest.hotel,
+    });
+
+    this.requestService.saveRequest(data.request).then(() => {
       switch (this.module) {
         case MODULES.reception:
           this.reception.sendNotification(this.guest.hotel.uid);
