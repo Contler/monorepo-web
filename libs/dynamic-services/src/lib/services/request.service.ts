@@ -8,6 +8,12 @@ import { QueryFn } from '@angular/fire/firestore/interfaces';
 
 import firebase from 'firebase';
 import FirestoreDataConverter = firebase.firestore.FirestoreDataConverter;
+import { EmployerEntity } from '@contler/entity';
+import { DynamicRequestStatus } from '../constants/dynamic-request-status';
+import { DynamicRequest } from '../interfaces/dynamic-request';
+import { RequestMessage } from '../interfaces/RequestMessage';
+import { MODULES } from '../constants/modules-references';
+import { FilterRequest } from '../interfaces/filterRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -54,5 +60,50 @@ export class RequestService {
 
   saveRequest(request: AbstractRequest) {
     return this.requestRef().doc(request.key).set(request);
+  }
+
+  changeStatus(key: string, status: DynamicRequestStatus, employer?: EmployerEntity) {
+    const updateObj: Partial<AbstractRequest> = {
+      status,
+    };
+
+    if (employer) {
+      const { leaderZones, leaderSpecialZone, averageTime, hotel, ...data } = employer;
+      updateObj.assigned = data as EmployerEntity;
+      updateObj.assignedId = data.uid;
+    }
+
+    if (status === DynamicRequestStatus.COMPLETED) {
+      updateObj.completeAt = new Date();
+      updateObj.active = false;
+    }
+    return this.requestRef().doc(key).update(updateObj);
+  }
+
+  getNameService(request: AbstractRequest) {
+    if (!request) {
+      return '';
+    }
+    switch (request.typeRequest) {
+      case TypeRequest.FORM_REQUEST:
+        return (request as DynamicRequest).nameService;
+      case TypeRequest.MESSAGE_REQUEST:
+        return (request as RequestMessage).message;
+      default:
+        return (request as DynamicRequest).nameService;
+    }
+  }
+
+  getByService(service: MODULES, filters?: FilterRequest) {
+    const query: QueryFn = (qf) => {
+      let qft = qf.where('service', '==', service);
+      for (const filtersKey in filters) {
+        if (filtersKey in filters) {
+          qft = qft.where(filtersKey, '==', filters[filtersKey]);
+        }
+      }
+      return qft;
+    };
+    return this.requestRef(query);
   }
 }

@@ -113,7 +113,7 @@ export class MyRoomComponent implements OnInit {
   private generateRequest(hotel: HotelEntity, guest: GuestEntity, msg: string) {
     return this.requestService.createRequest(TypeRequest.MESSAGE_REQUEST, {
       hotel,
-      service: this.zone ? MODULES.immediate : MODULES.room,
+      service: MODULES.immediate,
       zone: this.zone || null,
       guest,
       message: msg,

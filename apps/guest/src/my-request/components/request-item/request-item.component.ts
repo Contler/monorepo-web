@@ -1,11 +1,9 @@
 import { Component, Input } from '@angular/core';
 import {
   AbstractRequest,
-  DynamicRequest,
   DynamicRequestStatus,
   NAME_MODULES,
-  RequestMessage,
-  TypeRequest,
+  RequestService,
 } from '@contler/dynamic-services';
 
 @Component({
@@ -19,7 +17,7 @@ export class RequestItemComponent {
 
   readonly nameModule = NAME_MODULES;
 
-  constructor() {}
+  constructor(private requestService: RequestService) {}
 
   get colorStatus() {
     return this.request?.status === DynamicRequestStatus.ATTENDED
@@ -31,14 +29,7 @@ export class RequestItemComponent {
 
   get nameService() {
     if (this.request) {
-      switch (this.request.typeRequest) {
-        case TypeRequest.FORM_REQUEST:
-          return (this.request as DynamicRequest).nameService;
-        case TypeRequest.MESSAGE_REQUEST:
-          return (this.request as RequestMessage).message;
-        default:
-          return (this.request as DynamicRequest).nameService;
-      }
+      return this.requestService.getNameService(this.request);
     } else {
       return '';
     }

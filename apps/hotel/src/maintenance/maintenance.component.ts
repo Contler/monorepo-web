@@ -11,17 +11,8 @@ import { DynamicModuleService, DynamicRequestStatus, MODULES } from '@contler/dy
 import { MatDialog } from '@angular/material/dialog';
 import { MessagesService } from '@contler/hotel/services/messages/messages.service';
 import { REQUEST_STATUS } from '@contler/hotel/inmediate-requests/const/request.const';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  first,
-  map,
-  mergeMap,
-  switchMap,
-  tap,
-  toArray,
-} from 'rxjs/operators';
-import { combineLatest, forkJoin, from, merge, Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, first, map, switchMap, tap } from 'rxjs/operators';
+import { combineLatest, forkJoin, merge } from 'rxjs';
 import { ModalReceptionComponent } from '@contler/hotel/common-components/modal-reception/modal-reception.component';
 
 @Component({
@@ -156,8 +147,7 @@ export class MaintenanceComponent implements OnInit {
         first(),
         switchMap((hotel) => {
           return forkJoin({
-            staticRequests: this.formatterReceptionModel(hotel.uid).pipe(first()),
-            dynamicRequests: combineLatest([
+            maintainRequest: combineLatest([
               this.dynamicModuleService
                 .getDynamicRequest(hotel.uid, MODULES.maintenance, true, 30)
                 .pipe(first()),
@@ -174,9 +164,9 @@ export class MaintenanceComponent implements OnInit {
           });
         }),
       )
-      .subscribe(({ staticRequests, dynamicRequests, categories }) => {
+      .subscribe(({ maintainRequest, categories }) => {
         this.categories = categories as ImmediateOptionLink[];
-        const dynamicRequestToReceptionModel: ReqRecpetionGuest[] = dynamicRequests.map((dr) => {
+        const dynamicRequestToReceptionModel: ReqRecpetionGuest[] = maintainRequest.map((dr) => {
           const request: ReceptionModel = {
             uid: dr.key,
             active: dr.active,
@@ -193,7 +183,7 @@ export class MaintenanceComponent implements OnInit {
             guest: dr.guest,
           };
         });
-        this.dataSource.data = [...staticRequests, ...dynamicRequestToReceptionModel];
+        this.dataSource.data = dynamicRequestToReceptionModel;
         this.dataSource.paginator = this.paginator as MatPaginator;
         this.dataSource.sort = this.sort;
         this.dataSource.filterPredicate = (data, filter2) => this.getFilterPredicate(data, filter2);
@@ -224,19 +214,5 @@ export class MaintenanceComponent implements OnInit {
       .subscribe((filter) => {
         this.dataSource.filter = filter;
       });
-  }
-
-  private formatterReceptionModel(hotelUid: string): Observable<ReqRecpetionGuest[]> {
-    return this.receptionService.getMaintenanceRequest(hotelUid).pipe(
-      first(),
-      switchMap((requests) => from(requests)),
-      mergeMap<ReceptionModel, Observable<ReqRecpetionGuest>>((request) =>
-        this.userService.getGuestById(request.guest).pipe(map((guest) => ({ request, guest }))),
-      ),
-      toArray(),
-      map((data) =>
-        data.sort((a, b) => this.compare(a.request.createAt.getTime(), b.request.createAt.getTime(), true)),
-      ),
-    );
   }
 }

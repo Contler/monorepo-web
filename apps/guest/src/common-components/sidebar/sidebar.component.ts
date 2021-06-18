@@ -1,8 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter, first, map, tap } from 'rxjs/operators';
-import { UsersService } from 'guest/services/users.service';
-import { Observable, Subscription } from 'rxjs';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { first, map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { GuestService } from 'guest/services/guest.service';
 import { GuestEntity, HotelEntity } from '@contler/entity';
@@ -25,7 +24,6 @@ export class SidebarComponent {
 
   constructor(
     private router: Router,
-    private usersService: UsersService,
     private auth: AngularFireAuth,
     private guestService: GuestService,
     private translate: TranslateService,

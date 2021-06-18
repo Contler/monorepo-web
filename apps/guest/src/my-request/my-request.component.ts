@@ -53,17 +53,12 @@ export class MyRequestComponent implements OnInit {
     this.request = guest$.pipe(
       switchMap((guest) =>
         this.reqService
-          .requestRef((qr) => qr.where('guestId', '==', guest.uid).orderBy('createAt', 'desc'))
+          .requestRef((qr) =>
+            qr.where('guestId', '==', guest.uid).where('active', '==', true).orderBy('createAt', 'desc'),
+          )
           .valueChanges(),
       ),
     );
-
-    this.requestService.getRequests(false).subscribe((req) => {
-      this.pendingRequests = req;
-    });
-    this.requestService.getRequests(true).subscribe((req) => {
-      this.completeReq = req;
-    });
 
     this.requestComplete = guest$.pipe(
       switchMap((guest) =>

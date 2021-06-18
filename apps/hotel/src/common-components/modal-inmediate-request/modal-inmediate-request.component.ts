@@ -1,8 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { EmployerEntity, RequestEntity } from '@contler/entity';
-import { switchMap } from 'rxjs/operators';
+import { EmployerEntity } from '@contler/entity';
 import { TranslateService } from '@ngx-translate/core';
 import { EmployerService } from '../../employer/services/employer.service';
 import { InmediateRequestsService } from '../../inmediate-requests/services/inmediate-requests.service';
@@ -62,17 +61,10 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
   save() {
     if (this.request) {
       this.loading = true;
-      const { leaderZones, leaderSpecialZone, averageTime, hotel, ...employer } = this.employers.find(
-        (e) => e.uid === this.idSelected,
-      )!;
+      const employer = this.employers.find((e) => e.uid === this.idSelected)!;
+
       this.requestService
-        .requestRef()
-        .doc(this.request.key)
-        .update({
-          assigned: employer as EmployerEntity,
-          assignedId: employer.uid,
-          status: this.isFinished,
-        })
+        .changeStatus(this.request.key, this.isFinished, employer)
         .then(() => {
           this.loading = false;
           const msg = this.translate.instant('immediateRequest.updateSusses');
