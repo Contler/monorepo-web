@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AbstractRequest, NAME_MODULES, RequestService } from '@contler/dynamic-services';
+import { AbstractRequest, NAME_MODULES, RequestService, TypeRequest } from '@contler/dynamic-services';
 import { GuestService } from '../services/guest.service';
 import { filter, first, map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -24,6 +24,7 @@ export class MyRequestComponent implements OnInit {
 
   pendingRequests: RequestEntity[];
   readonly constants = MY_REQUEST_CONSTANTS;
+  readonly typeRequest = TypeRequest;
   nameModule = [...Object.values(this.constants.options), ...Object.values(NAME_MODULES)].map((val) => ({
     select: false,
     value: val,

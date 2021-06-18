@@ -11,6 +11,8 @@ export interface AbstractRequest {
   createAt: Date;
   completeAt?: Date;
   typeRequest: TypeRequest;
+  score?: number;
+  comment?: string;
 
   guestId: string;
   guest?: GuestEntity;

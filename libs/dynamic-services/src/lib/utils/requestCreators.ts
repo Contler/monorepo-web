@@ -18,8 +18,8 @@ export class RequestCreator {
       hotelId: requestData.hotel.uid,
       typeRequest: type,
       status: DynamicRequestStatus.PROGRAMING,
-      zone: requestData.zone ? requestData.zone : undefined,
-      zoneId: requestData.zone?.uid,
+      zone: requestData.zone || null,
+      zoneId: requestData.zone?.uid || null,
     };
   }
 }

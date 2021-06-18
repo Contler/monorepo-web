@@ -23,7 +23,7 @@
           <mat-hint>{{ 'immediateRequest.timeTable' | translate }}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <input matInput [value]="request.finishAt | date: 'HH:mm'" readonly />
+          <input matInput [value]="request.completeAt | date: 'HH:mm'" readonly />
           <mat-icon matSuffix class="material-icons-outlined">watch_later</mat-icon>
           <mat-hint>{{ 'immediateRequest.timeDelivery' | translate }}</mat-hint>
         </mat-form-field>
@@ -39,7 +39,7 @@
 
     <div class="two-inputs main-container__first-row">
       <mat-form-field appearance="fill">
-        <input matInput [value]="request.room.name | ctrTranslate" readonly />
+        <input matInput [value]="request.guest?.room.name | ctrTranslate" readonly />
         <mat-hint>{{ 'immediateRequest.roomTable' | translate }}</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
@@ -50,9 +50,10 @@
 
     <div class="two-inputs main-container__fourth-row">
       <mat-form-field appearance="fill">
-        <mat-select [(ngModel)]="isFinished" [disabled]="request.complete">
-          <mat-option [value]="false"> {{ 'immediateRequest.active' | translate }} </mat-option>
-          <mat-option [value]="true"> {{ 'immediateRequest.complete' | translate }} </mat-option>
+        <mat-select [(ngModel)]="isFinished" [disabled]="!request.active">
+          <mat-option [value]="status.PROGRAMING"> {{ status.PROGRAMING | translate }} </mat-option>
+          <mat-option [value]="status.ATTENDED"> {{ status.ATTENDED | translate }} </mat-option>
+          <mat-option [value]="status.COMPLETED"> {{ status.COMPLETED | translate }} </mat-option>
         </mat-select>
         <mat-hint>{{ 'immediateRequest.stateTable' | translate }}</mat-hint>
       </mat-form-field>

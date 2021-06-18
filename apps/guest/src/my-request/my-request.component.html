@@ -4,17 +4,18 @@
       {{ (isComplete ? constants.complete : constants.pending) | translate }}
     </h1>
     <ng-container *ngIf="!isComplete">
-      <a
+      <ng-container
         *ngFor="let item of request | async | filterSpecial: nameModule"
-        [routerLink]="item.key"
-        style="text-decoration: none"
+        [ngSwitch]="item.typeRequest"
       >
-        <contler-request-item [request]="item"></contler-request-item>
-      </a>
-
-      <a *ngFor="let item of pendingRequests | filterRequest: nameModule" style="text-decoration: none">
-        <contler-immediate-item [request]="item"></contler-immediate-item>
-      </a>
+        <contler-request-item
+          *ngSwitchCase="typeRequest.MESSAGE_REQUEST"
+          [request]="item"
+        ></contler-request-item>
+        <a *ngSwitchDefault [routerLink]="item.key" style="text-decoration: none">
+          <contler-request-item [request]="item"></contler-request-item>
+        </a>
+      </ng-container>
     </ng-container>
 
     <ng-container *ngIf="isComplete">
@@ -22,11 +23,6 @@
         [request]="item"
         *ngFor="let item of requestComplete | async | filterSpecial: nameModule"
       ></contler-request-item>
-      <ng-container *ngIf="showImmediate">
-        <a *ngFor="let item of completeReq" style="text-decoration: none">
-          <contler-immediate-item [request]="item"></contler-immediate-item>
-        </a>
-      </ng-container>
     </ng-container>
   </ng-container>
 

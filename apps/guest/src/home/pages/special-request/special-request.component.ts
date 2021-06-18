@@ -5,12 +5,11 @@ import { AngularFireAnalytics } from '@angular/fire/analytics';
 import { first, map, switchMap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
-import { RequestRequest } from '@contler/models/request-request';
 
 import { MessagesService } from 'guest/services/messages/messages.service';
-import { RequestService } from 'guest/services/request.service';
 import { State } from 'guest/app/reducers';
 import { selectUserState } from 'guest/app/reducers/user/user.selectors';
+import { MODULES, RequestService, TypeRequest } from '@contler/dynamic-services';
 
 @Component({
   selector: 'contler-special-request',
@@ -37,13 +36,12 @@ export class SpecialRequestComponent {
         selectUserState,
         first(),
         map(({ user, hotel }) => {
-          const request = new RequestRequest();
-          request.hotel = hotel;
-          request.guest = user;
-          request.room = user!.room;
-          request.special = true;
-          request.message = this.description!;
-          return request;
+          return this.requestService.createRequest(TypeRequest.MESSAGE_REQUEST, {
+            hotel,
+            guest: user,
+            message: this.description,
+            service: MODULES.special,
+          }).request;
         }),
         switchMap((request) => this.requestService.saveRequest(request)),
       )

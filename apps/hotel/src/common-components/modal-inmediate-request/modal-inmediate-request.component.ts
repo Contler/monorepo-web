@@ -8,6 +8,7 @@ import { EmployerService } from '../../employer/services/employer.service';
 import { InmediateRequestsService } from '../../inmediate-requests/services/inmediate-requests.service';
 import { MessagesService } from '../../services/messages/messages.service';
 import { AuthService } from '../../services/auth.service';
+import { DynamicRequestStatus, RequestMessage, RequestService } from '@contler/dynamic-services';
 
 @Component({
   selector: 'contler-modal-inmediate-request',
@@ -15,14 +16,16 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./modal-inmediate-request.component.scss'],
 })
 export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
+  readonly status = DynamicRequestStatus;
+
   loading = false;
   idSelected: string;
 
-  public request: RequestEntity | null = null;
+  public request: RequestMessage;
 
   public employers: EmployerEntity[] = [];
   private subscription: Subscription | null = null;
-  public isFinished = false;
+  public isFinished: DynamicRequestStatus = DynamicRequestStatus.PROGRAMING;
 
   constructor(
     public dialogRef: MatDialogRef<ModalInmediateRequestComponent>,
@@ -30,11 +33,12 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
     private inmediateRequestsService: InmediateRequestsService,
     private messagesService: MessagesService,
     @Inject(MAT_DIALOG_DATA)
-    public data: RequestEntity,
+    public data: RequestMessage,
     private authService: AuthService,
     private translate: TranslateService,
+    private requestService: RequestService,
   ) {
-    this.idSelected = data.solved ? data.solved.uid : '';
+    this.idSelected = data.assigned ? data.assigned.uid : '';
   }
 
   onNoClick(): void {
@@ -43,7 +47,7 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.request = this.data;
-    this.isFinished = this.request.complete;
+    this.isFinished = this.request.status;
     this.subscription = this.employerService
       .getEmployers()
       .subscribe((employers) => (this.employers = employers));
@@ -58,28 +62,28 @@ export class ModalInmediateRequestComponent implements OnInit, OnDestroy {
   save() {
     if (this.request) {
       this.loading = true;
-      this.request!.solved = this.employers.find((e) => e.uid === this.idSelected)!;
-      this.authService.$employer
-        .pipe(
-          switchMap((user) => {
-            this.request!.attended = user!;
-            this.request!.complete = this.isFinished;
-            return this.inmediateRequestsService.updateRequest(this.request!);
-          }),
-        )
-        .subscribe(
-          () => {
-            this.loading = false;
-            const msg = this.translate.instant('immediateRequest.updateSusses');
-            this.messagesService.showToastMessage(msg);
-            this.dialogRef.close();
-          },
-          () => {
-            this.loading = false;
-            this.messagesService.showServerError();
-            console.error('Hubo un error');
-          },
-        );
+      const { leaderZones, leaderSpecialZone, averageTime, hotel, ...employer } = this.employers.find(
+        (e) => e.uid === this.idSelected,
+      )!;
+      this.requestService
+        .requestRef()
+        .doc(this.request.key)
+        .update({
+          assigned: employer as EmployerEntity,
+          assignedId: employer.uid,
+          status: this.isFinished,
+        })
+        .then(() => {
+          this.loading = false;
+          const msg = this.translate.instant('immediateRequest.updateSusses');
+          this.messagesService.showToastMessage(msg);
+          this.dialogRef.close();
+        })
+        .catch(() => {
+          this.loading = false;
+          this.messagesService.showServerError();
+          console.error('Hubo un error');
+        });
     }
   }
 }

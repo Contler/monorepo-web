@@ -15,6 +15,8 @@ import {
 })
 export class RequestItemComponent {
   @Input() request: AbstractRequest;
+  @Input() link: string;
+
   readonly nameModule = NAME_MODULES;
 
   constructor() {}

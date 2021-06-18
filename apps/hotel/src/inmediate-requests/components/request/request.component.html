@@ -1,15 +1,15 @@
 <table mat-table [dataSource]="dataSource" class="table">
   <ng-container matColumnDef="userName">
     <th mat-header-cell *matHeaderCellDef>{{ 'immediateRequest.nameTable' | translate }}</th>
-    <td mat-cell *matCellDef="let element">{{ element.guest.name }} {{ element.guest.lastName }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.guest?.name }} {{ element.guest?.lastName }}</td>
   </ng-container>
   <ng-container matColumnDef="zone">
     <th mat-header-cell *matHeaderCellDef>{{ 'immediateRequest.zoneTable' | translate }}</th>
-    <td mat-cell *matCellDef="let element">{{ element.zone.name | ctrTranslate }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.zone?.name | ctrTranslate }}</td>
   </ng-container>
   <ng-container matColumnDef="room">
     <th mat-header-cell *matHeaderCellDef>{{ 'immediateRequest.roomTable' | translate }}</th>
-    <td mat-cell *matCellDef="let element">{{ element.room.name | ctrTranslate }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.guest?.room?.name | ctrTranslate }}</td>
   </ng-container>
   <ng-container matColumnDef="message">
     <th mat-header-cell *matHeaderCellDef>{{ 'immediateRequest.messageTable' | translate }}</th>
@@ -21,12 +21,12 @@
   </ng-container>
   <ng-container matColumnDef="employerName">
     <th mat-header-cell *matHeaderCellDef>{{ 'immediateRequest.employerTable' | translate }}</th>
-    <td mat-cell *matCellDef="let element">{{ element.solved?.name }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.assigned?.name }}</td>
   </ng-container>
   <ng-container matColumnDef="status">
     <th mat-header-cell *matHeaderCellDef>{{ 'immediateRequest.stateTable' | translate }}</th>
     <td mat-cell *matCellDef="let element">
-      <contler-status-icon [status]="element.complete"></contler-status-icon>
+      <contler-status-icon [status]="!element.active"></contler-status-icon>
     </td>
   </ng-container>
   <ng-container matColumnDef="actions">
