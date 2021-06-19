@@ -23,6 +23,14 @@ import { DynamicTranslateModule, Loader, LoaderDynamicTranslate } from '@contler
 import { map } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+const app = firebase.initializeApp(environment.firebaseConfig, 'app');
+
+if (environment.emulate) {
+  app.auth().useEmulator('http://localhost:9099/');
+}
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -36,7 +44,7 @@ export function LoadHotel(auth: AuthService) {
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'app'),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,

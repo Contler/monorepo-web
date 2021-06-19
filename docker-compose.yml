@@ -17,6 +17,14 @@ services:
       - .:/home/app
     command: ng run guest:serve --host=0.0.0.0 --port=4201
 
+  employer:
+    build: .
+    ports:
+      - 4202:4202
+    volumes:
+      - .:/home/app
+    command: ng run mobile:serve --host=0.0.0.0 --port=4202
+
 networks:
   default:
     external:
