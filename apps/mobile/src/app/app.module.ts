@@ -16,7 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
-import { CoreModule } from '@contler/core';
+import { CoreModule, UserService } from '@contler/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule, Loader, LoaderDynamicTranslate } from '@contler/dynamic-translate';
@@ -25,6 +25,11 @@ import { AuthService } from './services/auth.service';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './reducers/user/user.effects';
+import { RequestEffects } from './reducers/request/request.effects';
 const app = firebase.initializeApp(environment.firebaseConfig, 'app');
 
 if (environment.emulate) {
@@ -55,6 +60,8 @@ export function LoadHotel(auth: AuthService) {
     HttpClientModule,
     AngularFireAuthGuardModule,
     CoreModule.forRoot({ urlBackend: environment.apiUrl }),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([UserEffects, RequestEffects]),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -72,7 +79,7 @@ export function LoadHotel(auth: AuthService) {
       url: environment.apiUrl,
     }),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, OneSignal],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, OneSignal, UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

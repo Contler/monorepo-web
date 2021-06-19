@@ -29,4 +29,8 @@ export class UserService {
   getGuestById(uid: string) {
     return this.http.get<GuestEntity>(this.url + `guest/${uid}`);
   }
+
+  getEmployerById(uid: string) {
+    return this.http.get<EmployerEntity>(this.url + `employer/${uid}`);
+  }
 }
