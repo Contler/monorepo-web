@@ -16,7 +16,7 @@
       {{ 'pendingReception.title' | translate }}
     </div>
 
-    <div *ngIf="totalReception && totalReception === 0" class="center">
+    <div *ngIf="totalReception2 === 0" class="center">
       {{ 'pendingReception.noRequests' | translate }}
     </div>
 
@@ -26,8 +26,4 @@
       [item]="item"
     ></contler-dynamic-item>
   </div>
-
-  <p *ngIf="!totalReception && !totalReception2" class="reception__text">
-    {{ 'pendingReception.noRequests' | translate }}
-  </p>
 </ion-content>

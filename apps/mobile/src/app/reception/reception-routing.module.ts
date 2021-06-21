@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReceptionComponent } from './reception.component';
+import { PendingComponent } from './pages/pending-reception/pending.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
       },
       {
         path: 'pending',
-        loadChildren: () => import('./pages/pending-reception/pending.module').then((m) => m.PendingModule),
+        component: PendingComponent,
       },
       {
         path: 'ready',

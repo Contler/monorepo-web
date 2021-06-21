@@ -17,7 +17,7 @@
     </p>
 
     <contler-dynamic-item
-      *ngFor="let item of dynamicReq | async | dynamicFilter: filter"
+      *ngFor="let item of requests$ | async | dynamicFilter: filter"
       [isReady]="true"
       [item]="item"
     ></contler-dynamic-item>

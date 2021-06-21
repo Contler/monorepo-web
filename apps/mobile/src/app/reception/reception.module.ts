@@ -11,11 +11,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { ReceptionRoutingModule } from './reception-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { PendingComponent } from './pages/pending-reception/pending.component';
 
 const routes: Routes = [{ path: '', component: ReceptionComponent }];
 
 @NgModule({
-  declarations: [ReceptionComponent],
+  declarations: [ReceptionComponent, PendingComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

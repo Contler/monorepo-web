@@ -23,9 +23,7 @@ import {
   styleUrls: ['./pending-maintain.component.scss'],
 })
 export class PendingMaintainComponent implements OnInit {
-  $receptionReq: Observable<ReceptionModel[]>;
   user: EmployerEntity | null = null;
-  totalReception: number;
   totalReception2: number;
   dynamicReq: Observable<DynamicRequest[]>;
   filter: DynamicRequestStatus;
@@ -48,17 +46,5 @@ export class PendingMaintainComponent implements OnInit {
         .getDynamicRequest(user.hotel.uid, MODULES.maintenance, true)
         .pipe(tap(({ length }) => (this.totalReception2 = length)));
     });
-    this.$receptionReq = this.receptionLocalService
-      .getMaintainReq()
-      .pipe(tap(({ length }) => (this.totalReception = length)));
-  }
-
-  async modalClose(complete: any, uid: string) {
-    await this.roomService.maintainRef.doc(uid).update({ active: complete });
-    this.snackBar.open(
-      this.translate.instant('pendingMaintain.message'),
-      this.translate.instant('pendingMaintain.close'),
-      { duration: 3000 },
-    );
   }
 }

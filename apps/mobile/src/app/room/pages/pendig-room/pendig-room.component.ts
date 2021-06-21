@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { AuthService } from '../../../services/auth.service';
-import { take, tap } from 'rxjs/operators';
-import {
-  DynamicModuleService,
-  DynamicRequest,
-  DynamicRequestStatus,
-  MODULES,
-} from '@contler/dynamic-services';
+import { first, map, tap } from 'rxjs/operators';
+import { DynamicRequest, DynamicRequestStatus, RequestService } from '@contler/dynamic-services';
 import { EmployerEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { State } from '../../../reducers';
+import { selectEmployer } from '../../../reducers/user/user.selectors';
+import { selectRoom } from '../../../reducers/request/request.selectors';
 
 @Component({
   selector: 'contler-pendig-room',
@@ -19,17 +17,16 @@ import { Observable } from 'rxjs';
 export class PendigRoomComponent implements OnInit {
   user: EmployerEntity;
   totalReception: number;
-  dynamicReq: Observable<DynamicRequest[]>;
   listStatus = [DynamicRequestStatus.ALL, DynamicRequestStatus.PROGRAMING, DynamicRequestStatus.ATTENDED];
   filter = DynamicRequestStatus.ALL;
+  requests$: Observable<DynamicRequest[]>;
 
-  constructor(public menu: MenuController, private auth: AuthService, dynamicService: DynamicModuleService) {
-    this.auth.$user.pipe(take(1)).subscribe((user) => {
-      this.user = user;
-      this.dynamicReq = dynamicService
-        .getDynamicRequest(user.hotel.uid, MODULES.room, true)
-        .pipe(tap(({ length }) => (this.totalReception = length)));
-    });
+  constructor(public menu: MenuController, requestService: RequestService, private store: Store<State>) {
+    this.store.pipe(selectEmployer, first()).subscribe((user) => (this.user = user));
+    this.requests$ = this.store.select(selectRoom).pipe(
+      map((data) => data.requests as DynamicRequest[]),
+      tap((data) => (this.totalReception = data.length)),
+    );
   }
 
   ngOnInit(): void {}
