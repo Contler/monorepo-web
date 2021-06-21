@@ -4,61 +4,34 @@
       <contler-logo *ngIf="user" [src]="user.hotel.logo"></contler-logo>
     </div>
     <button mat-icon-button class="header__menu" (click)="menu.toggle()">
-      <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
+      <mat-icon contlerColorHotel>menu</mat-icon>
     </button>
   </div>
 </ion-header>
 
 <ion-content>
   <div class="main-container">
-    <div class="search-container" *ngIf="searchRequestsEnabled">
-      <contler-searchbar [placeholder]="'Qué buscas'" (value)="searchRequests($event)"></contler-searchbar>
-      <ng-container *ngIf="requestsResults.length">
-        <div class="item" *ngFor="let request of requestsResults" (click)="goToRequest(request)">
-          <div class="item__info-container">
-            <p class="username">{{request.guest.name}}</p>
-            <p class="zone">{{request.message}}</p>
-          </div>
-          <div class="item__data-container">
-            <p class="time">{{request.room.name | ctrTranslate}}</p>
-            <button mat-icon-button>
-              <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
-            </button>
-          </div>
+    <p class="main-container__title" contlerColorHotel>{{'specialRequest.completeTitle' | translate}}</p>
+    <div class="list-container">
+      <div class="item" *ngFor="let request of requests$ | async">
+        <div class="item__info-container">
+          <p class="username">{{request.guest.name}}</p>
+          <p class="zone">{{request.message | ctrTranslate}}</p>
         </div>
-      </ng-container>
-      <ng-template #emptyResults>
-        <p class="empty-label" *ngIf="requestsResults.length == 0">{{'global.NO_RESULT' | translate}}</p>
+        <div class="item__data-container">
+          <p class="time">{{request.guest?.room.name | ctrTranslate}}</p>
+          <button mat-icon-button (click)="goToRequest(request)">
+            <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <ng-template [ngIf]="count === 0">
+        <div class="empty-container">
+          <mat-icon class="custom_icon empty-container__icon">check_circle</mat-icon>
+          <p class="empty-container__label" contlerColorHotel>{{'specialRequest.empty' | translate}}</p>
+        </div>
       </ng-template>
     </div>
-    <ng-container *ngIf="!searchRequestsEnabled">
-      <p class="main-container__title" [style.color]="generalService.hotelColor">
-        {{'specialRequest.completeTitle' | translate}}
-      </p>
-      <div class="list-container">
-        <ng-container *ngIf="requests.length else empty">
-          <div class="item" *ngFor="let request of requests">
-            <div class="item__info-container">
-              <p class="username">{{request.guest.name}}</p>
-              <p class="zone">{{request.message | ctrTranslate}}</p>
-            </div>
-            <div class="item__data-container">
-              <p class="time">{{request.room.name | ctrTranslate}}</p>
-              <button mat-icon-button (click)="goToRequest(request)">
-                <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
-              </button>
-            </div>
-          </div>
-        </ng-container>
-        <ng-template #empty>
-          <div class="empty-container">
-            <mat-icon class="custom_icon empty-container__icon">check_circle</mat-icon>
-            <p class="empty-container__label" [style.color]="generalService.hotelColor">
-              {{'specialRequest.empty' | translate}}
-            </p>
-          </div>
-        </ng-template>
-      </div>
-    </ng-container>
   </div>
 </ion-content>

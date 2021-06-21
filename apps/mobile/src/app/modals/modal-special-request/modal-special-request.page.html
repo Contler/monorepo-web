@@ -13,9 +13,7 @@
       ></contler-logo>
     </div>
     <div class="main-container">
-      <div class="main-container__title" [style.color]="generalService.hotelColor">
-        {{'specialRequest.title' | translate}}
-      </div>
+      <div class="main-container__title" contlerColorHotel>{{'specialRequest.title' | translate}}</div>
       <form (ngSubmit)="save()">
         <!-- USER -->
         <mat-form-field appearance="fill">
@@ -26,7 +24,7 @@
         <!-- ROOM - CREATED_AT -->
         <div class="two-inputs">
           <mat-form-field appearance="fill">
-            <input matInput [value]="request.room.name | ctrTranslate" name="roomName" readonly />
+            <input matInput [value]="request.guest?.room?.name | ctrTranslate" name="roomName" readonly />
             <mat-hint>{{'global.ROOM' | translate}}</mat-hint>
           </mat-form-field>
           <mat-form-field appearance="fill">
@@ -70,20 +68,16 @@
 
         <!-- STATUS -->
         <mat-form-field appearance="fill">
-          <mat-select [(ngModel)]="request.complete" name="isFinished">
-            <mat-option [value]="false"> {{'global.PENDING' | translate}} </mat-option>
-            <mat-option [value]="true"> {{'global.COMPLETE' | translate}} </mat-option>
+          <mat-select [(ngModel)]="actualStatus" name="isFinished">
+            <mat-option [value]="status.COMPLETED"> {{status.COMPLETED | translate}} </mat-option>
+            <mat-option [value]="status.ATTENDED"> {{status.ATTENDED | translate}} </mat-option>
+            <mat-option [value]="status.PROGRAMING"> {{status.PROGRAMING | translate}} </mat-option>
           </mat-select>
           <mat-hint>{{'global.STATE' | translate}}</mat-hint>
         </mat-form-field>
 
-        <button
-          type="submit"
-          class="custom-button"
-          mat-raised-button
-          [style.background-color]="generalService.hotelColor"
-        >
-          {{'global.UPDATE_BTN' | translate}}
+        <button type="submit" mat-raised-button contlerBtnHotel *ngIf="request.active">
+          {{'global.UPDATE_BTN' | translate}} {{request.active}}
         </button>
       </form>
     </div>

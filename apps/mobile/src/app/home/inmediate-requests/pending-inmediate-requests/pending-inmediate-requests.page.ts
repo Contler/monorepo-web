@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
-import { InmediateRequestsService } from '../../../services/inmediate-requests.service';
-import { GeneralService } from '../../../services/general.service';
 import { ModalInmediateRequestPage } from '../../../modals/modal-inmediate-request/modal-inmediate-request.page';
-import { EmployerEntity, RequestEntity } from '@contler/entity';
-import { AuthService } from '../../../services/auth.service';
+import { EmployerEntity } from '@contler/entity';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
+import { Store } from '@ngrx/store';
+import { State } from '../../../reducers';
+import { selectImmediate } from '../../../reducers/request/request.selectors';
+import { first, map, tap } from 'rxjs/operators';
+import { DynamicRequestStatus, RequestMessage, RequestService } from '@contler/dynamic-services';
+import { Observable } from 'rxjs';
+import { selectEmployer } from '../../../reducers/user/user.selectors';
 
 @Component({
   selector: 'contler-pending-inmediate-requests',
@@ -15,58 +19,46 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./pending-inmediate-requests.page.scss'],
 })
 export class PendingInmediateRequestsPage implements OnInit {
-  public requests: RequestEntity[] = [];
   user: EmployerEntity | null = null;
   loadData = false;
+  total: number;
+  requests$: Observable<RequestMessage[]>;
 
   constructor(
-    private inmediateRequestsService: InmediateRequestsService,
     private navController: NavController,
-    public generalService: GeneralService,
-    private auth: AuthService,
     private dialog: MatDialog,
     public menu: MenuController,
     private snackBar: MatSnackBar,
     private translate: TranslateService,
+    private store: Store<State>,
+    private requestService: RequestService,
   ) {
-    this.auth.$user.subscribe((user) => (this.user = user));
+    this.store.pipe(selectEmployer, first()).subscribe((user) => (this.user = user));
   }
 
   ngOnInit() {
     this.loadData = true;
-    this.inmediateRequestsService.listenImmediateRequestByHotel(false).subscribe((requests) => {
-      this.requests = requests;
-      this.loadData = false;
-    });
+
+    this.requests$ = this.store.select(selectImmediate).pipe(
+      tap((data) => (this.total = data.count)),
+      map((data) => data.requests as RequestMessage[]),
+      tap(() => (this.loadData = false)),
+    );
   }
 
-  doRefresh(event: any) {
-    this.inmediateRequestsService.listenImmediateRequestByHotel(false).subscribe((requests) => {
-      this.requests = requests;
-      event.target.complete();
-    });
-  }
-
-  async goToRequest(request: RequestEntity) {
+  async goToRequest(request: RequestMessage) {
     this.dialog
       .open(ModalInmediateRequestPage, { data: request, maxWidth: '100vw', panelClass: 'modalApp' })
-      .afterClosed()
-      .subscribe(() => {
-        if (request.complete) {
-          this.requests = this.requests.filter((req) => req.id !== request.id);
-        }
-      });
+      .afterClosed();
   }
 
-  completeRequest(request: RequestEntity) {
-    request.complete = true;
-    this.inmediateRequestsService.updateRequest(request).subscribe(() => {
+  completeRequest(request: RequestMessage) {
+    this.requestService.changeStatus(request.key, DynamicRequestStatus.COMPLETED).then(() => {
       const msn = this.translate.instant('immediateRequest.resultError');
       const close = this.translate.instant('global.CLOSE');
       this.snackBar.open(msn, close, {
         duration: 5000,
       });
-      this.requests = this.requests.filter((req) => req.id !== request.id);
     });
   }
 }

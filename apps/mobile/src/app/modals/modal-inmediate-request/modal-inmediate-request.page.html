@@ -2,9 +2,7 @@
 
 <div class="section">
   <div class="main-container">
-    <div class="main-container__title" [style.color]="generalService.hotelColor">
-      {{'immediateRequest.modal.title' | translate}}
-    </div>
+    <div class="main-container__title" contlerColorHotel>{{'immediateRequest.modal.title' | translate}}</div>
     <form (ngSubmit)="save()">
       <mat-form-field appearance="fill">
         <mat-select [(ngModel)]="idSelected" name="employer">
@@ -15,19 +13,20 @@
         <mat-hint>{{'immediateRequest.modal.employer' | translate}}</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-select [(ngModel)]="isFinished" name="isFinished" [disabled]="request.complete">
-          <mat-option [value]="false"> {{'global.ACTIVE' | translate}} </mat-option>
-          <mat-option [value]="true"> {{'global.COMPLETE' | translate}} </mat-option>
+        <mat-select [(ngModel)]="isFinished" name="isFinished" [disabled]="!request.active">
+          <mat-option [value]="status.COMPLETED"> {{status.COMPLETED | translate}} </mat-option>
+          <mat-option [value]="status.ATTENDED"> {{status.ATTENDED | translate}} </mat-option>
+          <mat-option [value]="status.PROGRAMING"> {{status.PROGRAMING | translate}} </mat-option>
         </mat-select>
         <mat-hint>{{'global.STATE' | translate}}</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <input matInput [ngModel]="request.guest.name" name="userName" readonly />
+        <input matInput [ngModel]="request.guest?.name" name="userName" readonly />
         <mat-hint>{{'global.GUEST' | translate}}</mat-hint>
       </mat-form-field>
       <div class="two-inputs">
         <mat-form-field appearance="fill">
-          <input matInput [value]="request.room.name | ctrTranslate" name="roomName" readonly />
+          <input matInput [value]="request.guest?.room?.name | ctrTranslate" name="roomName" readonly />
           <mat-hint>{{'global.ROOM' | translate}}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="fill">
@@ -45,7 +44,7 @@
       </mat-form-field>
 
       <star-rating
-        *ngIf="request.complete"
+        *ngIf="!request.active"
         [value]="request.score"
         [totalstars]="5"
         checkedcolor="#dfae00"
@@ -55,12 +54,7 @@
         style="text-align: center; margin-bottom: 10px; display: block"
       ></star-rating>
 
-      <button
-        type="submit"
-        class="custom-button"
-        mat-raised-button
-        [style.background-color]="generalService.hotelColor"
-      >
+      <button type="submit" class="custom-button" mat-raised-button contlerBtnHotel>
         {{'global.UPDATE_BTN' | translate}}
       </button>
     </form>

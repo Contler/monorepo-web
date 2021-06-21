@@ -99,7 +99,11 @@ export class RequestService {
       let qft = qf.where('service', '==', service);
       for (const filtersKey in filters) {
         if (filtersKey in filters) {
-          qft = qft.where(filtersKey, '==', filters[filtersKey]);
+          if (filtersKey !== 'date') {
+            qft = qft.where(filtersKey, '==', filters[filtersKey]);
+          } else {
+            qft = qft.where('createAt', '>', filters[filtersKey]);
+          }
         }
       }
       return qft;
