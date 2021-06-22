@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromRequest from './request.reducer';
+import { MODULES } from '@contler/dynamic-services';
 
 export const selectRequestState = createFeatureSelector<fromRequest.RequestState>(
   fromRequest.requestFeatureKey,
@@ -54,3 +55,18 @@ export const selectMaintain = createSelector(selectRequestState, (state) => ({
   requests: state?.maintain || [],
   count: state?.maintain?.length || 0,
 }));
+
+export const selectByModule = (module: MODULES) => {
+  return createSelector(selectRequestState, (state) => {
+    switch (module) {
+      case MODULES.reception:
+        return state.reception || [];
+      case MODULES.cleaning:
+        return state.clean || [];
+      case MODULES.maintenance:
+        return state.maintain || [];
+      default:
+        return [];
+    }
+  });
+};

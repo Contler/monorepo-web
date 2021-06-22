@@ -16,14 +16,6 @@
       {{ 'pendingMaintain.title' | translate }}
     </div>
 
-    <contler-dynamic-item
-      *ngFor="let item of dynamicReq | async | dynamicFilter: filter"
-      [isReady]="true"
-      [item]="item"
-    ></contler-dynamic-item>
+    <contler-request-pending [module]="module" [filter]="filter"></contler-request-pending>
   </div>
-
-  <p *ngIf="!totalReception2" class="reception__text">
-    {{ 'pendingMaintain.noRequests' | translate }}
-  </p>
 </ion-content>

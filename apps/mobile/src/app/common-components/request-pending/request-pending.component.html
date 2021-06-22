@@ -1,0 +1,9 @@
+<span *ngIf="totalRequest === 0" class="center">
+  {{ 'pendingReception.noRequests' | translate }}
+</span>
+
+<contler-dynamic-item
+  *ngFor="let item of dynamicReq | async | dynamicFilter: filter"
+  [isReady]="true"
+  [item]="item"
+></contler-dynamic-item>

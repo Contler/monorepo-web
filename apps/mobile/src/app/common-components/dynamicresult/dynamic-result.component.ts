@@ -42,10 +42,10 @@ export class DynamicResultComponent implements OnInit {
             if (this.data.service === MODULES.room) {
               return (
                 employer.leaderZones.find((le) => le.category.id === 3) ||
-                employer.leaderSpecialZone.find((zone) => zone.zone.name === this.data.service)
+                employer.leaderSpecialZone.find((zone) => zone.zone.module === this.data.service)
               );
             }
-            return employer.leaderSpecialZone.find((zone) => zone.zone.name === this.data.service);
+            return employer.leaderSpecialZone.find((zone) => zone.zone.module === this.data.service);
           }),
         ),
       )
