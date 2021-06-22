@@ -1,7 +1,8 @@
 <div class="request-status {{ colorStatus }}"></div>
 
 <div>
-  <p class="request-title">{{ request.nameService | ctrTranslate }}</p>
+  <p class="request-title">{{ nameService | ctrTranslate | translate }}</p>
+  <span class="request-text space">{{ request.zone?.name | ctrTranslate }}</span>
 </div>
 
 <div style="text-align: right">

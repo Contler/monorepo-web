@@ -133,7 +133,8 @@
     "timeTable": "Hora",
     "update": "ACTUALIZAR",
     "updateSusses": "Solicitud actualizada exitosamente",
-    "zoneTable": "Zona"
+    "zoneTable": "Zona",
+    "employers": "Empleado"
   },
   "lateCheckOut": {
     "accepted": "Aceptada",

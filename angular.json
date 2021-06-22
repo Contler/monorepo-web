@@ -353,7 +353,7 @@
             "aot": true,
             "assets": ["apps/mobile/src/favicon.ico", "apps/mobile/src/assets"],
             "stylePreprocessorOptions": {
-              "includePaths": ["apps/mobile/src"]
+              "includePaths": ["apps/mobile/src", "libs/styles"]
             },
             "styles": [
               "apps/mobile/src/styles.scss",
@@ -412,14 +412,6 @@
                   "with": "apps/mobile/src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -434,12 +426,26 @@
               ]
             },
             "qa": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
               "fileReplacements": [
                 {
                   "replace": "apps/mobile/src/environments/environment.ts",
                   "with": "apps/mobile/src/environments/environment.qa.ts"
                 }
               ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "outputs": ["{options.outputPath}"]
@@ -455,8 +461,12 @@
             },
             "qa": {
               "browserTarget": "mobile:build:qa"
+            },
+            "development": {
+              "browserTarget": "mobile:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

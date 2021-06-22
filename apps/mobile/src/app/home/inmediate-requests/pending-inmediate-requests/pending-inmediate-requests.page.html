@@ -4,56 +4,40 @@
       <contler-logo *ngIf="user" [src]="user.hotel.logo"></contler-logo>
     </div>
     <button mat-icon-button class="header__menu" (click)="menu.toggle()">
-      <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
+      <mat-icon contlerColorHotel>menu</mat-icon>
     </button>
   </div>
 </ion-header>
 
 <ion-content>
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-
   <div class="main-container">
-    <p class="main-container__title" [style.color]="generalService.hotelColor">
-      {{'immediateRequest.title' | translate}}
-    </p>
+    <p class="main-container__title" contlerColorHotel>{{'immediateRequest.title' | translate}}</p>
     <div class="list-container">
       <mat-spinner style="margin: auto" *ngIf="loadData"></mat-spinner>
 
-      <ng-container *ngIf="!loadData">
-        <ng-container *ngIf="requests.length else empty">
-          <div class="item" *ngFor="let request of requests">
-            <div class="item__info-container" (click)="goToRequest(request)">
-              <p class="username">{{request.guest?.name}} {{request.guest?.lastName}}</p>
-              <p class="zone">{{request.zone?.name | ctrTranslate}}</p>
-            </div>
-            <div class="item__data-container">
-              <p class="time" (click)="goToRequest(request)">{{request.createAt|date:'HH:mm'}}</p>
-              <button mat-icon-button *ngIf="!request.solved" (click)="goToRequest(request)">
-                <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
-              </button>
+      <div class="item" *ngFor="let request of requests$ | async">
+        <div class="item__info-container" (click)="goToRequest(request)">
+          <p class="username">{{request.guest?.name}} {{request.guest?.lastName}}</p>
+          <p class="zone">{{request.zone?.name | ctrTranslate}}</p>
+        </div>
+        <div class="item__data-container">
+          <p class="time" (click)="goToRequest(request)">{{request.createAt|date:'HH:mm'}}</p>
+          <button mat-icon-button *ngIf="!request.assigned" (click)="goToRequest(request)">
+            <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
+          </button>
 
-              <button
-                mat-icon-button
-                *ngIf="request.solved"
-                color="accent"
-                (click)="completeRequest(request)"
-              >
-                <mat-icon class="custom_icon">timer</mat-icon>
-              </button>
-            </div>
-          </div>
-        </ng-container>
-        <ng-template #empty>
-          <div class="empty-container">
-            <mat-icon class="custom_icon empty-container__icon">check_circle</mat-icon>
-            <p class="empty-container__label" [style.color]="generalService.hotelColor">
-              {{'immediateRequest.empty' | translate}}
-            </p>
-          </div>
-        </ng-template>
-      </ng-container>
+          <button mat-icon-button *ngIf="request.assigned" color="accent" (click)="completeRequest(request)">
+            <mat-icon class="custom_icon">timer</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <ng-template *ngIf="total == 0">
+        <div class="empty-container">
+          <mat-icon class="custom_icon empty-container__icon">check_circle</mat-icon>
+          <p class="empty-container__label" contlerColorHotel>{{'immediateRequest.empty' | translate}}</p>
+        </div>
+      </ng-template>
     </div>
   </div>
 </ion-content>

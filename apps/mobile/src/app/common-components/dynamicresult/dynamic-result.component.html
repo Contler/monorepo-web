@@ -2,7 +2,7 @@
 <ion-content fullscreen="">
   <div class="modal">
     <div>
-      <div class="modal__title" [style.color]="generalService.hotelColor">
+      <div class="modal__title" contlerColorHotel>
         {{ data.nameService | ctrTranslate }}
       </div>
 
@@ -13,8 +13,25 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+
+      <mat-form-field appearance="fill" style="width: 100%">
+        <mat-select [(ngModel)]="employerId" name="employer">
+          <mat-option *ngFor="let employer of employers" [value]="employer.uid">
+            {{ employer.name }} {{ employer.lastName }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>{{ 'immediateRequest.modal.employer' | translate }}</mat-hint>
+      </mat-form-field>
+
       <contler-dynamic-form [readOnly]="true" [listInputs]="data.form"></contler-dynamic-form>
-      <button mat-raised-button contlerBtnHotel class="create" (click)="update()">
+      <button
+        mat-raised-button
+        contlerBtnHotel
+        class="create"
+        (click)="update()"
+        [loading]="load"
+        [disabled]="load"
+      >
         {{ 'modalRequest.updateBtn' | translate }}
       </button>
     </div>

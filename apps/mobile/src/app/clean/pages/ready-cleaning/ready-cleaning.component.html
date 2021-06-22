@@ -14,16 +14,6 @@
     <div class="cleaning__title center" contlerColorHotel>
       {{ 'clean.resultTitle' | translate }}
     </div>
-
-    <contler-reception-item *ngFor="let item of $receptionReq | async" [reception]="item" [isReady]="false">
-    </contler-reception-item>
-
-    <contler-dynamic-item
-      *ngFor="let item of dynamicReq | async"
-      [isReady]="false"
-      [item]="item"
-    ></contler-dynamic-item>
+    <contler-request-complete [module]="module" [filter]="filter"></contler-request-complete>
   </div>
-
-  <p *ngIf="!totalReception && !totalReception2" class="reception__text">{{ 'clean.empty' | translate }}</p>
 </ion-content>

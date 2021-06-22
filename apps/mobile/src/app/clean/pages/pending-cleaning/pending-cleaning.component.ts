@@ -1,20 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { RoomService } from '@contler/core';
 import { EmployerEntity } from '@contler/entity';
 import { MenuController } from '@ionic/angular';
-import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-import { take, tap } from 'rxjs/operators';
-import { AuthService } from '../../../services/auth.service';
-import { GeneralService } from '../../../services/general.service';
-import { ReceptionLocalService } from '../../../services/reception/reception-local.service';
-import {
-  DynamicModuleService,
-  DynamicRequest,
-  DynamicRequestStatus,
-  MODULES,
-} from '@contler/dynamic-services';
+import { first } from 'rxjs/operators';
+import { DynamicRequestStatus, MODULES } from '@contler/dynamic-services';
+import { Store } from '@ngrx/store';
+import { State } from '../../../reducers';
+import { selectEmployer } from '../../../reducers/user/user.selectors';
 
 @Component({
   selector: 'contler-pending-cleaning',
@@ -23,33 +14,11 @@ import {
 })
 export class PendingCleaningComponent implements OnInit {
   user: EmployerEntity | null = null;
-  totalReception2: number;
-  dynamicReq: Observable<DynamicRequest[]>;
   filter: DynamicRequestStatus;
-  constructor(
-    private auth: AuthService,
-    private receptionLocalService: ReceptionLocalService,
-    private snackBar: MatSnackBar,
-    public generalService: GeneralService,
-    public menu: MenuController,
-    private roomService: RoomService,
-    private translate: TranslateService,
-    private dynamicService: DynamicModuleService,
-  ) {}
+  module = MODULES.cleaning;
+  constructor(private store: Store<State>, public menu: MenuController) {}
 
   ngOnInit() {
-    this.auth.$user.pipe(take(1)).subscribe((user) => {
-      this.user = user;
-      this.dynamicReq = this.dynamicService
-        .getDynamicRequest(user.hotel.uid, MODULES.cleaning, true)
-        .pipe(tap(({ length }) => (this.totalReception2 = length)));
-    });
-  }
-
-  async modalClose(complete: any, uid: string) {
-    await this.roomService.cleanRef.doc(uid).update({ active: complete });
-    const msn = this.translate.instant('clean.petitionUpdate');
-    const err = this.translate.instant('global.CLOSE');
-    this.snackBar.open(msn, err, { duration: 3000 });
+    this.store.pipe(selectEmployer, first()).subscribe((user) => (this.user = user));
   }
 }

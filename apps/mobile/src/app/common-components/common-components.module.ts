@@ -19,6 +19,8 @@ import { DynamicResultComponent } from './dynamicresult/dynamic-result.component
 import { DynamicServicesModule } from '@contler/dynamic-services';
 import { DynamicFilterPipe } from './dynamic-filter.pipe';
 import { SearchListComponent } from './search-list/search-list.component';
+import { RequestPendingComponent } from './request-pending/request-pending.component';
+import { RequestCompleteComponent } from './request-complete/request-complete.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { SearchListComponent } from './search-list/search-list.component';
     DynamicResultComponent,
     DynamicFilterPipe,
     SearchListComponent,
+    RequestPendingComponent,
+    RequestCompleteComponent,
   ],
   exports: [
     ToolbarComponent,
@@ -46,6 +50,8 @@ import { SearchListComponent } from './search-list/search-list.component';
     DynamicItemComponent,
     DynamicFilterPipe,
     SearchListComponent,
+    RequestPendingComponent,
+    RequestCompleteComponent,
   ],
   imports: [
     CommonModule,

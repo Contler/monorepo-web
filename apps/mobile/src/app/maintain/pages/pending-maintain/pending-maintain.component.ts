@@ -1,21 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { EmployerEntity } from '@contler/entity';
-import { ReceptionModel } from '@contler/models';
 import { MenuController } from '@ionic/angular';
-import { Observable } from 'rxjs';
-import { take, tap } from 'rxjs/operators';
-import { AuthService } from '../../../services/auth.service';
-import { GeneralService } from '../../../services/general.service';
-import { ReceptionLocalService } from '../../../services/reception/reception-local.service';
-import { RoomService } from '@contler/core';
-import { TranslateService } from '@ngx-translate/core';
-import {
-  DynamicModuleService,
-  DynamicRequest,
-  DynamicRequestStatus,
-  MODULES,
-} from '@contler/dynamic-services';
+import { DynamicRequestStatus, MODULES } from '@contler/dynamic-services';
+import { selectEmployer } from '../../../reducers/user/user.selectors';
+import { Store } from '@ngrx/store';
+import { State } from '../../../reducers';
 
 @Component({
   selector: 'contler-pending-maintain',
@@ -23,42 +12,13 @@ import {
   styleUrls: ['./pending-maintain.component.scss'],
 })
 export class PendingMaintainComponent implements OnInit {
-  $receptionReq: Observable<ReceptionModel[]>;
   user: EmployerEntity | null = null;
-  totalReception: number;
-  totalReception2: number;
-  dynamicReq: Observable<DynamicRequest[]>;
   filter: DynamicRequestStatus;
+  module = MODULES.maintenance;
 
-  constructor(
-    private auth: AuthService,
-    private receptionLocalService: ReceptionLocalService,
-    private snackBar: MatSnackBar,
-    public generalService: GeneralService,
-    public menu: MenuController,
-    public roomService: RoomService,
-    private translate: TranslateService,
-    private dynamicService: DynamicModuleService,
-  ) {}
+  constructor(private store: Store<State>, public menu: MenuController) {}
 
   ngOnInit() {
-    this.auth.$user.pipe(take(1)).subscribe((user) => {
-      this.user = user;
-      this.dynamicReq = this.dynamicService
-        .getDynamicRequest(user.hotel.uid, MODULES.maintenance, true)
-        .pipe(tap(({ length }) => (this.totalReception2 = length)));
-    });
-    this.$receptionReq = this.receptionLocalService
-      .getMaintainReq()
-      .pipe(tap(({ length }) => (this.totalReception = length)));
-  }
-
-  async modalClose(complete: any, uid: string) {
-    await this.roomService.maintainRef.doc(uid).update({ active: complete });
-    this.snackBar.open(
-      this.translate.instant('pendingMaintain.message'),
-      this.translate.instant('pendingMaintain.close'),
-      { duration: 3000 },
-    );
+    this.store.pipe(selectEmployer).subscribe((user) => (this.user = user));
   }
 }

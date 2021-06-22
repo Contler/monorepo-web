@@ -4,7 +4,7 @@
     {{ data?.requestStatic.request.type }}
   </ng-container>
   <ng-container *ngIf="data.requestDynamic">
-    {{ data?.requestDynamic.nameService | ctrTranslate }}
+    {{ nameService | ctrTranslate }}
   </ng-container>
 </h1>
 <div mat-dialog-content>
@@ -32,21 +32,39 @@
       <mat-hint>{{ 'immediateRequest.timeTable' | translate }}</mat-hint>
       <input matInput type="text" readonly [value]="createAt | date: 'shortTime'" />
     </mat-form-field>
+
+    <mat-form-field appearance="fill" class="two_columns">
+      <mat-select [(value)]="data.requestDynamic.assignedId">
+        <mat-option
+          *ngFor="let employer of employers | async"
+          [value]="employer.uid"
+          (click)="changeEmployer(employer)"
+        >
+          {{ employer.name }} {{ employer.lastName }}
+        </mat-option>
+      </mat-select>
+      <mat-hint>{{ 'immediateRequest.employers' | translate }}</mat-hint>
+    </mat-form-field>
+
     <ng-container *ngIf="data.requestStatic; else answerDynamic">
       <mat-form-field appearance="fill" style="grid-column: span 2">
         <mat-hint>{{ 'immediateRequest.need' | translate }}</mat-hint>
         <input matInput type="text" readonly [value]="data?.requestStatic.request.comment" />
       </mat-form-field>
     </ng-container>
+
     <ng-template #answerDynamic>
-      <contler-dynamic-form
-        [listInputs]="data.requestDynamic.form"
-        [readOnly]="true"
-        class="two_columns"
-      ></contler-dynamic-form>
+      <contler-dynamic-form [listInputs]="form" [readOnly]="true" class="two_columns"></contler-dynamic-form>
     </ng-template>
   </div>
-  <button mat-raised-button color="accent" class="btn-update" (click)="update()" contlerBtnHotel="primary">
+  <button
+    mat-raised-button
+    class="btn-update"
+    (click)="update()"
+    contlerBtnHotel="primary"
+    contlerButton
+    [loading]="load"
+  >
     {{ 'immediateRequest.update' | translate }}
   </button>
 </div>

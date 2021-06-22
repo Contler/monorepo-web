@@ -1,0 +1,9 @@
+<contler-dynamic-item
+  *ngFor="let item of request | async"
+  [isReady]="false"
+  [item]="item"
+></contler-dynamic-item>
+
+<div *ngIf="count === 0" class="center">
+  {{ 'readyReception.noRequests' | translate }}
+</div>

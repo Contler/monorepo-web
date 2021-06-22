@@ -4,7 +4,7 @@
       <contler-logo *ngIf="user" [src]="user.hotel.logo"></contler-logo>
     </div>
     <button mat-icon-button class="header__menu" (click)="menu.toggle()">
-      <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
+      <mat-icon contlerColorHotel>menu</mat-icon>
     </button>
   </div>
   <contler-search-list class="search" (status)="filter = $event"></contler-search-list>
@@ -16,18 +16,6 @@
       {{ 'pendingReception.title' | translate }}
     </div>
 
-    <div *ngIf="totalReception && totalReception === 0" class="center">
-      {{ 'pendingReception.noRequests' | translate }}
-    </div>
-
-    <contler-dynamic-item
-      *ngFor="let item of dynamicReq | async | dynamicFilter: filter"
-      [isReady]="true"
-      [item]="item"
-    ></contler-dynamic-item>
+    <contler-request-pending [module]="module" [filter]="filter"></contler-request-pending>
   </div>
-
-  <p *ngIf="!totalReception && !totalReception2" class="reception__text">
-    {{ 'pendingReception.noRequests' | translate }}
-  </p>
 </ion-content>

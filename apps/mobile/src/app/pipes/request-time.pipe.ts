@@ -1,15 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { RequestEntity } from '@contler/entity';
+import { RequestMessage } from '@contler/dynamic-services';
 
 @Pipe({
-  name: "requestTime"
+  name: 'requestTime',
 })
 export class RequestTimePipe implements PipeTransform {
-  transform(value: RequestEntity): string | null {
-    if (!value.createAt || !value.finishAt) {
+  transform(value: RequestMessage): string | null {
+    if (!value.createAt || !value.completeAt) {
       return null;
     }
-    const difference = Math.floor((new Date(value.finishAt).getTime() - new Date(value.createAt).getTime()) / 1000 / 60);
+    const difference = Math.floor(
+      (new Date(value.completeAt).getTime() - new Date(value.createAt).getTime()) / 1000 / 60,
+    );
     if (difference < 60) {
       return `${this.parseNumber(difference)} min`;
     } else {
@@ -19,7 +22,7 @@ export class RequestTimePipe implements PipeTransform {
     }
   }
 
-  private parseNumber(num: number): string{
+  private parseNumber(num: number): string {
     return num < 10 ? `0${num}` : `${num}`;
   }
 }

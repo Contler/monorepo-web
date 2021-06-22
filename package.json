@@ -28,7 +28,7 @@
     "ionic:mobile:android": "ionic capacitor run android -l --external --project=mobile -c qa",
     "serve:dev:hotel": "ng serve hotel",
     "serve:dev:guest": "ng serve guest --port=4201",
-    "serve:dev:mobile": "ionic serve --project=mobile",
+    "serve:dev:mobile": "ng serve mobile --port=4203",
     "serve:dev:admin": " ng run admin:serve --port=4202",
     "serve:hotel": "ng serve hotel -c qa",
     "serve:guest": "ng serve guest --port=4201 -c qa",

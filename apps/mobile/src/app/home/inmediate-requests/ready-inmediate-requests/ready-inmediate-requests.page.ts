@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { MenuController, ModalController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 import { ModalInmediateRequestPage } from '../../../modals/modal-inmediate-request/modal-inmediate-request.page';
 import { InmediateRequestsService } from '../../../services/inmediate-requests.service';
-import { GeneralService } from '../../../services/general.service';
 import { EmployerEntity, RequestEntity } from '@contler/entity';
-import { AuthService } from '../../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { State } from '../../../reducers';
+import { selectEmployer, selectHotel } from '../../../reducers/user/user.selectors';
+import { first, map, switchMap, tap } from 'rxjs/operators';
+import { MODULES, RequestMessage, RequestService } from '@contler/dynamic-services';
+import { startOfWeek } from 'date-fns';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'contler-ready-inmediate-requests',
@@ -14,38 +18,39 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./ready-inmediate-requests.page.scss'],
 })
 export class ReadyInmediateRequestsPage implements OnInit {
-  private inmediateRequestsSubscription: Subscription | null = null;
-  public requests: RequestEntity[] = [];
   user: EmployerEntity | null = null;
+  requests$: Observable<RequestMessage[]>;
+  count: number;
 
   constructor(
     private inmediateRequestsService: InmediateRequestsService,
-    public generalService: GeneralService,
-    public modalController: ModalController,
-    private auth: AuthService,
     private dialog: MatDialog,
     public menu: MenuController,
+    private store: Store<State>,
+    private requestService: RequestService,
   ) {
-    this.auth.$user.subscribe(user => (this.user = user));
+    this.store.pipe(selectEmployer, first()).subscribe((user) => (this.user = user));
   }
 
-  ngOnInit() {}
-
-  ionViewWillEnter() {
-    this.inmediateRequestsSubscription = this.inmediateRequestsService
-      .listenImmediateRequestByHotel(true)
-      .subscribe(requests => {
-        this.requests = requests;
-      });
+  ngOnInit() {
+    this.requests$ = this.store.pipe(
+      selectHotel,
+      first(),
+      switchMap((hotel) =>
+        this.requestService
+          .getByService(MODULES.immediate, {
+            active: false,
+            hotelId: hotel.uid,
+            date: startOfWeek(new Date()),
+          })
+          .valueChanges(),
+      ),
+      map((data) => data as RequestMessage[]),
+      tap((data) => (this.count = data.length)),
+    );
   }
 
-  ionViewWillLeave() {
-    if (this.inmediateRequestsSubscription) {
-      this.inmediateRequestsSubscription.unsubscribe();
-    }
-  }
-
-  async goToRequest(request: RequestEntity) {
+  async goToRequest(request: RequestMessage) {
     this.dialog.open(ModalInmediateRequestPage, {
       data: request,
       maxWidth: '100vw',

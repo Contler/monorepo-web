@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { SpecialRequest } from '@contler/models';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { SpecialRequestsService } from '@contler/hotel/special-requests/services/special-requests.service';
-import { RequestEntity } from '@contler/entity';
+import { MODULES, RequestMessage, RequestService } from '@contler/dynamic-services';
+import { AuthService } from '@contler/hotel/services/auth.service';
+import { first, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'contler-special-requests',
@@ -14,7 +14,7 @@ import { RequestEntity } from '@contler/entity';
 })
 export class SpecialRequestsComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['userName', 'roomName', 'description', 'checkIn', 'checkOut', 'actions'];
-  dataSource = new MatTableDataSource<RequestEntity>([]);
+  dataSource = new MatTableDataSource<RequestMessage>([]);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
 
   private specialRequestsSubscription: Subscription | null = null;
@@ -24,27 +24,32 @@ export class SpecialRequestsComponent implements OnInit, OnDestroy {
   };
   public filterByStatusSelected: string = this.requestStatus.ACTIVE;
 
-  constructor(private specialRequestsService: SpecialRequestsService, private dialog: MatDialog) {}
+  constructor(private requestService: RequestService, private dialog: MatDialog, private auth: AuthService) {}
 
   ngOnInit() {
     this.dataSource.filter = this.filterByStatusSelected;
     this.dataSource.filterPredicate = (data, filter) => {
       if (filter === this.requestStatus.ACTIVE) {
-        return !data.complete;
+        return data.active;
       }
       if (filter === this.requestStatus.ALL) {
         return true;
       }
-      const response =
-        (data.guest && data.guest.name.toLowerCase().includes(filter)) ||
-        (data.room && data.room.name.toLowerCase().includes(filter)) ||
-        (data.message && data.message.toLowerCase().includes(filter));
-      return response ? true : false;
+      return (
+        data.guest?.name.toLowerCase().includes(filter) ||
+        data.guest?.room?.name.toLowerCase().includes(filter) ||
+        (data.message && data.message.toLowerCase().includes(filter))
+      );
     };
-    this.specialRequestsSubscription = this.specialRequestsService
-      .listenSpecialRequestByHotel()
+    this.specialRequestsSubscription = this.auth.$hotel
+      .pipe(
+        first(),
+        switchMap((hotel) =>
+          this.requestService.getByService(MODULES.special, { hotelId: hotel.uid }).valueChanges(),
+        ),
+      )
       .subscribe((requests) => {
-        this.dataSource.data = requests;
+        this.dataSource.data = requests as RequestMessage[];
       });
     this.dataSource.paginator = this.paginator as MatPaginator;
   }
@@ -62,16 +67,6 @@ export class SpecialRequestsComponent implements OnInit, OnDestroy {
       this.dataSource.paginator.firstPage();
     }
   }
-
-  /* update(request: Request) {
-    this.dialog.open(ModalInmediateRequestComponent, {
-      data: {
-        request: Object.assign({}, request),
-      },
-    });
-  } */
-
-  remove(request: SpecialRequest) {}
 
   filterByStatus() {
     this.dataSource.filter = this.filterByStatusSelected;

@@ -1,4 +1,4 @@
-import { SpecialZoneHotelEntity } from "./SpecialZoneHotel.entity";
+import { SpecialZoneHotelEntity } from './SpecialZoneHotel.entity';
 
 export class SpecialZoneEntity {
   id!: number;
@@ -6,6 +6,8 @@ export class SpecialZoneEntity {
   name: string;
 
   text: string;
+
+  module: string;
 
   hotelSpecialZone: SpecialZoneHotelEntity[];
 }

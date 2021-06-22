@@ -1,2 +1,6 @@
 @import './variables';
 @import './mixin';
+
+.cnt-loading {
+  @include loading(15px, 15px, 2px, #000);
+}

@@ -4,37 +4,32 @@
       <contler-logo *ngIf="user" [src]="user.hotel.logo"></contler-logo>
     </div>
     <button mat-icon-button class="header__menu" (click)="menu.toggle()">
-      <mat-icon [style.color]="generalService.hotelColor">menu</mat-icon>
+      <mat-icon contlerColorHotel>menu</mat-icon>
     </button>
   </div>
 </ion-header>
 
 <ion-content>
   <div class="main-container">
-    <p class="main-container__title" [style.color]="generalService.hotelColor">
-      {{'immediateRequest.titleComplete' | translate}}
-    </p>
+    <p class="main-container__title" contlerColorHotel>{{'immediateRequest.titleComplete' | translate}}</p>
     <div class="list-container">
-      <ng-container *ngIf="requests.length else empty">
-        <div class="item" *ngFor="let request of requests" (click)="goToRequest(request)">
-          <div class="item__info-container">
-            <p class="username">{{request.guest?.name}} {{request.guest?.lastName}}</p>
-            <p class="zone">{{request.zone?.name | ctrTranslate}}</p>
-          </div>
-          <div class="item__data-container">
-            <p class="time">{{request |requestTime}}</p>
-            <button mat-icon-button>
-              <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
-            </button>
-          </div>
+      <div class="item" *ngFor="let request of requests$ | async" (click)="goToRequest(request)">
+        <div class="item__info-container">
+          <p class="username">{{request.guest?.name}} {{request.guest?.lastName}}</p>
+          <p class="zone">{{request.zone?.name | ctrTranslate}}</p>
         </div>
-      </ng-container>
-      <ng-template #empty>
+        <div class="item__data-container">
+          <p class="time">{{request |requestTime}}</p>
+          <button mat-icon-button>
+            <mat-icon class="custom_icon">keyboard_arrow_right</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <ng-template [ngIf]="count === 0">
         <div class="empty-container">
           <mat-icon class="custom_icon empty-container__icon">check_circle</mat-icon>
-          <p class="empty-container__label" [style.color]="generalService.hotelColor">
-            {{'immediateRequest.empty' | translate}}
-          </p>
+          <p class="empty-container__label" contlerColorHotel>{{'immediateRequest.empty' | translate}}</p>
         </div>
       </ng-template>
     </div>

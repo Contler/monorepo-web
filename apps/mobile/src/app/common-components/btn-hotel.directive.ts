@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { HotelEntity } from '@contler/entity';
 import { AuthService } from '../services/auth.service';
 import { take } from 'rxjs/operators';
@@ -9,18 +9,32 @@ import { take } from 'rxjs/operators';
 export class BtnHotelDirective implements OnChanges {
   @Input() contlerBtnHotel: 'primary' | 'second' | '' = 'primary';
   @Input() opacity: number;
-  private hotel!: HotelEntity | null;
+  @Input() loading = false;
 
-  constructor(private auth: AuthService, private elemRef: ElementRef) {
+  private hotel!: HotelEntity | null;
+  private content: string;
+
+  constructor(private auth: AuthService, private elemRef: ElementRef<HTMLButtonElement>) {
     this.auth.$user.pipe(take(1)).subscribe(({ hotel }) => {
       this.hotel = hotel;
       this.setColor();
     });
   }
 
-  ngOnChanges(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.hotel) {
       this.setColor();
+    }
+    if (changes['loading']) {
+      if (this.loading) {
+        this.content = this.elemRef.nativeElement.innerHTML;
+        this.elemRef.nativeElement.innerHTML = '';
+        this.elemRef.nativeElement.classList.add('cnt-loading');
+      } else if (!!this.content) {
+        this.elemRef.nativeElement.innerHTML = this.content;
+        this.content = undefined;
+        this.elemRef.nativeElement.classList.remove('cnt-loading');
+      }
     }
   }
 
