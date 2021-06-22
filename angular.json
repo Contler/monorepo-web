@@ -353,7 +353,7 @@
             "aot": true,
             "assets": ["apps/mobile/src/favicon.ico", "apps/mobile/src/assets"],
             "stylePreprocessorOptions": {
-              "includePaths": ["apps/mobile/src"]
+              "includePaths": ["apps/mobile/src", "libs/styles"]
             },
             "styles": [
               "apps/mobile/src/styles.scss",

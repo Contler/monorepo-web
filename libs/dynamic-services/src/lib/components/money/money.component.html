@@ -1,6 +1,6 @@
 <mat-form-field *ngIf="!typeInput.money.staticMoney" appearance="fill">
   <mat-select
-    [(ngModel)]="value.money"
+    [(ngModel)]="money"
     [disabled]="isDisable"
     (ngModelChange)="updateMoney($event)"
     [compareWith]="moneyCompare"
@@ -11,11 +11,11 @@
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-  <span matPrefix style="margin-right: 10px"
-    >{{ typeInput.money.staticMoney ? typeInput.money.money.symbol : value.money.symbol }}
+  <span matPrefix style="margin-right: 10px">
+    {{ typeInput.money.staticMoney ? typeInput.money.money.symbol : money.symbol }}
   </span>
   <input
-    [(ngModel)]="value.value"
+    [(ngModel)]="testValue"
     (ngModelChange)="update($event)"
     matInput
     type="tel"

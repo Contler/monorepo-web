@@ -30,6 +30,7 @@ import { reducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './reducers/user/user.effects';
 import { RequestEffects } from './reducers/request/request.effects';
+import { NgxMaskModule } from 'ngx-mask';
 const app = firebase.initializeApp(environment.firebaseConfig, 'app');
 
 if (environment.emulate) {
@@ -58,6 +59,7 @@ export function LoadHotel(auth: AuthService) {
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgxMaskModule.forRoot(),
     AngularFireAuthGuardModule,
     CoreModule.forRoot({ urlBackend: environment.apiUrl }),
     StoreModule.forRoot(reducers),

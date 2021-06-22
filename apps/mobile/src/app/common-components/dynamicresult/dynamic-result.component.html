@@ -24,7 +24,14 @@
       </mat-form-field>
 
       <contler-dynamic-form [readOnly]="true" [listInputs]="data.form"></contler-dynamic-form>
-      <button mat-raised-button contlerBtnHotel class="create" (click)="update()">
+      <button
+        mat-raised-button
+        contlerBtnHotel
+        class="create"
+        (click)="update()"
+        [loading]="load"
+        [disabled]="load"
+      >
         {{ 'modalRequest.updateBtn' | translate }}
       </button>
     </div>

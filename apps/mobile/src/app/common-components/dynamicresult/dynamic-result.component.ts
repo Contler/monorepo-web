@@ -14,6 +14,7 @@ import { EmployerEntity } from '@contler/entity';
 export class DynamicResultComponent implements OnInit {
   @Input() data: DynamicRequest;
   status: DynamicRequestStatus;
+  load = false;
 
   listStatus = [
     DynamicRequestStatus.PROGRAMING,
@@ -52,8 +53,10 @@ export class DynamicResultComponent implements OnInit {
   }
 
   update() {
+    this.load = true;
     const employer = this.employers.find(({ uid }) => uid === this.employerId);
     this.requestService.changeStatus(this.data.key, this.status, employer).then(() => {
+      this.load = false;
       this.closeModal();
     });
   }

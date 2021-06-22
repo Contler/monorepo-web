@@ -19,11 +19,9 @@ export class MoneyComponent implements ControlValueAccessor {
   @Input() typeInput: InputField;
 
   readonly moneyOption = MONEY_OPTIONS;
+  testValue = '';
+  money = MONEY_OPTIONS[0];
 
-  value: MoneyValue = {
-    money: MONEY_OPTIONS[0],
-    value: '',
-  };
   isDisable: boolean;
   onChange: (value: MoneyValue) => void;
   onTouch: () => void;
@@ -45,21 +43,22 @@ export class MoneyComponent implements ControlValueAccessor {
 
   writeValue(value: MoneyValue): void {
     if (!!value) {
-      this.value = value;
+      this.money = value.money;
+      this.testValue = value.value;
     }
   }
 
   update(value: number) {
     this.onChange({
       value,
-      money: this.value.money,
+      money: this.money,
     });
     this.onTouch();
   }
 
   updateMoney(money: MoneyInterface) {
     this.onChange({
-      value: this.value.value,
+      value: this.testValue,
       money,
     });
     this.onTouch();
