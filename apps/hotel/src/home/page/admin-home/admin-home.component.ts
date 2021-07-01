@@ -149,7 +149,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       .pipe(map(([immediate, special]) => [immediate.length, special.length]))
       .subscribe(([immediateQuantity, specialQuantity]) => {
         this.sections[1].badge = immediateQuantity;
-        this.sections[4].badge = specialQuantity;
+        this.sections[7].badge = specialQuantity;
       });
   }
 
