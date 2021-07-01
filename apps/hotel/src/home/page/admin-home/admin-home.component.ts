@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InmediateRequestsService } from '@contler/hotel/inmediate-requests/services/inmediate-requests.service';
-import { first, map } from 'rxjs/operators';
-import { Observable, Subscription } from 'rxjs';
+import { first, map, switchMap } from 'rxjs/operators';
+import { combineLatest, forkJoin, Observable, Subscription } from 'rxjs';
 import { SpecialRequestsService } from '@contler/hotel/special-requests/services/special-requests.service';
-import { RequestEntity, SpecialZoneHotelEntity } from '@contler/entity';
+import { SpecialZoneHotelEntity } from '@contler/entity';
 import { AuthService } from '@contler/hotel/services/auth.service';
+import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
 
 @Component({
   selector: 'contler-admin-home',
@@ -99,6 +100,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     private inmediateRequestsService: InmediateRequestsService,
     private specialRequestsService: SpecialRequestsService,
     private authService: AuthService,
+    private dynamicService: DynamicModuleService,
   ) {}
 
   goToPage(router: any[], isReception: boolean) {
@@ -136,20 +138,19 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
         return section;
       });
     });
-    this.inmediateRequestsSubscription = this.inmediateRequestsService
-      .listenInmediateRequestByHotel()
-      .pipe(
-        map((requests: RequestEntity[]) => requests.filter((request) => !request.finishAt)),
-        map((requests) => requests.length),
-      )
-      .subscribe((quantity) => (this.sections[1].badge = quantity));
-    this.specialRequestsSubscription = this.specialRequestsService
-      .listenSpecialRequestByHotel()
-      .pipe(
-        map((requests: RequestEntity[]) => requests.filter((request) => !request.complete)),
-        map((requests) => requests.length),
-      )
-      .subscribe((quantity) => (this.sections[4].badge = quantity));
+    const immediateRequest$ = (hotelUid) => {
+      return this.dynamicService.getDynamicRequest(hotelUid, MODULES.immediate, true);
+    };
+    const specialRequest$ = (hotelUid) => {
+      return this.dynamicService.getDynamicRequest(hotelUid, MODULES.special, true);
+    };
+    this.authService.$hotel
+      .pipe(switchMap((hotel) => combineLatest([immediateRequest$(hotel.uid), specialRequest$(hotel.uid)])))
+      .pipe(map(([immediate, special]) => [immediate.length, special.length]))
+      .subscribe(([immediateQuantity, specialQuantity]) => {
+        this.sections[1].badge = immediateQuantity;
+        this.sections[4].badge = specialQuantity;
+      });
   }
 
   ngOnDestroy() {
