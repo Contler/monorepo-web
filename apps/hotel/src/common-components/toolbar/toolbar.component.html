@@ -41,7 +41,7 @@
     <div mat-menu-item *ngFor="let item of notificationList" class="container" (click)="goToImmediate(item)">
       <mat-icon color="accent">error</mat-icon>
       <div>
-        <p class="title">Nueva solicitud</p>
+        <p class="title">{{ 'toolbar.title' | translate }}</p>
         <p class="data">{{ item.name }} - {{ item.zone }} - {{ item.message }}</p>
       </div>
       <mat-icon class="icon">navigate_next</mat-icon>

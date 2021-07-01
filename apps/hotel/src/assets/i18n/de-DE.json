@@ -56,7 +56,10 @@
       "totalServices": "Anzahl der Dienste",
       "update": "Aktualisieren",
       "updateSusses": "Mitarbeiter erfolgreich erstellt",
-      "yesOption": "Ja"
+      "yesOption": "Ja",
+      "questionRemove": "Weet u zeker dat u deze werknemer van uw systeem wilt verwijderen?",
+      "yesOptionRemove": "Ja, wissen.",
+      "noOptionRemove": "Nee, annuleren."
     },
     "name": "Name des Arbeitgebers",
     "rating": "Kundenbewertung",
@@ -79,6 +82,8 @@
     "ZONE": "Zonen"
   },
   "guest": {
+    "createUpdate": "Maken/bijwerken gast",
+    "enterEmail": "Voer het e-mailadres in van de gast die in uw hotel aankomt",
     "active": "Aktiv",
     "checkIn": "Einreisedatum",
     "checkOut": "Abreisedatum",
@@ -94,6 +99,9 @@
       "passport": "Reisepass"
     },
     "typeDocument": "Art des Ausweises"
+  },
+  "toolbar": {
+    "title": "Nieuwe toepassing"
   },
   "home": {
     "desktop": "Desktop"

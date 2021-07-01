@@ -91,7 +91,16 @@
     "room": "Room",
     "specialRequest": "Special requests",
     "statistic": "Statistics",
-    "wakeUp": "Wake up calls"
+    "wakeUp": "Wake up calls",
+    "logout": "Sign off"
+  },
+  "lateCheckout": {
+    "room": "Room",
+    "created": "Created",
+    "notAccepted": "Not accepted",
+    "accepted": "accepted",
+    "accept": "Accept",
+    "reject": "Reject"
   },
   "modalConfirm": {
     "message": "Do you confirm that you want to cancel this reservation?",
@@ -106,7 +115,8 @@
   "modalRequest": {
     "dateRequest": "Request Date",
     "need": "Need",
-    "updateBtn": "Update"
+    "updateBtn": "Update",
+    "requestFor": "Request for"
   },
   "order": {
     "pending": "Pending",

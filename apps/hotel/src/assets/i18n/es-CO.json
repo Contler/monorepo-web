@@ -67,7 +67,10 @@
       "totalServices": "Número de servicios",
       "update": "Actualizar",
       "updateSusses": "Empleado actualizado exitosamente",
-      "yesOption": "Sí"
+      "yesOption": "Sí",
+      "questionRemove": "¿Estás seguro de querer eliminar este empleado de tu sistema?",
+      "yesOptionRemove": "Sí, eliminar",
+      "noOptionRemove": "No, cancelar"
     },
     "name": "Nombre empleado",
     "rating": "Calificación",
@@ -90,6 +93,8 @@
     "ZONE": "Zonas"
   },
   "guest": {
+    "createUpdate": "Crear/Actualizar huésped",
+    "enterEmail": "Ingresa el correo del huésped que llega a tu hotel",
     "active": "Activos",
     "checkIn": "Fecha de ingreso",
     "checkOut": "Fecha de salida",
@@ -109,6 +114,9 @@
   "guestRequest": {
     "WhatDoYouNeedToday": "¿Qué necesitas hoy?",
     "hello": "Hola"
+  },
+  "toolbar": {
+    "title": "Nueva solicitud"
   },
   "home": {
     "desktop": "Escritorio"
@@ -163,7 +171,7 @@
     "request": "Solicitudes",
     "reserveAreas": "Zonas de reserva",
     "restaurant": "Restaurante",
-    "roomService": "Room Service",
+    "roomService": "Servicio de habitación",
     "rooms": "Habitaciones",
     "space": "Espacios",
     "spaceReservations": "Reservas de espacios",
@@ -176,7 +184,7 @@
     "late-checkouts": "Salidas tardías",
     "maintenance": "Mantenimiento",
     "orders": "Room service",
-    "reception": "Front Desk",
+    "reception": "Recepción",
     "reservations": "Reservas",
     "room": "Habitación",
     "specialRequest": "Solicitudes especiales",

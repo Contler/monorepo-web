@@ -61,7 +61,10 @@
     "thereIsNoTimeSlotForTheSelectedDate.": "No hay franja horaria para la fecha seleccionada.",
     "timeSlot": "Franja horaria",
     "title": "Estás a punto de hacer una reserva en:",
-    "yourReservationWasCreatedSuccessfully": "Tu reserva fue creada con éxito"
+    "yourReservationWasCreatedSuccessfully": "Tu reserva fue creada con éxito",
+    "YourReservationIn": "Tu reserva en",
+    "update": "ACTUALIZAR",
+    "cancel": "CANCELAR"
   },
   "createWake": {
     "createGuest": "Crear invitado",
@@ -186,7 +189,8 @@
     "on": "en",
     "qualify": "calificar",
     "title": "¿Cómo encontró el servicio que nuestro equipo brindó en su solicitud",
-    "veryBad": "Muy mala"
+    "veryBad": "Muy mala",
+    "tellUsMore": "díganos más"
   },
   "modules": {
     "clean": "Limpieza",

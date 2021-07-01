@@ -67,7 +67,10 @@
       "totalServices": "Número de serviços",
       "update": "Atualizar",
       "updateSusses": "Funcionário criado com sucesso",
-      "yesOption": "sim"
+      "yesOption": "sim",
+      "questionRemove": "Tem a certeza de que quer remover este funcionário do seu sistema?",
+      "yesOptionRemove": "Sim, apagar",
+      "noOptionRemove": "Não, cancelar"
     },
     "name": "Nome do Empregador",
     "rating": "QUALIFICAÇÃO",
@@ -90,6 +93,8 @@
     "ZONE": "Zonas"
   },
   "guest": {
+    "createUpdate": "Criar/actualizar convidado",
+    "enterEmail": "Introduza o e-mail do hóspede que chega ao seu hotel",
     "active": "Ativo",
     "checkIn": "Data de admissão",
     "checkOut": "Data de partida",
@@ -109,6 +114,9 @@
   "guestRequest": {
     "WhatDoYouNeedToday": "Do que precisa hoje?",
     "hello": "Olá"
+  },
+  "toolbar": {
+    "title": "Nova aplicação"
   },
   "home": {
     "desktop": "Área de Trabalho"

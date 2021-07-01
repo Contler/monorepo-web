@@ -81,7 +81,16 @@
     "reception": "Rezeption",
     "specialRequest": "Spezialwünsche",
     "statistic": "Statistiken",
-    "wakeUp": "Aufweck-Anruf"
+    "wakeUp": "Aufweck-Anruf",
+    "logout": "Ausloggen"
+  },
+  "lateCheckout": {
+    "room": "Schlafzimmer",
+    "created": "Erstellt",
+    "notAccepted": "Nicht akzeptiert",
+    "accepted": "Akzeptiert",
+    "accept": "Akzeptieren",
+    "reject": "Ablehnen"
   },
   "modalConfirm": {
     "message": "Bestätigen Sie, dass Sie diese Reservierung stornieren möchten?",
@@ -96,7 +105,8 @@
   "modalRequest": {
     "dateRequest": "Anforderungsdatum",
     "need": "brauchen",
-    "updateBtn": "Aktualisieren"
+    "updateBtn": "Aktualisieren",
+    "requestFor": "Anfrage für"
   },
   "order": {
     "pending": "steht aus",

@@ -61,7 +61,10 @@
     "thereIsNoTimeSlotForTheSelectedDate.": "Für das ausgewählte Datum gibt es kein Zeitfenster.",
     "timeSlot": "Zeitfenster",
     "title": "Sie sind im Begriff, eine Reservierung vorzunehmen in:",
-    "yourReservationWasCreatedSuccessfully": "Ihre Reservierung wurde erfolgreich erstellt"
+    "yourReservationWasCreatedSuccessfully": "Ihre Reservierung wurde erfolgreich erstellt",
+    "YourReservationIn": "Uw reservering in",
+    "update": "BIJWERKEN",
+    "cancel": "ANNULEREN"
   },
   "createWake": {
     "createGuest": "Gast erstellen",
@@ -186,7 +189,8 @@
     "on": "auf",
     "qualify": "qualifizieren",
     "title": "Wie haben Sie den Service gefunden, den unser Team in Ihrer Anfrage erbracht hat?",
-    "veryBad": "sehr schlecht"
+    "veryBad": "sehr schlecht",
+    "tellUsMore": "vertel ons meer"
   },
   "modules": {
     "clean": "Reinigung",

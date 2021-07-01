@@ -91,7 +91,16 @@
     "room": "Chambre",
     "specialRequest": "Demandes spéciales",
     "statistic": "statistiques",
-    "wakeUp": "Services de reveil"
+    "wakeUp": "Services de reveil",
+    "logout": "Fermer la session"
+  },
+  "lateCheckout": {
+    "room": "Chambre",
+    "created": "Chambre",
+    "notAccepted": "Pas accepté",
+    "accepted": "Accepté",
+    "accept": "Accepter",
+    "reject": "Rejeter"
   },
   "modalConfirm": {
     "message": "Confirmez-vous que vous souhaitez annuler cette réservation?",
@@ -106,7 +115,8 @@
   "modalRequest": {
     "dateRequest": "Date de la demande",
     "need": "Avoir besoin",
-    "updateBtn": "Mettre à jour"
+    "updateBtn": "Mettre à jour",
+    "requestFor": "Demande"
   },
   "order": {
     "pending": "en attendant",

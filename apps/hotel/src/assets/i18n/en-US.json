@@ -67,7 +67,10 @@
       "totalServices": "Number of services",
       "update": "Update",
       "updateSusses": "Employee created successfully",
-      "yesOption": "Yes"
+      "yesOption": "Yes",
+      "questionRemove": "Are you sure you want to remove this employee from your system?",
+      "yesOptionRemove": "Yes, delete",
+      "noOptionRemove": "No, cancel"
     },
     "name": "Employer Name",
     "rating": "Qualification",
@@ -90,6 +93,8 @@
     "ZONE": "Zones"
   },
   "guest": {
+    "createUpdate": "Create/Update guest",
+    "enterEmail": "Enter the email of the guest arriving to your hotel",
     "active": "Active",
     "checkIn": "Date of Admission",
     "checkOut": "Departure date",
@@ -109,6 +114,9 @@
   "guestRequest": {
     "WhatDoYouNeedToday": "What do you need today?",
     "hello": "Hello"
+  },
+  "toolbar": {
+    "title": "New request"
   },
   "home": {
     "desktop": "Desktop"

@@ -91,7 +91,16 @@
     "room": "Quarto",
     "specialRequest": "requerimentos especiais",
     "statistic": "Estatisticas",
-    "wakeUp": "Chamadas de despertar"
+    "wakeUp": "Chamadas de despertar",
+    "logout": "Fechar Sessão"
+  },
+  "lateCheckout": {
+    "room": "Quarto",
+    "created": "Criada",
+    "notAccepted": "Não aceito",
+    "accepted": "Aceitaram",
+    "accept": "Aceitar",
+    "reject": "Rejeitar"
   },
   "modalConfirm": {
     "message": "Confirma que deseja cancelar esta reserva?",
@@ -106,7 +115,8 @@
   "modalRequest": {
     "dateRequest": "Data do pedido",
     "need": "Precisar",
-    "updateBtn": "Atualizar"
+    "updateBtn": "Atualizar",
+    "requestFor": "Pedido para"
   },
   "order": {
     "pending": "Pendente",
