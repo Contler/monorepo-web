@@ -2,9 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InmediateRequestsService } from '@contler/hotel/inmediate-requests/services/inmediate-requests.service';
 import { first, map, switchMap } from 'rxjs/operators';
-import { combineLatest, forkJoin, Observable, Subscription } from 'rxjs';
+import { combineLatest, Subscription } from 'rxjs';
 import { SpecialRequestsService } from '@contler/hotel/special-requests/services/special-requests.service';
-import { SpecialZoneHotelEntity } from '@contler/entity';
 import { AuthService } from '@contler/hotel/services/auth.service';
 import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
 
@@ -91,9 +90,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     },
   ];
 
-  private inmediateRequestsSubscription: Subscription | null = null;
-  private specialRequestsSubscription: Subscription | null = null;
-  public specialZones$: Observable<SpecialZoneHotelEntity[]>;
+  private requestsSubscription: Subscription | null = null;
 
   constructor(
     private router: Router,
@@ -144,7 +141,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     const specialRequest$ = (hotelUid) => {
       return this.dynamicService.getDynamicRequest(hotelUid, MODULES.special, true);
     };
-    this.authService.$hotel
+    this.requestsSubscription = this.authService.$hotel
       .pipe(switchMap((hotel) => combineLatest([immediateRequest$(hotel.uid), specialRequest$(hotel.uid)])))
       .pipe(map(([immediate, special]) => [immediate.length, special.length]))
       .subscribe(([immediateQuantity, specialQuantity]) => {
@@ -154,11 +151,8 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.inmediateRequestsSubscription) {
-      this.inmediateRequestsSubscription.unsubscribe();
-    }
-    if (this.specialRequestsSubscription) {
-      this.specialRequestsSubscription.unsubscribe();
+    if (this.requestsSubscription) {
+      this.requestsSubscription.unsubscribe();
     }
   }
 }
