@@ -61,7 +61,10 @@
     "thereIsNoTimeSlotForTheSelectedDate.": "Il n'y a pas de créneau horaire pour la date sélectionnée.",
     "timeSlot": "créneau horaire",
     "title": "Vous êtes sur le point d'effectuer une réservation dans:",
-    "yourReservationWasCreatedSuccessfully": "Votre réservation a été créée avec succès"
+    "yourReservationWasCreatedSuccessfully": "Votre réservation a été créée avec succès",
+    "YourReservationIn": "Votre réservation en",
+    "update": "POUR METTRE À JOUR",
+    "cancel": "ANNULER"
   },
   "createWake": {
     "createGuest": "Créer un invité",
@@ -186,7 +189,8 @@
     "on": "sur",
     "qualify": "qualifier",
     "title": "Comment avez-vous trouvé le service que notre équipe a fourni dans votre demande",
-    "veryBad": "très mauvais"
+    "veryBad": "très mauvais",
+    "tellUsMore": "en savoir plus"
   },
   "modules": {
     "clean": "Pettoyage",

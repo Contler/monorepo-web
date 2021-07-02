@@ -61,7 +61,10 @@
     "thereIsNoTimeSlotForTheSelectedDate.": "There is no time slot for the selected date.",
     "timeSlot": "Time slot",
     "title": "You are about to make a reservation in:",
-    "yourReservationWasCreatedSuccessfully": "Your reservation was created successfully"
+    "yourReservationWasCreatedSuccessfully": "Your reservation was created successfully",
+    "YourReservationIn": "Your reservation in",
+    "update": "UPDATE",
+    "cancel": "CANCEL"
   },
   "createWake": {
     "createGuest": "Create Guest",
@@ -186,7 +189,8 @@
     "on": "on",
     "qualify": "qualify",
     "title": "How did you find the service our team provided in your request",
-    "veryBad": "Very bad"
+    "veryBad": "Very bad",
+    "tellUsMore": "tell us more"
   },
   "modules": {
     "clean": "Cleaning",

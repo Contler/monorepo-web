@@ -61,7 +61,10 @@
     "thereIsNoTimeSlotForTheSelectedDate.": "Não há intervalo de tempo para a data selecionada.",
     "timeSlot": "Horário",
     "title": "Você está prestes a fazer uma reserva em:",
-    "yourReservationWasCreatedSuccessfully": "Sua reserva foi criada com sucesso"
+    "yourReservationWasCreatedSuccessfully": "Sua reserva foi criada com sucesso",
+    "YourReservationIn": "Sua reserva em",
+    "update": "ATUALIZAR",
+    "cancel": "CANCELAR"
   },
   "createWake": {
     "createGuest": "Criar Convidado",
@@ -186,7 +189,8 @@
     "on": "em",
     "qualify": "qualificar",
     "title": "Como você encontrou o atendimento que nossa equipe prestou em sua solicitação",
-    "veryBad": "Muito mal"
+    "veryBad": "Muito mal",
+    "tellUsMore": "diga-nos mais"
   },
   "modules": {
     "clean": "Limpeza",

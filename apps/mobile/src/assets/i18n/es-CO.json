@@ -91,7 +91,16 @@
     "room": "Habitación",
     "specialRequest": "Solicitudes especiales",
     "statistic": "Estadísticas",
-    "wakeUp": "Wake up calls"
+    "wakeUp": "Wake up calls",
+    "logout": "Cerrar Sesión"
+  },
+  "lateCheckout": {
+    "room": "Habitación",
+    "created": "Creada",
+    "notAccepted": "No aceptada",
+    "accepted": "Aceptada",
+    "accept": "Aceptar",
+    "reject": "Rechazar"
   },
   "modalConfirm": {
     "message": "¿Confirmas que quieres cancelar esta reserva?",
@@ -106,7 +115,8 @@
   "modalRequest": {
     "dateRequest": "Fecha de solicitud",
     "need": "Necesita",
-    "updateBtn": "Actualizar"
+    "updateBtn": "Actualizar",
+    "requestFor": "Petición de"
   },
   "order": {
     "pending": "Pendiente",
