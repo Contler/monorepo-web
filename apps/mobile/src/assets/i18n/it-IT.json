@@ -91,7 +91,16 @@
     "room": "Stanza",
     "specialRequest": "RICHIESTE SPECIALI",
     "statistic": "statistica",
-    "wakeUp": "Sveglia le chiamate"
+    "wakeUp": "Sveglia le chiamate",
+    "logout": "cancella la sottoscrizione"
+  },
+  "lateCheckout": {
+    "room": "Camera da letto",
+    "created": "Creato",
+    "notAccepted": "Non accettato",
+    "accepted": "Accettato",
+    "accept": "Accettare",
+    "reject": "Rifiutare"
   },
   "modalConfirm": {
     "message": "Confermi di voler cancellare questa prenotazione?",
@@ -106,7 +115,8 @@
   "modalRequest": {
     "dateRequest": "Data richiesta",
     "need": "Bisogno",
-    "updateBtn": "Aggiornare"
+    "updateBtn": "Aggiornare",
+    "requestFor": "Richiesta di"
   },
   "order": {
     "pending": "in attesa di",

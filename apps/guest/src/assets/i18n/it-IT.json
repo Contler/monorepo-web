@@ -61,7 +61,10 @@
     "thereIsNoTimeSlotForTheSelectedDate.": "Non esiste una fascia oraria per la data selezionata.",
     "timeSlot": "fascia oraria",
     "title": "Stai per effettuare una prenotazione in:",
-    "yourReservationWasCreatedSuccessfully": "La tua prenotazione è stata creata con successo"
+    "yourReservationWasCreatedSuccessfully": "La tua prenotazione è stata creata con successo",
+    "YourReservationIn": "La tua prenotazione in",
+    "update": "AGGIORNARE",
+    "cancel": "ANNULLA"
   },
   "createWake": {
     "createGuest": "Crea ospite",
@@ -186,7 +189,8 @@
     "on": "sopra",
     "qualify": "qualificarsi",
     "title": "Come hai trovato il servizio fornito dal nostro team nella tua richiesta",
-    "veryBad": "molto brutto"
+    "veryBad": "molto brutto",
+    "tellUsMore": "dirci di più"
   },
   "modules": {
     "clean": "Pulizia",

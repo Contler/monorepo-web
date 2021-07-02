@@ -31,7 +31,13 @@
 
       <ng-container matColumnDef="leader">
         <th mat-header-cell *matHeaderCellDef>{{ 'employer.leader' | translate }}</th>
-        <td mat-cell *matCellDef="let element">{{ element.role === leader ? 'Sí' : 'No' }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{
+            element.role === leader
+              ? ('employer.modal.yesOption' | translate)
+              : ('employer.modal.noOption' | translate)
+          }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="score">

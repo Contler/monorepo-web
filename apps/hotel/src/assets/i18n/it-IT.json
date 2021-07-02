@@ -67,7 +67,10 @@
       "totalServices": "Numero di servizi",
       "update": "Aggiornare",
       "updateSusses": "Dipendente creato con successo",
-      "yesOption": "sì"
+      "yesOption": "sì",
+      "questionRemove": "Sei sicuro di voler rimuovere questo dipendente dal tuo sistema?",
+      "yesOptionRemove": "Sì, cancellare",
+      "noOptionRemove": "No, cancella"
     },
     "name": "nome del datore di lavoro",
     "rating": "qualificazione",
@@ -90,6 +93,8 @@
     "ZONE": "zone"
   },
   "guest": {
+    "createUpdate": "Creare/aggiornare l'ospite",
+    "enterEmail": "Inserisci l'email dell'ospite che arriva al tuo hotel",
     "active": "Attivo",
     "checkIn": "Data di ammissione",
     "checkOut": "Data di partenza",
@@ -109,6 +114,9 @@
   "guestRequest": {
     "WhatDoYouNeedToday": "Di cosa avete bisogno oggi?",
     "hello": "Ciao"
+  },
+  "toolbar": {
+    "title": "Nuova applicazione"
   },
   "home": {
     "desktop": "Desktop"

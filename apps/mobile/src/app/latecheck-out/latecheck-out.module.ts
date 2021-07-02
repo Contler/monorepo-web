@@ -9,6 +9,7 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '@contler/core';
 import { CommonComponentsModule } from '../common-components/common-components.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [{ path: '', component: LatecheckOutComponent }];
 
@@ -23,6 +24,7 @@ const routes: Routes = [{ path: '', component: LatecheckOutComponent }];
     FormsModule,
     CoreModule,
     CommonComponentsModule,
+    TranslateModule,
   ],
 })
 export class LatecheckOutModule {}

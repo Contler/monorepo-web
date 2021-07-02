@@ -67,7 +67,10 @@
       "totalServices": "Nombre de services",
       "update": "Mettre à jour",
       "updateSusses": "Employé créé avec succès",
-      "yesOption": "Oui"
+      "yesOption": "Oui",
+      "questionRemove": "Êtes-vous sûr de vouloir supprimer cet employé de votre système ?",
+      "yesOptionRemove": "Oui, effacer",
+      "noOptionRemove": "Non, annuler"
     },
     "name": "Nom de l'employeur",
     "rating": "Qualification",
@@ -90,6 +93,8 @@
     "ZONE": "Zones"
   },
   "guest": {
+    "createUpdate": "Créer/mettre à jour l'invité",
+    "enterEmail": "Entrez l'adresse électronique du client qui arrive à votre hôtel.",
     "active": "actif",
     "checkIn": "Date d'admission",
     "checkOut": "Date de départ",
@@ -109,6 +114,9 @@
   "guestRequest": {
     "WhatDoYouNeedToday": "De quoi avez-vous besoin aujourd'hui ?",
     "hello": "Bonjour"
+  },
+  "toolbar": {
+    "title": "Nouvelle application"
   },
   "home": {
     "desktop": "bureau"
