@@ -1,4 +1,4 @@
-<contler-marco-admin title="{{ 'order.title' | translate }}">
+<contler-marco-admin title="{{ 'order.title' | translate }}" *ngIf="hotel$ | async as hotel">
   <ng-container marcoHeader>
     <button contlerBtnHotel="primary" mat-raised-button (click)="updateMessageInformational()">
       {{ 'order.informativeMessage.button' | translate }}
@@ -42,12 +42,12 @@
       <ng-container matColumnDef="value">
         <th mat-header-cell *matHeaderCellDef>{{ 'order.value' | translate }}</th>
         <td mat-cell *matCellDef="let element">
-          {{ orderProductsTotalValue(element) | currency: 'cop':'$':'1.0-0' }}
+          {{ orderProductsTotalValue(element) | currencyCustom: hotel.currency }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="time">
-        <th mat-header-cell *matHeaderCellDef>{{ 'order.TimeDate' | translate }}</th>
+        <th mat-header-cell *matHeaderCellDef>{{ 'order.timeDate' | translate }}</th>
         <td mat-cell *matCellDef="let element">
           {{ element.time | date: 'short' }}
         </td>

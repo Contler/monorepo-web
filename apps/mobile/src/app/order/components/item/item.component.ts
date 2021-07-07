@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { OrderEntity, ProductOrderEntity } from '@contler/entity';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { HotelEntity, OrderEntity, ProductOrderEntity } from '@contler/entity';
 
 @Component({
   selector: 'contler-item',
@@ -8,6 +8,7 @@ import { OrderEntity, ProductOrderEntity } from '@contler/entity';
 })
 export class ItemComponent implements OnChanges {
   @Input() order!: OrderEntity;
+  @Input() hotel: HotelEntity;
   total = 0;
 
   constructor() {}

@@ -1,7 +1,7 @@
 <div>
   <p class="order__title">{{ order?.guest.name }} {{ order?.guest.lastName }}</p>
   <p class="order__text">
-    {{ order?.guest.room.name | ctrTranslate }} - {{ total | currency: 'COP':'$':'1.0-0' }}
+    {{ order?.guest.room.name | ctrTranslate }} - {{ total | currencyCustom: hotel.currency }}
   </p>
 </div>
 

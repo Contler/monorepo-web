@@ -16,5 +16,5 @@
 
   <div *ngIf="orders && orders.length === 0" class="center">{{ 'orderComplete.noOrders' | translate }}</div>
 
-  <contler-item *ngFor="let item of orders" [order]="item"></contler-item>
+  <contler-item *ngFor="let item of orders" [order]="item" [hotel]="user.hotel"></contler-item>
 </ion-content>

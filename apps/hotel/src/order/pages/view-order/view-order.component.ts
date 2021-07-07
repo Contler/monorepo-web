@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '@contler/core';
 import { map, switchMap } from 'rxjs/operators';
-import { OrderEntity, ProductEntity } from '@contler/entity';
+import { HotelEntity, OrderEntity, ProductEntity } from '@contler/entity';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RestaurantProductsModel } from '@contler/models';
+import { AuthService } from '@contler/hotel/services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'contler-view-order',
@@ -27,13 +29,16 @@ export class ViewOrderComponent {
 
   load = false;
   error = '';
+  hotel$: Observable<HotelEntity>;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductService,
     formBuild: FormBuilder,
+    private authService: AuthService,
   ) {
+    this.hotel$ = this.authService.$hotel;
     this.route.params
       .pipe(
         map((data) => data['id']),

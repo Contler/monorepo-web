@@ -11,6 +11,7 @@ import { UpdateInformationalMessageComponent } from '@contler/hotel/order/modals
 import { TranslateService as transDynamic } from '@contler/dynamic-translate';
 import { getLan } from '@contler/const';
 import { MessagesService } from '@contler/hotel/services/messages/messages.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'contler-order',
@@ -28,6 +29,7 @@ export class OrderComponent {
   dataSource = new MatTableDataSource<OrderEntity>();
   displayedColumns: string[] = ['id', 'guest', 'zone', 'value', 'time', 'state', 'actions'];
   private orders: OrderEntity[] = [];
+  hotel$: Observable<HotelEntity>;
 
   constructor(
     private auth: AuthService,
@@ -38,6 +40,7 @@ export class OrderComponent {
     private dynTranslate: transDynamic,
     private messagesService: MessagesService,
   ) {
+    this.hotel$ = this.auth.$hotel;
     this.getAllOrders();
     this.dataSource.paginator = this.paginator!;
   }

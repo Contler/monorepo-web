@@ -16,6 +16,7 @@ import * as OrderReducer from 'guest/app/reducers/order/order.reducer';
 import { orderFeatureKey, ProductOrder } from 'guest/app/reducers/order/order.reducer';
 import { MatDialog } from '@angular/material/dialog';
 import { CompleteOrderModalComponent } from 'guest/product/components/complete-order-modal/complete-order-modal.component';
+import { selectUserState } from 'guest/app/reducers/user/user.selectors';
 
 @Component({
   selector: 'contler-finish-order',

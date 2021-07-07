@@ -124,15 +124,24 @@
             <ngx-mat-color-picker #picker4></ngx-mat-color-picker>
             <mat-hint>Texto secundario</mat-hint>
           </mat-form-field>
-
-          <mat-form-field appearance="fill" class="full">
-            <ngx-mat-file-input
-              accept="image/*"
-              formControlName="file"
-              (change)="loadImage($event)"
-            ></ngx-mat-file-input>
-            <mat-hint>Adjuntar logo (PNG 200 x 200 px)</mat-hint>
-          </mat-form-field>
+          <div class="full field-container-currency-logo">
+            <mat-form-field appearance="fill">
+              <ngx-mat-file-input
+                accept="image/*"
+                formControlName="file"
+                (change)="loadImage($event)"
+              ></ngx-mat-file-input>
+              <mat-hint>Adjuntar logo (PNG 200 x 200 px)</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-select formControlName="currency" value="USD">
+                <mat-option *ngFor="let currency of currencies" [value]="currency.alphabetCode">
+                  {{ currency.alphabetCode }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>Moneda principal</mat-hint>
+            </mat-form-field>
+          </div>
 
           <mat-form-field appearance="fill" class="full-field" *ngIf="!edit">
             <input type="email" aria-label="name" matInput formControlName="email" />

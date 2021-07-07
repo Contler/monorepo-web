@@ -13,6 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { DirectivesModule } from '../directives/directives.module';
 import { UpdateInformationalMessageComponent } from './modals/update-informational-message/update-informational-message.component';
+import { UiModule } from '@contler/ui';
 
 @NgModule({
   declarations: [OrderComponent, ViewOrderComponent, UpdateInformationalMessageComponent],
@@ -29,6 +30,7 @@ import { UpdateInformationalMessageComponent } from './modals/update-information
     TranslateModule,
     DynamicTranslateModule,
     DirectivesModule,
+    UiModule,
   ],
 })
 export class OrderModule {}

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalProductComponent } from '@contler/hotel/product/components/modal-product/modal-product.component';
-import { ProductEntity } from '@contler/entity';
+import { HotelEntity, ProductEntity } from '@contler/entity';
 import { filter, switchMap, take } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from '@contler/hotel/services/auth.service';
 import { ProductService } from '@contler/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'contler-product',
@@ -23,6 +24,7 @@ export class ProductComponent implements OnInit {
   ];
   filter = 0;
   private products: ProductEntity[] = [];
+  hotel$: Observable<HotelEntity>;
 
   constructor(
     private dialog: MatDialog,
@@ -32,6 +34,7 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.hotel$ = this.auth.$hotel;
     this.getAllProducts();
   }
 

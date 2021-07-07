@@ -6,7 +6,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <div class="product">
+    <div class="product" *ngIf="hotel$ | async as hotel">
       <div class="product__menu">
         <h1 class="cnt-title" contlerColorHotel="primary">{{ 'product.title' | translate }}</h1>
         <button mat-raised-button color="accent" (click)="openCreateProductModel()" contlerBtnHotel="primary">
@@ -45,7 +45,7 @@
         <ng-container matColumnDef="value">
           <th mat-header-cell *matHeaderCellDef>{{ 'product.value' | translate }}</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.value | currency: 'cop':'$':'1.0-0' }}
+            {{ element.value | currencyCustom: hotel.currency }}
           </td>
         </ng-container>
 
