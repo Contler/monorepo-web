@@ -43,3 +43,13 @@
     }
   }
 }
+.field-container-currency-logo {
+  display: flex;
+  justify-content: space-around;
+  mat-form-field {
+    width: 50%;
+  }
+  mat-form-field:last-child {
+    margin-left: 1rem;
+  }
+}

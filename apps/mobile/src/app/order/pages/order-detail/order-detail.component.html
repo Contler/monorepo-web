@@ -34,8 +34,8 @@
     ></contler-product-item>
   </ng-container>
 
-  <p class="detail__total" [style.color]="generalService.hotelColor">
-    {{ 'orderDetail.total' | translate }} {{ total | currency: 'cop':'COP $':'1.0-0' }}
+  <p class="detail__total" [style.color]="generalService.hotelColor" *ngIf="auth.$user | async as user">
+    {{ 'orderDetail.total' | translate }} {{ total | currencyCustom: user.hotel.currency }}
   </p>
   <p class="detail__comments">{{ 'orderDetail.comments' | translate }} {{ order?.comment }}</p>
 

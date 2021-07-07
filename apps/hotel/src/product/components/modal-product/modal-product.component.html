@@ -48,7 +48,7 @@
   <mat-card class="modal-preview">
     <mat-card-title>{{ 'product.new.preview' | translate }}</mat-card-title>
     <mat-card-content>
-      <contler-product-item [product]="product"></contler-product-item>
+      <contler-product-item [product]="product" [hotel]="auth.$hotel | async"></contler-product-item>
     </mat-card-content>
   </mat-card>
 

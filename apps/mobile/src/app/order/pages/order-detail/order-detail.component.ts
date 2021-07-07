@@ -28,7 +28,7 @@ export class OrderDetailComponent implements OnInit {
   productsRestaurant: RestaurantProductsModel;
 
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     public menu: MenuController,
     public generalService: GeneralService,
     private productService: ProductService,

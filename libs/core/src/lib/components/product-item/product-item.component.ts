@@ -12,7 +12,7 @@ export class ProductItemComponent {
   @Output() countChange = new EventEmitter<number>();
   @Output() valueChange = new EventEmitter<void>();
   @Input() disable = false;
-  hotel: HotelEntity | null | undefined;
+  @Input() hotel: HotelEntity | null | undefined;
 
   constructor() {}
 

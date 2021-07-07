@@ -16,6 +16,8 @@ import { LANGUAGES } from '@contler/const';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Language } from '../../../../../../../libs/models';
 import TaskState = firebase.storage.TaskState;
+import { Currency } from '@contler/models/currency.model';
+import { CURRENCIES } from '@contler/const/currencies';
 
 @Component({
   selector: 'contler-hotel',
@@ -33,6 +35,7 @@ export class HotelComponent implements OnInit {
   specialZones: SpecialZoneHotelEntity[] = [];
   admin: EmployerEntity;
   languages: Language[] = LANGUAGES.map((lan) => ({ ...lan, active: true }));
+  currencies: Currency[] = CURRENCIES;
 
   constructor(
     route: ActivatedRoute,
@@ -54,6 +57,7 @@ export class HotelComponent implements OnInit {
       textPrimary: ['', Validators.required],
       textSecondary: ['', Validators.required],
       file: ['', Validators.required],
+      currency: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
@@ -85,6 +89,7 @@ export class HotelComponent implements OnInit {
         map((data) => {
           return {
             email: this.hotelForm.value.email,
+            currency: this.hotelForm.value.currency,
             password: this.hotelForm.value.password,
             hotelName: this.hotelForm.value.name,
             hotelLogo: data,
@@ -113,6 +118,7 @@ export class HotelComponent implements OnInit {
     const { colorPrimary, colorSecondary, textPrimary, textSecondary, file } = this.hotelForm.value;
     this.hotel.name = this.hotelForm.value.name;
     this.hotel.country = this.hotelForm.value.country;
+    this.hotel.currency = this.hotelForm.value.currency;
     this.hotel.city = this.hotelForm.value.city;
     this.hotel.color = `#${(colorPrimary as Color).hex}`;
     this.hotel.colorSecond = `#${(colorSecondary as Color).hex}`;
@@ -190,6 +196,7 @@ export class HotelComponent implements OnInit {
     this.hotelForm.setValue({
       name: hotel.name,
       country: hotel.country,
+      currency: hotel.currency,
       colorPrimary: new ColorAdapter().parse(hotel.color),
       colorSecondary: new ColorAdapter().parse(hotel.colorSecond),
       city: hotel.city,

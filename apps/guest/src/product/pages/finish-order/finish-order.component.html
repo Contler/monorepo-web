@@ -12,14 +12,14 @@
         <ng-template ngFor let-item [ngForOf]="products$ | async">
           <p class="finish-order__list-text">{{ item.product.name | ctrTranslate }}</p>
           <p class="finish-order__list-text">
-            {{ item.quantity * item.product.value | currency: 'COP':'$':'1.0-0' }}
+            {{ item.quantity * item.product.value | currencyCustom: hotel.currency }}
           </p>
         </ng-template>
       </div>
     </div>
 
     <p contlerColorHotel="primary" class="finish-order__total">
-      {{ 'finishOrder.total' | translate }} {{ totalPrice$ | async | currency: 'COP':'$':'1.0-0' }}
+      {{ 'finishOrder.total' | translate }} {{ totalPrice$ | async | currencyCustom: hotel.currency }}
     </p>
     <p class="order_note" *ngIf="hotel.orderText">{{ hotel.orderText | ctrTranslate }}</p>
     <form class="finish-order__form" [formGroup]="orderForm" (ngSubmit)="createOrder()">

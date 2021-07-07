@@ -37,6 +37,7 @@ import { TranslateService } from './services/translate/translate.service';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { TranslateModule } from '@ngx-translate/core';
 import { SpecialZoneGuestService } from 'lib/lib/services/special-zone-guest/special-zone-guest.service';
+import { UiModule } from '@contler/ui';
 
 const materialModules = [
   MatFormFieldModule,
@@ -67,6 +68,7 @@ const materialModules = [
     HttpClientModule,
     DynamicTranslateModule,
     TranslateModule,
+    UiModule,
   ],
   declarations: [
     ButtonDirective,

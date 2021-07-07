@@ -29,6 +29,8 @@ export class HotelEntity {
 
   city: string;
 
+  currency: string;
+
   country: string;
 
   state: boolean;

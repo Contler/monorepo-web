@@ -15,6 +15,7 @@ import { CheckOrdersService } from './services/check-orders.service';
 import { CommonComponentsModule } from '../common-components/common-components.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
+import { UiModule } from '@contler/ui';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DynamicTranslateModule } from '@contler/dynamic-translate';
     CommonComponentsModule,
     TranslateModule,
     DynamicTranslateModule,
+    UiModule,
   ],
   providers: [CheckOrdersService],
 })

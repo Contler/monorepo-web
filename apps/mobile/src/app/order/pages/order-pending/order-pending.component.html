@@ -20,6 +20,7 @@
 
   <contler-item
     *ngFor="let item of orders"
+    [hotel]="user.hotel"
     [order]="item"
     routerLink="/home/order/{{ item.id }}"
   ></contler-item>

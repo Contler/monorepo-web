@@ -19,6 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DynamicTranslateModule } from '@contler/dynamic-translate';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { OrderFilterPipe } from './order-filter.pipe';
+import { UiModule } from '@contler/ui';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { OrderFilterPipe } from './order-filter.pipe';
     TranslateModule,
     DynamicTranslateModule,
     MatBottomSheetModule,
+    UiModule,
   ],
 })
 export class ProductModule {}

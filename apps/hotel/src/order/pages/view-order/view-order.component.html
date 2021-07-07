@@ -112,6 +112,7 @@
         <contler-product-item
           *ngFor="let item of item.value"
           [product]="item.product"
+          [hotel]="hotel$ | async"
           [disable]="true"
           [count]="item.quantity"
         >

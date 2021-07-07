@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { TranslateModule } from '@ngx-translate/core';
+import { CurrencyCustomPipe } from './pipes/currency-custom.pipe';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule,
   ],
   providers: [IconsService],
-  declarations: [IconComponent, StartComponent, LayoutComponent],
-  exports: [IconComponent, StartComponent, LayoutComponent],
+  declarations: [IconComponent, StartComponent, LayoutComponent, CurrencyCustomPipe],
+  exports: [IconComponent, StartComponent, LayoutComponent, CurrencyCustomPipe],
 })
 export class UiModule {}

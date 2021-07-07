@@ -1,5 +1,5 @@
 <contler-marco padding="16px 30px 0" backUrl="/home/product/create">
-  <div marcoBody class="confirm">
+  <div marcoBody class="confirm" *ngIf="hotel$ | async as hotel">
     <h1 class="ctl-title pto-title" contlerColorHotel="primary">
       {{ 'confirmOrder.title' | translate }}
     </h1>
@@ -14,7 +14,7 @@
 
     <div class="confirm-footer">
       <p contlerColorHotel="primary" class="confirm-total">
-        {{ 'confirmOrder.total' | translate }} {{ total$ | async | currency: 'cop':'COP $':'1.0-0' }}
+        {{ 'confirmOrder.total' | translate }} {{ total$ | async | currencyCustom: hotel.currency }}
       </p>
       <button
         style="margin-left: 5%"

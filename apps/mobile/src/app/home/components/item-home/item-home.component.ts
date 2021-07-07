@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { State } from '../../../reducers';
 import * as RequestSelectors from '../../../reducers/request/request.selectors';
+import { HotelEntity } from '@contler/entity';
 
 interface Type {
   icon: string;

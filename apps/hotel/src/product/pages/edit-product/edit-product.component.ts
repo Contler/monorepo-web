@@ -4,12 +4,12 @@ import { ProductService, RestaurantService } from '@contler/core';
 import { map, switchMap, take } from 'rxjs/operators';
 import { ProductEntity } from '@contler/entity';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '@contler/hotel/services/auth.service';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { Observable } from 'rxjs';
 import { CategoryModels } from '@contler/models/category.models';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateService as DynamicService } from '@contler/dynamic-translate';
+import { AuthService } from '@contler/hotel/services/auth.service';
 
 @Component({
   selector: 'contler-edit-product',
@@ -31,7 +31,7 @@ export class EditProductComponent {
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductService,
-    private auth: AuthService,
+    public auth: AuthService,
     private restaurantService: RestaurantService,
     private translate: TranslateService,
     private dynamicTranslate: DynamicService,

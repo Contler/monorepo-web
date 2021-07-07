@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CATEGORY_PRODUCTS } from '@contler/const';
 import { ProductService, RestaurantService } from '@contler/core';
 import { AuthService } from '@contler/hotel/services/auth.service';
-import { switchMap, take } from 'rxjs/operators';
-import { Observable, Subscription } from 'rxjs';
+import { startWith, switchMap, take } from 'rxjs/operators';
+import { combineLatest, Observable, Subscription } from 'rxjs';
 import { MatDialogRef } from '@angular/material/dialog';
 import { RestaurantEntity } from '@contler/entity/restaurant.entity';
 import { CategoryModels } from '@contler/models/category.models';
@@ -39,7 +39,7 @@ export class ModalProductComponent implements OnInit, OnDestroy {
     formBuild: FormBuilder,
     public dialogRef: MatDialogRef<ModalProductComponent>,
     private productService: ProductService,
-    private auth: AuthService,
+    public auth: AuthService,
     private restaurantService: RestaurantService,
   ) {
     this.productForm = formBuild.group({
@@ -52,15 +52,13 @@ export class ModalProductComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.sc1 = this.nameControl.valueChanges.subscribe(
-      (data) => (this.product = { ...this.product, name: data }),
-    );
-    this.sc2 = this.valueControl.valueChanges.subscribe(
-      (data) => (this.product = { ...this.product, value: data }),
-    );
-    this.sc3 = this.descriptionControl.valueChanges.subscribe(
-      (data) => (this.product = { ...this.product, description: data }),
-    );
+    this.sc1 = combineLatest([
+      this.nameControl.valueChanges.pipe(startWith('')),
+      this.valueControl.valueChanges.pipe(startWith('')),
+      this.descriptionControl.valueChanges.pipe(startWith('')),
+    ]).subscribe(([name, value, description]) => {
+      this.product = { ...this.product, name, value, description };
+    });
     this.restaurants$ = this.auth.$employer.pipe(
       take(1),
       switchMap(({ hotel }) => this.restaurantService.getAllRestaurantsByHotel(hotel.uid)),
