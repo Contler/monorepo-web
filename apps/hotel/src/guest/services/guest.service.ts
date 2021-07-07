@@ -38,6 +38,9 @@ export class GuestService {
   deleteUser(uid: string) {
     return this.http.delete(environment.apiUrl + `guest/${uid}`);
   }
+  deletePartner(uid: string) {
+    return this.http.delete(environment.apiUrl + `guest/partner/${uid}`);
+  }
 
   searchGuestByEmail(email: string): Observable<GuestEntity> {
     return this.http.get<GuestEntity>(`${environment.apiUrl}guest/email/${email}`);

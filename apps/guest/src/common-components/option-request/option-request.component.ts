@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'contler-option-request',
@@ -13,7 +14,7 @@ export class OptionRequestComponent implements OnInit {
 
   isSelect = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -34,5 +35,11 @@ export class OptionRequestComponent implements OnInit {
       return m.toUpperCase();
     });
     return data.join(' ');
+  }
+
+  public goToPage(): void {
+    this.router.navigate([this.link]).catch(() => {
+      window.location.replace(this.link);
+    });
   }
 }

@@ -56,7 +56,13 @@ export class GuestComponent implements OnDestroy {
       .afterClosed()
       .pipe(filter((data) => !!data))
       .subscribe((data) => {
-        this.dataSource.data = [...this.dataSource.data, data!];
+        const allGuest = [...this.dataSource.data, data, data.partner];
+        const isOldGuest = allGuest.find((guest) => data.uid === guest.uid);
+        if (isOldGuest) {
+          this.validationIfPartnerExists(isOldGuest, allGuest, data);
+        } else {
+          this.dataSource.data = [...this.dataSource.data, data!];
+        }
       });
   }
 
@@ -104,5 +110,23 @@ export class GuestComponent implements OnDestroy {
   filterByStatus() {
     this.dataSource.filter = this.filterByStatusSelected;
     this.dataSource.filterPredicate = (data, filterData) => this.getFilterPredicate(data, filterData);
+  }
+
+  private validationIfPartnerExists(
+    currentGuest: GuestEntity,
+    allGuest: GuestEntity[],
+    data: GuestEntity,
+  ): void {
+    if (currentGuest.partner) {
+      const isOldPartner = allGuest.find((guest) => data.partner.uid === guest.uid);
+      if (isOldPartner) {
+        this.dataSource.data = this.dataSource.data.map((guest) =>
+          guest.uid === isOldPartner.uid ? data.partner : guest,
+        );
+      } else {
+        this.dataSource.data = [...this.dataSource.data, data.partner!];
+      }
+    }
+    this.dataSource.data = this.dataSource.data.map((guest) => (guest.uid === data.uid ? data : guest));
   }
 }

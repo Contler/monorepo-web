@@ -35,4 +35,6 @@ export class GuestEntity {
   booking!: BookingEntity[];
 
   orders!: OrderEntity[];
+
+  partner!: GuestEntity;
 }

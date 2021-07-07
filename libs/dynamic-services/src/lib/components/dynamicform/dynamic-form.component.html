@@ -49,6 +49,12 @@
           [formControlName]="generateName(opt.type, i)"
         ></contler-time-input>
       </ng-container>
+
+      <ng-container *ngSwitchCase="6">
+        <a [href]="opt.value | getLink: true" target="_blank" class="link">{{
+          opt.description | getLink: false
+        }}</a>
+      </ng-container>
     </ng-container>
   </ng-container>
 </form>

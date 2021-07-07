@@ -4,10 +4,14 @@
   align-items: center;
 }
 
-.option {
+.option,
+.option-url {
   display: grid;
   grid-template-columns: auto max-content;
   gap: 10px;
   align-items: baseline;
   margin: 10px 0;
+}
+.option-url {
+  grid-template-columns: initial;
 }

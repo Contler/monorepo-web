@@ -30,13 +30,25 @@
   </div>
 </ng-container>
 <ng-container *ngIf="inputData.type === InputType.URL">
-  <div class="option">
+  <div class="option-url">
     <mat-form-field appearance="fill">
-      <mat-select (valueChange)="inputData.value = $event" [(ngModel)]="inputData.value">
+      <mat-select (valueChange)="onChangeInputTypeUrl($event)" [(ngModel)]="inputData.value">
         <mat-option *ngFor="let section of specialZoneGuest" [value]="section.link">{{
           section.name | translate | ctrTranslate
         }}</mat-option>
+        <mat-option [value]="'extern'">Externo</mat-option>
       </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" *ngIf="showExternUrl">
+      <input
+        type="url"
+        matInput
+        [formControl]="externUrlNameControl"
+        placeholder="Escribe el nombre de tu enlace"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill" *ngIf="showExternUrl">
+      <input type="url" matInput [formControl]="externUrlControl" placeholder="Escribe tu enlace" />
     </mat-form-field>
   </div>
 </ng-container>

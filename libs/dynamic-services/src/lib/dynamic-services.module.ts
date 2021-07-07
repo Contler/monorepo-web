@@ -22,6 +22,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TimeInputComponent } from './components/time-input/time-input.component';
+import { GetLinkPipe } from './pipes/get-link.pipe';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { TimeInputComponent } from './components/time-input/time-input.component
     TextInputComponent,
     MoneyComponent,
     TimeInputComponent,
+    GetLinkPipe,
   ],
   exports: [NewInputComponent, DynamicFormComponent, MoneyComponent, TimeInputComponent],
 })
