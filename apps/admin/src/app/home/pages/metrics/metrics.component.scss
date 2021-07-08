@@ -1,0 +1,25 @@
+@import 'variables';
+@import 'mixin';
+
+.title {
+  @include text(14px, $text-3, 600);
+}
+
+.content {
+  margin-top: 17px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto max-content;
+  align-items: center;
+  border-bottom: 1px solid $grey;
+  padding-bottom: 10px;
+
+  &__text {
+    @include text(14px, $text-4);
+  }
+}

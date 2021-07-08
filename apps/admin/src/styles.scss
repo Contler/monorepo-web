@@ -1,15 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap');
-@import 'styles/variables';
-@import 'styles/material';
-@import 'styles/mixin';
-@import 'styles/animation';
+@import 'global';
+@import 'material';
 
-html,
-body {
-  height: 100%;
-}
 body {
   margin: 0;
   font-family: $family;
@@ -21,23 +12,6 @@ a {
   line-height: 1.31;
   letter-spacing: 0.4px;
   cursor: pointer;
-}
-
-.custom_icon {
-  color: $iconColor;
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-}
-
-.cnt-loading {
-  @include loading(15px, 15px, 2px, #000);
 }
 
 .full-field {
