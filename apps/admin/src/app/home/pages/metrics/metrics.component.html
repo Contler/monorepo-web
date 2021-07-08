@@ -1,0 +1,40 @@
+<contler-layout title="Métricas">
+  <ng-container layoutMenu>
+    <contler-menu></contler-menu>
+  </ng-container>
+
+  <ng-container layoutHeader>
+    <mat-form-field appearance="fill">
+      <mat-select [(ngModel)]="hotelId">
+        <mat-option *ngFor="let hotel of hotels$ | async" [value]="hotel.uid">{{ hotel.name }}</mat-option>
+      </mat-select>
+      <mat-hint>Hotel</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <input matInput [matDatepicker]="picker1" [(ngModel)]="since" [max]="until" />
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+      <mat-hint>Desde</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <input matInput [matDatepicker]="picker2" [(ngModel)]="until" [min]="since" />
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+      <mat-hint>Hasta</mat-hint>
+    </mat-form-field>
+  </ng-container>
+
+  <ng-container layoutBody>
+    <h1 class="title">Nombre de la métrica</h1>
+    <div class="content">
+      <div class="item" *ngFor="let option of metrics">
+        <p class="item__text">{{ option.name }}</p>
+        <button mat-icon-button [disabled]="!available">
+          <mat-icon>download</mat-icon>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</contler-layout>

@@ -555,7 +555,7 @@
             "assets": ["apps/admin/src/favicon.ico", "apps/admin/src/assets"],
             "styles": ["apps/admin/src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": ["apps/hotel/src"]
+              "includePaths": ["apps/hotel/src", "libs/styles"]
             },
             "scripts": []
           },

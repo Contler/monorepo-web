@@ -1,6 +1,11 @@
 @import './variables';
 @import './mixin';
 
+html,
+body {
+  height: 100%;
+}
+
 .cnt-loading {
   @include loading(15px, 15px, 2px, #000);
 }

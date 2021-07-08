@@ -14,16 +14,18 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { NgxMatColorPickerModule } from '@angular-material-components/color-picker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { IconsComponent } from './pages/icons/icons.component';
+import { MetricsComponent } from './pages/metrics/metrics.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'hotel', component: HotelComponent },
   { path: 'hotel/:id', component: HotelComponent },
   { path: 'icons', component: IconsComponent },
+  { path: 'metrics', component: MetricsComponent },
 ];
 
 @NgModule({
-  declarations: [HomeComponent, HotelComponent, IconsComponent],
+  declarations: [HomeComponent, HotelComponent, IconsComponent, MetricsComponent],
   imports: [
     CommonModule,
     UiModule,
