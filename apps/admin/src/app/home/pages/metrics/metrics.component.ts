@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HotelService } from '@contler/core';
 import { HotelEntity } from '@contler/entity';
 import { Observable } from 'rxjs';
+import { MetricsService } from '../../services/metrics.service';
 
 @Component({
   selector: 'contler-metrics',
@@ -65,7 +66,7 @@ export class MetricsComponent implements OnInit {
     },
   ];
 
-  constructor(private hotelService: HotelService) {
+  constructor(private hotelService: HotelService, private metricService: MetricsService) {
     this.hotels$ = this.hotelService.getAllHotels();
   }
 
@@ -73,5 +74,26 @@ export class MetricsComponent implements OnInit {
 
   get available() {
     return !!this.hotelId && this.since && this.until;
+  }
+
+  getMetric(id: number) {
+    switch (id) {
+      case 0:
+        this.metricService.getUserByHotel(this.hotelId, this.since, this.until).subscribe(this.downloadFile);
+        break;
+      default:
+        break;
+    }
+  }
+
+  private downloadFile(blob: Blob, name = 'report.csv') {
+    const downloadUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = downloadUrl;
+    a.download = name;
+    a.click();
+    setTimeout(() => {
+      URL.revokeObjectURL(downloadUrl);
+    }, 100);
   }
 }

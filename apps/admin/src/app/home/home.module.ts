@@ -15,6 +15,9 @@ import { NgxMatColorPickerModule } from '@angular-material-components/color-pick
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { IconsComponent } from './pages/icons/icons.component';
 import { MetricsComponent } from './pages/metrics/metrics.component';
+import { MetricsService } from './services/metrics.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BackendInterceptor } from '../interceptors/backend.interceptor';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,5 +44,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatSnackBarModule,
   ],
+  providers: [MetricsService, { provide: HTTP_INTERCEPTORS, useClass: BackendInterceptor, multi: true }],
 })
 export class HomeModule {}

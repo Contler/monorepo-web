@@ -31,7 +31,7 @@
     <div class="content">
       <div class="item" *ngFor="let option of metrics">
         <p class="item__text">{{ option.name }}</p>
-        <button mat-icon-button [disabled]="!available">
+        <button mat-icon-button [disabled]="!available" (click)="getMetric(option.id)">
           <mat-icon>download</mat-icon>
         </button>
       </div>
