@@ -196,7 +196,9 @@
     "name": "Name",
     "title": "Create new guest",
     "create": "Create",
-    "update": "Update"
+    "update": "Update",
+    "addPartner": "Add companion",
+    "partner": "Companion"
   },
   "order": {
     "all": "All",
@@ -284,7 +286,10 @@
       "select-other": "List of options with 'other'",
       "staticMoney": "Simple field",
       "text": "Open Field",
-      "url": "Link"
+      "url": "Link",
+      "extern": "External link",
+      "externPlaceholderName": "Type the name of your link",
+      "externPlaceholderLink": "Enter your link"
     },
     "reception": {
       "description": "Choose which options to keep enabled in the Reception section. You can create new options.",

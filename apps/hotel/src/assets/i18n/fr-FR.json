@@ -196,7 +196,9 @@
     "name": "Prénom",
     "title": "Créer un nouvel invité",
     "create": "Créer",
-    "update": "Mise à jour"
+    "update": "Mise à jour",
+    "addPartner": "Ajouter un compagnon",
+    "partner": "Compagnon"
   },
   "order": {
     "all": "Tout",
@@ -284,7 +286,10 @@
       "select-other": "Liste des options avec 'autre'",
       "staticMoney": "Champ simple",
       "text": "Champ ouvert",
-      "url": "Lien"
+      "url": "Lien",
+      "extern": "Lien externe",
+      "externPlaceholderName": "Entrez le nom de votre lien",
+      "externPlaceholderLink": "Entrez votre lien"
     },
     "reception": {
       "description": "Choisissez les options à garder activées dans la section Réception. Vous pouvez créer de nouvelles options.",

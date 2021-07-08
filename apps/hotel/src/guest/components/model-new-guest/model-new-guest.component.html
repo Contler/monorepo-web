@@ -95,13 +95,13 @@
             [disabled]="guestGroup.invalid || load"
             (click)="addPartner()"
           >
-            <ng-container *ngIf="updateGuest; else createGuest"> Agregar Acompañante </ng-container>
+            <ng-container *ngIf="updateGuest; else createGuest"> {{ 'newGuest.addPartner' }}</ng-container>
             <ng-template #createGuest>
               {{ 'newGuest.create' | translate }}
             </ng-template>
           </button>
           <h1 *ngIf="showFormAddPartner" (click)="removePartner()">
-            Acompañante <mat-icon color="warn">delete</mat-icon>
+            {{ 'newGuest.partner' }} <mat-icon color="warn">delete</mat-icon>
           </h1>
         </div>
         <div class="cnt-modal-guest__form_guest" *ngIf="showFormAddPartner" [formGroup]="partnerGroup">

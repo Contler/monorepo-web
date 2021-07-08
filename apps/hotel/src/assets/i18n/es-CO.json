@@ -197,7 +197,9 @@
     "name": "Nombre",
     "title": "Crear nuevo huesped",
     "create": "Crear",
-    "update": "Actualizar"
+    "update": "Actualizar",
+    "addPartner": "Agregar acompañante",
+    "partner": "Acompañante"
   },
   "order": {
     "all": "Todos",
@@ -285,7 +287,10 @@
       "select-other": "Lista de opciones con 'otro'",
       "staticMoney": "Campo simple",
       "text": "Campo abierto",
-      "url": "Enlace"
+      "url": "Enlace",
+      "extern": "Enlace externo",
+      "externPlaceholderName": "Escribe el nombre de tu enlace",
+      "externPlaceholderLink": "Escribe tu enlace"
     },
     "reception": {
       "description": "Elige qué opciones mantener habilitadas en la sección de Recepción. Podrás crear nuevas opciones.",
