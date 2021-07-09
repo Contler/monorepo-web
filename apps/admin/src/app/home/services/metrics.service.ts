@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
 export class MetricsService {
   constructor(private http: HttpClient) {}
 
-  getUserByHotel(hotelId: string, since: Date, until: Date) {
-    return this.http.get('/statistics/guest-in-hotel', {
+  getMetric(path: string, hotelId: string, since: Date, until: Date) {
+    return this.http.get(`/statistics/${path}`, {
       params: { hotelId, since: since.toISOString(), until: until.toString() },
       responseType: 'blob',
     });

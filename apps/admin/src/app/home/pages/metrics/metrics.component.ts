@@ -79,7 +79,14 @@ export class MetricsComponent implements OnInit {
   getMetric(id: number) {
     switch (id) {
       case 0:
-        this.metricService.getUserByHotel(this.hotelId, this.since, this.until).subscribe(this.downloadFile);
+        this.metricService
+          .getMetric('guest-in-hotel', this.hotelId, this.since, this.until)
+          .subscribe(this.downloadFile);
+        break;
+      case 2:
+        this.metricService
+          .getMetric('request-hotel', this.hotelId, this.since, this.until)
+          .subscribe(this.downloadFile);
         break;
       default:
         break;
