@@ -14,9 +14,10 @@ import { MaterialModule } from '../material/material.module';
 import { CommonComponentsModule } from '../common-components/common-components.module';
 import { RoomService } from '../room/services/room.service';
 import { GuestService } from './services/guest.service';
+import { NewGuestComponent } from './components/new-guest/new-guest.component';
 
 @NgModule({
-  declarations: [GuestComponent, ModelNewGuestComponent, ModalEditGuestComponent],
+  declarations: [GuestComponent, ModelNewGuestComponent, ModalEditGuestComponent, NewGuestComponent],
   entryComponents: [ModelNewGuestComponent, ModalEditGuestComponent],
   imports: [
     CommonModule,

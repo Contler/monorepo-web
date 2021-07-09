@@ -12,7 +12,7 @@ export class RoomEntity {
 
   hotel!: HotelEntity;
 
-  guest!: GuestEntity;
+  guest!: GuestEntity[];
 
   wakeUps!: WakeUpEntity[];
 

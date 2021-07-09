@@ -36,5 +36,7 @@ export class GuestEntity {
 
   orders!: OrderEntity[];
 
+  partners!: GuestEntity[];
+
   partner!: GuestEntity;
 }

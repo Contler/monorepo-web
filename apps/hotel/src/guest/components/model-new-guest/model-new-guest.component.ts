@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { DOCUMENT_TYPE } from '@contler/const';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { GuestRequest } from '@contler/models';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RoomService } from '../../../room/services/room.service';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, map, startWith, switchMap, tap } from 'rxjs/operators';
 import { GuestService } from '../../../guest/services/guest.service';
 import { UserService } from '@contler/core';
 import { GuestEntity, RoomEntity } from '@contler/entity';
 import { MessagesService } from '../../../services/messages/messages.service';
 import { MatHorizontalStepper } from '@angular/material/stepper';
 import { AngularFireAnalytics } from '@angular/fire/analytics';
+import { combineLatest, Observable } from 'rxjs';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'contler-model-new-guest',
@@ -21,25 +23,26 @@ export class ModelNewGuestComponent {
   readonly documentTypes = DOCUMENT_TYPE;
 
   guestGroup: FormGroup;
-  partnerGroup: FormGroup;
   rooms: RoomEntity[] = [];
   load = false;
   error: string | undefined;
   searchEmailForm: FormControl;
+  partnerEmailForm: FormControl;
   updateGuest = false;
+  filteredPartners: Observable<GuestEntity[]>;
   private guest: GuestEntity;
-  private partner: GuestEntity;
-  showFormAddPartner = false;
 
   constructor(
     public dialogRef: MatDialogRef<ModelNewGuestComponent>,
+    @Inject(MAT_DIALOG_DATA) private partners: GuestEntity[],
     private roomService: RoomService,
     private guestService: GuestService,
     private userService: UserService,
-    private formBuild: FormBuilder,
+    formBuild: FormBuilder,
     private messagesService: MessagesService,
     private analytics: AngularFireAnalytics,
   ) {
+    this.partnerEmailForm = new FormControl('', Validators.email);
     this.searchEmailForm = new FormControl(
       '',
       Validators.compose([Validators.required, Validators.minLength(5)]),
@@ -54,13 +57,12 @@ export class ModelNewGuestComponent {
       checkIn: ['', Validators.required],
       checkOut: ['', Validators.required],
     });
-    this.roomService
-      .getRoom()
-      .pipe(map((rooms) => rooms.filter((room) => !room.guest)))
-      .subscribe((rooms) => {
-        this.rooms = rooms;
-        this.room!.reset();
-      });
+    this.listenerPartnerEmailForm();
+    this.roomService.getRoom().subscribe((rooms) => {
+      console.log({ rooms });
+      this.rooms = rooms;
+      this.room!.reset();
+    });
   }
 
   get room() {
@@ -77,17 +79,12 @@ export class ModelNewGuestComponent {
     this.userService
       .getUser()
       .pipe(
-        map((user) => ({ ...this.guestGroup.value, hotel: user.hotel } as GuestRequest)),
+        map((user) => ({ ...this.guestGroup.getRawValue(), hotel: user.hotel } as GuestRequest)),
         switchMap((guestRequest) => this.guestService.saveGuest(guestRequest)),
-        tap(() => {
-          if (this.guestGroup && this.guestGroup.valid) {
-            this.createPartner(this.guest, this.partnerGroup.value);
-          }
-        }),
+        tap(async (guest) => await this.addPartner(guest)),
       )
       .subscribe(
         (guest) => {
-          guest.partner = this.partner;
           this.analytics.logEvent('create_guest_complete');
           this.load = false;
           this.dialogRef.close(guest);
@@ -122,14 +119,13 @@ export class ModelNewGuestComponent {
     try {
       this.guest = await this.guestService.searchGuestByEmail(email).toPromise();
       if (this.guest) {
-        this.guestGroup.patchValue(this.guest);
         if (this.guest.partner) {
-          this.partner = this.guest.partner;
-          this.partner.hotel = this.guest.hotel;
-          this.partner.room = this.guest.room;
-          this.addPartner();
-          this.partnerGroup.patchValue(this.partner);
+          this.partnerEmailForm.setValue(this.guest.partner.email);
+          this.partnerEmailForm.updateValueAndValidity();
         }
+        this.guestGroup.patchValue(this.guest);
+        this.guestGroup.updateValueAndValidity();
+        console.log(this.guestGroup);
         this.updateGuest = true;
       } else {
         this.guestGroup.reset();
@@ -139,9 +135,27 @@ export class ModelNewGuestComponent {
       this.messagesService.closeLoader(loader);
       stepper.next();
     } catch (err) {
-      console.log(err);
       this.messagesService.closeLoader(loader);
       this.messagesService.showServerError();
+    }
+  }
+
+  public onPartnerSelected($event: MatAutocompleteSelectedEvent): void {
+    const email: string = $event.option.viewValue;
+    const partner = this.partners.find((partner) => partner.email === email);
+    if (partner) {
+      const roomControl = this.guestGroup.get('room');
+      const checkInControl = this.guestGroup.get('checkIn');
+      const checkOutControl = this.guestGroup.get('checkOut');
+      partner.room.guest = [];
+      roomControl.setValue(partner.room);
+      checkInControl.setValue(partner.checkIn);
+      checkOutControl.setValue(partner.checkOut);
+      roomControl.disable();
+      checkInControl.disable();
+      checkOutControl.disable();
+    } else {
+      this.resetReservationsControls();
     }
   }
 
@@ -163,20 +177,13 @@ export class ModelNewGuestComponent {
       .pipe(
         map((user) => ({ ...this.guest, hotel: user.hotel } as GuestEntity)),
         switchMap((guestRequest) => this.guestService.updateGuest(guestRequest)),
-        tap(() => {
-          if (this.partnerGroup && this.partnerGroup.valid) {
-            this.updatePartner(this.partnerGroup.value);
-          }
-        }),
       )
       .subscribe(
-        (guest: GuestEntity) => {
+        (guest) => {
           this.load = false;
-          guest.partner = this.partner;
           this.dialogRef.close(guest);
         },
         (error) => {
-          console.log(error);
           this.load = false;
           if (error.status === 400) {
             if (error.error && error.error.message) {
@@ -191,56 +198,55 @@ export class ModelNewGuestComponent {
       );
   }
 
-  public addPartner(): void {
-    this.showFormAddPartner = true;
-    this.partnerGroup = this.formBuild.group({
-      name: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      typeDocument: ['', Validators.required],
-      document: ['', Validators.required],
-    });
+  private listenerPartnerEmailForm(): void {
+    this.filteredPartners = this.partnerEmailForm.valueChanges.pipe(
+      startWith(''),
+      debounceTime(1000),
+      map((email) => this.filterPartnerByEmail(email)),
+    );
   }
 
-  public async removePartner(): Promise<void> {
-    const loader = this.messagesService.showLoader();
-    this.showFormAddPartner = false;
-    this.partnerGroup = null;
+  private filterPartnerByEmail(email: string): GuestEntity[] {
+    if (email) {
+      const filterValue = email.toLowerCase();
+      return this.partners.filter((partner) => partner.email.toLowerCase().includes(filterValue));
+    }
+    this.resetReservationsControls();
+    return [];
+  }
+
+  private resetReservationsControls(): void {
+    const roomControl = this.guestGroup.get('room');
+    roomControl.setValue('');
+    roomControl.enable();
+
+    const checkInControl = this.guestGroup.get('checkIn');
+    checkInControl.setValue('');
+    checkInControl.enable();
+
+    const checkOutControl = this.guestGroup.get('checkOut');
+    checkOutControl.setValue('');
+    checkOutControl.enable();
+  }
+  compareRooms(room1: RoomEntity, room2: RoomEntity) {
+    console.log(room1);
+    console.log(room2);
+    return room1 && room2 && room1.uid === room2.uid;
+  }
+
+  private async addPartner(partnerAdded: GuestEntity): Promise<void> {
+    const guestEmail = this.partnerEmailForm.value;
+    const guest = this.partners.find((partner) => partner.email === guestEmail);
+    guest.partners = [...guest.partners, partnerAdded];
+    delete guest.partners;
+    partnerAdded.partner = guest;
     try {
-      this.guest.partner = null;
-      await this.guestService.updateGuest(this.guest).toPromise();
-      await this.guestService.deletePartner(this.partner.uid).toPromise();
-      this.partner = null;
-      this.messagesService.closeLoader(loader);
-    } catch (err) {
-      this.messagesService.closeLoader(loader);
+      await combineLatest([
+        this.guestService.updateGuest(guest),
+        this.guestService.updateGuest(partnerAdded),
+      ]).toPromise();
+    } catch (e) {
       this.messagesService.showServerError();
     }
-  }
-
-  private createPartner(guest: GuestEntity, partnerFormValue): void {
-    const partnerRequest = { ...guest, ...partnerFormValue } as GuestRequest;
-    this.guestService
-      .saveGuest(partnerRequest)
-      .pipe(
-        switchMap((partner) => {
-          this.partner = partner;
-          guest.partner = partner;
-          return this.guestService.updateGuest(guest);
-        }),
-      )
-      .subscribe();
-  }
-
-  private updatePartner(partnerFormValue: any): void {
-    if (!this.partner) {
-      this.createPartner(this.guest, partnerFormValue);
-      return;
-    }
-    this.partner = {
-      ...this.partner,
-      ...partnerFormValue,
-    };
-    this.guestService.updateGuest(this.partner).subscribe();
   }
 }

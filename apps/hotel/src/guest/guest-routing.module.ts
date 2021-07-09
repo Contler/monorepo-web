@@ -7,6 +7,10 @@ const routes: Routes = [
     path: '',
     component: GuestComponent,
   },
+  {
+    path: ':email',
+    component: GuestComponent,
+  },
 ];
 
 @NgModule({

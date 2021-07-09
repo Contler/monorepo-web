@@ -72,3 +72,8 @@ $gap-form: 10px;
   margin-right: 10px;
   width: 30%;
 }
+.form-search-partner {
+  grid-column: 1 / span 3;
+  width: max-content;
+  margin: 0 auto;
+}

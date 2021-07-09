@@ -30,30 +30,13 @@
   </div>
 </ng-container>
 <ng-container *ngIf="inputData.type === InputType.URL">
-  <div class="option-url">
+  <div class="option">
     <mat-form-field appearance="fill">
-      <mat-select (valueChange)="onChangeInputTypeUrl($event)" [(ngModel)]="inputData.value">
+      <mat-select (valueChange)="inputData.value = $event" [(ngModel)]="inputData.value">
         <mat-option *ngFor="let section of specialZoneGuest" [value]="section.link">{{
           section.name | translate | ctrTranslate
         }}</mat-option>
-        <mat-option [value]="'extern'">{{ 'preferences.optionInputs.extern' | translate }}</mat-option>
       </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill" *ngIf="showExternUrl">
-      <input
-        type="url"
-        matInput
-        [formControl]="externUrlNameControl"
-        placeholder="{{ 'preferences.optionInputs.externPlaceholderName' | translate }}"
-      />
-    </mat-form-field>
-    <mat-form-field appearance="fill" *ngIf="showExternUrl">
-      <input
-        type="url"
-        matInput
-        [formControl]="externUrlControl"
-        placeholder="{{ 'preferences.optionInputs.externPlaceholderLink' | translate }}"
-      />
     </mat-form-field>
   </div>
 </ng-container>
