@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { GuestComponent } from './page/guest/guest.component';
+import { NewGuestComponent } from '@contler/hotel/guest/components/new-guest/new-guest.component';
 
 const routes: Routes = [
   {
@@ -8,8 +9,8 @@ const routes: Routes = [
     component: GuestComponent,
   },
   {
-    path: ':email',
-    component: GuestComponent,
+    path: 'new',
+    component: NewGuestComponent,
   },
 ];
 

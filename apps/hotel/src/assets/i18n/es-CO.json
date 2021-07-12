@@ -199,6 +199,10 @@
     "create": "Crear",
     "update": "Actualizar",
     "addPartner": "Agregar acompañante",
+    "addGuest": "Agregar huesped",
+    "createBooking": "Crear reserva",
+    "reservationData": "Datos de la reserva",
+    "guest": "Huesped",
     "partner": "Acompañante"
   },
   "order": {

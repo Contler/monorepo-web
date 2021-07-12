@@ -198,6 +198,10 @@
     "create": "Criar",
     "update": "Actualização",
     "addPartner": "Adicionar companheiro",
+    "addGuest": "Adicionar convidado",
+    "createBooking": "Criar reserva",
+    "reservationData": "Detalhes da reserva",
+    "guest": "Convidado",
     "partner": "Companheiro"
   },
   "order": {

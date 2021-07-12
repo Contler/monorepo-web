@@ -162,6 +162,10 @@
     "name": "Vorname",
     "title": "Neuen Gast erstellen",
     "addPartner": "Metgezel toevoegen",
+    "addGuest": "Gast toevoegen",
+    "createBooking": "Reservering maken",
+    "reservationData": "Details reservering",
+    "guest": "Gast",
     "partner": "Metgezel"
   },
   "order": {

@@ -198,6 +198,10 @@
     "create": "Create",
     "update": "Update",
     "addPartner": "Add companion",
+    "addGuest": "Add guest",
+    "createBooking": "Create reservation",
+    "reservationData": "Reservation data",
+    "guest": "Guest",
     "partner": "Companion"
   },
   "order": {
