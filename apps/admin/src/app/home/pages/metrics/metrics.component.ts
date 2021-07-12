@@ -98,6 +98,11 @@ export class MetricsComponent implements OnInit {
           .getMetric('module-request-hotel', this.hotelId, this.since, this.until)
           .subscribe(this.downloadFile);
         break;
+      case 5:
+        this.metricService
+          .getMetric('average-score', this.hotelId, this.since, this.until)
+          .subscribe(this.downloadFile);
+        break;
       case 6:
         this.metricService
           .getMetric('request-hotel', this.hotelId, this.since, this.until)

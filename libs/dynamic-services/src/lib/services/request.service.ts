@@ -62,6 +62,10 @@ export class RequestService {
     return this.requestRef().doc(request.key).set(request);
   }
 
+  qualifyRequest(request: AbstractRequest, score: number, comment = null) {
+    return this.requestRef().doc(request.key).update({ score, comment });
+  }
+
   changeStatus(key: string, status: DynamicRequestStatus, employer?: EmployerEntity) {
     const updateObj: Partial<AbstractRequest> = {
       status,

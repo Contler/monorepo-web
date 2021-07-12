@@ -4,13 +4,16 @@ import { GuestService } from 'guest/services/guest.service';
 import { Observable } from 'rxjs';
 import { GuestEntity } from '@contler/entity';
 import { SpecialZoneGuest } from '@contler/models';
-import { filter, map, switchMap, take, tap } from 'rxjs/operators';
+import { filter, first, map, switchMap, take } from 'rxjs/operators';
 import { WELCOME_CONSTANTS } from './welcome.constants';
 import { ModalOrdersQuialifyComponent } from 'guest/home/components/modal-orders-quialify/modal-orders-quialify.component';
 import { ModalBookingQualifyComponent } from 'guest/home/components/modal-booking-qualify/modal-booking-qualify.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalQualifyComponent } from 'guest/home/components/modal-qualify/modal-qualify.component';
-import { RequestService } from 'guest/services/request.service';
+import { RequestService } from '@contler/dynamic-services';
+import { Store } from '@ngrx/store';
+import { State } from 'guest/app/reducers';
+import { selectUserState } from 'guest/app/reducers/user/user.selectors';
 
 @Component({
   selector: 'contler-welcome',
@@ -29,22 +32,33 @@ export class WelcomeComponent implements OnInit {
     private requestService: RequestService,
     private dialog: MatDialog,
     private specialZoneGuestService: SpecialZoneGuestService,
+    private store: Store<State>,
   ) {}
 
   ngOnInit(): void {
-    this.$guest = this.guestService.$guest;
-    this.zones$ = this.guestService.$hotel.pipe(
-      switchMap((hotel) => this.specialZoneGuestService.getSpecialZoneGuestActive(hotel.uid)),
-    );
+    this.$guest = this.store.pipe(selectUserState).pipe(map((data) => data.user));
+    this.zones$ = this.store
+      .pipe(selectUserState)
+      .pipe(map((data) => data.hotel))
+      .pipe(switchMap((hotel) => this.specialZoneGuestService.getSpecialZoneGuestActive(hotel.uid)));
     this.qualifyOrders();
     this.qualifyReservation();
     this.qualifyRequest();
   }
 
   qualifyRequest() {
-    this.requestService
-      .getRequests(true)
-      .pipe(map((reqs) => reqs.filter((req) => req.score === null)))
+    this.$guest
+      .pipe(
+        first(),
+        switchMap((user) =>
+          this.requestService
+            .requestRef((q) =>
+              q.where('active', '==', false).where('guestId', '==', user.uid).where('score', '==', null),
+            )
+            .valueChanges()
+            .pipe(first()),
+        ),
+      )
       .subscribe((requests) => {
         if (requests && requests.length > 0) {
           requests.forEach((request) => {

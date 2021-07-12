@@ -20,6 +20,7 @@ export class RequestCreator {
       status: DynamicRequestStatus.PROGRAMING,
       zone: requestData.zone || null,
       zoneId: requestData.zone?.uid || null,
+      score: null,
     };
   }
 }
