@@ -1,5 +1,5 @@
-@import "../../../styles/variables";
-@import "../../../styles/mixin";
+@import '../../../styles/variables';
+@import '../../../styles/mixin';
 
 .main-container {
   &__title {
@@ -11,7 +11,7 @@
     line-height: normal;
     letter-spacing: 0.25px;
     text-align: center;
-    margin: 38px 0px;
+    margin: 38px 0;
   }
 }
 mat-form-field {
@@ -23,7 +23,7 @@ mat-form-field {
   grid-template-columns: calc(50% - 8px) calc(50% - 8px);
   column-gap: 16px;
 }
-button{
-    color: #ffffff !important;
-    width: 100%;
+button {
+  color: #ffffff !important;
+  width: 100%;
 }
