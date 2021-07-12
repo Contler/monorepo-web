@@ -14,8 +14,6 @@ export class OptionRequestComponent implements OnInit {
 
   isSelect = false;
 
-  constructor(private router: Router) {}
-
   ngOnInit(): void {}
 
   select() {
@@ -35,11 +33,5 @@ export class OptionRequestComponent implements OnInit {
       return m.toUpperCase();
     });
     return data.join(' ');
-  }
-
-  public goToPage(): void {
-    this.router.navigate([this.link]).catch(() => {
-      window.location.replace(this.link);
-    });
   }
 }

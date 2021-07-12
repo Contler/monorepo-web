@@ -1,4 +1,4 @@
-<a *ngIf="link" (click)="goToPage()" class="option">
+<a *ngIf="link" [routerLink]="link" class="option">
   <mat-icon *ngIf="!custom" class="option-icon icon" contlerColorHotel>{{ icon }}</mat-icon>
   <contler-icon *ngIf="custom" class="icon" contlerColorHotel [key]="icon"></contler-icon>
   <span contlerColorHotel class="option-text">
