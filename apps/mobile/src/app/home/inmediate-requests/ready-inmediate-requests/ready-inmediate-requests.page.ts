@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { ModalInmediateRequestPage } from '../../../modals/modal-inmediate-request/modal-inmediate-request.page';
+import { ModalInmediateRequestPage } from '../../../common-components/modal-inmediate-request/modal-inmediate-request.page';
 import { InmediateRequestsService } from '../../../services/inmediate-requests.service';
-import { EmployerEntity, RequestEntity } from '@contler/entity';
+import { EmployerEntity } from '@contler/entity';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { State } from '../../../reducers';

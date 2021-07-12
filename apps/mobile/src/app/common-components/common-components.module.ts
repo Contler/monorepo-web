@@ -21,6 +21,9 @@ import { DynamicFilterPipe } from './dynamic-filter.pipe';
 import { SearchListComponent } from './search-list/search-list.component';
 import { RequestPendingComponent } from './request-pending/request-pending.component';
 import { RequestCompleteComponent } from './request-complete/request-complete.component';
+import { ModalInmediateRequestPage } from './modal-inmediate-request/modal-inmediate-request.page';
+import { RatingModule } from 'ng-starrating';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { RequestCompleteComponent } from './request-complete/request-complete.co
     SearchListComponent,
     RequestPendingComponent,
     RequestCompleteComponent,
+    ModalInmediateRequestPage,
   ],
   exports: [
     ToolbarComponent,
@@ -52,6 +56,7 @@ import { RequestCompleteComponent } from './request-complete/request-complete.co
     SearchListComponent,
     RequestPendingComponent,
     RequestCompleteComponent,
+    ModalInmediateRequestPage,
   ],
   imports: [
     CommonModule,
@@ -62,6 +67,8 @@ import { RequestCompleteComponent } from './request-complete/request-complete.co
     TranslateModule,
     DynamicTranslateModule,
     DynamicServicesModule,
+    RatingModule,
+    MatDialogModule,
   ],
 })
 export class CommonComponentsModule {}

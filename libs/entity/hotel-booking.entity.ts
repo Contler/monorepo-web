@@ -1,6 +1,6 @@
-import { GuestEntity } from './guest.entity';
-import { HotelEntity } from './hotel.entity';
 import { RoomEntity } from './room.entity';
+import { HotelEntity } from './hotel.entity';
+import { GuestEntity } from './guest.entity';
 
 export class HotelBookingEntity {
   id: number;

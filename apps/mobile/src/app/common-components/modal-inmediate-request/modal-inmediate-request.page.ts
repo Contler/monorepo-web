@@ -5,10 +5,10 @@ import { EmployerService } from '../../services/employer.service';
 import { InmediateRequestsService } from '../../services/inmediate-requests.service';
 import { EmployerEntity } from '@contler/entity';
 import { AuthService } from '../../services/auth.service';
-import { map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { DynamicRequestStatus, RequestMessage, RequestService } from '@contler/dynamic-services';
+import { DynamicRequestStatus, MODULES, RequestMessage, RequestService } from '@contler/dynamic-services';
 
 @Component({
   selector: 'contler-modal-inmediate-request',
@@ -43,9 +43,16 @@ export class ModalInmediateRequestPage implements OnInit {
       .getEmployers()
       .pipe(
         map((employers) =>
-          employers.filter((employer) =>
-            employer.leaderZones.find((zone) => zone.uid === this.data.zone.uid),
-          ),
+          employers.filter((employer) => {
+            if (this.request.service === MODULES.room) {
+              return (
+                employer.leaderZones.find((le) => le.category.id === 3) ||
+                employer.leaderSpecialZone.find((zone) => zone.zone.module === this.data.service)
+              );
+            } else {
+              return employer.leaderZones.find((zone) => zone.uid === this.data.zone.uid);
+            }
+          }),
         ),
       )
       .subscribe((employers) => (this.employers = employers));
