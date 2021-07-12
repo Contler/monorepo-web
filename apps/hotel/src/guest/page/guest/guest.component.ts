@@ -91,7 +91,7 @@ export class GuestComponent implements OnDestroy {
     this.dataSource.filterPredicate = (data, filterData) => this.getFilterPredicate(data, filterData);
   }
 
-  public goToNewGuest(): void {
+  goToNewGuest(): void {
     this.analytics.logEvent('create_guest_open');
     this.router.navigate(['home', 'guest', 'new']);
   }

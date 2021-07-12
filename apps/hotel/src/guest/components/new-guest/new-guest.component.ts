@@ -34,7 +34,7 @@ export class NewGuestComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
   ) {
-    this.compareRooms = (room1: RoomEntity, room2: RoomEntity) => room1 && room2 && room1.uid === room2.uid;
+    this.compareRooms = (room1: RoomEntity, room2: RoomEntity) => room1 && room2 && room1?.uid === room2?.uid;
     this.formBookingHotel = this.createFormBookingHotel();
     this.searchEmailForm = new FormControl(
       '',

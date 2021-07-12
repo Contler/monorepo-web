@@ -4,6 +4,7 @@ import { WakeUpEntity } from './wake-up.entity';
 import { RequestEntity } from './request.entity';
 import { BookingEntity } from './booking.entity';
 import { OrderEntity } from './order.entity';
+import { HotelBookingEntity } from './hotel-booking.entity';
 
 export class GuestEntity {
   uid!: string;
@@ -20,10 +21,6 @@ export class GuestEntity {
 
   document!: string;
 
-  checkIn!: Date;
-
-  checkOut!: Date;
-
   hotel!: HotelEntity;
 
   room!: RoomEntity;
@@ -36,7 +33,5 @@ export class GuestEntity {
 
   orders!: OrderEntity[];
 
-  partners!: GuestEntity[];
-
-  partner!: GuestEntity;
+  hotelBooking: HotelBookingEntity;
 }

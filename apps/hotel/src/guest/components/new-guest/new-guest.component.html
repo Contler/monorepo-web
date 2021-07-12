@@ -1,24 +1,18 @@
-<contler-toolbar (toggle)="sidenav.toggle()"></contler-toolbar>
-
-<mat-sidenav-container>
-  <mat-sidenav mode="over" #sidenav>
-    <contler-menu></contler-menu>
-  </mat-sidenav>
-
-  <mat-sidenav-content class="cnt-guest">
-    <div class="cnt-guest__header">
-      <h1 class="cnt-title" contlerColorHotel="primary">{{ 'newGuest.title' | translate }}</h1>
-      <button
-        contlerButton
-        contlerBtnHotel="primary"
-        mat-raised-button
-        type="submit"
-        form="bookingForm"
-        [disabled]="formBookingHotel.invalid || !!!guestsControl.length"
-      >
-        {{ 'newGuest.createBooking' | translate }}
-      </button>
-    </div>
+<contler-marco-admin title="{{ 'newGuest.title' | translate }}">
+  <ng-container marcoHeader>
+    <h1 class="cnt-title" contlerColorHotel="primary"></h1>
+    <button
+      contlerButton
+      contlerBtnHotel="primary"
+      mat-raised-button
+      type="submit"
+      form="bookingForm"
+      [disabled]="formBookingHotel.invalid || !!!guestsControl.length"
+    >
+      {{ 'newGuest.createBooking' | translate }}
+    </button>
+  </ng-container>
+  <div marcoBody>
     <form class="cnt-body" [formGroup]="formBookingHotel" (ngSubmit)="onCreateBooking()" id="bookingForm">
       <h2 class="title">{{ 'newGuest.reservationData' | translate }}</h2>
       <div formGroupName="booking" class="booking">
@@ -49,6 +43,7 @@
           <h2 class="title">{{ 'newGuest.guest' | translate }}</h2>
           <button
             contlerButton
+            contlerBtnHotel="primary"
             (click)="addGuest()"
             mat-raised-button
             class="btn-search"
@@ -121,5 +116,5 @@
         </div>
       </div>
     </form>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </div>
+</contler-marco-admin>
