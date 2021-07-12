@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HotelBookingRequest } from '@contler/models/hotel-booking-request';
-import { GuestEntity } from '@contler/entity';
 import { environment } from '@contler/hotel/environments/environment';
 import { HotelBookingEntity } from '@contler/entity/hotel-booking.entity';
 import { Observable } from 'rxjs';
@@ -11,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class HotelBookingService {
   constructor(private httpClient: HttpClient) {}
+
   createHotelBookingService(hotelBooking: HotelBookingRequest): Observable<HotelBookingEntity> {
     return this.httpClient.post<HotelBookingEntity>(environment.apiUrl + 'booking', hotelBooking);
   }

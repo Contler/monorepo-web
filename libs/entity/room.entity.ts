@@ -12,8 +12,6 @@ export class RoomEntity {
 
   hotel!: HotelEntity;
 
-  guest!: GuestEntity[];
-
   wakeUps!: WakeUpEntity[];
 
   request!: RequestEntity[];

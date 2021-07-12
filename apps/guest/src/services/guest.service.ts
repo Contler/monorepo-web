@@ -43,7 +43,10 @@ export class GuestService {
 
   checkAvailableUser() {
     return this.$guest.pipe(
-      map((data) => ({ checkIn: new Date(data!.checkIn), checkOut: new Date(data!.checkOut) })),
+      map((data) => ({
+        checkIn: new Date(data!.hotelBooking?.checkIn),
+        checkOut: new Date(data!.hotelBooking?.checkOut),
+      })),
     );
   }
 }

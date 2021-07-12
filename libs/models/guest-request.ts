@@ -30,7 +30,4 @@ export class GuestRequest {
 
   @IsNotEmpty()
   hotel!: HotelEntity;
-
-  @IsOptional()
-  partner!: HotelEntity;
 }
