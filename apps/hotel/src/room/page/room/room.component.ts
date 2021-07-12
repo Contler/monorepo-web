@@ -38,7 +38,7 @@ export class RoomComponent {
   }
 
   deleteRoom(room: RoomEntity) {
-    if (room.guest) {
+    if (room.hotelBooking.length) {
       this.snackBar.open('Este cuarto esta en usu, no se puede eliminar', 'cerrar', {
         duration: 5000,
       });
