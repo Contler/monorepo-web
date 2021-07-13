@@ -14,16 +14,21 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { NgxMatColorPickerModule } from '@angular-material-components/color-picker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { IconsComponent } from './pages/icons/icons.component';
+import { MetricsComponent } from './pages/metrics/metrics.component';
+import { MetricsService } from './services/metrics.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BackendInterceptor } from '../interceptors/backend.interceptor';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'hotel', component: HotelComponent },
   { path: 'hotel/:id', component: HotelComponent },
   { path: 'icons', component: IconsComponent },
+  { path: 'metrics', component: MetricsComponent },
 ];
 
 @NgModule({
-  declarations: [HomeComponent, HotelComponent, IconsComponent],
+  declarations: [HomeComponent, HotelComponent, IconsComponent, MetricsComponent],
   imports: [
     CommonModule,
     UiModule,
@@ -39,5 +44,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatSnackBarModule,
   ],
+  providers: [MetricsService, { provide: HTTP_INTERCEPTORS, useClass: BackendInterceptor, multi: true }],
 })
 export class HomeModule {}

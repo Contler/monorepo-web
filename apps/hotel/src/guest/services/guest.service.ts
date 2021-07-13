@@ -5,17 +5,12 @@ import { GuestRequest } from '@contler/models';
 import { environment } from '@contler/hotel/environments/environment';
 import { UserService } from '@contler/core';
 import { switchMap } from 'rxjs/operators';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { GuestEntity } from '@contler/entity/guest.entity';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class GuestService {
-  constructor(
-    private http: HttpClient,
-    private userService: UserService,
-    private afStore: AngularFirestore,
-  ) {}
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   saveGuest(guestRequest: GuestRequest) {
     return this.http.post<GuestEntity>(environment.apiUrl + 'guest', guestRequest);

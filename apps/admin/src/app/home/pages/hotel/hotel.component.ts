@@ -14,7 +14,7 @@ import { concat, forkJoin } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LANGUAGES } from '@contler/const';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Language } from '../../../../../../../libs/models';
+import { Language } from '@contler/models';
 import TaskState = firebase.storage.TaskState;
 import { Currency } from '@contler/models/currency.model';
 import { CURRENCIES } from '@contler/const/currencies';
