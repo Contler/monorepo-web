@@ -9,6 +9,7 @@ export enum InputType {
   MONEY,
   TIME,
   URL,
+  URL_EXTERN,
 }
 
 export interface InputField {
