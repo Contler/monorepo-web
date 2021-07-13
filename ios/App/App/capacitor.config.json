@@ -5,8 +5,5 @@
   "npmClient": "npm",
   "webDir": "dist/apps/mobile",
   "cordova": {},
-  "windowsAndroidStudioPath": "C:\\Users\\jgvar\\AppData\\Local\\JetBrains\\Toolbox\\apps\\AndroidStudio\\ch-0\\201.6858069\\bin\\studio64.exe",
-  "ios": {
-    "buildNumber": "2"
-  }
+  "windowsAndroidStudioPath": "C:\\Users\\jgvar\\AppData\\Local\\JetBrains\\Toolbox\\apps\\AndroidStudio\\ch-0\\201.6858069\\bin\\studio64.exe"
 }
