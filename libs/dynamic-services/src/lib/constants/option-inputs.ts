@@ -30,4 +30,8 @@ export const OPTION_INPUTS: OptionInput[] = [
     name: 'preferences.optionInputs.url',
     value: InputType.URL,
   },
+  {
+    name: 'preferences.optionInputs.extern',
+    value: InputType.URL_EXTERN,
+  },
 ];

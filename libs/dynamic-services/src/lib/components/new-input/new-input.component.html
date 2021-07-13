@@ -79,7 +79,21 @@
   </mat-form-field>
 </ng-container>
 
-<mat-form-field appearance="fill" *ngIf="inputData.type !== InputType.URL">
+<ng-container *ngIf="inputData.type === InputType.URL_EXTERN">
+  <mat-form-field appearance="fill">
+    <input type="text" matInput [(ngModel)]="inputData.description" />
+    <mat-hint>{{ 'preferences.optionInputs.externPlaceholderName' | translate }}</mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <input type="url" matInput [(ngModel)]="inputData.value" />
+    <mat-hint>{{ 'preferences.optionInputs.externPlaceholderLink' | translate }}</mat-hint>
+  </mat-form-field>
+</ng-container>
+
+<mat-form-field
+  appearance="fill"
+  *ngIf="inputData.type !== InputType.URL && inputData.type !== InputType.URL_EXTERN"
+>
   <input type="text" matInput [(ngModel)]="inputData.description" />
   <mat-hint>{{ 'preferences.optionInputs.fileDescriptionHint' | translate }}</mat-hint>
 </mat-form-field>
