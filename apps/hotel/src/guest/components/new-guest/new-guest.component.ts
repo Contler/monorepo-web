@@ -52,7 +52,7 @@ export class NewGuestComponent implements OnInit {
 
   ngOnInit(): void {
     combineLatest([this.roomService.getRoom(), this.authService.$hotel]).subscribe(([rooms, hotel]) => {
-      this.rooms = rooms;
+      this.rooms = rooms.filter((room) => room.hotelBooking.length === 0);
       this.hotel = hotel;
     });
   }
