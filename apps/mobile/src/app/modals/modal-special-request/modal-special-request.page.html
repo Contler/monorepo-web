@@ -48,11 +48,21 @@
         <!-- CHECK IN - CHECKOUT -->
         <div class="two-inputs">
           <mat-form-field appearance="fill">
-            <input matInput [value]="request.guest.checkIn|date:'dd/MM/yyyy'" name="checkIn" readonly />
+            <input
+              matInput
+              [value]="request.guest.hotelBooking.checkIn|date:'dd/MM/yyyy'"
+              name="checkIn"
+              readonly
+            />
             <mat-hint>{{'specialRequest.dateInit' | translate}}</mat-hint>
           </mat-form-field>
           <mat-form-field appearance="fill">
-            <input matInput [value]="request.guest.checkOut|date:'dd/MM/yyyy'" name="checkOut" readonly />
+            <input
+              matInput
+              [value]="request.guest.hotelBooking.checkOut|date:'dd/MM/yyyy'"
+              name="checkOut"
+              readonly
+            />
             <mat-hint>{{'specialRequest.dateEnd' | translate }}</mat-hint>
           </mat-form-field>
         </div>

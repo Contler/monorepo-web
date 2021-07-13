@@ -160,7 +160,13 @@
     "lastName": "Nachname",
     "message": "Erinnern Sie den Gast daran, dass für das login sein Benutzername seine E-Mail-Adresse und sein Passwort sein Vornamen mit Zimmernummer ist.",
     "name": "Vorname",
-    "title": "Neuen Gast erstellen"
+    "title": "Neuen Gast erstellen",
+    "addPartner": "Metgezel toevoegen",
+    "addGuest": "Gast toevoegen",
+    "createBooking": "Reservering maken",
+    "reservationData": "Details reservering",
+    "guest": "Gast",
+    "partner": "Metgezel"
   },
   "order": {
     "all": "Alles",
@@ -179,6 +185,104 @@
     "title": "Aufträge",
     "updateBtn": "Aktualisieren",
     "value": "Wert"
+  },
+  "preferences": {
+    "back": "Terug",
+    "cleaning": {
+      "description": "Kies welke opties ingeschakeld moeten blijven in de Schoonmaak sectie. U kunt nieuwe opties aanmaken.",
+      "disableText": "Nee, laat uitgeschakeld",
+      "enableText": "Ja, schakel de dienst in",
+      "name": "Reiniging",
+      "subDescription": "Met de schoonmaakverzoeken kan de gebruiker diensten uit de eerste hand krijgen die helpen bij zijn verblijf."
+    },
+    "confirmServices": "Bevestig eerst de diensten die u wilt aanbieden",
+    "continue": "Ga door",
+    "guestHome": {
+      "description": "Kies welke opties uw gasten te zien krijgen aan het begin van het platform zodra ze inloggen.",
+      "name": "Inlogopties voor gasten",
+      "sections": "Secties",
+      "updateSection": "Sectie bijwerken",
+      "updateSectionPlaceholder": "Naam",
+      "currentName": "Huidige naam",
+      "saveButton": "Sparen",
+      "cancel": "Annuleren"
+    },
+    "hotel": "Hotel {{value}}",
+    "immediate": {
+      "description": "Algemene onmiddellijke verzoeken stellen gebruikers in staat om snel te vragen wat ze nodig hebben in de zones van uw Hotel. Kies de opties om weer te geven in elk type zone:",
+      "name": "Onmiddellijke verzoeken",
+      "other": "Andere",
+      "selectIcon": "Selecteer het pictogram",
+      "subDescription": "Onmiddellijke verzoeken stellen de gast in staat om snel iets te vragen, om met voorrang te worden bediend.\n<br/><br/>voorbeeld: een handdoek in het zwembad",
+      "which": "Welke?"
+    },
+    "maintenance": {
+      "description": "Kies welke opties ingeschakeld moeten blijven in de sectie Onderhoud. U zult in staat zijn om nieuwe opties te creëren.",
+      "disableText": "Nee, laat uitgeschakeld",
+      "enableText": "Ja, schakel de dienst in",
+      "name": "Onderhoud",
+      "subDescription": "Verzoeken om onderhoud bieden de gebruiker de mogelijkheid om diensten uit de eerste hand te krijgen die hem bij zijn verblijf zullen helpen."
+    },
+    "message": {
+      "removeFormError": "Dit formulier heeft actieve verzoeken",
+      "removeFormSuccess": "Het formulier is succesvol verwijderd",
+      "saveForm": "Formulier opslaan",
+      "saveService": "Service besparen",
+      "translateMessage": "Genereren van formuliervertalingen"
+    },
+    "newOption": "Nieuwe optie toevoegen",
+    "newOptionbutton": "Nieuw veld toevoegen",
+    "newService": "Nieuwe dienst {{value}}",
+    "optionInputs": {
+      "calendar": "Kalender",
+      "fileDescriptionHint": "Beschrijving van het veld",
+      "hour": "Uur",
+      "iconHint": "Veld icoon",
+      "money": "Valuta",
+      "moneyNameSelect": "Selector naam",
+      "nameInpitHit": "Type veld",
+      "other": "Andere",
+      "reload": "Herladen",
+      "select": "Lijst met opties",
+      "select-other": "Lijst van opties met 'Andere'",
+      "staticMoney": "Eenvoudig veld",
+      "text": "Open veld",
+      "url": "koppeling",
+      "extern": "Externe link",
+      "externPlaceholderName": "Voer de naam van uw link in",
+      "externPlaceholderLink": "Voer uw link in"
+    },
+    "reception": {
+      "description": "Kies welke opties ingeschakeld moeten blijven in de sectie Ontvangst sectie. U kunt nieuwe opties aanmaken.",
+      "disableText": "Nee, uitgeschakeld laten",
+      "enableText": "Ja, dienst inschakelen",
+      "name": "Receptie",
+      "subDescription": "Aanvragen bij de receptie stellen de gebruiker in staat om diensten uit de eerste hand te verkrijgen die helpen bij hun verblijf"
+    },
+    "request": {
+      "active": "Beschikbaar",
+      "all": "Alle",
+      "searchPlaceHolder": "Zoeken..."
+    },
+    "room": {
+      "description": "Kies welke opties ingeschakeld moeten blijven in de Kamer sectie. U kunt nieuwe opties aanmaken.",
+      "disableText": "Nee, uitgeschakeld laten",
+      "enableText": "Ja, dienst inschakelen",
+      "name": "Kamer",
+      "nome": "",
+      "subDescription": "Aanvragen op de kamer stellen de gebruiker in staat om diensten uit de eerste hand te krijgen die zullen helpen bij hun verblijf."
+    },
+    "service": {
+      "description": "Beschrijving",
+      "nameOption": "Naam van de optie",
+      "preview": "Voorbeeld"
+    },
+    "title": "Voorkeuren",
+    "welcome": {
+      "button": "begin",
+      "subtitle": "Wij zullen u stap voor stap begeleiden, zodat u de opties die u aan uw gasten zult aanbieden, kunt organiseren.",
+      "title": "Welkom bij uw Contler beheerder!"
+    }
   },
   "product": {
     "active": "Aktiv",

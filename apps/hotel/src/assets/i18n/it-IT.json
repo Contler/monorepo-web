@@ -196,7 +196,13 @@
     "name": "Nome",
     "title": "Crea nuovo ospite",
     "create": "Creare",
-    "update": "Aggiornamento"
+    "update": "Aggiornamento",
+    "addPartner": "Aggiungi compagno",
+    "addGuest": "Aggiungi un ospite",
+    "createBooking": "Creare una prenotazione",
+    "reservationData": "Dettagli della prenotazione",
+    "guest": "Ospite",
+    "partner": "Compagno"
   },
   "order": {
     "all": "Tutti",
@@ -284,7 +290,10 @@
       "select-other": "Elenco di opzioni con 'altro'",
       "staticMoney": "Campo semplice",
       "text": "Campo aperto",
-      "url": "Link"
+      "url": "Link",
+      "extern": "Link esterno",
+      "externPlaceholderName": "Inserisci il nome del tuo link",
+      "externPlaceholderLink": "Inserisci il tuo link"
     },
     "reception": {
       "description": "Scegli quali opzioni mantenere abilitate nella sezione Reception. Puoi creare nuove opzioni.",
