@@ -1,0 +1,47 @@
+@import 'styles/variables';
+@import 'styles/mixin';
+$gap-form: 10px;
+
+.cnt-guest {
+  padding: 0 201px;
+
+  &__header {
+    display: grid;
+    grid-template-columns: auto repeat(4, max-content);
+    column-gap: 20px;
+    align-items: baseline;
+    margin: 43px 0 30px;
+  }
+  &__form_guest {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+    row-gap: $gap-form;
+    margin-bottom: 2rem;
+  }
+  &__span2 {
+    grid-column: span 2;
+  }
+}
+.booking {
+  display: flex;
+  column-gap: 2rem;
+  margin-bottom: 2rem;
+}
+.btn-search {
+  margin-left: 1rem;
+}
+.guest-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+.title {
+  @include text($text-3, 20px, 500);
+  letter-spacing: 0.25px;
+  margin-bottom: 0.5rem;
+}

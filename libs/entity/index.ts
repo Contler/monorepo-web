@@ -13,6 +13,4 @@ export * from './order.entity';
 export * from './product-order.entity';
 export * from './SpecialZone.entity';
 export * from './SpecialZoneHotel.entity';
-
-
-
+export * from './hotel-booking.entity';

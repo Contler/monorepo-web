@@ -13,8 +13,6 @@ export class OptionRequestComponent implements OnInit {
 
   isSelect = false;
 
-  constructor() {}
-
   ngOnInit(): void {}
 
   select() {

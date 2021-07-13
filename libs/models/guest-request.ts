@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 import { HotelEntity, RoomEntity } from '@contler/entity';
 
 export class GuestRequest {

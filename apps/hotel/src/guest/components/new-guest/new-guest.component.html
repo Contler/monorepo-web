@@ -1,0 +1,119 @@
+<contler-marco-admin title="{{ 'newGuest.title' | translate }}">
+  <ng-container marcoHeader>
+    <button
+      contlerButton
+      contlerBtnHotel="primary"
+      mat-raised-button
+      type="submit"
+      form="bookingForm"
+      [disabled]="formBookingHotel.invalid || !!!guestsControl.length"
+    >
+      {{ 'newGuest.createBooking' | translate }}
+    </button>
+  </ng-container>
+  <div marcoBody>
+    <form class="cnt-body" [formGroup]="formBookingHotel" (ngSubmit)="onCreateBooking()" id="bookingForm">
+      <h2 class="title">{{ 'newGuest.reservationData' | translate }}</h2>
+      <div formGroupName="booking" class="booking">
+        <mat-form-field appearance="fill">
+          <mat-select formControlName="room" [compareWith]="compareRooms">
+            <mat-option *ngFor="let room of rooms" [value]="room">
+              {{ room.name | ctrTranslate }}
+            </mat-option>
+          </mat-select>
+          <mat-hint>{{ 'guest.room' | translate }}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="custom-filed">
+          <input matInput [matDatepicker]="picker" readonly formControlName="checkIn" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-hint>{{ 'guest.checkIn' | translate }}</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="custom-filed">
+          <input matInput [matDatepicker]="picker2" readonly formControlName="checkOut" />
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+          <mat-hint>{{ 'guest.checkOut' | translate }}</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        <div class="guest-title">
+          <h2 class="title">{{ 'newGuest.guest' | translate }}</h2>
+          <button
+            contlerButton
+            contlerBtnHotel="primary"
+            (click)="addGuest()"
+            mat-raised-button
+            class="btn-search"
+            type="button"
+            *ngIf="!showAddGuestForm"
+            [disabled]="!bookingControl.valid"
+          >
+            <span *ngIf="guestsControl.length">{{ 'newGuest.addPartner' | translate }}</span>
+            <span *ngIf="!guestsControl.length">{{ 'newGuest.addGuest' | translate }}</span>
+          </button>
+        </div>
+        <div *ngIf="showAddGuestForm">
+          <mat-form-field appearance="fill" class="custom-filed form-search-email">
+            <input type="email" matInput [formControl]="searchEmailForm" />
+            <mat-hint>{{ 'newGuest.email' | translate }}</mat-hint>
+          </mat-form-field>
+          <button
+            contlerButton
+            contlerBtnHotel="primary"
+            (click)="searchGuest()"
+            mat-raised-button
+            type="button"
+            class="btn-search"
+            [disabled]="searchEmailForm.invalid"
+          >
+            {{ 'guest.search' | translate }}
+          </button>
+        </div>
+        <div formArrayName="guests">
+          <ng-container *ngFor="let guestControl of guestsControl.controls; index as i">
+            <div class="cnt-guest__form_guest" [formGroupName]="i">
+              <mat-form-field appearance="fill" class="custom-filed name-control">
+                <input matInput formControlName="name" />
+                <mat-icon matSuffix>check_circle</mat-icon>
+                <mat-hint>{{ 'newGuest.name' | translate }}</mat-hint>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="custom-filed lastName-control">
+                <input matInput formControlName="lastName" />
+                <mat-icon matSuffix>check_circle</mat-icon>
+                <mat-hint>{{ 'newGuest.lastName' | translate }}</mat-hint>
+              </mat-form-field>
+              <div class="cnt-guest__span2 flex-end">
+                <button mat-icon-button (click)="remoteGuest(i)" *ngIf="i !== 0">
+                  <mat-icon color="warn">delete</mat-icon>
+                </button>
+              </div>
+
+              <mat-form-field appearance="fill" class="cnt-guest__span2">
+                <input matInput formControlName="email" />
+                <mat-icon matSuffix fontSet="material-icons-outlined">email</mat-icon>
+                <mat-hint>{{ 'newGuest.email' | translate }}</mat-hint>
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="custom-filed">
+                <mat-select formControlName="typeDocument">
+                  <mat-option *ngFor="let type of documentTypes" [value]="type.value">{{
+                    type.name | translate
+                  }}</mat-option>
+                </mat-select>
+                <mat-hint>{{ 'guest.typeDocument' | translate }}</mat-hint>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="custom-filed">
+                <input matInput formControlName="document" />
+                <mat-icon matSuffix>check_circle</mat-icon>
+                <mat-hint>{{ 'guest.document' | translate }}</mat-hint>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </form>
+  </div>
+</contler-marco-admin>

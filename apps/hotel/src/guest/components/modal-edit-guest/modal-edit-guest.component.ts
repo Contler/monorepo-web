@@ -34,8 +34,8 @@ export class ModalEditGuestComponent implements OnInit, OnDestroy {
       name: [data.name, Validators.required],
       lastName: [data.lastName, Validators.required],
       email: [data.email],
-      checkIn: [data.checkIn, Validators.required],
-      checkOut: [data.checkOut, Validators.required],
+      checkIn: [data.hotelBooking.checkIn ?? '', Validators.required],
+      checkOut: [data.hotelBooking.checkOut ?? '', Validators.required],
     });
   }
 
@@ -56,11 +56,9 @@ export class ModalEditGuestComponent implements OnInit, OnDestroy {
 
   saveUser() {
     this.load = true;
-    const { name, lastName, checkIn, checkOut } = this.guestGroup.value;
+    const { name, lastName } = this.guestGroup.value;
     this.data.name = name;
     this.data.lastName = lastName;
-    this.data.checkIn = checkIn;
-    this.data.checkOut = checkOut;
     this.guestService.updateGuest(this.data).subscribe(
       () => {
         this.dialogRef.close();

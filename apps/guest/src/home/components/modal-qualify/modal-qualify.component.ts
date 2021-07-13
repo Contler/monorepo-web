@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { RequestService } from 'guest/services/request.service';
-import { RequestEntity } from '@contler/entity';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TEXT_RATE } from '../const/qualify.const';
+import { AbstractRequest, RequestService } from '@contler/dynamic-services';
 
 @Component({
   selector: 'contler-modal-qualify',
@@ -17,7 +16,7 @@ export class ModalQualifyComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<ModalQualifyComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: RequestEntity,
+    @Inject(MAT_DIALOG_DATA) public data: AbstractRequest,
     private requestService: RequestService,
   ) {}
 
@@ -29,10 +28,12 @@ export class ModalQualifyComponent implements OnInit {
 
   close() {
     this.load = true;
-    this.data.comment = this.comment || '';
-    this.data.score = this.value!;
-    this.requestService.updateRequest(this.data).subscribe(() => {
+    this.requestService.qualifyRequest(this.data, this.value, this.comment).then(() => {
       this.dialogRef.close();
     });
+  }
+
+  get nameService() {
+    return this.requestService.getNameService(this.data);
   }
 }

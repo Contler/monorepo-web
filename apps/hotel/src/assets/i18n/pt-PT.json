@@ -196,7 +196,13 @@
     "name": "Nome",
     "title": "Criar novo convidado",
     "create": "Criar",
-    "update": "Actualização"
+    "update": "Actualização",
+    "addPartner": "Adicionar companheiro",
+    "addGuest": "Adicionar convidado",
+    "createBooking": "Criar reserva",
+    "reservationData": "Detalhes da reserva",
+    "guest": "Convidado",
+    "partner": "Companheiro"
   },
   "order": {
     "all": "Todos",
@@ -284,7 +290,10 @@
       "select-other": "Lista de opções com 'outros'",
       "staticMoney": "Campo simples",
       "text": "Campo aberto",
-      "url": "Ligação"
+      "url": "Ligação",
+      "extern": "Ligação externa",
+      "externPlaceholderName": "Introduza o nome da sua ligação",
+      "externPlaceholderLink": "Introduza o seu link"
     },
     "reception": {
       "description": "Escolha quais opções manter ativadas na seção Recepção. Você pode criar novas opções.",
