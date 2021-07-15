@@ -3,6 +3,7 @@
     "entry": "Entry",
     "forgotTitle": "Enter your email",
     "invalidEmail": "Invalid Email",
+    "noHotel": "You do not have an active reservation",
     "recovery": "Recover",
     "userDisabled": "The account is no longer active",
     "userNotFound": "Invalid email or password"
@@ -51,6 +52,8 @@
     "message": "Your late checkout request was received. The area in charge will review it and contact you to confirm it."
   },
   "createReservation": {
+    "YourReservationIn": "Your reservation in",
+    "cancel": "CANCEL",
     "close.": "close",
     "createReservation": "CREATE RESERVATION",
     "date": "Date",
@@ -61,10 +64,8 @@
     "thereIsNoTimeSlotForTheSelectedDate.": "There is no time slot for the selected date.",
     "timeSlot": "Time slot",
     "title": "You are about to make a reservation in:",
-    "yourReservationWasCreatedSuccessfully": "Your reservation was created successfully",
-    "YourReservationIn": "Your reservation in",
     "update": "UPDATE",
-    "cancel": "CANCEL"
+    "yourReservationWasCreatedSuccessfully": "Your reservation was created successfully"
   },
   "createWake": {
     "createGuest": "Create Guest",
@@ -188,9 +189,9 @@
     "good": "Good",
     "on": "on",
     "qualify": "qualify",
+    "tellUsMore": "tell us more",
     "title": "How did you find the service our team provided in your request",
-    "veryBad": "Very bad",
-    "tellUsMore": "tell us more"
+    "veryBad": "Very bad"
   },
   "modules": {
     "clean": "Cleaning",

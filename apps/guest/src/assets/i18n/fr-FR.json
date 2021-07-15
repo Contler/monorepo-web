@@ -3,6 +3,7 @@
     "entry": "Entrée",
     "forgotTitle": "Entrer votre Email",
     "invalidEmail": "Courrier invalide",
+    "noHotel": "Vous n'avez pas la permission d'accéder",
     "recovery": "Récupérer",
     "userDisabled": "Le compte n'est plus actif",
     "userNotFound": "Courriel ou mot de passe non valide"
@@ -51,6 +52,8 @@
     "message": "Votre demande de départ tardif a été reçue. La zone responsable l'examinera et vous contactera pour le confirmer."
   },
   "createReservation": {
+    "YourReservationIn": "Votre réservation en",
+    "cancel": "ANNULER",
     "close.": "Fermer",
     "createReservation": "Créer une réservation",
     "date": "Rendez-vous amoureux",
@@ -61,10 +64,8 @@
     "thereIsNoTimeSlotForTheSelectedDate.": "Il n'y a pas de créneau horaire pour la date sélectionnée.",
     "timeSlot": "créneau horaire",
     "title": "Vous êtes sur le point d'effectuer une réservation dans:",
-    "yourReservationWasCreatedSuccessfully": "Votre réservation a été créée avec succès",
-    "YourReservationIn": "Votre réservation en",
     "update": "POUR METTRE À JOUR",
-    "cancel": "ANNULER"
+    "yourReservationWasCreatedSuccessfully": "Votre réservation a été créée avec succès"
   },
   "createWake": {
     "createGuest": "Créer un invité",
@@ -188,9 +189,9 @@
     "good": "bien",
     "on": "sur",
     "qualify": "qualifier",
+    "tellUsMore": "en savoir plus",
     "title": "Comment avez-vous trouvé le service que notre équipe a fourni dans votre demande",
-    "veryBad": "très mauvais",
-    "tellUsMore": "en savoir plus"
+    "veryBad": "très mauvais"
   },
   "modules": {
     "clean": "Pettoyage",

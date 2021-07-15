@@ -3,6 +3,7 @@
     "entry": "Eintrag",
     "forgotTitle": "Geben sie ihre E-Mail Adresse ein",
     "invalidEmail": "Ungültige E-Mail",
+    "noHotel": "Sie haben keine aktive Reservierung",
     "recovery": "Genesen",
     "userDisabled": "Das Konto ist nicht mehr aktiv",
     "userNotFound": "Ungültige E-Mail oder Passwort"
@@ -51,6 +52,8 @@
     "message": "Ihre Anfrage zum späten Check-out wurde empfangen. Der zuständige Bereich wird dies überprüfen und Sie kontaktieren, um dies zu bestätigen."
   },
   "createReservation": {
+    "YourReservationIn": "Uw reservering in",
+    "cancel": "ANNULEREN",
     "close.": "Schließen",
     "createReservation": "RESERVIERUNG ERSTELLEN",
     "date": "Datum",
@@ -61,10 +64,8 @@
     "thereIsNoTimeSlotForTheSelectedDate.": "Für das ausgewählte Datum gibt es kein Zeitfenster.",
     "timeSlot": "Zeitfenster",
     "title": "Sie sind im Begriff, eine Reservierung vorzunehmen in:",
-    "yourReservationWasCreatedSuccessfully": "Ihre Reservierung wurde erfolgreich erstellt",
-    "YourReservationIn": "Uw reservering in",
     "update": "BIJWERKEN",
-    "cancel": "ANNULEREN"
+    "yourReservationWasCreatedSuccessfully": "Ihre Reservierung wurde erfolgreich erstellt"
   },
   "createWake": {
     "createGuest": "Gast erstellen",
@@ -188,9 +189,9 @@
     "good": "gut",
     "on": "auf",
     "qualify": "qualifizieren",
+    "tellUsMore": "vertel ons meer",
     "title": "Wie haben Sie den Service gefunden, den unser Team in Ihrer Anfrage erbracht hat?",
-    "veryBad": "sehr schlecht",
-    "tellUsMore": "vertel ons meer"
+    "veryBad": "sehr schlecht"
   },
   "modules": {
     "clean": "Reinigung",

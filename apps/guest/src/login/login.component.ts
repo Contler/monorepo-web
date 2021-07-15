@@ -8,6 +8,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { Language } from '@contler/models';
 import { MatDialog } from '@angular/material/dialog';
 import { ForgotComponent } from './forgot/forgot.component';
+import { Store } from '@ngrx/store';
+import { State } from 'guest/app/reducers';
+import { selectUserState } from 'guest/app/reducers/user/user.selectors';
 
 @Component({
   selector: 'contler-login',
@@ -28,6 +31,7 @@ export class LoginComponent {
     private guestService: GuestService,
     private translate: TranslateService,
     private dialog: MatDialog,
+    private store: Store<State>,
   ) {
     const [actualLan] = getLan();
     this.actualLanguage = actualLan;
@@ -48,29 +52,27 @@ export class LoginComponent {
         this.error = this.translate.instant(`login.youDoNotHavePermissionToAccess`);
         await this.afAuth.signOut();
       } else {
-        this.guestService.checkAvailableUser().subscribe(
-          ({ checkIn, checkOut }) => {
-            this.loader = false;
-            if (new Date() < checkIn) {
-              this.afAuth.signOut();
-              this.error = `${this.translate.instant(
-                'login.yourEntryDateIs',
-              )} ${checkIn.toLocaleDateString()}. ${this.translate.instant(
-                'login.weInviteYouToLogInOnThisDate',
-              )}.`;
-            } else if (new Date() > checkOut) {
-              this.afAuth.signOut();
-              this.error = `${this.translate.instant(
-                'login.yourDepartureDateWas',
-              )} ${checkOut.toLocaleDateString()}.`;
-            } else {
-              this.router.navigate(['/home']);
-            }
-          },
-          (err) => {
-            console.log(err);
-          },
-        );
+        this.store.pipe(selectUserState).subscribe(({ user, hotel }) => {
+          this.loader = false;
+          if (!hotel || !user.hotelBooking) {
+            this.afAuth.signOut();
+            this.error = this.translate.instant('auth.noHotel');
+          } else if (new Date() < user.hotelBooking.checkIn) {
+            this.afAuth.signOut();
+            this.error = `${this.translate.instant(
+              'login.yourEntryDateIs',
+            )} ${user.hotelBooking.checkIn.toLocaleDateString()}. ${this.translate.instant(
+              'login.weInviteYouToLogInOnThisDate',
+            )}.`;
+          } else if (new Date() > user.hotelBooking.checkOut) {
+            this.afAuth.signOut();
+            this.error = `${this.translate.instant(
+              'login.yourDepartureDateWas',
+            )} ${user.hotelBooking.checkOut.toLocaleDateString()}.`;
+          } else {
+            this.router.navigate(['/home']);
+          }
+        });
       }
     } catch (error) {
       this.loader = false;

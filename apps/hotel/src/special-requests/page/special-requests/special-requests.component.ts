@@ -37,7 +37,7 @@ export class SpecialRequestsComponent implements OnInit, OnDestroy {
       }
       return (
         data.guest?.name.toLowerCase().includes(filter) ||
-        data.guest?.room?.name.toLowerCase().includes(filter) ||
+        data.guest?.hotelBooking?.room?.name.toLowerCase().includes(filter) ||
         (data.message && data.message.toLowerCase().includes(filter))
       );
     };

@@ -3,6 +3,7 @@
     "entry": "Ingreso",
     "forgotTitle": "Ingresa tu correo",
     "invalidEmail": "Correo invalido",
+    "noHotel": "No tienes una reserva activa",
     "recovery": "Recuperar",
     "userDisabled": "La cuenta ya no esta activa",
     "userNotFound": "Correo o contraseña invalida"
@@ -51,6 +52,8 @@
     "message": "Se recibió su solicitud de salida tardía. El área a cargo lo revisará y se pondrá en contacto contigo para confirmarlo."
   },
   "createReservation": {
+    "YourReservationIn": "Tu reserva en",
+    "cancel": "CANCELAR",
     "close.": "cerrar",
     "createReservation": "CREAR RESERVA",
     "date": "Fecha",
@@ -61,10 +64,8 @@
     "thereIsNoTimeSlotForTheSelectedDate.": "No hay franja horaria para la fecha seleccionada.",
     "timeSlot": "Franja horaria",
     "title": "Estás a punto de hacer una reserva en:",
-    "yourReservationWasCreatedSuccessfully": "Tu reserva fue creada con éxito",
-    "YourReservationIn": "Tu reserva en",
     "update": "ACTUALIZAR",
-    "cancel": "CANCELAR"
+    "yourReservationWasCreatedSuccessfully": "Tu reserva fue creada con éxito"
   },
   "createWake": {
     "createGuest": "Crear invitado",
@@ -188,9 +189,9 @@
     "good": "Buena",
     "on": "en",
     "qualify": "calificar",
+    "tellUsMore": "díganos más",
     "title": "¿Cómo encontró el servicio que nuestro equipo brindó en su solicitud",
-    "veryBad": "Muy mala",
-    "tellUsMore": "díganos más"
+    "veryBad": "Muy mala"
   },
   "modules": {
     "clean": "Limpieza",

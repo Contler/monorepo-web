@@ -3,6 +3,7 @@
     "entry": "Iscrizione",
     "forgotTitle": "Inserisci il tuo indirizzo email",
     "invalidEmail": "Email non valida",
+    "noHotel": "Non hai il permesso di accedere",
     "recovery": "Recuperare",
     "userDisabled": "Il conto non è più attivo",
     "userNotFound": "Email o password non valida"
@@ -51,6 +52,8 @@
     "message": "La tua richiesta di check-out posticipato è stata ricevuta. L'area incaricata lo esaminerà e ti contatterà per confermarlo."
   },
   "createReservation": {
+    "YourReservationIn": "La tua prenotazione in",
+    "cancel": "ANNULLA",
     "close.": "Vicino",
     "createReservation": "Crea prenotazione",
     "date": "Data",
@@ -61,10 +64,8 @@
     "thereIsNoTimeSlotForTheSelectedDate.": "Non esiste una fascia oraria per la data selezionata.",
     "timeSlot": "fascia oraria",
     "title": "Stai per effettuare una prenotazione in:",
-    "yourReservationWasCreatedSuccessfully": "La tua prenotazione è stata creata con successo",
-    "YourReservationIn": "La tua prenotazione in",
     "update": "AGGIORNARE",
-    "cancel": "ANNULLA"
+    "yourReservationWasCreatedSuccessfully": "La tua prenotazione è stata creata con successo"
   },
   "createWake": {
     "createGuest": "Crea ospite",
@@ -188,9 +189,9 @@
     "good": "buono",
     "on": "sopra",
     "qualify": "qualificarsi",
+    "tellUsMore": "dirci di più",
     "title": "Come hai trovato il servizio fornito dal nostro team nella tua richiesta",
-    "veryBad": "molto brutto",
-    "tellUsMore": "dirci di più"
+    "veryBad": "molto brutto"
   },
   "modules": {
     "clean": "Pulizia",

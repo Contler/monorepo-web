@@ -3,6 +3,7 @@
     "entry": "Entrada",
     "forgotTitle": "Digite seu e-mail",
     "invalidEmail": "Correio inválido",
+    "noHotel": "Você não tem permissão para acessar",
     "recovery": "Recuperar",
     "userDisabled": "A conta já não está activa",
     "userNotFound": "E-mail ou senha inválidos"
@@ -51,6 +52,8 @@
     "message": "Sua solicitação de check-out tardio foi recebida. A área responsável irá analisá-lo e contatá-lo para confirmar."
   },
   "createReservation": {
+    "YourReservationIn": "Sua reserva em",
+    "cancel": "CANCELAR",
     "close.": "Perto",
     "createReservation": "Criar reserva",
     "date": "Encontro",
@@ -61,10 +64,8 @@
     "thereIsNoTimeSlotForTheSelectedDate.": "Não há intervalo de tempo para a data selecionada.",
     "timeSlot": "Horário",
     "title": "Você está prestes a fazer uma reserva em:",
-    "yourReservationWasCreatedSuccessfully": "Sua reserva foi criada com sucesso",
-    "YourReservationIn": "Sua reserva em",
     "update": "ATUALIZAR",
-    "cancel": "CANCELAR"
+    "yourReservationWasCreatedSuccessfully": "Sua reserva foi criada com sucesso"
   },
   "createWake": {
     "createGuest": "Criar Convidado",
@@ -188,9 +189,9 @@
     "good": "BOA",
     "on": "em",
     "qualify": "qualificar",
+    "tellUsMore": "diga-nos mais",
     "title": "Como você encontrou o atendimento que nossa equipe prestou em sua solicitação",
-    "veryBad": "Muito mal",
-    "tellUsMore": "diga-nos mais"
+    "veryBad": "Muito mal"
   },
   "modules": {
     "clean": "Limpeza",
