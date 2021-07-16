@@ -13,11 +13,14 @@ export class AuthService {
   private userSubject = new BehaviorSubject<EmployerEntity | null>(null);
   private hotelSubject = new BehaviorSubject<HotelEntity | null>(null);
 
-  constructor(private afAuth: AngularFireAuth, http: HttpClient) {
+  constructor(private afAuth: AngularFireAuth, private http: HttpClient) {
+    this.reloadUser();
+  }
+  reloadUser() {
     this.afAuth.user
       .pipe(
         filter((user) => !!user),
-        switchMap((user) => http.get<EmployerEntity>(environment.apiUrl + `employer/${user!.uid}`)),
+        switchMap((user) => this.http.get<EmployerEntity>(environment.apiUrl + `employer/${user!.uid}`)),
       )
       .subscribe((employer) => {
         this.userSubject.next(employer);

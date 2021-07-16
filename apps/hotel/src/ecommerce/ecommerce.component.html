@@ -1,0 +1,40 @@
+<contler-module-layout
+  [data]="{
+    title: 'ecommerce.title' | translate,
+    icon: 'menu_book',
+    description: 'ecommerce.description' | translate,
+    description2: 'ecommerce.subDescription' | translate
+  }"
+  [redirectAction]="false"
+  (next)="goToGuestHome()"
+>
+  <mat-spinner class="load" *ngIf="load"></mat-spinner>
+  <mat-accordion *ngIf="ecommerce$ | async; let mod">
+    <mat-expansion-panel *ngFor="let option of mod; let i = index">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ option.title | ctrTranslate }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="service">
+        <div>
+          <span>{{ 'preferences.reception.disableText' | translate }}</span>
+          <mat-slide-toggle
+            contlerColorSlideToggle
+            [checked]="option.status"
+            (change)="changeStatus($event, option)"
+          ></mat-slide-toggle>
+          <span>{{ 'preferences.reception.enableText' | translate }}</span>
+        </div>
+        <div>
+          <mat-icon contlerColorHotel="primary" class="cursor" (click)="editEcommerce(option)">edit</mat-icon>
+          <mat-icon color="warn" class="cursor" (click)="removeEcommerce(option)">delete</mat-icon>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <span class="divider"></span>
+  <button mat-raised-button contlerBtnHotel="primary" class="newOption" routerLink="new">
+    {{ 'preferences.newOption' | translate }}
+  </button>
+</contler-module-layout>

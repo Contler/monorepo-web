@@ -83,5 +83,6 @@ import { EditSpecialZoneGuestComponent } from './pages/guest-home/edit-special-z
     CommonComponentsModule,
   ],
   providers: [PreferencesService],
+  exports: [ModuleLayoutComponent],
 })
 export class PreferencesModule {}

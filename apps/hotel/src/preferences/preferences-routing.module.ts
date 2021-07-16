@@ -38,6 +38,10 @@ const routes: Routes = [
   { path: 'cleaning', component: CleaningComponent },
   { path: 'cleaning/service', component: CreateCleaningModuleComponent },
   { path: 'cleaning/service/:id', component: CreateCleaningModuleComponent },
+  {
+    path: 'ecommerce',
+    loadChildren: () => import('./../ecommerce/ecommerce.module').then((m) => m.EcommerceModule),
+  },
   { path: 'guest-home', component: GuestHomeComponent, canDeactivate: [GuestHomeCanDeactivateGuard] },
 ];
 

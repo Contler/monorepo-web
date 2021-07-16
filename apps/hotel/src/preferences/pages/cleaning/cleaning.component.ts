@@ -40,7 +40,7 @@ export class CleaningComponent implements OnInit {
   }
 
   public goToGuestHome(): void {
-    this.router.navigate(['preferences', 'guest-home']);
+    this.router.navigate(['preferences', 'ecommerce']);
   }
   isDynamicModule(module: OptionModule) {
     return module.type === OptionType.DYNAMIC_FORM || module.formKey;

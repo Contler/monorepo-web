@@ -1,0 +1,173 @@
+<contler-module-layout
+  [data]="{
+    title: 'ecommerce.title' | translate,
+    icon: null,
+    description: 'ecommerce.description' | translate,
+    description2: null
+  }"
+  [redirectAction]="false"
+  [showIcon]="false"
+  (next)="goToHome()"
+>
+  <div class="two_columns">
+    <form [formGroup]="formEcommerce">
+      <div>
+        <h3 class="title">{{ 'ecommerce.principalInfo.text' | translate }}</h3>
+        <div class="section">
+          <mat-form-field appearance="fill" class="w-100">
+            <input type="text" matInput formControlName="title" />
+            <mat-hint>{{ 'ecommerce.principalInfo.titleHint' | translate }}</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="w-100">
+            <input type="text" matInput formControlName="description" />
+            <mat-hint>{{ 'ecommerce.principalInfo.descriptionHint' | translate }}</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div>
+        <h3 class="title">{{ 'ecommerce.categories.text' | translate }}</h3>
+        <div class="section">
+          <div class="category-section" [formGroup]="formCategory">
+            <mat-form-field appearance="fill" class="w-100">
+              <input type="text" matInput formControlName="name" maxlength="40" />
+              <mat-hint>{{ 'ecommerce.categories.titleHint' | translate }}</mat-hint>
+            </mat-form-field>
+            <button mat-icon-button (click)="addCategory()" [disabled]="!formCategory.valid">
+              <mat-icon>add_circle</mat-icon>
+            </button>
+          </div>
+          <div class="category-list">
+            <ul>
+              <ng-container *ngFor="let categoryControl of categories.controls; let i = index">
+                <li class="category-list__item" *ngIf="categoryControl.valid">
+                  {{ categoryControl.get('name').value }}
+                  <mat-icon (click)="removeCategory(i)" color="warn" class="cursor">delete</mat-icon>
+                </li>
+              </ng-container>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div formArrayName="products">
+        <h3 class="title">{{ 'ecommerce.products.text' | translate }}</h3>
+        <div class="section" [formGroup]="formProduct">
+          <mat-form-field appearance="fill">
+            <input type="text" matInput formControlName="name" />
+            <mat-hint>{{ 'ecommerce.products.nameHint' | translate }}</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="category">
+              <ng-container *ngFor="let categoryControl of categories.controls">
+                <mat-option *ngIf="categoryControl.valid" [value]="categoryControl.get('name').value">{{
+                  categoryControl.get('name').value
+                }}</mat-option>
+              </ng-container>
+            </mat-select>
+            <mat-hint>{{ 'ecommerce.products.categoryHint' | translate }}</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <span matPrefix>$</span>
+            <input type="text" matInput formControlName="price" mask="separator" thousandSeparator="." />
+            <mat-hint>{{ 'ecommerce.products.priceHint' | translate }}</mat-hint>
+          </mat-form-field>
+          <button
+            mat-icon-button
+            (click)="addProduct()"
+            [disabled]="!formProduct.valid"
+            type="button"
+            *ngIf="updateProductIndex === null"
+          >
+            <mat-icon>add_circle</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            (click)="updateProduct(updateProductIndex)"
+            [disabled]="!formProduct.valid"
+            type="button"
+            *ngIf="updateProductIndex !== null"
+          >
+            <mat-icon>check</mat-icon>
+          </button>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div>
+        <ng-container *ngFor="let categoryControl of categories.controls">
+          <mat-accordion *ngIf="categoryControl.valid">
+            <mat-expansion-panel class="accordion">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ categoryControl.get('name').value }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ul class="list-none">
+                <ng-container *ngFor="let productControl of products.controls; let i = index">
+                  <li
+                    *ngIf="
+                      productControl.valid &&
+                      productControl.get('category').value === categoryControl.get('name').value
+                    "
+                    class="product-list-item"
+                  >
+                    <span class="text-left">{{ productControl.get('name').value }}</span>
+                    <span>{{ productControl.get('price').value | currencyCustom: hotel.currency }}</span>
+                    <div class="product-actions">
+                      <button mat-icon-button (click)="onEditProduct(i)">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      <button mat-icon-button color="warn" (click)="removeProduct(i)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                      <mat-slide-toggle
+                        [checked]="productControl.get('status').value"
+                        (change)="toggleProductStatus($event, i)"
+                      ></mat-slide-toggle>
+                    </div>
+                  </li>
+                </ng-container>
+              </ul>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </ng-container>
+      </div>
+      <div></div>
+    </form>
+    <div *ngIf="hotel">
+      <h2 class="title">{{ 'preferences.service.preview' | translate }}</h2>
+      <div class="phone">
+        <div class="phone__header">
+          <img [src]="hotel.logo" [alt]="hotel.name" class="phone__header__img" />
+          <mat-icon>menu</mat-icon>
+        </div>
+        <p class="phone__great">{{ formEcommerce.get('title').value }}</p>
+        <p class="phone__great2">{{ formEcommerce.get('description').value }}</p>
+        <div class="phone__products">
+          <div *ngFor="let categoryControl of categories.controls" class="phone__products__product">
+            <h4 *ngIf="categoryControl.valid">{{ categoryControl.get('name').value }}</h4>
+            <ng-container *ngFor="let productControl of products.controls">
+              <ng-container
+                *ngIf="productControl.get('category').value === categoryControl.get('name').value"
+              >
+                <div *ngIf="productControl.valid" class="phone__products__product__item">
+                  <div class="product__item__left-column">
+                    <p class="product__item__left-column--name">{{ productControl.get('name').value }}</p>
+                    <p class="product__item__left-column--currency">
+                      {{ productControl.get('price').value | currencyCustom: hotel.currency }}
+                    </p>
+                  </div>
+                  <div class="product__item__right-column">
+                    <p>-</p>
+                    <p>1</p>
+                    <p>+</p>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</contler-module-layout>

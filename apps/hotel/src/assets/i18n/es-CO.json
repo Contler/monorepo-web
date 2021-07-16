@@ -328,6 +328,26 @@
       "title": "¡Bienvenido a tu administrador en Contler!"
     }
   },
+  "ecommerce": {
+    "title": "Catálogo de productos o servicios",
+    "description": "Elige qué opciones mantener habilitadas para la muestra de catálogos. Podrás crear nuevas opciones u ocultar temporalmente las que no quieres publicar.",
+    "subDescription": "En esta sección podrás crear catálogos de servicios o productos para ofrecer a tus huéspedes. Por ejemplo el servicio de lavandería. ",
+    "principalInfo": {
+      "text": "Información principal",
+      "titleHint": "Título del catálogo",
+      "descriptionHint": "Descripción catálogo"
+    },
+    "categories": {
+      "text": "Categorías del catálogo",
+      "titleHint": "Título de la categoría"
+    },
+    "products": {
+      "text": "Productos o servicios",
+      "nameHint": "Nombre",
+      "categoryHint": "Categoría",
+      "priceHint": "Valor"
+    }
+  },
   "product": {
     "active": "Activos",
     "all": "Todos",

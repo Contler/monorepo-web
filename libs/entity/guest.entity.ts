@@ -5,6 +5,7 @@ import { RequestEntity } from './request.entity';
 import { BookingEntity } from './booking.entity';
 import { OrderEntity } from './order.entity';
 import { HotelBookingEntity } from './hotel-booking.entity';
+import { OrderEcommerceEntity } from '@contler/entity/order-ecommerce.entity';
 
 export class GuestEntity {
   uid!: string;
@@ -34,4 +35,6 @@ export class GuestEntity {
   orders!: OrderEntity[];
 
   hotelBooking: HotelBookingEntity;
+
+  ordersEcommerce: OrderEcommerceEntity;
 }
