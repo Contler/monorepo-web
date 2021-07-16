@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from '@contler/hotel/services/auth.service';
 import { Observable } from 'rxjs';
@@ -13,6 +13,8 @@ import { EditSpecialZoneGuestComponent } from './edit-special-zone-guest/edit-sp
 import { TranslateService } from '@contler/dynamic-translate';
 import { getLan } from '@contler/const';
 import { GuestHomeCanDeactivateGuard } from '@contler/hotel/preferences/pages/guest-home/guards/guest-home-can-deactivate.guard';
+import { EcommerceEntity } from '@contler/entity/ecommerce.entity';
+import { EcommerceService } from '@contler/hotel/ecommerce/services/ecommerce.service';
 
 @Component({
   selector: 'contler-guest-home',
@@ -36,6 +38,8 @@ export class GuestHomeComponent implements OnInit {
     private router: Router,
     private matDialog: MatDialog,
     public translate: TranslateService,
+    private ecommerceService: EcommerceService,
+    private changeDetectorRef: ChangeDetectorRef,
   ) {}
 
   @HostListener('window:beforeunload', ['$event'])
@@ -148,6 +152,21 @@ export class GuestHomeComponent implements OnInit {
           return specialZone;
         }),
       ),
+    );
+  }
+
+  updateECommerce($event: MatSlideToggleChange, ecommerce: EcommerceEntity, index: number): void {
+    ecommerce.status = $event.checked;
+    const loader = this.messagesService.showLoader();
+    this.ecommerceService.updateCommerce(ecommerce).subscribe(
+      () => {
+        this.hotel.ecommerce[index].status = ecommerce.status;
+        this.messagesService.closeLoader(loader);
+      },
+      () => {
+        this.messagesService.closeLoader(loader);
+        this.messagesService.showServerError();
+      },
     );
   }
 }
