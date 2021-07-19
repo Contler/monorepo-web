@@ -30,7 +30,8 @@
       "guest/*": ["apps/guest/src/*"],
       "lib/*": ["libs/core/src/*"],
       "@contler/dynamic-translate": ["libs/dynamic-translate/src/index.ts"],
-      "@contler/dynamic-services": ["libs/dynamic-services/src/index.ts"]
+      "@contler/dynamic-services": ["libs/dynamic-services/src/index.ts"],
+      "@contler/analytics": ["libs/analytics/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"],

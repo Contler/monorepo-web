@@ -8,5 +8,6 @@ module.exports = {
     '<rootDir>/apps/admin',
     '<rootDir>/libs/dynamic-translate',
     '<rootDir>/libs/dynamic-services',
+    '<rootDir>/libs/analytics',
   ],
 };

@@ -11,10 +11,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { ImmediateOptionLink, OptionModule, OptionType } from '@contler/models';
 import { Store } from '@ngrx/store';
 import { State } from 'guest/app/reducers';
-import { AngularFireAnalytics } from '@angular/fire/analytics';
 import { selectUserState } from 'guest/app/reducers/user/user.selectors';
 import { UserState } from 'guest/app/reducers/user/user.reducer';
 import { MODULES, RequestService, TypeRequest } from '@contler/dynamic-services';
+import { AnalyticsService } from '@contler/analytics';
 
 @Component({
   selector: 'contler-zone-request',
@@ -36,7 +36,7 @@ export class ZoneRequestComponent implements AfterViewInit {
 
   constructor(
     private store: Store<State>,
-    private analytics: AngularFireAnalytics,
+    private analytics: AnalyticsService,
     private route: ActivatedRoute,
     private zoneService: ZoneService,
     private notificationsService: NotificationsService,
@@ -101,12 +101,11 @@ export class ZoneRequestComponent implements AfterViewInit {
       )
       .subscribe(
         () => {
-          this.analytics.logEvent('request_create', {
-            type: 'immediate',
+          this.analytics.logEvent('request_complete', {
+            module: 'immediate-request',
             zone: this.zone.uid,
             zoneName: this.zone.name,
             requestMessage: msg,
-            time: new Date(),
           });
           this.loader = false;
           this.requestController.reset();

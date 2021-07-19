@@ -39,6 +39,7 @@ const routes: Routes = [
       {
         path: 'guest-requests',
         component: GuestRequestsComponent,
+        data: { module: 'immediate-request' },
       },
       {
         path: 'my-inmediate-requests',

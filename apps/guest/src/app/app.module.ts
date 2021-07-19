@@ -27,21 +27,16 @@ import { GuestService } from '../services/guest.service';
 import { UiModule } from '@contler/ui';
 import { MatMenuModule } from '@angular/material/menu';
 import { ForgotComponent } from '../login/forgot/forgot.component';
+import { AngularFireAnalyticsModule, ScreenTrackingService } from '@angular/fire/analytics';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from 'guest/app/reducers/user/user.effects';
+import { AnalyticsModule, PLATFORM } from '@contler/analytics';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import {
-  AngularFireAnalyticsModule,
-  ScreenTrackingService,
-  UserTrackingService,
-} from '@angular/fire/analytics';
-import { EffectsModule } from '@ngrx/effects';
-import { UserEffects } from 'guest/app/reducers/user/user.effects';
-import { registerLocaleData } from '@angular/common';
 const app = firebase.initializeApp(environment.fire, 'app');
 if (environment.emulate) {
   app.auth().useEmulator('http://localhost:9099/');
@@ -91,8 +86,15 @@ export function LoadHotel(auth: GuestService) {
       url: environment.apiUrl,
     }),
     MatMenuModule,
+    AnalyticsModule,
   ],
-  providers: [HotelService, UserService, AvalibleUserGuard, ScreenTrackingService],
+  providers: [
+    HotelService,
+    UserService,
+    AvalibleUserGuard,
+    ScreenTrackingService,
+    { provide: PLATFORM, useValue: 'guest' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
