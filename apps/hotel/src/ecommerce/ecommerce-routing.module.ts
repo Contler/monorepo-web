@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'new',
     component: CreateEcommerceComponent,
   },
+  {
+    path: ':id',
+    component: CreateEcommerceComponent,
+  },
 ];
 
 @NgModule({

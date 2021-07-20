@@ -284,6 +284,26 @@
       "title": "Welkom bij uw Contler beheerder!"
     }
   },
+  "ecommerce": {
+    "title": "Catalogus van producten of diensten",
+    "description": "Kies welke opties ingeschakeld moeten blijven voor de catalogusweergave. U kunt nieuwe opties creëren of tijdelijk de opties verbergen die u niet wilt publiceren.",
+    "subDescription": "In dit gedeelte kunt u catalogi maken van diensten of producten die u aan uw gasten kunt aanbieden. Bijvoorbeeld wasservice.",
+    "principalInfo": {
+      "text": "Hoofdinformatie",
+      "titleHint": "Titel van de catalogus",
+      "descriptionHint": "Catalogusbeschrijving"
+    },
+    "categories": {
+      "text": "Cataloguscategorieën",
+      "titleHint": "Titel van de categorie"
+    },
+    "products": {
+      "text": "Producten of diensten",
+      "nameHint": "Naam",
+      "categoryHint": "Categorie",
+      "priceHint": "Waarde"
+    }
+  },
   "product": {
     "active": "Aktiv",
     "all": "Alles",

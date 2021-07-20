@@ -28,7 +28,7 @@ export class EcommerceComponent implements OnInit {
     this.ecommerce$ = this.authService.$hotel.pipe(map((hotel) => hotel.ecommerce));
   }
 
-  public changeStatus($event: MatSlideToggleChange, ecommerce: EcommerceEntity): void {
+  changeStatus($event: MatSlideToggleChange, ecommerce: EcommerceEntity): void {
     ecommerce.status = $event.checked;
     const loader = this.messagesService.showLoader();
     this.ecommerceService.updateCommerce(ecommerce).subscribe(
@@ -42,11 +42,13 @@ export class EcommerceComponent implements OnInit {
     );
   }
 
-  public removeEcommerce(option: EcommerceEntity): void {}
+  removeEcommerce(ecommerce: EcommerceEntity): void {}
 
-  public editEcommerce(option: EcommerceEntity): void {}
+  editEcommerce(ecommerce: EcommerceEntity): void {
+    this.router.navigate(['preferences', 'ecommerce', ecommerce.id]);
+  }
 
-  public goToGuestHome(): void {
+  goToGuestHome(): void {
     this.router.navigate(['preferences', 'guest-home']);
   }
 }

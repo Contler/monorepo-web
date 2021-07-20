@@ -87,7 +87,6 @@ export class GuestHomeComponent implements OnInit {
     } catch (err) {
       this.messagesService.closeLoader(loader);
       this.messagesService.showServerError();
-      console.log(err);
     }
   }
 

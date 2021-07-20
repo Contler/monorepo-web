@@ -44,7 +44,8 @@ import { UserEffects } from 'guest/app/reducers/user/user.effects';
 import { registerLocaleData } from '@angular/common';
 const app = firebase.initializeApp(environment.fire, 'app');
 if (environment.emulate) {
-  app.auth().useEmulator('http://localhost:9099/');
+  // @ts-ignore
+  app.auth().useEmulator('http://localhost:9099/', { disableWarnings: true });
 }
 
 export function LoadHotel(auth: GuestService) {

@@ -327,6 +327,26 @@
       "title": "Welcome to your Contler administrator!"
     }
   },
+  "ecommerce": {
+    "title": "Product or service catalog",
+    "description": "Choose which options to keep enabled for the catalog display. You will be able to create new options or temporarily hide the ones you do not want to publish.",
+    "subDescription": "In this section you can create catalogs of services or products to offer to your guests. For example laundry service. ",
+    "principalInfo": {
+      "text": "Main information",
+      "titleHint": "Catalog title",
+      "descriptionHint": "Catalog description"
+    },
+    "categories": {
+      "text": "Catalog categories",
+      "titleHint": "Category title"
+    },
+    "products": {
+      "text": "Products or services",
+      "nameHint": "Name",
+      "categoryHint": "Category",
+      "priceHint": "Value"
+    }
+  },
   "product": {
     "active": "Active",
     "all": "All",

@@ -4,7 +4,7 @@ import { GuestService } from 'guest/services/guest.service';
 import { Observable } from 'rxjs';
 import { GuestEntity } from '@contler/entity';
 import { SpecialZoneGuest } from '@contler/models';
-import { filter, first, map, switchMap, take } from 'rxjs/operators';
+import { filter, first, map, switchMap, take, tap } from 'rxjs/operators';
 import { WELCOME_CONSTANTS } from './welcome.constants';
 import { ModalOrdersQuialifyComponent } from 'guest/home/components/modal-orders-quialify/modal-orders-quialify.component';
 import { ModalBookingQualifyComponent } from 'guest/home/components/modal-booking-qualify/modal-booking-qualify.component';
@@ -14,7 +14,11 @@ import { RequestService } from '@contler/dynamic-services';
 import { Store } from '@ngrx/store';
 import { State } from 'guest/app/reducers';
 import { selectUserState } from 'guest/app/reducers/user/user.selectors';
+import { EcommerceEntity } from '@contler/entity/ecommerce.entity';
 
+class EcommerceOption extends EcommerceEntity {
+  link: string;
+}
 @Component({
   selector: 'contler-welcome',
   templateUrl: './welcome.component.html',
@@ -24,6 +28,7 @@ export class WelcomeComponent implements OnInit {
   $guest: Observable<GuestEntity | null>;
   zones$: Observable<SpecialZoneGuest[]>;
   constants = WELCOME_CONSTANTS;
+  ecommerce$: Observable<EcommerceOption[]>;
 
   constructor(
     private guestService: GuestService,
@@ -41,6 +46,22 @@ export class WelcomeComponent implements OnInit {
       .pipe(selectUserState)
       .pipe(map((data) => data.hotel))
       .pipe(switchMap((hotel) => this.specialZoneGuestService.getSpecialZoneGuestActive(hotel.uid)));
+
+    this.ecommerce$ = this.store
+      .pipe(selectUserState)
+      .pipe(map((data) => data.hotel))
+      .pipe(map((hotel) => hotel.ecommerce))
+      .pipe(
+        map((ecommerce) =>
+          ecommerce.map((e) => {
+            const ecommerceOption: EcommerceOption = {
+              ...e,
+              link: `/home/ecommerce/${e.id}`,
+            };
+            return ecommerceOption;
+          }),
+        ),
+      );
     this.qualifyOrders();
     this.qualifyReservation();
     this.qualifyRequest();

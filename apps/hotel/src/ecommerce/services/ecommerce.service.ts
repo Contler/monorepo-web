@@ -31,4 +31,7 @@ export class EcommerceService {
   updateCommerce(ecommerce: EcommerceEntity): Observable<EcommerceEntity> {
     return this.httpClient.put<EcommerceEntity>(`${environment.apiUrl}ecommerce/`, ecommerce);
   }
+  getEcommerceById(ecommerceId: string): Observable<EcommerceEntity> {
+    return this.httpClient.get<EcommerceEntity>(`${environment.apiUrl}ecommerce/${ecommerceId}`);
+  }
 }
