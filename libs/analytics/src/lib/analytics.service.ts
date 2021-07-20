@@ -53,6 +53,7 @@ export class AnalyticsService {
       params,
       create: new Date(),
     };
+    console.log(eventData);
     return Promise.all([
       this.firestore.collection('analytics').add(eventData),
       this.analytics.logEvent(eventName, params),
