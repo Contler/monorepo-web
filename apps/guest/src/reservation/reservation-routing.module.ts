@@ -8,7 +8,7 @@ import { EditReservationComponent } from 'guest/reservation/page/edit-reservatio
 import { SubZoneReservationComponent } from './page/sub-zone-reservation/sub-zone-reservation.component';
 
 const routes: Routes = [
-  { path: '', component: ReservationComponent },
+  { path: '', component: ReservationComponent, data: { module: 'reservation' } },
   { path: 'my-reservation', component: MyReservationsComponent },
   { path: 'my-reservation/:id', component: EditReservationComponent },
   { path: ':id', component: CreateReservationComponent },

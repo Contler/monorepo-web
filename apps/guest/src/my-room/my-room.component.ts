@@ -7,11 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ImmediateOptionLink, OptionModule, OptionType } from '@contler/models';
 import { RoomService } from '@contler/core';
 import { ZoneService } from '../services/zone.service';
-import { AngularFireAnalytics } from '@angular/fire/analytics';
 import { MODULES, RequestService, TypeRequest } from '@contler/dynamic-services';
 import { Store } from '@ngrx/store';
 import { State } from 'guest/app/reducers';
 import { selectUserState } from 'guest/app/reducers/user/user.selectors';
+import { AnalyticsService } from '../../../../libs/analytics/src';
 
 @Component({
   selector: 'contler-my-room',
@@ -30,7 +30,7 @@ export class MyRoomComponent implements OnInit {
     private messagesService: MessagesService,
     private zoneService: ZoneService,
     private roomService: RoomService,
-    private analytics: AngularFireAnalytics,
+    private analytics: AnalyticsService,
     private requestService: RequestService,
     private store: Store<State>,
   ) {
@@ -83,10 +83,9 @@ export class MyRoomComponent implements OnInit {
       .subscribe(
         () => {
           this.analytics
-            .logEvent('request_create', {
-              type: 'room',
+            .logEvent('request_complete', {
+              module: 'room',
               service: 'zoneRequest.categories.roomKeys',
-              time: new Date(),
             })
             .then(() => {
               this.loader = false;

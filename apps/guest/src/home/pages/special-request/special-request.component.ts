@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireAnalytics } from '@angular/fire/analytics';
 
 import { first, map, switchMap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
@@ -10,6 +9,7 @@ import { MessagesService } from 'guest/services/messages/messages.service';
 import { State } from 'guest/app/reducers';
 import { selectUserState } from 'guest/app/reducers/user/user.selectors';
 import { MODULES, RequestService, TypeRequest } from '@contler/dynamic-services';
+import { AnalyticsService } from '../../../../../../libs/analytics/src';
 
 @Component({
   selector: 'contler-special-request',
@@ -25,7 +25,7 @@ export class SpecialRequestComponent {
     private router: Router,
     private messagesService: MessagesService,
     private translate: TranslateService,
-    private analytics: AngularFireAnalytics,
+    private analytics: AnalyticsService,
     private store: Store<State>,
   ) {}
 
@@ -48,10 +48,9 @@ export class SpecialRequestComponent {
       .subscribe(
         () => {
           this.analytics
-            .logEvent('request_create', {
-              type: 'special',
+            .logEvent('request_complete', {
+              module: 'special-request',
               requestMessage: this.description,
-              time: new Date(),
             })
             .then(() => {
               this.loader = false;

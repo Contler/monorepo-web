@@ -8,7 +8,7 @@ import { ExchangeComponent } from './pages/exchange/exchange.component';
 import { ConciergeComponent } from './pages/concierge/concierge.component';
 
 const routes: Routes = [
-  { path: '', component: ReceptionComponent },
+  { path: '', component: ReceptionComponent, data: { module: 'reception' } },
   { path: 'transportation', component: TransportationComponent },
   { path: 'cash', component: CashLoanComponent },
   { path: 'exchange', component: ExchangeComponent },

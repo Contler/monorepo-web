@@ -5,7 +5,7 @@ import { MaintenanceComponent } from './pages/maintenance/maintenance.component'
 import { CleaningComponent } from './pages/cleaning/cleaning.component';
 
 const routes: Routes = [
-  { path: '', component: MyRoomComponent },
+  { path: '', component: MyRoomComponent, data: { module: 'room' } },
   { path: 'maintenance', component: MaintenanceComponent },
   { path: 'cleaning', component: CleaningComponent },
   { path: ':id', component: MyRoomComponent },

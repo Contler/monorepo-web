@@ -9,7 +9,7 @@ import { OrderComponent } from 'guest/product/pages/order/order.component';
 import { OrderDetailComponent } from 'guest/product/pages/order-detail/order-detail.component';
 
 const routes: Routes = [
-  { path: '', component: OrderComponent },
+  { path: '', component: OrderComponent, data: { module: 'restaurant' } },
   { path: 'create', component: ProductComponent },
   { path: 'order', component: ConfirmOrderComponent },
   { path: 'finish', component: FinishOrderComponent },

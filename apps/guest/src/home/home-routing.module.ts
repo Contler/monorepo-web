@@ -60,10 +60,12 @@ const routes: Routes = [
       {
         path: 'special-requests',
         component: SpecialRequestComponent,
+        data: { module: 'special-request' },
       },
       {
         path: 'wake-up',
         component: WakeUpComponent,
+        data: { module: 'wake-up' },
       },
       {
         path: 'wake-up-create',

@@ -11,6 +11,7 @@ import { environment } from 'guest/environments/environment';
 import { State } from 'guest/app/reducers';
 import * as UserAction from '../app/reducers/user/user.actions';
 import { selectUserState } from 'guest/app/reducers/user/user.selectors';
+import { AnalyticsService } from '@contler/analytics';
 
 @Component({
   selector: 'contler-root',
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit {
     private afAuth: AngularFireAuth,
     private store: Store<State>,
     private analytics: AngularFireAnalytics,
+    private analyticsService: AnalyticsService,
   ) {
     if (environment.emulate) {
       db.database.useEmulator('localhost', 9000);
@@ -42,6 +44,7 @@ export class AppComponent implements OnInit {
       if (data.user && data.user.hotel) {
         this.analytics.setUserId(data.user.uid);
         this.analytics.setUserProperties({ hotel: data.hotel.uid });
+        this.analyticsService.hotel = data.user.hotel;
       }
     });
   }

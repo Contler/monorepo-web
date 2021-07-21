@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CleaningComponent } from './cleaning.component';
 
-const routes: Routes = [{ path: '', component: CleaningComponent }];
+const routes: Routes = [{ path: '', component: CleaningComponent, data: { module: 'cleaning' } }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

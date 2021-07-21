@@ -10,6 +10,7 @@ import { take } from 'rxjs/operators';
 import { WakeRequest } from '@contler/models';
 import { fullRangeDates } from 'guest/utils/generateTime';
 import { TranslateService } from '@ngx-translate/core';
+import { AnalyticsService } from '@contler/analytics';
 
 @Component({
   selector: 'contler-create-wake',
@@ -31,6 +32,7 @@ export class CreateWakeComponent {
     private router: Router,
     private messagesService: MessagesService,
     private translate: TranslateService,
+    private analytics: AnalyticsService,
   ) {
     this.guestService.$hotel.pipe(take(1)).subscribe((hotel) => (this.hotel = hotel));
     this.guestService.$guest.pipe(take(1)).subscribe((guest) => (this.guest = guest!));
@@ -52,11 +54,12 @@ export class CreateWakeComponent {
     request.totalTime.setMinutes(request.time.getMinutes());
     request.totalTime.setSeconds(request.time.getSeconds());
     request.totalTime.setMilliseconds(request.time.getMilliseconds());
-    request.room = this.guest.room;
+    request.room = this.guest.hotelBooking.room;
     request.guest = this.guest;
     request.hotel = this.hotel!;
     this.wakeService.saveWake(request).subscribe(() => {
       this.load = false;
+      this.analytics.logEvent('wakeup_complete', { module: 'wake-up' });
       this.router.navigate(['/home/wake-up']);
       this.messagesService.showToastMessage(
         this.translate.instant('createWake.yourWakeUpCallWasSuccessfullyCreated'),

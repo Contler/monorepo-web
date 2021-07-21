@@ -7,6 +7,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 import { EventDataInterface } from './interfaces/event-data.interface';
+import { HotelEntity } from '@contler/entity';
 
 export const PLATFORM = new InjectionToken<string>('contler.analytics.platform');
 
@@ -14,8 +15,9 @@ export const PLATFORM = new InjectionToken<string>('contler.analytics.platform')
   providedIn: 'root',
 })
 export class AnalyticsService {
-  isLoad = false;
+  private isLoad = false;
   private screenPath: string;
+  private hotelData: HotelEntity;
 
   constructor(
     @Optional() @Inject(PLATFORM) private platform: string,
@@ -52,11 +54,17 @@ export class AnalyticsService {
       platform: this.platform,
       params,
       create: new Date(),
+      hotelId: this.hotelData?.uid || null,
+      hotelName: this.hotelData?.name || null,
     };
     console.log(eventData);
     return Promise.all([
       this.firestore.collection('analytics').add(eventData),
       this.analytics.logEvent(eventName, params),
     ]);
+  }
+
+  set hotel(hotel: HotelEntity) {
+    this.hotelData = hotel;
   }
 }

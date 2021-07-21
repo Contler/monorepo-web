@@ -5,4 +5,6 @@ export interface EventDataInterface {
   platform?: string;
   params?: { [key: string]: unknown };
   create: Date;
+  hotelId: string;
+  hotelName: string;
 }

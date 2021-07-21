@@ -16,7 +16,7 @@ import * as OrderReducer from 'guest/app/reducers/order/order.reducer';
 import { orderFeatureKey, ProductOrder } from 'guest/app/reducers/order/order.reducer';
 import { MatDialog } from '@angular/material/dialog';
 import { CompleteOrderModalComponent } from 'guest/product/components/complete-order-modal/complete-order-modal.component';
-import { selectUserState } from 'guest/app/reducers/user/user.selectors';
+import { AnalyticsService } from '@contler/analytics';
 
 @Component({
   selector: 'contler-finish-order',
@@ -43,6 +43,7 @@ export class FinishOrderComponent {
     private productService: ProductService,
     private store: Store<State>,
     private dialog: MatDialog,
+    private analytics: AnalyticsService,
   ) {
     this.products$ = this.store.select((state) => OrderReducer.selectAll(state[orderFeatureKey]));
     this.totalPrice$ = this.store.select((state) => state[orderFeatureKey].totalPrice);
@@ -66,6 +67,7 @@ export class FinishOrderComponent {
         switchMap(() => this.dialog.open(CompleteOrderModalComponent).afterClosed()),
       )
       .subscribe(() => {
+        this.analytics.logEvent('restaurant_complete', { module: 'restaurant' });
         this.productOrderService.resetOrder();
         this.loading = false;
         this.router.navigate(['/home/product']);

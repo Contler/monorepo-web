@@ -13,6 +13,7 @@ import { MessagesService } from 'guest/services/messages/messages.service';
 import { TranslateService } from '@ngx-translate/core';
 import { forkJoin, of } from 'rxjs';
 import { DateFilterFn } from '@angular/material/datepicker';
+import { AnalyticsService } from '@contler/analytics';
 
 @Component({
   selector: 'contler-create-reservation',
@@ -39,6 +40,7 @@ export class CreateReservationComponent implements OnInit {
     formBuild: FormBuilder,
     private messagesService: MessagesService,
     private translate: TranslateService,
+    private analytics: AnalyticsService,
   ) {
     this.reservationForm = formBuild.group({
       date: ['', Validators.required],
@@ -126,6 +128,7 @@ export class CreateReservationComponent implements OnInit {
     this.reservationService.saveBooking((schedule as ScheduleEntity).id, request).subscribe(
       () => {
         this.loader = true;
+        this.analytics.logEvent('reservation_complete', { module: 'reservation' });
         this.router.navigate(['/home', 'reservation']);
         this.messagesService.showToastMessage(
           this.translate.instant('createReservation.yourReservationWasCreatedSuccessfully'),

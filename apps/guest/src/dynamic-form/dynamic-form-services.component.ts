@@ -1,12 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AngularFireAnalytics } from '@angular/fire/analytics';
 
 import {
   DynamicFormComponent,
   DynamicModuleService,
-  DynamicRequest,
-  DynamicRequestStatus,
   FormService,
   InputType,
   MODULES,
@@ -20,6 +17,7 @@ import { GuestEntity } from '@contler/entity';
 import { Location } from '@angular/common';
 import { ReceptionService, RoomService, TranslateService } from '@contler/core';
 import { getLan } from '@contler/const';
+import { AnalyticsService } from '../../../../libs/analytics/src';
 
 @Component({
   selector: 'contler-dynamic-form-service',
@@ -45,7 +43,7 @@ export class DynamicFormServicesComponent implements OnInit {
     private reception: ReceptionService,
     private room: RoomService,
     private dynTranslate: TranslateService,
-    private analytics: AngularFireAnalytics,
+    private analytics: AnalyticsService,
     private requestService: RequestService,
   ) {
     this.route.params.subscribe((params) => {
@@ -118,10 +116,9 @@ export class DynamicFormServicesComponent implements OnInit {
       }
 
       this.analytics
-        .logEvent('request_create', {
-          type: this.module,
+        .logEvent('request_complete', {
+          module: this.module,
           service: this.idService,
-          time: new Date(),
         })
         .then(() => {
           this.location.back();
