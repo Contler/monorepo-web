@@ -109,6 +109,10 @@ const routes: Routes = [
         loadChildren: () => import('../my-request/my-request.module').then((m) => m.MyRequestModule),
       },
       {
+        path: 'ecommerce',
+        loadChildren: () => import('../ecommerce/ecommerce.module').then((m) => m.EcommerceModule),
+      },
+      {
         path: '',
         redirectTo: 'welcome',
         pathMatch: 'full',

@@ -327,6 +327,26 @@
       "title": "Bem-vindo ao seu administrador Contler!"
     }
   },
+  "ecommerce": {
+    "title": "Catálogo de produtos ou serviços",
+    "description": "Escolher quais as opções a manter activadas para a exibição do catálogo. Pode criar novas opções ou esconder temporariamente as que não quer publicar.",
+    "subDescription": "Nesta secção pode criar catálogos de serviços ou produtos para oferecer aos seus convidados. Por exemplo, serviço de lavandaria",
+    "principalInfo": {
+      "text": "Informação principal",
+      "titleHint": "Título do catálogo",
+      "descriptionHint": "Descrição do catálogo"
+    },
+    "categories": {
+      "text": "Categorias do catálogo",
+      "titleHint": "Título da categoria"
+    },
+    "products": {
+      "text": "Produtos ou serviços",
+      "nameHint": "Nome",
+      "categoryHint": "Categoría",
+      "priceHint": "Valor"
+    }
+  },
   "product": {
     "active": "Ativo",
     "all": "Todos",

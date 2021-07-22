@@ -1,0 +1,44 @@
+<contler-marco padding="16px 40px" [home]="true">
+  <ng-container marcoBody *ngIf="ecommerce$ | async as ecommerce">
+    <h1 class="ctl-title" contlerColorHotel="primary">{{ ecommerce.title | ctrTranslate }}</h1>
+    <p class="ctl-description">{{ ecommerce.description | ctrTranslate }}</p>
+    <form [formGroup]="orderForm" (ngSubmit)="onMakeOrder(ecommerce)" id="orderForm">
+      <div formArrayName="order">
+        <div *ngFor="let category of ecommerce.categories">
+          <h2 class="ctl-title" contlerColorHotel="primary">{{ category.name | ctrTranslate }}</h2>
+          <ng-container *ngFor="let order of orders.controls; let i = index">
+            <div
+              class="product__item"
+              [formGroupName]="i"
+              *ngIf="order.get('product').value.category.id === category.id"
+            >
+              <div class="product__item--left">
+                <p>{{ order.get('product').value.name | ctrTranslate }}</p>
+                <p>{{ order.get('product').value.price | currencyCustom: ecommerce.hotel.currency }}</p>
+              </div>
+              <div class="product__item--right">
+                <input type="text" formControlName="quantity" hidden />
+                <span (click)="decreaseQuantity(order)">-</span>
+                <span>{{ orders.at(i).get('quantity').value }}</span>
+                <span (click)="increaseQuantity(order)">+</span>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </form>
+  </ng-container>
+  <div class="order-footer" marcoFooter>
+    <button
+      form="orderForm"
+      type="submit"
+      mat-raised-button
+      color="accent"
+      contlerColorBtnHotel="primary"
+      [disabled]="!quantityProducts"
+      style="width: 100%; margin-bottom: 10px"
+    >
+      {{ 'order.makeANewOrder' | translate }}
+    </button>
+  </div>
+</contler-marco>

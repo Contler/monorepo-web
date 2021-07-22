@@ -13,6 +13,12 @@
         [link]="zone.link"
         [icon]="zone.icon"
       ></contler-option-request>
+      <contler-option-request
+        *ngFor="let ecommerce of ecommerce$ | async"
+        [name]="ecommerce.title"
+        [link]="ecommerce.link"
+        icon="menu_book"
+      ></contler-option-request>
     </contler-option-grid>
   </div>
 

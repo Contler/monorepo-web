@@ -20,6 +20,18 @@
           </button>
           <mat-slide-toggle (change)="updateZone($event, zone, i)" [checked]="zone.status"></mat-slide-toggle>
         </div>
+        <ng-container *ngIf="hotel">
+          <div *ngFor="let ecommerce of hotel.ecommerce; let i = index" class="zone">
+            <p>{{ ecommerce.title | ctrTranslate }}</p>
+            <button mat-icon-button color="primary" class="edit">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <mat-slide-toggle
+              (change)="updateECommerce($event, ecommerce, i)"
+              [checked]="ecommerce.status"
+            ></mat-slide-toggle>
+          </div>
+        </ng-container>
       </div>
     </div>
     <div *ngIf="hotel">
@@ -44,6 +56,17 @@
             <p>{{ zone.name | translate | ctrTranslate }}</p>
             <mat-icon>arrow_right</mat-icon>
           </div>
+          <ng-container *ngIf="hotel">
+            <div
+              *ngFor="let ecommerce of hotel.ecommerce | ArrFilterPropertyEqual: 'status':true; let e = even"
+              [ngClass]="{ even: e }"
+              class="phone__zones__zone"
+            >
+              <mat-icon>menu_book</mat-icon>
+              <p>{{ ecommerce.title | ctrTranslate }}</p>
+              <mat-icon>arrow_right</mat-icon>
+            </div>
+          </ng-container>
         </div>
       </div>
     </div>

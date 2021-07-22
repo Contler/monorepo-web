@@ -9,6 +9,7 @@ import { ProductEntity } from './product.entity';
 import { OrderEntity } from './order.entity';
 import { RestaurantEntity } from './restaurant.entity';
 import { SpecialZoneHotelEntity } from './SpecialZoneHotel.entity';
+import { EcommerceEntity } from '@contler/entity/ecommerce.entity';
 
 export class HotelEntity {
   uid!: string;
@@ -58,4 +59,6 @@ export class HotelEntity {
   orders!: OrderEntity[];
 
   restaurants!: RestaurantEntity[];
+
+  ecommerce: EcommerceEntity[];
 }
