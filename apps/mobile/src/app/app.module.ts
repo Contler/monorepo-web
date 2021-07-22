@@ -31,6 +31,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './reducers/user/user.effects';
 import { RequestEffects } from './reducers/request/request.effects';
 import { NgxMaskModule } from 'ngx-mask';
+import { AnalyticsModule, PLATFORM } from '@contler/analytics';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 const app = firebase.initializeApp(environment.firebaseConfig, 'app');
 
 if (environment.emulate) {
@@ -54,6 +56,7 @@ export function LoadHotel(auth: AuthService) {
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireAnalyticsModule,
     IonicStorageModule.forRoot(),
     MessagesModule,
     AppRoutingModule,
@@ -80,8 +83,14 @@ export function LoadHotel(auth: AuthService) {
       },
       url: environment.apiUrl,
     }),
+    AnalyticsModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, OneSignal, UserService],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    OneSignal,
+    UserService,
+    { provide: PLATFORM, useValue: 'employer' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { environment } from 'guest/environments/environment';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Store } from '@ngrx/store';
 import { State } from './reducers';
 import * as userActions from './reducers/user/user.actions';
+import { environment } from '../environments/environment';
+import { AnalyticsService } from '@contler/analytics';
+import { selectHotel } from './reducers/user/user.selectors';
 
 @Component({
   selector: 'contler-root',
@@ -20,6 +22,7 @@ export class AppComponent implements OnInit {
     fire: AngularFirestore,
     private afAuth: AngularFireAuth,
     private store: Store<State>,
+    private analytics: AnalyticsService,
   ) {
     if (environment.emulate) {
       db.database.useEmulator('localhost', 9000);
@@ -32,6 +35,11 @@ export class AppComponent implements OnInit {
       if (user) {
         this.store.dispatch(userActions.loadUser({ uid: user.uid }));
       }
+    });
+
+    this.store.pipe(selectHotel).subscribe((hotel) => {
+      console.log(hotel);
+      this.analytics.hotel = hotel;
     });
   }
 }
