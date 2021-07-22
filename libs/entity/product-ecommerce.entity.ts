@@ -1,7 +1,8 @@
 import { EcommerceEntity } from './ecommerce.entity';
+import { OrderEcommerceProductEcommerceEntity } from '@contler/entity/order-ecommerce-product-ecommerce.entity';
 
 export class ProductEcommerceEntity {
-  id!: number;
+  id: number;
 
   name!: string;
 
@@ -9,7 +10,7 @@ export class ProductEcommerceEntity {
 
   status!: boolean;
 
-  category!: EcommerceEntity;
+  category!: EcommerceEntity | string;
 
-  orders!: EcommerceEntity[];
+  orderProduct?: OrderEcommerceProductEcommerceEntity[];
 }

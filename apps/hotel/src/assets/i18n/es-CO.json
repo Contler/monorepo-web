@@ -90,7 +90,11 @@
     "SEARCH": "Buscar",
     "SPACE_RESERVATION": "Reservas de espacios",
     "SPECIAL_REQUEST": "Solicitudes Especiales",
-    "ZONE": "Zonas"
+    "ZONE": "Zonas",
+    "ECOMMERCE": {
+      "cannotRemoveProduct": "No puedes eliminar el producto, por que ya tiene ordenes asociadas, pero si lo puedes deshabilitar",
+      "cannotRemoveCategory": "No puedes eliminar la categoría, por que ya tiene productos asociados"
+    }
   },
   "guest": {
     "createUpdate": "Crear/Actualizar huésped",

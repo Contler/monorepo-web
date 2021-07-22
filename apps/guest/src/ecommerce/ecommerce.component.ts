@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { filter, first, map, switchMap, tap } from 'rxjs/operators';
 import { EcommerceService } from 'lib/lib/services/ecommerce/ecommerce.service';
 import { Observable } from 'rxjs';
@@ -8,6 +8,7 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Valida
 import { State } from 'guest/app/reducers';
 import { Store } from '@ngrx/store';
 import { selectUserState } from 'guest/app/reducers/user/user.selectors';
+import { MessagesService } from 'guest/services/messages/messages.service';
 
 @Component({
   selector: 'contler-ecommerce',
@@ -24,6 +25,8 @@ export class EcommerceComponent implements OnInit {
     private ecommerceService: EcommerceService,
     private formBuilder: FormBuilder,
     private store: Store<State>,
+    private messagesService: MessagesService,
+    private router: Router,
   ) {
     this.orderForm = this.formBuilder.group({
       order: new FormArray([]),
@@ -60,18 +63,31 @@ export class EcommerceComponent implements OnInit {
   }
 
   public onMakeOrder(ecommerce: EcommerceEntity): void {
+    const loader = this.messagesService.showLoader();
     this.store
       .pipe(selectUserState)
-      .pipe(first())
-      .subscribe(({ user, hotel }) => {
-        const {
-          order: { value },
-        } = this.orderForm.controls;
-        const orders = value.filter((o) => o.quantity);
-        ecommerce.categories = null;
-        ecommerce.hotel = null;
-        console.log({ guest: user, hotel, orders, ecommerce });
-      });
+      .pipe(
+        first(),
+        switchMap(({ user, hotel }) => {
+          const {
+            order: { value },
+          } = this.orderForm.controls;
+          const orders = value.filter((o) => o.quantity);
+          ecommerce.categories = null;
+          ecommerce.hotel = null;
+          return this.ecommerceService.createOrder({ guest: user, hotel, orders, ecommerce });
+        }),
+      )
+      .subscribe(
+        (response) => {
+          this.messagesService.closeLoader(loader);
+          this.router.navigate(['/']);
+        },
+        (err) => {
+          this.messagesService.closeLoader(loader);
+          this.messagesService.showServerError();
+        },
+      );
   }
 
   private generateFormOrder(ecommerce: EcommerceEntity): void {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@contler/hotel/services/auth.service';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { EcommerceEntity } from '@contler/entity/ecommerce.entity';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
@@ -25,7 +25,9 @@ export class EcommerceComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ecommerce$ = this.authService.$hotel.pipe(map((hotel) => hotel.ecommerce));
+    this.ecommerce$ = this.authService.$hotel.pipe(
+      switchMap((hotel) => this.ecommerceService.getEcommerceByHotelUid(hotel.uid)),
+    );
   }
 
   changeStatus($event: MatSlideToggleChange, ecommerce: EcommerceEntity): void {
@@ -42,7 +44,20 @@ export class EcommerceComponent implements OnInit {
     );
   }
 
-  removeEcommerce(ecommerce: EcommerceEntity): void {}
+  removeEcommerce(ecommerce: EcommerceEntity): void {
+    if (!ecommerce.categories.length) {
+      const loader = this.messagesService.showLoader();
+      this.ecommerceService.removeEcommerce(ecommerce.id).subscribe(
+        () => {
+          this.messagesService.closeLoader(loader);
+          this.ecommerce$ = this.ecommerce$.pipe(
+            map((allEcommerce) => allEcommerce.filter((e) => e.id !== ecommerce.id)),
+          );
+        },
+        () => {},
+      );
+    }
+  }
 
   editEcommerce(ecommerce: EcommerceEntity): void {
     this.router.navigate(['preferences', 'ecommerce', ecommerce.id]);

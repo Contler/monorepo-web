@@ -21,6 +21,14 @@ export class MessagesService {
       duration: duration,
     });
   }
+  showToastMessageTranslate(message: string, closeMessage: string = 'global.CLOSE', duration: number = 2000) {
+    const closeMsg = this.translate.instant(closeMessage);
+    const msg = this.translate.instant(message);
+
+    this.snackBar.open(msg, closeMsg, {
+      duration: duration,
+    });
+  }
 
   showServerError(
     error = null,
