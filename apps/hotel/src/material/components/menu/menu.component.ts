@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { ItemMenu } from '../interfaces/item-menu.interface';
 import { AuthService } from '@contler/hotel/services/auth.service';
 import { ChildrenMenu } from '@contler/hotel/material/components/interfaces/children-menu.interface';
+import { HotelService } from '@contler/hotel/services/hotel.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'contler-menu',
@@ -189,44 +190,51 @@ export class MenuComponent implements OnInit {
     },
   ];
 
-  constructor(private afAuth: AngularFireAuth, private router: Router, private authService: AuthService) {}
+  constructor(
+    private afAuth: AngularFireAuth,
+    private router: Router,
+    private authService: AuthService,
+    private hotelService: HotelService,
+  ) {}
 
   ngOnInit() {
-    this.authService.$hotel.subscribe((hotel) => {
-      this.sections = this.sections.map((section) => {
-        if (section.name === 'menu.request') {
-          section.children = section.children.map((child) => {
-            switch (child.name) {
-              case 'preferences.reception.name':
-                child.show = hotel.specialZones.find((z) => z.zone.name === 'receptionZone').status;
-                break;
-              case 'preferences.maintenance.name':
-                child.show = hotel.specialZones.find((z) => z.zone.name === 'maintainZone').status;
-                break;
-              case 'preferences.cleaning.name':
-                child.show = hotel.specialZones.find((z) => z.zone.name === 'cleanZone').status;
-                break;
-              case 'menu.wakeUpCalls':
-                child.show = hotel.specialZones.find((z) => z.zone.name === 'wakeZone').status;
-                break;
-              case 'global.LATE_CHECKOUT':
-                child.show = hotel.specialZones.find((z) => z.zone.name === 'lateZone').status;
-                break;
-            }
-            return child;
-          });
-        }
-        if (section.name === 'menu.roomService') {
-          section.children = section.children.map((child) => {
-            if (child.name === 'menu.remoteOrders') {
-              child.show = hotel.specialZones.find((z) => z.zone.name === 'deliveryZone').status;
-            }
-            return child;
-          });
-        }
-        return section;
+    this.authService.$hotel
+      .pipe(switchMap((hotel) => this.hotelService.getSpecialZone(hotel.uid)))
+      .subscribe((zone) => {
+        this.sections = this.sections.map((section) => {
+          if (section.name === 'menu.request') {
+            section.children = section.children.map((child) => {
+              switch (child.name) {
+                case 'preferences.reception.name':
+                  child.show = zone.find((z) => z.zone.name === 'receptionZone').status;
+                  break;
+                case 'preferences.maintenance.name':
+                  child.show = zone.find((z) => z.zone.name === 'maintainZone').status;
+                  break;
+                case 'preferences.cleaning.name':
+                  child.show = zone.find((z) => z.zone.name === 'cleanZone').status;
+                  break;
+                case 'menu.wakeUpCalls':
+                  child.show = zone.find((z) => z.zone.name === 'wakeZone').status;
+                  break;
+                case 'global.LATE_CHECKOUT':
+                  child.show = zone.find((z) => z.zone.name === 'lateZone').status;
+                  break;
+              }
+              return child;
+            });
+          }
+          if (section.name === 'menu.roomService') {
+            section.children = section.children.map((child) => {
+              if (child.name === 'menu.remoteOrders') {
+                child.show = zone.find((z) => z.zone.name === 'deliveryZone').status;
+              }
+              return child;
+            });
+          }
+          return section;
+        });
       });
-    });
   }
 
   logOut() {

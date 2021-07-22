@@ -8,8 +8,6 @@ import { MaterialModule } from '../material/material.module';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { ColorHotelDirective } from './color-hotel.directive';
 import { BtnHotelDirective } from './btn-hotel.directive';
-import { ReceptionItemComponent } from './reception-item/reception-item.component';
-import { RequestReceptionComponent } from './request-reception/request-reception.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -33,8 +31,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     MenuItemComponent,
     ColorHotelDirective,
     BtnHotelDirective,
-    ReceptionItemComponent,
-    RequestReceptionComponent,
     DynamicItemComponent,
     DynamicResultComponent,
     DynamicFilterPipe,
@@ -50,7 +46,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MenuItemComponent,
     ColorHotelDirective,
     BtnHotelDirective,
-    ReceptionItemComponent,
+
     DynamicItemComponent,
     DynamicFilterPipe,
     SearchListComponent,

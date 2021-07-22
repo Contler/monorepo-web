@@ -36,7 +36,9 @@
 
       <ng-container matColumnDef="zone">
         <th mat-header-cell *matHeaderCellDef>{{ 'order.room' | translate }}</th>
-        <td mat-cell *matCellDef="let element">{{ element.guest.room.name | ctrTranslate }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.guest.hotelBooking?.room?.name | ctrTranslate }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="value">

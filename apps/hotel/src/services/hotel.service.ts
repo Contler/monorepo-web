@@ -5,6 +5,7 @@ import { filter, map, switchMap } from 'rxjs/operators';
 import { environment } from '@contler/hotel/environments/environment';
 import { Statistic } from '@contler/models/statistic';
 import { Interval } from '@contler/models/interval';
+import { SpecialZoneHotelEntity } from '@contler/entity';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +30,9 @@ export class HotelService {
         return [hours, minutes, seconds].join(' ').trim();
       }),
     );
+  }
+
+  getSpecialZone(hotelId: string) {
+    return this.http.get<SpecialZoneHotelEntity[]>(`${environment.apiUrl}hotel/${hotelId}/special-zones`);
   }
 }

@@ -4,11 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CHIEF, EMPLOYER } from '@contler/const';
 import { Observable } from 'rxjs';
 import { EmployerEntity, SpecialZoneHotelEntity, ZoneEntity } from '@contler/entity';
-import { map, switchMap } from 'rxjs/operators';
+import { first, map, switchMap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { EmployerService } from '../../employer/services/employer.service';
 import { ZoneService } from '../../zone/services/zone.service';
 import { MessagesService } from '../../services/messages/messages.service';
+import { HotelService } from '@contler/hotel/services/hotel.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
 
 @Component({
   selector: 'contler-modal-edit-employer',
@@ -32,16 +34,23 @@ export class ModalEditEmployerComponent implements OnInit {
     private zoneService: ZoneService,
     private messagesService: MessagesService,
     private translate: TranslateService,
+    private hotelService: HotelService,
+    private auth: AuthService,
   ) {
-    this.specialZones = employer.hotel.specialZones
-      .filter((sp) => sp.status)
-      .map((sp) => ({ ...sp, status: false }));
-    employer.leaderSpecialZone.forEach((sp) => {
-      const temp = this.specialZones.find((sp2) => sp2.id === sp.id);
-      if (temp) {
-        temp.status = true;
-      }
-    });
+    this.auth.$hotel
+      .pipe(
+        first(),
+        switchMap((hotel) => this.hotelService.getSpecialZone(hotel.uid)),
+      )
+      .subscribe((zone) => {
+        this.specialZones = zone.filter((sp) => sp.status).map((sp) => ({ ...sp, status: false }));
+        employer.leaderSpecialZone.forEach((sp) => {
+          const temp = this.specialZones.find((sp2) => sp2.id === sp.id);
+          if (temp) {
+            temp.status = true;
+          }
+        });
+      });
     this.formEmployer = formBuild.group({
       name: [employer.name, Validators.required],
       leader: [employer.role === CHIEF, Validators.required],

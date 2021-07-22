@@ -6,6 +6,7 @@ import { combineLatest, Subscription } from 'rxjs';
 import { SpecialRequestsService } from '@contler/hotel/special-requests/services/special-requests.service';
 import { AuthService } from '@contler/hotel/services/auth.service';
 import { DynamicModuleService, MODULES } from '@contler/dynamic-services';
+import { HotelService } from '@contler/hotel/services/hotel.service';
 
 @Component({
   selector: 'contler-admin-home',
@@ -98,6 +99,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     private specialRequestsService: SpecialRequestsService,
     private authService: AuthService,
     private dynamicService: DynamicModuleService,
+    private hotelService: HotelService,
   ) {}
 
   goToPage(router: any[], isReception: boolean) {
@@ -118,23 +120,25 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     if (!initialConfiguration) {
       this.router.navigate(['preferences']);
     }
-    this.authService.$hotel.pipe(map((hotel) => hotel.specialZones)).subscribe((zones) => {
-      this.sections = this.sections.map((section) => {
-        if (section.isReception) {
-          const isReceptionActive = zones.find((z) => z.zone.name === 'receptionZone');
-          if (isReceptionActive) {
-            section.show = isReceptionActive.status;
+    this.authService.$hotel
+      .pipe(switchMap((hotel) => this.hotelService.getSpecialZone(hotel.uid)))
+      .subscribe((zones) => {
+        this.sections = this.sections.map((section) => {
+          if (section.isReception) {
+            const isReceptionActive = zones.find((z) => z.zone.name === 'receptionZone');
+            if (isReceptionActive) {
+              section.show = isReceptionActive.status;
+            }
           }
-        }
-        if (section.name === 'global.LATE_CHECKOUT') {
-          const isLateCheckoutActive = zones.find((z) => z.zone.name === 'lateZone');
-          if (isLateCheckoutActive) {
-            section.show = isLateCheckoutActive.status;
+          if (section.name === 'global.LATE_CHECKOUT') {
+            const isLateCheckoutActive = zones.find((z) => z.zone.name === 'lateZone');
+            if (isLateCheckoutActive) {
+              section.show = isLateCheckoutActive.status;
+            }
           }
-        }
-        return section;
+          return section;
+        });
       });
-    });
     const immediateRequest$ = (hotelUid) => {
       return this.dynamicService.getDynamicRequest(hotelUid, MODULES.immediate, true);
     };

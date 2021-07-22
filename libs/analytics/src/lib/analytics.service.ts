@@ -57,7 +57,6 @@ export class AnalyticsService {
       hotelId: this.hotelData?.uid || null,
       hotelName: this.hotelData?.name || null,
     };
-    console.log(eventData);
     return Promise.all([
       this.firestore.collection('analytics').add(eventData),
       this.analytics.logEvent(eventName, params),

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { UserService } from '@contler/core';
 import { EmployerRequest } from '@contler/models';
 import { CHIEF, EMPLOYER } from '@contler/const';
-import { map, switchMap, take } from 'rxjs/operators';
+import { first, map, switchMap, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { EmployerEntity, SpecialZoneHotelEntity, ZoneEntity } from '@contler/entity';
 import { AngularFireDatabase } from '@angular/fire/database';
@@ -13,6 +12,8 @@ import { EmployerService } from '../../services/employer.service';
 import { CreateEmployer } from '../../models/create-employer';
 import { ZoneService } from '../../../zone/services/zone.service';
 import { MessagesService } from '../../../services/messages/messages.service';
+import { AuthService } from '@contler/hotel/services/auth.service';
+import { HotelService } from '@contler/hotel/services/hotel.service';
 
 @Component({
   selector: 'contler-modal-employer',
@@ -29,12 +30,13 @@ export class ModalEmployerComponent {
 
   constructor(
     private dialogRef: MatDialogRef<ModalEmployerComponent>,
-    private userService: UserService,
     private employerService: EmployerService,
     private zoneService: ZoneService,
     private messagesService: MessagesService,
     private afDb: AngularFireDatabase,
     private translate: TranslateService,
+    private auth: AuthService,
+    private hotelService: HotelService,
     formBuild: FormBuilder,
   ) {
     this.formEmployer = formBuild.group({
@@ -45,11 +47,13 @@ export class ModalEmployerComponent {
       pass: ['', [Validators.required, Validators.minLength(6)]],
     });
     this.$zone = this.zoneService.getZones();
-    this.userService
-      .getUser()
-      .pipe(take(1))
-      .subscribe((user) => {
-        this.specialZones = user.hotel.specialZones
+    this.auth.$hotel
+      .pipe(
+        first(),
+        switchMap((hotel) => this.hotelService.getSpecialZone(hotel.uid)),
+      )
+      .subscribe((specialZone) => {
+        this.specialZones = specialZone
           .filter((zone) => zone.status)
           .map((zone) => ({ ...zone, status: false }));
       });
@@ -58,8 +62,7 @@ export class ModalEmployerComponent {
   createEmployer() {
     this.loading = true;
     const employerData: CreateEmployer = this.formEmployer.value;
-    this.userService
-      .getUser()
+    this.auth.$employer
       .pipe(
         take(1),
         map<EmployerEntity, EmployerRequest>((user) => ({

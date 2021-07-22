@@ -18,7 +18,7 @@
 
   <h1 class="detail__title" [style.color]="generalService.hotelColor">
     {{ order?.guest.name }} {{ order?.guest.lastName }} <br />
-    {{ order?.guest.room.name | ctrTranslate }} - {{ order?.time | date: 'shortTime' }}
+    {{ order?.guest.hotelBooking?.room?.name | ctrTranslate }} - {{ order?.time | date: 'shortTime' }}
   </h1>
 
   <ng-container *ngFor="let item of productsRestaurant | keyvalue; let i = index">

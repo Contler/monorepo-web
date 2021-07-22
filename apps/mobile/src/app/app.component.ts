@@ -38,7 +38,6 @@ export class AppComponent implements OnInit {
     });
 
     this.store.pipe(selectHotel).subscribe((hotel) => {
-      console.log(hotel);
       this.analytics.hotel = hotel;
     });
   }
